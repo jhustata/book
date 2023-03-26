@@ -362,7 +362,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-distribution">Statistical Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-distribution-2021-2022">Statistical Distribution: 2021/2022</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-code-to-display-2021-2022-performance">Stata code to display 2021/2022 performance</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structure-on-which-the-above-code-run">Data structure on which the above code run</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-expect">What to expect??</a></li>
 </ul>
@@ -378,20 +381,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="grading-homeworks">
 <h1>Grading Homeworks<a class="headerlink" href="#grading-homeworks" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># warnings are for python... irrelevant to Stata</span>
-
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="statistical-distribution">
-<h2>Statistical Distribution<a class="headerlink" href="#statistical-distribution" title="Permalink to this heading">#</a></h2>
+<section id="statistical-distribution-2021-2022">
+<h2>Statistical Distribution: 2021/2022<a class="headerlink" href="#statistical-distribution-2021-2022" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="_images/grade_34060071_general.png" /></p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span># Code to<span class="k"> display</span> last years performance
+<section id="stata-code-to-display-2021-2022-performance">
+<h3>Stata code to display 2021/2022 performance<a class="headerlink" href="#stata-code-to-display-2021-2022-performance" title="Permalink to this heading">#</a></h3>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span># Extrapoints<span class="k"> for</span> someone to render this<span class="k"> in</span> Python with interactive graphics<span class="o">!</span>
 
 #delimit ;
 <span class="k">twoway</span> 
@@ -418,45 +413,7 @@ document.write(`
 #delimit cr
 </pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extrapoints for someone to render this in Python, plotly, and interactive graphics!</span>
-
-<span class="c1">#delimit ;</span>
-<span class="n">twoway</span> 
-    <span class="n">scatter</span>  
-	     <span class="n">final</span> <span class="n">degree</span> <span class="p">,</span> 
-	         <span class="n">col</span><span class="p">(</span><span class="n">blue</span><span class="p">)</span> 
-			 <span class="n">mcolor</span><span class="p">(</span><span class="o">%</span><span class="k">20</span>) 
-			 <span class="n">jitter</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">||</span> 
-	<span class="n">rcap</span> 
-	     <span class="n">y1lb</span> <span class="n">y1ub</span> <span class="n">degree</span><span class="p">,</span> 
-		     <span class="n">col</span><span class="p">(</span><span class="n">blue</span><span class="p">)</span> <span class="o">||</span>   
-	<span class="n">dot</span>  
-	     <span class="n">y1m</span> <span class="n">degree</span><span class="p">,</span> 
-		 <span class="n">col</span><span class="p">(</span><span class="n">blue</span><span class="p">)</span> 
-		 <span class="n">msize</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  
-			<span class="n">legend</span><span class="p">(</span><span class="n">off</span> <span class="p">)</span> 
-			<span class="n">xlab</span><span class="p">(</span><span class="mi">1</span> <span class="s2">&quot;MHS&quot;</span> 
-			     <span class="mi">2</span> <span class="s2">&quot;MSPH&quot;</span> 
-				 <span class="mi">3</span> <span class="s2">&quot;MPH&quot;</span> 
-				 <span class="mi">4</span> <span class="s2">&quot;PhD&quot;</span> 
-				 <span class="mi">5</span> <span class="s2">&quot;SCM&quot;</span><span class="p">)</span> 
-		<span class="n">yline</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">lcol</span><span class="p">(</span><span class="n">red</span><span class="p">)</span> <span class="n">lp</span><span class="p">(</span><span class="n">dash</span><span class="p">))</span> 
-		<span class="n">xti</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="p">;</span>
-<span class="c1">#delimit cr</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="o">&lt;</span><span class="n">tokenize</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">10</span>
-    <span class="n">rcap</span>
-    <span class="o">^</span>
-<span class="ne">IndentationError</span>: unindent does not match any outer indentation level
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 </section>
 <section id="data-structure-on-which-the-above-code-run">
 <h2>Data structure on which the above code run<a class="headerlink" href="#data-structure-on-which-the-above-code-run" title="Permalink to this heading">#</a></h2>
@@ -529,7 +486,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-distribution">Statistical Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-distribution-2021-2022">Statistical Distribution: 2021/2022</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stata-code-to-display-2021-2022-performance">Stata code to display 2021/2022 performance</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structure-on-which-the-above-code-run">Data structure on which the above code run</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-expect">What to expect??</a></li>
 </ul>
