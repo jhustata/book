@@ -14,11 +14,7 @@ kernelspec:
 
 # Markdown vs. Powerpoint
 
-Trying to wean myself from .PPT, which is suboptimal for a programming class!
-
-## How we may share code
-
-With MyST Markdown, you can define code cells with a directive like so:
+Trying to wean myself from .PPT, which is suboptimal for a programming class! This, for instance, is much trickier render in .PPT
 
 ```{code-cell}
 qui {
