@@ -377,6 +377,76 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="markdown-vs-powerpoint">
 <h1>Markdown vs. Powerpoint<a class="headerlink" href="#markdown-vs-powerpoint" title="Permalink to this heading">#</a></h1>
 <p>Trying to wean myself from .PPT, which is suboptimal for a programming class! This, for instance, is <strong>much</strong> trickier to render in .PPT</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">1</span> { <span class="c1">//settings,logfile,macros</span>
+        
+        cls
+<span class="k">        clear</span> 
+<span class="k">        </span>
+<span class="k">        capture log close</span> 
+<span class="k">        log</span> using adultlab<span class="m">.</span>log,<span class="k"> replace</span> 
+<span class="k">        </span>
+<span class="k">        </span>
+<span class="k">        global</span> url https:<span class="o">//</span>wwwn<span class="m">.</span>cdc<span class="m">.</span>gov<span class="o">/</span>nchs<span class="o">/</span>data<span class="o">/</span>nhanes3<span class="o">/</span>1a<span class="o">/</span> 
+<span class="k">        global</span> sasprogram adult<span class="m">.</span>sas
+<span class="k">        global</span> datafile adult<span class="m">.</span>dat
+        
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">2</span> { <span class="c1">//import adult.sas read-in commands</span>
+        
+        import delimited <span class="vg">${url}$sasprogram</span>
+
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">3</span> { <span class="c1">//output adult.do file read-in commands  </span>
+<span class="k">            </span>
+<span class="k">        preserve</span> 
+<span class="k">           keep in</span> <span class="m">1387</span><span class="o">/</span><span class="m">2624</span>
+<span class="k">           g</span> id=_n<span class="m">+2</span>
+           insobs <span class="m">1</span>
+<span class="k">           replace</span> v1=<span class="s">&quot;#delimit ;&quot;</span><span class="k"> in</span> <span class="nv">`c(N)&#39;</span>
+           insobs <span class="m">1</span>
+<span class="k">           replace</span> v1=<span class="s">&quot;infix&quot;</span><span class="k"> in</span> <span class="nv">`c(N)&#39;</span>
+           insobs <span class="m">1</span>
+<span class="k">           replace</span> v1=<span class="s">&quot;using </span><span class="vg">${url}$datafile</span><span class="s"> ;&quot;</span><span class="k"> in</span> <span class="nv">`c(N)&#39;</span>
+           insobs <span class="m">1</span>
+<span class="k">           replace</span> v1=<span class="s">&quot;#delimit cr&quot;</span><span class="k"> in</span> <span class="nv">`c(N)&#39;</span>
+<span class="k">           replace</span> id=<span class="m">1</span><span class="k"> if</span> v1<span class="o">==</span><span class="s">&quot;#delimit ;&quot;</span>
+<span class="k">           replace</span> id=<span class="m">2</span><span class="k"> if</span> v1<span class="o">==</span><span class="s">&quot;infix&quot;</span>
+<span class="k">           replace</span> id=<span class="nv">`c(N)&#39;</span><span class="k"> if</span> v1<span class="o">==</span><span class="s">&quot;using </span><span class="vg">${url}$datafile</span><span class="s"> ;&quot;</span>
+<span class="k">           replace</span> id=id<span class="m">-1</span><span class="k"> if</span> v1<span class="o">==</span><span class="s">&quot;using </span><span class="vg">${url}$datafile</span><span class="s"> ;&quot;</span>
+<span class="k">           replace</span> id=<span class="nv">`c(N)&#39;</span><span class="k"> if</span> v1<span class="o">==</span><span class="s">&quot;#delimit cr&quot;</span>
+<span class="k">           sort</span> id
+<span class="k">           drop</span> id
+<span class="k">           tempfile</span> vars
+<span class="k">           rename</span> v1 concat 
+<span class="k">           format</span> concat <span class="nx">%-20s</span>
+<span class="k">           keep</span> concat 
+<span class="k">           save</span> <span class="nv">`vars&#39;</span>
+<span class="k">        restore</span> 
+<span class="k">        </span>
+<span class="k">        keep in</span> <span class="m">2627</span><span class="o">/</span><span class="m">3865</span>
+<span class="k">        split</span> v1, p(<span class="s">&quot; = &quot;</span>)
+<span class="k">        gen</span> concat=<span class="s">&quot;lab var &quot;</span><span class="o">+</span>v11<span class="o">+</span><span class="s">&quot; &quot;</span><span class="o">+</span>v12
+<span class="k">        keep</span> concat 
+<span class="k">        format</span> concat <span class="nx">%-20s</span>
+<span class="k">        drop in</span> <span class="nv">`c(N)&#39;</span>
+<span class="k">        tempfile</span> labs
+<span class="k">        save</span> <span class="nv">`labs&#39;</span>
+<span class="k">        </span>
+<span class="k">        use</span> <span class="nv">`vars&#39;</span>,<span class="k"> clear</span>
+<span class="k">        append</span> using <span class="nv">`labs&#39;</span>
+<span class="k">        outfile</span> using <span class="s">&quot;adult.do&quot;</span>, noquote<span class="k"> replace</span>
+<span class="k">        </span>
+<span class="k">        log close</span> 
+        
+    }
+    
+}
+</pre></div>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>Stata’s <code class="docutils literal notranslate"><span class="pre">help</span></code> command</p>
@@ -384,11 +454,10 @@ document.write(`
 </div>
 <section id="more-come">
 <h2>More come..<a class="headerlink" href="#more-come" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># but for now, where is all your output saved?
-
-type `pwd&#39; into your stata command window
-
-</pre></div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p class="rubric">but for now, where is all your output saved?</p>
+<p>type `pwd’ into your stata command window</p>
 </div>
 </section>
 </section>
