@@ -66,8 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
-    <link rel="prev" title="Admin stuff" href="-9.markdown.html" />
+    <link rel="next" title="Markdown vs. Powerpoint" href="markdown-notebooks.html" />
+    <link rel="prev" title="Admin stuff" href="markdown.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -133,7 +133,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="-8.intro.html">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -153,24 +153,24 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="-8.intro.html">
+                <a class="reference internal" href="intro.html">
                     Stata Programming
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="-9.markdown.html">Admin stuff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Admin stuff</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mymarkdownfile.html">Here’s my sample title</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1.stataprogramming.html">Hello Class!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.returnvalues.html">Return values, macros, and writing  our own programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3.conditionals.html">by command, egen command, loops, conditionals, and programs 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4.filemanagement.html">Advanced file management, Programs 3, and Automated tables in Excel (method 1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5.macros.html">Advanced data management, More on macros</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6.graphs.html">Histograms, functions, intro to two-way graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7.twoway.html">Graph: simple to complex</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8.miscellany.html">Cool Miscellany</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Markdown vs. Powerpoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mymarkdownfile.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stataprogramming.html">Hello Class!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="returnvalues.html">Return values, macros, and writing  our own programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals.html">by command, egen command, loops, conditionals, and programs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filemanagement.html">Advanced file management, Programs 3, and Automated tables in Excel (method 1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">Advanced data management, More on macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphs.html">Histograms, functions, intro to two-way graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twoway.html">Graph: simple to complex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellany.html">Cool Miscellany</a></li>
 </ul>
 
     </div>
@@ -435,24 +435,31 @@ For example, here’s some sample Matplotlib code:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Session 0</span>
 
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)))</span>
-
-
-<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
-<span class="n">custom_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">.5</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">]);</span>
+<span class="n">qui</span> <span class="p">{</span>
+	
+	<span class="k">if</span> <span class="mi">1</span> <span class="p">{</span> <span class="o">//</span><span class="n">settings</span><span class="p">,</span><span class="n">logfile</span><span class="p">,</span><span class="n">macros</span>
+	
+	    <span class="bp">cls</span> 
+		<span class="n">clear</span> 
+		
+		<span class="n">capture</span> <span class="n">log</span> <span class="n">close</span> 
+		<span class="n">log</span> <span class="n">using</span> <span class="n">session0</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="n">replace</span> 
+		
+		<span class="k">global</span> <span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">wwwn</span><span class="o">.</span><span class="n">cdc</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">Nchs</span><span class="o">/</span><span class="n">Nhanes</span><span class="o">/</span><span class="mi">1999</span><span class="o">-</span><span class="mi">2000</span><span class="o">/</span>
+		<span class="k">global</span> <span class="n">datafile</span> <span class="n">DEMO</span><span class="o">.</span><span class="n">XPT</span> 
+		
+		
+	<span class="p">}</span>
+	
+	<span class="k">if</span> <span class="mi">2</span> <span class="p">{</span> <span class="o">//</span><span class="kn">import</span> <span class="nn">datafile</span>
+		
+		<span class="kn">import</span> <span class="nn">sasxport5</span> <span class="s2">&quot;$</span><span class="si">{url}</span><span class="s2">$</span><span class="si">{datafile}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">clear</span>
+		<span class="n">noi</span> <span class="n">di</span> <span class="s2">&quot;no of vars `c(k)&#39; x &quot;</span> <span class="s2">&quot; no of obs &quot;</span> <span class="n">_N</span>
+	<span class="p">}</span>
+	
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -491,7 +498,7 @@ with your book. For more information about this, see <a class="reference externa
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="-9.markdown.html"
+       href="markdown.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -504,7 +511,7 @@ with your book. For more information about this, see <a class="reference externa
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+        <p class="prev-next-title">Markdown vs. Powerpoint</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

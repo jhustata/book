@@ -12,18 +12,40 @@ kernelspec:
   name: python3
 ---
 
-# Notebooks with MyST Markdown
+# Markdown vs. Powerpoint
 
 Jupyter Book also lets you write text-based notebooks using MyST Markdown.
 See [the Notebooks with MyST Markdown documentation](https://jupyterbook.org/file-types/myst-notebooks.html) for more detailed instructions.
 This page shows off a notebook written in MyST Markdown.
 
-## An example cell
+## How we may share code
 
 With MyST Markdown, you can define code cells with a directive like so:
 
 ```{code-cell}
-print(2 + 2)
+qui {
+    
+    if 1 { //settings,logfile,macros
+    
+        cls 
+        clear 
+        
+        capture log close 
+        log using session0.log, replace 
+        
+        global url https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/
+        global datafile DEMO.XPT 
+        
+        
+    }
+    
+    if 2 { //import datafile
+        
+        import sasxport5 "${url}${datafile}", clear
+        noi di "no of vars `c(k)' x " " no of obs " _N
+    }
+    
+}
 ```
 
 When your book is built, the contents of any `{code-cell}` blocks will be

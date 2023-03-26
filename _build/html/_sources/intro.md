@@ -1,11 +1,8 @@
-# Welcome to your Jupyter Book
+# Stata Programming
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Welcome to [PH 340.600.01](https://www.jhsph.edu/courses/course/36389/2022/340.600.01/stata-programming)
 
-Check out the content pages bundled with this sample book to see more.
+Here's a summary of what we will cover over the next 8 weeks:
 
 ```{tableofcontents}
 ```

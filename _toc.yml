@@ -2,18 +2,18 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: -8.intro
+root: intro
 chapters:
-- file: -9.markdown
-- file: -10.notebooks
-- file: -11.markdown-notebooks
-- file: -12.mymarkdownfile
-- file: 1.stataprogramming
-- file: 2.returnvalues
-- file: 3.conditionals
-- file: 4.filemanagement
-- file: 5.macros
-- file: 6.graphs
-- file: 7.twoway
-- file: 8.miscellany
+- file: markdown
+- file: notebooks
+- file: markdown-notebooks
+- file: mymarkdownfile
+- file: stataprogramming
+- file: returnvalues
+- file: conditionals
+- file: filemanagement
+- file: macros
+- file: graphs
+- file: twoway
+- file: miscellany
 

@@ -1,6 +1,6 @@
-# Here's my sample title
+# Grading
 
-This is some sample text.
+You'll most likely get an A, or B at worst
 
 (section-label)=
 ## Here's my first section
