@@ -3,3 +3,6 @@
 local
 global
 
+where? 
+what?
+why?
