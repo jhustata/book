@@ -14,7 +14,7 @@ kernelspec:
 
 # Markdown vs. Powerpoint
 
-Trying to wean myself from .PPT, which is suboptimal for a programming class! This, for instance, is **much** trickier render in .PPT
+Trying to wean myself from .PPT, which is suboptimal for a programming class! This, for instance, is **much** trickier to render in .PPT
 
 ```{code-cell}
 qui {
