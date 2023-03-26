@@ -47,7 +47,7 @@ qui {
 
 ------------------
 
-[0;36m  Cell [0;32mIn[1], line 3[0;36m[0m
+[0;36m  Cell [0;32mIn[2], line 3[0;36m[0m
 [0;31m    qui {[0m
 [0m        ^[0m
 [0;31mSyntaxError[0m[0;31m:[0m invalid syntax
