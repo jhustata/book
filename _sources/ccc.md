@@ -99,7 +99,7 @@ ChatGPT, when available
 ## More come..
 
 ```{seealso}
-# but for now, where is all your output saved?
+Where is the output from above saved?
 
 type `pwd' into your stata command window
 
