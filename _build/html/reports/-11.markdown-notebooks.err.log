@@ -17,39 +17,35 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Session 0
-
 qui {
-	
-	if 1 { //settings,logfile,macros
-	
-	    cls 
-		clear 
-		
-		capture log close 
-		log using session0.log, replace 
-		
-		global url https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/
-		global datafile DEMO.XPT 
-		
-		
-	}
-	
-	if 2 { //import datafile
-		
-		import sasxport5 "${url}${datafile}", clear
-		noi di "no of vars `c(k)' x " " no of obs " _N
-	}
-	
+    
+    if 1 { //settings,logfile,macros
+    
+        cls 
+        clear 
+        
+        capture log close 
+        log using session0.log, replace 
+        
+        global url https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/
+        global datafile DEMO.XPT 
+        
+        
+    }
+    
+    if 2 { //import datafile
+        
+        import sasxport5 "${url}${datafile}", clear
+        noi di "no of vars `c(k)' x " " no of obs " _N
+    }
+    
 }
-
-
 ------------------
 
-[0;36m  Cell [0;32mIn[1], line 3[0;36m[0m
+[0;36m  Cell [0;32mIn[1], line 1[0;36m[0m
 [0;31m    qui {[0m
 [0m        ^[0m
 [0;31mSyntaxError[0m[0;31m:[0m invalid syntax
 
-SyntaxError: invalid syntax (4229663137.py, line 3)
+SyntaxError: invalid syntax (2038658495.py, line 1)
 
