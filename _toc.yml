@@ -4,16 +4,16 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
-- file: mymarkdownfile
-- file: stataprogramming
-- file: returnvalues
-- file: conditionals
-- file: filemanagement
-- file: macros
-- file: graphs
-- file: twoway
-- file: miscellany
+- file: aaa
+- file: bbb
+- file: ccc
+- file: ddd
+- file: eee
+- file: fff
+- file: ggg
+- file: hhh
+- file: iii
+- file: jjj
+- file: kkk
+- file: lll
 
