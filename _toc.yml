@@ -8,4 +8,12 @@ chapters:
 - file: notebooks
 - file: markdown-notebooks
 - file: mymarkdownfile
+- file: 1.stataprogramming
+- file: 2.returnvalues
+- file: 3.conditionals
+- file: 4.filemanagement
+- file: 5.macros
+- file: 6.graphs
+- file: 7.twoway
+- file: 8.miscellany
 
