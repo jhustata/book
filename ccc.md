@@ -16,7 +16,7 @@ kernelspec:
 
 Trying to wean myself from .PPT, which is suboptimal for a programming class! This, for instance, is **much** trickier to render in .PPT
 
-```{code-cell}
+```{stata}
 qui {
     
     if 1 { //settings,logfile,macros
@@ -89,7 +89,8 @@ qui {
 ```
 
 ```{seealso}
-Stata's help command
+
+Stata's `help` command
 
 ChatGPT, when available
 ```
@@ -97,7 +98,8 @@ ChatGPT, when available
 ## More come..
 
 ```
-# but for now:
+# but for now, where is all your output saved?
 
 type `pwd' into your stata command window
+
 ```
