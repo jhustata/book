@@ -5,9 +5,9 @@ format: jb-book
 root: -8.intro
 chapters:
 - file: -9.markdown
-- file: notebooks
-- file: markdown-notebooks
-- file: mymarkdownfile
+- file: -10.notebooks
+- file: -11.markdown-notebooks
+- file: -12.mymarkdownfile
 - file: 1.stataprogramming
 - file: 2.returnvalues
 - file: 3.conditionals
