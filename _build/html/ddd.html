@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Grading &#8212; Stata Programming</title>
+    <title>Grading Homeworks &#8212; Stata Programming</title>
   
   
   
@@ -158,9 +158,9 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="aaa.html">Admin stuff</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bbb.html">Copy &amp; paste to your .do file &amp; do.. to whet your appetite!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bbb.html">Whet your appetite!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccc.html">Markdown vs. Powerpoint</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Grading</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Grading Homeworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eee.html">Ok, lets get to Stata Programming!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fff.html">Return values, macros, and writing  our own programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ggg.html">by command, egen command, loops, conditionals, and programs 2</a></li>
@@ -270,7 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/ddd.md" target="_blank"
+      <li><a href="_sources/ddd.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -280,7 +280,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -339,7 +339,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -350,11 +352,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Grading</h1>
+    <h1>Grading Homeworks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-distribution">Statistical Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structure-on-which-the-above-code-run">Data structure on which the above code run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-expect">What to expect??</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -364,10 +376,96 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="grading">
-<h1>Grading<a class="headerlink" href="#grading" title="Permalink to this heading">#</a></h1>
-<p>You’ll most likely get an A, or B at worst</p>
-<p>We’ll share a histogram of the typical grades in this class</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="grading-homeworks">
+<h1>Grading Homeworks<a class="headerlink" href="#grading-homeworks" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># warnings are for python... irrelevant to Stata</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="statistical-distribution">
+<h2>Statistical Distribution<a class="headerlink" href="#statistical-distribution" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="_images/grade_34060071_general.png" /></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span># Code to<span class="k"> display</span> last years performance
+
+#delimit ;
+<span class="k">twoway</span> 
+<span class="k">    scatter</span>  
+	     final degree , 
+	         col(blue) 
+			 mcolor(%<span class="m">20</span>) 
+			 jitter(<span class="m">3</span>) || 
+	rcap 
+	     y1lb y1ub degree, 
+		     col(blue) ||   
+	dot  
+	     y1m degree, 
+		 col(blue) 
+		 msize(<span class="m">2</span>)  
+			legend(off ) 
+			xlab(<span class="m">1</span> <span class="s">&quot;MHS&quot;</span> 
+			     <span class="m">2</span> <span class="s">&quot;MSPH&quot;</span> 
+				 <span class="m">3</span> <span class="s">&quot;MPH&quot;</span> 
+				 <span class="m">4</span> <span class="s">&quot;PhD&quot;</span> 
+				 <span class="m">5</span> <span class="s">&quot;SCM&quot;</span>) 
+		yline(<span class="m">90</span>, lcol(red) lp(dash)) 
+		xti(<span class="s">&quot; &quot;</span>) ;
+#delimit cr
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extrapoints for someone to render this in Python, plotly, and interactive graphics!</span>
+
+<span class="c1">#delimit ;</span>
+<span class="n">twoway</span> 
+    <span class="n">scatter</span>  
+	     <span class="n">final</span> <span class="n">degree</span> <span class="p">,</span> 
+	         <span class="n">col</span><span class="p">(</span><span class="n">blue</span><span class="p">)</span> 
+			 <span class="n">mcolor</span><span class="p">(</span><span class="o">%</span><span class="k">20</span>) 
+			 <span class="n">jitter</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">||</span> 
+	<span class="n">rcap</span> 
+	     <span class="n">y1lb</span> <span class="n">y1ub</span> <span class="n">degree</span><span class="p">,</span> 
+		     <span class="n">col</span><span class="p">(</span><span class="n">blue</span><span class="p">)</span> <span class="o">||</span>   
+	<span class="n">dot</span>  
+	     <span class="n">y1m</span> <span class="n">degree</span><span class="p">,</span> 
+		 <span class="n">col</span><span class="p">(</span><span class="n">blue</span><span class="p">)</span> 
+		 <span class="n">msize</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  
+			<span class="n">legend</span><span class="p">(</span><span class="n">off</span> <span class="p">)</span> 
+			<span class="n">xlab</span><span class="p">(</span><span class="mi">1</span> <span class="s2">&quot;MHS&quot;</span> 
+			     <span class="mi">2</span> <span class="s2">&quot;MSPH&quot;</span> 
+				 <span class="mi">3</span> <span class="s2">&quot;MPH&quot;</span> 
+				 <span class="mi">4</span> <span class="s2">&quot;PhD&quot;</span> 
+				 <span class="mi">5</span> <span class="s2">&quot;SCM&quot;</span><span class="p">)</span> 
+		<span class="n">yline</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">lcol</span><span class="p">(</span><span class="n">red</span><span class="p">)</span> <span class="n">lp</span><span class="p">(</span><span class="n">dash</span><span class="p">))</span> 
+		<span class="n">xti</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="p">;</span>
+<span class="c1">#delimit cr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="o">&lt;</span><span class="n">tokenize</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">10</span>
+    <span class="n">rcap</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: unindent does not match any outer indentation level
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-structure-on-which-the-above-code-run">
+<h2>Data structure on which the above code run<a class="headerlink" href="#data-structure-on-which-the-above-code-run" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="_images/grades.2022.jpg" /></p>
+</section>
+<section id="what-to-expect">
+<h2>What to expect??<a class="headerlink" href="#what-to-expect" title="Permalink to this heading">#</a></h2>
+<p>You’ll most likely get an A!</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -422,6 +520,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-distribution">Statistical Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structure-on-which-the-above-code-run">Data structure on which the above code run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-expect">What to expect??</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
