@@ -1,8 +1,11 @@
-# Advanced data management, More on macros
+# Macros
 
+Advanced data management, More on macros
+
+```
 local
 global
 
-where? 
-what?
-why?
+help local
+help global
+```

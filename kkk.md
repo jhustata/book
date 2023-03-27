@@ -1,1 +1,1 @@
-# Graph: simple to complex
+# Graphs: simple to complex

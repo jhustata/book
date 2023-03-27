@@ -1,5 +1,7 @@
-# Histograms, functions, intro to two-way graphs
+# Intro to graphs
+
+Histograms, functions, intro to two-way graphs
 
 ```
-graph of last years performance
+help twoway
 ```

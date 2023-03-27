@@ -64,8 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'bbb';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown vs. Powerpoint" href="ccc.html" />
-    <link rel="prev" title="Administrative Info" href="aaa.html" />
+    <link rel="next" title="Wean off .pptx" href="ccc.html" />
+    <link rel="prev" title="Admin info" href="aaa.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -152,23 +152,26 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Stata Programming
+                    Stata class
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="aaa.html">Administrative Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aaa.html">Admin info</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Cin cin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ccc.html">Markdown vs. Powerpoint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ddd.html">Grading Homeworks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eee.html">Ok, lets get to Stata Programming!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fff.html">Return values, macros, and writing  our own programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ggg.html">by command, egen command, loops, conditionals, and programs 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hhh.html">Advanced file management, Programs 3, and Automated tables in Excel (method 1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iii.html">Advanced data management, More on macros</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jjj.html">Histograms, functions, intro to two-way graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kkk.html">Graph: simple to complex</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lll.html">Cool Miscellany</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccc.html">Wean off .pptx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddd.html">Twoway plot from 2021/2022</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="eee.html">Ok, lets start!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fff.html">c(k) &amp; more</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ggg.html">More</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hhh.html">auto output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iii.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jjj.html">Intro to graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kkk.html">Graphs: simple to complex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lll.html">Cool Misc.</a></li>
 </ul>
 
     </div>
@@ -362,8 +365,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#should-we-annotate-our-code-what-if-chatgpt-can-do-that-on-demand">Should we annotate our code? What if chatGPT can do that on demand?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watched-session-0">Watched Session 0?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aperitivo">Aperitivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotate-this">Annotate this!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gif-anyone">.GIF anyone?</a></li>
 </ul>
             </nav>
         </div>
@@ -378,6 +382,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="cin-cin">
 <h1>Cin cin<a class="headerlink" href="#cin-cin" title="Permalink to this heading">#</a></h1>
 <p><img alt="" src="_images/cincin.jpg" /></p>
+<section id="aperitivo">
+<h2>Aperitivo<a class="headerlink" href="#aperitivo" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Session 0</span>
 
 <span class="n">qui</span> <span class="p">{</span>
@@ -406,14 +412,15 @@ document.write(`
 
 </pre></div>
 </div>
-<section id="should-we-annotate-our-code-what-if-chatgpt-can-do-that-on-demand">
-<h2>Should we annotate our code? What if chatGPT can do that on demand?<a class="headerlink" href="#should-we-annotate-our-code-what-if-chatgpt-can-do-that-on-demand" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="annotate-this">
+<h2>Annotate this!<a class="headerlink" href="#annotate-this" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="_images/jhustata.chatGPT.jpg" /></p>
 </section>
-<section id="watched-session-0">
-<h2>Watched Session 0?<a class="headerlink" href="#watched-session-0" title="Permalink to this heading">#</a></h2>
-<p>Here’s the <a class="reference external" href="https://www.dropbox.com/s/64520h7z60zigo7/session0.mp4?raw=1">Video</a>!</p>
-<p>Let’s replace this with a .GIF</p>
+<section id="gif-anyone">
+<h2>.GIF anyone?<a class="headerlink" href="#gif-anyone" title="Permalink to this heading">#</a></h2>
+<p>Session0 <a class="reference external" href="https://www.dropbox.com/s/64520h7z60zigo7/session0.mp4?raw=1">video</a>!</p>
+<p>Any student who can produce a .GIF to convey my 20min Session 0 video in, say, 5 minutes? You may earn up to 1.5 points</p>
 </section>
 </section>
 
@@ -451,7 +458,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Administrative Info</p>
+        <p class="prev-next-title">Admin info</p>
       </div>
     </a>
     <a class="right-next"
@@ -459,7 +466,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown vs. Powerpoint</p>
+        <p class="prev-next-title">Wean off .pptx</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -478,8 +485,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#should-we-annotate-our-code-what-if-chatgpt-can-do-that-on-demand">Should we annotate our code? What if chatGPT can do that on demand?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watched-session-0">Watched Session 0?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aperitivo">Aperitivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotate-this">Annotate this!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gif-anyone">.GIF anyone?</a></li>
 </ul>
   </nav></div>
 

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Stata Programming &#8212; Stata Programming</title>
+    <title>Stata class &#8212; Stata Programming</title>
   
   
   
@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Administrative Info" href="aaa.html" />
+    <link rel="next" title="Admin info" href="aaa.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -151,23 +151,26 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Stata Programming
+                    Stata class
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="aaa.html">Administrative Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aaa.html">Admin info</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bbb.html">Cin cin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ccc.html">Markdown vs. Powerpoint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ddd.html">Grading Homeworks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eee.html">Ok, lets get to Stata Programming!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fff.html">Return values, macros, and writing  our own programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ggg.html">by command, egen command, loops, conditionals, and programs 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hhh.html">Advanced file management, Programs 3, and Automated tables in Excel (method 1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iii.html">Advanced data management, More on macros</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jjj.html">Histograms, functions, intro to two-way graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kkk.html">Graph: simple to complex</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lll.html">Cool Miscellany</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccc.html">Wean off .pptx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddd.html">Twoway plot from 2021/2022</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="eee.html">Ok, lets start!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fff.html">c(k) &amp; more</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ggg.html">More</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hhh.html">auto output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iii.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jjj.html">Intro to graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kkk.html">Graphs: simple to complex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lll.html">Cool Misc.</a></li>
 </ul>
 
     </div>
@@ -349,7 +352,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Stata Programming</h1>
+    <h1>Stata class</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -363,24 +366,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="stata-programming">
-<h1>Stata Programming<a class="headerlink" href="#stata-programming" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="stata-class">
+<h1>Stata class<a class="headerlink" href="#stata-class" title="Permalink to this heading">#</a></h1>
 <p>Welcome to <a class="reference external" href="https://www.jhsph.edu/courses/course/36389/2022/340.600.01/stata-programming">PH 340.600.01</a> &amp; <a class="reference external" href="https://www.jhsph.edu/courses/course/37447/2022/340.700.71/advanced-stata-programming">PH.340.700.71</a></p>
 <p>Table of Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="aaa.html">Administrative Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aaa.html">Admin info</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bbb.html">Cin cin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ccc.html">Markdown vs. Powerpoint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ddd.html">Grading Homeworks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eee.html">Ok, lets get to Stata Programming!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fff.html">Return values, macros, and writing  our own programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ggg.html">by command, egen command, loops, conditionals, and programs 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hhh.html">Advanced file management, Programs 3, and Automated tables in Excel (method 1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iii.html">Advanced data management, More on macros</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jjj.html">Histograms, functions, intro to two-way graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kkk.html">Graph: simple to complex</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lll.html">Cool Miscellany</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccc.html">Wean off .pptx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddd.html">Twoway plot from 2021/2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddd.html#de-identified-grades">De-identified grades</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddd.html#conclusion">Conclusion?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddd.html#extra-credit-challenge-1-5-points-max">Extra credit challenge (1.5 points max)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eee.html">Ok, lets start!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fff.html">c(k) &amp; more</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ggg.html">More</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hhh.html">auto output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iii.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jjj.html">Intro to graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kkk.html">Graphs: simple to complex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lll.html">Cool Misc.</a></li>
 </ul>
 </div>
 </section>
@@ -418,7 +424,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Administrative Info</p>
+        <p class="prev-next-title">Admin info</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
