@@ -1,4 +1,4 @@
-# Admin info
+# tokenize
 
 Our teaching team is here to help!
 
@@ -47,6 +47,10 @@ Our teaching team is here to help!
 ## Who to email?
 
 340.600
+
+```stata
+   tokenize
+```
 
 1. OQHLI -> Darien Colson-Fearo
 2. SJN -> Sophia Magalona
