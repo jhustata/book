@@ -99,7 +99,7 @@ ChatGPT, when available
 Type `help split`, for instance
 ```
 
-## More come..
+More come..
 
 ```{seealso}
 Where is the output from above saved?
