@@ -1,8 +1,8 @@
 # Stata Programming
 
-Welcome to [PH 340.600.01](https://www.jhsph.edu/courses/course/36389/2022/340.600.01/stata-programming)
+Welcome to [PH 340.600.01](https://www.jhsph.edu/courses/course/36389/2022/340.600.01/stata-programming) & [PH.340.700.71](https://www.jhsph.edu/courses/course/37447/2022/340.700.71/advanced-stata-programming)
 
-Here's a summary of what we will cover over the next 8 weeks:
+Table of Contents:
 
 ```{tableofcontents}
 ```
