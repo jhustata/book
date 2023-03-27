@@ -1,4 +1,4 @@
-# Ok, lets get to Stata Programming!
+# Ok, lets start!
 
 Some cool commands:
 

@@ -1,4 +1,4 @@
-# Administrative Info
+# Admin info
 
 Our teaching team is here to help!
 

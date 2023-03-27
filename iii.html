@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Advanced data management, More on macros &#8212; Stata Programming</title>
+    <title>Macros &#8212; Stata Programming</title>
   
   
   
@@ -64,8 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'iii';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Histograms, functions, intro to two-way graphs" href="jjj.html" />
-    <link rel="prev" title="Advanced file management, Programs 3, and Automated tables in Excel (method 1)" href="hhh.html" />
+    <link rel="next" title="Intro to graphs" href="jjj.html" />
+    <link rel="prev" title="auto output" href="hhh.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -152,23 +152,26 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Stata Programming
+                    Stata class
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="aaa.html">Admin stuff</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bbb.html">Copy &amp; paste to your .do file &amp; do.. to whet your appetite!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ccc.html">Markdown vs. Powerpoint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ddd.html">Grading</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eee.html">Ok, lets get to Stata Programming!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fff.html">Return values, macros, and writing  our own programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ggg.html">by command, egen command, loops, conditionals, and programs 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hhh.html">Advanced file management, Programs 3, and Automated tables in Excel (method 1)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Advanced data management, More on macros</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jjj.html">Histograms, functions, intro to two-way graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kkk.html">Graph: simple to complex</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lll.html">Cool Miscellany</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aaa.html">Admin info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bbb.html">Cin cin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccc.html">Wean off .pptx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddd.html">Twoway plot from 2021/2022</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="eee.html">Ok, lets start!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fff.html">c(k) &amp; more</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ggg.html">More</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hhh.html">auto output</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jjj.html">Intro to graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kkk.html">Graphs: simple to complex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lll.html">Cool Misc.</a></li>
 </ul>
 
     </div>
@@ -350,7 +353,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Advanced data management, More on macros</h1>
+    <h1>Macros</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -364,13 +367,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="advanced-data-management-more-on-macros">
-<h1>Advanced data management, More on macros<a class="headerlink" href="#advanced-data-management-more-on-macros" title="Permalink to this heading">#</a></h1>
-<p>local
-global</p>
-<p>where?
-what?
-why?</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="macros">
+<h1>Macros<a class="headerlink" href="#macros" title="Permalink to this heading">#</a></h1>
+<p>Advanced data management, More on macros</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">local</span>
+<span class="k">global</span>
+
+<span class="n">help</span> <span class="n">local</span>
+<span class="n">help</span> <span class="k">global</span>
+</pre></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -407,7 +413,7 @@ why?</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Advanced file management, Programs 3, and Automated tables in Excel (method 1)</p>
+        <p class="prev-next-title">auto output</p>
       </div>
     </a>
     <a class="right-next"
@@ -415,7 +421,7 @@ why?</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Histograms, functions, intro to two-way graphs</p>
+        <p class="prev-next-title">Intro to graphs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

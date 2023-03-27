@@ -1,1 +1,1 @@
-# Cool Miscellany
+# Cool Misc.
