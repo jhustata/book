@@ -422,6 +422,72 @@ document.write(`
 <section id="what-to-expect">
 <h2>What to expect??<a class="headerlink" href="#what-to-expect" title="Permalink to this heading">#</a></h2>
 <p>You’ll most likely get an A!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>### Extra credit challenge (1.5 points max)
+
+The following code introduces a random disturbance to the data in the screenshot above: `grade_34060071_general.dta`. 
+Use the outputed [.csv file]() to reproduce the fancy plot of 2021/2022 grades
+
+```stata
+
+#delimit cr
+quietly {
+	
+	if 1 {
+		
+		set seed 340600
+		
+		global filename grade_34060071_general
+		global vars final y1m y1lb y1ub
+			
+	}
+	
+	if 2 {
+		
+		use ${filename}.dta, clear 		
+		
+	}
+	
+	if 3 {
+		
+        g disturbance=rnormal(0,3)	
+		 
+	}
+	
+	if 4 { 
+		
+		forvalues i=1/4 {
+			
+			local vars: di word(&quot;$vars&quot;,`i&#39;)
+			replace `vars&#39; = `vars&#39; + disturbance 
+			
+		}
+		
+		
+	}
+	
+	if 5 {
+		
+		drop disturbance 
+		export delimited using &quot;${filename}.txt&quot;, replace
+		
+	}
+}
+
+```
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  Cell In[1], line 36
+    local vars: di word(&quot;$vars&quot;,`i&#39;)
+                                  ^
+SyntaxError: unterminated string literal (detected at line 36)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
