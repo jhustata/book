@@ -1,6 +1,6 @@
 # pwd
 
-Some cool commands:
+Some [cool commands](https://www.stata.com/manuals13/u27.pdf):
 
 ```
 pwd
