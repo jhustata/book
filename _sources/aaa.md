@@ -103,13 +103,18 @@ qui {
 
 ```
 
-[tokenize.log]()
+[tokenize.log](https://raw.githubusercontent.com/jhustata/book/main/tokenize.log)
 
 1. SLBTM -> Darien Colson-Fearo
 2. YZRVU -> Sophia Magalona
 3. KGHJW -> Jinqiao Ma
 4. FIDXC -> Jianan Lu
 5. APEON -> Rediet Tekalign
+
+Use the `tokenize` command to append the [DEMO.XPT](https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT) files for [all continuous NHANES: 1999-2018](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics) into one file.
+Your .do file should include only one `import sasxport5` statement.
+`Search` this book for the import sasxport5 command. Bonus points 1.5 max
+
 
 340.700
 
