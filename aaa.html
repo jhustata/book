@@ -437,15 +437,64 @@ document.write(`
 <section id="who-to-email">
 <h2>Who to email?<a class="headerlink" href="#who-to-email" title="Permalink to this heading">#</a></h2>
 <p>340.600</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   tokenize</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">    </span>
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">1</span> { <span class="c1">//N=26</span>
+        
+        cls
+<span class="k">        clear</span>
+<span class="k">        set</span> obs <span class="m">26</span>
+<span class="k">        </span>
+<span class="k">        capture log close</span> 
+<span class="k">        log</span> using<span class="k"> tokenize</span><span class="m">.</span>log,<span class="k"> replace</span>  
+        
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">2</span> { <span class="c1">//Int 1-26</span>
+<span class="k">        </span>
+<span class="k">        egen</span> lastname = seq(), f(<span class="m">1</span>) <span class="nf">t</span>(<span class="m">26</span>)
+<span class="k">        tostring</span> lastname,<span class="k"> replace</span> 
+<span class="k">        tokenize</span> <span class="s">&quot;</span><span class="nv">`c(ALPHA)&#39;</span><span class="s">&quot;</span> 
+        
+    }
+
+<span class="k">    if</span> <span class="m">3</span> { <span class="c1">//Tokenize</span>
+<span class="k">        </span>
+<span class="k">        forval</span> i = <span class="m">1</span><span class="o">/</span><span class="m">26</span> {
+<span class="k">            </span>
+<span class="k">            replace</span> lastname = <span class="s">&quot;</span><span class="nv">``i&#39;&#39;</span><span class="s">&quot;</span><span class="k"> if</span> lastname <span class="o">==</span> <span class="s">&quot;</span><span class="nv">`i&#39;</span><span class="s">&quot;</span> 
+            
+        }
+        
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">4</span> { <span class="c1">//Randomly</span>
+<span class="k">        </span>
+<span class="k">        set</span> seed <span class="m">340600</span>
+<span class="k">        g</span> randomorder=<span class="nf">runiform</span>()
+<span class="k">        sort</span> random  
+<span class="k">        drop</span> random    
+        
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">5</span> { <span class="c1">//Output</span>
+<span class="k">        </span>
+<span class="k">        noi list</span> 
+<span class="k">        log close</span> 
+        
+    }
+
+}
 </pre></div>
 </div>
+<p><span class="xref myst">tokenize.log</span></p>
 <ol class="arabic simple">
-<li><p>OQHLI -&gt; Darien Colson-Fearo</p></li>
-<li><p>SJN -&gt; Sophia Magalona</p></li>
-<li><p>AVDMX -&gt; Jinqiao Ma</p></li>
-<li><p>FCZP -&gt; Jianan Lu</p></li>
-<li><p>UQRK -&gt; Rediet Tekalign</p></li>
+<li><p>SLBTM -&gt; Darien Colson-Fearo</p></li>
+<li><p>YZRVU -&gt; Sophia Magalona</p></li>
+<li><p>KGHJW -&gt; Jinqiao Ma</p></li>
+<li><p>FIDXC -&gt; Jianan Lu</p></li>
+<li><p>APEON -&gt; Rediet Tekalign</p></li>
 </ol>
 <p>340.700</p>
 <ol class="arabic simple">

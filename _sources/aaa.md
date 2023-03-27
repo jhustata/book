@@ -49,14 +49,67 @@ Our teaching team is here to help!
 340.600
 
 ```stata
-   tokenize
+
+qui {
+    
+    
+    if 1 { //N=26
+        
+        cls
+        clear
+        set obs 26
+        
+        capture log close 
+        log using tokenize.log, replace  
+        
+    }
+    
+    if 2 { //Int 1-26
+        
+        egen lastname = seq(), f(1) t(26)
+        tostring lastname, replace 
+        tokenize "`c(ALPHA)'" 
+        
+    }
+
+    if 3 { //Tokenize
+        
+        forval i = 1/26 {
+            
+            replace lastname = "``i''" if lastname == "`i'" 
+            
+        }
+        
+    }
+    
+    if 4 { //Randomly
+        
+        set seed 340600
+        g randomorder=runiform()
+        sort random  
+        drop random    
+        
+    }
+    
+    if 5 { //Output
+        
+        noi list 
+        log close 
+        
+    }
+
+}
+
+
 ```
 
-1. OQHLI -> Darien Colson-Fearo
-2. SJN -> Sophia Magalona
-3. AVDMX -> Jinqiao Ma
-4. FCZP -> Jianan Lu
-5. UQRK -> Rediet Tekalign
+[tokenize.log]()
+
+1. SLBTM -> Darien Colson-Fearo
+2. YZRVU -> Sophia Magalona
+3. KGHJW -> Jinqiao Ma
+4. FIDXC -> Jianan Lu
+5. APEON -> Rediet Tekalign
 
 340.700
 
