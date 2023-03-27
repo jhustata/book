@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Macros &#8212; Stata Programming</title>
+    <title>capture &#8212; Stata Programming</title>
   
   
   
@@ -64,8 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'iii';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Intro to graphs" href="jjj.html" />
-    <link rel="prev" title="auto output" href="hhh.html" />
+    <link rel="next" title="twoway" href="jjj.html" />
+    <link rel="prev" title="program define" href="hhh.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -152,26 +152,23 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Stata class
+                    help
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="aaa.html">Admin info</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bbb.html">Cin cin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ccc.html">Wean off .pptx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ddd.html">Twoway plot from 2021/2022</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="eee.html">Ok, lets start!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fff.html">c(k) &amp; more</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ggg.html">More</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hhh.html">auto output</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Macros</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jjj.html">Intro to graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kkk.html">Graphs: simple to complex</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lll.html">Cool Misc.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aaa.html">tokenize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bbb.html">quietly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccc.html">delimit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddd.html">rnormal()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eee.html">pwd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fff.html">r(mean)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ggg.html">by</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hhh.html">program define</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jjj.html">twoway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kkk.html">local v: di</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lll.html">if c(version)&gt;16 {</a></li>
 </ul>
 
     </div>
@@ -353,7 +350,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Macros</h1>
+    <h1>capture</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -367,8 +364,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="macros">
-<h1>Macros<a class="headerlink" href="#macros" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="capture">
+<h1>capture<a class="headerlink" href="#capture" title="Permalink to this heading">#</a></h1>
 <p>Advanced data management, More on macros</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">local</span>
 <span class="k">global</span>
@@ -413,7 +410,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">auto output</p>
+        <p class="prev-next-title">program define</p>
       </div>
     </a>
     <a class="right-next"
@@ -421,7 +418,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Intro to graphs</p>
+        <p class="prev-next-title">twoway</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

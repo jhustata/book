@@ -1,4 +1,4 @@
-# Intro to graphs
+# twoway
 
 Histograms, functions, intro to two-way graphs
 

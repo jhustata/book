@@ -12,9 +12,10 @@ kernelspec:
   name: python3
 ---
 
-# Wean off .pptx
+# delimit
 
-Please do copy & paste this code into a Stata .do file editor and do!
+Please do copy & paste the code below into a Stata .do file editor & do!
+
 
 ```stata
 

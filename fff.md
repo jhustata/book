@@ -1,6 +1,6 @@
-# c(k) & more
+# r(mean)
 
-Return values, macros, and writing  our own programs
+Return values, macros, and writing your own programs
 
 ```
 #c-class

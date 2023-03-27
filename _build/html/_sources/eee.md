@@ -1,4 +1,4 @@
-# Ok, lets start!
+# pwd
 
 Some cool commands:
 

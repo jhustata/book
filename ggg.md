@@ -1,12 +1,3 @@
-# More 
+# by
 
-```
-by
-egen 
-
-# loops 
-
-# conditionals 
-
-# programs 2
-```
+by command, egen command, loops, conditionals, and programs 2

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Cin cin &#8212; Stata Programming</title>
+    <title>quietly &#8212; Stata Programming</title>
   
   
   
@@ -64,8 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'bbb';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Wean off .pptx" href="ccc.html" />
-    <link rel="prev" title="Admin info" href="aaa.html" />
+    <link rel="next" title="delimit" href="ccc.html" />
+    <link rel="prev" title="tokenize" href="aaa.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -152,23 +152,23 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Stata class
+                    help
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="aaa.html">Admin info</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Cin cin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ccc.html">Wean off .pptx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ddd.html">HW Grades</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eee.html">Ok, lets start!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fff.html">c(k) &amp; more</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ggg.html">More</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hhh.html">auto output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iii.html">Macros</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jjj.html">Intro to graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kkk.html">Graphs+</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lll.html">Cool Misc.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aaa.html">tokenize</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">quietly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccc.html">delimit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddd.html">rnormal()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eee.html">pwd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fff.html">r(mean)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ggg.html">by</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hhh.html">program define</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iii.html">capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jjj.html">twoway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kkk.html">local v: di</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lll.html">if c(version)&gt;16 {</a></li>
 </ul>
 
     </div>
@@ -352,7 +352,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Cin cin</h1>
+    <h1>quietly</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -362,8 +362,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aperitivo">Aperitivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotate-this">Annotate this!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whet-your-appetite">Whet your appetite…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chatgtp">ChatGTP</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gif-anyone">.GIF anyone?</a></li>
 </ul>
             </nav>
@@ -376,11 +376,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="cin-cin">
-<h1>Cin cin<a class="headerlink" href="#cin-cin" title="Permalink to this heading">#</a></h1>
-<p><img alt="" src="_images/cincin.jpg" /></p>
-<section id="aperitivo">
-<h2>Aperitivo<a class="headerlink" href="#aperitivo" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="quietly">
+<h1>quietly<a class="headerlink" href="#quietly" title="Permalink to this heading">#</a></h1>
+<section id="whet-your-appetite">
+<h2>Whet your appetite…<a class="headerlink" href="#whet-your-appetite" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Session 0</span>
 
 <span class="n">qui</span> <span class="p">{</span>
@@ -410,8 +409,8 @@ document.write(`
 </pre></div>
 </div>
 </section>
-<section id="annotate-this">
-<h2>Annotate this!<a class="headerlink" href="#annotate-this" title="Permalink to this heading">#</a></h2>
+<section id="chatgtp">
+<h2>ChatGTP<a class="headerlink" href="#chatgtp" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="_images/jhustata.chatGPT.jpg" /></p>
 </section>
 <section id="gif-anyone">
@@ -455,7 +454,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Admin info</p>
+        <p class="prev-next-title">tokenize</p>
       </div>
     </a>
     <a class="right-next"
@@ -463,7 +462,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Wean off .pptx</p>
+        <p class="prev-next-title">delimit</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -482,8 +481,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aperitivo">Aperitivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotate-this">Annotate this!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whet-your-appetite">Whet your appetite…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chatgtp">ChatGTP</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gif-anyone">.GIF anyone?</a></li>
 </ul>
   </nav></div>
