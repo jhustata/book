@@ -158,9 +158,12 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="aaa.html">tokenize</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="bbb.html">quietly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccc.html">delimit</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">rnormal()</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="eee.html">pwd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fff.html">r(mean)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ggg.html">by</a></li>
@@ -362,14 +365,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">rnormal()</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#twoway-plot-of-grades-from-2021-2022">Twoway plot of grades from 2021/2022</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-can-reproduce-this-plot">You can reproduce this plot</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-identified-grades">De-identified grades</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-credit-challenge-1-5-points-max">Extra credit challenge (1.5 points max)</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -423,17 +430,22 @@ document.write(`
 <section id="conclusion">
 <h2>Conclusion?<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <p>The odds of an A is 1/4. So don’t worry much about your final grade!</p>
-</section>
-<section id="extra-credit-challenge-1-5-points-max">
-<h2>Extra credit challenge (1.5 points max)<a class="headerlink" href="#extra-credit-challenge-1-5-points-max" title="Permalink to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
 <p>The following code introduces a random disturbance to the data in the screenshot above: <code class="docutils literal notranslate"><span class="pre">grade_34060071_general.dta</span></code>.
-Use the outputed <a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/grade_34060071_general.txt">data file</a> to reproduce the fancy plot of 2021/2022 grades</p>
+Use the outputed <a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/grade_34060071_general.txt">data file</a> to reproduce the plot of 2021/2022 grades. Up to 1.5 bonus points</p>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>#delimit cr
 <span class="k">quietly</span> {
 <span class="k">	</span>
 <span class="k">	if</span> <span class="m">1</span> {
-<span class="k">		</span>
-<span class="k">		set</span> seed <span class="m">340600</span>
+		
+		<span class="c1">//reverse engineering?</span>
+		<span class="c1">//set seed 340600</span>
 <span class="k">		</span>
 <span class="k">		global</span> filename grade_34060071_general
 <span class="k">		global</span> vars final y1m y1lb y1ub
@@ -470,10 +482,10 @@ Use the outputed <a class="reference external" href="https://raw.githubuserconte
 		export delimited using <span class="s">&quot;</span><span class="vg">${filename}</span><span class="s">.txt&quot;</span>,<span class="k"> replace</span>
 		
 	}
+
 }
 </pre></div>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -537,14 +549,18 @@ Use the outputed <a class="reference external" href="https://raw.githubuserconte
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">rnormal()</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#twoway-plot-of-grades-from-2021-2022">Twoway plot of grades from 2021/2022</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-can-reproduce-this-plot">You can reproduce this plot</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-identified-grades">De-identified grades</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-credit-challenge-1-5-points-max">Extra credit challenge (1.5 points max)</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
