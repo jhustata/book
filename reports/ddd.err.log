@@ -20,7 +20,7 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 ### Extra credit challenge (1.5 points max)
 
 The following code introduces a random disturbance to the data in the screenshot above: `grade_34060071_general.dta`. 
-Use the outputed [.csv file]() to reproduce the fancy plot of 2021/2022 grades
+Use the outputed [data file](https://raw.githubusercontent.com/jhustata/book/main/grade_34060071_general.txt) to reproduce the fancy plot of 2021/2022 grades
 
 ```stata
 
@@ -76,5 +76,5 @@ quietly {
 [0m                                  ^[0m
 [0;31mSyntaxError[0m[0;31m:[0m unterminated string literal (detected at line 36)
 
-SyntaxError: unterminated string literal (detected at line 36) (402606825.py, line 36)
+SyntaxError: unterminated string literal (detected at line 36) (2069128630.py, line 36)
 
