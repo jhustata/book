@@ -1,3 +1,17 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # tokenize
 
 Our teaching team is here to help!
@@ -111,10 +125,15 @@ qui {
 4. FIDXC -> Jianan Lu
 5. APEON -> Rediet Tekalign
 
+#
+
+```{seealso}
 Use the `tokenize` command to append the [DEMO.XPT](https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT) files for [all continuous NHANES: 1999-2018](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics) into one file.
 Your .do file should include only one `import sasxport5` statement.
 `Search` this book for the import sasxport5 command. Bonus points 1.5 max
+```
 
+#
 
 340.700
 
