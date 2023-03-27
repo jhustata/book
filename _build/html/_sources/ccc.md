@@ -104,7 +104,7 @@ Type `help split`, for instance
 ```{seealso}
 Where is the output from above saved?
 
-Type `pwd' into your stata command window
+Type `pwd` into your stata command window
 
 Visit the [url](https://wwwn.cdc.gov/nchs/data/nhanes3/1a/adult.sas) 
 
