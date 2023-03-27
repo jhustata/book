@@ -17,41 +17,64 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Extrapoints for someone to render this in Python, plotly, and interactive graphics!
+### Extra credit challenge (1.5 points max)
 
-#delimit ;
-twoway 
-    scatter  
-	     final degree , 
-	         col(blue) 
-			 mcolor(%20) 
-			 jitter(3) || 
-	rcap 
-	     y1lb y1ub degree, 
-		     col(blue) ||   
-	dot  
-	     y1m degree, 
-		 col(blue) 
-		 msize(2)  
-			legend(off ) 
-			xlab(1 "MHS" 
-			     2 "MSPH" 
-				 3 "MPH" 
-				 4 "PhD" 
-				 5 "SCM") 
-		yline(90, lcol(red) lp(dash)) 
-		xti(" ") ;
+The following code introduces a random disturbance to the data in the screenshot above: `grade_34060071_general.dta`. 
+Use the outputed [.csv file]() to reproduce the fancy plot of 2021/2022 grades
+
+```stata
+
 #delimit cr
+quietly {
+	
+	if 1 {
+		
+		set seed 340600
+		
+		global filename grade_34060071_general
+		global vars final y1m y1lb y1ub
+			
+	}
+	
+	if 2 {
+		
+		use ${filename}.dta, clear 		
+		
+	}
+	
+	if 3 {
+		
+        g disturbance=rnormal(0,3)	
+		 
+	}
+	
+	if 4 { 
+		
+		forvalues i=1/4 {
+			
+			local vars: di word("$vars",`i')
+			replace `vars' = `vars' + disturbance 
+			
+		}
+		
+		
+	}
+	
+	if 5 {
+		
+		drop disturbance 
+		export delimited using "${filename}.txt", replace
+		
+	}
+}
 
-
-
-
+```
 ------------------
 
-[0;36m  File [0;32m<tokenize>:10[0;36m[0m
-[0;31m    rcap[0m
-[0m    ^[0m
-[0;31mIndentationError[0m[0;31m:[0m unindent does not match any outer indentation level
+[0;36m  Cell [0;32mIn[1], line 36[0;36m[0m
+[0;31m    local vars: di word("$vars",`i')[0m
+[0m                                  ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m unterminated string literal (detected at line 36)
 
-IndentationError: unindent does not match any outer indentation level (<tokenize>, line 10)
+SyntaxError: unterminated string literal (detected at line 36) (402606825.py, line 36)
 
