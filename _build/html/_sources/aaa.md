@@ -146,4 +146,4 @@ Academic integrity
 3. Submit your own work, acknowledging any other contributors
 4. Please do cite sources of code snippets
 
-[^1]: See chapter: net serach
+[^1]: see chapter: `net search` for more on NHANES
