@@ -375,12 +375,16 @@ document.write(`
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">pwd</span>
 <span class="k">ls</span> <span class="o">-</span>l
 <span class="k">clear</span>
+<span class="k">cat</span> adult<span class="m">.</span>do
 <span class="k">do</span> adult<span class="m">.</span>do <span class="c1">//assumes you run the script on the chapter: delimit</span>
 <span class="k">di</span> <span class="nf">c</span>(N) <span class="s">&quot; rows &amp; &quot;</span> <span class="nf">c</span>(k) <span class="s">&quot; columns&quot;</span>
+<span class="k">local</span> shape:<span class="k"> di</span> <span class="nf">c</span>(N) <span class="s">&quot; rows &amp; &quot;</span> <span class="nf">c</span>(k) <span class="s">&quot; columns&quot;</span>
+<span class="k">di</span> <span class="s">&quot;</span><span class="nv">`shape&#39;</span><span class="s">&quot;</span>
 <span class="k">lookfor</span> age
 <span class="k">local</span> v:<span class="k"> var lab</span> HSAGEIR 
 <span class="k">di</span> <span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
 <span class="k">sum</span> HSAGEIR, detail
+<span class="k">return list</span>
 <span class="k">di</span> <span class="s">&quot;</span><span class="nv">`r(p25)&#39;</span><span class="s">&quot;</span>
 putexcel<span class="k"> set</span> table1,<span class="k"> replace</span> 
 putexcel A1=<span class="s">&quot;Characteristics&quot;</span>
@@ -388,6 +392,11 @@ putexcel A2=<span class="s">&quot;</span><span class="nv">`v&#39;</span><span cl
 putexcel B1=<span class="s">&quot;(N=</span><span class="nv">`c(N)&#39;</span><span class="s">)&quot;</span>
 putexcel B2=<span class="s">&quot;</span><span class="nv">`r(p50)&#39;</span><span class="s"> (</span><span class="nv">`r(p25)&#39;</span><span class="s">-</span><span class="nv">`r(p50)&#39;</span><span class="s">)&quot;</span>
 <span class="k">ls</span> <span class="o">-</span>ahl
+<span class="k">lookfor</span> sex
+<span class="k">codebook</span> HSSEX 
+<span class="k">replace</span> HSSEX=<span class="m">2</span><span class="o">-</span>HSSEX 
+<span class="k">sum</span> HSSEX
+<span class="k">return list</span> 
 </pre></div>
 </div>
 </section>
