@@ -16,11 +16,11 @@ kernelspec:
 
 Our teaching team is here to help!
 
-## Your instructor
+Your instructor
 
 1. Abimereki Muzaale muzaale@jhmi.edu 
 
-## Teaching assistants
+Teaching assistants
 
 [340.600](https://www.jhsph.edu/courses/course/36389/2022/340.600.01/stata-programming)
 
@@ -36,7 +36,7 @@ Our teaching team is here to help!
 
 1. Jason Haw nhaw1@jhu.edu  
 
-## Optional labs
+Optional labs
 
 1. Monday
 2. Tuesday
@@ -44,13 +44,13 @@ Our teaching team is here to help!
 4. Thursday
 5. Friday
 
-## Homeworks due  
+Homeworks due  
 
 1. Fri,Apr 21,11:59 PM
 2. Fri,May 5,11:59 PM
 3. Fri,May 12,11:59 PM
 
-## Courseplus Perks
+Courseplus Perks
 
 1. Q&A on Discussion forum
 2. Announcements
@@ -58,7 +58,7 @@ Our teaching team is here to help!
 4. Gradebook
 5. Other
 
-## Who to email?
+Who to email?
 
 340.600
 
@@ -139,7 +139,7 @@ Your .do file should include only one `import sasxport5` statement.
 
 1. Jason Haw
 
-## Academic integrity
+Academic integrity
 
 1. Collaboration is **strongly** encouraged
 2. You should have a Github account (optional)
