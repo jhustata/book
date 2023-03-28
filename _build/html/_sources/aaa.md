@@ -128,7 +128,7 @@ qui {
 #
 
 ```{seealso}
-Use the `tokenize` command to append the [DEMO.XPT](https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT) files for [all continuous NHANES: 1999-2018](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics) into one file.
+Use the `tokenize` command to append the [DEMO.XPT](https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT) files for [all continuous NHANES: 1999-2018](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics) into one file.[^1]
 Your .do file should include only one `import sasxport5` statement.
 `Search` this book for the `import sasxport5` command. Up to 1.5 bonus points
 ```
@@ -146,3 +146,4 @@ Academic integrity
 3. Submit your own work, acknowledging any other contributors
 4. Please do cite sources of code snippets
 
+[^1]: See chapter: net serach
