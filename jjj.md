@@ -1,7 +1,8 @@
 # twoway
 
-Histograms, functions, intro to two-way graphs
+Databases:
 
-```stata
-help twoway
+```
+[cdc.gov](https://ftp.cdc.gov/pub/)
+[nber.org](https://data.nber.org/mortality/)
 ```
