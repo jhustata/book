@@ -46,7 +46,7 @@ Optional labs
 
 Homeworks due  
 
-1. Fri,Apr 21,11:59 PM
+1. [Fri,Apr 21,11:59 PM](hw1.md)
 2. Fri,May 5,11:59 PM
 3. Fri,May 12,11:59 PM
 
@@ -58,7 +58,7 @@ Courseplus Perks
 4. Gradebook
 5. Other
 
-Who to email?
+Who to email? [^1]
 
 340.600
 
@@ -128,7 +128,7 @@ qui {
 #
 
 ```{seealso}
-Use the `tokenize` command to append the [DEMO.XPT](https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT) files for [all continuous NHANES: 1999-2018](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics) into one file.[^1]
+Use the `tokenize` command to append the [DEMO.XPT](https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT) files for [all continuous NHANES: 1999-2018](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics) into one file.[^2]
 Your .do file should include only one `import sasxport5` statement.
 `Search` this book for the `import sasxport5` command. Up to 1.5 bonus points
 ```
@@ -146,4 +146,5 @@ Academic integrity
 3. Submit your own work, acknowledging any other contributors
 4. Please do cite sources of code snippets
 
-[^1]: see chapter: [`net search`](zzz.md) for more on NHANES
+[^1]: see chapter: [`net search`](zzz.md) for source code
+[^2]: see chapter: [`net search`](zzz.md) for more on NHANES
