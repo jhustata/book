@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>hw1 &#8212; Stata Programming</title>
+    <title>EPIDEMIOLOGY 340.600: STATA PROGRAMMING AND DATA MANAGEMENT &#8212; Stata Programming</title>
   
   
   
@@ -341,7 +341,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -352,11 +354,24 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>hw1</h1>
+    <h1>EPIDEMIOLOGY 340.600: STATA PROGRAMMING AND DATA MANAGEMENT</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-1">Assignment 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codebook">Codebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -366,59 +381,140 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="hw1">
-<h1>hw1<a class="headerlink" href="#hw1" title="Permalink to this heading">#</a></h1>
-<p>Due date: 11:59 p.m., Friday, April 21, 2023 via CoursePlus dropbox</p>
-<p>Overview: write a <code class="docutils literal notranslate"><span class="pre">.do</span> <span class="pre">file</span></code> which imports data from <a class="reference download internal" download="" href="_downloads/884b9e06eb29f89b1b87da4eab39775d/hw1.txt"><span class="xref download myst">hw1.txt</span></a> and performs the data cleaning / exploratory data analysis tasks described below. Your .do file must be called <code class="docutils literal notranslate"><span class="pre">hw1_lastname.firstname.do</span></code> (for example: hw1_muzaale.abimereki.do) and must create a log file called <code class="docutils literal notranslate"><span class="pre">hw1_lastname.firstname.log</span></code>. Your .do file should follow conventions for .do file structure described in class. Make sure your script will run on our machines, even if we are using a different version of Stata. <strong>Do not</strong> submit your log files as part of the assignment.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="epidemiology-340-600-stata-programming-and-data-management">
+<h1>EPIDEMIOLOGY 340.600: STATA PROGRAMMING AND DATA MANAGEMENT<a class="headerlink" href="#epidemiology-340-600-stata-programming-and-data-management" title="Permalink to this heading">#</a></h1>
+<section id="assignment-1">
+<h2>Assignment 1<a class="headerlink" href="#assignment-1" title="Permalink to this heading">#</a></h2>
+<p><strong>Due date: 11:59 p.m.,Friday, April 21, 2023 via CoursePlus dropbox</strong></p>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h3>
+<p>write a .do file which imports data from <a class="reference download internal" download="" href="_downloads/884b9e06eb29f89b1b87da4eab39775d/hw1.txt"><span class="xref download myst">hw1.txt</span></a> and performs the data cleaning / exploratory data analysis tasks described below. Your .do file must be called hw1\<a class="reference external" href="http://lastname.firstname.do">lastname.firstname.do</a> and must create a log file called hw1\lastname.firstname.log. <u>Your .do file should follow conventions for .do file structure described in class (Lecture 1)</u>. Make sure your script will run on our machines, even if we are using a different version of Stata. Do not submit your log files as part of the assignment.</p>
 <p>This dataset contains simulated data on registrants for the deceased donor kidney waitlist.</p>
-<p>Evaluation: Evaluation will be based on the log file produced by your script. Your script will be run on a different dataset, in the same format as <a class="reference download internal" download="" href="_downloads/884b9e06eb29f89b1b87da4eab39775d/hw1.txt"><span class="xref download myst">hw1.txt</span></a> but may contain different data. Partial credit will be awarded if the output is wrong, so have your script print something for every question. Make sure the output includes the question number as indicated. Make sure to follow the coding guidelines from class; for example, your script should include comments.</p>
-<p>Note – test your code repeatedly to make sure it doesn’t crash! Points will be deducted if your code crashes.</p>
-<p>Codebook: coming soon</p>
-<p>Question 1. Print the following sentence:    “Question 1: There are xxxx records in the dataset.” The “xxxx” should be replaced with the actual number of records in the dataset.</p>
-<p>Question 2. Print the following sentence:  “Question 2: The median [IQR] age is XX [XX-XX] among males and XX [XX-XX] among females.” IQR stands for interquartile range. The “XX” values should be replaced with correct values, rounded to the nearest whole number (for example, “47”).  Ignore missing values; that is, calculate median [IQR] only using the non-missing values.</p>
-<p>Question 3. Print the following sentence:  “Question 3: XX.X% among males and XX.X% among females have history of previous transplant. ” The “XX.X%” values should be replaced with correct percentage values, with one decimal value to the right of the decimal place (for example, “10.5%”).</p>
-<p>Question 4. Create a new numeric variable named htn, which takes a value of 1 if the variable dx has a value of “4=Hypertensive”, and 0 otherwise. This variable should have value labels, “Yes” for 1 and “No” for 0. (Hint: what is the data type of this new variable? Is it a numeric or a string?) Run tab htn in your assignment do-file so that it would print the following result.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    htn |      Freq.     Percent        Cum.
+<p>Evaluation: Evaluation will be based on the log file produced by your script. <u><em><strong>Your script may be run on a different dataset.</strong></em></u> Partial credit will be awarded if the output is wrong, so have your script print <em>something</em> for every question. Make sure the output includes the question number as indicated. <u>Make sure to follow the coding guidelines from class</u>; for example, your script should include comments.</p>
+<p><strong>Note – test your code repeatedly to make sure it doesn’t crash! Points will be deducted if your code crashes.</strong></p>
+</section>
+<section id="codebook">
+<h3>Codebook<a class="headerlink" href="#codebook" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Values</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>transplants.dta</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fake_id</span></code></p></td>
+<td><p>Patient ID</p></td>
+<td><p>Numeric</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bmi</span></code></p></td>
+<td><p>Body mass index (kg/m2)</p></td>
+<td><p>Numeric</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dx</span></code></p></td>
+<td><p>Primary diagnosis</p></td>
+<td><p>String (see dataset)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">init_age</span></code></p></td>
+<td><p>Age</p></td>
+<td><p>Numeric</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">prev</span></code></p></td>
+<td><p>History of previous transplant</p></td>
+<td><p>0=No / 1=Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">peak_pra</span></code></p></td>
+<td><p>Peak PRA</p></td>
+<td><p>Numeric</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">female</span></code></p></td>
+<td><p>Sex</p></td>
+<td><p>0=No / 1=Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">received_kt</span></code></p></td>
+<td><p>Patient eventually received a kidney transplant?</p></td>
+<td><p>0=No / 1=Yes</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="questions">
+<h3>Questions<a class="headerlink" href="#questions" title="Permalink to this heading">#</a></h3>
+<p><strong>Question 1</strong>. Print the following sentence: <code class="docutils literal notranslate"><span class="pre">Question</span> <span class="pre">1:</span> <span class="pre">There</span> <span class="pre">are</span> <span class="pre">xxxx</span> <span class="pre">records</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">dataset.</span></code> The <code class="docutils literal notranslate"><span class="pre">xxxx</span></code> should be replaced with the actual number of records in the dataset.</p>
+<p><strong>Question 2</strong>. Print the following sentence: <code class="docutils literal notranslate"><span class="pre">Question</span> <span class="pre">2:</span> <span class="pre">The</span> <span class="pre">median</span> <span class="pre">[IQR]</span> <span class="pre">age</span> <span class="pre">is</span> <span class="pre">XX</span> <span class="pre">[XX-XX]</span> <span class="pre">among</span> <span class="pre">males</span> <span class="pre">and</span> <span class="pre">XX</span> <span class="pre">[XX-XX]</span> <span class="pre">among</span> <span class="pre">females.</span></code> IQR stands for interquartile range. The <code class="docutils literal notranslate"><span class="pre">XX</span></code> values should be replaced with correct values, rounded to the nearest whole number (for example, <code class="docutils literal notranslate"><span class="pre">47</span></code>). Ignore missing values; that is, calculate median [IQR] only using the non-missing values.</p>
+<p><strong>Question 3</strong>. Print the following sentence: <code class="docutils literal notranslate"><span class="pre">Question</span> <span class="pre">3:</span> <span class="pre">XX.X%</span> <span class="pre">among</span> <span class="pre">males</span> <span class="pre">and</span> <span class="pre">XX.X%</span> <span class="pre">among</span> <span class="pre">females</span> <span class="pre">have</span> <span class="pre">history</span> <span class="pre">of</span> <span class="pre">previous</span> <span class="pre">transplant.</span></code> The <code class="docutils literal notranslate"><span class="pre">XX.X%</span></code> values should be replaced with correct percentage values, with <u>one decimal value</u> to the right of the decimal place (for example, <code class="docutils literal notranslate"><span class="pre">10.5%</span></code>).</p>
+<p><strong>Question 4.</strong> Create a new numeric variable named <code class="docutils literal notranslate"><span class="pre">htn</span></code>, which takes a value of 1 if the variable <code class="docutils literal notranslate"><span class="pre">dx</span></code> has a value of <code class="docutils literal notranslate"><span class="pre">4=Hypertensive</span></code>, and <code class="docutils literal notranslate"><span class="pre">0</span></code> otherwise. This variable should have value labels, <code class="docutils literal notranslate"><span class="pre">Yes</span></code> for 1 and <code class="docutils literal notranslate"><span class="pre">No</span></code> for 0. (Hint: what is the data type of this new variable? Is it a numeric or a string?) Run <code class="docutils literal notranslate"><span class="pre">tab</span> <span class="pre">htn</span></code> in your assignment do-file so that it would print the following result.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>        htn |       Freq.       Percent       Cum.
+<span class="o">------------+-------------------------------------</span>
+         No |       XXXX        XXXX          XXXX
+        Yes |       XXXX        XXXX          XXXX
+<span class="o">------------+-------------------------------------</span>
+      Total |       XXXX        XXXX
 </pre></div>
 </div>
-<p>————+———————————–
-No |       XXXX        XXXX        XXXX
-Yes |       XXXX        XXXX        XXXX
-————+———————————–
-Total |       XXXX        XXXX</p>
-<p>Question 5. Now you have all the skills to create your first automated Table 1! Write a program called question5 that prints the following table (including “Question 5” in the header). The “XX” values should be replaced with correct values found in the dataset, and should be rounded to the nearest whole number for age and to one decimal place to the right of the decimal point for other variables. Make sure the summary statistics are vertically aligned and justified along the left margin. Run your program and display the table.</p>
-<p>Question 5                Males (N=XX)    Females (N=XX)<br />
-Age, median (IQR)        XX (XX-XX)        XX (XX-XX)
-Previous transplant, %    XX.X%            XX.X%
+<p><strong>Question 5</strong>. Now you have all the skills to create your first automated Table 1! Write a program called <code class="docutils literal notranslate"><span class="pre">question5</span></code> that prints the following table (including <code class="docutils literal notranslate"><span class="pre">Question</span> <span class="pre">5</span></code> in the header). The <code class="docutils literal notranslate"><span class="pre">XX</span></code> values should be replaced with correct values found in the dataset, and should be rounded to the nearest whole number for age and to <u>one decimal place</u> to the right of the decimal point for other variables. Make sure the summary statistics are vertically aligned and justified along the left margin. Run your program and display the table.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>Question <span class="m">5</span>                Males (N=XX)        Females (N=XX)
+Age,<span class="k"> median</span> (IQR)         XX (XX<span class="o">-</span>XX)          XX (XX<span class="o">-</span>XX)
+Previous transplant, %    XX<span class="m">.</span>X%               XX<span class="m">.</span>X%
 Cause of ESRD:
-Glomerular, %            XX.X%            XX.X%
-Diabetes, %            XX.X%            XX.X%
-PKD, %                XX.X%            XX.X%
-Hypertensive, %            XX.X%            XX.X%
-Renovascular, %            XX.X%            XX.X%
-Congenital, %            XX.X%            XX.X%
-Tubulo, %                XX.X%            XX.X%
-Neoplasm, %            XX.X%            XX.X%
-Other, %                XX.X%            XX.X%</p>
-<p>Hint 1: Use quietly {} and noisily to display the lines nicely without interruptions.</p>
-<p>Hint 2: init_age has some missing values. Exclude observations with missing init_age only when calculating the median [IQR] of init_age, but not when calculating the proportion with previous transplants.</p>
+Glomerular, %             XX<span class="m">.</span>X%               XX<span class="m">.</span>X%
+Diabetes, %               XX<span class="m">.</span>X%               XX<span class="m">.</span>X%
+PKD, %                    XX<span class="m">.</span>X%               XX<span class="m">.</span>X%
+Hypertensive, %           XX<span class="m">.</span>X%               XX<span class="m">.</span>X%
+Renovascular, %           XX<span class="m">.</span>X%               XX<span class="m">.</span>X%
+Congenital, %             XX<span class="m">.</span>X%               XX<span class="m">.</span>X%
+Tubulo, %                 XX<span class="m">.</span>X%               XX<span class="m">.</span>X%
+Neoplasm, %               XX<span class="m">.</span>X%               XX<span class="m">.</span>X%
+Other, %                  XX<span class="m">.</span>X%               XX<span class="m">.</span>X%
+</pre></div>
+</div>
+<p>Hint 1: Use <code class="docutils literal notranslate"><span class="pre">quietly</span> <span class="pre">{}</span></code> and <code class="docutils literal notranslate"><span class="pre">noisily</span></code> to display the lines nicely without interruptions.</p>
+<p>Hint 2: <code class="docutils literal notranslate"><span class="pre">init_age</span></code> has some missing values. Exclude observations with missing <code class="docutils literal notranslate"><span class="pre">init_age</span></code> only when calculating the median [IQR] of init_age, but not when calculating the proportion with previous transplants.</p>
 <p>Hint 3: some techniques taught in lecture 3 may be helpful for completing this table. You are welcome Lecture 3 techniques if you like, but they are not required.</p>
-<p>Question 6. Your research group is investigating demographic characteristics associated with receiving a kidney transplant for waitlisted patients. You run a logistic regression using the following command: logistic received_kt init_age female</p>
-<p>Print a summary table as shown below, with odds ratios (OR) and 95% confidence intervals (CI). The “XXXX” values should be replaced with the actual values found in the dataset, and should be displayed with two decimal places to the right of the decimal point.</p>
-<p>Question 6
-Variable        OR     (95% CI)
-Age            X.XX    (X.XX-X.XX)
-Female        X.XX    (X.XX-X.XX)</p>
-<p>Hint: If you like, you may these expressions below after logistic regression to obtain the odds ratio and 95% CI. We will use init_age as an example.</p>
-<p>Odds ratio    exp(_b[init_age])
-Lower bound of 95% CI    exp(_b[init_age]+invnormal(0.025)<em>_se[init_age])
-Upper bound of 95% CI    exp(_b[init_age]+invnormal(0.975)</em>_se[init_age])</p>
-<p>Question 7. The logistic regression you ran in Question 6 may not include all observations in the study dataset. Stata drops observations that have missing values in any of the variables included in the regression.</p>
-<p>Using the regression results from Question 6, print the following text:  “Question 7: This regression included XXXX observations whereas the study dataset has XXXX observations in total.” Replace “XXXX” with correct values.</p>
+<p><strong>Question 6.</strong> Your research group is investigating demographic characteristics associated with receiving a kidney transplant for waitlisted patients. You run a logistic regression using the following command:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">logistic</span> received_kt init_age female
+</pre></div>
+</div>
+<p>Print a summary table as shown below, with odds ratios (OR) and 95% confidence intervals (CI). The <code class="docutils literal notranslate"><span class="pre">XXXX</span></code> values should be replaced with the actual values found in the dataset, and should be displayed with <u><strong>two</strong></u> decimal places to the right of the decimal point.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>Question <span class="m">6</span>
+Variable         OR    (<span class="m">95</span>% CI)
+Age              X<span class="m">.</span>XX  (X<span class="m">.</span>XX<span class="o">-</span>X<span class="m">.</span>XX)
+Female           X<span class="m">.</span>XX  (X<span class="m">.</span>XX<span class="o">-</span>X<span class="m">.</span>XX)
+</pre></div>
+</div>
+<p>Hint: If you like, you may these expressions below after logistic regression to obtain the odds ratio and 95% CI. We will use <code class="docutils literal notranslate"><span class="pre">init_age</span></code> as an example.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameters</p></th>
+<th class="head"><p>Expressions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Odds ratio</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">exp(_b[init_age])</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Lower bound of 95% CI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">exp(_b[init_age]+invnormal(0.025)</span> <span class="pre">*</span> <span class="pre">_se[init_age])</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Upper bound of 95% CI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">exp(_b[init_age]+invnormal(0.975)</span> <span class="pre">*</span> <span class="pre">_se[init_age])</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Question 7.</strong> The logistic regression you ran in Question 6 may not include all observations in the study dataset. Stata drops observations that have missing values in any of the variables included in the regression.</p>
+<p>Using the regression results from Question 6, print the following text: <code class="docutils literal notranslate"><span class="pre">Question</span> <span class="pre">7:</span> <span class="pre">This</span> <span class="pre">regression</span> <span class="pre">included</span> <span class="pre">XXXX</span> <span class="pre">observations</span> <span class="pre">whereas</span> <span class="pre">the</span> <span class="pre">study</span> <span class="pre">dataset</span> <span class="pre">has</span> <span class="pre">XXXX</span> <span class="pre">observations</span> <span class="pre">in</span> <span class="pre">total.</span></code> Replace <code class="docutils literal notranslate"><span class="pre">XXXX</span></code> with correct values.</p>
 <p>Hint: use one of the e-class scalars. We talked about e-class scalars in Lecture 2.</p>
-<p>Question 8. Print the following text: “Question 8: I estimate that it took me XXXX hours to complete this assignment.” For example, if it took you six hours, your .do file will contain the line</p>
-<p>disp “Question 8: I estimate that it took me 6 hours to complete this assignment.”</p>
-<p>Give an honest answer; this is just for our data collection purposes. Everyone who answers this question will receive full credit for this question.  However, this question is worth some points, so don’t skip it!</p>
+<p><strong>Question 8.</strong> Print the following text: <code class="docutils literal notranslate"><span class="pre">Question</span> <span class="pre">8:</span> <span class="pre">I</span> <span class="pre">estimate</span> <span class="pre">that</span> <span class="pre">it</span> <span class="pre">took</span> <span class="pre">me</span> <span class="pre">XXXX</span> <span class="pre">hours</span> <span class="pre">to</span> <span class="pre">complete</span> <span class="pre">this</span> <span class="pre">assignment.</span></code> For example, if it took you six hours, your .do file will contain the line</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">disp</span> <span class="s">&quot;Question 8: I estimate that it took me 6 hours to complete this assignment.&quot;</span>
+</pre></div>
+</div>
+<p>Give an honest answer; this is just for our data collection purposes. Everyone who answers this question will receive full credit for this question. <u>However, this question is worth some points, so don’t skip it!</u></p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -455,6 +551,25 @@ Upper bound of 95% CI    exp(_b[init_age]+invnormal(0.975)</em>_se[init_age])</p
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-1">Assignment 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codebook">Codebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

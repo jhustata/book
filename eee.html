@@ -172,6 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="jjj.html">twoway</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kkk.html">local v: di</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lll.html">if c(version)&gt;16 {</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zzz.html">net search</a></li>
 </ul>
 
     </div>
@@ -380,6 +381,8 @@ document.write(`
 <span class="k">di</span> <span class="nf">c</span>(N) <span class="s">&quot; rows &amp; &quot;</span> <span class="nf">c</span>(k) <span class="s">&quot; columns&quot;</span>
 <span class="k">local</span> shape:<span class="k"> di</span> <span class="nf">c</span>(N) <span class="s">&quot; rows &amp; &quot;</span> <span class="nf">c</span>(k) <span class="s">&quot; columns&quot;</span>
 <span class="k">di</span> <span class="s">&quot;</span><span class="nv">`shape&#39;</span><span class="s">&quot;</span>
+
+<span class="c1">//continuous</span>
 <span class="k">lookfor</span> age
 <span class="k">local</span> v:<span class="k"> var lab</span> HSAGEIR 
 <span class="k">di</span> <span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
@@ -392,11 +395,51 @@ putexcel A2=<span class="s">&quot;</span><span class="nv">`v&#39;</span><span cl
 putexcel B1=<span class="s">&quot;(N=</span><span class="nv">`c(N)&#39;</span><span class="s">)&quot;</span>
 putexcel B2=<span class="s">&quot;</span><span class="nv">`r(p50)&#39;</span><span class="s"> (</span><span class="nv">`r(p25)&#39;</span><span class="s">-</span><span class="nv">`r(p50)&#39;</span><span class="s">)&quot;</span>
 <span class="k">ls</span> <span class="o">-</span>ahl
+
+<span class="c1">//binary</span>
 <span class="k">lookfor</span> sex
 <span class="k">codebook</span> HSSEX 
 <span class="k">replace</span> HSSEX=<span class="m">2</span><span class="o">-</span>HSSEX 
 <span class="k">sum</span> HSSEX
 <span class="k">return list</span> 
+<span class="k">local</span> v:<span class="k"> var lab</span> HSSEX
+<span class="k">di</span> <span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+<span class="k">local</span> per:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(mean)<span class="o">*</span><span class="m">100</span>
+<span class="k">di</span> <span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
+putexcel A3=<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+putexcel B3=<span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
+
+<span class="c1">//multi</span>
+<span class="k">lookfor</span> race 
+<span class="k">levelsof</span> DMARETHN,<span class="k"> local</span>(race)  
+<span class="k">return list</span> 
+<span class="k">local</span> nlevels=<span class="nf">r</span>(r)
+<span class="k">forvalues l</span> = <span class="m">1</span><span class="o">/</span><span class="nv">`nlevels&#39;</span> {
+<span class="k">    </span>
+<span class="k">    local</span> per: value<span class="k"> lab</span> DMARETHN
+<span class="k">    di</span> <span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
+    
+}
+
+<span class="k">desc</span> DMARETHN
+
+#delimit ;
+<span class="k">lab</span> def race 
+   <span class="m">1</span> <span class="s">&quot;White&quot;</span> 
+   <span class="m">2</span> <span class="s">&quot;Black&quot;</span>
+   <span class="m">3</span> <span class="s">&quot;Hispanic&quot;</span>
+   <span class="m">4</span> <span class="s">&quot;Asian&quot;</span>;
+<span class="k">lab</span> values DMARETHN race
+#delimit cr
+<span class="k">levelsof</span> DMARETHN,<span class="k"> local</span>(race)  
+<span class="k">return list</span> 
+<span class="k">local</span> nlevels=<span class="nf">r</span>(r)
+<span class="k">forvalues l</span> = <span class="m">1</span><span class="o">/</span><span class="nv">`nlevels&#39;</span> {
+<span class="k">    </span>
+<span class="k">    local</span> per: value<span class="k"> lab</span> race
+<span class="k">    di</span> <span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
+    
+}
 </pre></div>
 </div>
 </section>
