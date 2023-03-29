@@ -4,7 +4,7 @@ We hereby commence session 1!
 
 First, some [cool commands](https://www.stata.com/manuals13/u27.pdf):
 
-Next, lets write out first .do file script together
+Next, lets compose our first .do file script together
 
 Lookout for `structure`, `indentation`, `annotation`
 
@@ -12,7 +12,7 @@ These three things make the script readable
 
 You will lose points in your [homework](hw1.md) if you neglect these three things!
 
-```stata
+```stata{toggle}
 qui {
     
     if 1 { //linux,stata
