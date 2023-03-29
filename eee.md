@@ -14,6 +14,7 @@ These three things make the script readable
 You will lose points in your [homework](hw1.md) if you neglect these three things!
 
 ```stata
+
 qui {
     
     if 1 { //linux,stata
@@ -66,39 +67,39 @@ qui {
     if 4 { //multi
         
         lookfor race 
-        levelsof DMARETHN, local(race)  
-        return list 
-        local nlevels=r(r)
-        forvalues l = 1/`nlevels' {
-    
-            local per: value lab DMARETHN
-            di "`per'"
-    
-        }
-
-        desc DMARETHN
-
+        desc race
+        capture label drop race 
+        
         #delimit ;
         lab def race 
            1 "White" 
            2 "Black"
            3 "Hispanic"
            4 "Asian";
-        lab values DMARETHN race
+        lab values DMARETHN race; 
         #delimit cr
+        
         levelsof DMARETHN, local(race)  
+        local vl: value label DMARETHN
+        
         return list 
         local nlevels=r(r)
+        count if !missing(DMARETHN)
+        global N=r(N)
         forvalues l = 1/`nlevels' {
     
-           local per: value lab race
-           di "`per'"
-    
+            local per: lab `vl' `l'
+            qui sum DMARETHN if DMARETHN==`l'
+            local percent: di %3.1f r(N)*100/$N
+            di "`per', % : `percent'"
+            
+        }    
+        
 }
-    }
     
     if 5 { //output
         
     }
 }
+
 ```

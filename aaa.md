@@ -38,11 +38,11 @@ Teaching assistants
 
 Optional labs
 
-1. Monday
-2. Tuesday
-3. Wednesday
-4. Thursday
-5. Friday
+1. M 9:30-10:30 am
+2. T 10:00-11:00 am
+3. W 3:00-4:00 pm
+4. Th 6:00-7:00 pm
+5. F 1:00-2:00 pm
 
 Homeworks due  
 
