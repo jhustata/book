@@ -26,7 +26,7 @@ These three things make the script readable
 
 You will lose points in your [homework](hw1.md) if you neglect these three things!
 
-```stata{toggle}
+```{toggle}
 qui {
     
     if 1 { //linux,stata
