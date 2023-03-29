@@ -2,11 +2,11 @@
 
 Due date: 11:59 p.m., Friday, April 21, 2023 via CoursePlus dropbox
 
-Overview: write a .do file which imports data from [hw1.txt](hw1.txt) and performs the data cleaning / exploratory data analysis tasks described below. Your .do file must be called assignment1_yourname.do (for example: assignment1_allanmassie.do) and must create a log file called assignment1_yourname.log. Your .do file should follow conventions for .do file structure described in class. Make sure your script will run on our machines, even if we are using a different version of Stata. Do not submit your log files as part of the assignment.
+Overview: write a `.do file` which imports data from [hw1.txt](hw1.txt) and performs the data cleaning / exploratory data analysis tasks described below. Your .do file must be called `hw1_lastname.firstname.do` (for example: hw1_muzaale.abimereki.do) and must create a log file called `hw1_lastname.firstname.log`. Your .do file should follow conventions for .do file structure described in class. Make sure your script will run on our machines, even if we are using a different version of Stata. **Do not** submit your log files as part of the assignment.
 
 This dataset contains simulated data on registrants for the deceased donor kidney waitlist.
 
-Evaluation: Evaluation will be based on the log file produced by your script. Your script will be run on a different dataset, in the same format as assignment1_raw.txt but containing different data. Partial credit will be awarded if the output is wrong, so have your script print something for every question. Make sure the output includes the question number as indicated. Make sure to follow the coding guidelines from class; for example, your script should include comments.
+Evaluation: Evaluation will be based on the log file produced by your script. Your script will be run on a different dataset, in the same format as [hw1.txt](hw1.txt) but may contain different data. Partial credit will be awarded if the output is wrong, so have your script print something for every question. Make sure the output includes the question number as indicated. Make sure to follow the coding guidelines from class; for example, your script should include comments.
 
 Note – test your code repeatedly to make sure it doesn't crash! Points will be deducted if your code crashes.
 
