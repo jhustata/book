@@ -67,7 +67,7 @@ qui {
     if 4 { //multi
         
         lookfor race 
-        desc race
+        desc DMARETHN
         capture label drop race 
         
         #delimit ;
@@ -79,14 +79,15 @@ qui {
         lab values DMARETHN race; 
         #delimit cr
         
-        levelsof DMARETHN, local(race)  
         local vl: value label DMARETHN
         
+        levelsof DMARETHN, local(race)  
         return list 
-        local nlevels=r(r)
+        
         count if !missing(DMARETHN)
         global N=r(N)
-        forvalues l = 1/`nlevels' {
+        
+        foreach l of numlist `race' {
     
             local per: lab `vl' `l'
             qui sum DMARETHN if DMARETHN==`l'

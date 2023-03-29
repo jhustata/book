@@ -428,7 +428,7 @@ document.write(`
 <span class="k">    if</span> <span class="m">4</span> { <span class="c1">//multi</span>
 <span class="k">        </span>
 <span class="k">        lookfor</span> race 
-<span class="k">        desc</span> race
+<span class="k">        desc</span> DMARETHN
 <span class="k">        capture label drop</span> race 
         
         #delimit ;
@@ -440,14 +440,15 @@ document.write(`
 <span class="k">        lab</span> values DMARETHN race; 
         #delimit cr
 <span class="k">        </span>
-<span class="k">        levelsof</span> DMARETHN,<span class="k"> local</span>(race)  
 <span class="k">        local</span> vl: value<span class="k"> label</span> DMARETHN
 <span class="k">        </span>
+<span class="k">        levelsof</span> DMARETHN,<span class="k"> local</span>(race)  
 <span class="k">        return list</span> 
-<span class="k">        local</span> nlevels=<span class="nf">r</span>(r)
+<span class="k">        </span>
 <span class="k">        count if</span> <span class="o">!</span><span class="nf">missing</span>(DMARETHN)
 <span class="k">        global</span> N=<span class="nf">r</span>(N)
-<span class="k">        forvalues l</span> = <span class="m">1</span><span class="o">/</span><span class="nv">`nlevels&#39;</span> {
+<span class="k">        </span>
+<span class="k">        foreach l</span> of<span class="k"> numlist</span> <span class="nv">`race&#39;</span> {
 <span class="k">    </span>
 <span class="k">            local</span> per:<span class="k"> lab</span> <span class="nv">`vl&#39;</span> <span class="nv">`l&#39;</span>
 <span class="k">            qui sum</span> DMARETHN<span class="k"> if</span> DMARETHN<span class="o">==</span><span class="nv">`l&#39;</span>
