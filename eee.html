@@ -376,94 +376,95 @@ document.write(`
 <p>Lookout for <code class="docutils literal notranslate"><span class="pre">structure</span></code>, <code class="docutils literal notranslate"><span class="pre">indentation</span></code>, <code class="docutils literal notranslate"><span class="pre">annotation</span></code></p>
 <p>These three things make the script readable</p>
 <p>You will lose points in your <a class="reference internal" href="hw1.html"><span class="doc std std-doc">homework</span></a> if you neglect these three things!</p>
-<div class="highlight-stata{toggle} notranslate"><div class="highlight"><pre><span></span>qui {
-    
-    if 1 { //linux,stata
-    
-       pwd
-       ls -l
-       clear
-       cat adult.do
-       do adult.do 
-       di c(N) &quot; rows &amp; &quot; c(k) &quot; columns&quot;
-       local shape: di c(N) &quot; rows &amp; &quot; c(k) &quot; columns&quot;
-       di &quot;`shape&#39;&quot;
-                
-    }
-    
-    if 2 { //continuous
-    
-       lookfor age
-       local v: var lab HSAGEIR 
-       di &quot;`v&#39;&quot;
-       sum HSAGEIR, detail
-       return list
-       di &quot;`r(p25)&#39;&quot;
-       putexcel set table1, replace 
-       putexcel A1=&quot;Characteristics&quot;
-       putexcel A2=&quot;`v&#39;&quot;
-       putexcel B1=&quot;(N=`c(N)&#39;)&quot;
-       putexcel B2=&quot;`r(p50)&#39; (`r(p25)&#39;-`r(p50)&#39;)&quot;
-       ls -ahl
-        
-    }
-    
-    if 3 { //binary
-    
-       lookfor sex
-       codebook HSSEX 
-       replace HSSEX=2-HSSEX 
-       sum HSSEX
-       return list 
-       local v: var lab HSSEX
-       di &quot;`v&#39;&quot;
-       local per: di %3.1f r(mean)*100
-       di &quot;`per&#39;&quot;
-       putexcel A3=&quot;`v&#39;&quot;
-       putexcel B3=&quot;`per&#39;&quot;
-        
-        
-    }
+<div class="toggle docutils container">
+<p>qui {</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if 1 { //linux,stata
 
-    if 4 { //multi
-        
-        lookfor race 
-        levelsof DMARETHN, local(race)  
-        return list 
-        local nlevels=r(r)
-        forvalues l = 1/`nlevels&#39; {
-    
-            local per: value lab DMARETHN
-            di &quot;`per&#39;&quot;
-    
-        }
+   pwd
+   ls -l
+   clear
+   cat adult.do
+   do adult.do 
+   di c(N) &quot; rows &amp; &quot; c(k) &quot; columns&quot;
+   local shape: di c(N) &quot; rows &amp; &quot; c(k) &quot; columns&quot;
+   di &quot;`shape&#39;&quot;
+            
+}
 
-        desc DMARETHN
+if 2 { //continuous
 
-        #delimit ;
-        lab def race 
-           1 &quot;White&quot; 
-           2 &quot;Black&quot;
-           3 &quot;Hispanic&quot;
-           4 &quot;Asian&quot;;
-        lab values DMARETHN race
-        #delimit cr
-        levelsof DMARETHN, local(race)  
-        return list 
-        local nlevels=r(r)
-        forvalues l = 1/`nlevels&#39; {
-    
-           local per: value lab race
-           di &quot;`per&#39;&quot;
+   lookfor age
+   local v: var lab HSAGEIR 
+   di &quot;`v&#39;&quot;
+   sum HSAGEIR, detail
+   return list
+   di &quot;`r(p25)&#39;&quot;
+   putexcel set table1, replace 
+   putexcel A1=&quot;Characteristics&quot;
+   putexcel A2=&quot;`v&#39;&quot;
+   putexcel B1=&quot;(N=`c(N)&#39;)&quot;
+   putexcel B2=&quot;`r(p50)&#39; (`r(p25)&#39;-`r(p50)&#39;)&quot;
+   ls -ahl
     
 }
-    }
+
+if 3 { //binary
+
+   lookfor sex
+   codebook HSSEX 
+   replace HSSEX=2-HSSEX 
+   sum HSSEX
+   return list 
+   local v: var lab HSSEX
+   di &quot;`v&#39;&quot;
+   local per: di %3.1f r(mean)*100
+   di &quot;`per&#39;&quot;
+   putexcel A3=&quot;`v&#39;&quot;
+   putexcel B3=&quot;`per&#39;&quot;
     
-    if 5 { //output
-        
+    
+}
+
+if 4 { //multi
+    
+    lookfor race 
+    levelsof DMARETHN, local(race)  
+    return list 
+    local nlevels=r(r)
+    forvalues l = 1/`nlevels&#39; {
+
+        local per: value lab DMARETHN
+        di &quot;`per&#39;&quot;
+
     }
+
+    desc DMARETHN
+
+    #delimit ;
+    lab def race 
+       1 &quot;White&quot; 
+       2 &quot;Black&quot;
+       3 &quot;Hispanic&quot;
+       4 &quot;Asian&quot;;
+    lab values DMARETHN race
+    #delimit cr
+    levelsof DMARETHN, local(race)  
+    return list 
+    local nlevels=r(r)
+    forvalues l = 1/`nlevels&#39; {
+
+       local per: value lab race
+       di &quot;`per&#39;&quot;
+</pre></div>
+</div>
+<p>}
+}</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if 5 { //output
+    
 }
 </pre></div>
+</div>
+<p>}</p>
 </div>
 </section>
 
