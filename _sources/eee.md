@@ -1,16 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 
 # pwd
 
@@ -26,7 +13,7 @@ These three things make the script readable
 
 You will lose points in your [homework](hw1.md) if you neglect these three things!
 
-```{toggle}
+```stata
 qui {
     
     if 1 { //linux,stata

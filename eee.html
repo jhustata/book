@@ -376,95 +376,94 @@ document.write(`
 <p>Lookout for <code class="docutils literal notranslate"><span class="pre">structure</span></code>, <code class="docutils literal notranslate"><span class="pre">indentation</span></code>, <code class="docutils literal notranslate"><span class="pre">annotation</span></code></p>
 <p>These three things make the script readable</p>
 <p>You will lose points in your <a class="reference internal" href="hw1.html"><span class="doc std std-doc">homework</span></a> if you neglect these three things!</p>
-<div class="toggle docutils container">
-<p>qui {</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if 1 { //linux,stata
-
-   pwd
-   ls -l
-   clear
-   cat adult.do
-   do adult.do 
-   di c(N) &quot; rows &amp; &quot; c(k) &quot; columns&quot;
-   local shape: di c(N) &quot; rows &amp; &quot; c(k) &quot; columns&quot;
-   di &quot;`shape&#39;&quot;
-            
-}
-
-if 2 { //continuous
-
-   lookfor age
-   local v: var lab HSAGEIR 
-   di &quot;`v&#39;&quot;
-   sum HSAGEIR, detail
-   return list
-   di &quot;`r(p25)&#39;&quot;
-   putexcel set table1, replace 
-   putexcel A1=&quot;Characteristics&quot;
-   putexcel A2=&quot;`v&#39;&quot;
-   putexcel B1=&quot;(N=`c(N)&#39;)&quot;
-   putexcel B2=&quot;`r(p50)&#39; (`r(p25)&#39;-`r(p50)&#39;)&quot;
-   ls -ahl
-    
-}
-
-if 3 { //binary
-
-   lookfor sex
-   codebook HSSEX 
-   replace HSSEX=2-HSSEX 
-   sum HSSEX
-   return list 
-   local v: var lab HSSEX
-   di &quot;`v&#39;&quot;
-   local per: di %3.1f r(mean)*100
-   di &quot;`per&#39;&quot;
-   putexcel A3=&quot;`v&#39;&quot;
-   putexcel B3=&quot;`per&#39;&quot;
-    
-    
-}
-
-if 4 { //multi
-    
-    lookfor race 
-    levelsof DMARETHN, local(race)  
-    return list 
-    local nlevels=r(r)
-    forvalues l = 1/`nlevels&#39; {
-
-        local per: value lab DMARETHN
-        di &quot;`per&#39;&quot;
-
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">1</span> { <span class="c1">//linux,stata</span>
+<span class="k">    </span>
+<span class="k">       pwd</span>
+<span class="k">       ls</span> <span class="o">-</span>l
+<span class="k">       clear</span>
+<span class="k">       cat</span> adult<span class="m">.</span>do
+<span class="k">       do</span> adult<span class="m">.</span>do 
+<span class="k">       di</span> <span class="nf">c</span>(N) <span class="s">&quot; rows &amp; &quot;</span> <span class="nf">c</span>(k) <span class="s">&quot; columns&quot;</span>
+<span class="k">       local</span> shape:<span class="k"> di</span> <span class="nf">c</span>(N) <span class="s">&quot; rows &amp; &quot;</span> <span class="nf">c</span>(k) <span class="s">&quot; columns&quot;</span>
+<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`shape&#39;</span><span class="s">&quot;</span>
+                
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">2</span> { <span class="c1">//continuous</span>
+<span class="k">    </span>
+<span class="k">       lookfor</span> age
+<span class="k">       local</span> v:<span class="k"> var lab</span> HSAGEIR 
+<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+<span class="k">       sum</span> HSAGEIR, detail
+<span class="k">       return list</span>
+<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`r(p25)&#39;</span><span class="s">&quot;</span>
+       putexcel<span class="k"> set</span> table1,<span class="k"> replace</span> 
+       putexcel A1=<span class="s">&quot;Characteristics&quot;</span>
+       putexcel A2=<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+       putexcel B1=<span class="s">&quot;(N=</span><span class="nv">`c(N)&#39;</span><span class="s">)&quot;</span>
+       putexcel B2=<span class="s">&quot;</span><span class="nv">`r(p50)&#39;</span><span class="s"> (</span><span class="nv">`r(p25)&#39;</span><span class="s">-</span><span class="nv">`r(p50)&#39;</span><span class="s">)&quot;</span>
+<span class="k">       ls</span> <span class="o">-</span>ahl
+        
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">3</span> { <span class="c1">//binary</span>
+<span class="k">    </span>
+<span class="k">       lookfor</span> sex
+<span class="k">       codebook</span> HSSEX 
+<span class="k">       replace</span> HSSEX=<span class="m">2</span><span class="o">-</span>HSSEX 
+<span class="k">       sum</span> HSSEX
+<span class="k">       return list</span> 
+<span class="k">       local</span> v:<span class="k"> var lab</span> HSSEX
+<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+<span class="k">       local</span> per:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(mean)<span class="o">*</span><span class="m">100</span>
+<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
+       putexcel A3=<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+       putexcel B3=<span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
+        
+        
     }
 
-    desc DMARETHN
+<span class="k">    if</span> <span class="m">4</span> { <span class="c1">//multi</span>
+<span class="k">        </span>
+<span class="k">        lookfor</span> race 
+<span class="k">        levelsof</span> DMARETHN,<span class="k"> local</span>(race)  
+<span class="k">        return list</span> 
+<span class="k">        local</span> nlevels=<span class="nf">r</span>(r)
+<span class="k">        forvalues l</span> = <span class="m">1</span><span class="o">/</span><span class="nv">`nlevels&#39;</span> {
+<span class="k">    </span>
+<span class="k">            local</span> per: value<span class="k"> lab</span> DMARETHN
+<span class="k">            di</span> <span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
+    
+        }
 
-    #delimit ;
-    lab def race 
-       1 &quot;White&quot; 
-       2 &quot;Black&quot;
-       3 &quot;Hispanic&quot;
-       4 &quot;Asian&quot;;
-    lab values DMARETHN race
-    #delimit cr
-    levelsof DMARETHN, local(race)  
-    return list 
-    local nlevels=r(r)
-    forvalues l = 1/`nlevels&#39; {
+<span class="k">        desc</span> DMARETHN
 
-       local per: value lab race
-       di &quot;`per&#39;&quot;
-</pre></div>
-</div>
-<p>}
-}</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if 5 { //output
+        #delimit ;
+<span class="k">        lab</span> def race 
+           <span class="m">1</span> <span class="s">&quot;White&quot;</span> 
+           <span class="m">2</span> <span class="s">&quot;Black&quot;</span>
+           <span class="m">3</span> <span class="s">&quot;Hispanic&quot;</span>
+           <span class="m">4</span> <span class="s">&quot;Asian&quot;</span>;
+<span class="k">        lab</span> values DMARETHN race
+        #delimit cr
+<span class="k">        levelsof</span> DMARETHN,<span class="k"> local</span>(race)  
+<span class="k">        return list</span> 
+<span class="k">        local</span> nlevels=<span class="nf">r</span>(r)
+<span class="k">        forvalues l</span> = <span class="m">1</span><span class="o">/</span><span class="nv">`nlevels&#39;</span> {
+<span class="k">    </span>
+<span class="k">           local</span> per: value<span class="k"> lab</span> race
+<span class="k">           di</span> <span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
     
 }
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">5</span> { <span class="c1">//output</span>
+        
+    }
+}
 </pre></div>
-</div>
-<p>}</p>
 </div>
 </section>
 
