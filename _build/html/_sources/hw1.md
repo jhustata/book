@@ -2,7 +2,7 @@
 
 Due date: 11:59 p.m., Friday, April 21, 2023 via CoursePlus dropbox
 
-Overview: write a .do file which imports data from assignment1_data_2021.txt (available on CoursePlus) and performs the data cleaning / exploratory data analysis tasks described below. Your .do file must be called assignment1_yourname.do (for example: assignment1_allanmassie.do) and must create a log file called assignment1_yourname.log. Your .do file should follow conventions for .do file structure described in class. Make sure your script will run on our machines, even if we are using a different version of Stata. Do not submit your log files as part of the assignment.
+Overview: write a .do file which imports data from [hw1.txt](hw1.txt) and performs the data cleaning / exploratory data analysis tasks described below. Your .do file must be called assignment1_yourname.do (for example: assignment1_allanmassie.do) and must create a log file called assignment1_yourname.log. Your .do file should follow conventions for .do file structure described in class. Make sure your script will run on our machines, even if we are using a different version of Stata. Do not submit your log files as part of the assignment.
 
 This dataset contains simulated data on registrants for the deceased donor kidney waitlist.
 
