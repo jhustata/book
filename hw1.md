@@ -4,7 +4,7 @@
 
 ### Overview
 
-write a `.do file` which imports data from [hw1.txt](hw1.txt) and performs the data cleaning / exploratory data analysis tasks described below. Your .do file must be called `hw1.lastname.firstname.do` and must create a log file called `hw1.lastname.firstname.log`. <u>Your .do file should follow conventions for .do file structure described in class (Session 1)</u>. Make sure your script will run on our machines, even if we are using a different version of Stata. Do not submit your log files as part of the assignment.
+write a `.do file` which imports data from [hw1.txt](hw1.txt) and performs the data cleaning / exploratory data analysis tasks described below. Your .do file must be called `hw1.lastname.firstname.do` and must create a log file called `hw1.lastname.firstname.log`. <u>Your .do file should follow conventions for .do file structure described in [class: session `pwd`](eee.md) </u>. Make sure your script will run on our machines, even if we are using a different version of Stata. Do not submit your log files as part of the assignment.
 
 This dataset contains simulated data on registrants for the deceased donor kidney waitlist.
 
