@@ -137,7 +137,7 @@ Your .do file should include only one `import sasxport5` statement.
 
 340.700
 
-1. Jason Haw
+1. Jason Haw [M 3:30-4:30 pm](https://JHUBlueJays.zoom.us/j/91524920312?pwd=MlVLNVpObGNWRzZKTUNzVVNFM2djQT09)
 
 Academic integrity
 
