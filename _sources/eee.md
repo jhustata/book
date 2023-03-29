@@ -13,6 +13,8 @@ These three things make the script readable
 
 You will lose points in your [homework](hw1.md) if you neglect these three things!
 
+Some other day we will talk about missigness [^3]
+
 ```stata
 
 qui {
@@ -79,6 +81,8 @@ qui {
         lab values DMARETHN race; 
         #delimit cr
         
+        local v: var lab DMARETHN
+        putexcel A4="`v', %"
         local vl: value label DMARETHN
         
         levelsof DMARETHN, local(race)  
@@ -87,20 +91,27 @@ qui {
         count if !missing(DMARETHN)
         global N=r(N)
         
+        local row=5
+        
         foreach l of numlist `race' {
     
             local per: lab `vl' `l'
             qui sum DMARETHN if DMARETHN==`l'
             local percent: di %3.1f r(N)*100/$N
             di "`per', % : `percent'"
+            putexcel A`row' = "   `per'"
+            putexcel B`row' = "`percent'"
+            local row=`row' + 1
             
         }    
         
 }
     
-    if 5 { //output
+    if 5 { //missingness
         
     }
 }
 
 ```
+
+[^3]: Simulate missingess of DMARETHN and assess impact on output

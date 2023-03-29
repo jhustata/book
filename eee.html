@@ -376,6 +376,7 @@ document.write(`
 <p>Lookout for <code class="docutils literal notranslate"><span class="pre">structure</span></code>, <code class="docutils literal notranslate"><span class="pre">indentation</span></code>, <code class="docutils literal notranslate"><span class="pre">annotation</span></code></p>
 <p>These three things make the script readable</p>
 <p>You will lose points in your <a class="reference internal" href="hw1.html"><span class="doc std std-doc">homework</span></a> if you neglect these three things!</p>
+<p>Some other day we will talk about missigness <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">    </span>
 <span class="k">    if</span> <span class="m">1</span> { <span class="c1">//linux,stata</span>
@@ -440,6 +441,8 @@ document.write(`
 <span class="k">        lab</span> values DMARETHN race; 
         #delimit cr
 <span class="k">        </span>
+<span class="k">        local</span> v:<span class="k"> var lab</span> DMARETHN
+        putexcel A4=<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">, %&quot;</span>
 <span class="k">        local</span> vl: value<span class="k"> label</span> DMARETHN
 <span class="k">        </span>
 <span class="k">        levelsof</span> DMARETHN,<span class="k"> local</span>(race)  
@@ -448,23 +451,33 @@ document.write(`
 <span class="k">        count if</span> <span class="o">!</span><span class="nf">missing</span>(DMARETHN)
 <span class="k">        global</span> N=<span class="nf">r</span>(N)
 <span class="k">        </span>
+<span class="k">        local</span> row=<span class="m">5</span>
+<span class="k">        </span>
 <span class="k">        foreach l</span> of<span class="k"> numlist</span> <span class="nv">`race&#39;</span> {
 <span class="k">    </span>
 <span class="k">            local</span> per:<span class="k"> lab</span> <span class="nv">`vl&#39;</span> <span class="nv">`l&#39;</span>
 <span class="k">            qui sum</span> DMARETHN<span class="k"> if</span> DMARETHN<span class="o">==</span><span class="nv">`l&#39;</span>
 <span class="k">            local</span> percent:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(N)<span class="o">*</span><span class="m">100</span><span class="o">/</span><span class="vg">$N</span>
 <span class="k">            di</span> <span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">, % : </span><span class="nv">`percent&#39;</span><span class="s">&quot;</span>
+            putexcel A<span class="nv">`row&#39;</span> = <span class="s">&quot;   </span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
+            putexcel B<span class="nv">`row&#39;</span> = <span class="s">&quot;</span><span class="nv">`percent&#39;</span><span class="s">&quot;</span>
+<span class="k">            local</span> row=<span class="nv">`row&#39;</span> <span class="o">+</span> <span class="m">1</span>
             
         }    
         
 }
 <span class="k">    </span>
-<span class="k">    if</span> <span class="m">5</span> { <span class="c1">//output</span>
+<span class="k">    if</span> <span class="m">5</span> { <span class="c1">//missingness</span>
         
     }
 }
 </pre></div>
 </div>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
+<p>Simulate missingess of DMARETHN and assess impact on output</p>
+</aside>
 </section>
 
     <script type="text/x-thebe-config">
