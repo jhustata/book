@@ -44,7 +44,7 @@ forvalues i=1/2 {
         
                   timer off 1
         
-    }
+              }
     
               if 2 { //timer,loop,data
         
@@ -61,7 +61,7 @@ forvalues i=1/2 {
         
         
         
-    }
+              }
     
               if 3 { //clear,append,save
     
@@ -78,7 +78,7 @@ forvalues i=1/2 {
         
                   timer off 3
         
-    }
+              }
     
               if 4 {
         
