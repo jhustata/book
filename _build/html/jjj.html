@@ -370,11 +370,38 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="twoway">
 <h1>twoway<a class="headerlink" href="#twoway" title="Permalink to this heading">#</a></h1>
+<p>Task:</p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>Using the resources available to you at the National Bureau of Economic Research (NBER), reproduce the twoway graph shown under the output link below.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>The Stata code provides several hints about how you may approach this challenge. Don’t hesitate to ask questions on CoursePlus if you run into any trouble!</p>
 <p>Databases:</p>
-<p><a class="reference external" href="https://ftp.cdc.gov/pub/">cdc.gov</a></p>
-<p><a class="reference external" href="https://data.nber.org/mortality/">nber.org</a></p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p><a class="reference external" href="https://ftp.cdc.gov/pub/">cdc.gov</a></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p><a class="reference external" href="https://data.nber.org/mortality/">nber.org</a></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 <p>Output:</p>
-<p>line <a class="reference download internal" download="" href="_downloads/9359d2ae4f8ad2efcfe2fd34e3547c35/mortality.png"><span class="xref download myst">graph</span></a></p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>line <a class="reference download internal" download="" href="_downloads/9359d2ae4f8ad2efcfe2fd34e3547c35/mortality.png"><span class="xref download myst">graph</span></a></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 <p>Hint:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">forvalues</span> i=<span class="m">1</span><span class="o">/</span><span class="m">2</span> {
 
@@ -434,7 +461,7 @@ document.write(`
 <span class="k">        </span>
 <span class="k">                  timer on</span> <span class="m">4</span>
 <span class="k">        </span>
-<span class="k">                  noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`(k)&#39;</span><span class="s">&quot;</span>
+<span class="k">                  noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
 <span class="k">                  noi lookfor</span> year
 <span class="k">                  g</span> deaths=<span class="m">1</span>
 <span class="k">                  </span>
@@ -471,7 +498,7 @@ document.write(`
 }
 </pre></div>
 </div>
-<p>output:
+<p>logfiles:
 <a class="reference download internal" download="" href="_downloads/9fd9729c43efac6cb122a65fbff89c9f/wk1.ph.340.700-qui.txt"><span class="xref download myst">quietly</span></a>
 <a class="reference download internal" download="" href="_downloads/9c674aa65999b6bf7cb14a254fd650bb/wk1.ph.340.700-noi.txt"><span class="xref download myst">noisily</span></a></p>
 </section>

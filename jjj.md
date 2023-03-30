@@ -1,15 +1,21 @@
 # twoway
 
+Task:
+
+>>> Using the resources available to you at the National Bureau of Economic Research (NBER), reproduce the twoway graph shown under the output link below.
+
+The Stata code provides several hints about how you may approach this challenge. Don't hesitate to ask questions on CoursePlus if you run into any trouble!
+
 Databases:
 
-   [cdc.gov](https://ftp.cdc.gov/pub/)
+>>> [cdc.gov](https://ftp.cdc.gov/pub/)
 
-   [nber.org](https://data.nber.org/mortality/)
+>>> [nber.org](https://data.nber.org/mortality/)
 
 
 Output:
 
-   line [graph](mortality.png)
+>>> line [graph](mortality.png)
    
 Hint:
 
@@ -74,7 +80,7 @@ forvalues i=1/2 {
         
                   timer on 4
         
-                  noi di "# of deaths: `c(N)' & # of variables: `(k)'"
+                  noi di "# of deaths: `c(N)' & # of variables: `c(k)'"
                   noi lookfor year
                   g deaths=1
                   
@@ -112,6 +118,6 @@ forvalues i=1/2 {
 
 ```
 
-output:
-   [quietly](wk1.ph.340.700-qui.txt)
-   [noisily](wk1.ph.340.700-noi.txt)
+logfiles:
+[quietly](wk1.ph.340.700-qui.txt)
+[noisily](wk1.ph.340.700-noi.txt)
