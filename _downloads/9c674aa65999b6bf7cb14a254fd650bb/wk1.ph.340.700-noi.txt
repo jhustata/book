@@ -1,0 +1,112 @@
+----------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/d/Desktop/wk1.ph.340.700.log
+  log type:  text
+ opened on:  30 Mar 2023, 04:55:50
+.                 
+.                 cls 
+.                 
+.                 global url https://data.nber.org/mortality/
+.                 global filename mort1959.dta
+.                 
+.                 timer off 1
+.                 
+.         }
+.         
+.         if 2 { //timer,loop,data
+.                 
+.                 timer on 2
+.                 
+.                 forvalues i=1959/1961 {
+  2.                         
+.                         use "${url}`i'/mort`i'", clear 
+  3.                         save y`i', replace 
+  4.                         
+.                 timer off 2
+  5. 
+.                 }
+file y1959.dta saved
+file y1960.dta saved
+file y1961.dta saved
+.                 
+.                 
+.                 
+.         }
+.         
+.         if 3 { //clear,append,save
+.         
+.             timer on 3
+.                 
+.             clear 
+.                 forvalues i=1959/1961 {
+  2.                         
+.                         append using y`i'
+  3.                         
+.                 }
+.                  
+.                 save mort.usa, replace 
+file mort.usa saved as .dta format
+.                 
+.                 timer off 3
+.                 
+.         }
+.         
+.         if 4 {
+.                 
+.                 timer on 4
+.                 
+.                 noi di "# of deaths: `c(N)' & # of variables: `(k)'"
+# of deaths: 5073676 & # of variables: 
+.                 noi lookfor year
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+----------------------------------------------------------------------
+datayear        int     %8.0g                 
+.                 g deaths=1
+.                 collapse (count) deaths, by(datayear)
+.                 noi di "# of deaths: `c(N)' & # of variables: `(k)'"
+# of deaths: 3 & # of variables: 
+.                 noi list 
+
+     +--------------------+
+     | datayear    deaths |
+     |--------------------|
+  1. |     1959   1660172 |
+  2. |     1960   1711982 |
+  3. |     1961   1701522 |
+     +--------------------+
+.                 #delimit ;
+delimiter now ;
+.                 line deaths datayear, 
+>                    sort 
+>                    ti("United States")
+>                    xti("Year");
+.                 #delimit cr
+delimiter now cr
+.                 
+.                 timer off 4
+.                 
+.         }
+.         
+.         if 5 {
+.                 
+.                 
+.                 save mort.fig, replace 
+(file mort.fig not found)
+file mort.fig saved as .dta format
+.                 
+.                                         
+.         }
+.         
+.         timer list 
+   1:    663.59 /        5 =     132.7182
+   2:     45.08 /        1 =      45.0840
+   3:      3.29 /        1 =       3.2950
+   4:      1.18 /        1 =       1.1830
+.         log close 
+      name:  <unnamed>
+       log:  /Users/d/Desktop/wk1.ph.340.700.log
+  log type:  text
+ closed on:  30 Mar 2023, 04:58:28
+----------------------------------------------------------------------
