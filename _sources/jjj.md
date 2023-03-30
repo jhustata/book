@@ -2,20 +2,25 @@
 
 Task:
 
->>> Using the resources available to you at the National Bureau of Economic Research (NBER), reproduce the twoway graph shown under the output link below.
+<p> 
+Using the resources available to you at the National Bureau of Economic Research (NBER), reproduce the twoway graph shown under the output link below.
 
-The Stata code provides several hints about how you may approach this challenge. Don't hesitate to ask questions on CoursePlus if you run into any trouble!
+The Stata code provides several hints about how you may approach this challenge. Don't hesitate to ask questions on CoursePlus if you run into any trouble! 
+</p>
 
 Databases:
 
->>> [cdc.gov](https://ftp.cdc.gov/pub/)
+<p>
+[cdc.gov](https://ftp.cdc.gov/pub/)
 
->>> [nber.org](https://data.nber.org/mortality/)
-
+[nber.org](https://data.nber.org/mortality/)
+</p>
 
 Output:
 
->>> line [graph](mortality.png)
+<p>
+line [graph](mortality.png)
+</p>
    
 Hint:
 
