@@ -26,7 +26,7 @@ Hint:
 ```stata
 
 
-forvalues i=1/2 {
+forvalues i=1/1 {
 
     quie {
     
