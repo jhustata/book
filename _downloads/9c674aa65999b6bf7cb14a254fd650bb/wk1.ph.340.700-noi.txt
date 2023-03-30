@@ -7,7 +7,6 @@
 .                 cls 
 .                 
 .                 global url https://data.nber.org/mortality/
-.                 global filename mort1959.dta
 .                 
 .                 timer off 1
 .                 
