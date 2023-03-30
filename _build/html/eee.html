@@ -381,6 +381,9 @@ document.write(`
 <span class="k">    </span>
 <span class="k">    if</span> <span class="m">1</span> { <span class="c1">//linux,stata</span>
 <span class="k">    </span>
+<span class="k">       capture log close</span>
+<span class="k">       log</span> using<span class="k"> pwd</span><span class="m">.</span>log,<span class="k"> replace</span> 
+<span class="k">    </span>
 <span class="k">       pwd</span>
 <span class="k">       ls</span> <span class="o">-</span>l
 <span class="k">       clear</span>
@@ -470,6 +473,8 @@ document.write(`
 <span class="k">    if</span> <span class="m">5</span> { <span class="c1">//missingness</span>
         
     }
+<span class="k">    </span>
+<span class="k">    log close</span>
 }
 </pre></div>
 </div>

@@ -375,6 +375,105 @@ document.write(`
 <p><a class="reference external" href="https://data.nber.org/mortality/">nber.org</a></p>
 <p>Output:</p>
 <p>line <a class="reference download internal" download="" href="_downloads/9359d2ae4f8ad2efcfe2fd34e3547c35/mortality.png"><span class="xref download myst">graph</span></a></p>
+<p>Hint:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">forvalues</span> i=<span class="m">1</span><span class="o">/</span><span class="m">2</span> {
+
+    quie {
+<span class="k">    </span>
+<span class="k">              if</span> <span class="m">1</span> { <span class="c1">//log,set,macro</span>
+<span class="k">        </span>
+<span class="k">                  timer on</span> <span class="m">1</span>
+<span class="k">        </span>
+<span class="k">                  capture log close</span>
+<span class="k">                  log</span> using wk1<span class="m">.</span>ph<span class="m">.340.700</span><span class="o">-</span><span class="nv">`i&#39;</span>.log,<span class="k"> replace</span> 
+        
+                  cls 
+<span class="k">        </span>
+<span class="k">                  global</span> url https:<span class="o">//</span>data<span class="m">.</span>nber<span class="m">.</span>org<span class="o">/</span>mortality<span class="o">/</span>
+<span class="k">                  global</span> filename mort1959<span class="m">.</span>dta
+<span class="k">        </span>
+<span class="k">                  timer</span> off <span class="m">1</span>
+        
+    }
+<span class="k">    </span>
+<span class="k">              if</span> <span class="m">2</span> { <span class="c1">//timer,loop,data</span>
+<span class="k">        </span>
+<span class="k">                  timer on</span> <span class="m">2</span>
+<span class="k">        </span>
+<span class="k">                  forvalues</span> i=<span class="m">1959</span><span class="o">/</span><span class="m">1961</span> {
+<span class="k">            </span>
+<span class="k">                      use</span> <span class="s">&quot;</span><span class="vg">${url}</span><span class="nv">`i&#39;</span><span class="s">/mort</span><span class="nv">`i&#39;</span><span class="s">&quot;</span>,<span class="k"> clear</span> 
+<span class="k">                      save</span> y<span class="nv">`i&#39;</span>,<span class="k"> replace</span> 
+<span class="k">            </span>
+<span class="k">                  timer</span> off <span class="m">2</span>
+
+                  }
+        
+        
+        
+    }
+<span class="k">    </span>
+<span class="k">              if</span> <span class="m">3</span> { <span class="c1">//clear,append,save</span>
+<span class="k">    </span>
+<span class="k">                  timer on</span> <span class="m">3</span>
+<span class="k">        </span>
+<span class="k">                  clear</span> 
+<span class="k">                  forvalues</span> i=<span class="m">1959</span><span class="o">/</span><span class="m">1961</span> {
+<span class="k">            </span>
+<span class="k">                      append</span> using y<span class="nv">`i&#39;</span>
+            
+                  }
+<span class="k">         </span>
+<span class="k">                  save</span> mort<span class="m">.</span>usa,<span class="k"> replace</span> 
+<span class="k">        </span>
+<span class="k">                  timer</span> off <span class="m">3</span>
+        
+    }
+<span class="k">    </span>
+<span class="k">              if</span> <span class="m">4</span> {
+<span class="k">        </span>
+<span class="k">                  timer on</span> <span class="m">4</span>
+<span class="k">        </span>
+<span class="k">                  noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`(k)&#39;</span><span class="s">&quot;</span>
+<span class="k">                  noi lookfor</span> year
+<span class="k">                  g</span> deaths=<span class="m">1</span>
+<span class="k">                  </span>
+<span class="k">                  preserve</span> 
+<span class="k">                  collapse</span> (count) deaths,<span class="k"> by</span>(datayear)
+<span class="k">                     noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
+<span class="k">                     noi list</span> 
+                     #delimit ;
+<span class="k">                     line</span> deaths datayear, 
+<span class="k">                       sort</span> 
+                        ti(<span class="s">&quot;United States&quot;</span>)
+                        xti(<span class="s">&quot;Year&quot;</span>); 
+                     #delimit cr
+<span class="k">                  restore</span>
+<span class="k">        </span>
+<span class="k">                  noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
+<span class="k">                  timer</span> off <span class="m">4</span>
+        
+              }
+<span class="k">    </span>
+<span class="k">              if</span> <span class="m">5</span> {
+<span class="k">        </span>
+<span class="k">        </span>
+<span class="k">                  save</span> mort<span class="m">.</span>fig,<span class="k"> replace</span> 
+        
+                    
+              }
+<span class="k">    </span>
+<span class="k">    timer list</span> 
+<span class="k">    log close</span> 
+    
+    }
+    
+}
+</pre></div>
+</div>
+<p>output:
+<a class="reference download internal" download="" href="_downloads/9fd9729c43efac6cb122a65fbff89c9f/wk1.ph.340.700-qui.txt"><span class="xref download myst">quietly</span></a>
+<a class="reference download internal" download="" href="_downloads/9c674aa65999b6bf7cb14a254fd650bb/wk1.ph.340.700-noi.txt"><span class="xref download myst">noisily</span></a></p>
 </section>
 
     <script type="text/x-thebe-config">

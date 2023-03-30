@@ -4,13 +4,7 @@ Overview
 
 Write a `.do file` which imports data from [hw1.txt](hw1.txt) and performs the tasks described below. Name it `hw1.lastname.firstname.do` and it should create a log file called `hw1.lastname.firstname.log`. Your .do file should follow conventions for .do file structure described in [class: session pwd](eee.md). Make sure your log file displays only the output of interest. But do not submit your log files as part of the assignment.
 
-This dataset contains simulated data on registrants for the deceased donor kidney waitlist.
-
-Evaluation: Evaluation will be based on the log file produced when we run your script on our machines. Please follow the coding guidelines from class including structure, indentation, and annotation.
-
-Note – test your code repeatedly to make sure it doesn't crash! Points will be deducted if your code crashes.
-
-
+Evaluation will be based on the log file produced when we run your script on our machines. Please follow the coding guidelines from class including structure, indentation, and annotation.
 
 Codebook
 
@@ -26,6 +20,7 @@ Codebook
 | `female`            | Sex                                              | 0=No / 1=Yes         |
 | `received_kt`       | Patient eventually received a kidney transplant? | 0=No / 1=Yes         |
 
+This dataset contains simulated data on registrants for the deceased donor kidney waitlist.
 
 
 Questions

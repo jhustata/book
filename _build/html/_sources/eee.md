@@ -21,6 +21,9 @@ qui {
     
     if 1 { //linux,stata
     
+       capture log close
+       log using pwd.log, replace 
+    
        pwd
        ls -l
        clear
@@ -110,6 +113,8 @@ qui {
     if 5 { //missingness
         
     }
+    
+    log close
 }
 
 ```
