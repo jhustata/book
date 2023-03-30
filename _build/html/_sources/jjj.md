@@ -2,8 +2,7 @@
 
 Task:
 
-
-&nbsp;&nbsp;&nbsp; Using the resources available to you at the National Bureau of Economic Research (NBER), reproduce the twoway graph shown under the output link below.
+Using the resources available to you at the National Bureau of Economic Research (NBER), reproduce the twoway plot shown under the output link below.
 
 The Stata code provides several hints about how you may approach this challenge. Don't hesitate to ask questions on CoursePlus if you run into any trouble! 
 
@@ -19,7 +18,7 @@ Databases:
 Output:
 
 
-&nbsp;&nbsp;&nbsp; line [graph](mortality.png)
+&nbsp;&nbsp;&nbsp; [twoway](mortality.png)
 
    
 Hint:
