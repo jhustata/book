@@ -1,24 +1,22 @@
 # hw1
 
-**Due date: 11:59 p.m.,Friday, April 21, 2023 via CoursePlus dropbox**
+Overview
 
-### Overview
-
-write a `.do file` which imports data from [hw1.txt](hw1.txt) and performs the data cleaning / exploratory data analysis tasks described below. Your .do file must be called `hw1.lastname.firstname.do` and must create a log file called `hw1.lastname.firstname.log`. <u>Your .do file should follow conventions for .do file structure described in [class: session `pwd`](eee.md) </u>. Make sure your script will run on our machines, even if we are using a different version of Stata. Do not submit your log files as part of the assignment.
+Write a `.do file` which imports data from [hw1.txt](hw1.txt) and performs the tasks described below. Name it `hw1.lastname.firstname.do` and it should create a log file called `hw1.lastname.firstname.log`. Your .do file should follow conventions for .do file structure described in [class: session pwd](eee.md). Make sure your log file displays only the output of interest. But do not submit your log files as part of the assignment.
 
 This dataset contains simulated data on registrants for the deceased donor kidney waitlist.
 
-Evaluation: Evaluation will be based on the log file produced by your script. <u>***Your script may be run on a different dataset.***</u> Partial credit will be awarded if the output is wrong, so have your script print _something_ for every question. Make sure the output includes the question number as indicated. <u>Make sure to follow the coding guidelines from class</u>; for example, your script should include comments.
+Evaluation: Evaluation will be based on the log file produced when we run your script on our machines. Please follow the coding guidelines from class including structure, indentation, and annotation.
 
-**Note – test your code repeatedly to make sure it doesn't crash! Points will be deducted if your code crashes.**
+Note – test your code repeatedly to make sure it doesn't crash! Points will be deducted if your code crashes.
 
 
 
-### Codebook
+Codebook
 
-| **Variable**        | **Description**                                  | **Values**           |
+| Variable       | Description                                  | Values           |
 | ------------------- | ------------------------------------------------ | -------------------- |
-| **transplants.dta** |                                                  |                      |
+| transplants.dta |                                                  |                      |
 | `fake_id`           | Patient ID                                       | Numeric              |
 | `bmi`               | Body mass index (kg/m2)                          | Numeric              |
 | `dx`                | Primary diagnosis                                | String (see dataset) |
@@ -30,7 +28,7 @@ Evaluation: Evaluation will be based on the log file produced by your script. <u
 
 
 
-### Questions
+Questions
 
 **Question 1**. Print the following sentence: `Question 1: There are xxxx records in the dataset.` The `xxxx` should be replaced with the actual number of records in the dataset.
 
@@ -122,4 +120,4 @@ Hint: use one of the e-class scalars. We talked about e-class scalars in Lecture
 disp "Question 8: I estimate that it took me 6 hours to complete this assignment."
 ```
 
-Give an honest answer; this is just for our data collection purposes. Everyone who answers this question will receive full credit for this question. <u>However, this question is worth some points, so don't skip it!</u>
+Give an honest answer; this is just for our data collection purposes. Everyone who answers this question will receive full credit for this question. However, this question is worth some points, so don't skip it!
