@@ -1,6 +1,6 @@
 # twoway
 
-Task: video [for 340.700 wk1](https://jhjhm.zoom.us/rec/share/wQFdA9HfocN5RMJek5hpLG4sgbAV3uf2cQCG6zf1TtUvHtS7FTDsJyrxWQ0899Bu.-f2SVivW9gZBLA_t)
+[Task](https://jhjhm.zoom.us/rec/share/wQFdA9HfocN5RMJek5hpLG4sgbAV3uf2cQCG6zf1TtUvHtS7FTDsJyrxWQ0899Bu.-f2SVivW9gZBLA_t):
 
 Using the resources available to you at the National Bureau of Economic Research (NBER), reproduce the twoway plot shown under the output link below.
 
