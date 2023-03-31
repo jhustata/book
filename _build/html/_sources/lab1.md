@@ -1,5 +1,7 @@
 # lab1
 
+[transplants.dta](transplants.dta)
+
 This lab is optional; you are **NOT** required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be provided separately.
 
 1. Start Stata and open your do-file editor or your favorite text editor.
