@@ -1,0 +1,734 @@
+WEBVTT
+
+1
+00:00:03.170 --> 00:00:08.360
+Abimereki Muzaale: Welcome once again to advanced state of programming.
+
+2
+00:00:08.540 --> 00:00:23.730
+Abimereki Muzaale: I apologize for not having recorded our first session on Tuesday. So this is going to be a brief video that's just gonna highlight the points I made, and also just to give you a little more support towards your week's task.
+
+3
+00:00:28.670 --> 00:00:30.440
+Abimereki Muzaale: So to recap
+
+4
+00:00:31.130 --> 00:00:44.130
+Abimereki Muzaale: a lot of the chorus. Content is going to be embedded in this book, which is share with 3 4,600 class. A few of you are enrolled in that class. So that's not a problem.
+
+5
+00:00:45.810 --> 00:00:53.620
+Abimereki Muzaale: a reminder that your ta is here.
+
+6
+00:00:55.700 --> 00:00:59.120
+Abimereki Muzaale: So 3, 4,700. You have, Jason.
+
+7
+00:01:00.150 --> 00:01:01.860
+Abimereki Muzaale: and then Monday
+
+8
+00:01:03.610 --> 00:01:09.760
+Abimereki Muzaale: you'll have office hours between 3, 30 and 4 30. Jason says that this is a great opportunity
+
+9
+00:01:09.800 --> 00:01:24.460
+Abimereki Muzaale: to you know. Talk about the week's task before the class on Tuesday. It's not going to be hard deadlines with this class. It's going to be like a seminar, you know. Just think of it as a seminar on numbers a small
+
+10
+00:01:24.480 --> 00:01:27.960
+Abimereki Muzaale: and so there'll be a little more intimate interaction.
+
+11
+00:01:28.040 --> 00:01:32.100
+Abimereki Muzaale: So if your task is now ready by
+
+12
+00:01:32.300 --> 00:01:50.580
+Abimereki Muzaale: by the next class, your main disadvantage will be that we'll be giving you another task. So you have 2 tasks. Then, if you keep accumulating tasks, you not benefit as much as the rest of your classmates, so try to do as much as you can, but don't spend too much time. Don't feel stuck
+
+13
+00:01:50.580 --> 00:01:56.030
+because it's only one credit unit, and Don't spend too much time. Just go to the discussion for
+
+14
+00:01:56.450 --> 00:02:10.419
+Abimereki Muzaale: and raise some questions. I I even posted something yesterday because on the discussion Forum, because no one had posted anything yet. I've spoken with some of you, and you're having a hard time with the assignment.
+
+15
+00:02:10.449 --> 00:02:12.000
+Abimereki Muzaale: So that means
+
+16
+00:02:12.030 --> 00:02:21.840
+Abimereki Muzaale: that the discussion for is not being used, or you're too shy to share your concerns, but should not be shy. There's nothing to gain from that.
+
+17
+00:02:22.570 --> 00:02:36.320
+Abimereki Muzaale: so that's it. Every week is going to be a task. And if we look back at here at the syllabus. I what did we promise to give you
+
+18
+00:02:37.090 --> 00:02:42.270
+Abimereki Muzaale: advanced data, syntax? You gonna get that? Yeah.
+
+19
+00:02:43.480 --> 00:02:47.140
+Abimereki Muzaale: something about simulations. You're going to get that
+
+20
+00:02:48.590 --> 00:02:51.180
+Abimereki Muzaale: powerful and flexible programs
+
+21
+00:02:51.210 --> 00:02:58.780
+Abimereki Muzaale: to automate analytic tasks. You're going to get that. The first assignment is actually pushing it in that direction
+
+22
+00:02:58.920 --> 00:03:12.200
+Abimereki Muzaale: of writing something actually very simple program, but automating a task of getting data sets from 1959 through to 2710 with just one of it. Just one loop, you know.
+
+23
+00:03:12.390 --> 00:03:22.240
+Abimereki Muzaale: Optimize code for faster on time and memory. minimal memory to usage. Now, that is one of the key things this task is about.
+
+24
+00:03:22.390 --> 00:03:25.210
+Abimereki Muzaale: It is about runtime.
+
+25
+00:03:25.230 --> 00:03:28.890
+Abimereki Muzaale: It's about memory and the capability of your version of data.
+
+26
+00:03:29.580 --> 00:03:36.510
+Abimereki Muzaale: Then a generating hypertext using data. So HTML late tech.
+
+27
+00:03:36.640 --> 00:03:45.660
+Abimereki Muzaale: so we'll get into this. This. The things outline in the syllabus are things that we're going to achieve in a very very short time.
+
+28
+00:03:45.780 --> 00:03:57.680
+Abimereki Muzaale: but I want you to be more fun, more engaging. I know you're new to the class. Some of you are very new to this kind of programming. So you were bold enough to sign up an advanced class. We just did you not regret it?
+
+29
+00:03:59.120 --> 00:04:02.090
+Abimereki Muzaale: Okay, so let's just go
+
+30
+00:04:02.510 --> 00:04:11.400
+Abimereki Muzaale: briefly over. I'm going to the 2 way. Chapter I wrote some notes for you here that you've got a task.
+
+31
+00:04:11.810 --> 00:04:19.649
+Abimereki Muzaale: Use the resources available available to you. That's n we are national beer of economic research website
+
+32
+00:04:21.660 --> 00:04:22.830
+Abimereki Muzaale: and
+
+33
+00:04:22.930 --> 00:04:29.930
+Abimereki Muzaale: reproduce the plot that's shown under here some by right click, this you'll be able to see the plot here.
+
+34
+00:04:34.010 --> 00:04:34.820
+Abimereki Muzaale: Yeah.
+
+35
+00:04:35.010 --> 00:04:39.400
+Abimereki Muzaale: So you just reproduce this, and it's a 2 way plot. Why is it 2? A.
+
+36
+00:04:39.500 --> 00:04:50.340
+Abimereki Muzaale: Because it's just 2 variables involved this year? So you you values from 1,959 through 2,017. So that's one variable. and another variable is
+
+37
+00:04:50.390 --> 00:04:52.890
+Abimereki Muzaale: number up. Yes.
+
+38
+00:04:53.830 --> 00:05:02.650
+Abimereki Muzaale: so you can use a scatter plot. You can use whatever. I decided to use a line plot. There is a mistake in this figure.
+
+39
+00:05:02.690 --> 00:05:07.410
+Abimereki Muzaale: I don't know if you guys can notice, but it should not bother anyone.
+
+40
+00:05:10.610 --> 00:05:11.700
+Abimereki Muzaale: Okay.
+
+41
+00:05:15.540 --> 00:05:18.750
+Abimereki Muzaale: Well. let's get back to the figure once again.
+
+42
+00:05:20.560 --> 00:05:25.980
+Abimereki Muzaale: This scale is in millions, because if this is thousands
+
+43
+00:05:26.730 --> 00:05:38.840
+Abimereki Muzaale: and there's a 1,000. That means there's a 1 million. It's about 1.6 million deaths. And here we about 2.8 million in 2710. So you're gonna be importing huge data sets.
+
+44
+00:05:39.530 --> 00:05:41.490
+Abimereki Muzaale: and that is
+
+45
+00:05:42.580 --> 00:05:47.090
+Abimereki Muzaale: going to address one of the things mentioned in the syllabus. Yeah.
+
+46
+00:05:47.540 --> 00:05:53.290
+Abimereki Muzaale: it's got to deal with speed, runtime usage
+
+47
+00:05:53.580 --> 00:06:00.910
+Abimereki Muzaale: and memory. And you know your data Capability is not your capability to the capability of your state of version?
+
+48
+00:06:01.270 --> 00:06:09.790
+Abimereki Muzaale: Those are the things that are going to be put to test. Then we'll see how to get more efficient about this. Okay. Now.
+
+49
+00:06:11.900 --> 00:06:14.790
+Abimereki Muzaale: I have shared what I think is very helpful.
+
+50
+00:06:16.310 --> 00:06:21.500
+Abimereki Muzaale: This is code that even if you can't understand it. if you just copy
+
+51
+00:06:22.970 --> 00:06:25.300
+Abimereki Muzaale: and paste it into a do file.
+
+52
+00:06:27.920 --> 00:06:33.920
+Abimereki Muzaale: why should we call this new file? We're calling out log file week one
+
+53
+00:06:35.080 --> 00:06:39.430
+Abimereki Muzaale: required for public health 340 dot 700.
+
+54
+00:06:40.510 --> 00:06:41.910
+Abimereki Muzaale: I think that's a good name.
+
+55
+00:06:42.910 --> 00:06:47.490
+Abimereki Muzaale: so we'll give that same name to our defile. save
+
+56
+00:06:50.640 --> 00:06:54.630
+Abimereki Muzaale: that you I'm going to save my my desktop
+
+57
+00:07:00.540 --> 00:07:01.210
+and
+
+58
+00:07:02.400 --> 00:07:04.590
+Abimereki Muzaale: I'm: Good. Okay.
+
+59
+00:07:05.940 --> 00:07:14.300
+Abimereki Muzaale: i'm going to run. So our notes are saying. But here's the data. This is the output one to
+
+60
+00:07:14.430 --> 00:07:23.210
+Abimereki Muzaale: reproduce. And this is a hint, a hint as to how to reproduce that. And quite frankly, this is way more than a he pretty much
+
+61
+00:07:23.370 --> 00:07:26.020
+Abimereki Muzaale: giving you the solution
+
+62
+00:07:27.390 --> 00:07:29.140
+Abimereki Muzaale: a good ch of the solution.
+
+63
+00:07:33.540 --> 00:07:34.620
+Abimereki Muzaale: So
+
+64
+00:07:35.950 --> 00:07:37.410
+Abimereki Muzaale: i'm gonna hit 2.
+
+65
+00:07:39.570 --> 00:07:44.010
+Abimereki Muzaale: I can either quick do here for.
+
+66
+00:07:44.680 --> 00:07:46.850
+Abimereki Muzaale: because if I type
+
+67
+00:07:49.660 --> 00:07:51.080
+Abimereki Muzaale: hewd
+
+68
+00:07:52.390 --> 00:07:58.090
+Abimereki Muzaale: it should tell me my current working directory is my downloads.
+
+69
+00:07:58.710 --> 00:08:12.580
+Abimereki Muzaale: but I just downloaded and let's see, is there anything in my downloads? This is a command. Good! It displays what's in your present work Directory is nothing. My downloads because I just
+
+70
+00:08:12.690 --> 00:08:17.350
+Abimereki Muzaale: created a do file and saved it in my user my desktop.
+
+71
+00:08:22.040 --> 00:08:25.290
+Abimereki Muzaale: Oh, good heavens! So change direct to me
+
+72
+00:08:28.590 --> 00:08:36.970
+Abimereki Muzaale: All right now. I'm gonna check the contents. So we have one file in my desktop, and it's right there.
+
+73
+00:08:38.260 --> 00:08:42.250
+Abimereki Muzaale: So I mean I have it right here. It's open so I can hit do.
+
+74
+00:08:43.299 --> 00:08:51.100
+Abimereki Muzaale: But I just wanted to show you that I can actually just also write the command, do you? Who do?
+
+75
+00:08:53.050 --> 00:08:55.230
+Abimereki Muzaale: I think I hit it twice?
+
+76
+00:08:57.030 --> 00:09:01.350
+Abimereki Muzaale: Now, what's going on? Can you look at this progress bar at the bottom.
+
+77
+00:09:02.680 --> 00:09:03.970
+Abimereki Muzaale: It's loading data
+
+78
+00:09:07.940 --> 00:09:09.450
+Abimereki Muzaale: data from where.
+
+79
+00:09:10.510 --> 00:09:16.940
+Abimereki Muzaale: since you can't read the code, maybe you can't. but I can point you to line
+
+80
+00:09:18.050 --> 00:09:19.440
+Abimereki Muzaale: 14.
+
+81
+00:09:21.090 --> 00:09:25.380
+Abimereki Muzaale: There is a URL. So
+
+82
+00:09:25.660 --> 00:09:31.660
+Abimereki Muzaale: and you are all pointing to the national bureaucratic research website
+
+83
+00:09:31.800 --> 00:09:35.670
+Abimereki Muzaale: specifically to information or mortality on that website.
+
+84
+00:09:37.500 --> 00:09:38.700
+Abimereki Muzaale: And
+
+85
+00:09:45.160 --> 00:09:47.100
+Abimereki Muzaale: if we look at line.
+
+86
+00:09:48.860 --> 00:09:55.030
+Abimereki Muzaale: Oh, behold, if you look at line. I just wanted to point you to something that just happened.
+
+87
+00:09:55.180 --> 00:10:07.080
+Abimereki Muzaale: If you look at my desktop and log file, you remember those just to do file. Now there's a log file and a data set that says year, or 1,900 and 59 that Dta.
+
+88
+00:10:07.250 --> 00:10:08.680
+Abimereki Muzaale: Where do that come from?
+
+89
+00:10:10.090 --> 00:10:11.380
+Abimereki Muzaale: I'll show you
+
+90
+00:10:12.790 --> 00:10:17.300
+Abimereki Muzaale: i'll show you. There's a line 28
+
+91
+00:10:20.010 --> 00:10:23.430
+Abimereki Muzaale: that says, save y I
+
+92
+00:10:23.650 --> 00:10:29.480
+Abimereki Muzaale: see that I with the back quote. Then it for quote
+
+93
+00:10:30.820 --> 00:10:40.940
+Abimereki Muzaale: we see here. It appears in pink. That is a local macro. Wherever you see it back, something in within back code a for quote
+
+94
+00:10:41.830 --> 00:10:49.750
+Abimereki Muzaale: it's in my local Macro, behold another data says it just appeared popped up here. Why, 1,960 d
+
+95
+00:10:50.270 --> 00:10:52.810
+Abimereki Muzaale: Yeah. So that's again
+
+96
+00:10:52.820 --> 00:10:56.320
+Abimereki Muzaale: line 28 over and over again. So there's a loop.
+
+97
+00:10:56.720 --> 00:11:10.440
+Abimereki Muzaale: and the loop is right here. Yeah, for values. I so you're defining I. You can put anything, any letter here or any word. and then state it will be like, oh, you just to find a local macro
+
+98
+00:11:10.520 --> 00:11:17.880
+Abimereki Muzaale: which has the values 1,959 through to 1,961, and then we open braces.
+
+99
+00:11:18.400 --> 00:11:37.670
+Abimereki Muzaale: and we in Dent we see all this block of code is going to be run over and over for values 1959 until rich 61. So it's going to go with we've got in Why, 1,959. Why, 1,960 we're getting Why, 1,961 and that'd be it
+
+100
+00:11:39.080 --> 00:11:43.800
+Abimereki Muzaale: so the command is use 1,961 done
+
+101
+00:11:43.940 --> 00:11:47.850
+Abimereki Muzaale: output. So I witnessed that in real time.
+
+102
+00:11:49.140 --> 00:11:50.050
+Abimereki Muzaale: Yeah.
+
+103
+00:11:51.320 --> 00:11:53.880
+Abimereki Muzaale: let's continue what we're saying.
+
+104
+00:11:53.980 --> 00:11:56.970
+Abimereki Muzaale: So the the do file is done. End up to file.
+
+105
+00:11:58.290 --> 00:12:03.160
+Abimereki Muzaale: So let's just continue analyzing the one statement. Use something
+
+106
+00:12:03.360 --> 00:12:04.310
+Abimereki Muzaale: clear.
+
+107
+00:12:04.350 --> 00:12:13.490
+Abimereki Muzaale: So you you must be familiar with this, so use a URL. You can use it the URL, and it's in braces with the dollar sign.
+
+108
+00:12:13.620 --> 00:12:15.490
+Abimereki Muzaale: Since the dollar sign.
+
+109
+00:12:15.540 --> 00:12:25.000
+Abimereki Muzaale: That means it's a global macro. You define a global macro. We'll just we'll talk about Macros. You find a global microc called URL,
+
+110
+00:12:25.210 --> 00:12:28.700
+Abimereki Muzaale: and the Dollar Sign tells data. Whatever follows here
+
+111
+00:12:29.450 --> 00:12:34.360
+Abimereki Muzaale: Limited within braces is the global macro. So, Stata, is this reading?
+
+112
+00:12:34.430 --> 00:12:47.510
+Abimereki Muzaale: Use that URL from, and the National Beer and Economic Research website and the URL continues it doesn't, Stop there, forward, slush.
+
+113
+00:12:48.010 --> 00:12:53.770
+Abimereki Muzaale: I So that actually your is this for a slash.
+
+114
+00:12:53.960 --> 00:12:58.970
+Abimereki Muzaale: I so I will be 1959 initially for slash mort
+
+115
+00:12:59.160 --> 00:13:06.240
+Abimereki Muzaale: for a swush. if you Yes, more 1,959 dot bta.
+
+116
+00:13:07.920 --> 00:13:11.870
+We didn't specify dt about state in those when you use the use statement
+
+117
+00:13:12.100 --> 00:13:24.610
+Abimereki Muzaale: it's a died dta comma clear so it imports that the reason it's too long to pretty import 3 files because they're huge. Then look at this numbers. You know that's 1.6 million.
+
+118
+00:13:24.940 --> 00:13:31.510
+Abimereki Muzaale: 1.7 million. So it was taken while loading each data set. It's a total over 5 million.
+
+119
+00:13:32.540 --> 00:13:43.200
+Abimereki Muzaale: So it loads One data set, saves it as Why the year? Why 59, 1,959? Why 1,960? Why, 1,961, so it does one at a time.
+
+120
+00:13:44.130 --> 00:13:48.080
+Abimereki Muzaale: and we have a timer. Yeah, it's timing this stuff
+
+121
+00:13:48.100 --> 00:13:51.710
+Abimereki Muzaale: when it started, and when it ended, so it gets here
+
+122
+00:13:51.790 --> 00:13:53.120
+Abimereki Muzaale: and loops back.
+
+123
+00:13:54.110 --> 00:13:57.900
+Abimereki Muzaale: So 59 does everything. I is 59
+
+124
+00:13:58.240 --> 00:14:06.430
+Abimereki Muzaale: where it finishes. I become 60 finishes. I become 61 and state it will know that's the last one. Then it goes down here
+
+125
+00:14:09.520 --> 00:14:11.080
+Abimereki Muzaale: Here, there's another loop
+
+126
+00:14:12.530 --> 00:14:23.560
+Abimereki Muzaale: here is again a loop. It says, Clear clear everything in the memory for values. I 1959 to 1,961
+
+127
+00:14:23.710 --> 00:14:30.130
+Abimereki Muzaale: a PIN. So now you're not creating datas, they exist. They're right there and append
+
+128
+00:14:32.470 --> 00:14:45.570
+Abimereki Muzaale: using 59, 66 to one. So that happens really fast. See that as more that U.S.A. So we can see a file here called more dot U.S.A.
+
+129
+00:14:47.300 --> 00:14:49.640
+Abimereki Muzaale: I think I made a mistake in the code.
+
+130
+00:14:50.090 --> 00:14:53.970
+Abimereki Muzaale: This should be more U.S.A.:
+
+131
+00:14:54.380 --> 00:15:01.970
+Abimereki Muzaale: So there's a problem in there. Oh. any who it goes on. Use this output
+
+132
+00:15:02.770 --> 00:15:06.840
+Abimereki Muzaale: noisily. Display number of deaths. This is a macro
+
+133
+00:15:07.940 --> 00:15:11.290
+Abimereki Muzaale: that holds the number of observations in the data set
+
+134
+00:15:13.590 --> 00:15:26.830
+Abimereki Muzaale: at this point is 3 observations in the data set. And why are they 3 instead of 5 million or so. We'll understand later, and number of observations 2. And we can see 3 observations, 2 variables.
+
+135
+00:15:27.840 --> 00:15:31.730
+Abimereki Muzaale: But that's because we preserved the data set
+
+136
+00:15:31.950 --> 00:15:33.400
+Abimereki Muzaale: collapsed.
+
+137
+00:15:33.620 --> 00:15:36.840
+Abimereki Muzaale: counted the number of deaths by year.
+
+138
+00:15:37.030 --> 00:15:47.820
+Abimereki Muzaale: So there's only 3 years. So on the 3 observations, because it collapsed everything. and you got the count of number of deaths and listed. That's the out what we're seeing here. List.
+
+139
+00:15:49.750 --> 00:15:53.540
+Abimereki Muzaale: Then we created a graph based on this information here.
+
+140
+00:15:53.990 --> 00:16:00.080
+Abimereki Muzaale: and that graph is right here only 3 years, because information from 1,959,
+
+141
+00:16:00.480 --> 00:16:04.440
+Abimereki Muzaale: 1960, 1961, maybe it
+
+142
+00:16:04.620 --> 00:16:16.350
+Abimereki Muzaale: the scatterplay. Would it be more accurate the line makes it feel like this information between you which is wrong. and I can see on the Y-axis is the numbers. So Does this look like the graph
+
+143
+00:16:16.490 --> 00:16:21.400
+Abimereki Muzaale: the two-way plot that you're required to produce. Of course it does. It's 2 way
+
+144
+00:16:21.850 --> 00:16:26.000
+Abimereki Muzaale: years and the x-axis. And now it does on the y-axis.
+
+145
+00:16:26.080 --> 00:16:36.410
+Abimereki Muzaale: Now. all you have to do is edit this loop start from 59 to 2710 of course as you can tell
+
+146
+00:16:36.420 --> 00:16:42.750
+Abimereki Muzaale: from the timers here. I must have missed here. I forgot to do this timer noisily.
+
+147
+00:16:43.340 --> 00:16:47.430
+Abimereki Muzaale: Let's do timer. I'm our list.
+
+148
+00:16:49.560 --> 00:16:57.210
+Abimereki Muzaale: So we can see. That it took 52 s to load you do the block of code Number 2
+
+149
+00:16:58.490 --> 00:17:03.460
+Abimereki Muzaale: block of code number 2. So this is the longest block of code.
+
+150
+00:17:04.880 --> 00:17:05.730
+Abimereki Muzaale: Yeah.
+
+151
+00:17:11.480 --> 00:17:14.040
+Abimereki Muzaale: Just trying to collapse is that it can read better.
+
+152
+00:17:15.390 --> 00:17:27.040
+Abimereki Muzaale: So it's 2, the timer on loop, and import the importing of the data that you the most time a minute. So that gives you a sense that if it takes a minute.
+
+153
+00:17:27.079 --> 00:17:29.400
+Abimereki Muzaale: But this my Internet, speed July.
+
+154
+00:17:30.200 --> 00:17:34.470
+Abimereki Muzaale: an upload of data of 3 3 years in a minute.
+
+155
+00:17:34.620 --> 00:17:37.090
+Abimereki Muzaale: So you can do a crude calculation
+
+156
+00:17:37.510 --> 00:17:40.490
+Abimereki Muzaale: of how long it might take you to log from
+
+157
+00:17:40.540 --> 00:17:42.090
+Abimereki Muzaale: 2,017
+
+158
+00:17:44.140 --> 00:17:49.710
+Abimereki Muzaale: to from 1,517 there's. A 58 data sets right.
+
+159
+00:17:51.130 --> 00:17:52.440
+Abimereki Muzaale: So
+
+160
+00:17:56.730 --> 00:18:00.090
+Abimereki Muzaale: if one data set is taking about
+
+161
+00:18:01.560 --> 00:18:09.570
+Abimereki Muzaale: taking about 52 divided by 3 s. this one data set
+
+162
+00:18:10.070 --> 00:18:18.960
+Abimereki Muzaale: 58 data sets. This is courage, but it gives you a bulp. It's about a 1,000 s. Of course the data sets are going to get larger with time and may take longer.
+
+163
+00:18:19.380 --> 00:18:25.300
+Abimereki Muzaale: Bye. we need. It starts from summer, our crew calculation from somewhere.
+
+164
+00:18:25.530 --> 00:18:35.520
+Abimereki Muzaale: So to get this in the sense of minutes, you can take 7 10 min, so maybe make grab a make, a cup of coffee or warm water, or something.
+
+165
+00:18:35.610 --> 00:18:40.570
+Abimereki Muzaale: Oh, you know, may maybe get something to watch and take the while this goes on
+
+166
+00:18:41.810 --> 00:18:46.880
+for the 16 min. You can't be staring at data waiting for results for 16 min.
+
+167
+00:18:47.600 --> 00:18:52.670
+Abimereki Muzaale: and that's just the crude estimates, probably more than that, because, as you can see.
+
+168
+00:18:55.750 --> 00:18:57.990
+Abimereki Muzaale: the number of deaths increase.
+
+169
+00:18:59.410 --> 00:19:00.930
+Abimereki Muzaale: they do increase.
+
+170
+00:19:01.120 --> 00:19:04.680
+Abimereki Muzaale: So it's so. This data sets a much smaller.
+
+171
+00:19:04.880 --> 00:19:15.760
+Abimereki Muzaale: almost twice the size here. So this is a very conservative estimate of how long it's gonna take. Yeah, let's just say it's gonna take twice the time.
+
+172
+00:19:16.510 --> 00:19:25.330
+Abimereki Muzaale: and that' be through this half an hour. Okay. So the issues of time. if you move to the syllabus.
+
+173
+00:19:26.900 --> 00:19:30.170
+Abimereki Muzaale: Yeah. it is a runtime.
+
+174
+00:19:32.380 --> 00:19:43.640
+Abimereki Muzaale: The other issue that we kind of took about until you're successful, or until you failed is memory. Some of your programs may crash. They just can't handle the number of observations.
+
+175
+00:19:43.970 --> 00:19:47.640
+Abimereki Muzaale: because here we only run 3 years in where I
+
+176
+00:19:49.220 --> 00:19:50.730
+Abimereki Muzaale: sympathize.
+
+177
+00:19:51.810 --> 00:19:55.950
+Abimereki Muzaale: or if I say. display cn
+
+178
+00:19:58.550 --> 00:20:00.010
+Abimereki Muzaale: look, we 5 million.
+
+179
+00:20:00.670 --> 00:20:08.350
+Abimereki Muzaale: so that's gonna grow. as you see, exponentially every decade. And so
+
+180
+00:20:08.370 --> 00:20:16.840
+Abimereki Muzaale: probably your computer will crash it. Your computer is stated. And that's the point when I see the limits and then try to build the features around that.
+
+181
+00:20:17.950 --> 00:20:26.510
+Abimereki Muzaale: So you'll need Jason a Monday if you have any questions about this homework. I've pretty much given you the clue to the general issue of hand.
+
+182
+00:20:27.870 --> 00:20:34.490
+Abimereki Muzaale: and and so let's see how this goes. Looking forward to seeing you, or hearing from your discussion from.
+
+183
+00:20:34.680 --> 00:20:37.570
+Abimereki Muzaale: I was singing in Tuesday. bye, bye.
+
