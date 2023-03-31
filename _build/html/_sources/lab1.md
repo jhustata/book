@@ -10,8 +10,9 @@ This lab is optional; you are **NOT** required to complete these questions. Plea
 
 3. We want to load `transplants.dta`. But before that, let’s check your working directory. See the bottom left side of the console (the main Stata window). You may also type `pwd` on the console. Is it where your `transplants.dta` is located? If not, use one of these two methods:
 
-&nbsp;&nbsp;&nbsp; 1) Next time, launch Stata by double-clicking on `transplants.dta`.
-&nbsp;&nbsp;&nbsp; 2) Type `cd c:/your/actual/path` on the console (NOT in your do file). 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a) Next time, launch Stata by double-clicking on `transplants.dta`.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b) Type `cd c:/your/actual/path` on the console (NOT in your do file). 
     
 4. Now let’s get back to your do file. Load `transplants.dta`
 
