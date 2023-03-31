@@ -38,7 +38,7 @@ Teaching assistants
 
 Optional labs
 
-1. M 9:30-10:30 am
+1. M [9:30-10:30 am](lab1.md)
 2. T 10:00-11:00 am
 3. W 3:00-4:00 pm
 4. Th 6:00-7:00 pm
