@@ -3,8 +3,9 @@
 
 We hereby commence session 1! 
 
-[video1](https://www.dropbox.com/s/48fj0pwkiaa3s2x/pwd1.mp4?dl=0) 
-[video2](https://www.dropbox.com/s/kekomb6z1ht7jbj/pwd2.mp4?dl=0)
+&nbsp;&nbsp;&nbsp; [video1](https://www.dropbox.com/s/lvbn9c2xle8qpln/pwd1.mp4?dl=0?raw=1) 
+
+&nbsp;&nbsp;&nbsp; [video2](https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1)
 
 First, some [cool commands](https://www.stata.com/manuals13/u27.pdf):
 
@@ -16,7 +17,7 @@ These three things make the script readable
 
 You will lose points in your [homework](hw1.md) if you neglect these three things!
 
-Some other day we will talk about missigness [^3]
+We will later discuss how missing data affect the accuracy of the parameters estimated in Table 1. [^3]
 
 ```stata
 
@@ -122,4 +123,4 @@ qui {
 
 ```
 
-[^3]: Simulate missingess of DMARETHN and assess impact on output
+[^3]: We will simulate missingess of DMARETHN and assess the impact on Table 1

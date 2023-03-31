@@ -139,12 +139,16 @@ Your .do file should include only one `import sasxport5` statement.
 
 1. Jason Haw [M 3:30-4:30 pm](https://JHUBlueJays.zoom.us/j/91524920312?pwd=MlVLNVpObGNWRzZKTUNzVVNFM2djQT09)
 
+#
+
 Academic integrity
 
 1. Collaboration is **strongly** encouraged
 2. You should have a Github account (optional)
 3. Submit your own work, acknowledging any other contributors
 4. Please do cite sources of code snippets
+
+#
 
 [^1]: see chapter: [`net search`](zzz.md) for source code
 [^2]: see chapter: [`net search`](zzz.md) for more on NHANES
