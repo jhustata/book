@@ -3,8 +3,8 @@
 
 We hereby commence session 1! 
 
-[video1](pwd1.mp4) 
-[video2](pwd2.mp4)
+[video1](https://www.dropbox.com/s/48fj0pwkiaa3s2x/pwd1.mp4?dl=0) 
+[video2](https://www.dropbox.com/s/kekomb6z1ht7jbj/pwd2.mp4?dl=0)
 
 First, some [cool commands](https://www.stata.com/manuals13/u27.pdf):
 
