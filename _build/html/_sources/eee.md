@@ -1,7 +1,10 @@
 
 # pwd
 
-We hereby commence session 1! [video1](340.600 Stata Programming 03_30 Part A.mp4) [video](340.600 Stata Programming 03_30 Part B.mp4)
+We hereby commence session 1! 
+
+[video1](pwd1.mp4) 
+[video2](pwd2.mp4)
 
 First, some [cool commands](https://www.stata.com/manuals13/u27.pdf):
 
