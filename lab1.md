@@ -1,6 +1,9 @@
-# lab1 (zoom link coming soon)
+# lab1 
 
 [transplants.dta](transplants.dta)
+
+
+zoom links: M T W Th F
 
 Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. An answer key will be provided on Friday April 7, 2023.
 
@@ -12,7 +15,7 @@ Please use this lab as an opportunity to review the course material and prepare 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a) Next time, launch Stata by double-clicking on `transplants.dta`.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b) Type `cd c:/your/actual/path` (windows OS) on the console (NOT in your do file). In class and on my Mac OS my directory was `/Users/d/desktop`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b) Type `cd c:\your\actual\path` (windows OS) on the console (NOT in your do file). In class and on my Mac OS my directory was `/Users/d/desktop`
     
 4. Now let’s get back to your do file. Load `transplants.dta` (double-click on the file or type `use transplants.dta, clear`
 
