@@ -124,3 +124,7 @@ qui {
 ```
 
 [^3]: We will simulate missingess of DMARETHN and assess the impact on Table 1
+
+<iframe src="https://www.dropbox.com/s/lvbn9c2xle8qpln/pwd1.mp4?dl=0?raw=1" width="480" height="256" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/KyAiw21i0epoR8tQ59"></a></p>
+
+<iframe src="https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1" width="480" height="256" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/KyAiw21i0epoR8tQ59"></a></p>
