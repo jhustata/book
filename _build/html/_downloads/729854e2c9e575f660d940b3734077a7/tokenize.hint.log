@@ -1,0 +1,74 @@
+
+c-class command: c(alpha) & c(ALPHA): 
+
+a b c d e f g h i j k l m n o p q r s t u v w x y z
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+
+E
+
+G
+H
+I
+
+a
+b
+c
+d
+e
+f
+g
+h
+i
+j
+k
+l
+m
+n
+o
+p
+q
+r
+s
+t
+u
+v
+w
+x
+y
+z
+
+letter 1 is a
+letter 2 is b
+letter 3 is c
+letter 4 is d
+letter 5 is e
+letter 6 is f
+letter 7 is g
+letter 8 is h
+letter 9 is i
+letter 10 is j
+letter 11 is k
+letter 12 is l
+letter 13 is m
+letter 14 is n
+letter 15 is o
+letter 16 is p
+letter 17 is q
+letter 18 is r
+letter 19 is s
+letter 20 is t
+letter 21 is u
+letter 22 is v
+letter 23 is w
+letter 24 is x
+letter 25 is y
+letter 26 is z
+
+HINT: bonus point challenge in chapter: tokenize
+DEMO.XPT
+DEMO_B.XPT
+DEMO_C.XPT
+
+   1:      0.00 /        1 =       0.0010
+   2:      0.00 /        1 =       0.0010
+   3:      9.16 /        1 =       9.1570

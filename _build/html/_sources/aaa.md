@@ -133,6 +133,12 @@ Your .do file should include only one `import sasxport5` statement.
 `Search` this book for the `import sasxport5` command. Up to 1.5 bonus points
 ```
 
+Hint:
+
+[tokenize.hint.do](tokenize.hint.do)
+
+[tokenize.hint.log](tokenize.hint.log)
+
 #
 
 340.700
