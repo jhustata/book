@@ -15,7 +15,7 @@ Lookout for `structure`, `indentation`, `annotation`
 
 These three things make the script readable 
 
-You will lose points in your [homework](hw1.md) if you neglect these three things!
+You will lose points in your [homework](hw1.md) if you neglect these [three things](dofilestructure.pdf)!
 
 We will later discuss how missing data affect the accuracy of the parameters estimated in Table 1. [^3]
 
