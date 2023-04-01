@@ -2,7 +2,7 @@
 
 Overview
 
-Write a `.do file` which imports data from [hw1.txt](hw1.txt) and performs the tasks described below. Name it `hw1.lastname.firstname.do` and it should create a log file called `hw1.lastname.firstname.log`. Your .do file should follow conventions for .do file structure described in [class: session pwd](eee.md) (![in brief](http://www.giphy.com/gifs/0CblNanyL34IlWtSzx)). Make sure your log file displays only the output of interest. But do not submit your log files as part of the assignment.
+Write a `.do file` which imports data from [hw1.txt](hw1.txt) and performs the tasks described below. Name it `hw1.lastname.firstname.do` and it should create a log file called `hw1.lastname.firstname.log`. Your .do file should follow conventions for .do file structure described in [class: session pwd](eee.md) ![in brief](http://www.giphy.com/gifs/0CblNanyL34IlWtSzx). Make sure your log file displays only the output of interest. But do not submit your log files as part of the assignment.
 
 Evaluation will be based on the log file produced when we run your script on our machines. Please follow the coding guidelines from class including structure, indentation, and annotation.
 
