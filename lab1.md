@@ -1,5 +1,9 @@
 # lab1 
 
+video: [tutorial](https://jhjhm.zoom.us/rec/share/XjpGCpJkfYBIATTHMS93sFQmjJRdrFatmiWe-9JmYjNOSWHINrmbkqQK1amABUUQ.2bvUmmqBZ0dMd3LD?startTime=1680430835000)
+[lab1.do](lab1.do)
+[lab1.log](lab1.log)
+
 data: [transplants.dta](transplants.dta) 
 
 zoom links: [M](https://JHUBlueJays.zoom.us/j/96760923747) T [W](https://jhubluejays.zoom.us/j/98628544091?pwd=ZGx5NTN1RHNzNDUrQ3c3Uys0RVYrUT09) [Th](https://JHUBlueJays.zoom.us/j/3393703103) F
