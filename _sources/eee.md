@@ -124,7 +124,7 @@ qui {
 ```
 #
 
-Indentation in [VS Code](indentation.jpeg)
+Indentation in [VS Code](indentation.jpg)
 
 #
 
