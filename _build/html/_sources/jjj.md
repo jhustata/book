@@ -132,6 +132,8 @@ logfiles:
 
 &nbsp;&nbsp;&nbsp; [noisily](wk1.ph.340.700-noi.txt)
 
-bonus .dofile:
+bonus .dofiles: spot the difference
 
 &nbsp;&nbsp;&nbsp; [if 10 {](debugging.do)
+
+&nbsp;&nbsp;&nbsp; [if 10 {](debugging_v2.do)
