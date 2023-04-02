@@ -160,7 +160,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="aaa.html">tokenize</a></li>
 
 
+
+
 <li class="toctree-l1"><a class="reference internal" href="bbb.html">quietly</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="ccc.html">delimit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ddd.html">rnormal()</a></li>
 
@@ -379,21 +383,25 @@ document.write(`
 <p>Output:</p>
 <p>    <a class="reference download internal" download="" href="_downloads/9359d2ae4f8ad2efcfe2fd34e3547c35/mortality.png"><span class="xref download myst">twoway</span></a></p>
 <p>Hint:</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">forvalues</span> i=<span class="m">1</span><span class="o">/</span><span class="m">1</span> {
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> command<span class="k"> in noisily quietly</span> {
 
-    quie {
+    <span class="nv">`command&#39;</span> {
 <span class="k">    </span>
-<span class="k">              if</span> <span class="m">1</span> { <span class="c1">//log,set,macro</span>
+<span class="k">              if</span> <span class="m">1</span> { <span class="c1">//macros,logfile,settings</span>
 <span class="k">        </span>
 <span class="k">                  timer on</span> <span class="m">1</span>
-<span class="k">        </span>
-<span class="k">                  capture log close</span>
-<span class="k">                  log</span> using wk1<span class="m">.</span>ph<span class="m">.340.700</span><span class="o">-</span><span class="nv">`i&#39;</span>.log,<span class="k"> replace</span> 
-        
-                  cls 
-<span class="k">        </span>
+<span class="k">				  </span>
 <span class="k">                  global</span> url https:<span class="o">//</span>data<span class="m">.</span>nber<span class="m">.</span>org<span class="o">/</span>mortality<span class="o">/</span>
 <span class="k">                  global</span> filename mort1959<span class="m">.</span>dta
+<span class="k">				  global</span> logfile wk1<span class="m">.</span>ph<span class="m">.340.700</span><span class="o">-</span><span class="nv">`command&#39;</span>
+                  
+				  cls
+<span class="k">                  capture log close</span>
+<span class="k">                  log</span> using <span class="vg">${logfile}</span>.log,<span class="k"> replace</span> 
+<span class="k">                   </span>
+<span class="k">                  set more</span> off
+<span class="k">				  version</span> <span class="m">15</span>
+<span class="k">				  noi di</span> <span class="s">&quot;</span><span class="nv">`c(current_time)&#39;</span><span class="s"> </span><span class="nv">`c(current_date)&#39;</span><span class="s">&quot;</span> 
 <span class="k">        </span>
 <span class="k">                  timer</span> off <span class="m">1</span>
         
@@ -427,7 +435,6 @@ document.write(`
             
                   }
 <span class="k">         </span>
-<span class="k">                  save</span> mort<span class="m">.</span>usa,<span class="k"> replace</span> 
 <span class="k">        </span>
 <span class="k">                  timer</span> off <span class="m">3</span>
         
@@ -443,6 +450,7 @@ document.write(`
 <span class="k">                  </span>
 <span class="k">                  preserve</span> 
 <span class="k">                  collapse</span> (count) deaths,<span class="k"> by</span>(datayear)
+<span class="k">				     save twoway</span><span class="m">.</span>mort<span class="m">.</span>dta,clear
 <span class="k">                     noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
 <span class="k">                     noi list</span> 
                      #delimit ;
@@ -461,12 +469,13 @@ document.write(`
 <span class="k">              if</span> <span class="m">5</span> {
 <span class="k">        </span>
 <span class="k">        </span>
-<span class="k">                  save</span> mort<span class="m">.</span>fig,<span class="k"> replace</span> 
+<span class="k">                  save</span> mort<span class="m">.</span>dta,<span class="k"> replace</span> 
         
                     
               }
 <span class="k">    </span>
-<span class="k">    timer list</span> 
+<span class="k">    noi timer list</span> 
+<span class="k">	timer clear</span>  
 <span class="k">    log close</span> 
     
     }
