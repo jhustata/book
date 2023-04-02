@@ -1,35 +1,28 @@
-# twoway
+local loop=10.1
 
-[Task](https://jhjhm.zoom.us/rec/share/wQFdA9HfocN5RMJek5hpLG4sgbAV3uf2cQCG6zf1TtUvHtS7FTDsJyrxWQ0899Bu.-f2SVivW9gZBLA_t):
-
-Using the resources available to you at the National Bureau of Economic Research (NBER), reproduce the twoway plot shown under the output link below.
-
-The Stata code provides several hints about how you may approach this challenge. Don't hesitate to ask questions on CoursePlus if you run into any trouble! 
-
-
-Databases:
-
-
-&nbsp;&nbsp;&nbsp; [cdc.gov](https://ftp.cdc.gov/pub/)
-
-&nbsp;&nbsp;&nbsp; [nber.org](https://data.nber.org/mortality/)
-
-
-Output:
-
-
-&nbsp;&nbsp;&nbsp; [twoway](mortality.png)
-
-   
-Hint:
-
-```stata
-
-foreach command in noisily quietly {
-
+foreach command in "if 10" noisily quietly {
+	
     `command' {
-    
-              if 1 { //macros,logfile,settings
+		      
+			  if `loop' == 10.1 {  
+		
+				 local command: di "if"
+		
+	          }
+			  
+			  local loop = `loop' + 1
+			  
+			  if 0 { //background: local,if,update
+			  	
+				/*
+				1. local macros -> `name'
+				2. if conditionals: aesthetics,functionality
+				3. update of `loop' macro value
+				*/
+				
+			  }
+	
+              if 1 { //methods: macros,logfile,settings
         
                   timer on 1
 				  
@@ -49,13 +42,16 @@ foreach command in noisily quietly {
         
               }
     
-              if 2 { //timer,loop,data
+              if 2 { //results:data,year,save
         
                   timer on 2
         
                   forvalues i=1959/1961 {
             
                       use "${url}`i'/mort`i'", clear 
+					  noi di ""
+					  noi di "# of deaths in `i'=`c(N)'"
+					  noi di ""
                       save y`i', replace 
             
                   timer off 2
@@ -66,7 +62,7 @@ foreach command in noisily quietly {
         
               }
     
-              if 3 { //clear,append,save
+              if 3 { //conclusion:N as `i'->2017???
     
                   timer on 3
         
@@ -82,7 +78,7 @@ foreach command in noisily quietly {
         
               }
     
-              if 4 {
+              if 4 { //acknowledge:i=1959/1961 -> pilot
         
                   timer on 4
         
@@ -92,7 +88,7 @@ foreach command in noisily quietly {
                   
                   preserve 
                   collapse (count) deaths, by(datayear)
-				     save twoway.mort.dta,clear
+				     save twoway.mort.dta,replace
                      noi di "# of deaths: `c(N)' & # of variables: `c(k)'"
                      noi list 
                      #delimit ;
@@ -108,7 +104,7 @@ foreach command in noisily quietly {
         
               }
     
-              if 5 {
+              if 5 { //reference:emerging,supersize.dta
         
         
                   save mort.dta, replace 
@@ -123,15 +119,3 @@ foreach command in noisily quietly {
     }
     
 }
-
-```
-
-logfiles:
-
-&nbsp;&nbsp;&nbsp; [quietly](wk1.ph.340.700-qui.txt)
-
-&nbsp;&nbsp;&nbsp; [noisily](wk1.ph.340.700-noi.txt)
-
-bonus .dofile:
-
-&nbsp;&nbsp;&nbsp; [if 10 {](debugging.do)

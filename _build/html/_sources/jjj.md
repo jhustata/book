@@ -131,3 +131,7 @@ logfiles:
 &nbsp;&nbsp;&nbsp; [quietly](wk1.ph.340.700-qui.txt)
 
 &nbsp;&nbsp;&nbsp; [noisily](wk1.ph.340.700-noi.txt)
+
+bonus .dofile:
+
+&nbsp;&nbsp;&nbsp; [if 10 {](debugging.do)
