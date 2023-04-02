@@ -11,7 +11,7 @@ foreach command in "if 10" noisily quietly {
 		
 	          }
 			  
-			  local loop = `loop' + 1
+			  local loop = `loop' + 1 //emergance??
 			  
 			  if 0 { //background: local,if,update
 			  	
