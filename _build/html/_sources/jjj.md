@@ -25,22 +25,25 @@ Hint:
 
 ```stata
 
+foreach command in noisily quietly {
 
-forvalues i=1/1 {
-
-    quie {
+    `command' {
     
-              if 1 { //log,set,macro
+              if 1 { //macros,logfile,settings
         
                   timer on 1
-        
-                  capture log close
-                  log using wk1.ph.340.700-`i'.log, replace 
-        
-                  cls 
-        
+				  
                   global url https://data.nber.org/mortality/
                   global filename mort1959.dta
+				  global logfile wk1.ph.340.700-`command'
+                  
+				  cls
+                  capture log close
+                  log using ${logfile}.log, replace 
+                   
+                  set more off
+				  version 15
+				  noi di "`c(current_time)' `c(current_date)'" 
         
                   timer off 1
         
@@ -74,7 +77,6 @@ forvalues i=1/1 {
             
                   }
          
-                  save mort.usa, replace 
         
                   timer off 3
         
@@ -90,6 +92,7 @@ forvalues i=1/1 {
                   
                   preserve 
                   collapse (count) deaths, by(datayear)
+				     save twoway.mort.dta,clear
                      noi di "# of deaths: `c(N)' & # of variables: `c(k)'"
                      noi list 
                      #delimit ;
@@ -108,12 +111,13 @@ forvalues i=1/1 {
               if 5 {
         
         
-                  save mort.fig, replace 
+                  save mort.dta, replace 
         
                     
               }
     
-    timer list 
+    noi timer list 
+	timer clear  
     log close 
     
     }
