@@ -1,10 +1,11 @@
-local loop=10.1
+local aesthetic=10.1 //no meaning 
+local loop=`aesthetic'
 
 foreach command in "if 10" noisily quietly {
 	
     `command' {
 		      
-			  if `loop' == 10.1 {  
+			  if `loop' == `aesthetic' { //functional?
 		
 				 local command: di "if"
 		
