@@ -5,13 +5,13 @@ foreach command in "if 10" noisily quietly {
 	
     `command' {
 		      
-			  if `loop' == `aesthetic' { //functional?
+			  if `loop' == `aesthetic' { //functional
 		
 				 local command: di "if"
 		
 	          }
 			  
-			  local loop = `loop' + 1 //emergance??
+			  local loop = `loop' + 1 //divergence,emergence
 			  
 			  if 0 { //background: local,if,update
 			  	
