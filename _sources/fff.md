@@ -285,6 +285,8 @@ Can you tell what aspect of the output in this graph is specified by a macro?
 Let's now move on to regression output:
 
 ```stata
+   g years=permth_exm/12
+   stset years, fail(mortstat)
    stcox i.hab1 if inrange(hab1,1,5)
    lincom _b[2.hab1]
    return list
