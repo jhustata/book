@@ -183,15 +183,15 @@ qui {
 Now let's explore return values, macros, and our first programs with it:
 
 ```stata
-&nbsp;&nbsp;&nbsp; sum hsageir 
-&nbsp;&nbsp;&nbsp; return list
+    sum hsageir 
+    return list
 
 ```
 
 Let's add a slight variation to this theme:
 
 ```stata
-&nbsp;&nbsp;&nbsp; sum hsageir, detail
-&nbsp;&nbsp;&nbsp; return list
+    sum hsageir, detail
+    return list
 
 ```
