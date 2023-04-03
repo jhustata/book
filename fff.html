@@ -547,13 +547,12 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">    </span>
 <span class="k">        noi timer list</span> 
 <span class="k">        noi timer clear</span>
-<span class="k">        log close</span> 
 
 }
         
 </pre></div>
 </div>
-<p>Now let’s explore return values, macros, and our first programs with it:</p>
+<p>Now let’s explore return values, macros, and our first programs with <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code>:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">    sum</span> hsageir 
 <span class="k">    return list</span>
 </pre></div>
@@ -622,6 +621,9 @@ Of course we can further improve on the aesthetics in this case:</p>
 These variables have all been <code class="docutils literal notranslate"><span class="pre">Continuous</span></code>. Do you want to perform a similar <code class="docutils literal notranslate"><span class="pre">loop</span></code> function on
 binary and multicategory variables? <code class="docutils literal notranslate"><span class="pre">Binary</span></code>: sex, history of hypertension, history of diabetes, history of smoking;
 <code class="docutils literal notranslate"><span class="pre">Multicategory</span></code>: race and education. This will be a nice way to look through the script from last weeks chapter: <code class="docutils literal notranslate"><span class="pre">pwd</span></code>.</p>
+<p>Meanwhile, amongst your several outputs from running the script that produced <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code> is the figure below:</p>
+<p><img alt="" src="_images/nh3andmort.png" /></p>
+<p>Can you tell what aspect of the output in this graph is specified by a macro?</p>
 </section>
 
     <script type="text/x-thebe-config">

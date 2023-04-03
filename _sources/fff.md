@@ -176,13 +176,12 @@ qui {
     
         noi timer list 
         noi timer clear
-        log close 
 
 }
         
 ```
 
-Now let's explore return values, macros, and our first programs with it:
+Now let's explore return values, macros, and our first programs with `nh3andmort.dta`:
 
 ```stata
     sum hsageir 
@@ -276,3 +275,9 @@ We have used a loop command to perform the same task over and over on different 
 These variables have all been `Continuous`. Do you want to perform a similar `loop` function on
 binary and multicategory variables? `Binary`: sex, history of hypertension, history of diabetes, history of smoking;
 `Multicategory`: race and education. This will be a nice way to look through the script from last weeks chapter: `pwd`.
+
+Meanwhile, amongst your several outputs from running the script that produced `nh3andmort.dta` is the figure below:
+
+![](nh3andmort.png)
+
+Can you tell what aspect of the output in this graph is specified by a macro?
