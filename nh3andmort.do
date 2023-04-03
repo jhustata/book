@@ -1,16 +1,3 @@
-# r(mean)
-
-Return values, macros, and writing your own programs
-
-Let's start by creating a dataset. Then we'll explore return values, macros, and our first programs with it.
-
-Place this [nhanes.ael.do](nhanes.ael.do) in your pwd before running the script below.
-
-Your goal is to successfully run the .do file script rather than to interprete it
-
-
-```stata
-
 qui {
 	
 	if 0 { background:survey,cohort,chapter:`net search'
@@ -188,5 +175,3 @@ qui {
 		
 
  
-```
-
