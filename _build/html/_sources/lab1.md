@@ -6,7 +6,7 @@ video: [tutorial](https://jhjhm.zoom.us/rec/share/XjpGCpJkfYBIATTHMS93sFQmjJRdrF
 
 data: [transplants.dta](transplants.dta) 
 
-zoom links: [M](https://JHUBlueJays.zoom.us/j/96760923747) T [W](https://jhubluejays.zoom.us/j/98628544091?pwd=ZGx5NTN1RHNzNDUrQ3c3Uys0RVYrUT09) [Th](https://JHUBlueJays.zoom.us/j/3393703103) F
+zoom links: [M](https://JHUBlueJays.zoom.us/j/96760923747) [T](https://JHUBlueJays.zoom.us/j/99476415268) [W](https://jhubluejays.zoom.us/j/98628544091?pwd=ZGx5NTN1RHNzNDUrQ3c3Uys0RVYrUT09) [Th](https://JHUBlueJays.zoom.us/j/3393703103) F
 
 Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. An answer key will be provided on Friday April 7, 2023.
 
