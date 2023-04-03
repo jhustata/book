@@ -281,3 +281,14 @@ Meanwhile, amongst your several outputs from running the script that produced `n
 ![](nh3andmort.png)
 
 Can you tell what aspect of the output in this graph is specified by a macro?
+
+Let's now move on to regression output:
+
+```stata
+   stcox i.hab1 if inrange(hab1,1,5)
+   lincom _b[2.hab1]
+   return list
+   di exp(r(estimate))
+   local hr: di %5.1f exp(r(estimate)) "(" %2.1f exp(r(lb)) "-"% 5.1f exp(r(ub)) ")"
+   di "In the NHANES III adult population, the 30-year risk of death was `hr' in those who self-report as being in good heath when compared with those being in excellent health"
+```
