@@ -35,10 +35,9 @@ qui {
 	    global nchs https://ftp.cdc.gov/pub/Health_Statistics/NCHS/
         global linkage datalinkage/linked_mortality/
 	    global nh3 NHANES_III
-        global mort _MORT_2019_PUBLIC.dat
 		
-		global mortlab1 https://raw.githubusercontent.com/jhustata/
-		global mortlab2 jhustata.github.io/main/mortlab.do
+		global github https://raw.githubusercontent.com/
+		global jhustata jhustata/book/main/
 		
 		timer off 1
 		
@@ -48,9 +47,9 @@ qui {
 		
 		timer on 2 
 		
-		infix $varlist using $nchs$linkage$nh3$mort, clear
+		infix $varlist using "$nchs$linkage${nh3}_MORT_2019_PUBLIC.dat", clear
 		
-		do "${mortlab1}${mortlab2}"
+		do "${github}${jhustata}mortlab.do"
 		
 		drop if inlist(eligstat,2,3)
 		duplicates drop
@@ -64,7 +63,7 @@ qui {
 	
 	    timer on 3
 		
-		do nhanes.ael.do 
+		do "${github}${jhustata}nhanes.ael.do" 
 		
 		timer on 31
 		clear
@@ -172,6 +171,9 @@ qui {
 		log close 
 
 }
+		
+
+ 
 		
 
  
