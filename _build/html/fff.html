@@ -625,7 +625,9 @@ binary and multicategory variables? <code class="docutils literal notranslate"><
 <p><img alt="" src="_images/nh3andmort.png" /></p>
 <p>Can you tell what aspect of the output in this graph is specified by a macro?</p>
 <p>Let’s now move on to regression output:</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   stcox</span> i<span class="m">.</span>hab1<span class="k"> if</span> <span class="nf">inrange</span>(hab1,<span class="m">1</span>,<span class="m">5</span>)
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   g</span> years=permth_exm<span class="o">/</span><span class="m">12</span>
+<span class="k">   stset</span> years, fail(mortstat)
+<span class="k">   stcox</span> i<span class="m">.</span>hab1<span class="k"> if</span> <span class="nf">inrange</span>(hab1,<span class="m">1</span>,<span class="m">5</span>)
 <span class="k">   lincom</span> _b[<span class="m">2.</span>hab1]
 <span class="k">   return list</span>
 <span class="k">   di</span> <span class="nf">exp</span>(<span class="nf">r</span>(estimate))
