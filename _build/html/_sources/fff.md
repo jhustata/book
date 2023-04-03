@@ -1,6 +1,8 @@
 # r(mean)
 
-Let's start session 2 by creating a dataset: 
+Let's start session 2 by creating a dataset: `nh3andmort.dta`
+Copy & paste the script below into a .do file and do!
+You may save it as `nh3andmort.do`
 
 ```stata
 
