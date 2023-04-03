@@ -122,11 +122,7 @@ qui {
 }
 
 ```
-#
 
-Indentation in [VS Code](indentation.jpg)
-
-#
 
 [^3]: We will simulate missingess of DMARETHN and assess the impact on Table 1
 
