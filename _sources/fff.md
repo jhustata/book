@@ -197,3 +197,11 @@ Let's add a slight variation to this theme:
     return list
 
 ```
+
+Display some of these summary statistics within a sentence 
+
+```stata
+
+"In this population with `r(N)' adult participants identified from NHANES III, the median age was `r(p50)' (IQR, `r(p25)'-`r(p75)')"
+
+```
