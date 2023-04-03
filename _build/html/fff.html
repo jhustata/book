@@ -376,10 +376,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="r-mean">
 <h1>r(mean)<a class="headerlink" href="#r-mean" title="Permalink to this heading">#</a></h1>
-<p>Return values, macros, and writing your own programs</p>
-<p>Let’s start by creating a dataset. Then we’ll explore return values, macros, and our first programs with it.</p>
-<p>Place this <a class="reference download internal" download="" href="_downloads/8d0264caaf0c2149840ad2dfdb398b85/nhanes.ael.do"><span class="xref download myst">nhanes.ael.do</span></a> in your pwd before running the script below.</p>
+<p>Let’s start session 2 by creating a dataset. Then we’ll explore return values, macros, and our first programs with it.</p>
+<p>Place this <a class="reference download internal" download="" href="_downloads/8d0264caaf0c2149840ad2dfdb398b85/nhanes.ael.do"><span class="xref download myst">nhanes.ael.do</span></a> in your <code class="docutils literal notranslate"><span class="pre">pwd</span></code> before running the script below.</p>
 <p>Your goal is to successfully run the .do file script rather than to interprete it</p>
+<p>Then our first two commands will be:</p>
+<p>    <code class="docutils literal notranslate"><span class="pre">sum</span> <span class="pre">hsageir</span></code></p>
+<p>    <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code></p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">	</span>
 <span class="k">	if</span> <span class="m">0</span> { background:survey,cohort,chapter:<span class="nv">`net search&#39;</span>
