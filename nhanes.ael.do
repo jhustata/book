@@ -10,9 +10,7 @@ qui {
 	
 	if 1 { //settings,logfile,macros
 		
-		cls
 		clear 
-		
 		capture log close 
 		log using nhanes.ael.log, replace 
 		
