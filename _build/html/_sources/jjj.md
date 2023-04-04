@@ -137,3 +137,12 @@ bonus .dofiles: spot the difference
 &nbsp;&nbsp;&nbsp; [if 10 {](debugging.do)
 
 &nbsp;&nbsp;&nbsp; [if 10 {](debugging_v2.do)
+
+stata [batch mode](https://www.stata.com/manuals/gsub.pdf):
+
+``` 
+     % stata -b do bigjob &
+     % stata -s do bigjob
+```
+
+stata [on command line](https://www.stata.com/support/faqs/mac/install-from-command-line/)
