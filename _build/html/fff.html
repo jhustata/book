@@ -374,9 +374,28 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="r-mean">
 <h1>r(mean)<a class="headerlink" href="#r-mean" title="Permalink to this heading">#</a></h1>
-<p>Let’s start session 2 by creating a dataset: <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code>
+<ol class="arabic" start="0">
+<li><p>Today we are going to talk about <code class="docutils literal notranslate"><span class="pre">macros</span></code>:</p>
+<p>A. local system macros</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  name
+  content
+  `c()`
+  `r()`
+</pre></div>
+</div>
+<p>B. user-defined macros</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   `local` e.g., `m_iqr`
+   `global` e.g., ${workdir}
+</pre></div>
+</div>
+</li>
+</ol>
+<p>But we need data to demonstrate these macros. So lets curate a dataset: <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code>
 Copy &amp; paste the script below into a .do file and do!
-You may save it as <code class="docutils literal notranslate"><span class="pre">nh3andmort.do</span></code></p>
+You may save it as <code class="docutils literal notranslate"><span class="pre">nh3andmort.do</span></code>. If you encounter any trouble in this preliminary step please do post it on CoursePlus. Maybe a fellow student or a member of the teaching team may be able to help.</p>
+<ol class="arabic simple">
+<li><p>Import data for todays class:</p></li>
+</ol>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">    </span>
 <span class="k">    if</span> <span class="m">0</span> { background:survey,cohort,chapter:<span class="nv">`net search&#39;</span>
@@ -552,6 +571,9 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
         
 </pre></div>
 </div>
+<ol class="arabic simple" start="2">
+<li><p>Explore the versatility of macros:</p></li>
+</ol>
 <p>Now let’s explore return values, macros, and our first programs with <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code>:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">    sum</span> hsageir 
 <span class="k">    return list</span>
