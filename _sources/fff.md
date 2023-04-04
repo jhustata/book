@@ -1,8 +1,24 @@
 # r(mean)
 
-Let's start session 2 by creating a dataset: `nh3andmort.dta`
+0. Today we are going to talk about `macros`:
+
+     A. local system macros
+
+         name
+         content
+         `c()`
+         `r()`
+
+     B. user-defined macros
+
+          `local` e.g., `m_iqr`
+          `global` e.g., ${workdir}
+
+But we need data to demonstrate these macros. So lets curate a dataset: `nh3andmort.dta`
 Copy & paste the script below into a .do file and do!
-You may save it as `nh3andmort.do`
+You may save it as `nh3andmort.do`. If you encounter any trouble in this preliminary step please do post it on CoursePlus. Maybe a fellow student or a member of the teaching team may be able to help.
+
+1. Import data for todays class:
 
 ```stata
 
@@ -180,6 +196,8 @@ qui {
 }
         
 ```
+
+2. Explore the versatility of macros:
 
 Now let's explore return values, macros, and our first programs with `nh3andmort.dta`:
 
