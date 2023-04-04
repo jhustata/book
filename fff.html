@@ -582,7 +582,7 @@ Think of the commands <code class="docutils literal notranslate"><span class="pr
 </div>
 <p>In the above example “v” fits the Stata definition of a local macro.
 And we gave it its name in the <code class="docutils literal notranslate"><span class="pre">foreach</span> <span class="pre">v</span></code> statement.
-Talking of aesthetics, I’m sure it would be appealing to improve the output above.</p>
+Let’s make the above output more appealing by naming a few macros (syntax: <code class="docutils literal notranslate"><span class="pre">local</span></code> name) and defining their content (syntax: <code class="docutils literal notranslate"><span class="pre">local</span></code> name: di “something” or <code class="docutils literal notranslate"><span class="pre">local</span></code> name = 3)</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> v of<span class="k"> varlist</span> hsageir bmpht bmpwt haza8ak1 cep ghp  {
 
 <span class="k">    qui summ</span> <span class="nv">`v&#39;</span>, detail
@@ -594,8 +594,7 @@ Talking of aesthetics, I’m sure it would be appealing to improve the output ab
 }
 </pre></div>
 </div>
-<p>In the above example we have replaced the return values, <code class="docutils literal notranslate"><span class="pre">r()</span></code>, with a formatted local macro.
-Of course we can further improve on the aesthetics in this case:</p>
+<p>In the above example we have replaced the return values, <code class="docutils literal notranslate"><span class="pre">r()</span></code>, with three new macros: <code class="docutils literal notranslate"><span class="pre">p50</span></code>, <code class="docutils literal notranslate"><span class="pre">p25</span></code>, and <code class="docutils literal notranslate"><span class="pre">p75</span></code>. The content of these macros is essentially a format of display (<code class="docutils literal notranslate"><span class="pre">%5.1f</span></code>). We immediately witness the effect of these macros on the output. Let’s delve a little more into the aesthetics of the output:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> v of<span class="k"> varlist</span> hsageir bmpht bmpwt haza8ak1 cep ghp  {
 
 <span class="k">    qui summ</span> <span class="nv">`v&#39;</span>, detail
@@ -605,7 +604,7 @@ Of course we can further improve on the aesthetics in this case:</p>
 }
 </pre></div>
 </div>
-<p>One more thing…</p>
+<p>Much better. But one more thing…</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">rename</span> (hsageir bmpht bmpwt haza8ak1 cep ghp)(Age Height Weight SBP SCreat HbA1c)
 
 <span class="k">foreach</span> v of<span class="k"> varlist</span> Age Height Weight SBP SCreat HbA1c  {
@@ -617,6 +616,7 @@ Of course we can further improve on the aesthetics in this case:</p>
 }
 </pre></div>
 </div>
+<p>Finally something of publication quality!</p>
 <p>We have used a loop command to perform the same task over and over on different variables.
 These variables have all been <code class="docutils literal notranslate"><span class="pre">Continuous</span></code>. Do you want to perform a similar <code class="docutils literal notranslate"><span class="pre">loop</span></code> function on
 binary and multicategory variables? <code class="docutils literal notranslate"><span class="pre">Binary</span></code>: sex, history of hypertension, history of diabetes, history of smoking;

@@ -225,7 +225,7 @@ foreach v of varlist hsageir bmpht bmpwt haza8ak1 cep ghp  {
 
 In the above example "v" fits the Stata definition of a local macro. 
 And we gave it its name in the `foreach v` statement.
-Talking of aesthetics, I'm sure it would be appealing to improve the output above.
+Let's make the above output more appealing by naming a few macros (syntax: `local` name) and defining their content (syntax: `local` name: di "something" or `local` name = 3)
 
 ```stata
 
@@ -241,8 +241,7 @@ foreach v of varlist hsageir bmpht bmpwt haza8ak1 cep ghp  {
 
 ```
 
-In the above example we have replaced the return values, `r()`, with a formatted local macro.
-Of course we can further improve on the aesthetics in this case:
+In the above example we have replaced the return values, `r()`, with three new macros: `p50`, `p25`, and `p75`. The content of these macros is essentially a format of display (`%5.1f`). We immediately witness the effect of these macros on the output. Let's delve a little more into the aesthetics of the output:
 
 ```stata
 
@@ -256,7 +255,7 @@ foreach v of varlist hsageir bmpht bmpwt haza8ak1 cep ghp  {
 
 ```
 
-One more thing...
+Much better. But one more thing...
 
 ```stata
 
@@ -270,6 +269,8 @@ foreach v of varlist Age Height Weight SBP SCreat HbA1c  {
 
 }
 ```
+
+Finally something of publication quality! 
 
 We have used a loop command to perform the same task over and over on different variables.
 These variables have all been `Continuous`. Do you want to perform a similar `loop` function on
