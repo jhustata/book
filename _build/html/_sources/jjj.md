@@ -1,6 +1,6 @@
 # twoway
 
-[Task](https://jhjhm.zoom.us/rec/share/wQFdA9HfocN5RMJek5hpLG4sgbAV3uf2cQCG6zf1TtUvHtS7FTDsJyrxWQ0899Bu.-f2SVivW9gZBLA_t):
+Task:
 
 Using the resources available to you at the National Bureau of Economic Research (NBER), reproduce the twoway plot shown under the output link below.
 
@@ -144,5 +144,21 @@ stata [batch mode](https://www.stata.com/manuals/gsub.pdf):
      % stata -b do bigjob &
      % stata -s do bigjob
 ```
+
+wk1: [video](https://jhjhm.zoom.us/rec/share/wQFdA9HfocN5RMJek5hpLG4sgbAV3uf2cQCG6zf1TtUvHtS7FTDsJyrxWQ0899Bu.-f2SVivW9gZBLA_t) [notes](wk1.340.700.md)
+
+wk2: [video](https://jhjhm.zoom.us/rec/share/VVsgzwzUkaYQJHR4R5_bp0kf8GvoBszDD3bMax0kuSC_PeGUaeLX1ZwcV7Rhwa41.PjOE99QxZeyqB84a?startTime=1680639414000) [notes](wk2.340.700.md)
+
+wk3: video notes
+
+wk4: video notes
+
+wk5: video notes
+
+wk6: video notes
+
+wk7: video notes
+
+wk8: video notes
 
 stata [on command line](https://www.stata.com/support/faqs/mac/install-from-command-line/)

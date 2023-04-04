@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>twoway &#8212; Stata Programming</title>
+    <title>wk1 &#8212; Stata Programming</title>
   
   
   
@@ -61,11 +61,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'jjj';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'wk1.340.700';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="local v: di" href="kkk.html" />
-    <link rel="prev" title="capture" href="iii.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,7 +154,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="aaa.html">tokenize</a></li>
 
 
@@ -173,7 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="ggg.html">by</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hhh.html">program define</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iii.html">capture</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">twoway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jjj.html">twoway</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kkk.html">local v: di</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lll.html">if c(version)&gt;16 {</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zzz.html">net search</a></li>
@@ -248,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fjjj.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fwk1.340.700.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/jjj.md" target="_blank"
+      <li><a href="_sources/wk1.340.700.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -358,7 +356,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>twoway</h1>
+    <h1>wk1</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,137 +370,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="twoway">
-<h1>twoway<a class="headerlink" href="#twoway" title="Permalink to this heading">#</a></h1>
-<p>Task:</p>
-<p>Using the resources available to you at the National Bureau of Economic Research (NBER), reproduce the twoway plot shown under the output link below.</p>
-<p>The Stata code provides several hints about how you may approach this challenge. Don’t hesitate to ask questions on CoursePlus if you run into any trouble!</p>
-<p>Databases:</p>
-<p>    <a class="reference external" href="https://ftp.cdc.gov/pub/">cdc.gov</a></p>
-<p>    <a class="reference external" href="https://data.nber.org/mortality/">nber.org</a></p>
-<p>Output:</p>
-<p>    <a class="reference download internal" download="" href="_downloads/9359d2ae4f8ad2efcfe2fd34e3547c35/mortality.png"><span class="xref download myst">twoway</span></a></p>
-<p>Hint:</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> command<span class="k"> in noisily quietly</span> {
-
-    <span class="nv">`command&#39;</span> {
-<span class="k">    </span>
-<span class="k">              if</span> <span class="m">1</span> { <span class="c1">//macros,logfile,settings</span>
-<span class="k">        </span>
-<span class="k">                  timer on</span> <span class="m">1</span>
-<span class="k">				  </span>
-<span class="k">                  global</span> url https:<span class="o">//</span>data<span class="m">.</span>nber<span class="m">.</span>org<span class="o">/</span>mortality<span class="o">/</span>
-<span class="k">                  global</span> filename mort1959<span class="m">.</span>dta
-<span class="k">				  global</span> logfile wk1<span class="m">.</span>ph<span class="m">.340.700</span><span class="o">-</span><span class="nv">`command&#39;</span>
-                  
-				  cls
-<span class="k">                  capture log close</span>
-<span class="k">                  log</span> using <span class="vg">${logfile}</span>.log,<span class="k"> replace</span> 
-<span class="k">                   </span>
-<span class="k">                  set more</span> off
-<span class="k">				  version</span> <span class="m">15</span>
-<span class="k">				  noi di</span> <span class="s">&quot;</span><span class="nv">`c(current_time)&#39;</span><span class="s"> </span><span class="nv">`c(current_date)&#39;</span><span class="s">&quot;</span> 
-<span class="k">        </span>
-<span class="k">                  timer</span> off <span class="m">1</span>
-        
-              }
-<span class="k">    </span>
-<span class="k">              if</span> <span class="m">2</span> { <span class="c1">//timer,loop,data</span>
-<span class="k">        </span>
-<span class="k">                  timer on</span> <span class="m">2</span>
-<span class="k">        </span>
-<span class="k">                  forvalues</span> i=<span class="m">1959</span><span class="o">/</span><span class="m">1961</span> {
-<span class="k">            </span>
-<span class="k">                      use</span> <span class="s">&quot;</span><span class="vg">${url}</span><span class="nv">`i&#39;</span><span class="s">/mort</span><span class="nv">`i&#39;</span><span class="s">&quot;</span>,<span class="k"> clear</span> 
-<span class="k">                      save</span> y<span class="nv">`i&#39;</span>,<span class="k"> replace</span> 
-<span class="k">            </span>
-<span class="k">                  timer</span> off <span class="m">2</span>
-
-                  }
-        
-        
-        
-              }
-<span class="k">    </span>
-<span class="k">              if</span> <span class="m">3</span> { <span class="c1">//clear,append,save</span>
-<span class="k">    </span>
-<span class="k">                  timer on</span> <span class="m">3</span>
-<span class="k">        </span>
-<span class="k">                  clear</span> 
-<span class="k">                  forvalues</span> i=<span class="m">1959</span><span class="o">/</span><span class="m">1961</span> {
-<span class="k">            </span>
-<span class="k">                      append</span> using y<span class="nv">`i&#39;</span>
-            
-                  }
-<span class="k">         </span>
-<span class="k">        </span>
-<span class="k">                  timer</span> off <span class="m">3</span>
-        
-              }
-<span class="k">    </span>
-<span class="k">              if</span> <span class="m">4</span> {
-<span class="k">        </span>
-<span class="k">                  timer on</span> <span class="m">4</span>
-<span class="k">        </span>
-<span class="k">                  noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
-<span class="k">                  noi lookfor</span> year
-<span class="k">                  g</span> deaths=<span class="m">1</span>
-<span class="k">                  </span>
-<span class="k">                  preserve</span> 
-<span class="k">                  collapse</span> (count) deaths,<span class="k"> by</span>(datayear)
-<span class="k">				     save twoway</span><span class="m">.</span>mort<span class="m">.</span>dta,clear
-<span class="k">                     noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
-<span class="k">                     noi list</span> 
-                     #delimit ;
-<span class="k">                     line</span> deaths datayear, 
-<span class="k">                       sort</span> 
-                        ti(<span class="s">&quot;United States&quot;</span>)
-                        xti(<span class="s">&quot;Year&quot;</span>); 
-                     #delimit cr
-<span class="k">                  restore</span>
-<span class="k">        </span>
-<span class="k">                  noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
-<span class="k">                  timer</span> off <span class="m">4</span>
-        
-              }
-<span class="k">    </span>
-<span class="k">              if</span> <span class="m">5</span> {
-<span class="k">        </span>
-<span class="k">        </span>
-<span class="k">                  save</span> mort<span class="m">.</span>dta,<span class="k"> replace</span> 
-        
-                    
-              }
-<span class="k">    </span>
-<span class="k">    noi timer list</span> 
-<span class="k">	timer clear</span>  
-<span class="k">    log close</span> 
-    
-    }
-    
-}
-</pre></div>
-</div>
-<p>logfiles:</p>
-<p>    <a class="reference download internal" download="" href="_downloads/9fd9729c43efac6cb122a65fbff89c9f/wk1.ph.340.700-qui.txt"><span class="xref download myst">quietly</span></a></p>
-<p>    <a class="reference download internal" download="" href="_downloads/9c674aa65999b6bf7cb14a254fd650bb/wk1.ph.340.700-noi.txt"><span class="xref download myst">noisily</span></a></p>
-<p>bonus .dofiles: spot the difference</p>
-<p>    <a class="reference download internal" download="" href="_downloads/46d8d2c46353b6a54020e1454a519f5a/debugging.do"><span class="xref download myst">if 10 {</span></a></p>
-<p>    <a class="reference download internal" download="" href="_downloads/e03458c569dd7e568b691ea62400e8f5/debugging_v2.do"><span class="xref download myst">if 10 {</span></a></p>
-<p>stata <a class="reference external" href="https://www.stata.com/manuals/gsub.pdf">batch mode</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="o">%</span> <span class="n">stata</span> <span class="o">-</span><span class="n">b</span> <span class="n">do</span> <span class="n">bigjob</span> <span class="o">&amp;</span>
-     <span class="o">%</span> <span class="n">stata</span> <span class="o">-</span><span class="n">s</span> <span class="n">do</span> <span class="n">bigjob</span>
-</pre></div>
-</div>
-<p>wk1: <a class="reference external" href="https://jhjhm.zoom.us/rec/share/wQFdA9HfocN5RMJek5hpLG4sgbAV3uf2cQCG6zf1TtUvHtS7FTDsJyrxWQ0899Bu.-f2SVivW9gZBLA_t">video</a> <a class="reference internal" href="wk1.340.700.html"><span class="doc std std-doc">notes</span></a></p>
-<p>wk2: <a class="reference external" href="https://jhjhm.zoom.us/rec/share/VVsgzwzUkaYQJHR4R5_bp0kf8GvoBszDD3bMax0kuSC_PeGUaeLX1ZwcV7Rhwa41.PjOE99QxZeyqB84a?startTime=1680639414000">video</a> <a class="reference internal" href="wk2.340.700.html"><span class="doc std std-doc">notes</span></a></p>
-<p>wk3: video notes</p>
-<p>wk4: video notes</p>
-<p>wk5: video notes</p>
-<p>wk6: video notes</p>
-<p>wk7: video notes</p>
-<p>wk8: video notes</p>
-<p>stata <a class="reference external" href="https://www.stata.com/support/faqs/mac/install-from-command-line/">on command line</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="wk1">
+<h1>wk1<a class="headerlink" href="#wk1" title="Permalink to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>runtime</p></li>
+<li><p>memory</p></li>
+<li><p>disc space</p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
@@ -533,24 +407,6 @@ document.write(`
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="iii.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">capture</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="kkk.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">local v: di</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
