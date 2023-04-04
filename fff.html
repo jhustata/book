@@ -623,18 +623,27 @@ binary and multicategory variables? <code class="docutils literal notranslate"><
 <code class="docutils literal notranslate"><span class="pre">Multicategory</span></code>: race and education. This will be a nice way to look through the script from last weeks chapter: <code class="docutils literal notranslate"><span class="pre">pwd</span></code>.</p>
 <p>Meanwhile, amongst your several outputs from running the script that produced <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code> is the figure below:</p>
 <p><img alt="" src="_images/nh3andmort.png" /></p>
-<p>Can you tell what aspect of the output in this graph is specified by a macro?</p>
-<p>Let’s now move on to regression output:</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   g</span> years=permth_exm<span class="o">/</span><span class="m">12</span>
-<span class="k">   stset</span> years, fail(mortstat)
-<span class="k">   stcox</span> i<span class="m">.</span>hab1<span class="k"> if</span> <span class="nf">inrange</span>(hab1,<span class="m">1</span>,<span class="m">5</span>)
-<span class="k">   lincom</span> _b[<span class="m">2.</span>hab1]
-<span class="k">   return list</span>
-<span class="k">   di</span> <span class="nf">exp</span>(<span class="nf">r</span>(estimate))
-<span class="k">   local</span> hr:<span class="k"> di</span> <span class="nx">%5.1f</span> <span class="nf">exp</span>(<span class="nf">r</span>(estimate)) <span class="s">&quot;(&quot;</span> <span class="nx">%2.1f</span> <span class="nf">exp</span>(<span class="nf">r</span>(lb)) <span class="s">&quot;-&quot;</span>% <span class="m">5.</span>1f <span class="nf">exp</span>(<span class="nf">r</span>(ub)) <span class="s">&quot;)&quot;</span>
-<span class="k">   di</span> <span class="s">&quot;In the NHANES III adult population, the 30-year risk of death was </span><span class="nv">`hr&#39;</span><span class="s"> in those who self-report as being in good heath when compared with those being in excellent health&quot;</span>
+<p>Can you tell what content of this graph is specified by a macro?</p>
+<p>Let’s now move on to regression output. Lets set up the data for Cox regression:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   desc</span> permth_exm
+<span class="k">   g</span> years=permth_exm<span class="o">/</span><span class="m">12</span>
 </pre></div>
 </div>
+<p>We’ll use <code class="docutils literal notranslate"><span class="pre">years</span></code> as the time variable and <code class="docutils literal notranslate"><span class="pre">mortstat</span></code> as the event.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   stset</span> years, fail(mortstat)
+</pre></div>
+</div>
+<p>Now we are all set for Cox regression</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   stcox</span> i<span class="m">.</span>hab1<span class="k"> if</span> <span class="nf">inrange</span>(hab1,<span class="m">1</span>,<span class="m">5</span>)
+</pre></div>
+</div>
+<p>How may we extract return values following a regression model? Because of the potential for so many coefficients in regression, we have to specify which specific coefficient we are interested in, thus:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   lincom</span> _b[<span class="m">2.</span>hab1]
+<span class="k">   return list</span>
+<span class="k">   di</span> <span class="nf">exp</span>(<span class="nf">r</span>(estimate))
+</pre></div>
+</div>
+<p>This should look familiar: a command, return list, and the display of a select group of return values</p>
 </section>
 
     <script type="text/x-thebe-config">
