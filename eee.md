@@ -123,6 +123,8 @@ qui {
 
 ```
 
+[stata-linux](statalinux.md)
+
 
 [^3]: We will simulate missingess of DMARETHN and assess the impact on Table 1
 

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>pwd &#8212; Stata Programming</title>
+    <title>shell &#8212; Stata Programming</title>
   
   
   
@@ -61,11 +61,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'eee';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'statalinux';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="r(mean)" href="fff.html" />
-    <link rel="prev" title="rnormal()" href="ddd.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,7 +154,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="aaa.html">tokenize</a></li>
 
 
@@ -168,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="ccc.html">delimit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ddd.html">rnormal()</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">pwd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eee.html">pwd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fff.html">r(mean)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ggg.html">by</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hhh.html">program define</a></li>
@@ -248,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Feee.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fstatalinux.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/eee.md" target="_blank"
+      <li><a href="_sources/statalinux.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -358,7 +356,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>pwd</h1>
+    <h1>shell</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,126 +370,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="pwd">
-<h1>pwd<a class="headerlink" href="#pwd" title="Permalink to this heading">#</a></h1>
-<p>We hereby commence session 1!</p>
-<p>    <a class="reference external" href="https://www.dropbox.com/s/lvbn9c2xle8qpln/pwd1.mp4?dl=0?raw=1">video1</a></p>
-<p>    <a class="reference external" href="https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1">video2</a></p>
-<p>First, some <a class="reference external" href="https://www.stata.com/manuals13/u27.pdf">cool commands</a>:</p>
-<p>Next, lets compose our first .do file script together</p>
-<p>Lookout for <code class="docutils literal notranslate"><span class="pre">structure</span></code>, <code class="docutils literal notranslate"><span class="pre">indentation</span></code>, <code class="docutils literal notranslate"><span class="pre">annotation</span></code></p>
-<p>These three things make the script readable</p>
-<p>You will lose points in your <a class="reference internal" href="hw1.html"><span class="doc std std-doc">homework</span></a> if you neglect these <a class="reference download internal" download="" href="_downloads/6efbc93ca79a21fd3b4d4c0369d9f9fe/dofilestructure.pdf"><span class="xref download myst">three things</span></a>!</p>
-<p>We will later discuss how missing data affect the accuracy of the parameters estimated in Table 1. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
-<span class="k">    </span>
-<span class="k">    if</span> <span class="m">1</span> { <span class="c1">//linux,stata</span>
-<span class="k">    </span>
-<span class="k">       capture log close</span>
-<span class="k">       log</span> using<span class="k"> pwd</span><span class="m">.</span>log,<span class="k"> replace</span> 
-<span class="k">    </span>
-<span class="k">       pwd</span>
-<span class="k">       ls</span> <span class="o">-</span>l
-<span class="k">       clear</span>
-<span class="k">       cat</span> adult<span class="m">.</span>do
-<span class="k">       do</span> adult<span class="m">.</span>do 
-<span class="k">       di</span> <span class="nf">c</span>(N) <span class="s">&quot; rows &amp; &quot;</span> <span class="nf">c</span>(k) <span class="s">&quot; columns&quot;</span>
-<span class="k">       local</span> shape:<span class="k"> di</span> <span class="nf">c</span>(N) <span class="s">&quot; rows &amp; &quot;</span> <span class="nf">c</span>(k) <span class="s">&quot; columns&quot;</span>
-<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`shape&#39;</span><span class="s">&quot;</span>
-                
-    }
-<span class="k">    </span>
-<span class="k">    if</span> <span class="m">2</span> { <span class="c1">//continuous</span>
-<span class="k">    </span>
-<span class="k">       lookfor</span> age
-<span class="k">       local</span> v:<span class="k"> var lab</span> HSAGEIR 
-<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
-<span class="k">       sum</span> HSAGEIR, detail
-<span class="k">       return list</span>
-<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`r(p25)&#39;</span><span class="s">&quot;</span>
-       putexcel<span class="k"> set</span> table1,<span class="k"> replace</span> 
-       putexcel A1=<span class="s">&quot;Characteristics&quot;</span>
-       putexcel A2=<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
-       putexcel B1=<span class="s">&quot;(N=</span><span class="nv">`c(N)&#39;</span><span class="s">)&quot;</span>
-       putexcel B2=<span class="s">&quot;</span><span class="nv">`r(p50)&#39;</span><span class="s"> (</span><span class="nv">`r(p25)&#39;</span><span class="s">-</span><span class="nv">`r(p50)&#39;</span><span class="s">)&quot;</span>
-<span class="k">       ls</span> <span class="o">-</span>ahl
-        
-    }
-<span class="k">    </span>
-<span class="k">    if</span> <span class="m">3</span> { <span class="c1">//binary</span>
-<span class="k">    </span>
-<span class="k">       lookfor</span> sex
-<span class="k">       codebook</span> HSSEX 
-<span class="k">       replace</span> HSSEX=<span class="m">2</span><span class="o">-</span>HSSEX 
-<span class="k">       sum</span> HSSEX
-<span class="k">       return list</span> 
-<span class="k">       local</span> v:<span class="k"> var lab</span> HSSEX
-<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
-<span class="k">       local</span> per:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(mean)<span class="o">*</span><span class="m">100</span>
-<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
-       putexcel A3=<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
-       putexcel B3=<span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
-        
-        
-    }
-
-<span class="k">    if</span> <span class="m">4</span> { <span class="c1">//multi</span>
-<span class="k">        </span>
-<span class="k">        lookfor</span> race 
-<span class="k">        desc</span> DMARETHN
-<span class="k">        capture label drop</span> race 
-        
-        #delimit ;
-<span class="k">        lab</span> def race 
-           <span class="m">1</span> <span class="s">&quot;White&quot;</span> 
-           <span class="m">2</span> <span class="s">&quot;Black&quot;</span>
-           <span class="m">3</span> <span class="s">&quot;Hispanic&quot;</span>
-           <span class="m">4</span> <span class="s">&quot;Asian&quot;</span>;
-<span class="k">        lab</span> values DMARETHN race; 
-        #delimit cr
-<span class="k">        </span>
-<span class="k">        local</span> v:<span class="k"> var lab</span> DMARETHN
-        putexcel A4=<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">, %&quot;</span>
-<span class="k">        local</span> vl: value<span class="k"> label</span> DMARETHN
-<span class="k">        </span>
-<span class="k">        levelsof</span> DMARETHN,<span class="k"> local</span>(race)  
-<span class="k">        return list</span> 
-<span class="k">        </span>
-<span class="k">        count if</span> <span class="o">!</span><span class="nf">missing</span>(DMARETHN)
-<span class="k">        global</span> N=<span class="nf">r</span>(N)
-<span class="k">        </span>
-<span class="k">        local</span> row=<span class="m">5</span>
-<span class="k">        </span>
-<span class="k">        foreach l</span> of<span class="k"> numlist</span> <span class="nv">`race&#39;</span> {
-<span class="k">    </span>
-<span class="k">            local</span> per:<span class="k"> lab</span> <span class="nv">`vl&#39;</span> <span class="nv">`l&#39;</span>
-<span class="k">            qui sum</span> DMARETHN<span class="k"> if</span> DMARETHN<span class="o">==</span><span class="nv">`l&#39;</span>
-<span class="k">            local</span> percent:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(N)<span class="o">*</span><span class="m">100</span><span class="o">/</span><span class="vg">$N</span>
-<span class="k">            di</span> <span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">, % : </span><span class="nv">`percent&#39;</span><span class="s">&quot;</span>
-            putexcel A<span class="nv">`row&#39;</span> = <span class="s">&quot;   </span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
-            putexcel B<span class="nv">`row&#39;</span> = <span class="s">&quot;</span><span class="nv">`percent&#39;</span><span class="s">&quot;</span>
-<span class="k">            local</span> row=<span class="nv">`row&#39;</span> <span class="o">+</span> <span class="m">1</span>
-            
-        }    
-        
-}
-<span class="k">    </span>
-<span class="k">    if</span> <span class="m">5</span> { <span class="c1">//missingness</span>
-        
-    }
-<span class="k">    </span>
-<span class="k">    log close</span>
-}
-</pre></div>
-</div>
-<p><a class="reference internal" href="statalinux.html"><span class="doc std std-doc">stata-linux</span></a></p>
-<iframe src="https://www.dropbox.com/s/lvbn9c2xle8qpln/pwd1.mp4?dl=0?raw=1" width="480" height="256" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/KyAiw21i0epoR8tQ59"></a></p>
-<iframe src="https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1" width="480" height="256" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/KyAiw21i0epoR8tQ59"></a></p>
-<hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id2" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
-<p>We will simulate missingess of DMARETHN and assess the impact on Table 1</p>
-</aside>
+  <section class="tex2jax_ignore mathjax_ignore" id="shell">
+<h1>shell<a class="headerlink" href="#shell" title="Permalink to this heading">#</a></h1>
+<ol class="arabic simple" start="0">
+<li><p>sudo find / -name StataSE -type f 2&gt;/dev/null</p></li>
+<li><p>cd /Applications/Stata/StataSE.app/Contents/MacOS/</p></li>
+<li><p>export PATH=$PATH:/Applications/Stata/StataSE.app/Contents/MacOS/</p></li>
+<li><p>stata-se -e “di c(current_date)”</p></li>
+<li><p>cat stata.log</p></li>
+<li><p>cd $PATH</p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
@@ -522,24 +410,6 @@ document.write(`
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="ddd.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">rnormal()</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="fff.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">r(mean)</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
