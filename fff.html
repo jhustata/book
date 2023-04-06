@@ -376,7 +376,7 @@ document.write(`
 <h1>r(mean)<a class="headerlink" href="#r-mean" title="Permalink to this heading">#</a></h1>
 <ol class="arabic" start="0">
 <li><p>Today we are going to talk about <code class="docutils literal notranslate"><span class="pre">macros</span></code>:</p>
-<p>A. local system macros</p>
+<p><strong>A:</strong> local system macros</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  name
   content
   `c()`
@@ -384,7 +384,7 @@ document.write(`
   `e()`
 </pre></div>
 </div>
-<p>B. user-defined macros</p>
+<p><strong>B:</strong> user-defined macros</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   `local` e.g., `m_iqr`
    `global` e.g., ${workdir}
 </pre></div>
@@ -404,6 +404,8 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//discuss:</span>
 
 <span class="k">di</span> <span class="s">&quot;</span><span class="nv">`c(k)&#39;</span><span class="s"> variables &amp; </span><span class="nv">`c(N)&#39;</span><span class="s"> observations&quot;</span>
+
+<span class="k">di</span> <span class="s">&quot;annotate to warn users with Stata/BE (Basic Edition)???&quot;</span>
 </pre></div>
 </div>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {

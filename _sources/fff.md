@@ -2,7 +2,8 @@
 
 0. Today we are going to talk about `macros`:
 
-     A. local system macros
+
+     **A:** local system macros
 
          name
          content
@@ -10,7 +11,8 @@
          `r()`
          `e()`
 
-     B. user-defined macros
+
+     **B:** user-defined macros
 
           `local` e.g., `m_iqr`
           `global` e.g., ${workdir}
@@ -32,6 +34,8 @@ You may save it as `nh3andmort.do`. If you encounter any trouble in this prelimi
 //discuss:
 
 di "`c(k)' variables & `c(N)' observations"
+
+di "annotate to warn users with Stata/BE (Basic Edition)???"
 
 ```
 
