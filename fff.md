@@ -20,14 +20,12 @@ Copy & paste the script below into a .do file and do!
 You may save it as `nh3andmort.do`. If you encounter any trouble in this preliminary step please do post it on CoursePlus. Maybe a fellow student or a member of the teaching team may be able to help.
 
 1. Import data for todays class:
-
-     notes: 
      
-         a) stata [editions](https://www.stata.com/products/which-stata-is-right-for-me/) 
+     a) stata [editions](https://www.stata.com/products/which-stata-is-right-for-me/) 
          
-         b) [ex1](https://jhustata.github.io/book/_downloads/f716980c69e9c20b4b4bb8431c700717/unix-b-mode3.jpg) 
+     b) [ex1](https://jhustata.github.io/book/_downloads/f716980c69e9c20b4b4bb8431c700717/unix-b-mode3.jpg) 
          
-         c) [ex2](stata.version.png)
+     c) [ex2](stata.version.png)
 
 ```stata
 
