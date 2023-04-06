@@ -393,9 +393,16 @@ document.write(`
 <p>But we need data to demonstrate these macros. So lets curate a dataset: <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code>
 Copy &amp; paste the script below into a .do file and do!
 You may save it as <code class="docutils literal notranslate"><span class="pre">nh3andmort.do</span></code>. If you encounter any trouble in this preliminary step please do post it on CoursePlus. Maybe a fellow student or a member of the teaching team may be able to help.</p>
-<ol class="arabic simple">
-<li><p>Import data for todays class:</p></li>
+<ol class="arabic">
+<li><p>Import data for todays class:</p>
+<p>note: stata <a class="reference external" href="https://www.stata.com/products/which-stata-is-right-for-me/">editions</a></p>
+</li>
 </ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//discuss:</span>
+
+<span class="k">di</span> <span class="s">&quot;</span><span class="nv">`c(k)&#39;</span><span class="s"> variables &amp; </span><span class="nv">`c(N)&#39;</span><span class="s"> observations&quot;</span>
+</pre></div>
+</div>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">    </span>
 <span class="k">    if</span> <span class="m">0</span> { background:survey,cohort,chapter:<span class="nv">`net search&#39;</span>
