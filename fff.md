@@ -8,6 +8,7 @@
          content
          `c()`
          `r()`
+         `e()`
 
      B. user-defined macros
 
