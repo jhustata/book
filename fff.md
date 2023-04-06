@@ -21,7 +21,7 @@ You may save it as `nh3andmort.do`. If you encounter any trouble in this prelimi
 
 1. Import data for todays class:
 
-     note: stata [editions](https://www.stata.com/products/which-stata-is-right-for-me/)[ex1](https://jhustata.github.io/book/_downloads/f716980c69e9c20b4b4bb8431c700717/unix-b-mode3.jpg) [ex2](stata.version.png)
+     note: stata [editions](https://www.stata.com/products/which-stata-is-right-for-me/) [ex1](https://jhustata.github.io/book/_downloads/f716980c69e9c20b4b4bb8431c700717/unix-b-mode3.jpg) [ex2](stata.version.png)
 
 ```stata
 
