@@ -1,0 +1,11 @@
+loading... https://data.nber.org/mortality/2000/mort2000.dta, 0%
+loading... https://data.nber.org/mortality/2001/mort2001.dta, 20%
+loading... https://data.nber.org/mortality/2002/mort2002.dta, 40%
+loading... https://data.nber.org/mortality/2003/mort2003.dta, 60%
+loading... https://data.nber.org/mortality/2004/mort2004.dta, 80%
+loading... https://data.nber.org/mortality/2005/mort2005.dta, 100%
+
+rows x columns:
+  14,580,009
+167
+runtime = 36 minute(s)
