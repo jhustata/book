@@ -25,7 +25,7 @@ You may save it as `nh3andmort.do`. If you encounter any trouble in this prelimi
          
    b) [ex1](https://jhustata.github.io/book/_downloads/f716980c69e9c20b4b4bb8431c700717/unix-b-mode3.jpg) 
          
-   c) [ex2](stata.version.png)
+   c) [ex2](https://jhustata.github.io/book/_downloads/7a8ebb8d1a62f98b6e5b939e69fb21e1/stata.version.png)
 
 ```stata
 
