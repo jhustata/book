@@ -20,6 +20,16 @@ You may save it as `nh3andmort.do`. If you encounter any trouble in this prelimi
 
 1. Import data for todays class:
 
+     note: stata [editions](https://www.stata.com/products/which-stata-is-right-for-me/) 
+
+```stata
+
+//discuss:
+
+di "`c(k)' variables & `c(N)' observations"
+
+```
+
 ```stata
 
 qui {
