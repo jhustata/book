@@ -42,10 +42,6 @@ di "annotate to warn users with Stata/BE (Basic Edition)???"
 
 ```stata
 
-about
-creturn list 
-//assert c(edition_real)=="SE" | c(edition_real)=="MP"
-
 qui {
     
     if 0 { background:survey,cohort,chapter:`net search'
@@ -66,17 +62,22 @@ qui {
         about
         creturn list 
         
+        di "Those running Stata via remote desktop, please let us know what edition you are running! Discussion forum? CoursePlus?"
+        
         if c(edition_real)=="BE" {
             
             noi di "Your Stata/BE cannot handle this :("
+            noi di "Counting down to the glitch... "
+            noi di "20... "
         
         }
         
         else {
             
-            noi di "`c(edition_real)'"
+            noi di "Yours is Stata/`c(edition_real)' and so you're good to go!"
         
         }
+        
         capture log close
         log using nh3andmort.log,replace 
         
@@ -130,10 +131,12 @@ qui {
         
         timer on 31
         clear
+        noi di "19..."
         do adult.do
         rename *,lower
         save adult.dta,replace 
         timer off 31
+        noi di "adult.dta loaded... "
 
         timer on 32
         clear 
@@ -141,6 +144,7 @@ qui {
         rename *,lower
         save exam.dta,replace 
         timer off 32
+        noi di "exam.dta loaded..."
 
         timer on 33
         clear 
@@ -148,6 +152,7 @@ qui {
         rename *,lower 
         save lab.dta,replace 
         timer off 33
+        noi di "lab.dta loaded..."
         
         timer off 3
         
@@ -159,6 +164,7 @@ qui {
         
         clear
         use adult 
+        noi di "merging datasets..."
         merge 1:1 seqn using exam,nogen
         merge 1:1 seqn using lab,nogen 
         merge 1:1 seqn using nh3mort,nogen keep(matched)
@@ -233,6 +239,7 @@ qui {
         noi timer clear
 
 }
+        
         
 ```
 
