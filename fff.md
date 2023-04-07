@@ -69,7 +69,7 @@ qui {
         
         if c(edition_real)=="BE" | c(edition_real)=="IC" {
             
-            noi di "Your Stata/`c(edition_real)` cannot handle this    ¯\_(ツ)_/¯"
+            noi di "Your Stata/`c(edition_real)' cannot handle this    ¯\_(ツ)_/¯"
             noi di ""
         
         }
