@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>lab1 &#8212; Stata Programming</title>
+    <title>lab1sol &#8212; Stata Programming</title>
   
   
   
@@ -356,7 +356,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>lab1</h1>
+    <h1>lab1sol</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -370,16 +370,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab1">
-<h1>lab1<a class="headerlink" href="#lab1" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab1sol">
+<h1>lab1sol<a class="headerlink" href="#lab1sol" title="Permalink to this heading">#</a></h1>
 <p>video: <a class="reference external" href="https://jhjhm.zoom.us/rec/share/XjpGCpJkfYBIATTHMS93sFQmjJRdrFatmiWe-9JmYjNOSWHINrmbkqQK1amABUUQ.2bvUmmqBZ0dMd3LD?startTime=1680430835000">tutorial</a>
-<a class="reference download internal" download="" href="_downloads/4695e52509328eb56012419ce3d33eb6/lab1.do"><span class="xref download myst">lab1.do</span></a>
-<a class="reference download internal" download="" href="_downloads/6587efb5212fb9cbdf00b4d40f804ac9/lab1.log"><span class="xref download myst">lab1.log</span></a></p>
-<p>data: <a class="reference download internal" download="" href="_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta"><span class="xref download myst">transplants.dta</span></a></p>
-<p>zoom: <a class="reference external" href="https://JHUBlueJays.zoom.us/j/96760923747">M</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/99476415268">T</a> <a class="reference external" href="https://jhubluejays.zoom.us/j/98628544091?pwd=ZGx5NTN1RHNzNDUrQ3c3Uys0RVYrUT09">W</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/3393703103">Th</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/8581993134">F</a></p>
+<a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/lab1.do">lab1.do</a>
+<a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/lab1.log">lab1.log</a></p>
+<p>data: transplants.dta</p>
+<p>zoom: M T W Th F</p>
 <p>Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. An answer key will be provided on Friday April 7, 2023.</p>
 <ol class="arabic simple">
-<li><p>Start Stata and open your do-file editor.</p></li>
+<li><p>Start Stata and open your do-file editor. <a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/lab1.do">lab1.do</a></p></li>
 <li><p>You will now write your first do-file following the guidelines on <code class="docutils literal notranslate"><span class="pre">structure</span></code>, <code class="docutils literal notranslate"><span class="pre">indentation</span></code>, and <code class="docutils literal notranslate"><span class="pre">annotation</span></code> given in <a class="reference internal" href="eee.html"><span class="doc std std-doc">chapter: pwd</span></a>.</p></li>
 <li><p>We want to load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>. But before that, let’s check your working directory. See the bottom left side of the console (the main Stata window). You may also type <code class="docutils literal notranslate"><span class="pre">pwd</span></code> on the console. Is it where your <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code> is located? If not, use one of these two methods:</p></li>
 </ol>
@@ -388,16 +388,83 @@ document.write(`
 <ol class="arabic simple" start="4">
 <li><p>Now let’s get back to your do file. Load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code> (double-click on the file or type <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">transplants.dta,</span> <span class="pre">clear</span></code></p></li>
 <li><p>How many observations does the dataset have?</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">count</span>
+<span class="k">di</span> <span class="nf">c</span>(N)
+<span class="k">di</span> _N
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
 <li><p>How many adults (age&gt;18) does the dataset have?</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">count if</span> age<span class="o">&gt;</span><span class="m">18</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
 <li><p>How many observations have missing bmi?</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">count if</span> <span class="nf">missing</span>(bmi)
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
 <li><p>Generate a new variable called agecat. The value of agecat is 1 for patients younger than 18, 2 for those from 18 to 65, and 3 for those older than 65.</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//method 1</span>
+<span class="k">generate</span> agecat=.
+<span class="k">replace</span> agecat=<span class="m">1</span><span class="k"> if</span> age<span class="o">&lt;</span><span class="m">18</span>
+<span class="k">replace</span> agecat=<span class="m">2</span><span class="k"> if</span> age<span class="o">&gt;=</span><span class="m">18</span> <span class="o">&amp;</span> age<span class="o">&lt;=</span><span class="m">65</span>
+<span class="k">replace</span> agecat=<span class="m">3</span><span class="k"> if</span> age<span class="o">&gt;</span><span class="m">65</span> <span class="o">&amp;</span> <span class="o">!</span><span class="nf">missing</span>(age)
+
+<span class="c1">//method 2</span>
+<span class="k">gen</span> byte agecat = <span class="m">1</span><span class="o">+</span>(age<span class="o">&gt;=</span><span class="m">18</span>)<span class="o">+</span>(age<span class="o">&gt;</span><span class="m">65</span>)<span class="k"> if</span> <span class="o">!</span><span class="nf">missing</span>(age)
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
 <li><p>What are the means of age and bmi?</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sum</span> age bmi
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
 <li><p>Now preserve your dataset (type <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">preserve</span></code> to learn more).</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">preserve</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="11">
 <li><p>Drop all patients who are younger than 18 or older than 65, or have missing value for age.</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">drop if</span> age<span class="o">&lt;</span><span class="m">18</span> | age<span class="o">&gt;</span><span class="m">65</span> | <span class="nf">missing</span>(age)
+</pre></div>
+</div>
+<ol class="arabic simple" start="12">
 <li><p>Again, what are the means of age and bmi? restore the dataset. Yet again, what are the means of age and bmi?</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sum</span> age bmi
+<span class="k">restore</span>
+<span class="k">sum</span> age bmi
+</pre></div>
+</div>
+<ol class="arabic simple" start="13">
 <li><p>What happened? Leave a comment on your do-file explaining what you just did. Remember, your homework (and all other) .do file scripts should have 1-3 comments per block of code. Do not use your comments/annotation to define the Stata commands you’ve used. Thats what the <code class="docutils literal notranslate"><span class="pre">help</span></code> command is for. Instead, give yourself or a reader some context.</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">// ¯\_(ツ)_/¯</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="14">
 <li><p>Lab 1 is almost over. Let Stata say “that was easy!”</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="s">&quot;that was easy!&quot;</span>
+<span class="c1">//Black magic always *seems* easy... until you pay the price</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="15">
 <li><p>The last bit. Close your log file. Never forget to close log files! If you hadn’t created a log file, this is a reminder to do so. Preferably in the block of code that you may have designated using <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span> <span class="pre">{</span></code></p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">log close</span> 
+</pre></div>
+</div>
+<ol class="arabic simple" start="16">
 <li><p>You have all your commands so far in your do file, right? Run your entire do file and make sure your do file does exactly the same thing.</p></li>
 </ol>
 </section>
