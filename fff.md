@@ -64,7 +64,7 @@ qui {
         
         di "Those running Stata via remote desktop, please let us know what edition you are running! Discussion forum? CoursePlus?"
         
-        if c(edition_real)=="BE" {
+        if c(edition_real)=="BE" | c(edition_real)=="IC" {
             
             noi di "Your Stata/BE cannot handle this :("
             noi di "Counting down to the glitch... "

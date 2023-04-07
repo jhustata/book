@@ -430,7 +430,7 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">        </span>
 <span class="k">        di</span> <span class="s">&quot;Those running Stata via remote desktop, please let us know what edition you are running! Discussion forum? CoursePlus?&quot;</span>
 <span class="k">        </span>
-<span class="k">        if</span> <span class="nf">c</span>(edition_real)<span class="o">==</span><span class="s">&quot;BE&quot;</span> {
+<span class="k">        if</span> <span class="nf">c</span>(edition_real)<span class="o">==</span><span class="s">&quot;BE&quot;</span> | <span class="nf">c</span>(edition_real)<span class="o">==</span><span class="s">&quot;IC&quot;</span> {
 <span class="k">            </span>
 <span class="k">            noi di</span> <span class="s">&quot;Your Stata/BE cannot handle this :(&quot;</span>
 <span class="k">            noi di</span> <span class="s">&quot;Counting down to the glitch... &quot;</span>
