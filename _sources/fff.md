@@ -41,6 +41,8 @@ di "annotate to warn users with Stata/BE (Basic Edition)???"
 
 ```
 
+[New script!](updated.script.png)
+
 ```stata
 
 qui {
