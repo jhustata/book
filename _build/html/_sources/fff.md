@@ -15,8 +15,8 @@
      
 **B:** user-defined macros
 
-          `local` e.g., `m_iqr`
-          `global` e.g., ${workdir}
+     local e.g., m_iqr
+     global e.g., ${workdir}
 
 But we need data to demonstrate these macros. So lets curate a dataset: `nh3andmort.dta`
 Copy & paste the script below into a .do file and do!
