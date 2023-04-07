@@ -5,16 +5,15 @@
 0. Today we are going to talk about `macros`:
 
 
-     **A:** local system macros
+**A:** local system macros
 
-         name
-         content
-         `c()`
-         `r()`
-         `e()`
-
-
-     **B:** user-defined macros
+    name
+    content
+     c() -> constants (`help creturn`)
+     r() -> return
+     e() -> estimates values 
+     
+**B:** user-defined macros
 
           `local` e.g., `m_iqr`
           `global` e.g., ${workdir}
