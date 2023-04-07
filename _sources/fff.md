@@ -1,5 +1,8 @@
 # r(mean)
 
+&nbsp;&nbsp;&nbsp; ![video](https://jhjhm.zoom.us/rec/share/Vn4RJsBpvRlACl1o7_6gr-ZrRvQ-PcU4oX8npjY-irdHjg3YLWo8qtSfFx989s6Y.riv8GVEsjWE_uV9y?startTime=1680809414000
+Passcode: Sp.JK#8d)
+
 0. Today we are going to talk about `macros`:
 
 
