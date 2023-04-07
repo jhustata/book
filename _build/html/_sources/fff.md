@@ -44,7 +44,7 @@ di "annotate to warn users with Stata/BE (Basic Edition)???"
 
 about
 creturn list 
-assert c(edition_real)=="SE" | c(edition_real)=="MP"
+//assert c(edition_real)=="SE" | c(edition_real)=="MP"
 
 qui {
     
