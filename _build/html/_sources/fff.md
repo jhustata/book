@@ -9,6 +9,7 @@
 
     name
     content
+    
      c() -> constants (`help creturn`)
      r() -> return values
      e() -> estimated values 
@@ -66,9 +67,8 @@ qui {
         
         if c(edition_real)=="BE" | c(edition_real)=="IC" {
             
-            noi di "Your Stata/BE cannot handle this :("
-            noi di "Counting down to the glitch... "
-            noi di "20... "
+            noi di "Your Stata/BE cannot handle this    ¯\_(ツ)_/¯"
+            noi di ""
         
         }
         
@@ -131,7 +131,6 @@ qui {
         
         timer on 31
         clear
-        noi di "19..."
         do adult.do
         rename *,lower
         save adult.dta,replace 
@@ -179,7 +178,7 @@ qui {
         
         compress 
         lab dat "NHANES 1988-1994, survey & mortality"
-        noi save "nh3andmort.dta", replace
+        save "nh3andmort.dta", replace
         
         timer off 5
         
@@ -240,7 +239,7 @@ qui {
 
 }
         
-        
+               
 ```
 
 2. Explore the versatility of macros:

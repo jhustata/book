@@ -381,6 +381,7 @@ document.write(`
 <p><strong>A:</strong> local system macros</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>name
 content
+
  c() -&gt; constants (`help creturn`)
  r() -&gt; return values
  e() -&gt; estimated values 
@@ -432,9 +433,8 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">        </span>
 <span class="k">        if</span> <span class="nf">c</span>(edition_real)<span class="o">==</span><span class="s">&quot;BE&quot;</span> | <span class="nf">c</span>(edition_real)<span class="o">==</span><span class="s">&quot;IC&quot;</span> {
 <span class="k">            </span>
-<span class="k">            noi di</span> <span class="s">&quot;Your Stata/BE cannot handle this :(&quot;</span>
-<span class="k">            noi di</span> <span class="s">&quot;Counting down to the glitch... &quot;</span>
-<span class="k">            noi di</span> <span class="s">&quot;20... &quot;</span>
+<span class="k">            noi di</span> <span class="s">&quot;Your Stata/BE cannot handle this    ¯\_(ツ)_/¯&quot;</span>
+<span class="k">            noi di</span> <span class="s">&quot;&quot;</span>
         
         }
 <span class="k">        </span>
@@ -497,7 +497,6 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">        </span>
 <span class="k">        timer on</span> <span class="m">31</span>
 <span class="k">        clear</span>
-<span class="k">        noi di</span> <span class="s">&quot;19...&quot;</span>
 <span class="k">        do</span> adult<span class="m">.</span>do
 <span class="k">        rename</span> <span class="o">*</span>,lower
 <span class="k">        save</span> adult<span class="m">.</span>dta,replace 
@@ -545,7 +544,7 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">        </span>
 <span class="k">        compress</span> 
 <span class="k">        lab</span> dat <span class="s">&quot;NHANES 1988-1994, survey &amp; mortality&quot;</span>
-<span class="k">        noi save</span> <span class="s">&quot;nh3andmort.dta&quot;</span>,<span class="k"> replace</span>
+<span class="k">        save</span> <span class="s">&quot;nh3andmort.dta&quot;</span>,<span class="k"> replace</span>
 <span class="k">        </span>
 <span class="k">        timer</span> off <span class="m">5</span>
         
@@ -606,7 +605,7 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 
 }
         
-        
+               
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
