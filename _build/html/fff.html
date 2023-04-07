@@ -382,8 +382,8 @@ document.write(`
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>name
 content
  c() -&gt; constants (`help creturn`)
- r() -&gt; return
- e() -&gt; estimates values 
+ r() -&gt; return values
+ e() -&gt; estimated values 
 </pre></div>
 </div>
 <p><strong>B:</strong> user-defined macros</p>
@@ -408,7 +408,11 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">di</span> <span class="s">&quot;annotate to warn users with Stata/BE (Basic Edition)???&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">about</span>
+<span class="k">creturn list</span> 
+<span class="k">assert</span> <span class="nf">c</span>(edition_real)<span class="o">==</span><span class="s">&quot;SE&quot;</span> | <span class="nf">c</span>(edition_real)<span class="o">==</span><span class="s">&quot;MP&quot;</span>
+
+<span class="k">qui</span> {
 <span class="k">    </span>
 <span class="k">    if</span> <span class="m">0</span> { background:survey,cohort,chapter:<span class="nv">`net search&#39;</span>
         
@@ -424,6 +428,21 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
         
         cls
 <span class="k">        clear</span> 
+<span class="k">        </span>
+<span class="k">        about</span>
+<span class="k">        creturn list</span> 
+<span class="k">        </span>
+<span class="k">        if</span> <span class="nf">c</span>(edition_real)<span class="o">==</span><span class="s">&quot;BE&quot;</span> {
+<span class="k">            </span>
+<span class="k">            di</span> <span class="s">&quot;Your Stata/BE cannot handle this :(&quot;</span>
+        
+        }
+<span class="k">        </span>
+<span class="k">        else</span> {
+<span class="k">            </span>
+<span class="k">            di</span> <span class="s">&quot;</span><span class="nv">`c(edition_real)&#39;</span><span class="s">&quot;</span>
+        
+        }
 <span class="k">        capture log close</span>
 <span class="k">        log</span> using nh3andmort<span class="m">.</span>log,replace 
 <span class="k">        </span>

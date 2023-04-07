@@ -10,8 +10,8 @@
     name
     content
      c() -> constants (`help creturn`)
-     r() -> return
-     e() -> estimates values 
+     r() -> return values
+     e() -> estimated values 
      
 **B:** user-defined macros
 
@@ -42,6 +42,10 @@ di "annotate to warn users with Stata/BE (Basic Edition)???"
 
 ```stata
 
+about
+creturn list 
+assert c(edition_real)=="SE" | c(edition_real)=="MP"
+
 qui {
     
     if 0 { background:survey,cohort,chapter:`net search'
@@ -58,6 +62,21 @@ qui {
         
         cls
         clear 
+        
+        about
+        creturn list 
+        
+        if c(edition_real)=="BE" {
+            
+            di "Your Stata/BE cannot handle this :("
+        
+        }
+        
+        else {
+            
+            di "`c(edition_real)'"
+        
+        }
         capture log close
         log using nh3andmort.log,replace 
         
