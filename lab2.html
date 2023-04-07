@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>by &#8212; Stata Programming</title>
+    <title>lab2 &#8212; Stata Programming</title>
   
   
   
@@ -158,7 +158,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="aaa.html">tokenize</a></li>
 
 
+
+
 <li class="toctree-l1"><a class="reference internal" href="bbb.html">quietly</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="ccc.html">delimit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ddd.html">rnormal()</a></li>
 
@@ -352,7 +356,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>by</h1>
+    <h1>lab2</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -366,9 +370,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="by">
-<h1>by<a class="headerlink" href="#by" title="Permalink to this heading">#</a></h1>
-<p>by command, egen command, loops, conditionals, and programs 2</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab2">
+<h1>lab2<a class="headerlink" href="#lab2" title="Permalink to this heading">#</a></h1>
+<p>lab1: <a class="reference internal" href="lab1.html"><span class="doc std std-doc">solutions</span></a></p>
+<p>data: <a class="reference download internal" download="" href="_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta"><span class="xref download myst">transplants.dta</span></a></p>
+<p>zoom: <a class="reference external" href="https://JHUBlueJays.zoom.us/j/96760923747">M</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/99476415268">T</a> <a class="reference external" href="https://jhubluejays.zoom.us/j/98628544091?pwd=ZGx5NTN1RHNzNDUrQ3c3Uys0RVYrUT09">W</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/3393703103">Th</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/8581993134">F</a></p>
+<p>This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be provided on Friday 14, 2023.</p>
+<ol class="arabic simple">
+<li><p>Start Stata, open your do-file editor, write the header, and load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>.</p></li>
+<li><p>Calculate the mean value of age using <code class="docutils literal notranslate"><span class="pre">sum</span></code>.</p></li>
+<li><p>Stata should have some values in the memory as <code class="docutils literal notranslate"><span class="pre">r()</span></code> values. Ask Stata to display the list of the <code class="docutils literal notranslate"><span class="pre">r()</span></code> values.</p></li>
+<li><p>Display the mean value. Store the mean value as a local macro ``mean’<code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">Display</span> <span class="pre">the</span> <span class="pre">local</span> <span class="pre">macro</span> </code>mean’.</p></li>
+<li><p>Now let’s try something more useful. Calculate the mean value of age. Print the following sentence: <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">mean</span> <span class="pre">age</span> <span class="pre">is</span> <span class="pre">XX.X</span> <span class="pre">years</span></code>. Replace <code class="docutils literal notranslate"><span class="pre">XX</span></code> with correct values. Round to tenths (e.g. 35.2 years).</p></li>
+<li><p>Calculate the median (IQR) of age. Print the following sentence: <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">median</span> <span class="pre">[IQR]</span> <span class="pre">age</span> <span class="pre">is</span> <span class="pre">XX</span> <span class="pre">[XX-XX]</span> <span class="pre">years</span></code>. Replace <code class="docutils literal notranslate"><span class="pre">XX</span></code> with correct values. Round to whole numbers (e.g. 37 years).</p></li>
+<li><p>Calculate the standard deviation of age among patients with blood type O (<code class="docutils literal notranslate"><span class="pre">abo==4</span></code>). Print the following sentence: <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">SD</span> <span class="pre">of</span> <span class="pre">age</span> <span class="pre">among</span> <span class="pre">patients</span> <span class="pre">with</span> <span class="pre">blood</span> <span class="pre">type</span> <span class="pre">O</span> <span class="pre">is</span> <span class="pre">XX.X</span></code>. Replace <code class="docutils literal notranslate"><span class="pre">XX</span></code> with correct values. Round to tenths (e.g. 8.2).</p></li>
+<li><p>Regress BMI on age and sex (using <code class="docutils literal notranslate"><span class="pre">regress</span> <span class="pre">bmi</span> <span class="pre">age</span> <span class="pre">gender</span></code>) without displaying the regression output. Print the following sentence: <code class="docutils literal notranslate"><span class="pre">Per</span> <span class="pre">1-year</span> <span class="pre">increase</span> <span class="pre">in</span> <span class="pre">age,</span> <span class="pre">BMI</span> <span class="pre">increases</span> <span class="pre">by</span> <span class="pre">X.XX</span></code>. Replace <code class="docutils literal notranslate"><span class="pre">XX</span></code> with the regression coefficient of age. Round to hundredths (e.g. 0.74).</p></li>
+<li><p>Now we will do the same thing, but using a program. Define a program named <code class="docutils literal notranslate"><span class="pre">bmi_age</span></code>. This program will regress BMI on age and sex without displaying the regression output, and print: <code class="docutils literal notranslate"><span class="pre">Per</span> <span class="pre">1-year</span> <span class="pre">increase</span> <span class="pre">in</span> <span class="pre">age,</span> <span class="pre">BMI</span> <span class="pre">increases</span> <span class="pre">by</span> <span class="pre">X.XX</span></code>. Replace <code class="docutils literal notranslate"><span class="pre">XX</span></code> with the regression coefficient of <code class="docutils literal notranslate"><span class="pre">age</span></code>. Round to hundredths (e.g. 0.74).</p></li>
+<li><p>You have all your commands in your do file, right? Run your do file from the beginning and make sure your do file does exactly the same thing.</p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">

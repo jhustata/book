@@ -38,11 +38,11 @@ Teaching assistants
 
 Optional labs
 
-1. [M 9:30-10:30 am](lab1.md)
-2. [T 10:00-11:00 am](lab1.md)
-3. [W 3:00-4:00 pm](lab1.md)
-4. [Th 6:00-7:00 pm](lab1.md)
-5. [F 1:00-2:00 pm](lab1.md)
+1. [M 9:30-10:30 am](lab2.md)
+2. [T 10:00-11:00 am](lab2.md)
+3. [W 3:00-4:00 pm](lab2.md)
+4. [Th 6:00-7:00 pm](lab2.md)
+5. [F 1:00-2:00 pm](lab2.md)
 
 Homeworks due  
 
