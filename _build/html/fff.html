@@ -375,23 +375,22 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="r-mean">
 <h1>r(mean)<a class="headerlink" href="#r-mean" title="Permalink to this heading">#</a></h1>
 <p>    <a class="reference external" href="https://jhjhm.zoom.us/rec/share/Vn4RJsBpvRlACl1o7_6gr-ZrRvQ-PcU4oX8npjY-irdHjg3YLWo8qtSfFx989s6Y.riv8GVEsjWE_uV9y?startTime=1680809414000">video</a></p>
-<ol class="arabic" start="0">
-<li><p>Today we are going to talk about <code class="docutils literal notranslate"><span class="pre">macros</span></code>:</p>
+<ol class="arabic simple" start="0">
+<li><p>Today we are going to talk about <code class="docutils literal notranslate"><span class="pre">macros</span></code>:</p></li>
+</ol>
 <p><strong>A:</strong> local system macros</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  name
-  content
-  `c()`
-  `r()`
-  `e()`
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>name
+content
+ c() -&gt; constants (`help creturn`)
+ r() -&gt; return
+ e() -&gt; estimates values 
 </pre></div>
 </div>
 <p><strong>B:</strong> user-defined macros</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   `local` e.g., `m_iqr`
-   `global` e.g., ${workdir}
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>      `local` e.g., `m_iqr`
+      `global` e.g., ${workdir}
 </pre></div>
 </div>
-</li>
-</ol>
 <p>But we need data to demonstrate these macros. So lets curate a dataset: <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code>
 Copy &amp; paste the script below into a .do file and do!
 You may save it as <code class="docutils literal notranslate"><span class="pre">nh3andmort.do</span></code>. If you encounter any trouble in this preliminary step please do post it on CoursePlus. Maybe a fellow student or a member of the teaching team may be able to help.</p>
