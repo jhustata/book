@@ -408,11 +408,7 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">di</span> <span class="s">&quot;annotate to warn users with Stata/BE (Basic Edition)???&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">about</span>
-<span class="k">creturn list</span> 
-<span class="c1">//assert c(edition_real)==&quot;SE&quot; | c(edition_real)==&quot;MP&quot;</span>
-
-<span class="k">qui</span> {
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">    </span>
 <span class="k">    if</span> <span class="m">0</span> { background:survey,cohort,chapter:<span class="nv">`net search&#39;</span>
         
@@ -432,17 +428,22 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">        about</span>
 <span class="k">        creturn list</span> 
 <span class="k">        </span>
+<span class="k">        di</span> <span class="s">&quot;Those running Stata via remote desktop, please let us know what edition you are running! Discussion forum? CoursePlus?&quot;</span>
+<span class="k">        </span>
 <span class="k">        if</span> <span class="nf">c</span>(edition_real)<span class="o">==</span><span class="s">&quot;BE&quot;</span> {
 <span class="k">            </span>
 <span class="k">            noi di</span> <span class="s">&quot;Your Stata/BE cannot handle this :(&quot;</span>
+<span class="k">            noi di</span> <span class="s">&quot;Counting down to the glitch... &quot;</span>
+<span class="k">            noi di</span> <span class="s">&quot;20... &quot;</span>
         
         }
 <span class="k">        </span>
 <span class="k">        else</span> {
 <span class="k">            </span>
-<span class="k">            noi di</span> <span class="s">&quot;</span><span class="nv">`c(edition_real)&#39;</span><span class="s">&quot;</span>
+<span class="k">            noi di</span> <span class="s">&quot;Yours is Stata/</span><span class="nv">`c(edition_real)&#39;</span><span class="s"> and so you&#39;re good to go!&quot;</span>
         
         }
+<span class="k">        </span>
 <span class="k">        capture log close</span>
 <span class="k">        log</span> using nh3andmort<span class="m">.</span>log,replace 
 <span class="k">        </span>
@@ -496,10 +497,12 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">        </span>
 <span class="k">        timer on</span> <span class="m">31</span>
 <span class="k">        clear</span>
+<span class="k">        noi di</span> <span class="s">&quot;19...&quot;</span>
 <span class="k">        do</span> adult<span class="m">.</span>do
 <span class="k">        rename</span> <span class="o">*</span>,lower
 <span class="k">        save</span> adult<span class="m">.</span>dta,replace 
 <span class="k">        timer</span> off <span class="m">31</span>
+<span class="k">        noi di</span> <span class="s">&quot;adult.dta loaded... &quot;</span>
 
 <span class="k">        timer on</span> <span class="m">32</span>
 <span class="k">        clear</span> 
@@ -507,6 +510,7 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">        rename</span> <span class="o">*</span>,lower
 <span class="k">        save</span> exam<span class="m">.</span>dta,replace 
 <span class="k">        timer</span> off <span class="m">32</span>
+<span class="k">        noi di</span> <span class="s">&quot;exam.dta loaded...&quot;</span>
 
 <span class="k">        timer on</span> <span class="m">33</span>
 <span class="k">        clear</span> 
@@ -514,6 +518,7 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">        rename</span> <span class="o">*</span>,lower 
 <span class="k">        save lab</span><span class="m">.</span>dta,replace 
 <span class="k">        timer</span> off <span class="m">33</span>
+<span class="k">        noi di</span> <span class="s">&quot;lab.dta loaded...&quot;</span>
 <span class="k">        </span>
 <span class="k">        timer</span> off <span class="m">3</span>
         
@@ -525,6 +530,7 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">        </span>
 <span class="k">        clear</span>
 <span class="k">        use</span> adult 
+<span class="k">        noi di</span> <span class="s">&quot;merging datasets...&quot;</span>
 <span class="k">        merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using exam,nogen
 <span class="k">        merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using<span class="k"> lab</span>,nogen 
 <span class="k">        merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using nh3mort,nogen<span class="k"> keep</span>(matched)
@@ -599,6 +605,7 @@ You may save it as <code class="docutils literal notranslate"><span class="pre">
 <span class="k">        noi timer clear</span>
 
 }
+        
         
 </pre></div>
 </div>
