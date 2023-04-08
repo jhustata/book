@@ -7,6 +7,8 @@ We hereby commence session 1!
 
 &nbsp;&nbsp;&nbsp; [video2](https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1)
 
+&nbsp;&nbsp;&nbsp; [profile.do](https://jhjhm.zoom.us/rec/share/5HbRh5ALkXawkMaSsITWGJnPN3vZZJWVp9EjxgFXZiGkduS2S55VgmBTl1Bf88PD.D2VIFqpidjNeh7A8?startTime=1680959893000)
+
 First, some [cool commands](https://www.stata.com/manuals13/u27.pdf):
 
 Next, lets compose our first .do file script together

@@ -14,7 +14,7 @@ This lab is optional; you are NOT required to complete these questions. Please u
 
 3. Stata should have some values in the memory as `r()` values. Ask Stata to display the list of the `r()` values.
 
-4. Display the mean value. Store the mean value as a local macro ``mean’`. Display the local macro `mean’.
+4. Display the mean value. Store the mean value as a local macro `mean`. Display the local macro `mean`.
 
 5. Now let’s try something more useful. Calculate the mean value of age. Print the following sentence: `The mean age is XX.X years`. Replace `XX` with correct values. Round to tenths (e.g. 35.2 years). 
 
