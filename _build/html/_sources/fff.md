@@ -43,6 +43,8 @@ di "annotate to warn users with Stata/BE (Basic Edition)???"
 
 [New script!](https://jhustata.github.io/book/_downloads/90342f262a6200f4c7d99c67b8dda3d5/updated.script.png)
 
+Remote desktop!
+
 ```stata
 
 qui {
