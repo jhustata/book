@@ -16,7 +16,8 @@ qui {
 		
         global url https://wwwn.cdc.gov/nchs/data/nhanes3/1a/ 
 		global fyl adult exam lab 
-		global range 1387/2624 2627/3865 2892/5259 5262/7629 640/995 998/1353 
+		global range 1387/2624 2627/3865 2892/5259 5262/7629 640/995 998/1353
+		global keepvars SEQN HSAGEIR DMARETHN HSSEX
 		
 	}
 	

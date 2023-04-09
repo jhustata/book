@@ -84,7 +84,6 @@ qui {
 				       set seed 340600 
 				      replace  rvarselect=round(runiform(0,100))
 			           recode rvarselect (0/25=1)(26/50=2)(51/75=3)(76/100=4)
-					   noi tab rvarselect
 				   
 			          #delimit ;
                        //apply to only variable; keep all labels
@@ -92,6 +91,7 @@ qui {
 				               strpos(concat,"delimit") |
 				               strpos(concat,"infix")   |
 						       strpos(concat,"using")   |
+							   strpos(concat,"lab var")
 						       rvarselect==`i'
 						    ;
 						
