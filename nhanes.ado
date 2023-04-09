@@ -37,7 +37,7 @@ program define nhanes
 				if c(edition_real) == "SE"  | c(edition_real) == "IC" {
 					
 					clear 
-					do ael-beta.do
+					do ${github}${$jhustata}ael-beta.do
 					
 				}
 				
