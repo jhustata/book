@@ -78,7 +78,6 @@ program define nhanes
 				timer off 33
 				
 				timer off 3
-				noi timer list 
 				
 			}
 
@@ -86,7 +85,7 @@ program define nhanes
 				
 				timer on 4
 				
-				use adults, clear
+				use adult, clear
 				merge 1:1 seqn using exam,nogen
 				merge 1:1 seqn using lab,nogen
 				merge 1:1 seqn using nh3mort,nogen keep(matched)
@@ -158,6 +157,8 @@ program define nhanes
 				timer off 6
 				
 			}
+			
+			noi timer list 
 			
 		}
 		
