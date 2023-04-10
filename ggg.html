@@ -387,6 +387,36 @@ document.write(`
 </pre></div>
 </div>
 <p>Let’s add labels to the groups:</p>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span>#delimit ;
+<span class="k">lab</span> define abo_lab
+   <span class="m">0</span> <span class="s">&quot;0&quot;</span>
+   <span class="m">1</span> <span class="s">&quot;A&quot;</span>
+   <span class="m">2</span> <span class="s">&quot;B&quot;</span>
+   <span class="m">3</span> <span class="s">&quot;AB&quot;</span>
+;
+#delimit cr
+
+<span class="k">lab</span> values abo abo_lab
+</pre></div>
+</div>
+<p>Now lets tabulate once again:</p>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">tab</span> cat_n
+</pre></div>
+</div>
+<p>Ok. Do you remember these commands?</p>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="nf">c</span>(N)
+
+<span class="k">di</span> <span class="nf">c</span>(k)
+</pre></div>
+</div>
+<p>Lets create a <code class="docutils literal notranslate"><span class="pre">disturbance</span></code> to our setup to learn a few additional commands and their value to us:</p>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui do</span> https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>book<span class="o">/</span>main<span class="o">/</span>sample<span class="o">-</span>keep<span class="m">.</span>ado
+</pre></div>
+</div>
+<p>Is that a new command? Or are you already familiar with it? How about this:</p>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span>samplekeep
+</pre></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
