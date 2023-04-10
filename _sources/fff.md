@@ -31,217 +31,184 @@ You may save it as `nh3andmort.do`. If you encounter any trouble in this prelimi
          
    c) [ex2](https://jhustata.github.io/book/_downloads/7a8ebb8d1a62f98b6e5b939e69fb21e1/stata.version.png)
 
-```stata
-
-//discuss:
-
-di "`c(k)' variables & `c(N)' observations"
-
-di "annotate to warn users with Stata/BE (Basic Edition)???"
-
-```
-
-[New script!](https://jhustata.github.io/book/_downloads/90342f262a6200f4c7d99c67b8dda3d5/updated.script.png)
 
 Remote desktop!
 
+[New script!!!](https://raw.githubusercontent.com/jhustata/book/main/nhanes-alpha.ado) 
+
 ```stata
 
-qui {
+capture program drop nhanes
+program define nhanes 
     
-    if 0 { background:survey,cohort,chapter:`net search'
-        
-        1. import nhanes iii
-        2. adult,exam,lab
-        3. mortality-linkage 
-        4. non-parametric survival
-        5. semi-parametric survival
-        
-    }
-    
-    if 1 { //methods:macros,.dofiles,github 
-        
-        cls
-        clear 
-        
-        about
-        creturn list 
-        
-        di "Those running Stata via remote desktop, please let us know what edition you are running! Discussion forum? CoursePlus?"
-        
-        if c(edition_real)=="BE" | c(edition_real)=="IC" {
-            
-            noi di "Your Stata/`c(edition_real)' cannot handle this    ¯\_(ツ)_/¯"
-            noi di ""
-        
-        }
-        
-        else {
-            
-            noi di "Yours is Stata/`c(edition_real)' and so you're good to go!"
-        
-        }
-        
-        capture log close
-        log using nh3andmort.log,replace 
-        
-        timer clear 
-        timer on 1
-        
-        #delimit ;
-        global varlist  
-           seqn 1-6  
-           eligstat 15  
-           mortstat 16  
-           ucod_leading 17-19  
-           diabetes 20  
-           hyperten 21  
-           permth_int 43-45  
-           permth_exm 46-48 ;
-        #delimit cr
+	preserve 
+	    
+		qui {
+			
+			if 0 { //background:r(mean) 
+				
+				1. Stata/BE or IC
+				2. r(k) < 2048
+				3. exam.DAT: r(k) == 2368
+				4. inaccessible to jhustata
+				5. program to grant access
+				
+			}
+			
+			if 1 { //methods:$keepvars
+				
+				timer on 1
+				
+				global github https://raw.githubusercontent.com/
+				global jhustata jhustata/book/main/
+				global keepvars HSAGEIR BMPHT BMPWT HAZA8AK1 CEP GHP HAB1
+				
+				timer off 1
+											
+			}
+			
+			if 2 { //results:.dofiles
+			
+			    timer on 2
+				
+				clear
+				
+				do ${github}${$jhustata}nh3mort.do 
+				
+				if c(edition_real) == "BE"  | c(edition_real) == "IC" {
+					
+					clear 
+					
+					do ${github}${$jhustata}nhanes-alpha-if2.do 
+					
+				}
+				
+				else { 
+					
+					clear 
+					
+					do ${github}${$jhustata}nhanes-alpha-if0.do
+					
+				}
+				
+				
+				timer off 2
+				
+			}
+			
+			if 3 { //conclusions:queueing
+			
+			    timer on 3
+			
+			    timer on 31
+				clear
+				do adult.do
+				rename *,lower
+				save adult.dta,replace 
+				timer off 31
+				
+				timer on 32
+				clear 
+				do exam.do
+				rename *,lower
+				save exam.dta,replace 
+				timer off 32
+				
+				timer on 33
+				clear
+				do lab.do
+				rename *,lower
+				save lab.dta,replace 
+				timer off 33
+				
+				timer off 3
+				
+			}
 
-        global nchs https://ftp.cdc.gov/pub/Health_Statistics/NCHS/
-        global linkage datalinkage/linked_mortality/
-        global nh3 NHANES_III
-        
-        global github https://raw.githubusercontent.com/
-        global jhustata jhustata/book/main/
-        
-        timer off 1
-        
-    }
-    
-    if 2 { //mortality,codebook,eligibility
-        
-        timer on 2 
-        
-        infix $varlist using "$nchs$linkage${nh3}_MORT_2019_PUBLIC.dat", clear
-        
-        do "${github}${jhustata}mortlab.do"
-        
-        drop if inlist(eligstat,2,3)
-        duplicates drop
-        save nh3mort,replace 
-        
-        timer off 2
-        
-    }
-    
-    if 3 { //survey,baseline:adult,exam,lab
-    
-        timer on 3
-        
-        do "${github}${jhustata}nhanes.ael.do" 
-        
-        timer on 31
-        clear
-        do adult.do
-        rename *,lower
-        save adult.dta,replace 
-        timer off 31
-        noi di "adult.dta loaded... "
+			if 4 { //acknowledge:linkage
+				
+				timer on 4
+				
+				use adult, clear
+				merge 1:1 seqn using exam,nogen
+				merge 1:1 seqn using lab,nogen
+				merge 1:1 seqn using nh3mort,nogen keep(matched)
+				
+				timer off 4
+				
+			}
+			
+			if 5 { //dataset4class:
+				
+				timer on 5
+				
+				compress
+				lab dat "NHANES 1988-1994, survey & mortality"
+				save "nh3andmort.dta", replace 
+				
+				timer off 5
+				
+			}
+			
+			if 6 { //survivalanalysis:
+				
+				timer on 6
+				
+        		lookfor mort
+        		codebook mortstat
+        		lookfor follow
+        		g years=permth_exm/12
 
-        timer on 32
-        clear 
-        do exam.do
-        rename *,lower
-        save exam.dta,replace 
-        timer off 32
-        noi di "exam.dta loaded..."
-
-        timer on 33
-        clear 
-        do lab.do
-        rename *,lower 
-        save lab.dta,replace 
-        timer off 33
-        noi di "lab.dta loaded..."
-        
-        timer off 3
-        
-    }
+        		lookfor health
+        		codebook hab1
+        		global subgroup: var lab hab1
     
-    if 4 { //link survey->mortality after merge
-                
-        timer on 4
-        
-        clear
-        use adult 
-        noi di "merging datasets..."
-        merge 1:1 seqn using exam,nogen
-        merge 1:1 seqn using lab,nogen 
-        merge 1:1 seqn using nh3mort,nogen keep(matched)
+        		stset years, fail(mortstat)
 
-        timer off 4        
-        
-    }
-    
-    if 5 { //save analytic file
-        
-        timer on 5
-        
-        compress 
-        lab dat "NHANES 1988-1994, survey & mortality"
-        save "nh3andmort.dta", replace
-        
-        timer off 5
-        
-    }
-    
-    if 6 { //kaplan-meier curve,cox regression
-        
-        timer on 6
-        lookfor mort
-        codebook mortstat
-        lookfor follow
-        g years=permth_exm/12
-
-        lookfor health
-        codebook hab1
-        global subgroup: var lab hab1
-    
-        stset years, fail(mortstat)
-
-        #delimit ;
-        sts graph if inrange(hab1,1,5),
-           by(hab1)
-           fail
-           ti("Morality in NHANES III",pos(11))
-           subti("by self report: ${subgroup}",pos(11))
-           yti("%",orientation(horizontal))
-           xti("Years")
-           per(100)
-           ylab(0(20)80,
-               format(%3.0f)
-               angle(360)
-           )
-           legend(on
-               lab(1 "Excellent")
-               lab(2 "Good")
-               lab(3 "Fair")
-               lab(4 "Bad")
-               lab(5 "Poor")
-               ring(0)
-               pos(11)
-               col(1)
-               order(5 4 3 2 1)
-           )
-           note("Source: RDC/NCHS/CDC/DHHS")  
-        ;
-        #delimit cr
-        
-        graph export nh3andmort.png,replace 
-        
-        stcox i.hab1 if inrange(hab1,1,5)
-
-           timer off 6
-           
-    }
-    
-        noi timer list 
-        noi timer clear
-
-}
+        		#delimit ;
+        		sts graph if inrange(hab1,1,5),
+        		   by(hab1)
+        		   fail
+        		   ti("Morality in NHANES III",pos(11))
+        		   subti("by self report: ${subgroup}",pos(11))
+        		   yti("%",orientation(horizontal))
+        		   xti("Years")
+        		   per(100)
+        		   ylab(0(20)80,
+        		       format(%3.0f)
+        		       angle(360)
+        		   )
+        		   legend(on
+        		       lab(1 "Excellent")
+        		       lab(2 "Good")
+        		       lab(3 "Fair")
+        		       lab(4 "Bad")
+        		       lab(5 "Poor")
+        		       ring(0)
+        		       pos(11)
+        		       col(1)
+        		       order(5 4 3 2 1)
+        		   )
+        		   note("Source: RDC/NCHS/CDC/DHHS")  
+        		;
+        		#delimit cr
+        		
+        		graph export nh3andmort.png,replace 
+        		
+        		stcox i.hab1 if inrange(hab1,1,5)
+		
+		
+				timer off 6
+				
+			}
+			
+			noi timer list 
+			
+		}
+			
+	restore 
+	
+end 
         
                
 ```
