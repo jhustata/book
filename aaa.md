@@ -161,6 +161,8 @@ What's new this week?
 1. [profile.do](https://jhustata.github.io/book/eee.html) 
 2. chapter: [r(mean)](https://jhustata.github.io/book/fff.html) is subtly revamped
 3. remote desktop: a fellow classmate of yours informed me of this resource for Stata/SE or MP
+4. lab1 [solutions](lab1.md) are available and [lab2](lab2.md) has gone live!
+5. passcodes for all the videos are available in the CoursePlus online library
 
 [^1]: see chapter: [`net search`](zzz.md) for source code
 [^2]: see chapter: [`net search`](zzz.md) for more on NHANES
