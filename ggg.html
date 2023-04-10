@@ -389,10 +389,10 @@ document.write(`
 <p>Let’s add labels to the groups:</p>
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span>#delimit ;
 <span class="k">lab</span> define abo_lab
-   <span class="m">0</span> <span class="s">&quot;0&quot;</span>
    <span class="m">1</span> <span class="s">&quot;A&quot;</span>
    <span class="m">2</span> <span class="s">&quot;B&quot;</span>
    <span class="m">3</span> <span class="s">&quot;AB&quot;</span>
+   <span class="m">4</span> <span class="s">&quot;O&quot;</span>
 ;
 #delimit cr
 
@@ -400,9 +400,10 @@ document.write(`
 </pre></div>
 </div>
 <p>Now lets tabulate once again:</p>
-<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">tab</span> cat_n
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">tab</span> abo
 </pre></div>
 </div>
+<p>Nice!</p>
 <p>Ok. Do you remember these commands?</p>
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="nf">c</span>(N)
 
@@ -415,6 +416,12 @@ document.write(`
 </div>
 <p>Is that a new command? Or are you already familiar with it? How about this:</p>
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span>samplekeep
+</pre></div>
+</div>
+<p>What just happened?</p>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="nf">c</span>(N)
+
+<span class="k">di</span> <span class="nf">c</span>(k)
 </pre></div>
 </div>
 </section>
