@@ -36,6 +36,8 @@ Remote desktop!
 
 [New script!!!](https://raw.githubusercontent.com/jhustata/book/main/nhanes-alpha.ado) 
 
+[Video supplement](https://jhjhm.zoom.us/rec/share/Qsbf0KvG_5Y3GYHIU_bKwTN9qT5K0aurlJrvNp3i07y_G9DFzBMFhHYibq78StxH.VUCQQSkNOtRtGWmA?startTime=1681134087000)
+
 ```stata
 
 capture program drop nhanes
