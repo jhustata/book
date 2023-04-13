@@ -171,6 +171,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="eee.html">pwd</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">r(mean)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ggg.html">by</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="hhh.html">program define</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iii.html">capture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jjj.html">twoway</a></li>
@@ -674,7 +676,16 @@ binary and multicategory variables? <code class="docutils literal notranslate"><
 <span class="k">   di</span> <span class="nf">exp</span>(<span class="nf">r</span>(estimate))
 </pre></div>
 </div>
-<p>This should look familiar: a command, return list, and the display of a select group of return values</p>
+<p>This should look familiar: a command, return list, and the display of a select group of return values.</p>
+<p>Now lets do something a few of you may find parsimonious and delicious:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">stcox</span> i<span class="m">.</span>hab1<span class="k"> if</span> <span class="nf">inrange</span>(hab1,<span class="m">1</span>,<span class="m">5</span>)
+<span class="k">return list</span>
+<span class="k">matrix</span> define<span class="k"> m</span>=<span class="nf">r</span>(table)
+<span class="k">matrix list m</span>
+<span class="k">di m</span>[<span class="m">1</span>,<span class="m">2</span>]
+</pre></div>
+</div>
+<p>Hope you like that!</p>
 </section>
 
     <script type="text/x-thebe-config">
