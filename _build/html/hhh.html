@@ -384,6 +384,42 @@ document.write(`
 </ol>
 <p>If you replace the <code class="docutils literal notranslate"><span class="pre">quietly</span> <span class="pre">{</span></code> line of code in your .do file structure with <code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span> <span class="pre">name</span></code> and the <code class="docutils literal notranslate"><span class="pre">}</span></code> with <code class="docutils literal notranslate"><span class="pre">end</span></code> you’d have written your very first program!</p>
 <p>Can you apply this <strong>hint</strong> to the script used to assign you by <a class="reference external" href="https://jhustata.github.io/book/aaa.html">last name</a> to a TA? Write a program called <code class="docutils literal notranslate"><span class="pre">tokenize</span></code> that outputs a <code class="docutils literal notranslate"><span class="pre">.log</span> <span class="pre">file</span></code> that offers a user some output to achieve the purpose of the tokenize script.</p>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+
+<span class="k">    if</span> <span class="m">0</span> { <span class="c1">//dofiles</span>
+
+        <span class="m">1</span>.<span class="k"> quietly</span>
+        <span class="m">2</span>.<span class="k"> if</span> {
+        <span class="m">3</span>. code<span class="o">-</span>block
+
+    }
+
+<span class="k">    if</span> <span class="m">1</span> { <span class="c1">//macros</span>
+
+        <span class="c1">//system-defined, constant</span>
+<span class="k">        creturn list</span>
+
+        <span class="c1">//program-defined, estimates &amp; return</span>
+<span class="k">        qui regress</span> y x1 x2 x3
+<span class="k">        ereturn list</span>
+
+<span class="k">        qui lincom</span> _b[x1]
+<span class="k">        return list</span>
+
+        <span class="c1">//user-defined </span>
+<span class="k">        qui tab</span> abo sex, chi
+<span class="k">        return list</span>
+<span class="k">        local</span> pvalue:<span class="k"> di</span> <span class="nx">%4.3f</span> <span class="nf">r</span>(p)
+
+    }
+
+<span class="k">    if</span> <span class="m">2</span> { <span class="c1">//programs?</span>
+
+    }
+
+}
+</pre></div>
+</div>
 <p>Now you have successfully written your first program. Its now a Stata command; however, its role is highly specific.</p>
 <p>How may we generalize its function and tailor it to user-defined needs? That is what we are going to cover ove the next 5 weeks!!</p>
 </section>
