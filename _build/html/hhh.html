@@ -400,14 +400,22 @@ document.write(`
 <span class="k">        creturn list</span>
 
         <span class="c1">//program-defined, estimates &amp; return</span>
-<span class="k">        qui regress</span> y x1 x2 x3
+<span class="k">        use</span> transplants,<span class="k"> clear</span>
+<span class="k">        stset</span> end_date,failure(died) origin(transplant_date)
+<span class="k">        stcox</span> age gender i<span class="m">.</span>race prev_ki
 <span class="k">        ereturn list</span>
 
-<span class="k">        qui lincom</span> _b[x1]
+<span class="k">        lincom</span> _b[prev_ki]
 <span class="k">        return list</span>
+<span class="k">        di</span> <span class="nf">exp</span>(<span class="nf">r</span>(estimate))
 
         <span class="c1">//user-defined </span>
-<span class="k">        qui tab</span> abo sex, chi
+<span class="k">        stcox</span> prev_ki
+<span class="k">        lincom</span> _b[prev_ki]
+<span class="k">        return list</span> 
+<span class="k">        di</span> <span class="nf">r</span>(p)
+
+<span class="k">        qui tab</span> died prev_ki, chi
 <span class="k">        return list</span>
 <span class="k">        local</span> pvalue:<span class="k"> di</span> <span class="nx">%4.3f</span> <span class="nf">r</span>(p)
 

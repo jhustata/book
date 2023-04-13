@@ -28,14 +28,22 @@ qui {
         creturn list
 
         //program-defined, estimates & return
-        qui regress y x1 x2 x3
+        use transplants, clear
+        stset end_date,failure(died) origin(transplant_date)
+        stcox age gender i.race prev_ki
         ereturn list
 
-        qui lincom _b[x1]
+        lincom _b[prev_ki]
         return list
+        di exp(r(estimate))
 
         //user-defined 
-        qui tab abo sex, chi
+        stcox prev_ki
+        lincom _b[prev_ki]
+        return list 
+        di r(p)
+
+        qui tab died prev_ki, chi
         return list
         local pvalue: di %4.3f r(p)
 
