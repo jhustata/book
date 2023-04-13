@@ -158,17 +158,27 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="aaa.html">tokenize</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="bbb.html">quietly</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="ccc.html">delimit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ddd.html">rnormal()</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="eee.html">pwd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fff.html">r(mean)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ggg.html">by</a></li>
+
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">program define</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iii.html">capture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jjj.html">twoway</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kkk.html">local v: di</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lll.html">if c(version)&gt;16 {</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zzz.html">net search</a></li>
 </ul>
 
     </div>
@@ -366,7 +376,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="program-define">
 <h1>program define<a class="headerlink" href="#program-define" title="Permalink to this heading">#</a></h1>
-<p>Advanced file management, Programs 3, and Automated tables in Excel (method 1)</p>
+<p>Let’s recap what we’ve covered thus far:</p>
+<ol class="arabic simple">
+<li><p>dofiles</p></li>
+<li><p>macros</p></li>
+<li><p>programs</p></li>
+</ol>
+<p>If you replace the <code class="docutils literal notranslate"><span class="pre">quietly</span> <span class="pre">{</span></code> line of code in your .do file structure with <code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span> <span class="pre">name</span></code> and the <code class="docutils literal notranslate"><span class="pre">}</span></code> with <code class="docutils literal notranslate"><span class="pre">end</span></code> you’d have written your very first program!</p>
+<p>Can you apply this <strong>hint</strong> to the script used to assign you by <a class="reference external" href="https://jhustata.github.io/book/aaa.html">last name</a> to a TA? Write a program called <code class="docutils literal notranslate"><span class="pre">tokenize</span></code> that outputs a <code class="docutils literal notranslate"><span class="pre">.log</span> <span class="pre">file</span></code> that offers a user some output to achieve the purpose of the tokenize script.</p>
+<p>Now you have successfully written your first program. Its now a Stata command; however, its role is highly specific.</p>
+<p>How may we generalize its function and tailor it to user-defined needs? That is what we are going to cover ove the next 5 weeks!!</p>
 </section>
 
     <script type="text/x-thebe-config">
