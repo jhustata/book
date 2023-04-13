@@ -51,4 +51,6 @@ qui {
 
 Now you have successfully written your first program. Its now a Stata command; however, its role is highly specific.
 
-How may we generalize its function and tailor it to user-defined needs? That is what we are going to cover ove the next 5 weeks!!
+How may we generalize its function and tailor it to user-defined needs? **Perhaps by deploying user-defined macros**?
+
+
