@@ -421,7 +421,7 @@ document.write(`
 <img alt="_images/2a7592775f8cfa3026c462ceaf5ef2fbf8b4e4909cea620c7c0d7e4bb36f748f.png" src="_images/2a7592775f8cfa3026c462ceaf5ef2fbf8b4e4909cea620c7c0d7e4bb36f748f.png" />
 </div>
 </div>
-<p>I’ve not illustrated where <code class="docutils literal notranslate"><span class="pre">e()</span></code> and <code class="docutils literal notranslate"><span class="pre">c()</span></code> feature in this scheme. But once you appreciate that <code class="docutils literal notranslate"><span class="pre">r()</span></code> values in memory can be show using <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">e()</span></code> values using <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code>, and <code class="docutils literal notranslate"><span class="pre">c()</span></code> values using <code class="docutils literal notranslate"><span class="pre">creturn</span> <span class="pre">list</span></code> then you are set for life!!</p>
+<p>I’ve not illustrated where <code class="docutils literal notranslate"><span class="pre">e()</span></code> and <code class="docutils literal notranslate"><span class="pre">c()</span></code> fit in this scheme. But once you appreciate that <code class="docutils literal notranslate"><span class="pre">r()</span></code> values in memory can be revealed using <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">e()</span></code> values using <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code>, and <code class="docutils literal notranslate"><span class="pre">c()</span></code> values using <code class="docutils literal notranslate"><span class="pre">creturn</span> <span class="pre">list</span></code> then you will be set for life!!</p>
 <p>Remember:</p>
 <ol class="arabic simple">
 <li><p>names: r(), e(), c()</p></li>
@@ -482,7 +482,7 @@ document.write(`
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">tab</span> abo
 </pre></div>
 </div>
-<p>Ok, then. It was a mere temporary disturbance and peace was <code class="docutils literal notranslate"><span class="pre">restored</span></code>!! We will talk more about the <code class="docutils literal notranslate"><span class="pre">preserve</span></code> and <code class="docutils literal notranslate"><span class="pre">restore</span></code> commands, often used together.</p>
+<p>Ok, then. It was a temporary disturbance and peace was <code class="docutils literal notranslate"><span class="pre">restored</span></code>!! We will talk more about the <code class="docutils literal notranslate"><span class="pre">preserve</span></code> and <code class="docutils literal notranslate"><span class="pre">restore</span></code> commands, often used together.</p>
 <p>Back to the <code class="docutils literal notranslate"><span class="pre">by</span></code> command:</p>
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">bys</span> abo:<span class="k"> egen</span> age_byabo =<span class="k"> mean</span>(age)
 </pre></div>
@@ -498,7 +498,7 @@ document.write(`
 <span class="k">di</span> <span class="s">&quot;ABO blood group may influence survivorship on a kidney transplant waitlist. Blood type O are universal dononrs whereas type AB are universal recipients. Hypothetically, these two represent the extremes and types A and B should be in between. But in this cross-sectional dataset blood group explains only </span><span class="nv">`abo_H&#39;</span><span class="s">% in age. Only a longitudinal data structure would be in position to investigate survivorship&quot;</span>
 </pre></div>
 </div>
-<p>Enough. I don’t wish to trouble you with a bogus hypothesis but merely wish to explore return values from a regression!</p>
+<p>Enough. I don’t wish to trouble you with a bogus hypothesis but merely wish to explore return values from a regression! Where does <code class="docutils literal notranslate"><span class="pre">e(r2_a)</span></code> fit in our schema? (<strong>Hint:</strong> <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">creturn</span> <span class="pre">list</span></code>)</p>
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">lincom</span> _b[<span class="m">3.</span>abo]
 </pre></div>
 </div>
