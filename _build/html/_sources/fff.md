@@ -357,4 +357,16 @@ How may we extract return values following a regression model? Because of the po
 
 ```
 
-This should look familiar: a command, return list, and the display of a select group of return values
+This should look familiar: a command, return list, and the display of a select group of return values.
+
+Now lets do something a few of you may find parsimonious and delicious:
+
+```stata
+stcox i.hab1 if inrange(hab1,1,5)
+return list
+matrix define m=r(table)
+matrix list m
+di m[1,2]
+```
+
+Hope you like that!
