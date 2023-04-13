@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ggg';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -171,6 +173,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="eee.html">pwd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fff.html">r(mean)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">by</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="hhh.html">program define</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iii.html">capture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jjj.html">twoway</a></li>
@@ -347,7 +351,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -363,6 +369,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">by</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -495,10 +512,10 @@ document.write(`
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui regress</span> age i<span class="m">.</span>abo
 <span class="k">local</span> abo_H:<span class="k"> di</span> <span class="nx">%3.2f</span><span class="k"> e</span>(r2_a)<span class="o">*</span><span class="m">100</span>
 
-<span class="k">di</span> <span class="s">&quot;ABO blood group may influence survivorship on a kidney transplant waitlist. Blood type O are universal dononrs whereas type AB are universal recipients. Hypothetically, these two represent the extremes and types A and B should be in between. But in this cross-sectional dataset blood group explains only </span><span class="nv">`abo_H&#39;</span><span class="s">% in age. Only a longitudinal data structure would be in position to investigate survivorship&quot;</span>
+<span class="k">di</span> <span class="s">&quot;ABO blood group may influence survivorship on a kidney transplant waitlist. Blood type O are universal donors whereas type AB are universal recipients. Hypothetically, these two represent the extremes and types A and B should be in between. But in this cross-sectional dataset blood group explains only </span><span class="nv">`abo_H&#39;</span><span class="s">% of the variance in age. Only a longitudinal data structure would be in position to explain variance in survivorship&quot;</span>
 </pre></div>
 </div>
-<p>Enough. I don’t wish to trouble you with a bogus hypothesis but merely wish to explore return values from a regression! Where does <code class="docutils literal notranslate"><span class="pre">e(r2_a)</span></code> fit in our schema? (<strong>Hint:</strong> <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">creturn</span> <span class="pre">list</span></code>)</p>
+<p>Enough! I don’t wish to trouble you with a bogus hypothesis but merely wish to explore return values from a regression! From whence, for instance, does <code class="docutils literal notranslate"><span class="pre">e(r2_a)</span></code> come? Where does it fit into our schema? (<strong>Hint:</strong> <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">creturn</span> <span class="pre">list</span></code>)</p>
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">lincom</span> _b[<span class="m">3.</span>abo]
 </pre></div>
 </div>
@@ -512,6 +529,191 @@ document.write(`
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">matrix</span> define b =<span class="k"> e</span>(b)
 <span class="k">matrix list</span> b
 <span class="k">di</span> b[<span class="m">1</span>,<span class="m">3</span>]
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>You should explore the following commands on your own:</p>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">tab</span> rec_education,<span class="k"> sum</span>(age)
+<span class="k">regress</span> wait_yrs age, level(<span class="m">90</span>)
+<span class="k">count if</span> age <span class="o">&gt;</span> <span class="m">50</span>
+<span class="k">count if</span> <span class="nf">inrange</span>(age,<span class="m">50</span>,<span class="m">90</span>)
+<span class="k">list</span> age dx rec_education<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">5</span>
+
+<span class="c1">//di c(N) &quot; &amp; &quot; c(k)</span>
+<span class="k">use</span> age dx using transplants,<span class="k"> clear</span>
+<span class="k">use</span> transplants<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">50</span>,<span class="k"> clear</span>
+<span class="k">use</span> transplants<span class="k"> in</span> <span class="m">44</span>
+<span class="k">use</span> transplants<span class="k"> if</span> rec_work<span class="o">==</span><span class="m">1</span>
+<span class="k">use</span> a<span class="o">*</span> p<span class="o">*</span> using transplants<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">100</span>
+
+<span class="c1">//describe</span>
+<span class="k">describe</span>, simple
+<span class="k">describe</span>, short
+<span class="k">describe</span> a<span class="o">*</span>
+<span class="k">describe</span> using transplants<span class="m">.</span>dta 
+<span class="k">describe</span> r<span class="o">*</span>, fullnames
+
+<span class="c1">//codebook</span>
+<span class="k">codebook</span>
+<span class="k">codebook</span> rec_education rec_work abo
+<span class="k">codebook</span> a<span class="o">*</span><span class="k"> e</span><span class="o">*</span>, compact
+<span class="k">codebook</span>, problems
+
+<span class="c1">//list </span>
+<span class="k">list</span> 
+<span class="k">list</span> prev_ki wait_yrs<span class="k"> if</span> race<span class="o">==</span><span class="m">9</span>
+<span class="k">list</span> <span class="o">*</span>date<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+<span class="k">list</span> dx<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>, clean noobs
+<span class="k">list</span> age, fast
+
+<span class="c1">//count</span>
+<span class="k">count</span>
+<span class="k">count if</span> rec_work<span class="o">==</span><span class="m">1</span>
+<span class="k">count if</span> rec_work<span class="o">!=</span><span class="m">1</span>
+<span class="k">count if</span> bmi<span class="o">&lt;</span><span class="m">20</span> | bmi <span class="o">&gt;</span> <span class="m">35</span>
+<span class="k">count if</span> bmi<span class="o">&gt;</span><span class="m">25</span> <span class="o">&amp;</span> bmi <span class="o">&lt;</span><span class="m">30</span>
+<span class="k">count if</span> <span class="o">!</span>(age<span class="o">&gt;</span><span class="m">18</span>)
+<span class="k">count if</span> <span class="nf">inrange</span>(wait_yrs,<span class="m">4</span>,<span class="m">6</span>)
+<span class="k">count if</span> <span class="o">!</span><span class="nf">inlist</span>(gender,<span class="m">0</span>,<span class="m">1</span>)
+
+<span class="c1">//tabulate</span>
+<span class="k">tab</span> abo
+<span class="k">tab</span> abo rec_hcv
+<span class="k">tab</span> gender,<span class="k"> sum</span>(age)
+<span class="k">tab</span> dx gender<span class="k"> if</span> age<span class="o">&lt;</span><span class="m">40</span>
+<span class="k">tab</span> dx gender,row
+<span class="k">tab</span> dx gender,col nofreq
+
+<span class="k">tab</span> dx gender, col nofreq chi2
+<span class="k">return list</span> 
+
+<span class="c1">//summarize</span>
+<span class="k">sum</span>
+<span class="k">return list</span> <span class="c1">//not very useful; see schema above</span>
+
+<span class="k">sum</span> age wait_yrs
+<span class="k">return list</span> <span class="c1">//much more useful!</span>
+
+<span class="k">sum</span> age wait_yrs, detail
+
+<span class="c1">//missingness</span>
+<span class="k">count if</span> bmi <span class="o">&gt;</span> <span class="m">30</span>
+<span class="k">count if</span> bmi <span class="o">&gt;</span> <span class="m">1000</span> <span class="c1">//wha? </span>
+<span class="k">sum</span> bmi <span class="c1">//whats going on?</span>
+<span class="k">assert</span> <span class="nf">c</span>(N) <span class="o">==</span> <span class="nf">r</span>(N) <span class="c1">//when do these diverge?</span>
+<span class="k">tab</span> bmi<span class="k"> if</span> bmi <span class="o">&gt;</span> <span class="m">1000</span>
+<span class="k">tab</span> bmi<span class="k"> if</span> bmi <span class="o">&gt;</span> <span class="m">1000</span>, missing
+
+<span class="k">count if</span> bmi<span class="o">==</span>.
+<span class="k">count if</span> bmi<span class="o">==</span>.a
+<span class="k">count if</span> <span class="nf">missing</span>(bmi)
+</pre></div>
+</div>
+<p>Let’s discuss <a class="reference external" href="https://stats.oarc.ucla.edu/stata/faq/how-can-i-recode-missing-values-into-different-categories/">missingness</a> as its relevance emerges.</p>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//manipulating data</span>
+<span class="k">gen</span> age_lastyear=age<span class="m">-1</span>
+<span class="k">gen</span> any_college=(rec_educ<span class="o">&gt;=</span><span class="m">3</span>)
+<span class="k">g</span> youngman=(age<span class="o">&lt;</span><span class="m">40</span><span class="o">&gt;</span>)<span class="o">&amp;</span>(gender<span class="o">==</span><span class="m">0</span>)
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<p>Variable <strong>types</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">byte</span></code>: integer range -127 to 100</p>
+<p><code class="docutils literal notranslate"><span class="pre">int</span></code>: integer range -32767 to 32740</p>
+<p><code class="docutils literal notranslate"><span class="pre">long</span></code>: integer range +/- 2 billion</p>
+<p><code class="docutils literal notranslate"><span class="pre">float</span></code>: decimal, range +/- <span class="math notranslate nohighlight">\(10^38\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">double</span></code>: decimal, range +/- <span class="math notranslate nohighlight">\(10^307\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">strings</span></code>: e.g. str5 = string of length 5</p>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//generate</span>
+<span class="k">g</span> byte young=(age<span class="o">&lt;</span><span class="m">30</span><span class="o">&gt;</span>)
+<span class="k">g</span> age_f=age<span class="k"> if</span> gender<span class="o">==</span><span class="m">1</span>
+<span class="k">g</span> age_spline=(age<span class="o">&gt;</span><span class="m">40</span>)<span class="o">*</span>(age<span class="m">-40</span>)
+
+<span class="c1">//_n and _N</span>
+<span class="k">g</span> new_id=_n
+<span class="k">gen</span> total_records=_N
+<span class="k">g</span> percentile=<span class="m">100</span><span class="o">*</span>_n<span class="o">/</span>_N
+
+<span class="c1">//drop/keep</span>
+<span class="k">keep</span> age gender bmi fake_id ra<span class="o">*</span>
+<span class="k">drop</span> end_date
+
+<span class="c1">//remember: to load the original dataset again</span>
+<span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">keep in</span> <span class="m">1</span><span class="o">/</span><span class="m">100</span>
+<span class="k">drop if</span> wait_yrs<span class="o">&lt;</span><span class="m">1</span>
+<span class="k">keep if</span> prev_ki<span class="o">==</span><span class="m">1</span>
+<span class="k">drop if</span> age<span class="o">&lt;</span><span class="m">18</span> <span class="o">&amp;</span> abo<span class="o">==</span><span class="m">2</span>
+
+<span class="c1">//load data again</span>
+<span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">replace</span> prev=<span class="m">0</span>
+<span class="k">replace</span> wait_yrs=<span class="m">5</span><span class="k"> if</span> wait_yrs<span class="o">&gt;</span><span class="m">5</span>
+<span class="k">replace</span> gender=gender<span class="m">+1</span>
+<span class="k">replace</span> bmi=.<span class="k"> if</span> <span class="o">!</span><span class="nf">inrange</span>(bmi,<span class="m">17</span>,<span class="m">50</span>)
+
+<span class="c1">//rename</span>
+<span class="k">rename</span> age age_at_transplant
+<span class="k">rename</span> gender female
+
+<span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">rename</span> (age gender)(age_at_transplant female)
+
+<span class="c1">//sort, gsort</span>
+<span class="k">list in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span> 
+<span class="k">sort</span> age
+<span class="k">list in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+<span class="k">sort</span> age dx
+<span class="k">list in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+<span class="k">gsort</span> <span class="o">-</span>age dx <span class="o">-</span>race 
+<span class="k">list in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+
+<span class="c1">//recode</span>
+<span class="k">recode</span> rec_education (<span class="m">3</span> <span class="m">4</span> <span class="m">5</span> =<span class="m">9</span>)
+<span class="k">recode</span> dx (<span class="m">1</span>=<span class="m">1</span>)(<span class="m">2</span>=<span class="m">2</span>)(<span class="o">*</span>=<span class="m">9</span>)
+<span class="k">recode</span> gender (<span class="m">0</span>=<span class="m">1</span>)(<span class="m">1</span>=<span class="m">0</span>),gen(male)
+
+<span class="c1">//display</span>
+<span class="k">sum</span> wait_yrs
+<span class="k">di</span> <span class="s">&quot;variable&quot;</span> _col(<span class="m">20</span>) <span class="s">&quot;mean&quot;</span>
+<span class="k">di</span> <span class="s">&quot;wait time&quot;</span> _col(<span class="m">20</span>) <span class="nf">r</span>(mean)
+
+<span class="c1">//capture</span>
+<span class="k">capture sum</span> nonexistent_variable
+<span class="k">capture di</span> <span class="m">4+3</span>
+<span class="k">capture di</span> <span class="m">4</span><span class="o">+</span>
+
+<span class="c1">//assert </span>
+<span class="k">assert</span> age<span class="o">&lt;</span><span class="m">100</span>
+<span class="k">assert</span> end_date<span class="o">&gt;=</span>transplant_date
+<span class="k">assert</span> <span class="nf">inlist</span>(gender,<span class="m">0</span>,<span class="m">1</span>)
+<span class="k">assert</span> <span class="m">2</span><span class="o">&lt;</span><span class="m">1</span>
+<span class="k">assert</span> <span class="m">0</span>
+
+<span class="c1">//recode+label</span>
+#delimit ;
+<span class="k">recode</span> race 
+    (<span class="m">1</span>=<span class="m">0</span> <span class="s">&quot;Cauc&quot;</span>)
+    (<span class="m">2</span>=<span class="m">1</span> <span class="s">&quot;AA)</span>
+    (<span class="m">4</span>=<span class="m">2</span> <span class="s">&quot;Hisp/Latino&quot;</span>)
+    (<span class="m">5</span><span class="o">/</span><span class="m">9</span>=<span class="m">3</span> <span class="s">&quot;Other&quot;</span>),
+<span class="k">        gen</span>(race_cat)
+;
+#delimit cr
+
+<span class="c1">//preserve &amp; restore</span>
+<span class="k">sum</span> age
+
+<span class="k">preserve</span>
+<span class="k">    drop if</span> age<span class="o">&lt;</span><span class="nf">r</span>(mean)
+<span class="k">    sum</span> age
+<span class="k">restore</span> 
+
+<span class="k">sum</span> age
 </pre></div>
 </div>
 </section>
@@ -568,6 +770,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">by</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
