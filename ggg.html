@@ -391,6 +391,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="by">
 <h1>by<a class="headerlink" href="#by" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/8x0apHVqmnUHnuBfzLXMuvRRXkExSGeoQAw5rEs9OvKSmzs1bvhPfLD2pGu6NRY.BYToPUwpMdnR-h25?startTime=1681414214000">video</a></p>
 <p>This is week 3 of ph.340.600. Let’s recap what we’ve done so far:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code> —&gt; dofile structure, working directory, location of output</p></li>
@@ -631,9 +632,15 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">byte</span></code>: integer range -127 to 100</p>
 <p><code class="docutils literal notranslate"><span class="pre">int</span></code>: integer range -32767 to 32740</p>
 <p><code class="docutils literal notranslate"><span class="pre">long</span></code>: integer range +/- 2 billion</p>
-<p><code class="docutils literal notranslate"><span class="pre">float</span></code>: decimal, range +/- <span class="math notranslate nohighlight">\(10^38\)</span></p>
-<p><code class="docutils literal notranslate"><span class="pre">double</span></code>: decimal, range +/- <span class="math notranslate nohighlight">\(10^307\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">float</span></code>: decimal, range +/- <span class="math notranslate nohighlight">\(10^{38}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">double</span></code>: decimal, range +/- <span class="math notranslate nohighlight">\(10^{307}\)</span></p>
 <p><code class="docutils literal notranslate"><span class="pre">strings</span></code>: e.g. str5 = string of length 5</p>
+<p>You’ll need to specify the variable types as you start to right flexible programs with the <code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span></code> command and <code class="docutils literal notranslate"><span class="pre">syntax</span></code> command with options such as<code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">time(varname)</span> <span class="pre">event(varname)</span> <span class="pre">tmax(float)</span></code></p>
+<p>If you wish to better understand these variables types, please explore those available to you in <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">describe</span>
+</pre></div>
+</div>
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//generate</span>
 <span class="k">g</span> byte young=(age<span class="o">&lt;</span><span class="m">30</span><span class="o">&gt;</span>)
 <span class="k">g</span> age_f=age<span class="k"> if</span> gender<span class="o">==</span><span class="m">1</span>
