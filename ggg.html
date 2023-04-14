@@ -175,6 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">by</a></li>
 
 
+
 <li class="toctree-l1"><a class="reference internal" href="hhh.html">program define</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iii.html">capture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jjj.html">twoway</a></li>
@@ -377,6 +378,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">by</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"></a></li>
 </ul>
 
             </nav>
@@ -399,7 +401,11 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">by</span></code> —&gt; prelude to <code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span></code></p></li>
 </ol>
 <p>In today’s session, <code class="docutils literal notranslate"><span class="pre">by</span></code>, we’ll use <a class="reference download internal" download="" href="_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta"><span class="xref download myst">transplants.dta</span></a> to demonstrate a few useful commands that we will put to good use over the coming weeks.</p>
-<p>Here’s a schema of what we covered in the session <code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> plus an attempt to generalize it to several scenarios beyond what we might have time to cover in 5 weeks!! (A classmate of yours “replaced” the <code class="docutils literal notranslate"><span class="pre">regress</span></code> part of this schema with a <code class="docutils literal notranslate"><span class="pre">kappa</span> <span class="pre">statistic</span></code> estimation program, which is a <em>third-party</em> program without associated <code class="docutils literal notranslate"><span class="pre">e()</span></code> class macros, during this class session and so she’s found <code class="docutils literal notranslate"><span class="pre">matrix</span> <span class="pre">define</span> <span class="pre">kappa=r(table)</span></code> extremely helpful!!!!!)</p>
+<p>Here’s a schema of what we covered in the session <code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> plus an attempt to generalize it to several scenarios beyond what we might have time to cover in 5 weeks!!</p>
+<p>(<strong>Note:</strong> A classmate of yours “replaced” the <code class="docutils literal notranslate"><span class="pre">regress</span></code> part of this schema with a <code class="docutils literal notranslate"><span class="pre">kappa</span> <span class="pre">statistic</span></code> estimation program, which is a <em>third-party</em> program without associated <code class="docutils literal notranslate"><span class="pre">e()</span></code> class macros, during this class session and so she’s found <code class="docutils literal notranslate"><span class="pre">matrix</span> <span class="pre">define</span> <span class="pre">kappa=r(table)</span></code> extremely helpful!!!!!)</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -539,8 +545,8 @@ document.write(`
 </pre></div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
 <p>You should explore the following commands on your own:</p>
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">tab</span> rec_education,<span class="k"> sum</span>(age)
 <span class="k">regress</span> wait_yrs age, level(<span class="m">90</span>)
@@ -626,8 +632,8 @@ document.write(`
 </pre></div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id2">
-<h1><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h1>
 <p>Variable <strong>types</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">byte</span></code>: integer range -127 to 100</p>
 <p><code class="docutils literal notranslate"><span class="pre">int</span></code>: integer range -32767 to 32740</p>
@@ -795,6 +801,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">by</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"></a></li>
 </ul>
 
   </nav></div>
