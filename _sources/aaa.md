@@ -165,6 +165,7 @@ What's new this week?
 5. passcodes for all the videos are available in the CoursePlus online library
 6. 04/13/23 `session 3: by` video has gone live!! find the passcode in `CoursePlus`
 7. a brief video answering questions about `HW1` will go live on Monday 04/17/2023 
+8. [r(table)](https://jhustata.github.io/book/ggg.html) in practice
 
 [^1]: see chapter: [`net search`](zzz.md) for source code
 [^2]: see chapter: [`net search`](zzz.md) for more on NHANES
