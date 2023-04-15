@@ -5,7 +5,7 @@
 0. Today we are going to talk about `macros`:
 
 
-**A:** local system macros
+Local system macros
 
     name
     content
@@ -14,7 +14,7 @@
      r() -> return values
      e() -> estimated values 
      
-**B:** user-defined macros
+User-defined macros
 
      local e.g., `m_iqr'
      global e.g., $workdir
