@@ -376,16 +376,75 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pwd">
 <h1>pwd<a class="headerlink" href="#pwd" title="Permalink to this heading">#</a></h1>
-<p>We hereby commence session 1!</p>
-<p>    <a class="reference external" href="https://www.dropbox.com/s/lvbn9c2xle8qpln/pwd1.mp4?dl=0?raw=1">video1</a></p>
-<p>    <a class="reference external" href="https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1">video2</a></p>
-<p>    <a class="reference external" href="https://jhjhm.zoom.us/rec/share/5HbRh5ALkXawkMaSsITWGJnPN3vZZJWVp9EjxgFXZiGkduS2S55VgmBTl1Bf88PD.D2VIFqpidjNeh7A8?startTime=1680959893000">profile.do</a></p>
-<p>First, some <a class="reference external" href="https://www.stata.com/manuals13/u27.pdf">cool commands</a>:</p>
-<p>Next, lets compose our first .do file script together</p>
-<p>Lookout for <code class="docutils literal notranslate"><span class="pre">structure</span></code>, <code class="docutils literal notranslate"><span class="pre">indentation</span></code>, <code class="docutils literal notranslate"><span class="pre">annotation</span></code></p>
-<p>These three things make the script readable</p>
-<p>You will lose points in your <a class="reference internal" href="hw1.html"><span class="doc std std-doc">homework</span></a> if you neglect these <a class="reference download internal" download="" href="_downloads/6efbc93ca79a21fd3b4d4c0369d9f9fe/dofilestructure.pdf"><span class="xref download myst">three things</span></a>!</p>
-<p>We will later discuss how missing data affect the accuracy of the parameters estimated in Table 1. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
+<p>Session 1 videos:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.dropbox.com/s/lvbn9c2xle8qpln/pwd1.mp4?dl=0?raw=1">video1</a></p></li>
+<li><p><a class="reference external" href="https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1">video2</a></p></li>
+<li><p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/5HbRh5ALkXawkMaSsITWGJnPN3vZZJWVp9EjxgFXZiGkduS2S55VgmBTl1Bf88PD.D2VIFqpidjNeh7A8?startTime=1680959893000">profile.do</a></p></li>
+<li><p><a class="reference external" href="https://www.stata.com/manuals13/u27.pdf">basic commands</a>:</p></li>
+</ol>
+<p>Our goal this session is to establish rules for all .do file script in this class:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Structure</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Indentation</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Annotation</span></code></p></li>
+</ol>
+<p>Every .do file will have these items:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">quietly</span> <span class="pre">{</span></code></p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+
+}
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">0</span> <span class="pre">{</span></code></p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+
+<span class="k">   if</span> <span class="m">0</span> { <span class="c1">//background</span>
+
+       <span class="m">1</span>. a few remarks
+       <span class="m">2</span>.<span class="k"> on</span> what motivates
+       <span class="m">3</span>. this .do<span class="k"> file</span> script
+       <span class="m">4</span>. using ordinary text
+       <span class="m">5</span>. stata will not<span class="k"> read</span> this block
+
+   }
+
+}
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span> <span class="pre">{</span></code></p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+
+<span class="k">   if</span> <span class="m">0</span> { <span class="c1">//background</span>
+
+       <span class="m">1</span>. a few remarks
+       <span class="m">2</span>.<span class="k"> on</span> what motivates
+       <span class="m">3</span>. this .do<span class="k"> file</span> script
+       <span class="m">4</span>. using ordinary text
+       <span class="m">5</span>. stata will not<span class="k"> read</span> this block
+
+   }
+
+<span class="k">   if</span>  <span class="m">1</span> { <span class="c1">//methods</span>
+
+   }
+
+}
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span> <span class="pre">{</span></code> block is where you’ll typically define <code class="docutils literal notranslate"><span class="pre">global</span> <span class="pre">macros</span></code>, open a <code class="docutils literal notranslate"><span class="pre">logfile</span></code>, and determine either your <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">filepaths</span></code>, or <code class="docutils literal notranslate"><span class="pre">urls</span></code></p>
+<p>It will lay out the method or strategy by which you approach the task outlined in <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">0</span> <span class="pre">{</span></code></p>
+<p>Each numerically sequenced <code class="docutils literal notranslate"><span class="pre">if</span></code> statement followed by a <code class="docutils literal notranslate"><span class="pre">{</span></code> will serve as your lodestar as you build a <strong>vertically</strong> growing script as contrasted with a <strong>horizontally</strong> sprawling one. Within each <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">int</span> <span class="pre">{</span></code> you’ll have a block of code that serves a rather specific funtion and can be copied and pasted to another .do file when such a task is needed in the future of by someone else.</p>
+<p>As you put your .do file together you’ll indent (typically 4 spaces) at each level: from <code class="docutils literal notranslate"><span class="pre">qui</span> <span class="pre">{</span></code> to <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">0</span> <span class="pre">{</span></code>, and then from each <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">int</span> <span class="pre">{</span></code> to the block of code within.</p>
+<p>Within any block of code you’ll also indent as lower-level options and suboptions emerge in your script.</p>
+<p>Look to the scripts throughout this book as exemplars. Notice that each block of code must be lightly annotated to describe what it does. Use the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">0</span> <span class="pre">{</span></code> for more detailed annotation.</p>
+<p>Because this is an academic course, we will nudge you towards these practices by removing points in your <a class="reference internal" href="hw1.html"><span class="doc std std-doc">homework</span></a> if you neglect these <a class="reference download internal" download="" href="_downloads/6efbc93ca79a21fd3b4d4c0369d9f9fe/dofilestructure.pdf"><span class="xref download myst">three things</span></a>: structure, indentation, and annotation.</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">    </span>
 <span class="k">    if</span> <span class="m">1</span> { <span class="c1">//linux,stata</span>
@@ -487,14 +546,6 @@ document.write(`
 }
 </pre></div>
 </div>
-<p><a class="reference internal" href="statalinux.html"><span class="doc std std-doc">stata-linux</span></a></p>
-<iframe src="https://www.dropbox.com/s/lvbn9c2xle8qpln/pwd1.mp4?dl=0?raw=1" width="480" height="256" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/KyAiw21i0epoR8tQ59"></a></p>
-<iframe src="https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1" width="480" height="256" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/KyAiw21i0epoR8tQ59"></a></p>
-<hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id2" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
-<p>We will simulate missingess of DMARETHN and assess the impact on Table 1</p>
-</aside>
 </section>
 
     <script type="text/x-thebe-config">

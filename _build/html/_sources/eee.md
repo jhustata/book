@@ -1,25 +1,86 @@
 
 # pwd
 
-We hereby commence session 1! 
+Session 1 videos: 
 
-&nbsp;&nbsp;&nbsp; [video1](https://www.dropbox.com/s/lvbn9c2xle8qpln/pwd1.mp4?dl=0?raw=1) 
+1. [video1](https://www.dropbox.com/s/lvbn9c2xle8qpln/pwd1.mp4?dl=0?raw=1) 
+2. [video2](https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1)
+3. [profile.do](https://jhjhm.zoom.us/rec/share/5HbRh5ALkXawkMaSsITWGJnPN3vZZJWVp9EjxgFXZiGkduS2S55VgmBTl1Bf88PD.D2VIFqpidjNeh7A8?startTime=1680959893000)
+4. [basic commands](https://www.stata.com/manuals13/u27.pdf):
 
-&nbsp;&nbsp;&nbsp; [video2](https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1)
+Our goal this session is to establish rules for all .do file script in this class:
 
-&nbsp;&nbsp;&nbsp; [profile.do](https://jhjhm.zoom.us/rec/share/5HbRh5ALkXawkMaSsITWGJnPN3vZZJWVp9EjxgFXZiGkduS2S55VgmBTl1Bf88PD.D2VIFqpidjNeh7A8?startTime=1680959893000)
+1. `Structure`
+2. `Indentation`
+3. `Annotation`
 
-First, some [cool commands](https://www.stata.com/manuals13/u27.pdf):
+Every .do file will have these items:
 
-Next, lets compose our first .do file script together
+1. `quietly {`
 
-Lookout for `structure`, `indentation`, `annotation`
+```stata
 
-These three things make the script readable 
+qui {
 
-You will lose points in your [homework](hw1.md) if you neglect these [three things](dofilestructure.pdf)!
+}
 
-We will later discuss how missing data affect the accuracy of the parameters estimated in Table 1. [^3]
+```
+
+2. `if 0 {`
+
+```stata
+
+qui {
+
+   if 0 { //background
+
+       1. a few remarks
+       2. on what motivates
+       3. this .do file script
+       4. using ordinary text
+       5. stata will not read this block
+
+   }
+
+}
+```
+
+3. `if 1 {`
+
+```stata
+
+qui {
+
+   if 0 { //background
+
+       1. a few remarks
+       2. on what motivates
+       3. this .do file script
+       4. using ordinary text
+       5. stata will not read this block
+
+   }
+
+   if  1 { //methods
+
+   }
+
+}
+```
+
+The `if 1 {` block is where you'll typically define `global macros`, open a `logfile`, and determine either your `pwd`, `filepaths`, or `urls` 
+
+It will lay out the method or strategy by which you approach the task outlined in `if 0 {`
+
+Each numerically sequenced `if` statement followed by a `{` will serve as your lodestar as you build a **vertically** growing script as contrasted with a **horizontally** sprawling one. Within each `if int {` you'll have a block of code that serves a rather specific funtion and can be copied and pasted to another .do file when such a task is needed in the future of by someone else.
+
+As you put your .do file together you'll indent (typically 4 spaces) at each level: from `qui {` to `if 0 {`, and then from each `if int {` to the block of code within.
+
+Within any block of code you'll also indent as lower-level options and suboptions emerge in your script.
+
+Look to the scripts throughout this book as exemplars. Notice that each block of code must be lightly annotated to describe what it does. Use the `if 0 {` for more detailed annotation. 
+
+Because this is an academic course, we will nudge you towards these practices by removing points in your [homework](hw1.md) if you neglect these [three things](dofilestructure.pdf): structure, indentation, and annotation.
 
 ```stata
 
@@ -124,12 +185,3 @@ qui {
 }
 
 ```
-
-[stata-linux](statalinux.md)
-
-
-[^3]: We will simulate missingess of DMARETHN and assess the impact on Table 1
-
-<iframe src="https://www.dropbox.com/s/lvbn9c2xle8qpln/pwd1.mp4?dl=0?raw=1" width="480" height="256" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/KyAiw21i0epoR8tQ59"></a></p>
-
-<iframe src="https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1" width="480" height="256" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/KyAiw21i0epoR8tQ59"></a></p>
