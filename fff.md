@@ -1,6 +1,6 @@
 # r(mean)
 
-&nbsp;&nbsp;&nbsp; [video](https://jhjhm.zoom.us/rec/share/Vn4RJsBpvRlACl1o7_6gr-ZrRvQ-PcU4oX8npjY-irdHjg3YLWo8qtSfFx989s6Y.riv8GVEsjWE_uV9y?startTime=1680809414000)
+[video](https://jhjhm.zoom.us/rec/share/Vn4RJsBpvRlACl1o7_6gr-ZrRvQ-PcU4oX8npjY-irdHjg3YLWo8qtSfFx989s6Y.riv8GVEsjWE_uV9y?startTime=1680809414000)
 
 0. Today we are going to talk about `macros`:
 
@@ -23,20 +23,12 @@ But we need data to demonstrate these macros. So lets curate a dataset: `nh3andm
 Copy & paste the script below into a .do file and do!
 You may save it as `nh3andmort.do`. If you encounter any trouble in this preliminary step please do post it on CoursePlus. Maybe a fellow student or a member of the teaching team may be able to help.
 
-1. Import data for todays class:
+Import data for todays class:
 
-   a) stata [editions](https://www.stata.com/products/which-stata-is-right-for-me/) 
-         
-   b) [ex1](https://jhustata.github.io/book/_downloads/f716980c69e9c20b4b4bb8431c700717/unix-b-mode3.jpg) 
-         
-   c) [ex2](https://jhustata.github.io/book/_downloads/7a8ebb8d1a62f98b6e5b939e69fb21e1/stata.version.png)
-
-
-Remote desktop!
-
-[New script!!!](https://raw.githubusercontent.com/jhustata/book/main/nhanes-alpha.ado) 
-
-[Video supplement](https://jhjhm.zoom.us/rec/share/Qsbf0KvG_5Y3GYHIU_bKwTN9qT5K0aurlJrvNp3i07y_G9DFzBMFhHYibq78StxH.VUCQQSkNOtRtGWmA?startTime=1681134087000)
+1. Your Stata [edition](https://www.stata.com/products/which-stata-is-right-for-me/) will determine how much data is imported. Can you tell which line of code in the script determines this? (**Hint: ** it is an `if xxx {` statement but at a lower structural level than the `if int {` building blocks of our .do file). This line of code was motivated by Stata/BE editions that the majority of students have, which proved incapable of handling the full `nh3andmort.dta` datafile.  
+2. Here is a screenshot from a [Stata/MP](https://jhustata.github.io/book/_downloads/f716980c69e9c20b4b4bb8431c700717/unix-b-mode3.jpg) session on the biostatistics cluster.
+3. And here is a screenshot from a [Stata/IC](https://jhustata.github.io/book/_downloads/7a8ebb8d1a62f98b6e5b939e69fb21e1/stata.version.png) session that crashed when attempting to import the `nh3andmort.dta` datafile. (Stata/IC was rebranded Stata/BE in 2022)
+4. Watch this [video supplement](https://jhjhm.zoom.us/rec/share/Qsbf0KvG_5Y3GYHIU_bKwTN9qT5K0aurlJrvNp3i07y_G9DFzBMFhHYibq78StxH.VUCQQSkNOtRtGWmA?startTime=1681134087000) to learn more about what motivated this discussion of Stata editions.
 
 ```stata
 

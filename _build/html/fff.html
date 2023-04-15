@@ -376,7 +376,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="r-mean">
 <h1>r(mean)<a class="headerlink" href="#r-mean" title="Permalink to this heading">#</a></h1>
-<p>    <a class="reference external" href="https://jhjhm.zoom.us/rec/share/Vn4RJsBpvRlACl1o7_6gr-ZrRvQ-PcU4oX8npjY-irdHjg3YLWo8qtSfFx989s6Y.riv8GVEsjWE_uV9y?startTime=1680809414000">video</a></p>
+<p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/Vn4RJsBpvRlACl1o7_6gr-ZrRvQ-PcU4oX8npjY-irdHjg3YLWo8qtSfFx989s6Y.riv8GVEsjWE_uV9y?startTime=1680809414000">video</a></p>
 <ol class="arabic simple" start="0">
 <li><p>Today we are going to talk about <code class="docutils literal notranslate"><span class="pre">macros</span></code>:</p></li>
 </ol>
@@ -397,16 +397,13 @@ content
 <p>But we need data to demonstrate these macros. So lets curate a dataset: <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code>
 Copy &amp; paste the script below into a .do file and do!
 You may save it as <code class="docutils literal notranslate"><span class="pre">nh3andmort.do</span></code>. If you encounter any trouble in this preliminary step please do post it on CoursePlus. Maybe a fellow student or a member of the teaching team may be able to help.</p>
-<ol class="arabic">
-<li><p>Import data for todays class:</p>
-<p>a) stata <a class="reference external" href="https://www.stata.com/products/which-stata-is-right-for-me/">editions</a></p>
-<p>b) <a class="reference external" href="https://jhustata.github.io/book/_downloads/f716980c69e9c20b4b4bb8431c700717/unix-b-mode3.jpg">ex1</a></p>
-<p>c) <a class="reference external" href="https://jhustata.github.io/book/_downloads/7a8ebb8d1a62f98b6e5b939e69fb21e1/stata.version.png">ex2</a></p>
-</li>
+<p>Import data for todays class:</p>
+<ol class="arabic simple">
+<li><p>Your Stata <a class="reference external" href="https://www.stata.com/products/which-stata-is-right-for-me/">edition</a> will determine how much data is imported. Can you tell which line of code in the script determines this? (**Hint: ** it is an <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">xxx</span> <span class="pre">{</span></code> statement but at a lower structural level than the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">int</span> <span class="pre">{</span></code> building blocks of our .do file). This line of code was motivated by Stata/BE editions that the majority of students have, which proved incapable of handling the full <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code> datafile.</p></li>
+<li><p>Here is a screenshot from a <a class="reference external" href="https://jhustata.github.io/book/_downloads/f716980c69e9c20b4b4bb8431c700717/unix-b-mode3.jpg">Stata/MP</a> session on the biostatistics cluster.</p></li>
+<li><p>And here is a screenshot from a <a class="reference external" href="https://jhustata.github.io/book/_downloads/7a8ebb8d1a62f98b6e5b939e69fb21e1/stata.version.png">Stata/IC</a> session that crashed when attempting to import the <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code> datafile. (Stata/IC was rebranded Stata/BE in 2022)</p></li>
+<li><p>Watch this <a class="reference external" href="https://jhjhm.zoom.us/rec/share/Qsbf0KvG_5Y3GYHIU_bKwTN9qT5K0aurlJrvNp3i07y_G9DFzBMFhHYibq78StxH.VUCQQSkNOtRtGWmA?startTime=1681134087000">video supplement</a> to learn more about what motivated this discussion of Stata editions.</p></li>
 </ol>
-<p>Remote desktop!</p>
-<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/nhanes-alpha.ado">New script!!!</a></p>
-<p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/Qsbf0KvG_5Y3GYHIU_bKwTN9qT5K0aurlJrvNp3i07y_G9DFzBMFhHYibq78StxH.VUCQQSkNOtRtGWmA?startTime=1681134087000">Video supplement</a></p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> nhanes
 <span class="k">program</span> define nhanes 
 <span class="k">    </span>
