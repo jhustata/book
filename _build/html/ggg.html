@@ -433,15 +433,15 @@ document.write(`
         <span class="n">linewidths</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">.3</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">.3</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/6ba670236626209b98120cb5322e28ec05c9a1469fb3436de228bdfe9c2b3848.png" src="_images/6ba670236626209b98120cb5322e28ec05c9a1469fb3436de228bdfe9c2b3848.png" />
+<img alt="_images/87f3e30efeddf2a37045b6a9a1aa98f13fb168d405c0a6fd922dca7544489746.png" src="_images/87f3e30efeddf2a37045b6a9a1aa98f13fb168d405c0a6fd922dca7544489746.png" />
 </div>
 </div>
 <p>I’ve not illustrated where <code class="docutils literal notranslate"><span class="pre">e()</span></code> and <code class="docutils literal notranslate"><span class="pre">c()</span></code> fit in this scheme. But once you appreciate that <code class="docutils literal notranslate"><span class="pre">r()</span></code> values in memory can be revealed using <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">e()</span></code> values using <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code>, and <code class="docutils literal notranslate"><span class="pre">c()</span></code> values using <code class="docutils literal notranslate"><span class="pre">creturn</span> <span class="pre">list</span></code> then you will be set for life!!</p>
