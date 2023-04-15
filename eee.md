@@ -72,7 +72,7 @@ The `if 1 {` block is where you'll typically define `global macros`, open a `log
 
 It will lay out the method or strategy by which you approach the task outlined in `if 0 {`
 
-Each numerically sequenced `if` statement followed by a `{` will serve as your lodestar as you build a **vertically** growing script as contrasted with a **horizontally** sprawling one. Within each `if int {` you'll have a block of code that serves a rather specific funtion and can be copied and pasted to another .do file when such a task is needed in the future of by someone else.
+Each numerically sequenced `if` statement followed by a `{` will serve as your lodestar as you build a **vertically** growing script as contrasted with a **horizontally** sprawling one. Within each `if int {` you'll have a block of code that serves a rather specific function and can be copied and pasted to another .do file when such a task is needed in the future or by someone else.
 
 As you put your .do file together you'll indent (typically 4 spaces) at each level: from `qui {` to `if 0 {`, and then from each `if int {` to the block of code within.
 

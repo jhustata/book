@@ -396,7 +396,7 @@ document.write(`
 <p>For the latter case, the matrix cells will each contain <code class="docutils literal notranslate"><span class="pre">r()</span></code> class macros, which you may capture and format in a local macro like so:</p>
 <p><code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">b_age:</span> <span class="pre">di</span> <span class="pre">%3.1f</span> <span class="pre">m[1,4]</span></code></p>
 <p>Where <code class="docutils literal notranslate"><span class="pre">m</span></code> is the matrix you defined and <code class="docutils literal notranslate"><span class="pre">m[1,4]</span></code> is the value in row1, column4. And here is a script that outputs <code class="docutils literal notranslate"><span class="pre">r(table)</span></code> following a Cox regression into an excel file:</p>
-<p><code class="docutils literal notranslate"><span class="pre">rtable.do</span></code></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/rtable.do">rtable.do</a></p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -442,13 +442,6 @@ document.write(`
 <img alt="_images/2a7592775f8cfa3026c462ceaf5ef2fbf8b4e4909cea620c7c0d7e4bb36f748f.png" src="_images/2a7592775f8cfa3026c462ceaf5ef2fbf8b4e4909cea620c7c0d7e4bb36f748f.png" />
 </div>
 </div>
-<p>In context of the first three weeks here is where things stand:</p>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code> —&gt; dofile structure, working directory, location of output</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> —&gt; macros, local system-defined, user-defined</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">by</span></code> —&gt; prelude to <code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span></code></p></li>
-</ol>
-<p>Today’s session, <code class="docutils literal notranslate"><span class="pre">by</span></code>, we’ll use <a class="reference download internal" download="" href="_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta"><span class="xref download myst">transplants.dta</span></a> to demonstrate a few useful commands that we will put to good use over the coming weeks. You should be able to do most of this session on your own and at your convenience since it merely exposes you to various commands but not in the context of any specfic task.</p>
 <p>I’ve not illustrated where <code class="docutils literal notranslate"><span class="pre">e()</span></code> and <code class="docutils literal notranslate"><span class="pre">c()</span></code> fit in this scheme. But once you appreciate that <code class="docutils literal notranslate"><span class="pre">r()</span></code> values in memory can be revealed using <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">e()</span></code> values using <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code>, and <code class="docutils literal notranslate"><span class="pre">c()</span></code> values using <code class="docutils literal notranslate"><span class="pre">creturn</span> <span class="pre">list</span></code> then you will be set for life!!</p>
 <p>Remember:</p>
 <ol class="arabic simple">
@@ -456,9 +449,13 @@ document.write(`
 <li><p>content: return, estimates, constants</p></li>
 <li><p>these system-defined local macros may then be formatted to suit your needs in a user-defined local macro</p></li>
 </ol>
-<p>Here’s a schema of what we covered in the session <code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> plus an attempt to generalize it to several scenarios beyond what we might have time to cover in 5 weeks!!</p>
-<p>(<strong>Note:</strong> A classmate of yours “replaced” the <code class="docutils literal notranslate"><span class="pre">regress</span></code> part of this schema with a <code class="docutils literal notranslate"><span class="pre">kappa</span> <span class="pre">statistic</span></code> estimation program, which is a <em>third-party</em> program without associated <code class="docutils literal notranslate"><span class="pre">e()</span></code> class macros, during this class session and so she’s found <code class="docutils literal notranslate"><span class="pre">matrix</span> <span class="pre">define</span> <span class="pre">kappa=r(table)</span></code> extremely helpful!!!!!)</p>
-<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/rtable.do">r(table)</a></p>
+<p>In context of the first three weeks here is where things stand:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code> —&gt; dofile structure, working directory, location of output</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> —&gt; macros, local system-defined, user-defined</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">by</span></code> —&gt; prelude to <code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span></code></p></li>
+</ol>
+<p>Today’s session, <code class="docutils literal notranslate"><span class="pre">by</span></code>, you’ll use <a class="reference download internal" download="" href="_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta"><span class="xref download myst">transplants.dta</span></a> to demonstrate a few useful commands that we will put to good use over the coming weeks. You should be able to do most of this session on your own and at your convenience since it merely exposes you to various commands but not in the context of any specfic task.</p>
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 </pre></div>
 </div>
