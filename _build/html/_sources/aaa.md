@@ -127,11 +127,9 @@ qui {
 
 #
 
-```{seealso}
 Use the `tokenize` command to append the [DEMO.XPT](https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT) files for [all continuous NHANES: 1999-2018](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics) into one file.[^2]
 Your .do file should include only one `import sasxport5` statement.
 `Search` this book for the `import sasxport5` command. Up to 1.5 bonus points
-```
 
 Hint:
 
@@ -156,16 +154,21 @@ Academic integrity
 
 #
 
+```{seealso}
+
 What's new this week?
 
-1. [profile.do](https://jhustata.github.io/book/eee.html) 
-2. chapter: [r(mean)](https://jhustata.github.io/book/fff.html) is subtly revamped
-3. remote desktop: a fellow classmate of yours informed me of this resource for Stata/SE or MP
-4. lab1 [solutions](lab1.md) are available and [lab2](lab2.md) has gone live!
+1. profile.do --> pwd
+2. revamped --> r(mean) 
+3. remote desktop: a resource for Stata/SE or MP --> r(mean)
+4. lab1 are available and lab2 has gone live! --> labs
 5. passcodes for all the videos are available in the CoursePlus online library
-6. 04/13/23 `session 3: by` video has gone live!! find the passcode in `CoursePlus`
+6. 04/13/23 video has gone live --> by
 7. a brief video answering questions about `HW1` will go live on Monday 04/17/2023 
-8. [r(table)](https://jhustata.github.io/book/ggg.html) in practice
+8. r(table)in practice --> by
+
+```
+
 
 [^1]: see chapter: [`net search`](zzz.md) for source code
 [^2]: see chapter: [`net search`](zzz.md) for more on NHANES
