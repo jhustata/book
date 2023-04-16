@@ -505,13 +505,13 @@ document.write(`
 </pre></div>
 </div>
 <p>What do you notice? Only four unique values! The <code class="docutils literal notranslate"><span class="pre">egen</span></code> command, like the <code class="docutils literal notranslate"><span class="pre">gen</span></code> command is used to define new variables in the dataset. However, the <code class="docutils literal notranslate"><span class="pre">gen</span></code> command applies values at the level of the individual. The <code class="docutils literal notranslate"><span class="pre">egen</span></code> command does so <code class="docutils literal notranslate"><span class="pre">by</span></code> group and yields summary statistics. To learn more type <code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">egen</span></code>.</p>
-<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui regress</span> age i<span class="m">.</span>abo
-<span class="k">local</span> abo_H:<span class="k"> di</span> <span class="nx">%3.2f</span><span class="k"> e</span>(r2_a)<span class="o">*</span><span class="m">100</span>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui regress</span> peak_pra prev_ki
+<span class="k">local</span> coef_of_var:<span class="k"> di</span> <span class="nx">%3.2f</span><span class="k"> e</span>(r2_a)<span class="o">*</span><span class="m">100</span>
 
-<span class="k">di</span> <span class="s">&quot;In this cross-sectional dataset, blood group explains only </span><span class="nv">`abo_H&#39;</span><span class="s">% of the variance in age.&quot;</span>
+<span class="k">di</span> <span class="s">&quot;History of kidney transplant explains </span><span class="nv">`coef_of_var&#39;</span><span class="s">% of the variance in peak_pra.&quot;</span>
 </pre></div>
 </div>
-<p>Enough! I don’t wish to trouble you with a bogus hypothesis but merely wish to explore return values from a regression! From whence, for instance, does <code class="docutils literal notranslate"><span class="pre">e(r2_a)</span></code> come? Where does it fit into our schema? (<strong>Hint:</strong> <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">creturn</span> <span class="pre">list</span></code>)</p>
+<p>From whence does <code class="docutils literal notranslate"><span class="pre">e(r2_a)</span></code> come? Where does it fit into our schema? (Hint: <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">creturn</span> <span class="pre">list</span></code>)</p>
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">lincom</span> _b[<span class="m">3.</span>abo]
 </pre></div>
 </div>
@@ -549,75 +549,67 @@ document.write(`
 <span class="k">use</span> transplants<span class="k"> in</span> <span class="m">44</span>
 <span class="k">use</span> transplants<span class="k"> if</span> rec_work<span class="o">==</span><span class="m">1</span>
 <span class="k">use</span> a<span class="o">*</span> p<span class="o">*</span> using transplants<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">100</span>
-
-<span class="c1">//describe</span>
-<span class="k">describe</span>, simple
-<span class="k">describe</span>, short
-<span class="k">describe</span> a<span class="o">*</span>
-<span class="k">describe</span> using transplants<span class="m">.</span>dta 
-<span class="k">describe</span> r<span class="o">*</span>, fullnames
-
-<span class="c1">//codebook</span>
-<span class="k">codebook</span>
-<span class="k">codebook</span> rec_education rec_work abo
-<span class="k">codebook</span> a<span class="o">*</span><span class="k"> e</span><span class="o">*</span>, compact
-<span class="k">codebook</span>, problems
-
-<span class="c1">//list </span>
-<span class="k">list</span> 
-<span class="k">list</span> prev_ki wait_yrs<span class="k"> if</span> race<span class="o">==</span><span class="m">9</span>
-<span class="k">list</span> <span class="o">*</span>date<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
-<span class="k">list</span> dx<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>, clean noobs
-<span class="k">list</span> age, fast
-
-<span class="c1">//count</span>
-<span class="k">count</span>
-<span class="k">count if</span> rec_work<span class="o">==</span><span class="m">1</span>
-<span class="k">count if</span> rec_work<span class="o">!=</span><span class="m">1</span>
-<span class="k">count if</span> bmi<span class="o">&lt;</span><span class="m">20</span> | bmi <span class="o">&gt;</span> <span class="m">35</span>
-<span class="k">count if</span> bmi<span class="o">&gt;</span><span class="m">25</span> <span class="o">&amp;</span> bmi <span class="o">&lt;</span><span class="m">30</span>
-<span class="k">count if</span> <span class="o">!</span>(age<span class="o">&gt;</span><span class="m">18</span>)
-<span class="k">count if</span> <span class="nf">inrange</span>(wait_yrs,<span class="m">4</span>,<span class="m">6</span>)
-<span class="k">count if</span> <span class="o">!</span><span class="nf">inlist</span>(gender,<span class="m">0</span>,<span class="m">1</span>)
-
-<span class="c1">//tabulate</span>
-<span class="k">tab</span> abo
-<span class="k">tab</span> abo rec_hcv
-<span class="k">tab</span> gender,<span class="k"> sum</span>(age)
-<span class="k">tab</span> dx gender<span class="k"> if</span> age<span class="o">&lt;</span><span class="m">40</span>
-<span class="k">tab</span> dx gender,row
-<span class="k">tab</span> dx gender,col nofreq
-
-<span class="k">tab</span> dx gender, col nofreq chi2
-<span class="k">return list</span> 
-
-<span class="c1">//summarize</span>
-<span class="k">sum</span>
-<span class="k">return list</span> <span class="c1">//not very useful; see schema above</span>
-
-<span class="k">sum</span> age wait_yrs
-<span class="k">return list</span> <span class="c1">//much more useful!</span>
-
-<span class="k">sum</span> age wait_yrs, detail
-
-<span class="c1">//missingness</span>
-<span class="k">count if</span> bmi <span class="o">&gt;</span> <span class="m">30</span>
-<span class="k">count if</span> bmi <span class="o">&gt;</span> <span class="m">1000</span> <span class="c1">//wha? </span>
-<span class="k">sum</span> bmi <span class="c1">//whats going on?</span>
-<span class="k">assert</span> <span class="nf">c</span>(N) <span class="o">==</span> <span class="nf">r</span>(N) <span class="c1">//when do these diverge?</span>
-<span class="k">tab</span> bmi<span class="k"> if</span> bmi <span class="o">&gt;</span> <span class="m">1000</span>
-<span class="k">tab</span> bmi<span class="k"> if</span> bmi <span class="o">&gt;</span> <span class="m">1000</span>, missing
-
-<span class="k">count if</span> bmi<span class="o">==</span>.
-<span class="k">count if</span> bmi<span class="o">==</span>.a
-<span class="k">count if</span> <span class="nf">missing</span>(bmi)
 </pre></div>
 </div>
-<p>Let’s discuss <a class="reference external" href="https://stats.oarc.ucla.edu/stata/faq/how-can-i-recode-missing-values-into-different-categories/">missingness</a> as its relevance emerges.</p>
-<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//manipulating data</span>
-<span class="k">gen</span> age_lastyear=age<span class="m">-1</span>
-<span class="k">gen</span> any_college=(rec_educ<span class="o">&gt;=</span><span class="m">3</span>)
-<span class="k">g</span> youngman=(age<span class="o">&lt;</span><span class="m">40</span><span class="o">&gt;</span>)<span class="o">&amp;</span>(gender<span class="o">==</span><span class="m">0</span>)
+<p>//describe
+describe, simple
+describe, short
+describe a*
+describe using transplants.dta
+describe r*, fullnames</p>
+<p>//codebook
+codebook
+codebook rec_education rec_work abo
+codebook a* e*, compact
+codebook, problems</p>
+<p>//list
+list
+list prev_ki wait_yrs if race==9
+list *date in 1/10
+list dx in 1/10, clean noobs
+list age, fast</p>
+<p>//count
+count
+count if rec_work==1
+count if rec_work!=1
+count if bmi&lt;20 | bmi &gt; 35
+count if bmi&gt;25 &amp; bmi &lt;30
+count if !(age&gt;18)
+count if inrange(wait_yrs,4,6)
+count if !inlist(gender,0,1)</p>
+<p>//tabulate
+tab abo
+tab abo rec_hcv
+tab gender, sum(age)
+tab dx gender if age&lt;40
+tab dx gender,row
+tab dx gender,col nofreq</p>
+<p>tab dx gender, col nofreq chi2
+return list</p>
+<p>//summarize
+sum
+return list //not very useful; see schema above</p>
+<p>sum age wait_yrs
+return list //much more useful!</p>
+<p>sum age wait_yrs, detail</p>
+<p>//missingness
+count if bmi &gt; 30
+count if bmi &gt; 1000 //wha?
+sum bmi //whats going on?
+assert c(N) == r(N) //when do these diverge?
+tab bmi if bmi &gt; 1000
+tab bmi if bmi &gt; 1000, missing</p>
+<p>count if bmi==.
+count if bmi==.a
+count if missing(bmi)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+Let&#39;s discuss [missingness](https://stats.oarc.ucla.edu/stata/faq/how-can-i-recode-missing-values-into-different-categories/) as its relevance emerges.
+
+```Stata
+//manipulating data
+gen age_lastyear=age-1
+gen any_college=(rec_educ&gt;=3)
+g youngman=(age&lt;40&gt;)&amp;(gender==0)
 </pre></div>
 </div>
 <p>Variable <strong>types</strong></p>
@@ -739,13 +731,13 @@ document.write(`
 
 <span class="k">if</span> <span class="m">0</span> { <span class="c1">//background: ph.340.600</span>
 
-    <span class="m">1</span>. we prefer <span class="nv">`if 0 {` for comments</span>
-<span class="nv">    2. and brief `//` annotations per `if int {` code-block</span>
-<span class="nv">    3. do not use comments to explain a command</span>
-<span class="nv">    4. that is what `help` is for</span>
-<span class="nv">    5. our approach is avant-garde</span>
+    <span class="m">1</span>. we prefer <span class="nv">`if 0 {&#39;</span><span class="k"> for</span> comments
+    <span class="m">2</span>. and brief <span class="nv">`//&#39;</span> annotations per <span class="nv">`if int {&#39;</span> code<span class="o">-</span>block
+    <span class="m">3</span>.<span class="k"> do</span> not<span class="k"> use</span> comments to explain a command
+    <span class="m">4</span>. that is what <span class="nv">`help&#39;</span> is<span class="k"> for</span>
+    <span class="m">5</span>. our approach is avant<span class="o">-</span>garde
 
-<span class="nv">}</span>
+}
 </pre></div>
 </div>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//line continuation</span>
