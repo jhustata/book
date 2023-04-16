@@ -160,21 +160,13 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="aaa.html">tokenize</a></li>
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="bbb.html">quietly</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="ccc.html">delimit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ddd.html">rnormal()</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="eee.html">pwd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fff.html">r(mean)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">by</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="hhh.html">program define</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iii.html">capture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jjj.html">twoway</a></li>
@@ -351,9 +343,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -369,17 +359,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">by</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -557,10 +536,7 @@ document.write(`
 <span class="k">di</span> b[<span class="m">1</span>,<span class="m">3</span>]
 </pre></div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p>You should explore the following commands on your own:</p>
+<p>You should explore the following commands, one-by-one, on your own:</p>
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">tab</span> rec_education,<span class="k"> sum</span>(age)
 <span class="k">regress</span> wait_yrs age, level(<span class="m">90</span>)
 <span class="k">count if</span> age <span class="o">&gt;</span> <span class="m">50</span>
@@ -644,18 +620,15 @@ document.write(`
 <span class="k">g</span> youngman=(age<span class="o">&lt;</span><span class="m">40</span><span class="o">&gt;</span>)<span class="o">&amp;</span>(gender<span class="o">==</span><span class="m">0</span>)
 </pre></div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id2">
-<h1><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
 <p>Variable <strong>types</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">byte</span></code>: integer range -127 to 100</p>
 <p><code class="docutils literal notranslate"><span class="pre">int</span></code>: integer range -32767 to 32740</p>
-<p><code class="docutils literal notranslate"><span class="pre">long</span></code>: integer range +/- 2 billion</p>
-<p><code class="docutils literal notranslate"><span class="pre">float</span></code>: decimal, range +/- <span class="math notranslate nohighlight">\(10^{38}\)</span></p>
-<p><code class="docutils literal notranslate"><span class="pre">double</span></code>: decimal, range +/- <span class="math notranslate nohighlight">\(10^{307}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">long</span></code>: integer range <span class="math notranslate nohighlight">\(\pm\)</span> 2 billion</p>
+<p><code class="docutils literal notranslate"><span class="pre">float</span></code>: decimal, range <span class="math notranslate nohighlight">\(\pm\)</span> <span class="math notranslate nohighlight">\(10^{38}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">double</span></code>: decimal, range <span class="math notranslate nohighlight">\(\pm\)</span> <span class="math notranslate nohighlight">\(10^{307}\)</span></p>
 <p><code class="docutils literal notranslate"><span class="pre">strings</span></code>: e.g. str5 = string of length 5</p>
 <p>You’ll need to specify the variable types as you start to right flexible programs with the <code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span></code> command and <code class="docutils literal notranslate"><span class="pre">syntax</span></code> command with options such as<code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">time(varname)</span> <span class="pre">event(varname)</span> <span class="pre">tmax(float)</span></code></p>
-<p>If you wish to better understand these variables types, please explore those available to you in <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>.</p>
+<p>If you wish to better understand these variables types, please explore those available to you in <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>. Open the dataset and type <code class="docutils literal notranslate"><span class="pre">desc</span></code>.</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 <span class="k">describe</span>
 </pre></div>
@@ -725,6 +698,8 @@ document.write(`
 <span class="k">assert</span> <span class="nf">inlist</span>(gender,<span class="m">0</span>,<span class="m">1</span>)
 <span class="k">assert</span> <span class="m">2</span><span class="o">&lt;</span><span class="m">1</span>
 <span class="k">assert</span> <span class="m">0</span>
+<span class="k">assert</span> <span class="nf">c</span>(edition_real)<span class="o">==</span><span class="s">&quot;BE&quot;</span>
+<span class="k">assert</span> <span class="nf">c</span>(edition_real)<span class="o">==</span><span class="s">&quot;MP&quot;</span>
 
 <span class="c1">//recode+label</span>
 #delimit ;
@@ -740,12 +715,221 @@ document.write(`
 <span class="c1">//preserve &amp; restore</span>
 <span class="k">sum</span> age
 
+<span class="c1">//indentation!</span>
 <span class="k">preserve</span>
 <span class="k">    drop if</span> age<span class="o">&lt;</span><span class="nf">r</span>(mean)
 <span class="k">    sum</span> age
 <span class="k">restore</span> 
 
 <span class="k">sum</span> age
+</pre></div>
+</div>
+<p>//comments</p>
+<p>sum age //this displays mean, range, etc.</p>
+<p>/*
+Here’s a long comment. It takes up several
+lines, so I the slash/asterisk.
+*/</p>
+<ul class="simple">
+<li><p>Asterisk as first characater=comment</p></li>
+</ul>
+<p>tab race * However, this doesn’t work</p>
+<p>if 0 { //background: ph.340.600</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. we prefer `if 0 {` for comments
+2. and brief `//` annotations per `if int {` code-block
+3. do not use comments to explain a command
+4. that is what `help` is for
+5. our approach is avant-garde
+</pre></div>
+</div>
+<p>}</p>
+<p>//line continuation</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">///</span></code> to make a Stata command span several lines in a .do file</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">recode</span> race <span class="cs">///</span>
+    (<span class="m">1</span>=<span class="m">1</span>) <span class="cs">///</span>
+    (<span class="m">2</span>=<span class="m">2</span>) <span class="cs">///</span>
+    (<span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">9</span> = <span class="m">9</span>)
+</pre></div>
+</div>
+<p>That is the main-stream approach to line continuation. Ours?</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>#delimit ;
+<span class="k">recode</span> race
+    (<span class="m">1</span>=<span class="m">1</span>)
+    (<span class="m">2</span>=<span class="m">2</span>)
+    (<span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">9</span>)
+;
+#delimit cr
+</pre></div>
+</div>
+<p>//labels
+describe dx
+label var dx “kidney disease diagnosis”</p>
+<p>tab gender //is 1 male or female?
+#delimit ;
+label define g_label
+0 “0=Male”
+1 “1-Female”
+;
+#delimit cr
+label values gender g_label
+tab gender //much better
+tab gender, nolabel //don’t show label</p>
+<p>//or?
+g female=gender==1 //intuitive meaning of 1 &amp; 0</p>
+<p>//r-class examples
+count if age &lt; 45
+di r(N) ” young patients”</p>
+<p>tab race abo, chi2
+di “p-value: ” r(p)</p>
+<p>sum age
+assert inrange(r(mean),45,55)</p>
+<p>tab race abo, chi2
+asset r(p) &lt; 0.05</p>
+<p>//display formats
+sum bmi //command
+local bmi_mean: di %4.1f r(mean) //r() -&gt; local
+di “Mean BMI: `bmi_mean’ ” //embed in text or other final output</p>
+<p>//_b coefficient matrix</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">regress</span> bmi gender age
+
+#delimit ;
+<span class="k">di</span> <span class="s">&quot;estimated BMI: &quot;</span> <span class="nx">%3.2f</span> _b[_cons] <span class="s">&quot; + &quot;</span> 
+                     <span class="nx">%3.2f</span> _b[age] <span class="s">&quot;*age (+ &quot;</span> 
+                           _b[gender] <span class="s">&quot; if male)&quot;</span>
+;
+#delimit cr
+</pre></div>
+</div>
+<p>//local macros</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui sum</span> age<span class="k"> if</span> gender<span class="o">==</span><span class="m">0</span>
+<span class="k">local</span> age_m: <span class="nx">%3.1f</span> <span class="nf">r</span>(mean)
+
+<span class="k">qui sum</span> age<span class="k"> if</span> gender<span class="o">==</span><span class="m">1</span>
+<span class="k">local</span> age_f: <span class="nx">%3.1f</span> <span class="nf">r</span>(mean)
+
+<span class="k">di</span> <span class="s">&quot;Mean age: </span><span class="nv">`age_m&#39;</span><span class="s"> (males) </span><span class="nv">`age_f&#39;</span><span class="s"> (females) &quot;</span> 
+</pre></div>
+</div>
+<p>//more local macros</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> confounders age gender peak_pra
+<span class="k">regress</span> bmi wait_yrs <span class="nv">`confoundres&#39;</span>
+</pre></div>
+</div>
+<p>//program define</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> table1
+<span class="k">program</span> define table1
+    #delimit ;
+<span class="k">    disp</span> <span class="s">&quot;Variable&quot;</span> _col(<span class="m">20</span>) <span class="s">&quot;mean (SD)&quot;</span> 
+                    _col(<span class="m">40</span>) <span class="s">&quot;range&quot;</span>
+                    ;
+    #delimit cr
+
+<span class="k">    quietly sum</span> age
+    #delimit ;
+<span class="k">    disp</span> <span class="s">&quot;age&quot;</span> _col(<span class="m">20</span>) <span class="nx">%3.2f</span> <span class="nf">r</span>(mean) 
+              <span class="s">&quot; (&quot;</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(sd) <span class="s">&quot;)&quot;</span>
+               _col(<span class="m">40</span>)  <span class="nx">%3.2f</span> <span class="nf">r</span>(min) <span class="s">&quot;-&quot;</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(max)
+     <span class="c1">//add more variables!</span>
+<span class="k">    end</span>
+
+    table1
+</pre></div>
+</div>
+<p>//tagging
+list abo gender spread
+egen = tag
+egen grouptag = tag(abo gender)
+list abo gender spread if grouptag</p>
+<p>use transplants, clear
+egen ethtag = tag(ethcat)
+bys ethcat: egen mean_bmi=mean(bmi) bys ethcat: egen mean_age=mean(age)</p>
+<p>twoway scatter m~_bmi m~_age if ethtag</p>
+<p>//conditionals</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">count if</span> abo<span class="o">==</span><span class="m">1</span>
+
+<span class="k">if</span> _N <span class="o">&gt;</span> <span class="m">100</span> {
+<span class="k">   </span>
+<span class="k">    di</span> <span class="s">&quot;Thats a big dataset</span>
+
+}
+
+<span class="k">if</span> _N <span class="o">&gt;</span> <span class="m">10000</span> {
+
+<span class="k">    di</span> <span class="s">&quot;That&#39;s a huge dataset&quot;</span>
+
+}
+</pre></div>
+</div>
+<p>//if and else</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> _N <span class="o">&gt;</span> <span class="m">10000</span> {
+
+<span class="k">    di</span> <span class="s">&quot;That&#39;s a huge dataset&quot;</span>
+
+}
+
+<span class="k">else</span> {
+
+<span class="k">    di</span> <span class="s">&quot;Bah! Not so big.&quot;</span>
+
+}
+</pre></div>
+</div>
+<p>//some <code class="docutils literal notranslate"><span class="pre">if</span></code> examples</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">quietly tab</span> dx gender, chi2
+
+<span class="k">if</span> <span class="nf">r</span>(p) <span class="o">&lt;</span> <span class="m">0.01</span> {
+
+<span class="k">    di</span> <span class="s">&quot;p&lt;0.01</span>
+
+}
+
+<span class="k">else</span> {
+
+<span class="k">    di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(p)
+}
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">count if</span> age<span class="o">&lt;</span><span class="m">18</span>
+<span class="k">if</span> <span class="nf">r</span>(N) <span class="o">&gt;=</span><span class="m">200</span> {
+
+<span class="k">    tab</span> gender prev_ki, chi2
+
+}
+
+<span class="k">else</span> {
+
+<span class="k">    tab</span> gender prev_ki, exact
+    
+}
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">count if</span> <span class="o">!</span><span class="nf">inlist</span>(rec_hcv_antibody,<span class="m">0</span>,<span class="m">1</span>,.)
+
+<span class="k">if</span> <span class="nf">r</span>(N) <span class="o">==</span><span class="m">0</span> {
+
+<span class="k">    logistic</span> rec_hcv_antibody age
+
+}
+
+<span class="k">else</span> {
+
+<span class="k">    di</span> <span class="s">&quot;Non-binary outcome.&quot;</span>
+<span class="k">    di</span> <span class="s">&quot;Can&#39;t do logistic regression&quot;</span>
+}
+</pre></div>
+</div>
+<p>//loops</p>
+<p>forvalues i = 1/5 {</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>di `i&#39; //a local macro, given the notation!!
+</pre></div>
+</div>
+<p>}</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">forvalues</span> b = <span class="m">35</span><span class="o">/</span><span class="m">45</span> {
+<span class="k">    </span>
+<span class="k">    quietly count if</span> age<span class="o">&gt;=</span><span class="nv">`b&#39;</span> <span class="o">&amp;</span> age<span class="o">&lt;</span><span class="nv">`b&#39;</span><span class="o">+</span><span class="m">1</span> 
+<span class="k">    disp</span> <span class="s">&quot;Age of </span><span class="nv">`b&#39;</span><span class="s">: &quot;</span> <span class="nf">r</span>(N) <span class="s">&quot; patients&quot;</span>
+    
+}
 </pre></div>
 </div>
 </section>
@@ -802,23 +986,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">by</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
