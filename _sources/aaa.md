@@ -38,11 +38,11 @@ Teaching assistants
 
 Optional labs
 
-1. [M 9:30-10:30 am](lab2.md)
-2. [T 10:00-11:00 am](lab2.md)
-3. [W 3:00-4:00 pm](lab2.md)
-4. [Th 6:00-7:00 pm](lab2.md)
-5. [F 1:00-2:00 pm](lab2.md)
+1. [M 9:30-10:30 am](lab3.md)
+2. [T 10:00-11:00 am](lab3.md)
+3. [W 3:00-4:00 pm](lab3.md)
+4. [Th 6:00-7:00 pm](lab3.md)
+5. [F 1:00-2:00 pm](lab3.md)
 
 Homeworks due  
 
@@ -158,14 +158,9 @@ Academic integrity
 
 What's new this week?
 
-1. profile.do --> pwd
-2. revamped --> r(mean) 
-3. remote desktop: a resource for Stata/SE or MP --> r(mean)
-4. lab1 are available and lab2 has gone live! --> labs
-5. passcodes for all the videos are available in the CoursePlus online library
-6. 04/13/23 video has gone live --> by
-7. a brief video answering questions about `HW1` will go live on Monday 04/17/2023 
-8. r(table)in practice --> by
+1. lab2 solutions are available & lab3 has gone live! 
+2. a brief video answering questions about `HW1` will go live on Monday 04/17/2023 
+3. session chapters `pwd`, `r(mean)`, `by`, and `program define` have all been retouched. 
 
 ```
 

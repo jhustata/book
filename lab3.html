@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>by &#8212; Stata Programming</title>
+    <title>lab3 &#8212; Stata Programming</title>
   
   
   
@@ -358,7 +358,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>by</h1>
+    <h1>lab3</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,9 +372,26 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="by">
-<h1>by<a class="headerlink" href="#by" title="Permalink to this heading">#</a></h1>
-<p>by command, egen command, loops, conditionals, and programs 2</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab3">
+<h1>lab3<a class="headerlink" href="#lab3" title="Permalink to this heading">#</a></h1>
+<p>lab2: <a class="reference internal" href="lab2.html"><span class="doc std std-doc">solutions</span></a></p>
+<p>data: <a class="reference download internal" download="" href="_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta"><span class="xref download myst">transplants.dta</span></a></p>
+<p>zoom: <a class="reference external" href="https://JHUBlueJays.zoom.us/j/96760923747">M</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/99476415268">T</a> <a class="reference external" href="https://jhubluejays.zoom.us/j/98628544091?pwd=ZGx5NTN1RHNzNDUrQ3c3Uys0RVYrUT09">W</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/3393703103">Th</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/8581993134">F</a></p>
+<p>This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be provided separately.</p>
+<ol class="arabic">
+<li><p>Start Stata, open your do-file editor, write the header, and load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ctr_id</span></code> indicates the ID of the transplant center where the patient received the transplant. Count the number of recipients at each center, and store in a new variable <code class="docutils literal notranslate"><span class="pre">volume</span></code>.</p></li>
+<li><p>List <code class="docutils literal notranslate"><span class="pre">ctr_id</span></code> and <code class="docutils literal notranslate"><span class="pre">volume</span></code> to see how many patients each center has. Maybe let’s try this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">ctr_id</span> <span class="pre">volume</span></code></p>
+</li>
+<li><p>Whelp. This is not what we wanted. Generate a variable <code class="docutils literal notranslate"><span class="pre">ctr_tag</span></code> that “tags” one observation per center.</p></li>
+<li><p>Now <code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">ctr_id</span></code> and <code class="docutils literal notranslate"><span class="pre">volume</span></code>, but just for one record per center.</p></li>
+<li><p>Calculate the mean age of the patients at each center, and store in a new variable <code class="docutils literal notranslate"><span class="pre">mean_age</span></code>.</p></li>
+<li><p>For each primary diagnosis subgroup (use variable <code class="docutils literal notranslate"><span class="pre">dx</span></code>), run a regression with age as the predictor and peak PRA (<code class="docutils literal notranslate"><span class="pre">peak\_pra</span></code>) as the outcome.</p></li>
+<li><p>Now let’s make the output cleaner. Count the number of cases within each diagnosis group. If there are more than 500 cases, run the regression and display the output. If not, display “There are fewer than 500 cases.”</p></li>
+<li><p>Define a program called <code class="docutils literal notranslate"><span class="pre">reg_pra</span></code>. This program will perform the same tasks as described in Question 8, but the regression will take one or more variables specified by the user as the predictor.</p></li>
+<li><p>You have all your commands in your do file, right? Run your do file from the beginning and make sure your do file does exactly the same thing.</p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
