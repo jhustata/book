@@ -724,35 +724,42 @@ document.write(`
 <span class="k">sum</span> age
 </pre></div>
 </div>
-<p>//comments</p>
-<p>sum age //this displays mean, range, etc.</p>
-<p>/*
-Here’s a long comment. It takes up several
-lines, so I the slash/asterisk.
-*/</p>
-<ul class="simple">
-<li><p>Asterisk as first characater=comment</p></li>
-</ul>
-<p>tab race * However, this doesn’t work</p>
-<p>if 0 { //background: ph.340.600</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. we prefer `if 0 {` for comments
-2. and brief `//` annotations per `if int {` code-block
-3. do not use comments to explain a command
-4. that is what `help` is for
-5. our approach is avant-garde
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//comments</span>
+
+<span class="k">sum</span> age <span class="c1">//this displays mean, range, etc.</span>
+
+<span class="cm">/*</span>
+<span class="cm">Here&#39;s a long comment. It takes up several</span>
+<span class="cm">lines, so I the slash/asterisk.</span>
+<span class="cm">*/</span>
+
+<span class="cm">* Asterisk as first characater=comment</span>
+
+<span class="k">tab</span> race <span class="o">*</span> However, this doesn&#39;t work
+
+<span class="k">if</span> <span class="m">0</span> { <span class="c1">//background: ph.340.600</span>
+
+    <span class="m">1</span>. we prefer <span class="nv">`if 0 {` for comments</span>
+<span class="nv">    2. and brief `//` annotations per `if int {` code-block</span>
+<span class="nv">    3. do not use comments to explain a command</span>
+<span class="nv">    4. that is what `help` is for</span>
+<span class="nv">    5. our approach is avant-garde</span>
+
+<span class="nv">}</span>
 </pre></div>
 </div>
-<p>}</p>
-<p>//line continuation</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">///</span></code> to make a Stata command span several lines in a .do file</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">recode</span> race <span class="cs">///</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//line continuation</span>
+
+<span class="c1">//Use `///` to make a Stata command span several lines in a .do file</span>
+
+<span class="k">recode</span> race <span class="cs">///</span>
     (<span class="m">1</span>=<span class="m">1</span>) <span class="cs">///</span>
     (<span class="m">2</span>=<span class="m">2</span>) <span class="cs">///</span>
     (<span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">9</span> = <span class="m">9</span>)
-</pre></div>
-</div>
-<p>That is the main-stream approach to line continuation. Ours?</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>#delimit ;
+
+<span class="c1">//That is the main-stream approach to line continuation. Ours?</span>
+
+#delimit ;
 <span class="k">recode</span> race
     (<span class="m">1</span>=<span class="m">1</span>)
     (<span class="m">2</span>=<span class="m">2</span>)
@@ -761,36 +768,49 @@ lines, so I the slash/asterisk.
 #delimit cr
 </pre></div>
 </div>
-<p>//labels
-describe dx
-label var dx “kidney disease diagnosis”</p>
-<p>tab gender //is 1 male or female?
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//labels</span>
+<span class="k">describe</span> dx
+<span class="k">label var</span> dx <span class="s">&quot;kidney disease diagnosis&quot;</span>
+
+<span class="k">tab</span> gender <span class="c1">//is 1 male or female?</span>
 #delimit ;
-label define g_label
-0 “0=Male”
-1 “1-Female”
+<span class="k">label</span> define g_label 
+    <span class="m">0</span> <span class="s">&quot;0=Male&quot;</span>
+    <span class="m">1</span> <span class="s">&quot;1-Female&quot;</span>
 ;
 #delimit cr
-label values gender g_label
-tab gender //much better
-tab gender, nolabel //don’t show label</p>
-<p>//or?
-g female=gender==1 //intuitive meaning of 1 &amp; 0</p>
-<p>//r-class examples
-count if age &lt; 45
-di r(N) ” young patients”</p>
-<p>tab race abo, chi2
-di “p-value: ” r(p)</p>
-<p>sum age
-assert inrange(r(mean),45,55)</p>
-<p>tab race abo, chi2
-asset r(p) &lt; 0.05</p>
-<p>//display formats
-sum bmi //command
-local bmi_mean: di %4.1f r(mean) //r() -&gt; local
-di “Mean BMI: `bmi_mean’ ” //embed in text or other final output</p>
-<p>//_b coefficient matrix</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">regress</span> bmi gender age
+<span class="k">label</span> values gender g_label
+<span class="k">tab</span> gender <span class="c1">//much better</span>
+<span class="k">tab</span> gender, nolabel <span class="c1">//don&#39;t show label</span>
+
+<span class="c1">//or?</span>
+<span class="k">g</span> female=gender<span class="o">==</span><span class="m">1</span> <span class="c1">//intuitive meaning of 1 &amp; 0</span>
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//r-class examples</span>
+<span class="k">count if</span> age <span class="o">&lt;</span> <span class="m">45</span>
+<span class="k">di</span> <span class="nf">r</span>(N) <span class="s">&quot; young patients&quot;</span>
+
+<span class="k">tab</span> race abo, chi2
+<span class="k">di</span> <span class="s">&quot;p-value: &quot;</span> <span class="nf">r</span>(p)
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sum</span> age
+<span class="k">assert</span> <span class="nf">inrange</span>(<span class="nf">r</span>(mean),<span class="m">45</span>,<span class="m">55</span>)
+
+<span class="k">tab</span> race abo, chi2
+asset <span class="nf">r</span>(p) <span class="o">&lt;</span> <span class="m">0.05</span>
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//display formats</span>
+<span class="k">sum</span> bmi <span class="c1">//command</span>
+<span class="k">local</span> bmi_mean:<span class="k"> di</span> <span class="nx">%4.1f</span> <span class="nf">r</span>(mean) <span class="c1">//r() -&gt; local</span>
+<span class="k">di</span> <span class="s">&quot;Mean BMI: </span><span class="nv">`bmi_mean&#39;</span><span class="s"> &quot;</span> <span class="c1">//embed in text or other final output</span>
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//_b coefficient matrix</span>
+
+<span class="k">regress</span> bmi gender age
 
 #delimit ;
 <span class="k">di</span> <span class="s">&quot;estimated BMI: &quot;</span> <span class="nx">%3.2f</span> _b[_cons] <span class="s">&quot; + &quot;</span> 
@@ -800,8 +820,8 @@ di “Mean BMI: `bmi_mean’ ” //embed in text or other final output</p>
 #delimit cr
 </pre></div>
 </div>
-<p>//local macros</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui sum</span> age<span class="k"> if</span> gender<span class="o">==</span><span class="m">0</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//local macros</span>
+<span class="k">qui sum</span> age<span class="k"> if</span> gender<span class="o">==</span><span class="m">0</span>
 <span class="k">local</span> age_m: <span class="nx">%3.1f</span> <span class="nf">r</span>(mean)
 
 <span class="k">qui sum</span> age<span class="k"> if</span> gender<span class="o">==</span><span class="m">1</span>
@@ -810,13 +830,13 @@ di “Mean BMI: `bmi_mean’ ” //embed in text or other final output</p>
 <span class="k">di</span> <span class="s">&quot;Mean age: </span><span class="nv">`age_m&#39;</span><span class="s"> (males) </span><span class="nv">`age_f&#39;</span><span class="s"> (females) &quot;</span> 
 </pre></div>
 </div>
-<p>//more local macros</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> confounders age gender peak_pra
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//more local macros</span>
+<span class="k">local</span> confounders age gender peak_pra
 <span class="k">regress</span> bmi wait_yrs <span class="nv">`confoundres&#39;</span>
 </pre></div>
 </div>
-<p>//program define</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> table1
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//program define</span>
+<span class="k">capture program drop</span> table1
 <span class="k">program</span> define table1
     #delimit ;
 <span class="k">    disp</span> <span class="s">&quot;Variable&quot;</span> _col(<span class="m">20</span>) <span class="s">&quot;mean (SD)&quot;</span> 
@@ -835,17 +855,23 @@ di “Mean BMI: `bmi_mean’ ” //embed in text or other final output</p>
     table1
 </pre></div>
 </div>
-<p>//tagging
-list abo gender spread
-egen = tag
-egen grouptag = tag(abo gender)
-list abo gender spread if grouptag</p>
-<p>use transplants, clear
-egen ethtag = tag(ethcat)
-bys ethcat: egen mean_bmi=mean(bmi) bys ethcat: egen mean_age=mean(age)</p>
-<p>twoway scatter m~_bmi m~_age if ethtag</p>
-<p>//conditionals</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">count if</span> abo<span class="o">==</span><span class="m">1</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//tagging</span>
+<span class="k">list</span> abo gender spread
+<span class="k">egen</span> = tag
+<span class="k">egen</span> grouptag = tag(abo gender)
+<span class="k">list</span> abo gender spread<span class="k"> if</span> grouptag
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">egen</span> ethtag = tag(ethcat)
+<span class="k">bys</span> ethcat:<span class="k"> egen</span> mean_bmi=mean(bmi)<span class="k"> bys</span> ethcat:<span class="k"> egen</span> mean_age=mean(age)
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">twoway scatter m</span><span class="o">~</span>_bmi<span class="k"> m</span><span class="o">~</span>_age<span class="k"> if</span> ethtag
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//conditionals</span>
+<span class="k">count if</span> abo<span class="o">==</span><span class="m">1</span>
 
 <span class="k">if</span> _N <span class="o">&gt;</span> <span class="m">100</span> {
 <span class="k">   </span>
@@ -860,8 +886,8 @@ bys ethcat: egen mean_bmi=mean(bmi) bys ethcat: egen mean_age=mean(age)</p>
 }
 </pre></div>
 </div>
-<p>//if and else</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> _N <span class="o">&gt;</span> <span class="m">10000</span> {
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//if and else</span>
+<span class="k">if</span> _N <span class="o">&gt;</span> <span class="m">10000</span> {
 
 <span class="k">    di</span> <span class="s">&quot;That&#39;s a huge dataset&quot;</span>
 
@@ -874,8 +900,8 @@ bys ethcat: egen mean_bmi=mean(bmi) bys ethcat: egen mean_age=mean(age)</p>
 }
 </pre></div>
 </div>
-<p>//some <code class="docutils literal notranslate"><span class="pre">if</span></code> examples</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">quietly tab</span> dx gender, chi2
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//some `if` examples</span>
+<span class="k">quietly tab</span> dx gender, chi2
 
 <span class="k">if</span> <span class="nf">r</span>(p) <span class="o">&lt;</span> <span class="m">0.01</span> {
 
@@ -918,12 +944,15 @@ bys ethcat: egen mean_bmi=mean(bmi) bys ethcat: egen mean_age=mean(age)</p>
 }
 </pre></div>
 </div>
-<p>//loops</p>
-<p>forvalues i = 1/5 {</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>di `i&#39; //a local macro, given the notation!!
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//loops</span>
+
+<span class="k">forvalues</span> i = <span class="m">1</span><span class="o">/</span><span class="m">5</span> {
+
+<span class="k">    di</span> <span class="nv">`i&#39;</span> <span class="c1">//a local macro, given the notation!!</span>
+
+}
 </pre></div>
 </div>
-<p>}</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">forvalues</span> b = <span class="m">35</span><span class="o">/</span><span class="m">45</span> {
 <span class="k">    </span>
 <span class="k">    quietly count if</span> age<span class="o">&gt;=</span><span class="nv">`b&#39;</span> <span class="o">&amp;</span> age<span class="o">&lt;</span><span class="nv">`b&#39;</span><span class="o">+</span><span class="m">1</span> 
