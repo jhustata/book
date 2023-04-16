@@ -6,7 +6,7 @@ data: transplants.dta
 
 zoom: M T W Th F
 
-This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be provided on Friday 14, 2023.
+This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be provided on Friday April 14, 2023.
 
 1. Start Stata, open your do-file editor, write the header, and load `transplants.dta`.
 
