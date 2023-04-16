@@ -529,7 +529,7 @@ document.write(`
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui regress</span> age i<span class="m">.</span>abo
 <span class="k">local</span> abo_H:<span class="k"> di</span> <span class="nx">%3.2f</span><span class="k"> e</span>(r2_a)<span class="o">*</span><span class="m">100</span>
 
-<span class="k">di</span> <span class="s">&quot;In this cross-sectional dataset, blood group </span><span class="nv">`explains` only `abo_H&#39;% of the variance in age.&quot;</span>
+<span class="k">di</span> <span class="s">&quot;In this cross-sectional dataset, blood group explains only </span><span class="nv">`abo_H&#39;</span><span class="s">% of the variance in age.&quot;</span>
 </pre></div>
 </div>
 <p>Enough! I don’t wish to trouble you with a bogus hypothesis but merely wish to explore return values from a regression! From whence, for instance, does <code class="docutils literal notranslate"><span class="pre">e(r2_a)</span></code> come? Where does it fit into our schema? (<strong>Hint:</strong> <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">creturn</span> <span class="pre">list</span></code>)</p>
