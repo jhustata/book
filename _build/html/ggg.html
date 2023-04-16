@@ -529,7 +529,7 @@ document.write(`
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui regress</span> age i<span class="m">.</span>abo
 <span class="k">local</span> abo_H:<span class="k"> di</span> <span class="nx">%3.2f</span><span class="k"> e</span>(r2_a)<span class="o">*</span><span class="m">100</span>
 
-<span class="k">di</span> <span class="s">&quot;ABO blood group may influence survivorship on a kidney transplant waitlist. Blood type O are universal donors whereas type AB are universal recipients. Hypothetically, these two represent the extremes and types A and B should be in between. But in this cross-sectional dataset blood group explains only </span><span class="nv">`abo_H&#39;</span><span class="s">% of the variance in age. Only a longitudinal data structure would be in position to explain variance in survivorship&quot;</span>
+<span class="k">di</span> <span class="s">&quot;In this cross-sectional dataset, blood group </span><span class="nv">`explains` only `abo_H&#39;% of the variance in age.&quot;</span>
 </pre></div>
 </div>
 <p>Enough! I don’t wish to trouble you with a bogus hypothesis but merely wish to explore return values from a regression! From whence, for instance, does <code class="docutils literal notranslate"><span class="pre">e(r2_a)</span></code> come? Where does it fit into our schema? (<strong>Hint:</strong> <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">creturn</span> <span class="pre">list</span></code>)</p>
@@ -542,6 +542,15 @@ document.write(`
 <span class="k">di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(estimate)
 </pre></div>
 </div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//does this output look familiar?</span>
+<span class="k"> lincom</span> _cons <span class="o">+</span> _b[<span class="m">3.</span>abo]
+<span class="k"> return list</span> 
+
+<span class="c1">//regression is a fancy way of estimating means for specified groups</span>
+<span class="k"> codebook</span> age_byabo
+</pre></div>
+</div>
+<p>Remember to use <code class="docutils literal notranslate"><span class="pre">lincom</span></code> appropriately, depending on what you wish to describe!</p>
 <p>After a regression we may type <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code> for all sorts of estimated values:</p>
 <div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">matrix</span> define b =<span class="k"> e</span>(b)
 <span class="k">matrix list</span> b
