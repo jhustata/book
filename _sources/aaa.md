@@ -125,25 +125,15 @@ qui {
 4. FIDXC -> Jianan Lu
 5. APEON -> Rediet Tekalign
 
-#
-
-Use the `tokenize` command to append the [DEMO.XPT](https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT) files for [all continuous NHANES: 1999-2018](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics) into one file.[^2]
+**Bonus points: ** Use the `tokenize` command to append the [DEMO.XPT](https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT) files for [all continuous NHANES: 1999-2018](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics) into one file.[^2]
 Your .do file should include only one `import sasxport5` statement.
 `Search` this book for the `import sasxport5` command. Up to 1.5 bonus points
 
-Hint:
-
-[tokenize.hint.do](tokenize.hint.do)
-
-[tokenize.hint.log](tokenize.hint.log)
-
-#
+Hint: [tokenize.hint.do](tokenize.hint.do) [tokenize.hint.log](tokenize.hint.log)
 
 340.700
 
 1. Jason Haw [M 3:30-4:30 pm](https://JHUBlueJays.zoom.us/j/91524920312?pwd=MlVLNVpObGNWRzZKTUNzVVNFM2djQT09)
-
-#
 
 Academic integrity
 
@@ -151,8 +141,6 @@ Academic integrity
 2. You should have a Github account (optional)
 3. Submit your own work, acknowledging any other contributors
 4. Please do cite sources of code snippets
-
-#
 
 ```{seealso}
 
