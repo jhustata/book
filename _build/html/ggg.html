@@ -372,7 +372,7 @@ document.write(`
 <h1>by<a class="headerlink" href="#by" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/8x0apHVqmnUHnuBfzLXMuvRRXkExSGeoQAw5rEs9OvKSmzs1bvhPfLD2pGu6NRY.BYToPUwpMdnR-h25?startTime=1681414214000">video</a></p>
 <p>The figure below outlines a schema of what we covered last week and attempts to generalize it to several scenarios beyond what we might have time to cover in 5 weeks. For instance, you may replace <code class="docutils literal notranslate"><span class="pre">sum</span></code> with <code class="docutils literal notranslate"><span class="pre">count</span></code>, <code class="docutils literal notranslate"><span class="pre">regression</span></code> with <code class="docutils literal notranslate"><span class="pre">kappa</span> <span class="pre">statistic</span> <span class="pre">estimation</span></code> (as one of your classmates did), or yet still <code class="docutils literal notranslate"><span class="pre">lincom</span></code> with a <code class="docutils literal notranslate"><span class="pre">matrix</span> <span class="pre">define</span> <span class="pre">m=r(table)</span></code> step.</p>
-<p>For the latter case, the matrix cells will each contain <code class="docutils literal notranslate"><span class="pre">r()</span></code> class macros, which you may capture and format in a local macro like so:</p>
+<p>For the latter case, each matrix value will contain <code class="docutils literal notranslate"><span class="pre">r()</span></code> class macros, which you may capture and format in a local macro like so:</p>
 <p><code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">b_age:</span> <span class="pre">di</span> <span class="pre">%3.1f</span> <span class="pre">m[1,4]</span></code></p>
 <p>Where <code class="docutils literal notranslate"><span class="pre">m</span></code> is the matrix you defined and <code class="docutils literal notranslate"><span class="pre">m[1,4]</span></code> is the value in row1, column4. And here is a script that outputs <code class="docutils literal notranslate"><span class="pre">r(table)</span></code> following a Cox regression into an excel file:</p>
 <p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/rtable.do">rtable.do</a></p>
@@ -551,65 +551,74 @@ document.write(`
 <span class="k">use</span> a<span class="o">*</span> p<span class="o">*</span> using transplants<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">100</span>
 </pre></div>
 </div>
-<p>//describe
-describe, simple
-describe, short
-describe a*
-describe using transplants.dta
-describe r*, fullnames</p>
-<p>//codebook
-codebook
-codebook rec_education rec_work abo
-codebook a* e*, compact
-codebook, problems</p>
-<p>//list
-list
-list prev_ki wait_yrs if race==9
-list *date in 1/10
-list dx in 1/10, clean noobs
-list age, fast</p>
-<p>//count
-count
-count if rec_work==1
-count if rec_work!=1
-count if bmi&lt;20 | bmi &gt; 35
-count if bmi&gt;25 &amp; bmi &lt;30
-count if !(age&gt;18)
-count if inrange(wait_yrs,4,6)
-count if !inlist(gender,0,1)</p>
-<p>//tabulate
-tab abo
-tab abo rec_hcv
-tab gender, sum(age)
-tab dx gender if age&lt;40
-tab dx gender,row
-tab dx gender,col nofreq</p>
-<p>tab dx gender, col nofreq chi2
-return list</p>
-<p>//summarize
-sum
-return list //not very useful; see schema above</p>
-<p>sum age wait_yrs
-return list //much more useful!</p>
-<p>sum age wait_yrs, detail</p>
-<p>//missingness
-count if bmi &gt; 30
-count if bmi &gt; 1000 //wha?
-sum bmi //whats going on?
-assert c(N) == r(N) //when do these diverge?
-tab bmi if bmi &gt; 1000
-tab bmi if bmi &gt; 1000, missing</p>
-<p>count if bmi==.
-count if bmi==.a
-count if missing(bmi)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-Let&#39;s discuss [missingness](https://stats.oarc.ucla.edu/stata/faq/how-can-i-recode-missing-values-into-different-categories/) as its relevance emerges.
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//describe</span>
+<span class="k">describe</span>, simple
+<span class="k">describe</span>, short
+<span class="k">describe</span> a<span class="o">*</span>
+<span class="k">describe</span> using transplants<span class="m">.</span>dta 
+<span class="k">describe</span> r<span class="o">*</span>, fullnames
 
-```Stata
-//manipulating data
-gen age_lastyear=age-1
-gen any_college=(rec_educ&gt;=3)
-g youngman=(age&lt;40&gt;)&amp;(gender==0)
+<span class="c1">//codebook</span>
+<span class="k">codebook</span>
+<span class="k">codebook</span> rec_education rec_work abo
+<span class="k">codebook</span> a<span class="o">*</span><span class="k"> e</span><span class="o">*</span>, compact
+<span class="k">codebook</span>, problems
+
+<span class="c1">//list </span>
+<span class="k">list</span> 
+<span class="k">list</span> prev_ki wait_yrs<span class="k"> if</span> race<span class="o">==</span><span class="m">9</span>
+<span class="k">list</span> <span class="o">*</span>date<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+<span class="k">list</span> dx<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>, clean noobs
+<span class="k">list</span> age, fast
+
+<span class="c1">//count</span>
+<span class="k">count</span>
+<span class="k">count if</span> rec_work<span class="o">==</span><span class="m">1</span>
+<span class="k">count if</span> rec_work<span class="o">!=</span><span class="m">1</span>
+<span class="k">count if</span> bmi<span class="o">&lt;</span><span class="m">20</span> | bmi <span class="o">&gt;</span> <span class="m">35</span>
+<span class="k">count if</span> bmi<span class="o">&gt;</span><span class="m">25</span> <span class="o">&amp;</span> bmi <span class="o">&lt;</span><span class="m">30</span>
+<span class="k">count if</span> <span class="o">!</span>(age<span class="o">&gt;</span><span class="m">18</span>)
+<span class="k">count if</span> <span class="nf">inrange</span>(wait_yrs,<span class="m">4</span>,<span class="m">6</span>)
+<span class="k">count if</span> <span class="o">!</span><span class="nf">inlist</span>(gender,<span class="m">0</span>,<span class="m">1</span>)
+
+<span class="c1">//tabulate</span>
+<span class="k">tab</span> abo
+<span class="k">tab</span> abo rec_hcv
+<span class="k">tab</span> gender,<span class="k"> sum</span>(age)
+<span class="k">tab</span> dx gender<span class="k"> if</span> age<span class="o">&lt;</span><span class="m">40</span>
+<span class="k">tab</span> dx gender,row
+<span class="k">tab</span> dx gender,col nofreq
+
+<span class="k">tab</span> dx gender, col nofreq chi2
+<span class="k">return list</span> 
+
+<span class="c1">//summarize</span>
+<span class="k">sum</span>
+<span class="k">return list</span> <span class="c1">//not very useful; see schema above</span>
+
+<span class="k">sum</span> age wait_yrs
+<span class="k">return list</span> <span class="c1">//much more useful!</span>
+
+<span class="k">sum</span> age wait_yrs, detail
+
+<span class="c1">//missingness</span>
+<span class="k">count if</span> bmi <span class="o">&gt;</span> <span class="m">30</span>
+<span class="k">count if</span> bmi <span class="o">&gt;</span> <span class="m">1000</span> <span class="c1">//wha? </span>
+<span class="k">sum</span> bmi <span class="c1">//whats going on?</span>
+<span class="k">assert</span> <span class="nf">c</span>(N) <span class="o">==</span> <span class="nf">r</span>(N) <span class="c1">//when do these diverge?</span>
+<span class="k">tab</span> bmi<span class="k"> if</span> bmi <span class="o">&gt;</span> <span class="m">1000</span>
+<span class="k">tab</span> bmi<span class="k"> if</span> bmi <span class="o">&gt;</span> <span class="m">1000</span>, missing
+
+<span class="k">count if</span> bmi<span class="o">==</span>.
+<span class="k">count if</span> bmi<span class="o">==</span>.a
+<span class="k">count if</span> <span class="nf">missing</span>(bmi)
+</pre></div>
+</div>
+<p>Let’s discuss <a class="reference external" href="https://stats.oarc.ucla.edu/stata/faq/how-can-i-recode-missing-values-into-different-categories/">missingness</a> as its relevance emerges.</p>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//manipulating data</span>
+<span class="k">gen</span> age_lastyear=age<span class="m">-1</span>
+<span class="k">gen</span> any_college=(rec_educ<span class="o">&gt;=</span><span class="m">3</span>)
+<span class="k">g</span> youngman=(age<span class="o">&lt;</span><span class="m">40</span><span class="o">&gt;</span>)<span class="o">&amp;</span>(gender<span class="o">==</span><span class="m">0</span>)
 </pre></div>
 </div>
 <p>Variable <strong>types</strong></p>
