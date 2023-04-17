@@ -22,7 +22,7 @@ This lab is optional; you are NOT required to complete these questions. Please u
 
 6. Calculate the mean age of the patients at each center, and store in a new variable `mean_age`.
 
-7. For each primary diagnosis subgroup (use variable `dx`), run a regression with age as the predictor and peak PRA (`peak\_pra`) as the outcome.
+7. For each primary diagnosis subgroup (use variable `dx`), run a regression with age as the predictor and peak PRA (`peak_pra`) as the outcome.
 
 8. Now let's make the output cleaner. Count the number of cases within each diagnosis group. If there are more than 500 cases, run the regression and display the output. If not, display "There are fewer than 500 cases."
 
