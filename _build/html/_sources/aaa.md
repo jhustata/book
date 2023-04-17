@@ -147,7 +147,7 @@ Academic integrity
 What's new this week?
 
 1. lab2 solutions are available & lab3 has gone live! 
-2. a brief video answering questions about `HW1` will go live on Monday 04/17/2023 
+2. a brief [video](hw1.md) answering questions about `HW1` 
 3. session chapters `pwd`, `r(mean)`, `by`, and `program define` have all been retouched. 
 
 ```
