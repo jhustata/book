@@ -24,7 +24,7 @@ Teaching assistants
 
 [340.600](https://www.jhsph.edu/courses/course/36389/2022/340.600.01/stata-programming)
 
-1. Vincent Jin zjin2@jhmi.edu (Lead TA)
+1. Vincent Jin zjin26@jhmi.edu (Lead TA)
 2. Johnathan He zhe33@jhu.edu  
 3. Darien Colson-Fearo dcolson3@jhmi.edu   
 4. Sophia Magalona cmagalo1@jhmi.edu  
@@ -149,7 +149,9 @@ What's new this week?
 1. Lab2 solutions are available & lab3 has gone live! 
 2. A brief [video](hw1.md) answering questions about `HW1` 
 3. Session chapters `pwd`, `r(mean)`, `by`, and `program define` have all been retouched. 
-3. In-person office hours to be held 10:00AM - 11:00AM Tuesdays in W2207
+4. In-person office hours to be held 10:00AM - 11:00AM Tuesdays in W2207
+5. Typo of your Lead TAs email is fixed & so you can now reach him! zjin26@jhmi.edu 
+
 
 ```
 
