@@ -39,7 +39,7 @@ Teaching assistants
 Optional labs
 
 1. [M 9:30-10:30 am](lab3.md)
-2. [T 10:00-11:00 am](lab3.md)
+2. [T 10:00-11:00 am](lab3.md) Wolfe W2207
 3. [W 3:00-4:00 pm](lab3.md)
 4. [Th 6:00-7:00 pm](lab3.md)
 5. [F 1:00-2:00 pm](lab3.md)
@@ -146,9 +146,10 @@ Academic integrity
 
 What's new this week?
 
-1. lab2 solutions are available & lab3 has gone live! 
-2. a brief [video](hw1.md) answering questions about `HW1` 
-3. session chapters `pwd`, `r(mean)`, `by`, and `program define` have all been retouched. 
+1. Lab2 solutions are available & lab3 has gone live! 
+2. A brief [video](hw1.md) answering questions about `HW1` 
+3. Session chapters `pwd`, `r(mean)`, `by`, and `program define` have all been retouched. 
+3. In-person office hours to be held 10:00AM - 11:00AM Tuesdays in W2207
 
 ```
 
