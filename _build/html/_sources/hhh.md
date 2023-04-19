@@ -26,9 +26,10 @@ qui {
 
         //system-defined, constant
         creturn list
+        global workdir `c(pwd)' //`c(pwd)' -> `filepath` if file isn't in `pwd`
 
         //program-defined, estimates & return
-        use transplants, clear
+        use ${workdir}/transplants, clear //vincent's idea for your hw1
         stset end_date,failure(died) origin(transplant_date)
         stcox age gender i.race prev_ki
         ereturn list

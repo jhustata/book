@@ -90,18 +90,6 @@ qui {
 
 ```
 
-```{seealso}
-
-Stata's `help` command
-
-ChatGPT, when available
-
-Type `help split`, for instance
-```
-
-More come..
-
-```{seealso}
 Where is the output from above saved?
 
 Type `pwd` into your stata command window
@@ -110,8 +98,11 @@ Visit the [url](https://wwwn.cdc.gov/nchs/data/nhanes3/1a/adult.sas)
 
 Compare with your [output](https://raw.githubusercontent.com/jhustata/jhustata.github.io/main/adult.do)
 
-Repeat what you've just done with [adult.sas](https://wwwn.cdc.gov/nchs/data/nhanes3/1a/adult.sas) for [exam.sas](https://wwwn.cdc.gov/nchs/data/nhanes3/1a/exam.sas) and [lab.sas](https://wwwn.cdc.gov/nchs/data/nhanes3/1a/lab.sas)
+```{seealso}
 
-A few edits may be necessary. You may earn up to 1.5 bonus points for this.
+Stata's `help` command
 
+ChatGPT, when available
+
+Type `help split`, for instance
 ```

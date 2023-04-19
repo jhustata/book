@@ -22,19 +22,13 @@ Your instructor
 
 Teaching assistants
 
-[340.600](https://www.jhsph.edu/courses/course/36389/2022/340.600.01/stata-programming)
-
 1. Vincent Jin zjin26@jhmi.edu (Lead TA)
 2. Johnathan He zhe33@jhu.edu  
 3. Darien Colson-Fearo dcolson3@jhmi.edu   
 4. Sophia Magalona cmagalo1@jhmi.edu  
 5. Jinqiao Ma jma75@jh.edu  
 6. Jianan Lu jlu84@jhmi.edu  
-7. Rediet Tekalign rtekali1@jhu.edu
-
-[340.700](https://www.jhsph.edu/courses/course/37447/2022/340.700.71/advanced-stata-programming)
-
-1. Jason Haw nhaw1@jhu.edu  
+7. Rediet Tekalign rtekali1@jhu.edu 
 
 Optional labs
 
@@ -59,8 +53,6 @@ Courseplus Perks
 5. Other
 
 Who to email? [^1]
-
-340.600
 
 ```stata
 
@@ -125,15 +117,11 @@ qui {
 4. FIDXC -> Jianan Lu
 5. APEON -> Rediet Tekalign
 
-**Bonus points: ** Use the `tokenize` command to append the [DEMO.XPT](https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT) files for [all continuous NHANES: 1999-2018](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics) into one file.[^2]
+**Bonus points:** Use the `tokenize` command to append the [DEMO.XPT](https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT) files for [all continuous NHANES: 1999-2018](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics) into one file.[^2]
 Your .do file should include only one `import sasxport5` statement.
 `Search` this book for the `import sasxport5` command. Up to 1.5 bonus points
 
 Hint: [tokenize.hint.do](tokenize.hint.do) [tokenize.hint.log](tokenize.hint.log)
-
-340.700
-
-1. Jason Haw [M 3:30-4:30 pm](https://JHUBlueJays.zoom.us/j/91524920312?pwd=MlVLNVpObGNWRzZKTUNzVVNFM2djQT09)
 
 Academic integrity
 
