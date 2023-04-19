@@ -116,3 +116,25 @@ disp "Question 8: I estimate that it took me 6 hours to complete this assignment
 ```
 
 Give an honest answer; this is just for our data collection purposes. Everyone who answers this question will receive full credit for this question. However, this question is worth some points, so don't skip it!
+
+**Rubric**
+
+0. 1pt for correct .dofile name, 1pt for correct .logname
+1. quietly { }: 10 pt --> 4 for `qui`, 3 for `{`, 3 for `}` 
+2. if 0 { }: 10 pt --> 3 pt for `if`, 3 for `0`, 3 for `{`, 1 for `}`
+3. if 1 { }: 10 pt --> 3 pt for `if`, 3 for `0`, 3 for `{`, 1 for `}`
+4. quietly, if 0 indentation: 10 pt
+5. if, code-block indentation: 10 pt
+6. alignment of all `if` lodestars: 10 pt
+7. comments/annotation at each `if`: 10 pt (if 3 blocks, then each is 10/3 pt; if 2 blocks,then each is 10/5 pt)
+8. more detailed annotation at `if 0`: 10 pt (general statements about the purpose of the entire .do file)
+9. .log file specified in `if 0` block: 10 pt (capture log close, log using, log close: ommission of anyone is -10/3)
+10. one point of ten (1/10) for each of these substantive issues:
+* q1 1pt: `local maco` content appears in logfile, embedded in sentence
+* q2 1pt: `local maco` content appears in logfile, embedded in sentence: 1/2 pt for male, 1/2 pt for female
+* q3 1pt: `local maco` content appears in logfile, embedded in sentence: 1/2 pt for male, 1/2 pt for female
+* q4 1pt: 1/3 pt for `generate htn`, 1/3 pt for `label define`, 1/3 pt for `tabulate htn` 
+* q5 1pt: 1/3 pt for `capture program drop`, 1/3 pt for `program define`, 1/3 pt for `end`; 5 pt max bonus for correct output
+* q6 1pt: 1/3 pt for `lincom`, 1/3 pt for `return list`, 1/3 pt for any `(r)`; 5 pt max bonus for correct output
+* q7 1pt: `local maco` content appears in logfile, embedded in sentence: 1/2 pt for `r(N)`, 1/2 pt for `c(N)`
+* q8 1pt: writes sentence 1/2 pt, includes estimated time 1/2 pt
