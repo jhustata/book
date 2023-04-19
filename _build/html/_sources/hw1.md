@@ -128,7 +128,7 @@ Give an honest answer; this is just for our data collection purposes. Everyone w
 6. alignment of all `if` lodestars: 10 pt
 7. comments/annotation at each `if`: 10 pt (if 3 blocks, then each is 10/3 pt; if 2 blocks,then each is 10/5 pt)
 8. more detailed annotation at `if 0`: 10 pt (general statements about the purpose of the entire .do file)
-9. .log file specified in `if 0` block: 10 pt (capture log close, log using, log close: ommission of anyone is -10/3)
+9. .log file specified in `if 1` block: 10 pt (capture log close, log using, log close: ommission of anyone is -10/3)
 10. one point of ten (1/10) for each of these substantive issues:
 * q1 1pt: `local maco` content appears in logfile, embedded in sentence
 * q2 1pt: `local maco` content appears in logfile, embedded in sentence: 1/2 pt for male, 1/2 pt for female
