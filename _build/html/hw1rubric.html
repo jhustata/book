@@ -61,7 +61,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'hw1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hw1rubric';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -240,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fhw1.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fhw1rubric.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -270,7 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/hw1.md" target="_blank"
+      <li><a href="_sources/hw1rubric.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -367,7 +367,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="hw1">
 <h1>hw1<a class="headerlink" href="#hw1" title="Permalink to this heading">#</a></h1>
 <p>Overview &amp; <a class="reference external" href="https://jhjhm.zoom.us/rec/share/FJqR4OFoXqeU3yDIjgbFRiCm2rBu6X5OMebxaX0_oRcBH_vTXv6Bm4yDXLabbe3C.YLu4JhjZBWL0ZsmE">video</a></p>
-<p>Write a <code class="docutils literal notranslate"><span class="pre">.do</span> <span class="pre">file</span></code> which imports data from <a class="reference download internal" download="" href="_downloads/884b9e06eb29f89b1b87da4eab39775d/hw1.txt"><span class="xref download myst">hw1.txt</span></a> and performs the tasks described below. Name it <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.do</span></code> and it should create a log file called <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.log</span></code>. Your .do file should follow conventions for .do file structure described in <a class="reference internal" href="eee.html"><span class="doc std std-doc">class: session pwd</span></a><a class="reference internal" href="hw1rubric.html"><span class="doc std std-doc">.</span></a> Make sure your log file displays only the output of interest. But do not submit your log files as part of the assignment.</p>
+<p>Write a <code class="docutils literal notranslate"><span class="pre">.do</span> <span class="pre">file</span></code> which imports data from <a class="reference download internal" download="" href="_downloads/884b9e06eb29f89b1b87da4eab39775d/hw1.txt"><span class="xref download myst">hw1.txt</span></a> and performs the tasks described below. Name it <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.do</span></code> and it should create a log file called <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.log</span></code>. Your .do file should follow conventions for .do file structure described in <a class="reference internal" href="eee.html"><span class="doc std std-doc">class: session pwd</span></a>. Make sure your log file displays only the output of interest. But do not submit your log files as part of the assignment.</p>
 <p>Evaluation will be based on the log file produced when we run your script on our machines. Please follow the coding guidelines from class including structure, indentation, and annotation.</p>
 <p>Codebook</p>
 <table class="table">
@@ -487,6 +487,30 @@ Female           X<span class="m">.</span>XX  (X<span class="m">.</span>XX<span 
 </pre></div>
 </div>
 <p>Give an honest answer; this is just for our data collection purposes. Everyone who answers this question will receive full credit for this question. However, this question is worth some points, so don’t skip it!</p>
+<p><strong>Rubric</strong></p>
+<ol class="arabic simple" start="0">
+<li><p>1pt for correct .dofile name, 1pt for correct .logname</p></li>
+<li><p>quietly { }: 10 pt –&gt; 4 for <code class="docutils literal notranslate"><span class="pre">qui</span></code>, 3 for <code class="docutils literal notranslate"><span class="pre">{</span></code>, 3 for <code class="docutils literal notranslate"><span class="pre">}</span></code></p></li>
+<li><p>if 0 { }: 10 pt –&gt; 3 pt for <code class="docutils literal notranslate"><span class="pre">if</span></code>, 3 for <code class="docutils literal notranslate"><span class="pre">0</span></code>, 3 for <code class="docutils literal notranslate"><span class="pre">{</span></code>, 1 for <code class="docutils literal notranslate"><span class="pre">}</span></code></p></li>
+<li><p>if 1 { }: 10 pt –&gt; 3 pt for <code class="docutils literal notranslate"><span class="pre">if</span></code>, 3 for <code class="docutils literal notranslate"><span class="pre">0</span></code>, 3 for <code class="docutils literal notranslate"><span class="pre">{</span></code>, 1 for <code class="docutils literal notranslate"><span class="pre">}</span></code></p></li>
+<li><p>quietly, if 0 indentation: 10 pt</p></li>
+<li><p>if, code-block indentation: 10 pt</p></li>
+<li><p>alignment of all <code class="docutils literal notranslate"><span class="pre">if</span></code> lodestars: 10 pt</p></li>
+<li><p>comments/annotation at each <code class="docutils literal notranslate"><span class="pre">if</span></code>: 10 pt (if 3 blocks, then each is 10/3 pt; if 2 blocks,then each is 10/5 pt)</p></li>
+<li><p>more detailed annotation at <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">0</span></code>: 10 pt (general statements about the purpose of the entire .do file)</p></li>
+<li><p>.log file specified in <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span></code> block: 10 pt (capture log close, log using, log close: ommission of anyone is -10/3)</p></li>
+<li><p>one point of ten (1/10) for each of these substantive issues:</p></li>
+</ol>
+<ul class="simple">
+<li><p>q1 1pt: <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">maco</span></code> content appears in logfile, embedded in sentence</p></li>
+<li><p>q2 1pt: <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">maco</span></code> content appears in logfile, embedded in sentence: 1/2 pt for male, 1/2 pt for female</p></li>
+<li><p>q3 1pt: <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">maco</span></code> content appears in logfile, embedded in sentence: 1/2 pt for male, 1/2 pt for female</p></li>
+<li><p>q4 1pt: 1/3 pt for <code class="docutils literal notranslate"><span class="pre">generate</span> <span class="pre">htn</span></code>, 1/3 pt for <code class="docutils literal notranslate"><span class="pre">label</span> <span class="pre">define</span></code>, 1/3 pt for <code class="docutils literal notranslate"><span class="pre">tabulate</span> <span class="pre">htn</span></code></p></li>
+<li><p>q5 1pt: 1/3 pt for <code class="docutils literal notranslate"><span class="pre">capture</span> <span class="pre">program</span> <span class="pre">drop</span></code>, 1/3 pt for <code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span></code>, 1/3 pt for <code class="docutils literal notranslate"><span class="pre">end</span></code>; 5 pt max bonus for correct output</p></li>
+<li><p>q6 1pt: 1/3 pt for <code class="docutils literal notranslate"><span class="pre">lincom</span></code>, 1/3 pt for <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, 1/3 pt for any <code class="docutils literal notranslate"><span class="pre">(r)</span></code>; 5 pt max bonus for correct output</p></li>
+<li><p>q7 1pt: <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">maco</span></code> content appears in logfile, embedded in sentence: 1/2 pt for <code class="docutils literal notranslate"><span class="pre">r(N)</span></code>, 1/2 pt for <code class="docutils literal notranslate"><span class="pre">c(N)</span></code></p></li>
+<li><p>q8 1pt: writes sentence 1/2 pt, includes estimated time 1/2 pt</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
