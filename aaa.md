@@ -139,6 +139,7 @@ What's new this week?
 3. Session chapters `pwd`, `r(mean)`, `by`, and `program define` have all been retouched. 
 4. In-person office hours to be held 10:00AM - 11:00AM Tuesdays in W2207
 5. Typo of your Lead TAs email is fixed & so you can now reach him! zjin26@jhmi.edu 
+6. Video for 04/20/2023 has gone live!
 
 
 ```
