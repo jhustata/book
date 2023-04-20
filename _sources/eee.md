@@ -112,7 +112,7 @@ qui {
        use ${workdir}/transplants.dta, replace
 
        di "shape: `c(N)' rows x `c(k)' columns"
-       
+
    }
 
    log close 
@@ -138,15 +138,34 @@ Because this is an academic course, we will nudge you towards these practices by
 
 qui {
     
-    if 1 { //linux,stata
+    if 0 { //background: documentation, not code
+
+       1. set the context of the entire .dofile
+       2. not the traditional way its done is Stata
+       3. this is mere mimicry of fancier notebooks
+       4. particularly Jupyter notebooks used for Python
+       5. as well as RStudio used for R
+       6. our dear Stata has no equivalent notebook
+       7. in such notebooks text-blocks & code-blocks
+       8. might be interspersed: a much richer way to
+       9. comment/annotate than you might be used to
+
+    }
+    if 1 { //methods: macros, logfile, settings
     
+       global workdir `c(pwd)' //change if different
+
        capture log close
-       log using pwd.log, replace 
+       log using ${workdir}/pwd.log,replace
+
+       set mem off
+       version 15
     
-       pwd
+       pwd //informative, not usable
+       di c(pwd) //usable as macro, see above
        ls -l
        clear
-       cat adult.do
+       cat adult.do //derived from program in chapter: delimit
        do adult.do 
        di c(N) " rows & " c(k) " columns"
        local shape: di c(N) " rows & " c(k) " columns"
@@ -154,7 +173,7 @@ qui {
                 
     }
     
-    if 2 { //continuous
+    if 2 { //continuous vars
     
        lookfor age
        local v: var lab HSAGEIR 
@@ -171,7 +190,7 @@ qui {
         
     }
     
-    if 3 { //binary
+    if 3 { //binary vars
     
        lookfor sex
        codebook HSSEX 
@@ -188,7 +207,7 @@ qui {
         
     }
 
-    if 4 { //multi
+    if 4 { //multicat vars
         
         lookfor race 
         desc DMARETHN
@@ -229,8 +248,14 @@ qui {
         
 }
     
-    if 5 { //missingness
-        
+    if 0 { //blocks 2-4
+
+       1. all the code snippets you need
+       2. to confidently answer hw1.q5
+       3. revisit these now that you
+       4. know a little more Stata than
+       5. you did in wk1 when we run this script
+
     }
     
     log close

@@ -472,7 +472,7 @@ document.write(`
 <span class="k">       use</span> <span class="vg">${workdir}</span><span class="o">/</span>transplants<span class="m">.</span>dta,<span class="k"> replace</span>
 
 <span class="k">       di</span> <span class="s">&quot;shape: </span><span class="nv">`c(N)&#39;</span><span class="s"> rows x </span><span class="nv">`c(k)&#39;</span><span class="s"> columns&quot;</span>
-       
+
    }
 
 <span class="k">   log close</span> 
@@ -489,15 +489,34 @@ document.write(`
 <p>Because this is an academic course, we will nudge you towards these practices by removing points in your <a class="reference internal" href="hw1.html"><span class="doc std std-doc">homework</span></a> if you neglect these <a class="reference download internal" download="" href="_downloads/6efbc93ca79a21fd3b4d4c0369d9f9fe/dofilestructure.pdf"><span class="xref download myst">three things</span></a>: structure, indentation, and annotation.</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">    </span>
-<span class="k">    if</span> <span class="m">1</span> { <span class="c1">//linux,stata</span>
+<span class="k">    if</span> <span class="m">0</span> { <span class="c1">//background: documentation, not code</span>
+
+       <span class="m">1</span>.<span class="k"> set</span> the context of the entire .dofile
+       <span class="m">2</span>. not the traditional way its done is Stata
+       <span class="m">3</span>. this is mere mimicry of fancier notebooks
+       <span class="m">4</span>. particularly Jupyter notebooks used<span class="k"> for</span> Python
+       <span class="m">5</span>.<span class="k"> as</span> well<span class="k"> as</span> RStudio used<span class="k"> for</span> R
+       <span class="m">6</span>. our dear Stata has<span class="k"> no</span> equivalent notebook
+       <span class="m">7</span>.<span class="k"> in</span> such notebooks text<span class="o">-</span>blocks <span class="o">&amp;</span> code<span class="o">-</span>blocks
+       <span class="m">8</span>. might be interspersed: a much richer way to
+       <span class="m">9</span>. comment<span class="o">/</span>annotate than you might be used to
+
+    }
+<span class="k">    if</span> <span class="m">1</span> { <span class="c1">//methods: macros, logfile, settings</span>
 <span class="k">    </span>
+<span class="k">       global</span> workdir <span class="nv">`c(pwd)&#39;</span> <span class="c1">//change if different</span>
+
 <span class="k">       capture log close</span>
-<span class="k">       log</span> using<span class="k"> pwd</span><span class="m">.</span>log,<span class="k"> replace</span> 
+<span class="k">       log</span> using <span class="vg">${workdir}</span><span class="o">/</span>pwd<span class="m">.</span>log,replace
+
+<span class="k">       set</span> mem off
+<span class="k">       version</span> <span class="m">15</span>
 <span class="k">    </span>
-<span class="k">       pwd</span>
+<span class="k">       pwd</span> <span class="c1">//informative, not usable</span>
+<span class="k">       di</span> <span class="nf">c</span>(pwd) <span class="c1">//usable as macro, see above</span>
 <span class="k">       ls</span> <span class="o">-</span>l
 <span class="k">       clear</span>
-<span class="k">       cat</span> adult<span class="m">.</span>do
+<span class="k">       cat</span> adult<span class="m">.</span>do <span class="c1">//derived from program in chapter: delimit</span>
 <span class="k">       do</span> adult<span class="m">.</span>do 
 <span class="k">       di</span> <span class="nf">c</span>(N) <span class="s">&quot; rows &amp; &quot;</span> <span class="nf">c</span>(k) <span class="s">&quot; columns&quot;</span>
 <span class="k">       local</span> shape:<span class="k"> di</span> <span class="nf">c</span>(N) <span class="s">&quot; rows &amp; &quot;</span> <span class="nf">c</span>(k) <span class="s">&quot; columns&quot;</span>
@@ -505,7 +524,7 @@ document.write(`
                 
     }
 <span class="k">    </span>
-<span class="k">    if</span> <span class="m">2</span> { <span class="c1">//continuous</span>
+<span class="k">    if</span> <span class="m">2</span> { <span class="c1">//continuous vars</span>
 <span class="k">    </span>
 <span class="k">       lookfor</span> age
 <span class="k">       local</span> v:<span class="k"> var lab</span> HSAGEIR 
@@ -522,7 +541,7 @@ document.write(`
         
     }
 <span class="k">    </span>
-<span class="k">    if</span> <span class="m">3</span> { <span class="c1">//binary</span>
+<span class="k">    if</span> <span class="m">3</span> { <span class="c1">//binary vars</span>
 <span class="k">    </span>
 <span class="k">       lookfor</span> sex
 <span class="k">       codebook</span> HSSEX 
@@ -539,7 +558,7 @@ document.write(`
         
     }
 
-<span class="k">    if</span> <span class="m">4</span> { <span class="c1">//multi</span>
+<span class="k">    if</span> <span class="m">4</span> { <span class="c1">//multicat vars</span>
 <span class="k">        </span>
 <span class="k">        lookfor</span> race 
 <span class="k">        desc</span> DMARETHN
@@ -580,8 +599,14 @@ document.write(`
         
 }
 <span class="k">    </span>
-<span class="k">    if</span> <span class="m">5</span> { <span class="c1">//missingness</span>
-        
+<span class="k">    if</span> <span class="m">0</span> { <span class="c1">//blocks 2-4</span>
+
+       <span class="m">1</span>. all the code snippets you need
+       <span class="m">2</span>. to confidently answer hw1<span class="m">.</span>q5
+       <span class="m">3</span>. revisit these now that you
+       <span class="m">4</span>. know a little<span class="k"> more</span> Stata than
+       <span class="m">5</span>. you did<span class="k"> in</span> wk1 when we<span class="k"> run</span> this script
+
     }
 <span class="k">    </span>
 <span class="k">    log close</span>
