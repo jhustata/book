@@ -370,7 +370,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="by">
 <h1>by<a class="headerlink" href="#by" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/8x0apHVqmnUHnuBfzLXMuvRRXkExSGeoQAw5rEs9OvKSmzs1bvhPfLD2pGu6NRY.BYToPUwpMdnR-h25?startTime=1681414214000">video</a></p>
+<p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/8x0apHVqmnUHnuBfzLXMuvRRXkExSGeoQAw5rEs9OvKSmzs1bvhPfLD2pGu6NRY.BYToPUwpMdnR-h25?startTime=1681414214000">video</a> 04/13/2023 Includes introduction to <code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span></code></p>
+<p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/NBtdk4SUC-ra9q7_tuGZEjuwS6o8cjB8U2dBnc_hSV7jM8joxdhlQ2ebQc8cILE2.GlIilOilIbw2w9tQ?startTime=1682019152000">video</a> 04/20/2023 Includes exercise in debugging</p>
 <p>The figure below outlines a schema of what we covered last week and attempts to generalize it to several scenarios beyond what we might have time to cover in 5 weeks. For instance, you may replace <code class="docutils literal notranslate"><span class="pre">sum</span></code> with <code class="docutils literal notranslate"><span class="pre">count</span></code>, <code class="docutils literal notranslate"><span class="pre">regression</span></code> with <code class="docutils literal notranslate"><span class="pre">kappa</span> <span class="pre">statistic</span> <span class="pre">estimation</span></code> (as one of your classmates did), or yet still <code class="docutils literal notranslate"><span class="pre">lincom</span></code> with a <code class="docutils literal notranslate"><span class="pre">matrix</span> <span class="pre">define</span> <span class="pre">m=r(table)</span></code> step.</p>
 <p>For the latter case, each matrix value will contain <code class="docutils literal notranslate"><span class="pre">r()</span></code> class macros, which you may capture and format in a local macro like so:</p>
 <p><code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">b_age:</span> <span class="pre">di</span> <span class="pre">%3.1f</span> <span class="pre">m[1,4]</span></code></p>
@@ -420,7 +421,20 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/05abf78f13dfdb0eb7fde2d7f9eb80f1c0eedaa15fa26611dca58528f4f5e1e5.png" src="_images/05abf78f13dfdb0eb7fde2d7f9eb80f1c0eedaa15fa26611dca58528f4f5e1e5.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#import numpy as np</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#import sklearn as skl</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># </span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1">#plt.figure(figsize=[2, 2])</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;networkx&#39;
+</pre></div>
+</div>
 </div>
 </div>
 <p>I’ve not illustrated where <code class="docutils literal notranslate"><span class="pre">e()</span></code> and <code class="docutils literal notranslate"><span class="pre">c()</span></code> fit in this scheme. But once you appreciate that <code class="docutils literal notranslate"><span class="pre">r()</span></code> values in memory can be revealed using <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">e()</span></code> values using <code class="docutils literal notranslate"><span class="pre">ereturn</span> <span class="pre">list</span></code>, and <code class="docutils literal notranslate"><span class="pre">c()</span></code> values using <code class="docutils literal notranslate"><span class="pre">creturn</span> <span class="pre">list</span></code> then you will be set for life!!</p>

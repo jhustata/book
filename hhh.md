@@ -1,5 +1,9 @@
 # program define
 
+[video](https://jhjhm.zoom.us/rec/share/8x0apHVqmnUHnuBfzLXMuvRRXkExSGeoQAw5rEs9OvKSmzs1bvhPfLD2pGu6NRY.BYToPUwpMdnR-h25?startTime=1681414214000) 04/13/2023 Includes introduction to `program define`
+
+[video](https://jhjhm.zoom.us/rec/share/NBtdk4SUC-ra9q7_tuGZEjuwS6o8cjB8U2dBnc_hSV7jM8joxdhlQ2ebQc8cILE2.GlIilOilIbw2w9tQ?startTime=1682019152000) 04/20/2023 Includes exercise in debugging & discussion of HW1
+
 Let's recap what we've covered thus far:
 
 1. dofiles
