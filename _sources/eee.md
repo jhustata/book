@@ -33,7 +33,7 @@ qui {
 
 qui {
 
-   if 0 { //background
+   if 0 { //background: documentation, not code
 
        1. a few remarks
        2. on what motivates
@@ -52,7 +52,7 @@ qui {
 
 qui {
 
-   if 0 { //background
+   if 0 { //background: context, not code
 
        1. a few remarks
        2. on what motivates
@@ -62,9 +62,60 @@ qui {
 
    }
 
-   if  1 { //methods
+   if  1 { //methods: macros, logfile, settings
+       
+       global workdir `c(pwd)' //change if different
+
+       capture log close
+       log using ${workdir}/pwd-demo.log,replace
+
+       set mem off
+       version 15
 
    }
+
+   log close 
+
+}
+```
+
+4. `if 2 {`
+
+```stata
+
+qui {
+
+   if 0 { //background: context, not code
+
+       1. a few remarks
+       2. on what motivates
+       3. this .do file script
+       4. using ordinary text
+       5. stata will not read this block
+
+   }
+
+   if  1 { //methods: macros, logfile, settings
+       
+       global workdir `c(pwd)' //change if different
+
+       capture log close
+       log using ${workdir}/pwd-demo.log,replace
+
+       set mem off
+       version 15
+
+   }
+
+   if 2 { //results: data, shape, etc.
+       
+       use ${workdir}/transplants.dta, replace
+
+       di "shape: `c(N)' rows x `c(k)' columns"
+       
+   }
+
+   log close 
 
 }
 ```
