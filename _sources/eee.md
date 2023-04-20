@@ -151,6 +151,7 @@ qui {
        9. comment/annotate than you might be used to
 
     }
+    
     if 1 { //methods: macros, logfile, settings
     
        global workdir `c(pwd)' //change if different

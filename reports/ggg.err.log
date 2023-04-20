@@ -30,15 +30,17 @@ import matplotlib.pyplot as plt
 #plt.figure(figsize=[2, 2])
 G = nx.DiGraph()
 #G.add_node(" ",  pos = (0, 3) )
-G.add_node("regress",  pos = (1, 3) )
-G.add_node("sum", pos = (0, 2) )
-G.add_node("lincom", pos = (1, 2) )
-G.add_node("r()", pos = (0, 1) )
-G.add_node("r()*", pos = (1, 1) )
-G.add_node("local", pos = (.5, 0))
+G.add_node("regress",  pos = (1, 9.2) )
+G.add_node("sum", pos = (-3, 4.5) )
+G.add_node("lincom", pos = (1, 4.5) )
+G.add_node("r()", pos = (-3, 0) )
+G.add_node("r()*", pos = (1, 0) )
+G.add_node("local", pos = (-1, -4.5))
+G.add_node("embed", pos = (-1, -9))
 G.add_edges_from([      ("regress", "lincom")])
 G.add_edges_from([("sum", "r()"),     ("lincom", "r()*") ])
 G.add_edges_from([("r()", "local"), ("r()*", "local")])
+G.add_edges_from([("local","embed")])
 nx.draw(G, 
         nx.get_node_attributes(G, 'pos'), 
         with_labels=True, 
@@ -48,8 +50,8 @@ nx.draw(G,
         linewidths = 3)
 ax= plt.gca()
 ax.collections[0].set_edgecolor("#000000")
-ax.set_xlim([-.3, 3.3])
-ax.set_ylim([-.3, 3.3])
+ax.set_xlim([-10, 10])
+ax.set_ylim([-10, 10])
 plt.show()
 ------------------
 
