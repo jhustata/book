@@ -42,8 +42,8 @@ program define nhanes
 			if 0 { //background:r(mean) 
 				
 				1. Stata/BE or IC
-				2. r(k) < 2048
-				3. exam.DAT: r(k) == 2368
+				2. c(k) < 2048
+				3. exam.DAT: c(k) == 2368
 				4. inaccessible to jhustata
 				5. program to grant access
 				
@@ -132,7 +132,7 @@ program define nhanes
 				
 			}
 			
-			if 5 { //dataset4class:
+			if 5 { //reference:dataset4class
 				
 				timer on 5
 				
@@ -144,7 +144,7 @@ program define nhanes
 				
 			}
 			
-			if 6 { //survivalanalysis:
+			if 6 { //task001:survivalanalysis
 				
 				timer on 6
 				
@@ -206,6 +206,8 @@ end
         
                
 ```
+
+Code-block `if 6 {` can be reused in any future survival analysis, with a few edits. You may accumulate a catalog of such codeblocks for your personal use or for sharing with others. Here I catalog this codeblock as `task001` for future reference. Another generalizable codeblock may be labelled `task002`.
 
 2. Explore the versatility of macros:
 
