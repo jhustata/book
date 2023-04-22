@@ -49,8 +49,13 @@ qui {
 		forvalues i=1/2 {
 			
 			sum init_age if female==`i'-1, detail
-			local m_iqr`i': di %2.0f r(p50) " [" %2.0f r(p25) "-" %2.0f r(p75) "]"
-			
+			#delimit ;
+			local m_iqr`i': di %2.0f r(p50) 
+			              " [" %2.0f r(p25) 
+						   "-" %2.0f r(p75) 
+						   "]"
+			;
+			#delimit cr
 		}
 		
 		noi di "Question 2: The median [IQR] age is `m_iqr1' among males and `m_iqr2' among females."
@@ -91,6 +96,7 @@ qui {
  		 
 		        local varlab: var lab dx1
 		
+		        //witness the EXTENSIVE use of #delimit ; from line 99-172;
 		        #delimit ;
 		        label def varlab
 		            1 "Glomerular"
@@ -103,52 +109,67 @@ qui {
 			        8 "Neoplasm"
 			        9 "Other"
 		        ;
-		        #delimit cr
-		        lab values dx1 varlab
+
+		        lab values dx1 varlab;
 		
-	     	    local vallab: value label dx1 //debug: chatGPT moved it from line 93 to 109!!!
+	     	    local vallab: value label dx1 
+				 ; //debug: chatGPT moved it from line 93 to 109!!!
 		 
-		        forvalues i=1/2 { //columns 1 & 2
+		        forvalues i=1/2 { ; //columns 1 & 2
 			
-			        count if !missing(dx1) & female==`i'-1
+			        count if !missing(dx1) & female==`i'-1;
 			
 			        //row1
-			        count if female==`i'-1
-			        local female`i'_N=r(N)  
-			
-	     		    local row1: di "Question 5" _col(30) "Males (N=`female1_N')" _col(50) "Females (N=`female2_N')"
+			        count if female==`i'-1;
+			        local female`i'_N=r(N); 
+	     		    local row1: di "Question 5" 
+					      _col(30) "Males (N=`female1_N')" 
+						  _col(50) "Females (N=`female2_N')"
+					;
 		    	    //row2
-			        sum init_age if female==`i'-1, detail //copy&paste from q2, edit
-			        local m_iqr`i': di %2.0f r(p50) " [" %2.0f r(p25) "-" %2.0f r(p75) "]"  
+			        sum init_age if female==`i'-1, 
+					    detail; //copy&paste from q2, edit
+					
+			        local m_iqr`i': di %2.0f r(p50) 
+					              " [" %2.0f r(p25) 
+								   "-" %2.0f r(p75) 
+								   "]"  
+			        ;
+		            local row2: di "`age_lab'"  
+					      _col(30) "`m_iqr1'"              
+						  _col(50) "`m_iqr2'"
+
+			        ;
+		        } ;
 			
-		            local row2: di "`age_lab'"  _col(30) "`m_iqr1'"              _col(50) "`m_iqr2'"
-			
-		        }
-			
-			    noi di "`row1'"			
-			    noi di "`row2'"
+			    noi di "`row1'" ;			
+			    noi di "`row2'" ;
 			
 			    //row3
-			    local row3: di "`varlab'"  
-		        noi di "`row3', %"	//not exactly as required for hw1            
+			    local row3: di "`varlab'"  ;
+		        noi di "`row3', %"	; //not exactly as required for hw1            
 
 			    //rows4_12
-			    forvalues i=1/2 { //columns 1 & 2
+			    forvalues i=1/2 { ; //columns 1 & 2
 				
-				    levelsof dx1 if female==`i'-1, local(diagnosis) //variable-level
-			        global N_`i'=r(N) 
+				    levelsof dx1 if female==`i'-1, 
+					    local(diagnosis) ; //variable-level
+			        global N_`i'=r(N) ;
 					
-		            local row=4 //based on Q5. template
+		            local row=4 ; //based on Q5. template
 				
-			        foreach l of numlist `diagnosis' {
+			        foreach l of numlist `diagnosis' { ;
 			
-			            local dxcat: lab `vallab' `l' //alliterative
-			            sum dx1 if dx1==`l' & female==(`i'-1)
-			            local col_`i'_`row': di %2.1f r(N)*100/${N_`i'}
+			            local dxcat: lab `vallab' `l' ; //alliterative
+			            sum dx1 if dx1==`l' & female==(`i'-1) ;
+			            local col_`i'_`row': di %2.1f r(N)*100/${N_`i'} ;
 					
 					    //indent the lab `dxcat' (i.e. labels valuelabel of each variablelevel)
-		                local row`row': di "    `dxcat'" _col(30) "`col_1_`row''" _col(50) "`col_2_`row''" 
-				
+		                local row`row': di "    `dxcat'" 
+						          _col(30) "`col_1_`row''" 
+								  _col(50) "`col_2_`row''" 
+								  ;
+				        #delimit cr 
 		                local row = `row' + 1 //tracks rows 4-12
 
 		            }

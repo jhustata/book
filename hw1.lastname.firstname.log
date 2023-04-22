@@ -1,0 +1,16 @@
+file ../downloads/hw1.txt not found
+r(601);
+
+end of do-file
+
+r(601);
+
+. pwd
+/Users/d/Dropbox (Personal)/2e.πρᾶξις,σ/3.acetyl.neurotrans/vscode.ds4ph/vscode.202304/jhustata
+
+. cd /users/d/desktop
+/Users/d/Desktop
+
+. do "/Users/d/Dropbox (Personal)/2e.πρᾶξις,σ/3.acetyl.neurotrans/vscode.ds4ph/vscode.202304/jhustata/hw1.lastname.firstname.do"
+
+. qui {
