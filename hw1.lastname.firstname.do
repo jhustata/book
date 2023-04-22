@@ -83,41 +83,17 @@ qui {
 		//q5
 		capture program drop question5 
 		program define question5 
-		
-		    qui { //line 1 quietly doesn't apply inside this program!!!
+		    
+			#delimit ; //going to use this throughout the program!!!
+		    qui { ; //line 1 quietly doesn't apply inside this program 
 				
 		        //label variables with output in mind
-		        lab var init_age "Age, median [IQR]"
-		        local age_lab: var lab init_age 
+		        lab var init_age "Age, median [IQR]"; 
+		        local age_lab: var lab init_age;
 		
-		        split dx, p("=") //from chapter: delimit
-		        destring dx1, replace 
-		        lab var dx1 "Cause of ESRD, %"
- 		 
-		        local varlab: var lab dx1
-		
-		        //witness the EXTENSIVE use of #delimit ; from line 99-172;
-		        #delimit ;
-		        label def varlab
-		            1 "Glomerular"
-			        2 "Diabetes"
-			        3 "PKD"
-			        4 "Hypertensive"
-			        5 "Renovascular"
-			        6 "Congenital"
-			        7 "Tubulo"
-			        8 "Neoplasm"
-			        9 "Other"
-		        ;
-
-		        lab values dx1 varlab;
-		
-	     	    local vallab: value label dx1 
-				 ; //debug: chatGPT moved it from line 98 to 109!!!
-		 
 		        forvalues i=1/2 { ; //columns 1 & 2
 			
-			        count if !missing(dx1) & female==`i'-1;
+			        count if !missing(dx) & female==`i'-1;
 			
 			        //row1
 			        count if female==`i'-1;
@@ -147,10 +123,34 @@ qui {
 			
 			    //row3
 			    local row3: di "`varlab'"  ;
-		        noi di "`row3'"	; //not exactly as required for hw1            
+		        noi di "`row3'"	; //not exactly as required for hw1    
 
 			    //rows4_12
-			    forvalues i=1/2 { ; //columns 1 & 2
+		        split dx, p("=") ; //from chapter: delimit
+		        destring dx1, replace ; 
+		        lab var dx1 "Cause of ESRD, %" ;
+ 		 
+		        local varlab: var lab dx1 ;
+		
+		        #delimit ;
+		        label def varlab
+		            1 "Glomerular"
+			        2 "Diabetes"
+			        3 "PKD"
+			        4 "Hypertensive"
+			        5 "Renovascular"
+			        6 "Congenital"
+			        7 "Tubulo"
+			        8 "Neoplasm"
+			        9 "Other"
+		        ;
+
+		        lab values dx1 varlab;
+		
+	     	    local vallab: value label dx1 
+				 ; //debug: chatGPT moved it from line 98 to 109!!!
+				 
+				 forvalues i=1/2 { ; //columns 1 & 2
 				
 				    levelsof dx1 if female==`i'-1, 
 					    local(diagnosis) ; //variable-level
@@ -169,26 +169,26 @@ qui {
 						          _col(30) "`col_1_`row''" 
 								  _col(50) "`col_2_`row''" 
 								  ;
-				        #delimit cr 
-		                local row = `row' + 1 //tracks rows 4-12
+		                local row = `row' + 1 ; //tracks rows 4-12
 
-		            }
+		            } ;
 			
-		         }
+		         } ;
 			
-	             noi di "`row4'"
-			     noi di "`row5'"
-	             noi di "`row6'"
-			     noi di "`row7'"	
-	             noi di "`row8'"
-			     noi di "`row9'"
-	             noi di "`row10'"
-			     noi di "`row11'"
-	             noi di "`row12'"
-                 noi di ""
+	             noi di "`row4'" ;
+			     noi di "`row5'" ;
+	             noi di "`row6'" ;
+			     noi di "`row7'" ;	
+	             noi di "`row8'" ;
+			     noi di "`row9'" ;
+	             noi di "`row10'" ;
+			     noi di "`row11'" ;
+	             noi di "`row12'" ;
+                 noi di "" ;
       
-	        }
+	        } ;
 	   
+	    #delimit cr
 	    end 
 		
 		noi question5
