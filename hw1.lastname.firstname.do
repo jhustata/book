@@ -25,12 +25,12 @@ qui {
 	if 2 { //results: data, shape, etc.
 		
 
-		if 0 { //stata dropdown menu
+		if 00 { //stata dropdown menu
 			
-			1. with a mouse i selected
+			1. with a mouse i selected (after trying other options)
 			2. file > import > text data (delimited...)
 			3. located hw1.txt in my downloads folder
-			4. imported it and copied & pasted the syntax
+			4. imported it and copied & pasted the syntax, edited
 			5. from Stata's output window into this do file :)
 			
 		}
@@ -92,7 +92,7 @@ qui {
 		
 		        split dx, p("=") //from chapter: delimit
 		        destring dx1, replace 
-		        lab var dx1 "Cause of ESRD"
+		        lab var dx1 "Cause of ESRD, %"
  		 
 		        local varlab: var lab dx1
 		
@@ -113,7 +113,7 @@ qui {
 		        lab values dx1 varlab;
 		
 	     	    local vallab: value label dx1 
-				 ; //debug: chatGPT moved it from line 93 to 109!!!
+				 ; //debug: chatGPT moved it from line 98 to 109!!!
 		 
 		        forvalues i=1/2 { ; //columns 1 & 2
 			
@@ -147,7 +147,7 @@ qui {
 			
 			    //row3
 			    local row3: di "`varlab'"  ;
-		        noi di "`row3', %"	; //not exactly as required for hw1            
+		        noi di "`row3'"	; //not exactly as required for hw1            
 
 			    //rows4_12
 			    forvalues i=1/2 { ; //columns 1 & 2
@@ -214,26 +214,29 @@ qui {
 		
 		local num=1
 		local row=3
+		local col=1
 		foreach v of varlist init_age female {
 			
 			local `v'_lab: var lab `v'
-			//noi di "``v'_lab'"
 			
 			#delimit ;
-			local row`num': di "``v'_lab'" %3.2f _col(30) m[`num',1] 
+			local row`num': di "``v'_lab'" %3.2f _col(30) m[1,`col'] 
 			                               %3.2f _col(35) 
-									   "(" %3.2f m[5,`num'] 
-									   "-" %3.2f m[6,`num'] 
+									   "(" %3.2f          m[5,`num'] 
+									   "-" %3.2f          m[6,`num'] 
 									   ")"
 			;
 			#delimit cr
-			noi di "`row`num''"
+			//noi di "`row`num''"
 			
 			local num=`num' + 1
 			local row=`row' + 1
+			local col=`col' + 1
 
 		}
 		
+		noi di "`row1'"
+		noi di "`row2'"
 		noi di ""
 		
 		//q7		
