@@ -212,7 +212,6 @@ qui {
 		lab var female "Female"
 		local female_lab: var lab female 
 		
-		local num=1
 		local row=3
 		local col=1
 		foreach v of varlist init_age female {
@@ -220,16 +219,15 @@ qui {
 			local `v'_lab: var lab `v'
 			
 			#delimit ;
-			local row`num': di "``v'_lab'" %3.2f _col(30) m[1,`col'] 
+			local row`col': di "``v'_lab'" %3.2f _col(30) m[1,`col'] 
 			                               %3.2f _col(35) 
-									   "(" %3.2f          m[5,`num'] 
-									   "-" %3.2f          m[6,`num'] 
+									   "(" %3.2f          m[5,`col'] 
+									   "-" %3.2f          m[6,`col'] 
 									   ")"
 			;
 			#delimit cr
 			//noi di "`row`num''"
 			
-			local num=`num' + 1
 			local row=`row' + 1
 			local col=`col' + 1
 
