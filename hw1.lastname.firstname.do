@@ -84,7 +84,7 @@ qui {
 		capture program drop question5 
 		program define question5 
 		    
-			#delimit ; //going to use this throughout the program!!!
+			#delimit ; //use throughout program
 		    qui { ; //line 1 quietly doesn't apply inside this program 
 				
 		        //label variables with output in mind
@@ -117,22 +117,14 @@ qui {
 
 			        ;
 		        } ;
-			
-			    noi di "`row1'" ;			
-			    noi di "`row2'" ;
-			
-			    //row3
-			    local row3: di "`varlab'"  ;
-		        noi di "`row3'"	; //not exactly as required for hw1    
 
-			    //rows4_12
+			    //rows3_12
 		        split dx, p("=") ; //from chapter: delimit
 		        destring dx1, replace ; 
 		        lab var dx1 "Cause of ESRD, %" ;
  		 
 		        local varlab: var lab dx1 ;
 		
-		        #delimit ;
 		        label def varlab
 		            1 "Glomerular"
 			        2 "Diabetes"
@@ -146,9 +138,9 @@ qui {
 		        ;
 
 		        lab values dx1 varlab;
-		
+				local row3: di "`varlab'"  ;
 	     	    local vallab: value label dx1 
-				 ; //debug: chatGPT moved it from line 98 to 109!!!
+				 ; //debug: chatGPT line from line 127 to 143!!!
 				 
 				 forvalues i=1/2 { ; //columns 1 & 2
 				
@@ -164,7 +156,7 @@ qui {
 			            sum dx1 if dx1==`l' & female==(`i'-1) ;
 			            local col_`i'_`row': di %2.1f r(N)*100/${N_`i'} ;
 					
-					    //indent the lab `dxcat' (i.e. labels valuelabel of each variablelevel)
+					    //indent the lab `dxcat' 
 		                local row`row': di "    `dxcat'" 
 						          _col(30) "`col_1_`row''" 
 								  _col(50) "`col_2_`row''" 
@@ -174,19 +166,15 @@ qui {
 		            } ;
 			
 		         } ;
-			
-	             noi di "`row4'" ;
-			     noi di "`row5'" ;
-	             noi di "`row6'" ;
-			     noi di "`row7'" ;	
-	             noi di "`row8'" ;
-			     noi di "`row9'" ;
-	             noi di "`row10'" ;
-			     noi di "`row11'" ;
-	             noi di "`row12'" ;
-                 noi di "" ;
+				
+			     forvalues i=1/12 { ;
+				 	
+					noi di "`row`i''"; //entire output!
+					
+				 } ;
+				 
       
-	        } ;
+	        } ; 
 	   
 	    #delimit cr
 	    end 
@@ -199,6 +187,7 @@ qui {
 		matrix define m=r(table)
 		
 		//row1 
+		noi di ""
 		noi di "Question 6"
 		
 		//row2 
