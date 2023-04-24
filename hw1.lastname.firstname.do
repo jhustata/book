@@ -12,7 +12,7 @@ qui {
 	
 	if 1 { //methods: macros, logfile, settings
 	
-	    global workdir `pwd' //mydesktop :(
+	    global workdir `pwd' 
 		
 		capture log close 
 		log using "${workdir}hw1.lastname.firstname.log", replace
@@ -34,8 +34,8 @@ qui {
 			5. from Stata's output window into this do file :)
 			
 		}
-		
-		import delimited "../downloads/hw1.txt", clear //hw1.txt not in `c(pwd)'
+		 
+		import delimited "hw1.txt", clear  
 				
 	}
 	
