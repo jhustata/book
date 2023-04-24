@@ -96,14 +96,14 @@ not), the table will look like below.
 
 ```stata
 +---------------------------------+
-| region 	px_id 	peak_pra      |
+| region 	px_id 	peak_pra     |
 |---------------------------------|
-| A XXXX 	XXXX    XXXX          |
+| A XXXX 	XXXX    XXXX         |
 |---------------------------------|
-| B XXXX 	XXXX    XXXX          |
+| B XXXX 	XXXX    XXXX         |
 |---------------------------------|
-| C XXXX 	XXXX    XXXX          |
-| C XXXX 	XXXX    XXXX          |
+| C XXXX 	XXXX    XXXX         |
+| C XXXX 	XXXX    XXXX         |
 +---------------------------------+
 ```
 Hint: your `list` command should look like this
