@@ -3,7 +3,7 @@
 (late assignments will not be accepted for graduating students)
 
 Write a .do file which performs the tasks described below. Your .do file should be called
-`hw3.lastname.firstname.do`. <u>Your .do file should follow conventions for .do file structure described in class</u> Do **not** submit your log files as part of the assignment.
+`hw3.lastname.firstname.do`. Do **not** submit your log files as part of the assignment.
 
 ### Codebook
 
@@ -18,12 +18,12 @@ Write a .do file which performs the tasks described below. Your .do file should 
 
 ### Question 1
 
-Clear the memory and load `transplants.dta` in your `if 2` code-block or whereever you think if fits best. <u>Drop all observations</u> with missing values on `transplant_date`. Reproduce the following graph as precisely as possible.
+Clear the memory and load `transplants.dta` in your `if 2 {` code-block or whereever you think if fits best. <u>Drop all observations</u> with missing values on `transplant_date`. Reproduce the following graph as precisely as possible.
 
 This graph shows a line plot of the number of cases performed in each calendar year. Be mindful about
 the thickness of the line, the main title, and the axis labels and titles.
 
-Save the graph as `q1_[yourname].png` (For example, `q1_abimuzaale.png`)
+Save the graph as `q1_[yourname].png`  
 
 ![](q1_yourname.png)  
 
@@ -35,7 +35,7 @@ This graph shows a scatter plot of `peak_pra` and `age`, stratified by `prev_ki`
 `prev_ki == 1` are shown in red. Be mindful about the color (“blue” and “red” in Stata color codes) and
 size of the markers, the axis titles, and the legend.
 
-Save the graph as `q2 _[yourname].png` (For example, `q2_abimuzaale.png`)
+Save the graph as `q2 _[yourname].png`  
 
 ![](q2_yourname.png) 
 
@@ -48,7 +48,7 @@ Calculate the average of `peak_pra` at each transplant center (`ctr_id`). Displa
 manually specify the location; about x=7 and y=17). Other markers and lines should NOT be hardcoded
 and should be derived by your script using the dataset.
 
-Save the graph as `q3 _[yourname].png` (For example, `q3_abimuzaale.png`)
+Save the graph as `q3 _[yourname].png`  
 
 ![](q3_yourname.png)  
 
