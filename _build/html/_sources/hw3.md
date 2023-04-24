@@ -25,7 +25,7 @@ the thickness of the line, the main title, and the axis labels and titles.
 
 Save the graph as `q1_[yourname].png` (For example, `q1_abimuzaale.png`)
 
-<img src="q1_yourname.png" alt="question_1" style="zoom:50%;" />
+![](q1_yourname.png)  
 
 ### Question 2
 
@@ -37,7 +37,7 @@ size of the markers, the axis titles, and the legend.
 
 Save the graph as `q2 _[yourname].png` (For example, `q2_abimuzaale.png`)
 
-<img src="q2_yourname.png" alt="question_2" style="zoom:50%;" />
+![](q2_yourname.png) 
 
 ### Question 3
 
@@ -50,7 +50,7 @@ and should be derived by your script using the dataset.
 
 Save the graph as `q3 _[yourname].png` (For example, `q3_abimuzaale.png`)
 
-<img src="q3_yourname.png" alt="question_3" style="zoom:50%;" />
+![](q3_yourname.png)  
 
 ### Question 4
 
@@ -77,7 +77,7 @@ sampmean, at(5 20 100 1000) mean(20)
 
 We get a graph like this:
 
-<img src="extracredit1.png" alt="question_5" style="zoom:50%;" />
+![](extracredit1.png) 
 
 In this example, the program generates four sets of normally distributed random numbers (one set of 5
 numbers, one set of 20, one set of 100, and one set of 1000) and calculates the mean for each set. It also
@@ -90,13 +90,13 @@ Here are some more examples. The exact output will depend on the random number s
 sampmean, at (4 8 16 32 64) mean(5) sd(3)
 ```
 
-<img src="extracredit2.png" alt="question_5_2" style="zoom:50%;" />
+![](extracredit2.png)  
 
 ```stata
 sampmean, at(100 200 300) mean(5) sd(2) uniform
 ```
 
-<img src="extracredit3.png" alt="question_5_3" style="zoom:50%;" />
+![](extracredit3.png) 
 
 In the last example, the distribution is a uniform distribution instead of a normal distribution.
 
