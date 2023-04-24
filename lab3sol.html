@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>lab4 &#8212; Stata Programming</title>
+    <title>lab3 &#8212; Stata Programming</title>
   
   
   
@@ -61,7 +61,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'lab4';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab3sol';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -240,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flab4.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flab3sol.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -270,7 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/lab4.md" target="_blank"
+      <li><a href="_sources/lab3sol.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -350,7 +350,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>lab4</h1>
+    <h1>lab3</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -364,26 +364,76 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab4">
-<h1>lab4<a class="headerlink" href="#lab4" title="Permalink to this heading">#</a></h1>
-<p>lab3: <a class="reference internal" href="lab3sol.html"><span class="doc std std-doc">solutions</span></a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab3">
+<h1>lab3<a class="headerlink" href="#lab3" title="Permalink to this heading">#</a></h1>
+<p>lab2: <a class="reference internal" href="lab2.html"><span class="doc std std-doc">solutions</span></a></p>
 <p>data: <a class="reference download internal" download="" href="_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta"><span class="xref download myst">transplants.dta</span></a></p>
 <p>zoom: <a class="reference external" href="https://JHUBlueJays.zoom.us/j/96760923747">M</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/99476415268">T</a> <a class="reference external" href="https://jhubluejays.zoom.us/j/98628544091?pwd=ZGx5NTN1RHNzNDUrQ3c3Uys0RVYrUT09">W</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/3393703103">Th</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/8581993134">F</a></p>
-<p>This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be provided separately.</p>
+<p>This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be on Friday April 21, 2023.</p>
 <ol class="arabic">
-<li><p>In lectures 3 &amp; 4, we discussed how you can define your own “program”. It’s an awesome tool that allows us to automate a specific task. If you think a specific part of your code will be used multiple times, you might as well put that into a program. In this lab, we will practice customizing our programs.</p></li>
-<li><p>Start Stata, open your do-file editor, lay out a template for your basic .do file structure using <code class="docutils literal notranslate"><span class="pre">qui</span> <span class="pre">{</span></code>, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">0</span> <span class="pre">{</span></code>, and and <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span></code>. Load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>  in your <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">2</span></code> block or wherever you feel it fits best.</p></li>
-<li><p>Write a program called <code class="docutils literal notranslate"><span class="pre">mymean</span></code>. This program will take <code class="docutils literal notranslate"><span class="pre">varlist</span></code> as a user input, and calculate the mean value of each variable, and display the values.</p></li>
-<li><p>Modify your program <code class="docutils literal notranslate"><span class="pre">mymean</span></code> so that when an <code class="docutils literal notranslate"><span class="pre">if</span></code> argument is supplied, <code class="docutils literal notranslate"><span class="pre">mymean</span></code> would only include the observations that meet the condition specified by the <code class="docutils literal notranslate"><span class="pre">if</span></code> argument. In other words, if the user types <code class="docutils literal notranslate"><span class="pre">mymean</span> <span class="pre">height</span> <span class="pre">if</span> <span class="pre">age&gt;65</span></code>, the program <code class="docutils literal notranslate"><span class="pre">mymean</span></code> will calculate the mean only among patients older than 65.</p></li>
-<li><p>Further modify your program <code class="docutils literal notranslate"><span class="pre">mymean</span></code> to include the option <code class="docutils literal notranslate"><span class="pre">sd</span></code>. When the option <code class="docutils literal notranslate"><span class="pre">sd</span></code> is supplied, <code class="docutils literal notranslate"><span class="pre">mymean</span></code> will display the standard deviation along with the mean. This version of <code class="docutils literal notranslate"><span class="pre">mymean</span></code> should still be able to accommodate the <code class="docutils literal notranslate"><span class="pre">if</span></code> argument.</p></li>
-<li><p>Further modify your program <code class="docutils literal notranslate"><span class="pre">mymean</span></code> to include the option <code class="docutils literal notranslate"><span class="pre">digits()</span></code>, with a number in the parenthesis. When the option <code class="docutils literal notranslate"><span class="pre">digits()</span></code> is supplied, <code class="docutils literal notranslate"><span class="pre">mymean</span></code> will round up the mean (and the standard deviation, if applicable) in units of <code class="docutils literal notranslate"><span class="pre">digits()</span></code>. If <code class="docutils literal notranslate"><span class="pre">digits()</span></code> is NOT supplied, round in units of 0.001. (Hint: use the Stata function <code class="docutils literal notranslate"><span class="pre">round()</span></code>)</p></li>
-<li><p>Did you make <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">sd</span></code>, and <code class="docutils literal notranslate"><span class="pre">digits()</span></code> optional arguments? That is, your program should run whether or not these arguments are supplied. To do so, simply surround each argument with brackets. For example, <code class="docutils literal notranslate"><span class="pre">[sd]</span></code></p></li>
-<li><p>I’d like to draw your attention to the merge command. It’s hard to write a question around <code class="docutils literal notranslate"><span class="pre">merge</span></code>, but it’s a really important command in practice. For instance, we used it in the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">4</span> <span class="pre">{</span></code> <a class="reference external" href="https://jhustata.github.io/book/fff.html">code-block</a> of chapter: <code class="docutils literal notranslate"><span class="pre">r(mean)</span></code></p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> fake_id using donors_recipients
+<li><p>Start Stata, open your do-file editor, write the header, and load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ctr_id</span></code> indicates the ID of the transplant center where the patient received the transplant. Count the number of recipients at each center, and store in a new variable <code class="docutils literal notranslate"><span class="pre">volume</span></code>.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">bysort</span> ctr_id:<span class="k"> gen</span> volume=_N
 </pre></div>
 </div>
 </li>
-<li><p>We want to study if death (<code class="docutils literal notranslate"><span class="pre">died==1</span></code>) is associated with several predictor variables: <code class="docutils literal notranslate"><span class="pre">bmi</span></code>, <code class="docutils literal notranslate"><span class="pre">prev_ki</span></code>, <code class="docutils literal notranslate"><span class="pre">age</span></code>, <code class="docutils literal notranslate"><span class="pre">peak_pra</span></code>, or <code class="docutils literal notranslate"><span class="pre">gender</span></code>. Run logistic regression between <code class="docutils literal notranslate"><span class="pre">died</span></code> and each of the predictor variables using <code class="docutils literal notranslate"><span class="pre">foreach</span></code> loop. At each run, save the name and the regression coefficient of the predictor variable into an external Stata dataset file named <code class="docutils literal notranslate"><span class="pre">output.dta</span></code>.</p></li>
+<li><p>List <code class="docutils literal notranslate"><span class="pre">ctr_id</span></code> and <code class="docutils literal notranslate"><span class="pre">volume</span></code> to see how many patients each center has. Maybe let’s try this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">ctr_id</span> <span class="pre">volume</span></code></p>
+</li>
+<li><p>Whelp. This is not what we wanted. Generate a variable <code class="docutils literal notranslate"><span class="pre">ctr_tag</span></code> that “tags” one observation per center.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">egen</span> ctr_tag=tag(ctr_id)
+</pre></div>
+</div>
+</li>
+<li><p>Now <code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">ctr_id</span></code> and <code class="docutils literal notranslate"><span class="pre">volume</span></code>, but just for one record per center.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">list</span> ctr_id volume<span class="k"> if</span> ctr_tag<span class="o">==</span><span class="m">1</span>
+</pre></div>
+</div>
+</li>
+<li><p>Calculate the mean age of the patients at each center, and store in a new variable <code class="docutils literal notranslate"><span class="pre">mean_age</span></code>.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">bys</span> ctr_id:<span class="k"> egen</span> mean_age=mean(age)
+</pre></div>
+</div>
+</li>
+<li><p>For each primary diagnosis subgroup (use variable <code class="docutils literal notranslate"><span class="pre">dx</span></code>), run a regression with age as the predictor and peak PRA (<code class="docutils literal notranslate"><span class="pre">peak_pra</span></code>) as the outcome.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">forvalue</span> i=<span class="m">1</span><span class="o">/</span><span class="m">9</span> {
+<span class="k">        regress</span> peak_pra age<span class="k"> if</span> dx<span class="o">==</span><span class="nv">`i&#39;</span>
+}
+</pre></div>
+</div>
+</li>
+<li><p>Now let’s make the output cleaner. Count the number of cases within each diagnosis group. If there are more than 500 cases, run the regression and display the output. If not, display “There are fewer than 500 cases.”</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">forvalue</span> i=<span class="m">1</span><span class="o">/</span><span class="m">9</span> {
+<span class="k">    qui count if</span> dx<span class="o">==</span><span class="nv">`i&#39;</span>
+<span class="k">    if</span> <span class="nf">r</span>(N)<span class="o">&gt;</span><span class="m">500</span> {
+<span class="k">          regress</span> peak_pra age<span class="k"> if</span> dx<span class="o">==</span><span class="nv">`i&#39;</span>
+    } 
+<span class="k">    else</span> {
+<span class="k">          di</span> <span class="s">&quot;There are fewer than 500 cases.&quot;</span>
+    }
+}
+</pre></div>
+</div>
+</li>
+<li><p>Define a program called <code class="docutils literal notranslate"><span class="pre">reg_pra</span></code>. This program will perform the same tasks as described in Question 8, but the regression will take one or more variables specified by the user as the predictor.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> reg_pra
+<span class="k">program</span> define reg_pra
+<span class="k">    syntax varlist</span>
+
+<span class="k">    forvalue</span> i=<span class="m">1</span><span class="o">/</span><span class="m">9</span> {
+<span class="k">        qui count if</span> dx<span class="o">==</span><span class="nv">`i&#39;</span>
+<span class="k">        if</span> <span class="nf">r</span>(N)<span class="o">&gt;</span><span class="m">500</span> {
+<span class="k">              regress</span> peak_pra <span class="nv">`varlist&#39;</span><span class="k"> if</span> dx<span class="o">==</span><span class="nv">`i&#39;</span>
+        } 
+<span class="k">        else</span> {
+<span class="k">              di</span> <span class="s">&quot;There are fewer than 500 cases.&quot;</span>
+        }
+      }
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</li>
 <li><p>You have all your commands in your do file, right? Run your do file from the beginning and make sure your do file does exactly the same thing.</p></li>
 </ol>
 </section>
