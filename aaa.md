@@ -32,17 +32,17 @@ Teaching assistants
 
 Optional labs
 
-1. [M 9:30-10:30 am](lab3.md)
-2. [T 10:00-11:00 am](lab3.md) Wolfe W2207
-3. [W 3:00-4:00 pm](lab3.md)
-4. [Th 6:00-7:00 pm](lab3.md)
-5. [F 1:00-2:00 pm](lab3.md)
+1. [M 9:30-10:30 am](lab4.md)
+2. [T 10:00-11:00 am](lab4.md) Wolfe W2207
+3. [W 3:00-4:00 pm](lab4.md)
+4. [Th 6:00-7:00 pm](lab4.md)
+5. [F 1:00-2:00 pm](lab4.md)
 
 Homeworks due  
 
 1. [Fri,Apr 21,11:59 PM](hw1.md)
-2. Fri,May 5,11:59 PM
-3. Fri,May 12,11:59 PM
+2. [Fri,May 5,11:59 PM](hw2.md)
+3. [Fri,May 12,11:59 PM](hw3.md)
 
 Courseplus Perks
 
@@ -134,12 +134,9 @@ Academic integrity
 
 What's new this week?
 
-1. Lab2 solutions are available & lab3 has gone live! 
-2. A brief [video](hw1.md) answering questions about `HW1` 
-3. Session chapters `pwd`, `r(mean)`, `by`, and `program define` have all been retouched. 
-4. In-person office hours to be held 10:00AM - 11:00AM Tuesdays in W2207
-5. Typo of your Lead TAs email is fixed & so you can now reach him! zjin26@jhmi.edu 
-6. Video for 04/20/2023 has gone live!
+1. The `lab3` solutions are available & `lab4` has gone live! 
+2. You are **strongly** encouraged to attempt `lab4` questions **before** Th 04/27/23
+3. Both `hw2` and `hw3` have also gone live!
 
 
 ```

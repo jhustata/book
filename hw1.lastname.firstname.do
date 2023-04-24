@@ -167,9 +167,9 @@ qui {
 			
 		         } ;
 				
-			     forvalues i=1/12 { ;
+			     forvalues i=1/12 { ; //rows1-12
 				 	
-					noi di "`row`i''"; //entire output!
+					noi di "`row`i''";  
 					
 				 } ;
 				 

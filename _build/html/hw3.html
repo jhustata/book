@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>by &#8212; Stata Programming</title>
+    <title>hw3 &#8212; Stata Programming</title>
   
   
   
@@ -339,7 +339,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -350,11 +352,27 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>by</h1>
+    <h1>hw3</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codebook">Codebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">Question 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4">Question 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-credit-challenge">extra credit challenge</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5">Question 5</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -364,9 +382,126 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="by">
-<h1>by<a class="headerlink" href="#by" title="Permalink to this heading">#</a></h1>
-<p>by command, egen command, loops, conditionals, and programs 2</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="hw3">
+<h1>hw3<a class="headerlink" href="#hw3" title="Permalink to this heading">#</a></h1>
+<p>(late assignments will not be accepted for graduating students)</p>
+<p>Write a .do file which performs the tasks described below. Your .do file should be called
+<code class="docutils literal notranslate"><span class="pre">hw3.lastname.firstname.do</span></code>. <u>Your .do file should follow conventions for .do file structure described in class</u> Do <strong>not</strong> submit your log files as part of the assignment.</p>
+<section id="codebook">
+<h2>Codebook<a class="headerlink" href="#codebook" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p><strong>Values</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>transplants.dta</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ctr_id</span></code></p></td>
+<td><p>Center ID</p></td>
+<td><p>Integer</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">transplant_date</span></code></p></td>
+<td><p>Date of transplant</p></td>
+<td><p>Date</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">prev_ki</span></code></p></td>
+<td><p>Recipient has history of previous kidney transplant?</p></td>
+<td><p>Binary (1=Yes/0=No)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">age</span></code></p></td>
+<td><p>Recipient’s age</p></td>
+<td><p>Integer</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bmi</span></code></p></td>
+<td><p>Recipient’s BMI</p></td>
+<td><p>Numeric</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="question-1">
+<h2>Question 1<a class="headerlink" href="#question-1" title="Permalink to this heading">#</a></h2>
+<p>Clear the memory and load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code> in your <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">2</span></code> code-block or whereever you think if fits best. <u>Drop all observations</u> with missing values on <code class="docutils literal notranslate"><span class="pre">transplant_date</span></code>. Reproduce the following graph as precisely as possible.</p>
+<p>This graph shows a line plot of the number of cases performed in each calendar year. Be mindful about
+the thickness of the line, the main title, and the axis labels and titles.</p>
+<p>Save the graph as <code class="docutils literal notranslate"><span class="pre">q1_[yourname].png</span></code> (For example, <code class="docutils literal notranslate"><span class="pre">q1_abimuzaale.png</span></code>)</p>
+<img src="/Users/zhengtinghe/Library/CloudStorage/OneDrive-JohnsHopkins/Teaching/340.600.71 - Stata Programming/Homework/hws markdown files/assignment3_2023/question_1.png" alt="question_1" style="zoom:50%;" />
+</section>
+<section id="question-2">
+<h2>Question 2<a class="headerlink" href="#question-2" title="Permalink to this heading">#</a></h2>
+<p>Clear the memory and load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>. <u>Drop all observations</u> with missing values on <code class="docutils literal notranslate"><span class="pre">peak_pra</span></code>. Reproduce the following graph as precisely as possible.</p>
+<p>This graph shows a scatter plot of <code class="docutils literal notranslate"><span class="pre">peak_pra</span></code> and <code class="docutils literal notranslate"><span class="pre">age</span></code>, stratified by <code class="docutils literal notranslate"><span class="pre">prev_ki</span></code>. Observations with
+<code class="docutils literal notranslate"><span class="pre">prev_ki</span> <span class="pre">==</span> <span class="pre">1</span></code> are shown in red. Be mindful about the color (“blue” and “red” in Stata color codes) and
+size of the markers, the axis titles, and the legend.</p>
+<p>Save the graph as <code class="docutils literal notranslate"><span class="pre">q2</span> <span class="pre">_[yourname].png</span></code> (For example, <code class="docutils literal notranslate"><span class="pre">q2_abimuzaale.png</span></code>)</p>
+<img src="/Users/zhengtinghe/Library/CloudStorage/OneDrive-JohnsHopkins/Teaching/340.600.71 - Stata Programming/Homework/hws markdown files/assignment3_2023/question_2.png" alt="question_2" style="zoom:50%;" />
+</section>
+<section id="question-3">
+<h2>Question 3<a class="headerlink" href="#question-3" title="Permalink to this heading">#</a></h2>
+<p>Clear the memory and load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>. <u>Drop all observations</u> with missing values for <code class="docutils literal notranslate"><span class="pre">peak_pra</span></code>. Reproduce the following graph as precisely as possible.</p>
+<p>Calculate the average of <code class="docutils literal notranslate"><span class="pre">peak_pra</span></code> at each transplant center (<code class="docutils literal notranslate"><span class="pre">ctr_id</span></code>). Display the average value of
+<code class="docutils literal notranslate"><span class="pre">peak_pra</span></code> after sorting. The location of the text label “National Average” can be hardcoded (i.e.
+manually specify the location; about x=7 and y=17). Other markers and lines should NOT be hardcoded
+and should be derived by your script using the dataset.</p>
+<p>Save the graph as <code class="docutils literal notranslate"><span class="pre">q3</span> <span class="pre">_[yourname].png</span></code> (For example, <code class="docutils literal notranslate"><span class="pre">q3_abimuzaale.png</span></code>)</p>
+<img src="/Users/zhengtinghe/Library/CloudStorage/OneDrive-JohnsHopkins/Teaching/340.600.71 - Stata Programming/Homework/hws markdown files/assignment3_2023/question_3.png" alt="question_3" style="zoom:50%;" />
+</section>
+<section id="question-4">
+<h2>Question 4<a class="headerlink" href="#question-4" title="Permalink to this heading">#</a></h2>
+<p>Print the following text: <code class="docutils literal notranslate"><span class="pre">Question</span> <span class="pre">4</span> <span class="pre">:</span> <span class="pre">I</span> <span class="pre">estimate</span> <span class="pre">that</span> <span class="pre">it</span> <span class="pre">took</span> <span class="pre">me</span> <span class="pre">xxxx</span> <span class="pre">hours</span> <span class="pre">to</span> <span class="pre">complete</span> <span class="pre">this</span> <span class="pre">assignment.</span></code> For example, if it took you six hours, your .do file
+will contain the line</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">disp</span> <span class="s">&quot;Question 4 : I estimate that it took me 6 hours to complete this assignment.&quot;</span>
+</pre></div>
+</div>
+<p>Give an honest answer; this is just for our data collection purposes. Do not include time spent on the
+Extra Credit Challenge (see below). Everyone who answers question 4 will receive full credit for this
+question. <u>However, this question is worth some points, so don’t skip it.</u></p>
+</section>
+<section id="extra-credit-challenge">
+<h2>extra credit challenge<a class="headerlink" href="#extra-credit-challenge" title="Permalink to this heading">#</a></h2>
+<section id="question-5">
+<h3>Question 5<a class="headerlink" href="#question-5" title="Permalink to this heading">#</a></h3>
+<p>Write a program called <code class="docutils literal notranslate"><span class="pre">sampmean</span></code> to plot random data drawn from a normal distribution. <code class="docutils literal notranslate"><span class="pre">sampmean</span></code> takes a list of numbers representing different sample sizes. It also takes (optionally) a mean and standard deviation for the normal distribution. If we run</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>sampmean, at(<span class="m">5</span> <span class="m">20</span> <span class="m">100</span> <span class="m">1000</span>)<span class="k"> mean</span>(<span class="m">20</span>)
+</pre></div>
+</div>
+<p>We get a graph like this:</p>
+<img src="/Users/zhengtinghe/Library/CloudStorage/OneDrive-JohnsHopkins/Teaching/340.600.71 - Stata Programming/Homework/hws markdown files/assignment3_2023/question_5.png" alt="question_5" style="zoom:50%;" />
+<p>In this example, the program generates four sets of normally distributed random numbers (one set of 5
+numbers, one set of 20, one set of 100, and one set of 1000) and calculates the mean for each set. It also
+plots each randomly generated number (as points) and the group mean (as a red line). The group mean
+also appears above each group as text.</p>
+<p>Here are some more examples. The exact output will depend on the random number seed you use.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>sampmean, at (<span class="m">4</span> <span class="m">8</span> <span class="m">16</span> <span class="m">32</span> <span class="m">64</span>)<span class="k"> mean</span>(<span class="m">5</span>) sd(<span class="m">3</span>)
+</pre></div>
+</div>
+<img src="/Users/zhengtinghe/Library/CloudStorage/OneDrive-JohnsHopkins/Teaching/340.600.71 - Stata Programming/Homework/hws markdown files/assignment3_2023/question_5_2.png" alt="question_5_2" style="zoom:50%;" />
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>sampmean, at(<span class="m">100</span> <span class="m">200</span> <span class="m">300</span>)<span class="k"> mean</span>(<span class="m">5</span>) sd(<span class="m">2</span>) uniform
+</pre></div>
+</div>
+<img src="/Users/zhengtinghe/Library/CloudStorage/OneDrive-JohnsHopkins/Teaching/340.600.71 - Stata Programming/Homework/hws markdown files/assignment3_2023/question_5_3.png" alt="question_5_3" style="zoom:50%;" />
+<p>In the last example, the distribution is a uniform distribution instead of a normal distribution.</p>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>You can use the keyword <code class="docutils literal notranslate"><span class="pre">numlist</span></code> (for a list of numbers) just as you do with a <code class="docutils literal notranslate"><span class="pre">varlist</span></code> (list
+of variables)</p></li>
+<li><p>The uniform distribution from 0 to 1 has mean 0.5 and standard deviation sqrt(1/12).</p></li>
+</ul>
+<p><strong>Note: this problem is pretty hard!</strong> We expect that few people will solve the whole thing, but we will
+give partial credit for a partial (working) solution. If your program only works partly, then explain in the
+comments, like this:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//NOTE: my program does not display the means in the graph. //instead it prints them to the screen.</span>
+<span class="c1">//Also &quot;uniform&quot; doesn&#39;t work,</span>
+<span class="c1">//and my program runs for only one number (not a list)</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -403,6 +538,28 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codebook">Codebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">Question 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4">Question 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-credit-challenge">extra credit challenge</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5">Question 5</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
