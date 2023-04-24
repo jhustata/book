@@ -1,13 +1,13 @@
 # hw2
 
 Write a .do file that performs the tasks described below. Your .do file must be called
-`hw2.lastname.firstname.do`. <u>Your .do file should follow
-conventions for .do file structure described in [class: session pwd](eee.md)</u>. Make sure your script will run on our machines. Do **not** submit your log files as part of the assignment.
+`hw2.lastname.firstname.do`. Your .do file should follow
+conventions for .do file structure described in [class: session pwd](eee.md). Make sure your script will run on our machines. Do **not** submit your log files as part of the assignment.
 
 Evaluation will be based on the log file produced when we run your script on our machines. Please follow the coding guidelines from class including structure, indentation, and annotation.
 
-For Question 1, use the dataset [hw2_pra_hist.dta](hw2_pra_hist.dta) and [hw2_hosp.dta](hw2_hosp.dta) to perform the required tasks. <u>Your .do file may be run on a different dataset with more
-visits.</u>
+For Question 1, use the dataset [hw2_pra_hist.dta](hw2_pra_hist.dta) and [hw2_hosp.dta](hw2_hosp.dta) to perform the required tasks. Your .do file may be run on <u>a different dataset</u> with more
+visits.
 
 For the other questions, simply define your program. You do not need to run the programs you write in
 your .do file. The graders will run your programs using a dataset that will not be released to you.
@@ -29,10 +29,10 @@ end
 [insert your Question 3 response]
 [insert your closer code]
 ```
-Another script called <u>[hw2_test.do](hw2_test.do)</u> is required. We will use a script that
+Another script called [hw2_test.do](hw2_test.do) is required. We will use a script that
 looks like this to grade your responses. Use this script to test your code yourself.
 
-<u>Partial credit will be awarded</u> if the output is wrong, so have your script do _something_ for every
+Partial credit will be awarded if the output is wrong, so have your script do _something_ for every
 question. Make sure the output includes the question number as indicated.
 
 Questions
@@ -98,12 +98,12 @@ not), the table will look like below.
 +--------------------------+
 | region 	px_id 	peak_pra |
 |--------------------------|
-| A 			XX 						XX |
+| A XX 	XX |
 |--------------------------|
-| B 			XX 						XX |
+| B XX 	XX |
 |--------------------------|
-| C 			XX 						XX |
-| C 			XX 						XX |
+| C XX 	XX |
+| C XX 	XX |
 +--------------------------+
 ```
 Hint: your `list` command should look like this
