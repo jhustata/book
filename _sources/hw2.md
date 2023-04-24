@@ -98,12 +98,12 @@ not), the table will look like below.
 +------------------------------------+
 | region 	px_id 	peak_pra     |
 |------------------------------------|
-| A XXXX 	XXXX    XXXX         |
+| A  	        XXXX    XXXX         |
 |------------------------------------|
-| B XXXX 	XXXX    XXXX         |
+| B  	        XXXX    XXXX         |
 |------------------------------------|
-| C XXXX 	XXXX    XXXX         |
-| C XXXX 	XXXX    XXXX         |
+| C 	        XXXX    XXXX         |
+| C  	        XXXX    XXXX         |
 +------------------------------------+
 ```
 Hint: your `list` command should look like this
