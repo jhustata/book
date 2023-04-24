@@ -95,16 +95,16 @@ patients with the highest value), print all tied patients. If region C has ties 
 not), the table will look like below.
 
 ```stata
-+--------------------------+
++----------------------------+
 | region 	px_id 	peak_pra |
-|--------------------------|
-| A XX 	XX |
-|--------------------------|
-| B XX 	XX |
-|--------------------------|
-| C XX 	XX |
-| C XX 	XX |
-+--------------------------+
+|----------------------------|
+| A XXXX 	XXXX    XXXX     |
+|----------------------------|
+| B XXXX 	XXXX    XXXX     |
+|----------------------------|
+| C XXXX 	XXXX    XXXX     |
+| C XXXX 	XXXX    XXXX     |
++----------------------------+
 ```
 Hint: your `list` command should look like this
 
