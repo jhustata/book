@@ -47,7 +47,7 @@ Homeworks due
 Courseplus Perks
 
 1. Q&A on Discussion forum
-2. Announcements
+2. ~~Announcements~~ Video Passcodes
 3. Dropbox
 4. Gradebook
 5. Other
