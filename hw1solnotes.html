@@ -1,0 +1,791 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>hw1sol &#8212; Stata Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hw1solnotes';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://brand.jhu.edu/assets/uploads/sites/5/2014/06/university.logo_.small_.horizontal.blue_.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="https://brand.jhu.edu/assets/uploads/sites/5/2014/06/university.logo_.small_.horizontal.blue_.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    help
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="aaa.html">tokenize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bbb.html">quietly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccc.html">delimit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddd.html">rnormal()</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="eee.html">pwd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fff.html">r(mean)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ggg.html">by</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hhh.html">program define</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iii.html">capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jjj.html">twoway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kkk.html">local v: di</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lll.html">if c(version)&gt;16 {</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zzz.html">net search</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fhw1solnotes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/hw1solnotes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>hw1sol</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hw1sol">
+<h1>hw1sol<a class="headerlink" href="#hw1sol" title="Permalink to this heading">#</a></h1>
+<p>Here’s how I did hw1:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">	</span>
+<span class="k">	if</span> <span class="m">0</span> { <span class="c1">//background: ph340.600.01, 04/21/2023-04/22/2023</span>
+	
+	    <span class="m">1</span>. hw1 .dofile: lookout<span class="k"> for</span> a blank <span class="o">-&gt;</span><span class="k"> noi di</span> <span class="s">&quot;&quot;</span> 
+		<span class="m">2</span>. output not exactly<span class="k"> as</span> required, instructed
+		<span class="m">3</span>. spot the subtle differences<span class="k"> for</span> practice
+		<span class="m">4</span>. these are<span class="k"> more</span> parsimonious <span class="o">&amp;</span> i&#39;ll certainly
+		<span class="m">5</span>. ask next years&#39; students to<span class="k"> do</span> it this way :)
+		
+	}
+<span class="k">	</span>
+<span class="k">	if</span> <span class="m">1</span> { <span class="c1">//methods: macros, logfile, settings</span>
+<span class="k">	</span>
+<span class="k">	    global</span> workdir <span class="nv">`pwd&#39;</span> 
+<span class="k">		</span>
+<span class="k">		capture log close</span> 
+<span class="k">		log</span> using <span class="s">&quot;</span><span class="vg">${workdir}</span><span class="s">hw1.lastname.firstname.log&quot;</span>,<span class="k"> replace</span>
+		
+		cls
+<span class="k">		set more</span> off
+		
+	}
+<span class="k">	</span>
+<span class="k">	if</span> <span class="m">2</span> { <span class="c1">//results: data, shape, etc.</span>
+<span class="k">		</span>
+
+<span class="k">		if</span> <span class="m">00</span> { <span class="c1">//stata dropdown menu</span>
+			
+			<span class="m">1</span>. with a mouse i selected (after trying other options)
+			<span class="m">2</span>.<span class="k"> file</span> <span class="o">&gt;</span> import <span class="o">&gt;</span> text data (delimited...)
+			<span class="m">3</span>. located hw1<span class="m">.</span>txt<span class="k"> in</span> my downloads folder
+			<span class="m">4</span>. imported it and copied <span class="o">&amp;</span> pasted the<span class="k"> syntax</span>, edited
+			<span class="m">5</span>. from Stata&#39;s output<span class="k"> window</span> into this<span class="k"> do file</span> :)
+			
+		}
+		 
+		import delimited <span class="s">&quot;hw1.txt&quot;</span>,<span class="k"> clear</span>  
+				
+	}
+<span class="k">	</span>
+<span class="k">	if</span> <span class="m">3</span> { <span class="c1">//conclusions: questions, code, output</span>
+		
+		<span class="c1">//q1</span>
+<span class="k">		noi di</span> <span class="s">&quot;Question 1: There are </span><span class="nv">`c(N)&#39;</span><span class="s"> records in the dataset.&quot;</span>
+<span class="k">		noi di</span> <span class="s">&quot;&quot;</span>
+		
+		<span class="c1">//q2</span>
+<span class="k">		forvalues</span> i=<span class="m">1</span><span class="o">/</span><span class="m">2</span> {
+<span class="k">			</span>
+<span class="k">			sum</span> init_age<span class="k"> if</span> female<span class="o">==</span><span class="nv">`i&#39;</span><span class="o">-</span><span class="m">1</span>, detail
+			#delimit ;
+<span class="k">			local</span> m_iqr<span class="nv">`i&#39;</span>:<span class="k"> di</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p50) 
+			              <span class="s">&quot; [&quot;</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p25) 
+						   <span class="s">&quot;-&quot;</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p75) 
+						   <span class="s">&quot;]&quot;</span>
+			;
+			#delimit cr
+		}
+<span class="k">		</span>
+<span class="k">		noi di</span> <span class="s">&quot;Question 2: The median [IQR] age is </span><span class="nv">`m_iqr1&#39;</span><span class="s"> among males and </span><span class="nv">`m_iqr2&#39;</span><span class="s"> among females.&quot;</span>
+<span class="k">		noi di</span> <span class="s">&quot;&quot;</span>
+		
+		<span class="c1">//q3</span>
+<span class="k">		forvalues</span> i=<span class="m">1</span><span class="o">/</span><span class="m">2</span> {
+<span class="k">			</span>
+<span class="k">			sum</span> prev<span class="k"> if</span> female<span class="o">==</span><span class="nv">`i&#39;</span><span class="o">-</span><span class="m">1</span>, detail
+<span class="k">			local</span> perc<span class="nv">`i&#39;</span>:<span class="k"> di</span> <span class="nx">%2.1f</span> <span class="nf">r</span>(mean)<span class="o">*</span><span class="m">100</span>
+			
+		}
+<span class="k">		</span>
+<span class="k">		noi di</span> <span class="s">&quot;Question 3: </span><span class="nv">`perc1&#39;</span><span class="s">% among males and </span><span class="nv">`perc2&#39;</span><span class="s">% among females have history of previous transplant.&quot;</span>
+<span class="k">		noi di</span> <span class="s">&quot;&quot;</span>
+		
+		<span class="c1">//q4</span>
+<span class="k">        g</span> htn=dx<span class="o">==</span><span class="s">&quot;4=Hypertensive&quot;</span>
+<span class="k">		label</span> define htn_lab <span class="m">0</span> <span class="s">&quot;No&quot;</span> <span class="m">1</span> <span class="s">&quot;Yes&quot;</span>
+<span class="k">		label</span> values htn htn_lab
+<span class="k">		noi di</span> <span class="s">&quot;Question 4:&quot;</span>
+<span class="k">		noi tab</span> htn
+<span class="k">		noi di</span> <span class="s">&quot;&quot;</span>
+		
+		<span class="c1">//q5</span>
+<span class="k">		capture program drop</span> question5 
+<span class="k">		program</span> define question5 
+		    
+			#delimit ; <span class="c1">//use throughout program</span>
+<span class="k">		    qui</span> { ; <span class="c1">//line 1 quietly doesn&#39;t apply inside this program </span>
+				
+		        <span class="c1">//label variables with output in mind</span>
+<span class="k">		        lab var</span> init_age <span class="s">&quot;Age, median [IQR]&quot;</span>; 
+<span class="k">		        local</span> age_lab:<span class="k"> var lab</span> init_age;
+<span class="k">				</span>
+<span class="k">				lab var</span> prev <span class="s">&quot;Previous transplant, %&quot;</span> ; 
+<span class="k">				local</span> prev_lab:<span class="k"> var lab</span> prev; 
+<span class="k">		</span>
+<span class="k">		        forvalues</span> i=<span class="m">1</span><span class="o">/</span><span class="m">2</span> { ; <span class="c1">//columns 1 &amp; 2</span>
+<span class="k">			</span>
+<span class="k">			        count if</span> <span class="o">!</span><span class="nf">missing</span>(dx) <span class="o">&amp;</span> female<span class="o">==</span><span class="nv">`i&#39;</span><span class="o">-</span><span class="m">1</span>;
+			
+			        <span class="c1">//row1</span>
+<span class="k">			        count if</span> female<span class="o">==</span><span class="nv">`i&#39;</span><span class="o">-</span><span class="m">1</span>;
+<span class="k">			        local</span> female<span class="nv">`i&#39;</span>_N=<span class="nf">r</span>(N); 
+<span class="k">	     		    local</span> row1:<span class="k"> di</span> <span class="s">&quot;Question 5&quot;</span> 
+					      _col(<span class="m">30</span>) <span class="s">&quot;Males (N=</span><span class="nv">`female1_N&#39;</span><span class="s">)&quot;</span> 
+						  _col(<span class="m">50</span>) <span class="s">&quot;Females (N=</span><span class="nv">`female2_N&#39;</span><span class="s">)&quot;</span>
+					;
+		    	    <span class="c1">//row2</span>
+<span class="k">			        sum</span> init_age<span class="k"> if</span> female<span class="o">==</span><span class="nv">`i&#39;</span><span class="o">-</span><span class="m">1</span>, 
+					    detail; <span class="c1">//copy&amp;paste from q2, edit</span>
+<span class="k">					</span>
+<span class="k">			        local</span> m_iqr<span class="nv">`i&#39;</span>:<span class="k"> di</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p50) 
+					              <span class="s">&quot; [&quot;</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p25) 
+								   <span class="s">&quot;-&quot;</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p75) 
+								   <span class="s">&quot;]&quot;</span>  
+			        ;
+<span class="k">		            local</span> row2:<span class="k"> di</span> <span class="s">&quot;</span><span class="nv">`age_lab&#39;</span><span class="s">&quot;</span>  
+					      _col(<span class="m">30</span>) <span class="s">&quot;</span><span class="nv">`m_iqr1&#39;</span><span class="s">&quot;</span>              
+						  _col(<span class="m">50</span>) <span class="s">&quot;</span><span class="nv">`m_iqr2&#39;</span><span class="s">&quot;</span>
+
+			        ;
+					<span class="c1">//row3</span>
+<span class="k">					sum</span> prev<span class="k"> if</span> female<span class="o">==</span><span class="nv">`i&#39;</span><span class="o">-</span><span class="m">1</span> ;
+<span class="k">					local</span> per_prev<span class="nv">`i&#39;</span>:<span class="k"> di</span> <span class="nx">%2.1f</span> <span class="nf">r</span>(mean)<span class="o">*</span><span class="m">100</span> ;
+<span class="k">					local</span> row3:<span class="k"> di</span> <span class="s">&quot;</span><span class="nv">`prev_lab&#39;</span><span class="s">&quot;</span>
+					      _col(<span class="m">30</span>) <span class="s">&quot;</span><span class="nv">`per_prev1&#39;</span><span class="s">&quot;</span>
+						  _col(<span class="m">50</span>) <span class="s">&quot;</span><span class="nv">`per_prev2&#39;</span><span class="s">&quot;</span>
+					;
+		        } ;
+
+			    <span class="c1">//rows4_13</span>
+<span class="k">		        split</span> dx, p(<span class="s">&quot;=&quot;</span>) ; <span class="c1">//from chapter: delimit</span>
+<span class="k">		        destring</span> dx1,<span class="k"> replace</span> ; 
+<span class="k">		        lab var</span> dx1 <span class="s">&quot;Cause of ESRD, %&quot;</span> ;
+<span class="k"> 		 </span>
+<span class="k">		        local</span> varlab:<span class="k"> var lab</span> dx1 ;
+<span class="k">		</span>
+<span class="k">		        label</span> def varlab
+		            <span class="m">1</span> <span class="s">&quot;Glomerular&quot;</span>
+			        <span class="m">2</span> <span class="s">&quot;Diabetes&quot;</span>
+			        <span class="m">3</span> <span class="s">&quot;PKD&quot;</span>
+			        <span class="m">4</span> <span class="s">&quot;Hypertensive&quot;</span>
+			        <span class="m">5</span> <span class="s">&quot;Renovascular&quot;</span>
+			        <span class="m">6</span> <span class="s">&quot;Congenital&quot;</span>
+			        <span class="m">7</span> <span class="s">&quot;Tubulo&quot;</span>
+			        <span class="m">8</span> <span class="s">&quot;Neoplasm&quot;</span>
+			        <span class="m">9</span> <span class="s">&quot;Other&quot;</span>
+		        ;
+
+<span class="k">		        lab</span> values dx1 varlab;
+<span class="k">				local</span> row4:<span class="k"> di</span> <span class="s">&quot;</span><span class="nv">`varlab&#39;</span><span class="s">&quot;</span>  ;
+<span class="k">	     	    local</span> vallab: value<span class="k"> label</span> dx1 
+				 ; <span class="c1">//debug: chatGPT moved this from line 137 to 152!!!</span>
+<span class="k">				 </span>
+<span class="k">				 forvalues</span> i=<span class="m">1</span><span class="o">/</span><span class="m">2</span> { ; <span class="c1">//columns 1 &amp; 2</span>
+<span class="k">				</span>
+<span class="k">				    levelsof</span> dx1<span class="k"> if</span> female<span class="o">==</span><span class="nv">`i&#39;</span><span class="o">-</span><span class="m">1</span>, 
+<span class="k">					    local</span>(diagnosis) ; <span class="c1">//variable-level</span>
+<span class="k">			        global</span> N_<span class="nv">`i&#39;</span>=<span class="nf">r</span>(N) ;
+<span class="k">					</span>
+<span class="k">		            local</span> row=<span class="m">5</span> ; <span class="c1">//based on Q5. template</span>
+<span class="k">				</span>
+<span class="k">			        foreach l</span> of<span class="k"> numlist</span> <span class="nv">`diagnosis&#39;</span> { ;
+<span class="k">			</span>
+<span class="k">			            local</span> dxcat:<span class="k"> lab</span> <span class="nv">`vallab&#39;</span> <span class="nv">`l&#39;</span> ; <span class="c1">//alliterative</span>
+<span class="k">			            sum</span> dx1<span class="k"> if</span> dx1<span class="o">==</span><span class="nv">`l&#39;</span> <span class="o">&amp;</span> female<span class="o">==</span>(<span class="nv">`i&#39;</span><span class="o">-</span><span class="m">1</span>) ;
+<span class="k">			            local</span> col_<span class="nv">`i&#39;</span>_<span class="nv">`row&#39;</span>:<span class="k"> di</span> <span class="nx">%2.1f</span> <span class="nf">r</span>(N)<span class="o">*</span><span class="m">100</span><span class="o">/</span><span class="vg">${N_</span><span class="nv">`i&#39;</span><span class="vg">}</span> ;
+					
+					    <span class="c1">//indent the lab `dxcat&#39; </span>
+<span class="k">		                local</span> row<span class="nv">`row&#39;</span>:<span class="k"> di</span> <span class="s">&quot;    </span><span class="nv">`dxcat&#39;</span><span class="s">&quot;</span> 
+						          _col(<span class="m">30</span>) <span class="s">&quot;</span><span class="nv">`col_1_`row&#39;&#39;</span><span class="s">&quot;</span> 
+								  _col(<span class="m">50</span>) <span class="s">&quot;</span><span class="nv">`col_2_`row&#39;&#39;</span><span class="s">&quot;</span> 
+								  ;
+<span class="k">		                local</span> row = <span class="nv">`row&#39;</span> <span class="o">+</span> <span class="m">1</span> ; <span class="c1">//tracks rows 5-13</span>
+
+		            } ;
+			
+		         } ;
+<span class="k">				</span>
+<span class="k">			     forvalues</span> i=<span class="m">1</span><span class="o">/</span><span class="m">13</span> { ; <span class="c1">//rows1-13</span>
+<span class="k">				 	</span>
+<span class="k">					noi di</span> <span class="s">&quot;</span><span class="nv">`row`i&#39;&#39;</span><span class="s">&quot;</span>;  
+					
+				 } ;
+				 
+      
+	        } ; 
+	   
+	    #delimit cr
+<span class="k">	    end</span> 
+<span class="k">		</span>
+<span class="k">		noi</span> question5
+		
+		<span class="c1">//q6</span>
+<span class="k">		</span>
+<span class="k">		logistic</span> received_kt init_age female
+<span class="k">		matrix</span> define<span class="k"> m</span>=<span class="nf">r</span>(table)
+		
+		<span class="c1">//row1 </span>
+<span class="k">		noi di</span> <span class="s">&quot;&quot;</span>
+<span class="k">		noi di</span> <span class="s">&quot;Question 6&quot;</span>
+		
+		<span class="c1">//row2 </span>
+<span class="k">		local</span> row2:<span class="k"> di</span> <span class="s">&quot;Variable&quot;</span> _col(<span class="m">30</span>) <span class="s">&quot;OR&quot;</span> _col(<span class="m">35</span>) <span class="s">&quot;(95% CI)&quot;</span>
+<span class="k">		noi di</span> <span class="s">&quot;</span><span class="nv">`row2&#39;</span><span class="s">&quot;</span>
+		
+		<span class="c1">//rows3-4</span>
+<span class="k">		lab var</span> init_age <span class="s">&quot;Age&quot;</span>
+<span class="k">		local</span> age_lab:<span class="k"> var lab</span> init_age 
+<span class="k">		</span>
+<span class="k">		lab var</span> female <span class="s">&quot;Female&quot;</span>
+<span class="k">		local</span> female_lab:<span class="k"> var lab</span> female 
+<span class="k">		</span>
+<span class="k">		local</span> row=<span class="m">3</span>
+<span class="k">		local</span> col=<span class="m">1</span>
+<span class="k">		foreach</span> v of<span class="k"> varlist</span> init_age female {
+<span class="k">			</span>
+<span class="k">			local</span> <span class="nv">`v&#39;</span>_lab:<span class="k"> var lab</span> <span class="nv">`v&#39;</span>
+			
+			#delimit ;
+<span class="k">			local</span> row<span class="nv">`col&#39;</span>:<span class="k"> di</span> <span class="s">&quot;</span><span class="nv">``v&#39;_lab&#39;</span><span class="s">&quot;</span> <span class="nx">%3.2f</span> _col(<span class="m">30</span>)<span class="k"> m</span>[<span class="m">1</span>,<span class="nv">`col&#39;</span>] 
+			                               <span class="nx">%3.2f</span> _col(<span class="m">35</span>) 
+									   <span class="s">&quot;(&quot;</span> <span class="nx">%3.2f</span>         <span class="k"> m</span>[<span class="m">5</span>,<span class="nv">`col&#39;</span>] 
+									   <span class="s">&quot;-&quot;</span> <span class="nx">%3.2f</span>         <span class="k"> m</span>[<span class="m">6</span>,<span class="nv">`col&#39;</span>] 
+									   <span class="s">&quot;)&quot;</span>
+			;
+			#delimit cr
+			<span class="c1">//noi di &quot;`row`num&#39;&#39;&quot;</span>
+<span class="k">			</span>
+<span class="k">			local</span> row=<span class="nv">`row&#39;</span> <span class="o">+</span> <span class="m">1</span>
+<span class="k">			local</span> col=<span class="nv">`col&#39;</span> <span class="o">+</span> <span class="m">1</span>
+
+		}
+<span class="k">		</span>
+<span class="k">		noi di</span> <span class="s">&quot;</span><span class="nv">`row1&#39;</span><span class="s">&quot;</span>
+<span class="k">		noi di</span> <span class="s">&quot;</span><span class="nv">`row2&#39;</span><span class="s">&quot;</span>
+<span class="k">		noi di</span> <span class="s">&quot;&quot;</span>
+		
+		<span class="c1">//q7		</span>
+<span class="k">		noi di</span> <span class="s">&quot;Question 7: This regression included </span><span class="nv">`e(N)&#39;</span><span class="s"> observations whereas the study dataset has </span><span class="nv">`c(N)&#39;</span><span class="s"> observations in total.&quot;</span>
+<span class="k">		noi di</span> <span class="s">&quot;&quot;</span>
+		
+		<span class="c1">//q8</span>
+<span class="k">		noi di</span> <span class="s">&quot;Question 8: I estimate that it took me 24 hours to complete this assignment.&quot;</span>
+<span class="k">		noi di</span> <span class="s">&quot;&quot;</span>
+	}
+<span class="k">			</span>
+<span class="k">	log close</span>
+	
+}
+</pre></div>
+</div>
+<p>Notes:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">qui</span> <span class="pre">{</span></code>: Click on the <code class="docutils literal notranslate"><span class="pre">[-]</span></code> in the margin, adjacent to <code class="docutils literal notranslate"><span class="pre">qui</span></code>: <code class="docutils literal notranslate"><span class="pre">[-]qui</span> <span class="pre">{</span></code></p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> * Does your entire .do file collapse as shown above? Good!
+ * Some code appears below `qui {` after you collapse using `[-]`?
+ * Then you&#39;ve departed from the guidelines suggested in the first-half of this class
+ * All the code should be within the quietly braces
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">X</span> <span class="pre">{</span></code>: Click on the <code class="docutils literal notranslate"><span class="pre">[-]</span></code> in the margin, adjacent to each <code class="docutils literal notranslate"><span class="pre">if</span></code>: <code class="docutils literal notranslate"><span class="pre">[-]</span>&#160;&#160;&#160; <span class="pre">if</span> <span class="pre">{</span></code></p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>
+qui {
+
+    if 0 {
+  
+    if 1 {
+
+    if 2 {
+
+    $\vdots$
+
+    log close
+
+}
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> * Does your .do file collapse as shown? Excellent!
+ * Any other lines of code visible after collapsing using `[-]`?
+ * Then you&#39;ve departed from the .do file convenetions of this class
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>code-blocks
+* indentation within code-blocks
+* annotation and documentation!
+* how does this enhance readability of code?</p></li>
+</ol>
+<ol class="arabic simple" start="4">
+<li><p>loops
+*  <code class="docutils literal notranslate"><span class="pre">forvalues</span> <span class="pre">i=1/2</span> <span class="pre">{</span></code>
+*  <code class="docutils literal notranslate"><span class="pre">foreach</span> </code> of numlist <code class="docutils literal notranslate"><span class="pre">diagnosis'</span> <span class="pre">{</span></code>
+*  <code class="docutils literal notranslate"><span class="pre">forvalues</span> <span class="pre">i=1/12</span> <span class="pre">{</span></code>
+*  <code class="docutils literal notranslate"><span class="pre">foreach</span> <span class="pre">v</span> <span class="pre">of</span> <span class="pre">varlist</span> <span class="pre">init_age</span> <span class="pre">female</span> <span class="pre">{</span></code></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>5. unorthodox
+        * extensive use of `#delimit ;` 
+        * how does this enhance vertical vs. horizontal growth of code?
+        * within `if 3 {` code-block
+        * specifically within `program define question5`
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">5</span><span class="o">.</span> <span class="n">unorthodox</span>
+       <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>macros
+* c() class macros in q1, q7
+* r() class macros in q2, q3, q5, q6
+* e() class macros in q7
+global macro in <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span> <span class="pre">{</span></code>
+local macros like <code class="docutils literal notranslate"><span class="pre">i</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">v</span></code> in loops
+local macros like <code class="docutils literal notranslate"><span class="pre">m_iqr</span></code>, <code class="docutils literal notranslate"><span class="pre">perc</span></code>i’’, <code class="docutils literal notranslate"><span class="pre">age_lab</span></code>, <code class="docutils literal notranslate"><span class="pre">prev_lab</span></code>, <code class="docutils literal notranslate"><span class="pre">female</span></code>i’_N’, etc.</p></li>
+</ol>
+<ol class="arabic simple" start="7">
+<li><p>miscellaneous
+* <code class="docutils literal notranslate"><span class="pre">split</span> <span class="pre">dx,</span> <span class="pre">p(&quot;=&quot;)</span></code>
+* <code class="docutils literal notranslate"><span class="pre">matrix</span> <span class="pre">define</span> <span class="pre">m=r(table)</span></code>
+* <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">row=</span></code>row’ + 1<code class="docutils literal notranslate">&#160;&#160;&#160;&#160; <span class="pre">*</span></code>noi di “”`</p></li>
+</ol>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abimereki Muzaale
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
