@@ -47,10 +47,10 @@ Homeworks due
 Courseplus Perks
 
 1. Q&A on Discussion forum
-2. <strike>Announcements</strike> Video Passcodes
+2. <strike>Announcements</strike> 
 3. Dropbox
 4. Gradebook
-5. Other
+5. Passcodes
 
 Who to email? [^1]
 
