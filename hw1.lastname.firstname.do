@@ -64,7 +64,7 @@ qui {
 		//q3
 		forvalues i=1/2 {
 			
-			sum received_kt if female==`i'-1, detail
+			sum prev if female==`i'-1, detail
 			local perc`i': di %2.1f r(mean)*100
 			
 		}
@@ -90,6 +90,9 @@ qui {
 		        //label variables with output in mind
 		        lab var init_age "Age, median [IQR]"; 
 		        local age_lab: var lab init_age;
+				
+				lab var prev "Previous transplant, %" ; 
+				local prev_lab: var lab prev; 
 		
 		        forvalues i=1/2 { ; //columns 1 & 2
 			
@@ -116,9 +119,16 @@ qui {
 						  _col(50) "`m_iqr2'"
 
 			        ;
+					//row3
+					sum prev if female==`i'-1 ;
+					local per_prev`i': di %2.1f r(mean)*100 ;
+					local row3: di "`prev_lab'"
+					      _col(30) "`per_prev1'"
+						  _col(50) "`per_prev2'"
+					;
 		        } ;
 
-			    //rows3_12
+			    //rows4_13
 		        split dx, p("=") ; //from chapter: delimit
 		        destring dx1, replace ; 
 		        lab var dx1 "Cause of ESRD, %" ;
@@ -138,9 +148,9 @@ qui {
 		        ;
 
 		        lab values dx1 varlab;
-				local row3: di "`varlab'"  ;
+				local row4: di "`varlab'"  ;
 	     	    local vallab: value label dx1 
-				 ; //debug: chatGPT line from line 127 to 143!!!
+				 ; //debug: chatGPT moved this from line 137 to 152!!!
 				 
 				 forvalues i=1/2 { ; //columns 1 & 2
 				
@@ -148,7 +158,7 @@ qui {
 					    local(diagnosis) ; //variable-level
 			        global N_`i'=r(N) ;
 					
-		            local row=4 ; //based on Q5. template
+		            local row=5 ; //based on Q5. template
 				
 			        foreach l of numlist `diagnosis' { ;
 			
@@ -161,13 +171,13 @@ qui {
 						          _col(30) "`col_1_`row''" 
 								  _col(50) "`col_2_`row''" 
 								  ;
-		                local row = `row' + 1 ; //tracks rows 4-12
+		                local row = `row' + 1 ; //tracks rows 5-13
 
 		            } ;
 			
 		         } ;
 				
-			     forvalues i=1/12 { ; //rows1-12
+			     forvalues i=1/13 { ; //rows1-13
 				 	
 					noi di "`row`i''";  
 					

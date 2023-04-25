@@ -1,16 +1,38 @@
-file ../downloads/hw1.txt not found
-r(601);
+Question 1: There are 1525 records in the dataset.
 
-end of do-file
+Question 2: The median [IQR] age is 54 [42-62] among males and 51 [39-61] among females.
 
-r(601);
+Question 3: 11.6% among males and 12.0% among females have history of previous transplant.
 
-. pwd
-/Users/d/Dropbox (Personal)/2e.πρᾶξις,σ/3.acetyl.neurotrans/vscode.ds4ph/vscode.202304/jhustata
+Question 4:
 
-. cd /users/d/desktop
-/Users/d/Desktop
+        htn |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         No |      1,233       80.85       80.85
+        Yes |        292       19.15      100.00
+------------+-----------------------------------
+      Total |      1,525      100.00
 
-. do "/Users/d/Dropbox (Personal)/2e.πρᾶξις,σ/3.acetyl.neurotrans/vscode.ds4ph/vscode.202304/jhustata/hw1.lastname.firstname.do"
+Question 5                   Males (N=935)       Females (N=590)
+Age, median [IQR]            54 [42-62]          51 [39-61]
+Previous transplant, %       11.6                12.0
+Cause of ESRD, %
+    Glomerular               17.6                20.8
+    Diabetes                 8.1                 9.5
+    PKD                      6.2                 8.8
+    Hypertensive             20.3                17.3
+    Renovascular             1.0                 2.0
+    Congenital               1.6                 1.5
+    Tubulo                   2.6                 4.7
+    Neoplasm                 0.3                 0.5
+    Other                    42.2                34.7
 
-. qui {
+Question 6
+Variable                     OR   (95% CI)
+Age                          0.98 (0.97-0.99)
+Female                       1.01 (0.81-1.26)
+
+Question 7: This regression included 1480 observations whereas the study dataset has 1525 observations in total.
+
+Question 8: I estimate that it took me 24 hours to complete this assignment.
+
