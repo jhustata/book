@@ -76,8 +76,8 @@ In this program the user specifies the variables to be included in the `table1_v
 
 local macro
 
-     * name -> `varlist`
-     * content -> `age wait_yrs rec_wgt_kg`
+     * name -> `varlist'
+     * content -> age wait_yrs rec_wgt_kg`
 
 This snippet shouldn't confuse you:
 
@@ -91,9 +91,9 @@ This snippet shouldn't confuse you:
 What? 
 
 ```stata
-  `varlist` 
+  `varlist'
 ```
-The second varlist is, clearly by now, a local macro. It is named in the `syntax varlist` line of code of the `table1_v` program
+The second `varlist` is, clearly by now, a local macro. It is named in the `syntax varlist` line of code of the `table1_v` program
 
 The content of this macro is to be determined by the user.
 
@@ -173,45 +173,11 @@ table1_v3 if age<20
 
 ```
 
-How about this?
-
-```stata
-use ../downloads/transplants, clear
-
-capture program drop table1_v4
-program define table1_v4
-    
-	syntax [varlist] [if]
-	
-	    qui {
-			
-            disp "Variable, mean(SD), range" 
-
-			foreach v of varlist `varlist' {
-				
-				quietly sum `v' `if'
-				
-				#delimit ;
-				noi di "`v'"  
-				    _col(15) %3.2f r(mean) "("  %3.2f r(sd) ")" 
-					_col(30) %3.2f r(min) "-" %3.2f r(max)
-				;
-				#delimit cr
-
-        }
-
-} 
-end
-
-
-table1_v4 
-```
-
 And this?
 
-```
-capture program drop table1_v5
-program define table1_v5
+```stata
+capture program drop table1_v4
+program define table1_v4
     
 	syntax [varlist] [if], [round]
 	
@@ -250,7 +216,54 @@ program define table1_v5
 end
 
 
-table1_v5 age peak_pra, round
+table1_v4 age peak_pra, round
 
 ```
 
+One more... 
+
+```stata
+
+use ../downloads/transplants, clear
+
+capture program drop table1_v5
+program define table1_v5
+    
+	syntax [varlist] [if], [title(string)] [precision(int 1)] 
+	
+	    qui {
+			
+			if "`title'" != "" {
+				
+				noi di "`title'"
+				
+			}
+			
+			assert inrange(`precision',0,6)
+			local pplus = `precision'+1
+			local D %`pplus'.`precision'f
+						
+            disp "Variable, mean(SD), range" 
+
+			foreach v of varlist `varlist' {
+				
+				preserve 
+				    capture keep `if'
+				    quietly sum `v' 
+				
+				    #delimit ;
+				    noi di "`v'"  
+				        _col(15) `D' r(mean) "(" `D' r(sd) ")" 
+					    _col(30) `D' r(min) "-" `D' r(max)
+				    ;
+				    #delimit cr
+				restore 
+
+        }
+
+} 
+end
+
+table1_v5 age bmi wait_yrs if age>40, precision(2) title("Study Population")
+
+```

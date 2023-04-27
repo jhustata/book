@@ -434,8 +434,8 @@ table1_v age wait_yrs rec_wgt_kg
 </div>
 <p>In this program the user specifies the variables to be included in the <code class="docutils literal notranslate"><span class="pre">table1_v</span></code> output. If we may recall <code class="docutils literal notranslate"><span class="pre">chapter</span> <span class="pre">2:</span> <span class="pre">r(mean)</span></code>:</p>
 <p>local macro</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> * name -&gt; `varlist`
- * content -&gt; `age wait_yrs rec_wgt_kg`
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> * name -&gt; `varlist&#39;
+ * content -&gt; age wait_yrs rec_wgt_kg`
 </pre></div>
 </div>
 <p>This snippet shouldn’t confuse you:</p>
@@ -444,10 +444,10 @@ table1_v age wait_yrs rec_wgt_kg
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">foreach</span> <span class="pre">v</span> <span class="pre">of</span> <span class="pre">varlist</span></code> is the syntax for a loop. It generates a local macro <code class="docutils literal notranslate"><span class="pre">v</span></code></p>
 <p>What?</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>  <span class="nv">`varlist` </span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>  <span class="nv">`varlist&#39;</span>
 </pre></div>
 </div>
-<p>The second varlist is, clearly by now, a local macro. It is named in the <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">varlist</span></code> line of code of the <code class="docutils literal notranslate"><span class="pre">table1_v</span></code> program</p>
+<p>The second <code class="docutils literal notranslate"><span class="pre">varlist</span></code> is, clearly by now, a local macro. It is named in the <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">varlist</span></code> line of code of the <code class="docutils literal notranslate"><span class="pre">table1_v</span></code> program</p>
 <p>The content of this macro is to be determined by the user.</p>
 <p>Now lets add even more flexibility in our next iteration of <code class="docutils literal notranslate"><span class="pre">table1</span></code></p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> ..<span class="o">/</span>downloads<span class="o">/</span>transplants,<span class="k"> clear</span>
@@ -515,15 +515,27 @@ table1_v2
 table1_v3<span class="k"> if</span> age<span class="o">&lt;</span><span class="m">20</span>
 </pre></div>
 </div>
-<p>How about this?</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> ..<span class="o">/</span>downloads<span class="o">/</span>transplants,<span class="k"> clear</span>
-
-<span class="k">capture program drop</span> table1_v4
+<p>And this?</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> table1_v4
 <span class="k">program</span> define table1_v4
 <span class="k">    </span>
-<span class="k">	syntax</span> [varlist] [if]
+<span class="k">	syntax</span> [varlist] [if], [round]
 <span class="k">	</span>
 <span class="k">	    qui</span> {
+<span class="k">			</span>
+<span class="k">			local</span> D <span class="nx">%3.0f</span>
+<span class="k">			</span>
+<span class="k">			if</span> <span class="s">&quot;</span><span class="nv">`round&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
+<span class="k">				</span>
+<span class="k">				local</span> D <span class="nx">%3.0f</span>
+				
+			}
+<span class="k">			</span>
+<span class="k">			else</span> {
+<span class="k">				</span>
+<span class="k">				local</span> D <span class="nx">%3.2f</span>
+				
+			}
 <span class="k">			</span>
 <span class="k">            disp</span> <span class="s">&quot;Variable, mean(SD), range&quot;</span> 
 
@@ -533,8 +545,8 @@ table1_v3<span class="k"> if</span> age<span class="o">&lt;</span><span class="m
 				
 				#delimit ;
 <span class="k">				noi di</span> <span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>  
-				    _col(<span class="m">15</span>) <span class="nx">%3.2f</span> <span class="nf">r</span>(mean) <span class="s">&quot;(&quot;</span>  <span class="nx">%3.2f</span> <span class="nf">r</span>(sd) <span class="s">&quot;)&quot;</span> 
-					_col(<span class="m">30</span>) <span class="nx">%3.2f</span> <span class="nf">r</span>(min) <span class="s">&quot;-&quot;</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(max)
+				    _col(<span class="m">15</span>) <span class="nv">`D&#39;</span> <span class="nf">r</span>(mean) <span class="s">&quot;(&quot;</span> <span class="nv">`D&#39;</span> <span class="nf">r</span>(sd) <span class="s">&quot;)&quot;</span> 
+					_col(<span class="m">30</span>) <span class="nv">`D&#39;</span> <span class="nf">r</span>(min) <span class="s">&quot;-&quot;</span> <span class="nv">`D&#39;</span> <span class="nf">r</span>(max)
 				;
 				#delimit cr
 
@@ -544,52 +556,51 @@ table1_v3<span class="k"> if</span> age<span class="o">&lt;</span><span class="m
 <span class="k">end</span>
 
 
-table1_v4 
+table1_v4 age peak_pra, round
 </pre></div>
 </div>
-<p>And this?</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>capture program drop table1_v5
-program define table1_v5
-    
-	syntax [varlist] [if], [round]
-	
-	    qui {
-			
-			local D %3.0f
-			
-			if &quot;`round&#39;&quot; != &quot;&quot; {
-				
-				local D %3.0f
-				
-			}
-			
-			else {
-				
-				local D %3.2f
-				
-			}
-			
-            disp &quot;Variable, mean(SD), range&quot; 
+<p>One more…</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> ..<span class="o">/</span>downloads<span class="o">/</span>transplants,<span class="k"> clear</span>
 
-			foreach v of varlist `varlist&#39; {
+<span class="k">capture program drop</span> table1_v5
+<span class="k">program</span> define table1_v5
+<span class="k">    </span>
+<span class="k">	syntax</span> [varlist] [if], [title(string)] [precision(int <span class="m">1</span>)] 
+<span class="k">	</span>
+<span class="k">	    qui</span> {
+<span class="k">			</span>
+<span class="k">			if</span> <span class="s">&quot;</span><span class="nv">`title&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
+<span class="k">				</span>
+<span class="k">				noi di</span> <span class="s">&quot;</span><span class="nv">`title&#39;</span><span class="s">&quot;</span>
 				
-				quietly sum `v&#39; `if&#39;
+			}
+<span class="k">			</span>
+<span class="k">			assert</span> <span class="nf">inrange</span>(<span class="nv">`precision&#39;</span>,<span class="m">0</span>,<span class="m">6</span>)
+<span class="k">			local</span> pplus = <span class="nv">`precision&#39;</span><span class="o">+</span><span class="m">1</span>
+<span class="k">			local</span> D %<span class="nv">`pplus&#39;</span>.<span class="nv">`precision&#39;</span>f
+<span class="k">						</span>
+<span class="k">            disp</span> <span class="s">&quot;Variable, mean(SD), range&quot;</span> 
+
+<span class="k">			foreach</span> v of<span class="k"> varlist</span> <span class="nv">`varlist&#39;</span> {
+<span class="k">				</span>
+<span class="k">				preserve</span> 
+<span class="k">				    capture keep</span> <span class="nv">`if&#39;</span>
+<span class="k">				    quietly sum</span> <span class="nv">`v&#39;</span> 
 				
-				#delimit ;
-				noi di &quot;`v&#39;&quot;  
-				    _col(15) `D&#39; r(mean) &quot;(&quot; `D&#39; r(sd) &quot;)&quot; 
-					_col(30) `D&#39; r(min) &quot;-&quot; `D&#39; r(max)
-				;
-				#delimit cr
+				    #delimit ;
+<span class="k">				    noi di</span> <span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>  
+				        _col(<span class="m">15</span>) <span class="nv">`D&#39;</span> <span class="nf">r</span>(mean) <span class="s">&quot;(&quot;</span> <span class="nv">`D&#39;</span> <span class="nf">r</span>(sd) <span class="s">&quot;)&quot;</span> 
+					    _col(<span class="m">30</span>) <span class="nv">`D&#39;</span> <span class="nf">r</span>(min) <span class="s">&quot;-&quot;</span> <span class="nv">`D&#39;</span> <span class="nf">r</span>(max)
+				    ;
+				    #delimit cr
+<span class="k">				restore</span> 
 
         }
 
 } 
-end
+<span class="k">end</span>
 
-
-table1_v5 age peak_pra, round
-
+table1_v5 age bmi wait_yrs<span class="k"> if</span> age<span class="o">&gt;</span><span class="m">40</span>, precision(<span class="m">2</span>) title(<span class="s">&quot;Study Population&quot;</span>)
 </pre></div>
 </div>
 </section>
