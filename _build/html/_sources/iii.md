@@ -1,10 +1,12 @@
 # capture 
 
+[video](https://jhjhm.zoom.us/rec/share/v0m2jFUdZ5JZPtweKMAZlAbR0pQg07H7SaK3PllQ7u8Y1FtDFYN3VdYwBqsjw7jZ.GKpzR2_veBwZCfi9?startTime=1682624085000)
+
 Let's talk about flexible programs. We'll discuss this with demos using `transplants.dta`. We started off with quite inflexible programs:
 
 ```stata
 
-use ../downloads/transplants, clear
+use transplants, clear
 
 capture program drop table1
 program define table1
@@ -41,7 +43,7 @@ So lets try to add some flexibility to make this program useful beyond this data
 We'll achieve this task by introducing `syntax varlist`, something we already did two weeks ago:
 
 ```stata
-use ../downloads/transplants, clear
+use transplants, clear
 
 capture program drop table1_v 
 program define table1_v 
@@ -101,7 +103,7 @@ Now lets add even more flexibility in our next iteration of `table1`
 
 ```stata
 
-use ../downloads/transplants, clear
+use transplants, clear
 
 capture program drop table1_v2
 program define table1_v 2
@@ -176,6 +178,9 @@ table1_v3 if age<20
 And this?
 
 ```stata
+
+use transplants, clear 
+
 capture program drop table1_v4
 program define table1_v4
     
@@ -224,7 +229,7 @@ One more...
 
 ```stata
 
-use ../downloads/transplants, clear
+use transplants, clear
 
 capture program drop table1_v5
 program define table1_v5
