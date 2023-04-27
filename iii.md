@@ -1,6 +1,6 @@
 # capture 
 
-Let's talk about flexible programs. First the sort of inflexible programs we started off with:
+Let's talk about flexible programs. We'll discuss this with demos using `transplants.dta`. We started off with quite inflexible programs:
 
 ```stata
 
@@ -206,3 +206,51 @@ end
 
 table1_v4 
 ```
+
+And this?
+
+```
+capture program drop table1_v5
+program define table1_v5
+    
+	syntax [varlist] [if], [round]
+	
+	    qui {
+			
+			local D %3.0f
+			
+			if "`round'" != "" {
+				
+				local D %3.0f
+				
+			}
+			
+			else {
+				
+				local D %3.2f
+				
+			}
+			
+            disp "Variable, mean(SD), range" 
+
+			foreach v of varlist `varlist' {
+				
+				quietly sum `v' `if'
+				
+				#delimit ;
+				noi di "`v'"  
+				    _col(15) `D' r(mean) "(" `D' r(sd) ")" 
+					_col(30) `D' r(min) "-" `D' r(max)
+				;
+				#delimit cr
+
+        }
+
+} 
+end
+
+
+table1_v5 age peak_pra, round
+
+```
+
