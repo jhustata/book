@@ -368,7 +368,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="capture">
 <h1>capture<a class="headerlink" href="#capture" title="Permalink to this heading">#</a></h1>
-<p>Let’s talk about flexible programs. First the sort of inflexible programs we started off with:</p>
+<p>Let’s talk about flexible programs. We’ll discuss this with demos using <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>. We started off with quite inflexible programs:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> ..<span class="o">/</span>downloads<span class="o">/</span>transplants,<span class="k"> clear</span>
 
 <span class="k">capture program drop</span> table1
@@ -545,6 +545,51 @@ table1_v3<span class="k"> if</span> age<span class="o">&lt;</span><span class="m
 
 
 table1_v4 
+</pre></div>
+</div>
+<p>And this?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>capture program drop table1_v5
+program define table1_v5
+    
+	syntax [varlist] [if], [round]
+	
+	    qui {
+			
+			local D %3.0f
+			
+			if &quot;`round&#39;&quot; != &quot;&quot; {
+				
+				local D %3.0f
+				
+			}
+			
+			else {
+				
+				local D %3.2f
+				
+			}
+			
+            disp &quot;Variable, mean(SD), range&quot; 
+
+			foreach v of varlist `varlist&#39; {
+				
+				quietly sum `v&#39; `if&#39;
+				
+				#delimit ;
+				noi di &quot;`v&#39;&quot;  
+				    _col(15) `D&#39; r(mean) &quot;(&quot; `D&#39; r(sd) &quot;)&quot; 
+					_col(30) `D&#39; r(min) &quot;-&quot; `D&#39; r(max)
+				;
+				#delimit cr
+
+        }
+
+} 
+end
+
+
+table1_v5 age peak_pra, round
+
 </pre></div>
 </div>
 </section>
