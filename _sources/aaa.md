@@ -135,8 +135,10 @@ Academic integrity
 What's new this week?
 
 1. The `lab3` solutions are available & `lab4` has gone live! 
-2. You are **strongly** encouraged to attempt `lab4` questions **before** Th 04/27/23
-3. Both `hw2` and `hw3` have also gone live!
+2. Both `hw2` and `hw3` are now available
+3. We will discuss the `hw1` solution next week
+4. `Chapter 5: capture` video has gone live!
+5. Have `highly-specific analytic needs` & class content hasn't covered them? Email me to schedule a one-on-one zoom session!!
 
 
 ```
