@@ -433,15 +433,21 @@ table1_v age wait_yrs rec_wgt_kg
 </pre></div>
 </div>
 <p>In this program the user specifies the variables to be included in the <code class="docutils literal notranslate"><span class="pre">table1_v</span></code> output. If we may recall <code class="docutils literal notranslate"><span class="pre">chapter</span> <span class="pre">2:</span> <span class="pre">r(mean)</span></code>:</p>
-<p>*local macro
-* name -&gt; <code class="docutils literal notranslate"><span class="pre">varlist</span></code>
-* content -&gt; <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">wait_yrs</span> <span class="pre">rec_wgt_kg</span></code></p>
+<p>local macro</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> * name -&gt; `varlist`
+ * content -&gt; `age wait_yrs rec_wgt_kg`
+</pre></div>
+</div>
 <p>This snippet shouldn’t confuse you:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">			foreach</span> v of<span class="k"> varlist</span> <span class="nv">`varlist&#39;</span> {
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">foreach</span> <span class="pre">v</span> <span class="pre">of</span> <span class="pre">varlist</span></code> is the syntax for a loop. It generates a local macro <code class="docutils literal notranslate"><span class="pre">v</span></code></p>
-<p>And <code class="docutils literal notranslate"><span class="pre">varlist</span></code> is a local macro named in the <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">varlist</span></code> line of code of the   <code class="docutils literal notranslate"><span class="pre">table1_v</span></code> program</p>
+<p>What?</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>  <span class="nv">`varlist` </span>
+</pre></div>
+</div>
+<p>The second varlist is, clearly by now, a local macro. It is named in the <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">varlist</span></code> line of code of the <code class="docutils literal notranslate"><span class="pre">table1_v</span></code> program</p>
 <p>The content of this macro is to be determined by the user.</p>
 <p>Now lets add even more flexibility in our next iteration of <code class="docutils literal notranslate"><span class="pre">table1</span></code></p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> ..<span class="o">/</span>downloads<span class="o">/</span>transplants,<span class="k"> clear</span>
@@ -507,6 +513,38 @@ table1_v2
 
 
 table1_v3<span class="k"> if</span> age<span class="o">&lt;</span><span class="m">20</span>
+</pre></div>
+</div>
+<p>How about this?</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> ..<span class="o">/</span>downloads<span class="o">/</span>transplants,<span class="k"> clear</span>
+
+<span class="k">capture program drop</span> table1_v4
+<span class="k">program</span> define table1_v4
+<span class="k">    </span>
+<span class="k">	syntax</span> [varlist] [if]
+<span class="k">	</span>
+<span class="k">	    qui</span> {
+<span class="k">			</span>
+<span class="k">            disp</span> <span class="s">&quot;Variable, mean(SD), range&quot;</span> 
+
+<span class="k">			foreach</span> v of<span class="k"> varlist</span> <span class="nv">`varlist&#39;</span> {
+<span class="k">				</span>
+<span class="k">				quietly sum</span> <span class="nv">`v&#39;</span> <span class="nv">`if&#39;</span>
+				
+				#delimit ;
+<span class="k">				noi di</span> <span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>  
+				    _col(<span class="m">15</span>) <span class="nx">%3.2f</span> <span class="nf">r</span>(mean) <span class="s">&quot;(&quot;</span>  <span class="nx">%3.2f</span> <span class="nf">r</span>(sd) <span class="s">&quot;)&quot;</span> 
+					_col(<span class="m">30</span>) <span class="nx">%3.2f</span> <span class="nf">r</span>(min) <span class="s">&quot;-&quot;</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(max)
+				;
+				#delimit cr
+
+        }
+
+} 
+<span class="k">end</span>
+
+
+table1_v4 
 </pre></div>
 </div>
 </section>

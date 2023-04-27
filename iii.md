@@ -74,7 +74,8 @@ table1_v age wait_yrs rec_wgt_kg
 
 In this program the user specifies the variables to be included in the `table1_v` output. If we may recall `chapter 2: r(mean)`:
 
-*local macro
+local macro
+
      * name -> `varlist`
      * content -> `age wait_yrs rec_wgt_kg`
 
@@ -87,7 +88,12 @@ This snippet shouldn't confuse you:
 ```
 `foreach v of varlist` is the syntax for a loop. It generates a local macro `v`
 
-And `varlist` is a local macro named in the `syntax varlist` line of code of the   `table1_v` program
+What? 
+
+```stata
+  `varlist` 
+```
+The second varlist is, clearly by now, a local macro. It is named in the `syntax varlist` line of code of the `table1_v` program
 
 The content of this macro is to be determined by the user.
 
@@ -165,4 +171,38 @@ end
 
 table1_v3 if age<20
 
+```
+
+How about this?
+
+```stata
+use ../downloads/transplants, clear
+
+capture program drop table1_v4
+program define table1_v4
+    
+	syntax [varlist] [if]
+	
+	    qui {
+			
+            disp "Variable, mean(SD), range" 
+
+			foreach v of varlist `varlist' {
+				
+				quietly sum `v' `if'
+				
+				#delimit ;
+				noi di "`v'"  
+				    _col(15) %3.2f r(mean) "("  %3.2f r(sd) ")" 
+					_col(30) %3.2f r(min) "-" %3.2f r(max)
+				;
+				#delimit cr
+
+        }
+
+} 
+end
+
+
+table1_v4 
 ```
