@@ -368,8 +368,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="capture">
 <h1>capture<a class="headerlink" href="#capture" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/v0m2jFUdZ5JZPtweKMAZlAbR0pQg07H7SaK3PllQ7u8Y1FtDFYN3VdYwBqsjw7jZ.GKpzR2_veBwZCfi9?startTime=1682624085000">video</a></p>
 <p>Let’s talk about flexible programs. We’ll discuss this with demos using <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>. We started off with quite inflexible programs:</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> ..<span class="o">/</span>downloads<span class="o">/</span>transplants,<span class="k"> clear</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 
 <span class="k">capture program drop</span> table1
 <span class="k">program</span> define table1
@@ -401,7 +402,7 @@ table1
 <p>This program is of value only to someone using <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>, who happens to be interested in the <code class="docutils literal notranslate"><span class="pre">mean</span> <span class="pre">(sd)</span></code> of age wait_yrs rec_wgt_kg.</p>
 <p>So lets try to add some flexibility to make this program useful beyond this dataset and selected variables.</p>
 <p>We’ll achieve this task by introducing <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">varlist</span></code>, something we already did two weeks ago:</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> ..<span class="o">/</span>downloads<span class="o">/</span>transplants,<span class="k"> clear</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 
 <span class="k">capture program drop</span> table1_v 
 <span class="k">program</span> define table1_v 
@@ -450,7 +451,7 @@ table1_v age wait_yrs rec_wgt_kg
 <p>The second <code class="docutils literal notranslate"><span class="pre">varlist</span></code> is, clearly by now, a local macro. It is named in the <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">varlist</span></code> line of code of the <code class="docutils literal notranslate"><span class="pre">table1_v</span></code> program</p>
 <p>The content of this macro is to be determined by the user.</p>
 <p>Now lets add even more flexibility in our next iteration of <code class="docutils literal notranslate"><span class="pre">table1</span></code></p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> ..<span class="o">/</span>downloads<span class="o">/</span>transplants,<span class="k"> clear</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 
 <span class="k">capture program drop</span> table1_v2
 <span class="k">program</span> define table1_v <span class="m">2</span>
@@ -516,7 +517,9 @@ table1_v3<span class="k"> if</span> age<span class="o">&lt;</span><span class="m
 </pre></div>
 </div>
 <p>And this?</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> table1_v4
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span> 
+
+<span class="k">capture program drop</span> table1_v4
 <span class="k">program</span> define table1_v4
 <span class="k">    </span>
 <span class="k">	syntax</span> [varlist] [if], [round]
@@ -560,7 +563,7 @@ table1_v4 age peak_pra, round
 </pre></div>
 </div>
 <p>One more…</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> ..<span class="o">/</span>downloads<span class="o">/</span>transplants,<span class="k"> clear</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 
 <span class="k">capture program drop</span> table1_v5
 <span class="k">program</span> define table1_v5
