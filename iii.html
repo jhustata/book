@@ -404,8 +404,8 @@ table1
 <p>We’ll achieve this task by introducing <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">varlist</span></code>, something we already did two weeks ago:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 
-<span class="k">capture program drop</span> table1_v 
-<span class="k">program</span> define table1_v 
+<span class="k">capture program drop</span> table1_v1
+<span class="k">program</span> define table1_v1
 <span class="k">    </span>
 <span class="k">	syntax varlist</span>
 <span class="k">	</span>
@@ -430,13 +430,13 @@ table1
 <span class="k">end</span>
 
 
-table1_v age wait_yrs rec_wgt_kg 
+table1_v1 age wait_yrs rec_wgt_kg 
 </pre></div>
 </div>
 <p>In this program the user specifies the variables to be included in the <code class="docutils literal notranslate"><span class="pre">table1_v</span></code> output. If we may recall <code class="docutils literal notranslate"><span class="pre">chapter</span> <span class="pre">2:</span> <span class="pre">r(mean)</span></code>:</p>
 <p>local macro</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> * name -&gt; `varlist&#39;
- * content -&gt; age wait_yrs rec_wgt_kg`
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> name -&gt; `varlist&#39;
+ content -&gt; age wait_yrs rec_wgt_kg`
 </pre></div>
 </div>
 <p>This snippet shouldn’t confuse you:</p>
@@ -444,17 +444,16 @@ table1_v age wait_yrs rec_wgt_kg
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">foreach</span> <span class="pre">v</span> <span class="pre">of</span> <span class="pre">varlist</span></code> is the syntax for a loop. It generates a local macro <code class="docutils literal notranslate"><span class="pre">v</span></code></p>
-<p>What?</p>
+<p>What? Yup, every loop syntax generates a local macro and its the programmer who assigns the <code class="docutils literal notranslate"><span class="pre">name</span></code> to the macro. In this example, the <code class="docutils literal notranslate"><span class="pre">content</span></code> of the macro is…</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>  <span class="nv">`varlist&#39;</span>
 </pre></div>
 </div>
-<p>The second <code class="docutils literal notranslate"><span class="pre">varlist</span></code> is, clearly by now, a local macro. It is named in the <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">varlist</span></code> line of code of the <code class="docutils literal notranslate"><span class="pre">table1_v</span></code> program</p>
-<p>The content of this macro is to be determined by the user.</p>
-<p>Now lets add even more flexibility in our next iteration of <code class="docutils literal notranslate"><span class="pre">table1</span></code></p>
+<p>it is holds user-defined <code class="docutils literal notranslate"><span class="pre">content</span></code> as contrasted with system/programmer-defined <code class="docutils literal notranslate"><span class="pre">names</span></code> (as the programmer you are now a part of the system).</p>
+<p>Now lets add some more flexibility in the next iteration of <code class="docutils literal notranslate"><span class="pre">table1</span></code></p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 
 <span class="k">capture program drop</span> table1_v2
-<span class="k">program</span> define table1_v <span class="m">2</span>
+<span class="k">program</span> define table1_v2
 <span class="k">    </span>
 <span class="k">	syntax</span> [varlist]
 <span class="k">	</span>
@@ -562,7 +561,7 @@ table1_v3<span class="k"> if</span> age<span class="o">&lt;</span><span class="m
 table1_v4 age peak_pra, round
 </pre></div>
 </div>
-<p>One more…</p>
+<p>And the code…</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 
 <span class="k">capture program drop</span> table1_v5
@@ -604,6 +603,23 @@ table1_v4 age peak_pra, round
 <span class="k">end</span>
 
 table1_v5 age bmi wait_yrs<span class="k"> if</span> age<span class="o">&gt;</span><span class="m">40</span>, precision(<span class="m">2</span>) title(<span class="s">&quot;Study Population&quot;</span>)
+</pre></div>
+</div>
+<p>In this coda subtle variants in code are introduced:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>, title(string)] <span class="c1">//title is programmer-defined, string is a programmer-constraint but the content will be user-defined</span>
+
+, [precision(int <span class="m">1</span>)] <span class="c1">//precision is programmer-defined, int is a programmer-constraint but the actual integer will be user-defined</span>
+
+<span class="c1">//note: %`pplus&#39;.`precision&#39;f has identical structure to, say, %3.2f; the integer to the left MUST &gt; the integer to the right of &#39;.`</span>
+<span class="k">local</span> D %<span class="nv">`pplus&#39;</span>.<span class="nv">`precision&#39;</span>f 
+
+<span class="k">capture keep</span> <span class="nv">`if&#39;</span> <span class="c1">//keeps subset defined by user; if the user doesn&#39;t use the conditional `if&#39;, the `capture&#39; insures that Stata doesn&#39;t return an error </span>
+
+<span class="c1">//this means the programmer doesn&#39;t have to  include an `if&#39; option with each command that has `syntax varlist if`</span>
+
+<span class="k">preserve</span>
+    <span class="c1">//more on this later!</span>
+<span class="k">restore</span>
 </pre></div>
 </div>
 </section>

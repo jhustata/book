@@ -44,7 +44,7 @@ Homeworks due
 2. [Fri,May 5,11:59 PM](hw2.md)
 3. [Fri,May 12,11:59 PM](hw3.md)
 
-Courseplus Perks
+Courseplus perks
 
 1. Q&A on Discussion forum
 2. <strike>Announcements</strike> 
