@@ -45,8 +45,8 @@ We'll achieve this task by introducing `syntax varlist`, something we already di
 ```stata
 use transplants, clear
 
-capture program drop table1_v 
-program define table1_v 
+capture program drop table1_v1
+program define table1_v1
     
 	syntax varlist
 	
@@ -71,15 +71,15 @@ program define table1_v
 end
 
 
-table1_v age wait_yrs rec_wgt_kg 
+table1_v1 age wait_yrs rec_wgt_kg 
 ```
 
 In this program the user specifies the variables to be included in the `table1_v` output. If we may recall `chapter 2: r(mean)`:
 
 local macro
 
-     * name -> `varlist'
-     * content -> age wait_yrs rec_wgt_kg`
+	 name -> `varlist'
+     content -> age wait_yrs rec_wgt_kg`
 
 This snippet shouldn't confuse you:
 
@@ -90,23 +90,21 @@ This snippet shouldn't confuse you:
 ```
 `foreach v of varlist` is the syntax for a loop. It generates a local macro `v`
 
-What? 
+What? Yup, every loop syntax generates a local macro and its the programmer who assigns the `name` to the macro. In this example, the `content` of the macro is...
 
 ```stata
   `varlist'
 ```
-The second `varlist` is, clearly by now, a local macro. It is named in the `syntax varlist` line of code of the `table1_v` program
+it is holds user-defined `content` as contrasted with system/programmer-defined `names` (as the programmer you are now a part of the system). 
 
-The content of this macro is to be determined by the user.
-
-Now lets add even more flexibility in our next iteration of `table1`
+Now lets add some more flexibility in the next iteration of `table1`
 
 ```stata
 
 use transplants, clear
 
 capture program drop table1_v2
-program define table1_v 2
+program define table1_v2
     
 	syntax [varlist]
 	
@@ -225,7 +223,7 @@ table1_v4 age peak_pra, round
 
 ```
 
-One more... 
+And the code...
 
 ```stata
 
@@ -270,5 +268,26 @@ program define table1_v5
 end
 
 table1_v5 age bmi wait_yrs if age>40, precision(2) title("Study Population")
+
+```
+
+In this coda subtle variants in code are introduced:
+
+```stata
+
+, title(string)] //title is programmer-defined, string is a programmer-constraint but the content will be user-defined
+
+, [precision(int 1)] //precision is programmer-defined, int is a programmer-constraint but the actual integer will be user-defined
+
+//note: %`pplus'.`precision'f has identical structure to, say, %3.2f; the integer to the left MUST > the integer to the right of '.`
+local D %`pplus'.`precision'f 
+
+capture keep `if' //keeps subset defined by user; if the user doesn't use the conditional `if', the `capture' insures that Stata doesn't return an error 
+
+//this means the programmer doesn't have to  include an `if' option with each command that has `syntax varlist if`
+
+preserve
+    //more on this later!
+restore
 
 ```
