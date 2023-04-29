@@ -271,7 +271,7 @@ table1_v5 age bmi wait_yrs if age>40, precision(2) title("Study Population")
 
 ```
 
-In this coda subtle variants in code are introduced:
+In this coda, subtle variants when compared with iterations 1-4 are introduced:
 
 ```stata
 
