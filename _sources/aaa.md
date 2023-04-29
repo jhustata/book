@@ -46,7 +46,7 @@ Homeworks due
 
 Courseplus perks
 
-1. Q&A on Discussion forum
+1. Q&A on discussion forum
 2. <strike>Announcements</strike> 
 3. Dropbox
 4. Gradebook
