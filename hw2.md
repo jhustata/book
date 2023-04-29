@@ -58,6 +58,7 @@ can work regardless of how many visits the dataset has.
 | `hosp_id`                 | Hospital ID            | Integers: 1 – 10                                             |
 | `Region`                  | Region                 | Alphabets                                                    |
 
+Note: to uniquely identify a patient you'd have to specify both hospital ID **and** patient ID. In other words, patients in different hospitals may have the same Patient ID
 
 **i)** Load `hw2_pra_hist.dta`. Print a table as shown below, which displays the number of
 patients with a non-missing PRA value at each visit. `N` and `XX` should be replaced with the

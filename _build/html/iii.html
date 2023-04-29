@@ -436,7 +436,7 @@ table1_v1 age wait_yrs rec_wgt_kg
 <p>In this program the user specifies the variables to be included in the <code class="docutils literal notranslate"><span class="pre">table1_v</span></code> output. If we may recall <code class="docutils literal notranslate"><span class="pre">chapter</span> <span class="pre">2:</span> <span class="pre">r(mean)</span></code>:</p>
 <p>local macro</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span> name -&gt; `varlist&#39;
- content -&gt; age wait_yrs rec_wgt_kg`
+ content -&gt; age wait_yrs rec_wgt_kg
 </pre></div>
 </div>
 <p>This snippet shouldn’t confuse you:</p>
@@ -561,7 +561,7 @@ table1_v3<span class="k"> if</span> age<span class="o">&lt;</span><span class="m
 table1_v4 age peak_pra, round
 </pre></div>
 </div>
-<p>And the code…</p>
+<p>And the <em>coda</em>…</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 
 <span class="k">capture program drop</span> table1_v5

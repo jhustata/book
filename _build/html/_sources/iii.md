@@ -79,7 +79,7 @@ In this program the user specifies the variables to be included in the `table1_v
 local macro
 
 	 name -> `varlist'
-     content -> age wait_yrs rec_wgt_kg`
+     content -> age wait_yrs rec_wgt_kg
 
 This snippet shouldn't confuse you:
 
@@ -223,7 +223,7 @@ table1_v4 age peak_pra, round
 
 ```
 
-And the code...
+And the *coda*...
 
 ```stata
 
