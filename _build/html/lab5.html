@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>by &#8212; Stata Programming</title>
+    <title>lab5 &#8212; Stata Programming</title>
   
   
   
@@ -350,7 +350,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>by</h1>
+    <h1>lab5</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -364,9 +364,23 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="by">
-<h1>by<a class="headerlink" href="#by" title="Permalink to this heading">#</a></h1>
-<p>by command, egen command, loops, conditionals, and programs 2</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab5">
+<h1>lab5<a class="headerlink" href="#lab5" title="Permalink to this heading">#</a></h1>
+<p>lab4: <a class="reference internal" href="lab4.html"><span class="doc std std-doc">solutions</span></a></p>
+<p>data: <a class="reference download internal" download="" href="_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta"><span class="xref download myst">transplants.dta</span></a> <a class="reference download internal" download="" href="_downloads/f246ffb8c3fc8aad08fcc8b4d75aa2fb/donors_recipients.dta"><span class="xref download myst">donors_recipients.dta</span></a> <a class="reference download internal" download="" href="_downloads/1dbcfe5183401a542fa4f336f624de75/donors.dta"><span class="xref download myst">donors.dta</span></a></p>
+<p>zoom: <a class="reference external" href="https://JHUBlueJays.zoom.us/j/96760923747">M</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/99476415268">T</a> <a class="reference external" href="https://jhubluejays.zoom.us/j/98628544091?pwd=ZGx5NTN1RHNzNDUrQ3c3Uys0RVYrUT09">W</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/3393703103">Th</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/8581993134">F</a></p>
+<p>This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be provided separately.</p>
+<ol class="arabic simple">
+<li><p>Start Stata, open your do-file editor, layout a template for the .dofile structure described over the last 5 weeks and load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code> in the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">2</span> <span class="pre">{</span></code> code-block or elsewhere if you deem it appropriate.</p></li>
+<li><p>Let’s merge this dataset with the donor dataset. First, merge with <code class="docutils literal notranslate"><span class="pre">donors_recipients.dta</span></code>, and then with <code class="docutils literal notranslate"><span class="pre">donors.dta</span></code>, without specifying any options.</p></li>
+<li><p>What does Stata say? Interpret the output.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code> is our study population. We don’t want to bring in extra observations by merging. Use the option <code class="docutils literal notranslate"><span class="pre">keep</span></code> and make sure we don’t bring in extra observations from <code class="docutils literal notranslate"><span class="pre">donors_recipients.dta</span></code>.</p></li>
+<li><p>Let’s move forward and merge with <code class="docutils literal notranslate"><span class="pre">donors.dta</span></code>.</p></li>
+<li><p>Now we want to calculate the mean age and the number of patients at each center. Preserve the dataset and collapse it by <code class="docutils literal notranslate"><span class="pre">ctr_id</span></code>. Explore the collapsed dataset using <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p></li>
+<li><p>Restore the dataset. The plan has changed. We want to calculate these statistics in ECD cases and non-ECD cases separately (use the variable <code class="docutils literal notranslate"><span class="pre">don_ecd</span></code>). Calculate the mean age and the number of ECD patients and non-ECD patients at each center.</p></li>
+<li><p>After the collapse, each center has two observations. One for ECD cases and another for non-ECD cases. Reshape the dataset into a wide format (i.e., each center has only one observation).</p></li>
+<li><p>You have all your commands in your do file, right? Run your do file from the beginning and make sure your do file does exactly the same thing.</p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">

@@ -2,7 +2,7 @@
 
 lab2: [solutions](lab2.md)
 
-data: [transplants.dta](transplants.dta) 
+data: transplants.dta 
 
 zoom: M T W Th F  
 

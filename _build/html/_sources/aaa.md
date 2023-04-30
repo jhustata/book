@@ -32,11 +32,11 @@ Teaching assistants
 
 Optional labs
 
-1. [M 9:30-10:30 am](lab4.md)
-2. [T 10:00-11:00 am](lab4.md) Wolfe W2207
-3. [W 3:00-4:00 pm](lab4.md)
-4. [Th 6:00-7:00 pm](lab4.md)
-5. [F 1:00-2:00 pm](lab4.md)
+1. [M 9:30-10:30 am](lab5.md)
+2. [T 10:00-11:00 am](lab5.md) Wolfe W2207
+3. [W 3:00-4:00 pm](lab5.md)
+4. [Th 6:00-7:00 pm](lab5.md)
+5. [F 1:00-2:00 pm](lab5.md)
 
 Homeworks due  
 
@@ -134,11 +134,9 @@ Academic integrity
 
 What's new this week?
 
-1. The `lab3` solutions are available & `lab4` has gone live! 
-2. Both `hw2` and `hw3` are now available
-3. We will discuss the `hw1` solution next week
-4. `Chapter 5: capture` video has gone live!
-5. Have `highly-specific analytic needs` & class content hasn't covered them? Email me to schedule a one-on-one zoom session!!
+1. We will discuss the `hw1` solution on 05/04/2023
+2. Have `highly-specific analytic needs` & class content hasn't covered them? Email me to schedule a one-on-one zoom session!!
+3. Solutions to`lab4` are now available and `lab5` has gone live!
 
 
 ```
