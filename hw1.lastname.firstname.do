@@ -2,11 +2,12 @@ qui {
 	
 	if 0 { //background: ph340.600.01, 04/21/2023-04/22/2023
 	
-	    1. hw1 .dofile: lookout for a blank -> noi di "" 
-		2. output not exactly as required, instructed
-		3. spot the subtle differences for practice
-		4. these are more parsimonious & i'll certainly
-		5. ask next years' students to do it this way :)
+	    0. inspired by ~/applications/stata/ado/base/s/stcox.ado
+	    1. lookout for a blank noi di ""  + other innovations!
+		2. output not exactly as required or instructed for hw1
+		3. spot the subtle differences + their role in aesthetics...
+		4. parisimony & legibility, all steeped in tradition
+		5. will require next years' class to do it this way :)
 		
 	}
 	
@@ -29,9 +30,9 @@ qui {
 			
 			1. with a mouse i selected (after trying other options)
 			2. file > import > text data (delimited...)
-			3. located hw1.txt in my downloads folder
-			4. imported it and copied & pasted the syntax, edited
-			5. from Stata's output window into this do file :)
+			3. then i located hw1.txt in my `c(pwd)' 
+			4. imported it and copied & pasted the syntax, edited... 
+			5. from Stata's output window into this do file thus:
 			
 		}
 		 
@@ -58,7 +59,10 @@ qui {
 			#delimit cr
 		}
 		
-		noi di "Question 2: The median [IQR] age is `m_iqr1' among males and `m_iqr2' among females."
+		local q2p1: di "Question 2: The median [IQR] age is `m_iqr1'"
+		local q2p2: di "among males and `m_iqr2' among females."
+		
+		noi di "`q2p1' `q2p2'" 
 		noi di ""
 		
 		//q3
@@ -69,7 +73,10 @@ qui {
 			
 		}
 		
-		noi di "Question 3: `perc1'% among males and `perc2'% among females have history of previous transplant."
+		local q2p1: di "Question 3: `perc1'% among males and `perc2'%"
+		
+		noi di  "`q2p1'" /*
+		    */ " among females have history of previous transplant."
 		noi di ""
 		
 		//q4
@@ -236,13 +243,21 @@ qui {
 		noi di "`row2'"
 		noi di ""
 		
-		//q7		
-		noi di "Question 7: This regression included `e(N)' observations whereas the study dataset has `c(N)' observations in total."
+		//q7	
+		local q7p1: /*
+		    */di "Question 7: This regression included `e(N)' observations"
+			
+		local q7p2: /*
+		    */di "whereas the study dataset has `c(N)' observations in total."
+			
+		noi di "`q7p1' `q7p2'"
 		noi di ""
 		
 		//q8
-		noi di "Question 8: I estimate that it took me 24 hours to complete this assignment."
+		local q8p1: di "Question 8: I estimate that it took me 24 hours"
+		noi di "`q8p1' to complete this assignment." 
 		noi di ""
+		
 	}
 			
 	log close
