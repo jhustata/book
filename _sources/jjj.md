@@ -6,21 +6,7 @@ This is a `twoway` plot:
 
 Using the resources available to you at the National Bureau of Economic Research (NBER), you are invited to reproduce this plot using the hints provided in the script below.
 
-Databases:
-
-
-&nbsp;&nbsp;&nbsp; [cdc.gov](https://ftp.cdc.gov/pub/)
-
-&nbsp;&nbsp;&nbsp; [nber.org](https://data.nber.org/mortality/)
-
-
-Output:
-
-
-&nbsp;&nbsp;&nbsp; [twoway](mortality.png)
-
-   
-Hint:
+Databases: [cdc.gov](https://ftp.cdc.gov/pub/) [nber.org](https://data.nber.org/mortality/)
 
 ```stata
 
