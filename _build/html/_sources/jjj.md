@@ -120,7 +120,11 @@ foreach command in noisily quietly { //this line can be replaced with program de
 }
 
 ```
-Which of these is **not** a `twoway` graph?
+Which of these is **not** a `twoway` graph? Does the `area` under the curve represent anything meaningful? 
+
+Crudely, the AUC might be viewed as rectangular: `height` is 100 individuals x `width` is 100 years (i.e., age) = 10,000
+
+Does 10,000 correspond to any of the output? Perhaps to `c(N)'?
 
 ![](agedist.png)
 
