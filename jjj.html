@@ -370,11 +370,15 @@ document.write(`
 <h1>twoway<a class="headerlink" href="#twoway" title="Permalink to this heading">#</a></h1>
 <p>This is a <code class="docutils literal notranslate"><span class="pre">twoway</span></code> plot:</p>
 <p><img alt="" src="https://jhustata.github.io/book/_downloads/9359d2ae4f8ad2efcfe2fd34e3547c35/mortality.png" /></p>
-<p>Using the resources available to you at the National Bureau of Economic Research (NBER), you are invited to reproduce this plot using the hints provided in the script below.</p>
-<p>Databases: <a class="reference external" href="https://ftp.cdc.gov/pub/">cdc.gov</a> <a class="reference external" href="https://data.nber.org/mortality/">nber.org</a></p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> command<span class="k"> in noisily quietly</span> {
+<p><strong>Attempt</strong> to reproduce it using the resources available to you at the National Bureau of Economic Research (NBER). The script below provides you with very generous hints.</p>
+<p>Databases:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ftp.cdc.gov/pub/">cdc.gov</a></p></li>
+<li><p><a class="reference external" href="https://data.nber.org/mortality/">nber.org</a></p></li>
+</ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> command<span class="k"> in noisily quietly</span> { <span class="c1">//this line can be replaced with program define</span>
 
-    <span class="nv">`command&#39;</span> {
+    <span class="nv">`command&#39;</span> { <span class="c1">//and this line of code can be replaced with quietly</span>
 <span class="k">    </span>
 <span class="k">              if</span> <span class="m">0</span> { <span class="c1">//background</span>
 
@@ -480,6 +484,9 @@ document.write(`
 }
 </pre></div>
 </div>
+<p>Let’s <a class="reference external" href="https://jhustata.github.io/book/aaa.html">recall</a> an extra credit challenge from the first day of class:</p>
+<p>*<strong>Bonus points:</strong> Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file.[2] Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points</p>
+<p>We now wish to link the dataset created above to mortality outcomes to perform some <a class="reference external" href="https://jhustata.github.io/book/fff.html">survival analysis</a> using the <code class="docutils literal notranslate"><span class="pre">stset</span></code>, <code class="docutils literal notranslate"><span class="pre">sts</span> <span class="pre">graph</span></code>, and <code class="docutils literal notranslate"><span class="pre">stcox</span></code> commands! How may we go about this using the online resources available to us?</p>
 <p>In the second-half of the class we’ll recap .dofile structure in context of the <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.do</span></code> solution we’ll share with you. Let’s first briefly study an .ado file that you can find on your computers here:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span> <span class="o">~/</span>applications<span class="o">/</span>stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>s<span class="o">/</span>stcox<span class="m">.</span>ado
 </pre></div>
