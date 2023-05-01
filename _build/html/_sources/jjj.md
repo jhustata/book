@@ -4,15 +4,17 @@ This is a `twoway` plot:
 
 ![](https://jhustata.github.io/book/_downloads/9359d2ae4f8ad2efcfe2fd34e3547c35/mortality.png)
 
-Using the resources available to you at the National Bureau of Economic Research (NBER), you are invited to reproduce this plot using the hints provided in the script below.
+**Attempt** to reproduce it using the resources available to you at the National Bureau of Economic Research (NBER). The script below provides you with very generous hints.
 
-Databases: [cdc.gov](https://ftp.cdc.gov/pub/) [nber.org](https://data.nber.org/mortality/)
+Databases:
+* [cdc.gov](https://ftp.cdc.gov/pub/)
+* [nber.org](https://data.nber.org/mortality/)
 
 ```stata
 
-foreach command in noisily quietly {
+foreach command in noisily quietly { //this line can be replaced with program define
 
-    `command' {
+    `command' { //and this line of code can be replaced with quietly
     
               if 0 { //background
 
@@ -118,6 +120,12 @@ foreach command in noisily quietly {
 }
 
 ```
+
+Let's [recall](https://jhustata.github.io/book/aaa.html) an extra credit challenge from the first day of class:
+
+***Bonus points:** Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file.[2] Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points
+
+We now wish to link the dataset created above to mortality outcomes to perform some [survival analysis](https://jhustata.github.io/book/fff.html) using the `stset`, `sts graph`, and `stcox` commands! How may we go about this using the online resources available to us?
 
 In the second-half of the class we'll recap .dofile structure in context of the `hw1.lastname.firstname.do` solution we'll share with you. Let's first briefly study an .ado file that you can find on your computers here:
 
