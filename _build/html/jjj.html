@@ -502,7 +502,7 @@ document.write(`
 	}
 <span class="k">	if</span> <span class="m">2</span> { <span class="c1">//import datafile</span>
 		import sasxport5 <span class="s">&quot;</span><span class="vg">${url}${datafile}</span><span class="s">&quot;</span>,<span class="k"> clear</span>
-<span class="k">		noi di</span> <span class="s">&quot;no of vars </span><span class="nv">`c(k)&#39;</span><span class="s"> x &quot;</span> <span class="s">&quot; no of obs &quot;</span> _N
+<span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
 	}
 <span class="k">	if</span> <span class="m">3</span> {
 <span class="k">	    g</span> number=<span class="m">1</span>
@@ -514,15 +514,18 @@ document.write(`
 <span class="k">	if</span> <span class="nv">`c(N)&#39;</span> { <span class="c1">//no ouput if c(N)=0</span>
 <span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
 <span class="k">		local</span> ages=<span class="nf">c</span>(N)
-<span class="k">		line</span> number ridageyr
+<span class="k">		line</span> number ridageyr, <span class="cm">/*</span>
+<span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>)
 <span class="k">		graph save</span> agedist1<span class="m">.</span>gph,replace 
-<span class="k">		twoway scatter</span> number ridageyr
+<span class="k">		twoway</span> area number ridageyr, <span class="cm">/*</span>
+<span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>)
 <span class="k">		graph save</span> agedist2<span class="m">.</span>gph,replace 
 <span class="k">		restore</span> 
 	}
 <span class="k">	if</span> <span class="nv">`c(N)&#39;</span> {
 <span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
-<span class="k">		hist</span> ridageyr, freq bins(<span class="nv">`ages&#39;</span>)
+<span class="k">		hist</span> ridageyr, freq bins(<span class="nv">`ages&#39;</span>) <span class="cm">/*</span>
+<span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>)
 <span class="k">		graph save</span> agedist3<span class="m">.</span>gph,replace 
 <span class="k">		graph</span> combine agedist1<span class="m">.</span>gph <span class="cm">/*</span>
 <span class="cm">		            */</span>agedist2<span class="m">.</span>gph <span class="cm">/*</span>

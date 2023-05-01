@@ -127,6 +127,7 @@ Which of these is **not** a `twoway` graph?
 Here's the script that produced them:
 
 ```stata
+
 qui {
 	if 0 { //from wk1 of this class
 		1. https://jhustata.github.io/book/bbb.html
@@ -142,7 +143,7 @@ qui {
 	}
 	if 2 { //import datafile
 		import sasxport5 "${url}${datafile}", clear
-		noi di "no of vars `c(k)' x " " no of obs " _N
+		noi di "N=`c(N)'"
 	}
 	if 3 {
 	    g number=1
@@ -154,15 +155,18 @@ qui {
 	if `c(N)' { //no ouput if c(N)=0
 		noi di "N=`c(N)'"
 		local ages=c(N)
-		line number ridageyr
+		line number ridageyr, /*
+		    */text(500 40 "Vars: `c(k)', Obs: `c(N)'")
 		graph save agedist1.gph,replace 
-		twoway scatter number ridageyr
+		twoway area number ridageyr, /*
+		    */text(500 40 "Vars: `c(k)', Obs: `c(N)'")
 		graph save agedist2.gph,replace 
 		restore 
 	}
 	if `c(N)' {
 		noi di "N=`c(N)'"
-		hist ridageyr, freq bins(`ages')
+		hist ridageyr, freq bins(`ages') /*
+		    */text(500 40 "Vars: `c(k)', Obs: `c(N)'")
 		graph save agedist3.gph,replace 
 		graph combine agedist1.gph /*
 		            */agedist2.gph /*
