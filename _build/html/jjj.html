@@ -514,10 +514,10 @@ document.write(`
 <span class="k">	if</span> <span class="nv">`c(N)&#39;</span> { <span class="c1">//no ouput if c(N)=0</span>
 <span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
 <span class="k">		local</span> ages=<span class="nf">c</span>(N)
-<span class="k">		line</span> number ridageyr, <span class="cm">/*</span>
+<span class="k">		line</span> number ridageyr, connect(stairstep) <span class="cm">/*</span>
 <span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>)
 <span class="k">		graph save</span> agedist1<span class="m">.</span>gph,replace 
-<span class="k">		twoway</span> area number ridageyr, <span class="cm">/*</span>
+<span class="k">		twoway</span> area number ridageyr, connect(none) <span class="cm">/*</span>
 <span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>)
 <span class="k">		graph save</span> agedist2<span class="m">.</span>gph,replace 
 <span class="k">		restore</span> 
