@@ -120,10 +120,63 @@ foreach command in noisily quietly { //this line can be replaced with program de
 }
 
 ```
+Which of these is **not** a `twoway` graph?
+
+![](agedist.png)
+
+Here's the script that produced them:
+
+```stata
+qui {
+	if 0 { //from wk1 of this class
+		1. https://jhustata.github.io/book/bbb.html
+		2. import demographics data from nhanes
+	}
+	if 1 { //settings,logfile,macros
+	    cls 
+		clear 
+		capture log close 
+		log using session0.log, replace 
+		global url https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/
+		global datafile DEMO.XPT 
+	}
+	if 2 { //import datafile
+		import sasxport5 "${url}${datafile}", clear
+		noi di "no of vars `c(k)' x " " no of obs " _N
+	}
+	if 3 {
+	    g number=1
+		preserve 
+		    sum ridageyr
+			assert c(type) == "float"
+		    collapse (sum) number,by(ridageyr)
+	}
+	if `c(N)' { //no ouput if c(N)=0
+		noi di "N=`c(N)'"
+		local ages=c(N)
+		line number ridageyr
+		graph save agedist1.gph,replace 
+		twoway scatter number ridageyr
+		graph save agedist2.gph,replace 
+		restore 
+	}
+	if `c(N)' {
+		noi di "N=`c(N)'"
+		hist ridageyr, freq bins(`ages')
+		graph save agedist3.gph,replace 
+		graph combine agedist1.gph /*
+		            */agedist2.gph /*
+					*/agedist3.gph /*
+					    */, row(1)
+		graph export agedist.png,replace 
+	}
+}
+
+```
 
 Let's [recall](https://jhustata.github.io/book/aaa.html) an extra credit challenge from the first day of class:
 
-***Bonus points:** Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file.[2] Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points
+**Bonus points:** Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file.[2] Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points
 
 We now wish to link the dataset created above to mortality outcomes to perform some [survival analysis](https://jhustata.github.io/book/fff.html) using the `stset`, `sts graph`, and `stcox` commands! How may we go about this using the online resources available to us?
 

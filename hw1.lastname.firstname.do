@@ -157,7 +157,7 @@ qui {
 		        lab values dx1 varlab;
 				local row4: di "`varlab'"  ;
 	     	    local vallab: value label dx1 
-				 ; //debug: chatGPT moved this from line 137 to 152!!!
+				 ; //debug: chatGPT moved this from line 144 to 159!!!
 				 
 				 forvalues i=1/2 { ; //columns 1 & 2
 				
