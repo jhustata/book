@@ -155,10 +155,10 @@ qui {
 	if `c(N)' { //no ouput if c(N)=0
 		noi di "N=`c(N)'"
 		local ages=c(N)
-		line number ridageyr, /*
+		line number ridageyr, connect(stairstep) /*
 		    */text(500 40 "Vars: `c(k)', Obs: `c(N)'")
 		graph save agedist1.gph,replace 
-		twoway area number ridageyr, /*
+		twoway area number ridageyr, connect(none) /*
 		    */text(500 40 "Vars: `c(k)', Obs: `c(N)'")
 		graph save agedist2.gph,replace 
 		restore 
@@ -175,6 +175,8 @@ qui {
 		graph export agedist.png,replace 
 	}
 }
+
+
 
 ```
 
