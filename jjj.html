@@ -502,6 +502,7 @@ document.write(`
 	}
 <span class="k">	if</span> <span class="m">2</span> { <span class="c1">//import datafile</span>
 		import sasxport5 <span class="s">&quot;</span><span class="vg">${url}${datafile}</span><span class="s">&quot;</span>,<span class="k"> clear</span>
+<span class="k">		replace</span> ridageyr=.
 <span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
 	}
 <span class="k">	if</span> <span class="m">3</span> {
@@ -532,14 +533,16 @@ document.write(`
 <span class="cm">					*/</span>agedist3<span class="m">.</span>gph <span class="cm">/*</span>
 <span class="cm">					    */</span>, row(<span class="m">1</span>)
 <span class="k">		graph</span> export agedist<span class="m">.</span>png,replace 
+<span class="k">		noi di</span> <span class="nf">c</span>(scheme)
+<span class="k">		noi di</span> <span class="nf">c</span>(version)
 	}
 }
 </pre></div>
 </div>
 <p>Let’s <a class="reference external" href="https://jhustata.github.io/book/aaa.html">recall</a> an extra credit challenge from the first day of class:</p>
 <p><strong>Bonus points:</strong> Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file.[2] Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points</p>
-<p>We now wish to link the dataset created above to mortality outcomes to perform some <a class="reference external" href="https://jhustata.github.io/book/fff.html">survival analysis</a> using the <code class="docutils literal notranslate"><span class="pre">stset</span></code>, <code class="docutils literal notranslate"><span class="pre">sts</span> <span class="pre">graph</span></code>, and <code class="docutils literal notranslate"><span class="pre">stcox</span></code> commands! How may we go about this using the online resources available to us?</p>
-<p>In the second-half of the class we’ll recap .dofile structure in context of the <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.do</span></code> solution we’ll share with you. Let’s first briefly study an .ado file that you can find on your computers here:</p>
+<p>We now wish to link the dataset created above to mortality outcomes to perform some survival analysis. See chapter 2: <code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> and specifically the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">6</span> <span class="pre">{</span></code> code-block, which was exclusively dedicated to <a class="reference external" href="https://jhustata.github.io/book/fff.html">survival analysis</a> and used the <code class="docutils literal notranslate"><span class="pre">stset</span></code>, <code class="docutils literal notranslate"><span class="pre">sts</span> <span class="pre">graph</span></code>, and <code class="docutils literal notranslate"><span class="pre">stcox</span></code> commands! How may we go about this using the online resources available to us to achieve this?</p>
+<p>Then, in the second-half of the class we’ll recap .dofile structure in context of the <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.do</span></code> solution we’ll share with you. Let’s first briefly study an .ado file that you can find on your computers here:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span> <span class="o">~/</span>applications<span class="o">/</span>stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>s<span class="o">/</span>stcox<span class="m">.</span>ado
 </pre></div>
 </div>
