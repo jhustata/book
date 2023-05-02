@@ -128,7 +128,11 @@ Does 10,000 correspond to any of the output? Perhaps to `c(N)`?
 
 ![](agedist.png)
 
-Here's the script that produced them but you have to do some debugging before it works. There's no free lunch today :)
+Here's the script that produced them but you have to do some debugging before it works. There's no free lunch today!
+
+I'd like to invoke the [metaphor](metaphor.png) of gene activation, which is analogous to `if macro {`, `else if macro {`, and `else {`. Below we have code-blocks, not genetic code but stata code. What happens in one code-block may affect the expression of another code-block. In biology it would be one gene locus [regulating](https://en.wikipedia.org/wiki/Regulation_of_gene_expression) the expression of another gene locus.
+
+You **ought to** emerge from this class thinking of Stata programming as a series of `if macro {` conditional statements. And your teaching team will lookout for these in your .do files!!!
 
 ```stata
 
