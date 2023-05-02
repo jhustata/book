@@ -217,7 +217,17 @@ Then, in the second-half of the class we'll recap .dofile structure in context o
 
 ```
 
-This is the native Stata program for the `stcox` command used in Cox proportional hazards regression. We are **not** presently interested in the content of the .do file but merely wish to use it as an exemplar for our scripts and programs, including our `ideal` hw1 solution.
+This is the native Stata program for the `stcox` command used in Cox proportional hazards regression. We are **not** presently interested in the content of the .do file but merely wish to use it as an exemplar for our scripts and programs, including our `ideal` hw1 solution. We are presently interested in .do fiel or .ado file structure. Don't be intimidated by the length of the script. Just look out for salient features:
+
+1. lines of code rarely `cross the line` (Stata's suggested right margin)
+2. coder uses more than one method for line continuation (spot 'em)
+3. never uses #delimit ; (this is my personal fave, especially for a very long line of code)
+4. otherwise, the entire script is a bunch of `if`, `elseif`, `else` code-blocks
+5. up to this point we've used integers like `if 1 {` to define a code-block
+6. hence-forth we'll get a litte fancier and replace the integers with system-define macros: `c()`, `e()`, `r()`
+7. and maybe occassionally with programmer-defined macros: `N` in the above script 
+8. the limit is your imagination
+9. but i hope you appreciate the flexibility conditional code-blocks bring to programming!
 
 ```stata
 
