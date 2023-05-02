@@ -130,7 +130,7 @@ Does 10,000 correspond to any of the output? Perhaps to `c(N)`?
 
 Here's the script that produced them but you have to do some debugging before it works. There's no free lunch today!
 
-I'd like to invoke the [metaphor](metaphor.png) of gene activation, which is analogous to `if macro {`, `else if macro {`, and `else {`. Although below we have Stata code-blocks rather than genetic code, the metaphor is apt. What happens `upstream` in one code-block may affect the expression of another `downstream` code-block for a given process, but in a dofile as compared to a given biological process. 
+I'd like to invoke the [metaphor](https://jhustata.github.io/book/_downloads/785b3e7ec96641cdff07100d6b7131b3/metaphor.png) of gene activation, which is analogous to `if macro {`, `else if macro {`, and `else {`. Although below we have Stata code-blocks rather than genetic code, the metaphor is apt. What happens `upstream` in one code-block may affect the expression of another `downstream` code-block for a given process, but in a dofile as compared to a given biological process. 
 
 You <u>**ought to**</u> emerge from this class thinking of Stata programming as a series of `if macro {` conditional statements. And your teaching team will lookout for these in your .do files! 
 
@@ -150,7 +150,7 @@ qui {
 	}
 	if c(N)<2 { //import datafile
 		import sasxport5 "${url}${datafile}", clear
-		replace ridageyr=.
+		*replace ridageyr=.
 		noi di "N=`c(N)'"
 	}
 	if c(N)>3 {
@@ -192,6 +192,9 @@ qui {
 		graph export agedist.png,replace 
 		noi di c(scheme)
 		noi di c(version)
+	}
+	else {
+		noi di "N=`N' (i.e., code-block is not expressed)"
 	}
 }
 
