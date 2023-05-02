@@ -564,7 +564,18 @@ document.write(`
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span> <span class="o">~/</span>applications<span class="o">/</span>stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>s<span class="o">/</span>stcox<span class="m">.</span>ado
 </pre></div>
 </div>
-<p>This is the native Stata program for the <code class="docutils literal notranslate"><span class="pre">stcox</span></code> command used in Cox proportional hazards regression. We are <strong>not</strong> presently interested in the content of the .do file but merely wish to use it as an exemplar for our scripts and programs, including our <code class="docutils literal notranslate"><span class="pre">ideal</span></code> hw1 solution.</p>
+<p>This is the native Stata program for the <code class="docutils literal notranslate"><span class="pre">stcox</span></code> command used in Cox proportional hazards regression. We are <strong>not</strong> presently interested in the content of the .do file but merely wish to use it as an exemplar for our scripts and programs, including our <code class="docutils literal notranslate"><span class="pre">ideal</span></code> hw1 solution. We are presently interested in .do fiel or .ado file structure. Don’t be intimidated by the length of the script. Just look out for salient features:</p>
+<ol class="arabic simple">
+<li><p>lines of code rarely <code class="docutils literal notranslate"><span class="pre">cross</span> <span class="pre">the</span> <span class="pre">line</span></code> (Stata’s suggested right margin)</p></li>
+<li><p>coder uses more than one method for line continuation (spot ‘em)</p></li>
+<li><p>never uses #delimit ; (this is my personal fave, especially for a very long line of code)</p></li>
+<li><p>otherwise, the entire script is a bunch of <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elseif</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code> code-blocks</p></li>
+<li><p>up to this point we’ve used integers like <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span> <span class="pre">{</span></code> to define a code-block</p></li>
+<li><p>hence-forth we’ll get a litte fancier and replace the integers with system-define macros: <code class="docutils literal notranslate"><span class="pre">c()</span></code>, <code class="docutils literal notranslate"><span class="pre">e()</span></code>, <code class="docutils literal notranslate"><span class="pre">r()</span></code></p></li>
+<li><p>and maybe occassionally with programmer-defined macros: <code class="docutils literal notranslate"><span class="pre">N</span></code> in the above script</p></li>
+<li><p>the limit is your imagination</p></li>
+<li><p>but i hope you appreciate the flexibility conditional code-blocks bring to programming!</p></li>
+</ol>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">*! version 7.7.7  06mar2023</span>
 <span class="k">program stcox</span>, eclass byable(onecall)<span class="k"> sort</span> <span class="cs">///</span>
 <span class="k">		prop</span>(st swml nohr hr svyb svyj svylb mi)
