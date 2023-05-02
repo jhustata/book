@@ -150,7 +150,7 @@ qui {
 	}
 	if c(N)<2 { //import datafile
 		import sasxport5 "${url}${datafile}", clear
-		*replace ridageyr=.
+		replace ridageyr=.
 		noi di "N=`c(N)'"
 	}
 	if c(N)>3 {
