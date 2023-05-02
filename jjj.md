@@ -130,17 +130,17 @@ Does 10,000 correspond to any of the output? Perhaps to `c(N)`?
 
 Here's the script that produced them but you have to do some debugging before it works. There's no free lunch today!
 
-I'd like to invoke the [metaphor](metaphor.png) of gene activation, which is analogous to `if macro {`, `else if macro {`, and `else {`. Below we have code-blocks, not genetic code but stata code. What happens in one code-block may affect the expression of another code-block. In biology it would be one gene locus [regulating](https://en.wikipedia.org/wiki/Regulation_of_gene_expression) the expression of another gene locus.
+I'd like to invoke the [metaphor](metaphor.png) of gene activation, which is analogous to `if macro {`, `else if macro {`, and `else {`. Although below we have Stata code-blocks rather than genetic code, the metaphor is apt. What happens `upstream` in one code-block may affect the expression of another `downstream` code-block for a given process, but in a dofile as compared to a given biological process. 
 
-You **ought to** emerge from this class thinking of Stata programming as a series of `if macro {` conditional statements. And your teaching team will lookout for these in your .do files!!!
+You <u>**ought to**</u> emerge from this class thinking of Stata programming as a series of `if macro {` conditional statements. And your teaching team will lookout for these in your .do files! 
 
 ```stata
 
 qui {
 	if c(N) { //clear data before running script
-        0. adopted from wk1 of this class
-		1. https://jhustata.github.io/book/bbb.html
-		2. import demographics data from nhanes
+        1. adopted from wk1 of this class
+		2. https://jhustata.github.io/book/bbb.html
+		3. import demographics data from nhanes
 	}
 	if c(N)<1 { //settings,logfile,macros
 		capture log close 
