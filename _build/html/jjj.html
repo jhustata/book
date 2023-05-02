@@ -488,7 +488,7 @@ document.write(`
 <p>Crudely, the AUC might be viewed as rectangular: <code class="docutils literal notranslate"><span class="pre">height</span></code> is 100 individuals x <code class="docutils literal notranslate"><span class="pre">width</span></code> is 100 years (i.e., <code class="docutils literal notranslate"><span class="pre">ages</span></code>) = 10,000</p>
 <p>Does 10,000 correspond to any of the output? Perhaps to <code class="docutils literal notranslate"><span class="pre">c(N)</span></code>?</p>
 <p><img alt="" src="_images/agedist.png" /></p>
-<p>Here’s the script that produced them:</p>
+<p>Here’s the script that produced them but you have to do some debugging before it works. There’s no free lunch today :)</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">	if</span> <span class="nf">c</span>(N) { <span class="c1">//clear data before running script</span>
         <span class="m">0</span>. adopted from wk1 of this<span class="k"> class</span>
@@ -513,7 +513,8 @@ document.write(`
 <span class="k">			assert</span> <span class="nf">c</span>(type) <span class="o">==</span> <span class="s">&quot;float&quot;</span>
 <span class="k">		    collapse</span> (sum) number,by(ridageyr)
 	}
-<span class="k">	if</span> <span class="nv">`c(N)&#39;</span> { <span class="c1">//no ouput if c(N)=0</span>
+<span class="k">	local</span> N=<span class="nf">c</span>(N)<span class="o">-</span><span class="m">1</span>
+<span class="k">	if</span> <span class="nv">`N&#39;</span> { <span class="c1">//no ouput if c(N)=0</span>
 <span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
 <span class="k">		local</span> ages=<span class="nf">c</span>(N)
 <span class="k">		line</span> number ridageyr, connect(stairstep) <span class="cm">/*</span>
@@ -524,7 +525,7 @@ document.write(`
 <span class="k">		graph save</span> agedist2<span class="m">.</span>gph,replace 
 <span class="k">		restore</span> 
 	}
-<span class="k">	if</span> <span class="nv">`c(N)&#39;</span> {
+<span class="k">	if</span> <span class="nv">`N&#39;</span> {
 <span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
 <span class="k">		hist</span> ridageyr, freq bins(<span class="nv">`ages&#39;</span>) <span class="cm">/*</span>
 <span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>)
@@ -541,8 +542,11 @@ document.write(`
 </pre></div>
 </div>
 <p>Let’s <a class="reference external" href="https://jhustata.github.io/book/aaa.html">recall</a> an extra credit challenge from the first day of class:</p>
-<p><strong>Bonus points:</strong> Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file.[2] Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points</p>
-<p>We now wish to link the dataset created above to mortality outcomes to perform some survival analysis. See chapter 2: <code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> and specifically the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">6</span> <span class="pre">{</span></code> code-block, which was exclusively dedicated to <a class="reference external" href="https://jhustata.github.io/book/fff.html">survival analysis</a> and used the <code class="docutils literal notranslate"><span class="pre">stset</span></code>, <code class="docutils literal notranslate"><span class="pre">sts</span> <span class="pre">graph</span></code>, and <code class="docutils literal notranslate"><span class="pre">stcox</span></code> commands! How may we go about this using the online resources available to us to achieve this?</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Bonus points:</strong> Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file. Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points</p>
+</div>
+<p>We now wish to link the dataset created above to mortality outcomes to perform some survival analysis. See chapter 2: <code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> and specifically the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">6</span> <span class="pre">{</span></code> code-block, which was exclusively dedicated to <a class="reference external" href="https://jhustata.github.io/book/fff.html">survival analysis</a> and used the <code class="docutils literal notranslate"><span class="pre">stset</span></code>, <code class="docutils literal notranslate"><span class="pre">sts</span> <span class="pre">graph</span></code>, and <code class="docutils literal notranslate"><span class="pre">stcox</span></code> commands! How may we go about this using the online resources available to us?</p>
 <p>Then, in the second-half of the class we’ll recap .dofile structure in context of the <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.do</span></code> solution we’ll share with you. Let’s first briefly study an .ado file that you can find on your computers here:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span> <span class="o">~/</span>applications<span class="o">/</span>stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>s<span class="o">/</span>stcox<span class="m">.</span>ado
 </pre></div>

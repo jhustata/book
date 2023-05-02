@@ -128,10 +128,9 @@ Does 10,000 correspond to any of the output? Perhaps to `c(N)`?
 
 ![](agedist.png)
 
-Here's the script that produced them:
+Here's the script that produced them but you have to do some debugging before it works. There's no free lunch today :)
 
 ```stata
-
 qui {
 	if c(N) { //clear data before running script
         0. adopted from wk1 of this class
@@ -156,7 +155,8 @@ qui {
 			assert c(type) == "float"
 		    collapse (sum) number,by(ridageyr)
 	}
-	if `c(N)' { //no ouput if c(N)=0
+	local N=c(N)-1
+	if `N' { //no ouput if c(N)=0
 		noi di "N=`c(N)'"
 		local ages=c(N)
 		line number ridageyr, connect(stairstep) /*
@@ -167,7 +167,7 @@ qui {
 		graph save agedist2.gph,replace 
 		restore 
 	}
-	if `c(N)' {
+	if `N' {
 		noi di "N=`c(N)'"
 		hist ridageyr, freq bins(`ages') /*
 		    */text(500 40 "Vars: `c(k)', Obs: `c(N)'")
@@ -183,14 +183,15 @@ qui {
 }
 
 
-
 ```
 
 Let's [recall](https://jhustata.github.io/book/aaa.html) an extra credit challenge from the first day of class:
 
-**Bonus points:** Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file.[2] Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points
+```{seealso}
+**Bonus points:** Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file. Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points
+```
 
-We now wish to link the dataset created above to mortality outcomes to perform some survival analysis. See chapter 2: `r(mean)` and specifically the `if 6 {` code-block, which was exclusively dedicated to [survival analysis](https://jhustata.github.io/book/fff.html) and used the `stset`, `sts graph`, and `stcox` commands! How may we go about this using the online resources available to us to achieve this?
+We now wish to link the dataset created above to mortality outcomes to perform some survival analysis. See chapter 2: `r(mean)` and specifically the `if 6 {` code-block, which was exclusively dedicated to [survival analysis](https://jhustata.github.io/book/fff.html) and used the `stset`, `sts graph`, and `stcox` commands! How may we go about this using the online resources available to us?
 
 Then, in the second-half of the class we'll recap .dofile structure in context of the `hw1.lastname.firstname.do` solution we'll share with you. Let's first briefly study an .ado file that you can find on your computers here:
 
