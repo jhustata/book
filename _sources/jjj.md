@@ -131,6 +131,7 @@ Does 10,000 correspond to any of the output? Perhaps to `c(N)`?
 Here's the script that produced them but you have to do some debugging before it works. There's no free lunch today :)
 
 ```stata
+
 qui {
 	if c(N) { //clear data before running script
         0. adopted from wk1 of this class
@@ -160,22 +161,30 @@ qui {
 		noi di "N=`c(N)'"
 		local ages=c(N)
 		line number ridageyr, connect(stairstep) /*
-		    */text(500 40 "Vars: `c(k)', Obs: `c(N)'")
+		    */text(500 40 "Vars: `c(k)', Obs: `c(N)'") /*
+			*/yti("") /*
+			*/xti("")
 		graph save agedist1.gph,replace 
 		twoway area number ridageyr, connect(none) /*
-		    */text(500 40 "Vars: `c(k)', Obs: `c(N)'")
+		    */text(500 40 "Vars: `c(k)', Obs: `c(N)'") /*
+			*/yti("") /*
+			*/xti("")
 		graph save agedist2.gph,replace 
 		restore 
 	}
 	if `N' {
 		noi di "N=`c(N)'"
 		hist ridageyr, freq bins(`ages') /*
-		    */text(500 40 "Vars: `c(k)', Obs: `c(N)'")
+		    */text(500 40 "Vars: `c(k)', Obs: `c(N)'") /*
+			*/yti("") /*
+			*/xti("")
 		graph save agedist3.gph,replace 
 		graph combine agedist1.gph /*
 		            */agedist2.gph /*
 					*/agedist3.gph /*
-					    */, row(1)
+					    */, row(1) /*
+						*/  l1ti("N",orientation(horizontal)) /*
+						*/  b1ti("Age, y")
 		graph export agedist.png,replace 
 		noi di c(scheme)
 		noi di c(version)
