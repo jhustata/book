@@ -485,29 +485,28 @@ document.write(`
 </pre></div>
 </div>
 <p>Which of these is <strong>not</strong> a <code class="docutils literal notranslate"><span class="pre">twoway</span></code> graph? Does the <code class="docutils literal notranslate"><span class="pre">area</span></code> under the curve represent anything meaningful?</p>
-<p>Crudely, the AUC might be viewed as rectangular: <code class="docutils literal notranslate"><span class="pre">height</span></code> is 100 individuals x <code class="docutils literal notranslate"><span class="pre">width</span></code> is 100 years (i.e., age) = 10,000</p>
-<p>Does 10,000 correspond to any of the output? Perhaps to `c(N)’?</p>
+<p>Crudely, the AUC might be viewed as rectangular: <code class="docutils literal notranslate"><span class="pre">height</span></code> is 100 individuals x <code class="docutils literal notranslate"><span class="pre">width</span></code> is 100 years (i.e., <code class="docutils literal notranslate"><span class="pre">ages</span></code>) = 10,000</p>
+<p>Does 10,000 correspond to any of the output? Perhaps to <code class="docutils literal notranslate"><span class="pre">c(N)</span></code>?</p>
 <p><img alt="" src="_images/agedist.png" /></p>
 <p>Here’s the script that produced them:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
-<span class="k">	if</span> <span class="m">0</span> { <span class="c1">//from wk1 of this class</span>
+<span class="k">	if</span> <span class="nf">c</span>(N) { <span class="c1">//clear data before running script</span>
+        <span class="m">0</span>. adopted from wk1 of this<span class="k"> class</span>
 		<span class="m">1</span>. https:<span class="o">//</span>jhustata<span class="m">.</span>github<span class="m">.</span>io<span class="o">/</span>book<span class="o">/</span>bbb<span class="m">.</span>html
 		<span class="m">2</span>. import demographics data from nhanes
 	}
-<span class="k">	if</span> <span class="m">1</span> { <span class="c1">//settings,logfile,macros</span>
-	    cls 
-<span class="k">		clear</span> 
+<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">&lt;</span><span class="m">1</span> { <span class="c1">//settings,logfile,macros</span>
 <span class="k">		capture log close</span> 
 <span class="k">		log</span> using session0<span class="m">.</span>log,<span class="k"> replace</span> 
 <span class="k">		global</span> url https:<span class="o">//</span>wwwn<span class="m">.</span>cdc<span class="m">.</span>gov<span class="o">/</span>Nchs<span class="o">/</span>Nhanes<span class="o">/</span><span class="m">1999-2000</span><span class="o">/</span>
 <span class="k">		global</span> datafile DEMO<span class="m">.</span>XPT 
 	}
-<span class="k">	if</span> <span class="m">2</span> { <span class="c1">//import datafile</span>
+<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">&lt;</span><span class="m">2</span> { <span class="c1">//import datafile</span>
 		import sasxport5 <span class="s">&quot;</span><span class="vg">${url}${datafile}</span><span class="s">&quot;</span>,<span class="k"> clear</span>
 <span class="k">		replace</span> ridageyr=.
 <span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
 	}
-<span class="k">	if</span> <span class="m">3</span> {
+<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">&gt;</span><span class="m">3</span> {
 <span class="k">	    g</span> number=<span class="m">1</span>
 <span class="k">		preserve</span> 
 <span class="k">		    sum</span> ridageyr
