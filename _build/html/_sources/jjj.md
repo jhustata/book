@@ -122,9 +122,9 @@ foreach command in noisily quietly { //this line can be replaced with program de
 ```
 Which of these is **not** a `twoway` graph? Does the `area` under the curve represent anything meaningful? 
 
-Crudely, the AUC might be viewed as rectangular: `height` is 100 individuals x `width` is 100 years (i.e., age) = 10,000
+Crudely, the AUC might be viewed as rectangular: `height` is 100 individuals x `width` is 100 years (i.e., `ages`) = 10,000
 
-Does 10,000 correspond to any of the output? Perhaps to `c(N)'?
+Does 10,000 correspond to any of the output? Perhaps to `c(N)`?
 
 ![](agedist.png)
 
@@ -133,24 +133,23 @@ Here's the script that produced them:
 ```stata
 
 qui {
-	if 0 { //from wk1 of this class
+	if c(N) { //clear data before running script
+        0. adopted from wk1 of this class
 		1. https://jhustata.github.io/book/bbb.html
 		2. import demographics data from nhanes
 	}
-	if 1 { //settings,logfile,macros
-	    cls 
-		clear 
+	if c(N)<1 { //settings,logfile,macros
 		capture log close 
 		log using session0.log, replace 
 		global url https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/
 		global datafile DEMO.XPT 
 	}
-	if 2 { //import datafile
+	if c(N)<2 { //import datafile
 		import sasxport5 "${url}${datafile}", clear
 		replace ridageyr=.
 		noi di "N=`c(N)'"
 	}
-	if 3 {
+	if c(N)>3 {
 	    g number=1
 		preserve 
 		    sum ridageyr
