@@ -1,29 +1,9 @@
 N=9965
+N=86
 N=9965
-variable ridageyr not found
-r(111);
+stcolor
+18
 
+. 
 end of do-file
 
-r(111);
-
-. cls
-
-. clear
-
-. di as err "r(304)"
-r(304)
-
-. program define a1
-  1. exit
-  2. end
-
-. a1
-
-. program define a1
-program a1 already defined
-r(110);
-
-. capture program define a1
-
-. exit

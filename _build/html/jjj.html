@@ -518,22 +518,30 @@ document.write(`
 <span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
 <span class="k">		local</span> ages=<span class="nf">c</span>(N)
 <span class="k">		line</span> number ridageyr, connect(stairstep) <span class="cm">/*</span>
-<span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>)
+<span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>) <span class="cm">/*</span>
+<span class="cm">			*/</span>yti(<span class="s">&quot;&quot;</span>) <span class="cm">/*</span>
+<span class="cm">			*/</span>xti(<span class="s">&quot;&quot;</span>)
 <span class="k">		graph save</span> agedist1<span class="m">.</span>gph,replace 
 <span class="k">		twoway</span> area number ridageyr, connect(none) <span class="cm">/*</span>
-<span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>)
+<span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>) <span class="cm">/*</span>
+<span class="cm">			*/</span>yti(<span class="s">&quot;&quot;</span>) <span class="cm">/*</span>
+<span class="cm">			*/</span>xti(<span class="s">&quot;&quot;</span>)
 <span class="k">		graph save</span> agedist2<span class="m">.</span>gph,replace 
 <span class="k">		restore</span> 
 	}
 <span class="k">	if</span> <span class="nv">`N&#39;</span> {
 <span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
 <span class="k">		hist</span> ridageyr, freq bins(<span class="nv">`ages&#39;</span>) <span class="cm">/*</span>
-<span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>)
+<span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>) <span class="cm">/*</span>
+<span class="cm">			*/</span>yti(<span class="s">&quot;&quot;</span>) <span class="cm">/*</span>
+<span class="cm">			*/</span>xti(<span class="s">&quot;&quot;</span>)
 <span class="k">		graph save</span> agedist3<span class="m">.</span>gph,replace 
 <span class="k">		graph</span> combine agedist1<span class="m">.</span>gph <span class="cm">/*</span>
 <span class="cm">		            */</span>agedist2<span class="m">.</span>gph <span class="cm">/*</span>
 <span class="cm">					*/</span>agedist3<span class="m">.</span>gph <span class="cm">/*</span>
-<span class="cm">					    */</span>, row(<span class="m">1</span>)
+<span class="cm">					    */</span>, row(<span class="m">1</span>) <span class="cm">/*</span>
+<span class="cm">						*/</span>  l1ti(<span class="s">&quot;N&quot;</span>,orientation(horizontal)) <span class="cm">/*</span>
+<span class="cm">						*/</span>  b1ti(<span class="s">&quot;Age, y&quot;</span>)
 <span class="k">		graph</span> export agedist<span class="m">.</span>png,replace 
 <span class="k">		noi di</span> <span class="nf">c</span>(scheme)
 <span class="k">		noi di</span> <span class="nf">c</span>(version)
