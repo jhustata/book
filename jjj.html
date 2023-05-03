@@ -376,6 +376,14 @@ document.write(`
 <li><p><a class="reference external" href="https://ftp.cdc.gov/pub/">cdc.gov</a></p></li>
 <li><p><a class="reference external" href="https://data.nber.org/mortality/">nber.org</a></p></li>
 </ul>
+<p>Workflow:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/nberv050223.do">import</a> .csv files -&gt; save .dta files</p></li>
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/nberv050223.txt">logfile</a> to capture salient bits of process</p></li>
+<li><p><a class="reference download internal" download="" href="_downloads/ffdce455ea969fe9b7b0950ef9de57c9/nberappend.do"><span class="xref download myst">dofile</span></a> that appends all the saved .dta files from step #1</p></li>
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/nberappend.log">logfile</a> that documents the above process</p></li>
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/nber.twoway.do">twowayplot</a> script that produces the above figure</p></li>
+</ul>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> command<span class="k"> in noisily quietly</span> { <span class="c1">//this line can be replaced with program define</span>
 
     <span class="nv">`command&#39;</span> { <span class="c1">//and this line of code can be replaced with quietly</span>
