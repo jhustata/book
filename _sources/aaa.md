@@ -134,7 +134,7 @@ Academic integrity
 
 What's new this week?
 
-1. We will discuss the `hw1` solution on 05/04/2023
+1. We will discuss the `hw1` solution on 05/04/2023. Resubmissions for `hw1` due one same day as `hw2`
 2. Did you know that `lab5` has content that prepares you for `hw2`?
 3. Similarly, `lab6` (ie next week) has content that prepares you for `hw3`!
 
