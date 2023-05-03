@@ -11,7 +11,7 @@ Databases:
 Workflow:
 * [import](https://raw.githubusercontent.com/jhustata/book/main/nberv050223.do) .csv files -> save .dta files
 * [logfile](https://raw.githubusercontent.com/jhustata/book/main/nberv050223.txt) to capture salient bits of process
-* [dofile](https://jhustata.github.io/book/_downloads/ffdce455ea969fe9b7b0950ef9de57c9/nberappend.do) that appends all the saved .dta files from step #1
+* [dofile](https://raw.githubusercontent.com/jhustata/book/main/nberappend.do) that appends all the saved .dta files from step #1
 * [logfile](https://raw.githubusercontent.com/jhustata/book/main/nberappend.log) that documents the above process
 * [twowayplot](https://raw.githubusercontent.com/jhustata/book/main/nber.twoway.do) script that produces the above figure 
 
