@@ -2,7 +2,7 @@
 
 This is a `twoway` plot:
 
-![]mortality.png)
+![](mortality.png)
 
 Databases:
 * [cdc.gov](https://ftp.cdc.gov/pub/)
