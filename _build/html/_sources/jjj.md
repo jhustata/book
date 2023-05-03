@@ -2,7 +2,7 @@
 
 This is a `twoway` plot:
 
-![](https://jhustata.github.io/book/_downloads/9359d2ae4f8ad2efcfe2fd34e3547c35/mortality.png)
+![](mortality.png)
 
 **Attempt** to reproduce it using the resources available to you at the National Bureau of Economic Research (NBER). The script below provides you with very generous hints.
 

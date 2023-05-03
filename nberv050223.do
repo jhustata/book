@@ -29,10 +29,12 @@
 				}
 				if c(N)>3 { //conclusions
 					timer on 3
-					compress 
+					clear 
+					//do nberappend.do
 					lab data "mortality in the united states, 1959-2017"
 					save mort1959_2017.dta,replace 
 					timer off 3
 				}
+			  timer list 
 			  log close 
 			}
