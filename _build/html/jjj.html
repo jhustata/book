@@ -369,8 +369,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="twoway">
 <h1>twoway<a class="headerlink" href="#twoway" title="Permalink to this heading">#</a></h1>
 <p>This is a <code class="docutils literal notranslate"><span class="pre">twoway</span></code> plot:</p>
-<p><img alt="" src="_images/mortality.png" /></p>
-<p><strong>Attempt</strong> to reproduce it using the resources available to you at the National Bureau of Economic Research (NBER). The script below provides you with very generous hints.</p>
+<p>![]mortality.png)</p>
 <p>Databases:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://ftp.cdc.gov/pub/">cdc.gov</a></p></li>
@@ -380,7 +379,7 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/nberv050223.do">import</a> .csv files -&gt; save .dta files</p></li>
 <li><p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/nberv050223.txt">logfile</a> to capture salient bits of process</p></li>
-<li><p><a class="reference download internal" download="" href="_downloads/ffdce455ea969fe9b7b0950ef9de57c9/nberappend.do"><span class="xref download myst">dofile</span></a> that appends all the saved .dta files from step #1</p></li>
+<li><p><a class="reference external" href="https://jhustata.github.io/book/_downloads/ffdce455ea969fe9b7b0950ef9de57c9/nberappend.do">dofile</a> that appends all the saved .dta files from step #1</p></li>
 <li><p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/nberappend.log">logfile</a> that documents the above process</p></li>
 <li><p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/nber.twoway.do">twowayplot</a> script that produces the above figure</p></li>
 </ul>
@@ -567,7 +566,7 @@ document.write(`
 <p class="admonition-title">See also</p>
 <p><strong>Bonus points:</strong> Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file. Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points</p>
 </div>
-<p>We now wish to link the dataset created above to mortality outcomes to perform some survival analysis. See chapter 2: <code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> and specifically the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">6</span> <span class="pre">{</span></code> code-block, which was exclusively dedicated to <a class="reference external" href="https://jhustata.github.io/book/fff.html">survival analysis</a> and used the <code class="docutils literal notranslate"><span class="pre">stset</span></code>, <code class="docutils literal notranslate"><span class="pre">sts</span> <span class="pre">graph</span></code>, and <code class="docutils literal notranslate"><span class="pre">stcox</span></code> commands! How may we go about this using the online resources available to us?</p>
+<p>We now wish to link the dataset created above to mortality outcomes to perform survival analysis. See chapter 2: <code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> and specifically the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">6</span> <span class="pre">{</span></code> code-block, which was exclusively dedicated to <a class="reference external" href="https://jhustata.github.io/book/fff.html">survival analysis</a> and used the <code class="docutils literal notranslate"><span class="pre">stset</span></code>, <code class="docutils literal notranslate"><span class="pre">sts</span> <span class="pre">graph</span></code>, and <code class="docutils literal notranslate"><span class="pre">stcox</span></code> commands! How may we go about this using the online resources available to us?</p>
 <p>Then, in the second-half of the class we’ll recap .dofile structure in context of the <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.do</span></code> solution we’ll share with you. Let’s first briefly study an .ado file that you can find on your computers here:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span> <span class="o">~/</span>applications<span class="o">/</span>stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>s<span class="o">/</span>stcox<span class="m">.</span>ado
 </pre></div>
