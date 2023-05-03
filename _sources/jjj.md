@@ -15,6 +15,14 @@ Workflow:
 * [logfile](https://raw.githubusercontent.com/jhustata/book/main/nberappend.log) that documents the above process
 * [twowayplot](https://raw.githubusercontent.com/jhustata/book/main/nber.twoway.do) script that produces the above figure 
 
+Science:
+* [open](https://www.jhsph.edu/departments/w-harry-feinstone-department-of-molecular-microbiology-and-immunology/academics-and-degree-programs/R3-PhD-program/r3-curriculum-overview)
+* [public](https://jupyterbook.org/en/stable/intro.html)
+* [github](https://en.wikipedia.org/wiki/GitHub)
+* reproducible
+* [classbook](https://jhustata.github.io/book/intro.html)
+* et tu?
+
 ```stata
 
 foreach command in noisily quietly { //this line can be replaced with program define
