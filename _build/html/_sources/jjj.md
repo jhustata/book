@@ -10,6 +10,13 @@ Databases:
 * [cdc.gov](https://ftp.cdc.gov/pub/)
 * [nber.org](https://data.nber.org/mortality/)
 
+Workflow:
+* [import](https://raw.githubusercontent.com/jhustata/book/main/nberv050223.do) .csv files -> save .dta files
+* [logfile](https://raw.githubusercontent.com/jhustata/book/main/nberv050223.txt) to capture salient bits of process
+* [dofile](nberappend.do) that appends all the saved .dta files from step #1
+* [logfile](https://raw.githubusercontent.com/jhustata/book/main/nberappend.log) that documents the above process
+* [twowayplot](https://raw.githubusercontent.com/jhustata/book/main/nber.twoway.do) script that produces the above figure 
+
 ```stata
 
 foreach command in noisily quietly { //this line can be replaced with program define
