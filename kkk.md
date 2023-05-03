@@ -17,4 +17,4 @@
 * [ex4](https://jhustata.github.io/book/ggg.html) spot `em 
 * [ex5](https://jhustata.github.io/book/hhh.html) pvalue
 * [ex6](https://jhustata.github.io/book/iii.html) in programs
-* [exp7](https://jhustata.github.io/book/jjj.html) & in `stcox.ado`
+* [ex7](https://jhustata.github.io/book/jjj.html) & in `stcox.ado`
