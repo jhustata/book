@@ -41,8 +41,8 @@ Optional labs
 Homeworks due  
 
 1. [Fri,Apr 21,11:59 PM](hw1.md)
-2. [Fri,May 5,11:59 PM](hw2.md)
-3. [Fri,May 12,11:59 PM](hw3.md)
+2. [Mon,May 8,11:59 PM](hw2.md)
+3. [Mon,May 15,11:59 PM](hw3.md)
 
 Courseplus perks
 
@@ -135,8 +135,8 @@ Academic integrity
 What's new this week?
 
 1. We will discuss the `hw1` solution on 05/04/2023
-2. Have `highly-specific analytic needs` & class content hasn't covered them? Email me to schedule a one-on-one zoom session!!
-3. Solutions to`lab4` are now available and `lab5` has gone live!
+2. Did you know that `lab5` has content that prepares you for `hw2`?
+3. Similarly, `lab6` (ie next week) has content that prepares you for `hw3`!
 
 
 ```

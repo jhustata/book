@@ -1,9 +1,13 @@
 N=9965
-N=86
-N=9965
-stcolor
-18
+N=0 (i.e., code-block is not expressed)
 
 . 
 end of do-file
 
+. clear
+
+. cls
+
+. do "/Users/d/Desktop/nber.v032123.do"
+
+. quietly {
