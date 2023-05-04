@@ -232,7 +232,6 @@ Let's [recall](https://jhustata.github.io/book/aaa.html) an extra credit challen
 We now wish to link the dataset created above to mortality outcomes to perform survival analysis. See chapter 2: `r(mean)` and specifically the `if 6 {` code-block, which was exclusively dedicated to [survival analysis](https://jhustata.github.io/book/fff.html) and used the `stset`, `sts graph`, and `stcox` commands! How may we go about this using the online resources available to us[?](https://raw.githubusercontent.com/jhustata/book/main/nhanes_v0.do)
 
 ```stata
-
 nhanes_mortality
 nhanes_continuous_demo
 merge 1:1 seq using nhanes_mortality, keep(matched)
@@ -250,21 +249,28 @@ g age_at_death=ridageyr + years if mortstat==1
 bys survey: egen av_age_at_death=mean(age_at_death)
 #delimit ;
 twoway scatter av_age_at_death survey1 if surveytag,
-     ti("Age at Death in NHANES", pos(11))
+     ti("Age at Death by Survey Year", pos(11))
 	 yti("")
-	 xti("Survey Year");
+	 xti("Survey Year")
+	 note("Source: https://wwwn.cdc.gov/nchs/nhanes/")
+	 caption("https://ftp.cdc.gov/pub/")
+	 text(76 2010 "obs: `c(N)', vars: `c(k)'");
+graph export twoway_ageatdeath.png, replace ;
 stset years, fail(mortstat);
-sts graph,
-    by(survey1)
+sts graph, 
+    by(ridreth1 )
     fail
 	per(100)
 	ti("")
-	yti("%")
-	xti("Years)
-stcox i.survey1
-stcox i.survey1 ridageyr i.ridreth1 riagendr 
+	yti("%") 
+	xti("Years");
+graph export km_race.png, replace ;
+stcox i.ridreth1 ;
+stcox i.ridreth1  ridageyr riagendr ;
 #delimit cr
+
 ```
+Twoway way plot (include c(N) to make a point!!!)
 
 
 Then, in the second-half of the class we'll recap .dofile structure in context of the `hw1.lastname.firstname.do` solution we'll share with you. Let's first briefly study an .ado file that you can find on your computers here:
