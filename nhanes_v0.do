@@ -1,7 +1,7 @@
 qui {
     cls
-	//capture program drop nhanes_iii
-	//program define nhanes_iii
+	capture program drop nhanes_iii
+	program define nhanes_iii
 		qui {
 		    clear 
 			if c(N) { //background:r(mean) 
