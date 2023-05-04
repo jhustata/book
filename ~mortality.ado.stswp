@@ -1,0 +1,28 @@
+capture program drop mortality
+program define mortality 
+    syntax, filepath(string) sample(int)
+	    qui {
+			if c(N) { //background
+			    1. clear stata memory 
+				2. otherwise program crashes
+				3. uses .dta created by ~/nberappend.do
+				4. workflow: jhustata.github.io/book/jjj.html 
+				5. samples 1/10^6 of the dataset with c(N)>260 million
+				
+			}
+			if c(N)<1 { //methods
+				global mort1959_2017 "https://www.dropbox.com/s/" /*
+				    */ "qx8jukgm90dp5eo/mort1959_2017.dta?dl=0"
+				global workdir "`filepath'"
+				capture log close
+				log using mortality.log, replace 
+				max_memory .
+			}
+			if c(N)<2 { //results
+				use $mort1959_2017
+			}
+			if c(N)>3 {
+				
+			}
+		}
+end 
