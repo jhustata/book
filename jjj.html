@@ -604,22 +604,28 @@ nhanes_continuous_demo
 <span class="k">bys</span> survey:<span class="k"> egen</span> av_age_at_death=mean(age_at_death)
 #delimit ;
 <span class="k">twoway scatter</span> av_age_at_death survey1<span class="k"> if</span> surveytag,
-     ti(<span class="s">&quot;Age at Death in NHANES&quot;</span>, pos(<span class="m">11</span>))
+     ti(<span class="s">&quot;Age at Death by Survey Year&quot;</span>, pos(<span class="m">11</span>))
 	 yti(<span class="s">&quot;&quot;</span>)
-	 xti(<span class="s">&quot;Survey Year&quot;</span>);
+	 xti(<span class="s">&quot;Survey Year&quot;</span>)
+<span class="k">	 note</span>(<span class="s">&quot;Source: https://wwwn.cdc.gov/nchs/nhanes/&quot;</span>)
+	 caption(<span class="s">&quot;https://ftp.cdc.gov/pub/&quot;</span>)
+	 text(<span class="m">76</span> <span class="m">2010</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>);
+<span class="k">graph</span> export twoway_ageatdeath<span class="m">.</span>png,<span class="k"> replace</span> ;
 <span class="k">stset</span> years, fail(mortstat);
-<span class="k">sts graph</span>,
-<span class="k">    by</span>(survey1)
+<span class="k">sts graph</span>, 
+<span class="k">    by</span>(ridreth1 )
     fail
 	per(<span class="m">100</span>)
 	ti(<span class="s">&quot;&quot;</span>)
-	yti(<span class="s">&quot;%&quot;</span>)
-	xti(<span class="s">&quot;Years)</span>
-<span class="k">stcox</span> i<span class="m">.</span>survey1
-<span class="k">stcox</span> i<span class="m">.</span>survey1 ridageyr i<span class="m">.</span>ridreth1 riagendr 
+	yti(<span class="s">&quot;%&quot;</span>) 
+	xti(<span class="s">&quot;Years&quot;</span>);
+<span class="k">graph</span> export km_race<span class="m">.</span>png,<span class="k"> replace</span> ;
+<span class="k">stcox</span> i<span class="m">.</span>ridreth1 ;
+<span class="k">stcox</span> i<span class="m">.</span>ridreth1  ridageyr riagendr ;
 #delimit cr
 </pre></div>
 </div>
+<p>Twoway way plot (include c(N) to make a point!!!)</p>
 <p>Then, in the second-half of the class we’ll recap .dofile structure in context of the <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.do</span></code> solution we’ll share with you. Let’s first briefly study an .ado file that you can find on your computers here:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span> <span class="o">~/</span>applications<span class="o">/</span>stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>s<span class="o">/</span>stcox<span class="m">.</span>ado
 </pre></div>
