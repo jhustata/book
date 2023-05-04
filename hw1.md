@@ -2,7 +2,7 @@
 
 Overview & [video](https://jhjhm.zoom.us/rec/share/FJqR4OFoXqeU3yDIjgbFRiCm2rBu6X5OMebxaX0_oRcBH_vTXv6Bm4yDXLabbe3C.YLu4JhjZBWL0ZsmE)
 
-Write a `.do file` which imports data from [hw1.txt](hw1.txt) and performs the tasks described below[.](hw1solnotes.ipynb) Name it `hw1.lastname.firstname.do` and it should create a log file called `hw1.lastname.firstname.log`. Your .do file should follow conventions for .do file structure described in [class: session pwd](eee.md)[.](hw1rubric.md) Make sure your log file displays only the output of interest[.](placeholders1.do) But do not submit your log files as part of the assignment[.](placeholders2.do)
+Write a `.do file` which imports data from [hw1.txt](hw1.txt) and performs the tasks described below[.](hw1solnotes.ipynb) Name it `hw1.lastname.firstname.do` and it should create a log file called `hw1.lastname.firstname.log`. Your .do file should follow conventions for .do file structure described in [class: session pwd](eee.md)[.](hw1rubric.md) Make sure your log file displays only the output of interest[.](https://raw.githubusercontent.com/jhustata/book/main/placeholders1.do) But do not submit your log files as part of the assignment[.](https://raw.githubusercontent.com/jhustata/book/main/placeholders2.do)
 
 Evaluation will be based on the log file produced when we run your script on our machines[.](https://raw.githubusercontent.com/jhustata/book/main/stcox.ado) Please follow the coding guidelines from class including structure, indentation, and annotation[.](https://raw.githubusercontent.com/jhustata/book/main/hw1.lastname.firstname.do)
 
