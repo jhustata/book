@@ -214,6 +214,15 @@ qui {
 
 ```
 
+* Sampling large datasets 
+* Approach to workflow
+* May cut hours off efforts
+
+[here's](https://raw.githubusercontent.com/jhustata/book/main/mortalitysample.do) an example
+* exploratory analyses on sample
+* build .do file on sample, iterate
+* submit final job to full dataset
+
 Let's [recall](https://jhustata.github.io/book/aaa.html) an extra credit challenge from the first day of class:
 
 ```{seealso}
