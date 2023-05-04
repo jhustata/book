@@ -270,8 +270,12 @@ stcox i.ridreth1  ridageyr riagendr ;
 #delimit cr
 
 ```
-Twoway way plot (include c(N) to make a point!!!)
+Let's study this output and discuss a few issues:
 
+* `egen` command
+* `by` command
+* `c(N)`, `c(k)` macros embedded in graph
+* improving the aesthetics
 
 Then, in the second-half of the class we'll recap .dofile structure in context of the `hw1.lastname.firstname.do` solution we'll share with you. Let's first briefly study an .ado file that you can find on your computers here:
 
