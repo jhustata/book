@@ -368,6 +368,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="twoway">
 <h1>twoway<a class="headerlink" href="#twoway" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/LcwchujwTNi_2RJ2_LmwGxrjvUOVBaKRbS4ZKWGf1F5TWm-NO-IFIREzTCxVDpvN.xBe4l_9y6oHFKsam?startTime=1683228995000">video</a></p>
 <p>This is a <code class="docutils literal notranslate"><span class="pre">twoway</span></code> plot:</p>
 <p><img alt="" src="_images/mortality.png" /></p>
 <p>Databases:</p>
@@ -407,18 +408,18 @@ document.write(`
 <span class="k">              if</span> <span class="m">1</span> { <span class="c1">//macros,logfile,settings</span>
 <span class="k">        </span>
 <span class="k">                  timer on</span> <span class="m">1</span>
-<span class="k">				  </span>
+<span class="k">      </span>
 <span class="k">                  global</span> url https:<span class="o">//</span>data<span class="m">.</span>nber<span class="m">.</span>org<span class="o">/</span>mortality<span class="o">/</span>
 <span class="k">                  global</span> filename mort1959<span class="m">.</span>dta
-<span class="k">				  global</span> logfile wk1<span class="m">.</span>ph<span class="m">.340.700</span><span class="o">-</span><span class="nv">`command&#39;</span>
+<span class="k">      global</span> logfile wk1<span class="m">.</span>ph<span class="m">.340.700</span><span class="o">-</span><span class="nv">`command&#39;</span>
                   
-				  cls
+      cls
 <span class="k">                  capture log close</span>
 <span class="k">                  log</span> using <span class="vg">${logfile}</span>.log,<span class="k"> replace</span> 
 <span class="k">                   </span>
 <span class="k">                  set more</span> off
-<span class="k">				  version</span> <span class="m">15</span>
-<span class="k">				  noi di</span> <span class="s">&quot;</span><span class="nv">`c(current_time)&#39;</span><span class="s"> </span><span class="nv">`c(current_date)&#39;</span><span class="s">&quot;</span> 
+<span class="k">      version</span> <span class="m">15</span>
+<span class="k">      noi di</span> <span class="s">&quot;</span><span class="nv">`c(current_time)&#39;</span><span class="s"> </span><span class="nv">`c(current_date)&#39;</span><span class="s">&quot;</span> 
 <span class="k">        </span>
 <span class="k">                  timer</span> off <span class="m">1</span>
         
@@ -467,7 +468,7 @@ document.write(`
 <span class="k">                  </span>
 <span class="k">                  preserve</span> 
 <span class="k">                  collapse</span> (count) deaths,<span class="k"> by</span>(datayear)
-<span class="k">				     save twoway</span><span class="m">.</span>mort<span class="m">.</span>dta,clear
+<span class="k">         save twoway</span><span class="m">.</span>mort<span class="m">.</span>dta,clear
 <span class="k">                     noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
 <span class="k">                     noi list</span> 
                      #delimit ;
@@ -492,7 +493,7 @@ document.write(`
               }
 <span class="k">    </span>
 <span class="k">    noi timer list</span> 
-<span class="k">	timer clear</span>  
+<span class="k"> timer clear</span>  
 <span class="k">    log close</span> 
     
     }
@@ -508,65 +509,65 @@ document.write(`
 <p>I’d like to invoke the <a class="reference external" href="https://jhustata.github.io/book/_downloads/785b3e7ec96641cdff07100d6b7131b3/metaphor.png">metaphor</a> of gene activation, which is analogous to <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">macro</span> <span class="pre">{</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span> <span class="pre">macro</span> <span class="pre">{</span></code>, and <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">{</span></code>. Although below we have Stata code-blocks rather than genetic code, the metaphor is apt. What happens <code class="docutils literal notranslate"><span class="pre">upstream</span></code> in one code-block may affect the expression of another <code class="docutils literal notranslate"><span class="pre">downstream</span></code> code-block for a given process, but in a dofile as compared to a given biological process.</p>
 <p>You <u><strong>ought to</strong></u> emerge from this class thinking of Stata programming as a series of <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">macro</span> <span class="pre">{</span></code> conditional statements. And your teaching team will lookout for these in your .do files!</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
-<span class="k">	if</span> <span class="nf">c</span>(N) { <span class="c1">//clear data before running script</span>
+<span class="k"> if</span> <span class="nf">c</span>(N) { <span class="c1">//clear data before running script</span>
         <span class="m">1</span>. adopted from wk1 of this<span class="k"> class</span>
-		<span class="m">2</span>. https:<span class="o">//</span>jhustata<span class="m">.</span>github<span class="m">.</span>io<span class="o">/</span>book<span class="o">/</span>bbb<span class="m">.</span>html
-		<span class="m">3</span>. import demographics data from nhanes
-	}
-<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">&lt;</span><span class="m">1</span> { <span class="c1">//settings,logfile,macros</span>
-<span class="k">		capture log close</span> 
-<span class="k">		log</span> using session0<span class="m">.</span>log,<span class="k"> replace</span> 
-<span class="k">		global</span> url https:<span class="o">//</span>wwwn<span class="m">.</span>cdc<span class="m">.</span>gov<span class="o">/</span>Nchs<span class="o">/</span>Nhanes<span class="o">/</span><span class="m">1999-2000</span><span class="o">/</span>
-<span class="k">		global</span> datafile DEMO<span class="m">.</span>XPT 
-	}
-<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">&lt;</span><span class="m">2</span> { <span class="c1">//import datafile</span>
-		import sasxport5 <span class="s">&quot;</span><span class="vg">${url}${datafile}</span><span class="s">&quot;</span>,<span class="k"> clear</span>
-<span class="k">		replace</span> ridageyr=.
-<span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
-	}
-<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">&gt;</span><span class="m">3</span> {
-<span class="k">	    g</span> number=<span class="m">1</span>
-<span class="k">		preserve</span> 
-<span class="k">		    sum</span> ridageyr
-<span class="k">			assert</span> <span class="nf">c</span>(type) <span class="o">==</span> <span class="s">&quot;float&quot;</span>
-<span class="k">		    collapse</span> (sum) number,by(ridageyr)
-	}
-<span class="k">	local</span> N=<span class="nf">c</span>(N)<span class="o">-</span><span class="m">1</span>
-<span class="k">	if</span> <span class="nv">`N&#39;</span> { <span class="c1">//no ouput if c(N)=0</span>
-<span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
-<span class="k">		local</span> ages=<span class="nf">c</span>(N)
-<span class="k">		line</span> number ridageyr, connect(stairstep) <span class="cm">/*</span>
-<span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>) <span class="cm">/*</span>
-<span class="cm">			*/</span>yti(<span class="s">&quot;&quot;</span>) <span class="cm">/*</span>
-<span class="cm">			*/</span>xti(<span class="s">&quot;&quot;</span>)
-<span class="k">		graph save</span> agedist1<span class="m">.</span>gph,replace 
-<span class="k">		twoway</span> area number ridageyr, connect(none) <span class="cm">/*</span>
-<span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>) <span class="cm">/*</span>
-<span class="cm">			*/</span>yti(<span class="s">&quot;&quot;</span>) <span class="cm">/*</span>
-<span class="cm">			*/</span>xti(<span class="s">&quot;&quot;</span>)
-<span class="k">		graph save</span> agedist2<span class="m">.</span>gph,replace 
-<span class="k">		restore</span> 
-	}
-<span class="k">	if</span> <span class="nv">`N&#39;</span> {
-<span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
-<span class="k">		hist</span> ridageyr, freq bins(<span class="nv">`ages&#39;</span>) <span class="cm">/*</span>
-<span class="cm">		    */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>) <span class="cm">/*</span>
-<span class="cm">			*/</span>yti(<span class="s">&quot;&quot;</span>) <span class="cm">/*</span>
-<span class="cm">			*/</span>xti(<span class="s">&quot;&quot;</span>)
-<span class="k">		graph save</span> agedist3<span class="m">.</span>gph,replace 
-<span class="k">		graph</span> combine agedist1<span class="m">.</span>gph <span class="cm">/*</span>
-<span class="cm">		            */</span>agedist2<span class="m">.</span>gph <span class="cm">/*</span>
-<span class="cm">					*/</span>agedist3<span class="m">.</span>gph <span class="cm">/*</span>
-<span class="cm">					    */</span>, row(<span class="m">1</span>) <span class="cm">/*</span>
-<span class="cm">						*/</span>  l1ti(<span class="s">&quot;N&quot;</span>,orientation(horizontal)) <span class="cm">/*</span>
-<span class="cm">						*/</span>  b1ti(<span class="s">&quot;Age, y&quot;</span>)
-<span class="k">		graph</span> export agedist<span class="m">.</span>png,replace 
-<span class="k">		noi di</span> <span class="nf">c</span>(scheme)
-<span class="k">		noi di</span> <span class="nf">c</span>(version)
-	}
-<span class="k">	else</span> {
-<span class="k">		noi di</span> <span class="s">&quot;N=</span><span class="nv">`N&#39;</span><span class="s"> (i.e., code-block is not expressed)&quot;</span>
-	}
+  <span class="m">1</span>. https:<span class="o">//</span>jhustata<span class="m">.</span>github<span class="m">.</span>io<span class="o">/</span>book<span class="o">/</span>bbb<span class="m">.</span>html
+  <span class="m">2</span>. import demographics data from nhanes
+ }
+<span class="k"> if</span> <span class="nf">c</span>(N)<span class="o">&lt;</span><span class="m">1</span> { <span class="c1">//settings,logfile,macros</span>
+<span class="k">  capture log close</span> 
+<span class="k">  log</span> using session0<span class="m">.</span>log,<span class="k"> replace</span> 
+<span class="k">  global</span> url https:<span class="o">//</span>wwwn<span class="m">.</span>cdc<span class="m">.</span>gov<span class="o">/</span>Nchs<span class="o">/</span>Nhanes<span class="o">/</span><span class="m">1999-2000</span><span class="o">/</span>
+<span class="k">  global</span> datafile DEMO<span class="m">.</span>XPT 
+ }
+<span class="k"> if</span> <span class="nf">c</span>(N)<span class="o">&lt;</span><span class="m">2</span> { <span class="c1">//import datafile</span>
+  import sasxport5 <span class="s">&quot;</span><span class="vg">${url}${datafile}</span><span class="s">&quot;</span>,<span class="k"> clear</span>
+<span class="k">  replace</span> ridageyr=.
+<span class="k">  noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
+ }
+<span class="k"> if</span> <span class="nf">c</span>(N)<span class="o">&gt;</span><span class="m">3</span> {
+<span class="k">     g</span> number=<span class="m">1</span>
+<span class="k">  preserve</span> 
+<span class="k">      sum</span> ridageyr
+<span class="k">   assert</span> <span class="nf">c</span>(type) <span class="o">==</span> <span class="s">&quot;float&quot;</span>
+<span class="k">      collapse</span> (sum) number,by(ridageyr)
+ }
+<span class="k"> local</span> N=<span class="nf">c</span>(N)<span class="o">-</span><span class="m">1</span>
+<span class="k"> if</span> <span class="nv">`N&#39;</span> { <span class="c1">//no ouput if c(N)=0</span>
+<span class="k">  noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
+<span class="k">  local</span> ages=<span class="nf">c</span>(N)
+<span class="k">  line</span> number ridageyr, connect(stairstep) <span class="cm">/*</span>
+<span class="cm">      */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>) <span class="cm">/*</span>
+<span class="cm">   */</span>yti(<span class="s">&quot;&quot;</span>) <span class="cm">/*</span>
+<span class="cm">   */</span>xti(<span class="s">&quot;&quot;</span>)
+<span class="k">  graph save</span> agedist1<span class="m">.</span>gph,replace 
+<span class="k">  twoway</span> area number ridageyr, connect(none) <span class="cm">/*</span>
+<span class="cm">      */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>) <span class="cm">/*</span>
+<span class="cm">   */</span>yti(<span class="s">&quot;&quot;</span>) <span class="cm">/*</span>
+<span class="cm">   */</span>xti(<span class="s">&quot;&quot;</span>)
+<span class="k">  graph save</span> agedist2<span class="m">.</span>gph,replace 
+<span class="k">  restore</span> 
+ }
+<span class="k"> if</span> <span class="nv">`N&#39;</span> {
+<span class="k">  noi di</span> <span class="s">&quot;N=</span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>
+<span class="k">  hist</span> ridageyr, freq bins(<span class="nv">`ages&#39;</span>) <span class="cm">/*</span>
+<span class="cm">      */</span>text(<span class="m">500</span> <span class="m">40</span> <span class="s">&quot;Vars: </span><span class="nv">`c(k)&#39;</span><span class="s">, Obs: </span><span class="nv">`c(N)&#39;</span><span class="s">&quot;</span>) <span class="cm">/*</span>
+<span class="cm">   */</span>yti(<span class="s">&quot;&quot;</span>) <span class="cm">/*</span>
+<span class="cm">   */</span>xti(<span class="s">&quot;&quot;</span>)
+<span class="k">  graph save</span> agedist3<span class="m">.</span>gph,replace 
+<span class="k">  graph</span> combine agedist1<span class="m">.</span>gph <span class="cm">/*</span>
+<span class="cm">              */</span>agedist2<span class="m">.</span>gph <span class="cm">/*</span>
+<span class="cm">     */</span>agedist3<span class="m">.</span>gph <span class="cm">/*</span>
+<span class="cm">         */</span>, row(<span class="m">1</span>) <span class="cm">/*</span>
+<span class="cm">      */</span>  l1ti(<span class="s">&quot;N&quot;</span>,orientation(horizontal)) <span class="cm">/*</span>
+<span class="cm">      */</span>  b1ti(<span class="s">&quot;Age, y&quot;</span>)
+<span class="k">  graph</span> export agedist<span class="m">.</span>png,replace 
+<span class="k">  noi di</span> <span class="nf">c</span>(scheme)
+<span class="k">  noi di</span> <span class="nf">c</span>(version)
+ }
+<span class="k"> else</span> {
+<span class="k">  noi di</span> <span class="s">&quot;N=</span><span class="nv">`N&#39;</span><span class="s"> (i.e., code-block is not expressed)&quot;</span>
+ }
 }
 </pre></div>
 </div>
@@ -605,20 +606,20 @@ nhanes_continuous_demo
 #delimit ;
 <span class="k">twoway scatter</span> av_age_at_death survey1<span class="k"> if</span> surveytag,
      ti(<span class="s">&quot;Age at Death by Survey Year&quot;</span>, pos(<span class="m">11</span>))
-	 yti(<span class="s">&quot;&quot;</span>)
-	 xti(<span class="s">&quot;Survey Year&quot;</span>)
-<span class="k">	 note</span>(<span class="s">&quot;Source: https://wwwn.cdc.gov/nchs/nhanes/&quot;</span>)
-	 caption(<span class="s">&quot;https://ftp.cdc.gov/pub/&quot;</span>)
-	 text(<span class="m">76</span> <span class="m">2010</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>);
+  yti(<span class="s">&quot;&quot;</span>)
+  xti(<span class="s">&quot;Survey Year&quot;</span>)
+<span class="k">  note</span>(<span class="s">&quot;Source: https://wwwn.cdc.gov/nchs/nhanes/&quot;</span>)
+  caption(<span class="s">&quot;https://ftp.cdc.gov/pub/&quot;</span>)
+  text(<span class="m">76</span> <span class="m">2010</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>);
 <span class="k">graph</span> export twoway_ageatdeath<span class="m">.</span>png,<span class="k"> replace</span> ;
 <span class="k">stset</span> years, fail(mortstat);
 <span class="k">sts graph</span>, 
 <span class="k">    by</span>(ridreth1 )
     fail
-	per(<span class="m">100</span>)
-	ti(<span class="s">&quot;&quot;</span>)
-	yti(<span class="s">&quot;%&quot;</span>) 
-	xti(<span class="s">&quot;Years&quot;</span>);
+ per(<span class="m">100</span>)
+ ti(<span class="s">&quot;&quot;</span>)
+ yti(<span class="s">&quot;%&quot;</span>) 
+ xti(<span class="s">&quot;Years&quot;</span>);
 <span class="k">graph</span> export km_race<span class="m">.</span>png,<span class="k"> replace</span> ;
 <span class="k">stcox</span> i<span class="m">.</span>ridreth1 ;
 <span class="k">stcox</span> i<span class="m">.</span>ridreth1  ridageyr riagendr ;
@@ -633,8 +634,8 @@ nhanes_continuous_demo
 <li><p>improving the aesthetics</p></li>
 </ul>
 <p>Which of these is a twoway graph?</p>
-<p>![twoway_ageatdeath.png]</p>
-<p>![km_race.png]</p>
+<p><img alt="" src="_images/twoway_ageatdeath.png" /></p>
+<p><img alt="" src="_images/km_race.png" /></p>
 <p>Then, in the second-half of the class we’ll recap .dofile structure in context of the <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.do</span></code> solution we’ll share with you. Let’s first briefly study an .ado file that you can find on your computers here:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span> <span class="o">~/</span>applications<span class="o">/</span>stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>s<span class="o">/</span>stcox<span class="m">.</span>ado
 </pre></div>
@@ -653,499 +654,499 @@ nhanes_continuous_demo
 </ol>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">*! version 7.7.7  06mar2023</span>
 <span class="k">program stcox</span>, eclass byable(onecall)<span class="k"> sort</span> <span class="cs">///</span>
-<span class="k">		prop</span>(st swml nohr hr svyb svyj svylb mi)
-<span class="k">	version</span> <span class="m">8</span>, missing
-<span class="k">	local version</span> :<span class="k"> di</span> <span class="s">&quot;version &quot;</span> <span class="nf">string</span>(<span class="nf">_caller</span>()) <span class="s">&quot;, missing:&quot;</span>
-<span class="k">	if</span> <span class="nf">replay</span>() {                  <span class="cm">/* Branch off to stcox_fr as needed */</span>
-<span class="k">		syntax</span> [, ESTImate <span class="o">*</span>]
-<span class="k">		if</span> <span class="s">&quot;</span><span class="nv">`estimate&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> {
-<span class="k">			if</span> _by() { 
-<span class="k">				error</span> <span class="m">190</span>
-			}
-<span class="k">			if</span> <span class="s">`&quot;</span><span class="nv">`e(cmd2)&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;stcox&quot;</span> {
-<span class="k">				error</span> <span class="m">301</span>
-			}
-<span class="k">			if</span> <span class="s">&quot;</span><span class="nv">`e(shared)&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
-<span class="k">				stcox_fr</span> <span class="nv">`0&#39;</span>
-<span class="k">				exit</span> 
-			}
-		}
-	}
-<span class="k">	if</span> _by() {
-<span class="k">		local by</span> <span class="s">&quot;by </span><span class="nv">`_byvars&#39;`_byrc0&#39;</span><span class="s">:&quot;</span>
-	}
-<span class="k">	syntax</span> [varlist(default=none fv)] [if] [in] [, <span class="cm">/*</span>
-<span class="cm">		*/</span> FRailty(string) SHared(string) ESTImate <span class="o">*</span>]
-<span class="k">	local</span> fvops = <span class="s">&quot;</span><span class="nv">`s(fvops)&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;true&quot;</span> | <span class="nf">_caller</span>() <span class="o">&gt;=</span> <span class="m">11</span>
+<span class="k">  prop</span>(st swml nohr hr svyb svyj svylb mi)
+<span class="k"> version</span> <span class="m">8</span>, missing
+<span class="k"> local version</span> :<span class="k"> di</span> <span class="s">&quot;version &quot;</span> <span class="nf">string</span>(<span class="nf">_caller</span>()) <span class="s">&quot;, missing:&quot;</span>
+<span class="k"> if</span> <span class="nf">replay</span>() {                  <span class="cm">/* Branch off to stcox_fr as needed */</span>
+<span class="k">  syntax</span> [, ESTImate <span class="o">*</span>]
+<span class="k">  if</span> <span class="s">&quot;</span><span class="nv">`estimate&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> {
+<span class="k">   if</span> _by() { 
+<span class="k">    error</span> <span class="m">190</span>
+   }
+<span class="k">   if</span> <span class="s">`&quot;</span><span class="nv">`e(cmd2)&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;stcox&quot;</span> {
+<span class="k">    error</span> <span class="m">301</span>
+   }
+<span class="k">   if</span> <span class="s">&quot;</span><span class="nv">`e(shared)&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
+<span class="k">    stcox_fr</span> <span class="nv">`0&#39;</span>
+<span class="k">    exit</span> 
+   }
+  }
+ }
+<span class="k"> if</span> _by() {
+<span class="k">  local by</span> <span class="s">&quot;by </span><span class="nv">`_byvars&#39;`_byrc0&#39;</span><span class="s">:&quot;</span>
+ }
+<span class="k"> syntax</span> [varlist(default=none fv)] [if] [in] [, <span class="cm">/*</span>
+<span class="cm">  */</span> FRailty(string) SHared(string) ESTImate <span class="o">*</span>]
+<span class="k"> local</span> fvops = <span class="s">&quot;</span><span class="nv">`s(fvops)&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;true&quot;</span> | <span class="nf">_caller</span>() <span class="o">&gt;=</span> <span class="m">11</span>
 <span class="k">        if</span> <span class="nv">`fvops&#39;</span> {
 <span class="k">                local version</span>:<span class="k"> di</span> <span class="s">&quot;version &quot;</span> <span class="cs">///</span>
-		<span class="nf">string</span>(<span class="nf">max</span>(<span class="m">11</span>,<span class="nf">_caller</span>())) <span class="s">&quot;, missing:&quot;</span>
+  <span class="nf">string</span>(<span class="nf">max</span>(<span class="m">11</span>,<span class="nf">_caller</span>())) <span class="s">&quot;, missing:&quot;</span>
         }
 
-<span class="k">	if</span> <span class="s">`&quot;</span><span class="nv">`shared&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> | <span class="s">`&quot;</span><span class="nv">`frailty&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
-		<span class="nv">`version&#39;</span> <span class="nv">`by&#39;</span><span class="k"> stcox_fr</span> <span class="nv">`0&#39;</span>
-<span class="k">		ereturn local</span> cmdline <span class="s">`&quot;stcox </span><span class="nv">`0&#39;</span><span class="s">&quot;&#39;</span>	
-<span class="k">		exit</span> 
-	}
-	<span class="nv">`version&#39;</span> <span class="nv">`BY&#39;</span> _vce_parserun<span class="k"> stcox</span>, stdata noneedvarlist	<span class="cs">///</span>
-<span class="k">		mark</span>(STrata SHared OFFset tvc CLuster)			<span class="cs">///</span>
-		numdepvars(<span class="m">0</span>) : <span class="nv">`0&#39;</span>
-<span class="k">	if</span> <span class="s">&quot;</span><span class="nv">`s(exit)&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
-<span class="k">		ereturn local</span> cmdline <span class="s">`&quot;stcox </span><span class="nv">`0&#39;</span><span class="s">&quot;&#39;</span>
-<span class="k">		exit</span>
-	}
-	<span class="nv">`version&#39;</span> <span class="cs">///</span>
-	<span class="nv">`by&#39;</span> stcox_7 <span class="nv">`0&#39;</span>
-<span class="k">	if</span> (<span class="o">!</span><span class="nf">replay</span>() | <span class="s">&quot;</span><span class="nv">`estimate&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span>) {
-<span class="k">		ereturn local</span> cmdline <span class="s">`&quot;stcox </span><span class="nv">`0&#39;</span><span class="s">&quot;&#39;</span>
-	}
-<span class="k">	exit</span> 
+<span class="k"> if</span> <span class="s">`&quot;</span><span class="nv">`shared&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> | <span class="s">`&quot;</span><span class="nv">`frailty&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
+  <span class="nv">`version&#39;</span> <span class="nv">`by&#39;</span><span class="k"> stcox_fr</span> <span class="nv">`0&#39;</span>
+<span class="k">  ereturn local</span> cmdline <span class="s">`&quot;stcox </span><span class="nv">`0&#39;</span><span class="s">&quot;&#39;</span> 
+<span class="k">  exit</span> 
+ }
+ <span class="nv">`version&#39;</span> <span class="nv">`BY&#39;</span> _vce_parserun<span class="k"> stcox</span>, stdata noneedvarlist <span class="cs">///</span>
+<span class="k">  mark</span>(STrata SHared OFFset tvc CLuster)   <span class="cs">///</span>
+  numdepvars(<span class="m">0</span>) : <span class="nv">`0&#39;</span>
+<span class="k"> if</span> <span class="s">&quot;</span><span class="nv">`s(exit)&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
+<span class="k">  ereturn local</span> cmdline <span class="s">`&quot;stcox </span><span class="nv">`0&#39;</span><span class="s">&quot;&#39;</span>
+<span class="k">  exit</span>
+ }
+ <span class="nv">`version&#39;</span> <span class="cs">///</span>
+ <span class="nv">`by&#39;</span> stcox_7 <span class="nv">`0&#39;</span>
+<span class="k"> if</span> (<span class="o">!</span><span class="nf">replay</span>() | <span class="s">&quot;</span><span class="nv">`estimate&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span>) {
+<span class="k">  ereturn local</span> cmdline <span class="s">`&quot;stcox </span><span class="nv">`0&#39;</span><span class="s">&quot;&#39;</span>
+ }
+<span class="k"> exit</span> 
 <span class="k">end</span>
 
 <span class="k">program</span> define stcox_7, eclass byable(recall)
-<span class="k">	local version</span> :<span class="k"> di</span> <span class="s">&quot;version &quot;</span> <span class="nf">string</span>(<span class="nf">_caller</span>()) <span class="s">&quot;, missing:&quot;</span>
-<span class="k">	version</span> <span class="m">7</span>, missing
+<span class="k"> local version</span> :<span class="k"> di</span> <span class="s">&quot;version &quot;</span> <span class="nf">string</span>(<span class="nf">_caller</span>()) <span class="s">&quot;, missing:&quot;</span>
+<span class="k"> version</span> <span class="m">7</span>, missing
 
-<span class="k">	if</span> <span class="nf">_caller</span>()<span class="o">&lt;</span><span class="m">6</span> {
-<span class="k">		if</span> _by() {<span class="k"> error</span> <span class="m">190</span> } 
-<span class="k">		ztcox_5</span> <span class="nv">`0&#39;</span>
-<span class="k">		exit</span>
-	}
+<span class="k"> if</span> <span class="nf">_caller</span>()<span class="o">&lt;</span><span class="m">6</span> {
+<span class="k">  if</span> _by() {<span class="k"> error</span> <span class="m">190</span> } 
+<span class="k">  ztcox_5</span> <span class="nv">`0&#39;</span>
+<span class="k">  exit</span>
+ }
 
-<span class="k">	if</span> <span class="nf">replay</span>() {
-<span class="k">		syntax</span> [, ESTImate noHR <span class="o">*</span> ]
-<span class="k">		if</span> <span class="s">`&quot;</span><span class="nv">`estimate&#39;</span><span class="s">&quot;&#39;</span><span class="o">==</span><span class="s">&quot;&quot;</span> {
-<span class="k">			if</span> _by() {<span class="k"> error</span> <span class="m">190</span> }
-<span class="k">			if</span> <span class="s">`&quot;</span><span class="nv">`e(cmd2)&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;stcox&quot;</span> {
-<span class="k">				error</span> <span class="m">301</span> 
-			}
-<span class="k">			if</span> <span class="s">&quot;</span><span class="nv">`e(prefix)&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;svy&quot;</span> {
-				_prefix_display, <span class="nv">`hr&#39;</span> <span class="nv">`options&#39;</span>
-<span class="k">				exit</span>
-			}
-			_get_diopts diopts, <span class="nv">`options&#39;</span>
-<span class="k">			local</span> hr = <span class="nf">cond</span>(<span class="s">`&quot;</span><span class="nv">`hr&#39;</span><span class="s">&quot;&#39;</span><span class="o">==</span><span class="s">&quot;&quot;</span>, <span class="s">&quot;hr&quot;</span>, <span class="s">&quot;&quot;</span>)
+<span class="k"> if</span> <span class="nf">replay</span>() {
+<span class="k">  syntax</span> [, ESTImate noHR <span class="o">*</span> ]
+<span class="k">  if</span> <span class="s">`&quot;</span><span class="nv">`estimate&#39;</span><span class="s">&quot;&#39;</span><span class="o">==</span><span class="s">&quot;&quot;</span> {
+<span class="k">   if</span> _by() {<span class="k"> error</span> <span class="m">190</span> }
+<span class="k">   if</span> <span class="s">`&quot;</span><span class="nv">`e(cmd2)&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;stcox&quot;</span> {
+<span class="k">    error</span> <span class="m">301</span> 
+   }
+<span class="k">   if</span> <span class="s">&quot;</span><span class="nv">`e(prefix)&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;svy&quot;</span> {
+    _prefix_display, <span class="nv">`hr&#39;</span> <span class="nv">`options&#39;</span>
+<span class="k">    exit</span>
+   }
+   _get_diopts diopts, <span class="nv">`options&#39;</span>
+<span class="k">   local</span> hr = <span class="nf">cond</span>(<span class="s">`&quot;</span><span class="nv">`hr&#39;</span><span class="s">&quot;&#39;</span><span class="o">==</span><span class="s">&quot;&quot;</span>, <span class="s">&quot;hr&quot;</span>, <span class="s">&quot;&quot;</span>)
 
-<span class="k">			local h</span> = <span class="nf">cond</span>(<span class="s">`&quot;</span><span class="nv">`e(strata)&#39;</span><span class="s">&quot;&#39;</span><span class="o">==</span><span class="s">&quot;&quot;</span>, <span class="cm">/*</span>
-<span class="cm">				*/</span> <span class="s">&quot;Cox regression&quot;</span>, <span class="cm">/*</span>
-<span class="cm">				*/</span> <span class="s">&quot;Stratified Cox regression&quot;</span>)
+<span class="k">   local h</span> = <span class="nf">cond</span>(<span class="s">`&quot;</span><span class="nv">`e(strata)&#39;</span><span class="s">&quot;&#39;</span><span class="o">==</span><span class="s">&quot;&quot;</span>, <span class="cm">/*</span>
+<span class="cm">    */</span> <span class="s">&quot;Cox regression&quot;</span>, <span class="cm">/*</span>
+<span class="cm">    */</span> <span class="s">&quot;Stratified Cox regression&quot;</span>)
 
 
-<span class="k">			local</span> h1=<span class="s">&quot;no ties&quot;</span>
-<span class="k">			if</span> <span class="s">&quot;</span><span class="nv">`e(ties)&#39;</span><span class="s">&quot;</span><span class="o">==</span><span class="s">&quot;breslow&quot;</span> {
-<span class="k">				local</span> h1=<span class="s">&quot;Breslow method for ties&quot;</span> 
-			}
-<span class="k">			else if</span> <span class="s">&quot;</span><span class="nv">`e(ties)&#39;</span><span class="s">&quot;</span><span class="o">==</span><span class="s">&quot;efron&quot;</span> { 
-<span class="k">				local</span> h1=<span class="s">&quot;Efron method for ties&quot;</span>
-			}
-<span class="k">			else if</span> <span class="s">&quot;</span><span class="nv">`e(ties)&#39;</span><span class="s">&quot;</span><span class="o">==</span><span class="s">&quot;partial&quot;</span> { 
-<span class="k">				local</span> h1=<span class="s">&quot;exact partial likelihood method for ties&quot;</span>
-			}
-<span class="k">			else if</span> <span class="s">&quot;</span><span class="nv">`e(ties)&#39;</span><span class="s">&quot;</span><span class="o">==</span><span class="s">&quot;marginal&quot;</span> { 
-<span class="k">				local</span> h1=<span class="s">&quot;exact marginal likelihood method for ties&quot;</span> 
-			}
+<span class="k">   local</span> h1=<span class="s">&quot;no ties&quot;</span>
+<span class="k">   if</span> <span class="s">&quot;</span><span class="nv">`e(ties)&#39;</span><span class="s">&quot;</span><span class="o">==</span><span class="s">&quot;breslow&quot;</span> {
+<span class="k">    local</span> h1=<span class="s">&quot;Breslow method for ties&quot;</span> 
+   }
+<span class="k">   else if</span> <span class="s">&quot;</span><span class="nv">`e(ties)&#39;</span><span class="s">&quot;</span><span class="o">==</span><span class="s">&quot;efron&quot;</span> { 
+<span class="k">    local</span> h1=<span class="s">&quot;Efron method for ties&quot;</span>
+   }
+<span class="k">   else if</span> <span class="s">&quot;</span><span class="nv">`e(ties)&#39;</span><span class="s">&quot;</span><span class="o">==</span><span class="s">&quot;partial&quot;</span> { 
+<span class="k">    local</span> h1=<span class="s">&quot;exact partial likelihood method for ties&quot;</span>
+   }
+<span class="k">   else if</span> <span class="s">&quot;</span><span class="nv">`e(ties)&#39;</span><span class="s">&quot;</span><span class="o">==</span><span class="s">&quot;marginal&quot;</span> { 
+<span class="k">    local</span> h1=<span class="s">&quot;exact marginal likelihood method for ties&quot;</span> 
+   }
 
-<span class="k">			di</span> _n<span class="k"> as</span> txt <span class="s">`&quot;</span><span class="nv">`h&#39;</span><span class="s"> with </span><span class="nv">`h1&#39;</span><span class="s">&quot;&#39;</span>
-<span class="k">			st_hcd</span>
-<span class="k">			di</span>
-<span class="k">			local</span> offset <span class="nv">`e(offset)&#39;</span>
-<span class="k">			est local</span> offset
-			_coef_table, <span class="nv">`hr&#39;</span> <span class="nv">`options&#39;</span>
-<span class="k">			est local</span> offset <span class="nv">`offset&#39;</span>
-			<span class="nv">`version&#39;</span> stcox_footnote
-<span class="k">			if</span> <span class="s">`&quot;</span><span class="nv">`e(converged)&#39;</span><span class="s">&quot;&#39;</span> <span class="o">==</span> <span class="s">&quot;0&quot;</span> {
-<span class="k">				di as</span> txt <span class="s">&quot;Warning: Convergence not achieved.&quot;</span>
-			}
-<span class="k">			exit</span>
-		}
-	}
-<span class="k">	st_is</span> <span class="m">2</span> analysis
+<span class="k">   di</span> _n<span class="k"> as</span> txt <span class="s">`&quot;</span><span class="nv">`h&#39;</span><span class="s"> with </span><span class="nv">`h1&#39;</span><span class="s">&quot;&#39;</span>
+<span class="k">   st_hcd</span>
+<span class="k">   di</span>
+<span class="k">   local</span> offset <span class="nv">`e(offset)&#39;</span>
+<span class="k">   est local</span> offset
+   _coef_table, <span class="nv">`hr&#39;</span> <span class="nv">`options&#39;</span>
+<span class="k">   est local</span> offset <span class="nv">`offset&#39;</span>
+   <span class="nv">`version&#39;</span> stcox_footnote
+<span class="k">   if</span> <span class="s">`&quot;</span><span class="nv">`e(converged)&#39;</span><span class="s">&quot;&#39;</span> <span class="o">==</span> <span class="s">&quot;0&quot;</span> {
+<span class="k">    di as</span> txt <span class="s">&quot;Warning: Convergence not achieved.&quot;</span>
+   }
+<span class="k">   exit</span>
+  }
+ }
+<span class="k"> st_is</span> <span class="m">2</span> analysis
 
-<span class="k">	local</span> oldbaseh = <span class="nf">cond</span>(<span class="nf">_caller</span>()<span class="o">&lt;</span><span class="m">7</span>,<span class="s">&quot;BASEHazard(string)&quot;</span>,<span class="s">&quot;&quot;</span>)
+<span class="k"> local</span> oldbaseh = <span class="nf">cond</span>(<span class="nf">_caller</span>()<span class="o">&lt;</span><span class="m">7</span>,<span class="s">&quot;BASEHazard(string)&quot;</span>,<span class="s">&quot;&quot;</span>)
 
-<span class="k">	if</span> <span class="nf">_caller</span>() <span class="o">&lt;</span> <span class="m">14</span> {
-<span class="k">		local</span> TVCOPT TVC(varlist)
-	}
-<span class="k">	else</span> {
-<span class="k">		local</span> TVCOPT TVC(varlist fv)
-	}
+<span class="k"> if</span> <span class="nf">_caller</span>() <span class="o">&lt;</span> <span class="m">14</span> {
+<span class="k">  local</span> TVCOPT TVC(varlist)
+ }
+<span class="k"> else</span> {
+<span class="k">  local</span> TVCOPT TVC(varlist fv)
+ }
 
-<span class="k">	syntax</span> [varlist(default=none fv)] [if] [in] [,CLuster(passthru) <span class="cm">/*</span>
-<span class="cm">	*/</span> CMD ESTImate noHR Level(cilevel) Robust noSHow NOLOG LOG<span class="cm">/*</span>
-<span class="cm">	*/</span> BREslow EFRon EXACTM EXACTP <span class="nv">`oldbaseh&#39;</span> <span class="cm">/*</span>
-<span class="cm">	*/</span> BASEHC(passthru) BASEChazard(passthru) BASESurv(passthru) <span class="cm">/*</span>
-<span class="cm">	*/</span> MGale(passthru) esr(passthru) <span class="cm">/*</span>
-<span class="cm">	*/</span> SCHoenfeld(passthru) SCAledsch(passthru) <span class="nv">`TVCOPT&#39;</span> <span class="cm">/*</span>
-<span class="cm">	*/</span> texp(string) altvce(name) VCE(passthru) <span class="o">*</span> ]
+<span class="k"> syntax</span> [varlist(default=none fv)] [if] [in] [,CLuster(passthru) <span class="cm">/*</span>
+<span class="cm"> */</span> CMD ESTImate noHR Level(cilevel) Robust noSHow NOLOG LOG<span class="cm">/*</span>
+<span class="cm"> */</span> BREslow EFRon EXACTM EXACTP <span class="nv">`oldbaseh&#39;</span> <span class="cm">/*</span>
+<span class="cm"> */</span> BASEHC(passthru) BASEChazard(passthru) BASESurv(passthru) <span class="cm">/*</span>
+<span class="cm"> */</span> MGale(passthru) esr(passthru) <span class="cm">/*</span>
+<span class="cm"> */</span> SCHoenfeld(passthru) SCAledsch(passthru) <span class="nv">`TVCOPT&#39;</span> <span class="cm">/*</span>
+<span class="cm"> */</span> texp(string) altvce(name) VCE(passthru) <span class="o">*</span> ]
 
-	<span class="c1">// NOTE: altvce() is an undocumented option set by _vce_parserun for</span>
-	<span class="c1">// the purpose of generating an improved error message when this</span>
-	<span class="c1">// command is called with an option that generates a variable along</span>
-	<span class="c1">// with an alternative &lt;vcetype&gt; that resamples the data.</span>
+ <span class="c1">// NOTE: altvce() is an undocumented option set by _vce_parserun for</span>
+ <span class="c1">// the purpose of generating an improved error message when this</span>
+ <span class="c1">// command is called with an option that generates a variable along</span>
+ <span class="c1">// with an alternative &lt;vcetype&gt; that resamples the data.</span>
 
-<span class="k">	local</span> fvops = <span class="s">&quot;</span><span class="nv">`s(fvops)&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;true&quot;</span> | <span class="nf">_caller</span>() <span class="o">&gt;=</span> <span class="m">11</span>
+<span class="k"> local</span> fvops = <span class="s">&quot;</span><span class="nv">`s(fvops)&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;true&quot;</span> | <span class="nf">_caller</span>() <span class="o">&gt;=</span> <span class="m">11</span>
 <span class="k">        if</span> <span class="nv">`fvops&#39;</span> {
 <span class="k">                local version</span>:<span class="k"> di</span> <span class="s">&quot;version &quot;</span><span class="nf">string</span>(<span class="nf">max</span>(<span class="m">11</span>,<span class="nf">_caller</span>())) <span class="s">&quot;, missing:&quot;</span>
         }
 
-	_parse_iterlog, <span class="nv">`nolog&#39;</span> <span class="nv">`log&#39;</span>
-<span class="k">	if</span> <span class="s">&quot;</span><span class="nv">`s(nolog)&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;nolog&quot;</span> {
-<span class="k">		local log</span> nolog
-	}
-<span class="k">	else if</span> <span class="s">&quot;</span><span class="nv">`s(log)&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;log&quot;</span> {
-<span class="k">		local log log</span>
-	}
+ _parse_iterlog, <span class="nv">`nolog&#39;</span> <span class="nv">`log&#39;</span>
+<span class="k"> if</span> <span class="s">&quot;</span><span class="nv">`s(nolog)&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;nolog&quot;</span> {
+<span class="k">  local log</span> nolog
+ }
+<span class="k"> else if</span> <span class="s">&quot;</span><span class="nv">`s(log)&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;log&quot;</span> {
+<span class="k">  local log log</span>
+ }
 
-	_get_diopts diopts options, <span class="nv">`options&#39;</span>
-	_vce_parse, argopt(CLuster) opt(OIM Robust) old		<span class="cs">///</span>
-		: [<span class="nv">`weight&#39;`exp&#39;</span>], <span class="nv">`vce&#39;</span> <span class="nv">`robust&#39;</span> <span class="nv">`cluster&#39;</span>
-<span class="k">	local cluster</span> <span class="nv">`r(cluster)&#39;</span>
-<span class="k">	local</span> robust <span class="nv">`r(robust)&#39;</span>
-<span class="k">	local vce</span> = <span class="nf">cond</span>(<span class="s">&quot;</span><span class="nv">`r(vce)&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span>, <span class="s">&quot;</span><span class="nv">`r(vce)&#39;</span><span class="s">&quot;</span>, <span class="s">&quot;oim&quot;</span>)
+ _get_diopts diopts options, <span class="nv">`options&#39;</span>
+ _vce_parse, argopt(CLuster) opt(OIM Robust) old  <span class="cs">///</span>
+  : [<span class="nv">`weight&#39;`exp&#39;</span>], <span class="nv">`vce&#39;</span> <span class="nv">`robust&#39;</span> <span class="nv">`cluster&#39;</span>
+<span class="k"> local cluster</span> <span class="nv">`r(cluster)&#39;</span>
+<span class="k"> local</span> robust <span class="nv">`r(robust)&#39;</span>
+<span class="k"> local vce</span> = <span class="nf">cond</span>(<span class="s">&quot;</span><span class="nv">`r(vce)&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span>, <span class="s">&quot;</span><span class="nv">`r(vce)&#39;</span><span class="s">&quot;</span>, <span class="s">&quot;oim&quot;</span>)
 
-<span class="k">	if</span> <span class="s">`&quot;</span><span class="nv">`basehazard&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
-<span class="k">		if</span> <span class="s">`&quot;</span><span class="nv">`basehc&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> { 
-<span class="k">			di as err</span> <span class="cm">/*</span>
-<span class="cm">	*/</span> <span class="s">&quot;options {bf:basehazard()} and {bf:basehc()} may not be specified together&quot;</span>
-<span class="k">			exit</span> <span class="m">198</span> 
-		}
-<span class="k">		local</span> basehc <span class="s">`&quot;basehc(</span><span class="nv">`basehazard&#39;</span><span class="s">)&quot;&#39;</span>
-	}
-<span class="k">	if</span> _by() {
-		_byoptnotallowed basehc()      <span class="s">`&quot;</span><span class="nv">`basehc&#39;</span><span class="s">&quot;&#39;</span>
-		_byoptnotallowed basechazard() <span class="s">`&quot;</span><span class="nv">`basechazard&#39;</span><span class="s">&quot;&#39;</span>
-		_byoptnotallowed basesurv()    <span class="s">`&quot;</span><span class="nv">`basesurv&#39;</span><span class="s">&quot;&#39;</span>
-		_byoptnotallowed mgale()       <span class="s">`&quot;</span><span class="nv">`mgale&#39;</span><span class="s">&quot;&#39;</span>
-		_byoptnotallowed esr()         <span class="s">`&quot;</span><span class="nv">`esr&#39;</span><span class="s">&quot;&#39;</span>
-		_byoptnotallowed schoenfeld()  <span class="s">`&quot;</span><span class="nv">`schoenfeld&#39;</span><span class="s">&quot;&#39;</span>
-		_byoptnotallowed scaledsch()   <span class="s">`&quot;</span><span class="nv">`scaledsch&#39;</span><span class="s">&quot;&#39;</span>
-	}
+<span class="k"> if</span> <span class="s">`&quot;</span><span class="nv">`basehazard&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
+<span class="k">  if</span> <span class="s">`&quot;</span><span class="nv">`basehc&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> { 
+<span class="k">   di as err</span> <span class="cm">/*</span>
+<span class="cm"> */</span> <span class="s">&quot;options {bf:basehazard()} and {bf:basehc()} may not be specified together&quot;</span>
+<span class="k">   exit</span> <span class="m">198</span> 
+  }
+<span class="k">  local</span> basehc <span class="s">`&quot;basehc(</span><span class="nv">`basehazard&#39;</span><span class="s">)&quot;&#39;</span>
+ }
+<span class="k"> if</span> _by() {
+  _byoptnotallowed basehc()      <span class="s">`&quot;</span><span class="nv">`basehc&#39;</span><span class="s">&quot;&#39;</span>
+  _byoptnotallowed basechazard() <span class="s">`&quot;</span><span class="nv">`basechazard&#39;</span><span class="s">&quot;&#39;</span>
+  _byoptnotallowed basesurv()    <span class="s">`&quot;</span><span class="nv">`basesurv&#39;</span><span class="s">&quot;&#39;</span>
+  _byoptnotallowed mgale()       <span class="s">`&quot;</span><span class="nv">`mgale&#39;</span><span class="s">&quot;&#39;</span>
+  _byoptnotallowed esr()         <span class="s">`&quot;</span><span class="nv">`esr&#39;</span><span class="s">&quot;&#39;</span>
+  _byoptnotallowed schoenfeld()  <span class="s">`&quot;</span><span class="nv">`schoenfeld&#39;</span><span class="s">&quot;&#39;</span>
+  _byoptnotallowed scaledsch()   <span class="s">`&quot;</span><span class="nv">`scaledsch&#39;</span><span class="s">&quot;&#39;</span>
+ }
 
-<span class="k">	if</span> <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
-		_prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> basehc()      <span class="s">`&quot;</span><span class="nv">`basehc&#39;</span><span class="s">&quot;&#39;</span>
-		_prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> basechazard() <span class="s">`&quot;</span><span class="nv">`basechazard&#39;</span><span class="s">&quot;&#39;</span>
-		_prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> basesurv()    <span class="s">`&quot;</span><span class="nv">`basesurv&#39;</span><span class="s">&quot;&#39;</span>
-		_prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> mgale()       <span class="s">`&quot;</span><span class="nv">`mgale&#39;</span><span class="s">&quot;&#39;</span>
-		_prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> esr()         <span class="s">`&quot;</span><span class="nv">`esr&#39;</span><span class="s">&quot;&#39;</span>
-		_prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> schoenfeld()  <span class="s">`&quot;</span><span class="nv">`schoenfeld&#39;</span><span class="s">&quot;&#39;</span>
-		_prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> scaledsch()   <span class="s">`&quot;</span><span class="nv">`scaledsch&#39;</span><span class="s">&quot;&#39;</span>
-	}
+<span class="k"> if</span> <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
+  _prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> basehc()      <span class="s">`&quot;</span><span class="nv">`basehc&#39;</span><span class="s">&quot;&#39;</span>
+  _prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> basechazard() <span class="s">`&quot;</span><span class="nv">`basechazard&#39;</span><span class="s">&quot;&#39;</span>
+  _prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> basesurv()    <span class="s">`&quot;</span><span class="nv">`basesurv&#39;</span><span class="s">&quot;&#39;</span>
+  _prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> mgale()       <span class="s">`&quot;</span><span class="nv">`mgale&#39;</span><span class="s">&quot;&#39;</span>
+  _prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> esr()         <span class="s">`&quot;</span><span class="nv">`esr&#39;</span><span class="s">&quot;&#39;</span>
+  _prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> schoenfeld()  <span class="s">`&quot;</span><span class="nv">`schoenfeld&#39;</span><span class="s">&quot;&#39;</span>
+  _prefix_vcenotallowed <span class="s">&quot;</span><span class="nv">`altvce&#39;</span><span class="s">&quot;</span> scaledsch()   <span class="s">`&quot;</span><span class="nv">`scaledsch&#39;</span><span class="s">&quot;&#39;</span>
+ }
 
-<span class="k">	if</span> <span class="s">&quot;</span><span class="nv">`tvc&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
-		_tvc_notallowed basechazard()	<span class="s">`&quot;</span><span class="nv">`basechazard&#39;</span><span class="s">&quot;&#39;</span>
-		_tvc_notallowed basehc()	<span class="s">`&quot;</span><span class="nv">`basehc&#39;</span><span class="s">&quot;&#39;</span>
-		_tvc_notallowed basesurv()	<span class="s">`&quot;</span><span class="nv">`basesurv&#39;</span><span class="s">&quot;&#39;</span>
-		_tvc_notallowed esr()		<span class="s">`&quot;</span><span class="nv">`esr&#39;</span><span class="s">&quot;&#39;</span>
-		_tvc_notallowed mgale()		<span class="s">`&quot;</span><span class="nv">`mgale&#39;</span><span class="s">&quot;&#39;</span>
-		_tvc_notallowed scaledsch()	<span class="s">`&quot;</span><span class="nv">`scaledsch&#39;</span><span class="s">&quot;&#39;</span>
-		_tvc_notallowed schoenfeld()	<span class="s">`&quot;</span><span class="nv">`schoenfeld&#39;</span><span class="s">&quot;&#39;</span>
-	}
+<span class="k"> if</span> <span class="s">&quot;</span><span class="nv">`tvc&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
+  _tvc_notallowed basechazard() <span class="s">`&quot;</span><span class="nv">`basechazard&#39;</span><span class="s">&quot;&#39;</span>
+  _tvc_notallowed basehc() <span class="s">`&quot;</span><span class="nv">`basehc&#39;</span><span class="s">&quot;&#39;</span>
+  _tvc_notallowed basesurv() <span class="s">`&quot;</span><span class="nv">`basesurv&#39;</span><span class="s">&quot;&#39;</span>
+  _tvc_notallowed esr()  <span class="s">`&quot;</span><span class="nv">`esr&#39;</span><span class="s">&quot;&#39;</span>
+  _tvc_notallowed mgale()  <span class="s">`&quot;</span><span class="nv">`mgale&#39;</span><span class="s">&quot;&#39;</span>
+  _tvc_notallowed scaledsch() <span class="s">`&quot;</span><span class="nv">`scaledsch&#39;</span><span class="s">&quot;&#39;</span>
+  _tvc_notallowed schoenfeld() <span class="s">`&quot;</span><span class="nv">`schoenfeld&#39;</span><span class="s">&quot;&#39;</span>
+ }
 
-<span class="k">	local</span> passthru <span class="nv">`basehc&#39;</span> <span class="nv">`basechazard&#39;</span> <span class="nv">`basesurv&#39;</span> <span class="nv">`mgale&#39;</span> <span class="cm">/*</span>
-<span class="cm">		*/</span> <span class="nv">`esr&#39;</span> <span class="nv">`schoenfeld&#39;</span> <span class="nv">`scaledsch&#39;</span>
+<span class="k"> local</span> passthru <span class="nv">`basehc&#39;</span> <span class="nv">`basechazard&#39;</span> <span class="nv">`basesurv&#39;</span> <span class="nv">`mgale&#39;</span> <span class="cm">/*</span>
+<span class="cm">  */</span> <span class="nv">`esr&#39;</span> <span class="nv">`schoenfeld&#39;</span> <span class="nv">`scaledsch&#39;</span>
 
-<span class="k">	local</span> id :<span class="k"> char</span> _dta[st_id]
-<span class="k">	local</span> w  :<span class="k"> char</span> _dta[st_w]
-<span class="k">	local</span> wt :<span class="k"> char</span> _dta[st_wt]
-<span class="k">	local</span> t0 <span class="s">`&quot;t0(_t0)&quot;&#39;</span>
-<span class="k">	local d</span> <span class="s">`&quot;dead(_d)&quot;&#39;</span>
+<span class="k"> local</span> id :<span class="k"> char</span> _dta[st_id]
+<span class="k"> local</span> w  :<span class="k"> char</span> _dta[st_w]
+<span class="k"> local</span> wt :<span class="k"> char</span> _dta[st_wt]
+<span class="k"> local</span> t0 <span class="s">`&quot;t0(_t0)&quot;&#39;</span>
+<span class="k"> local d</span> <span class="s">`&quot;dead(_d)&quot;&#39;</span>
 
-<span class="k">	tempvar</span> touse 
-<span class="k">	st_smpl</span> <span class="nv">`touse&#39;</span> <span class="s">`&quot;</span><span class="nv">`if&#39;</span><span class="s">&quot;&#39;</span> <span class="s">`&quot;</span><span class="nv">`in&#39;</span><span class="s">&quot;&#39;</span> <span class="s">`&quot;</span><span class="nv">`cluster&#39;</span><span class="s">&quot;&#39;</span>
-<span class="k">	markout</span> <span class="nv">`touse&#39;</span> <span class="nv">`varlist&#39;</span>
-<span class="k">	if</span> _by() {
-<span class="k">		qui replace</span> <span class="nv">`touse&#39;</span>=<span class="m">0</span><span class="k"> if</span> <span class="nv">`_byindex&#39;</span><span class="o">!=</span>_byindex()
-	}
+<span class="k"> tempvar</span> touse 
+<span class="k"> st_smpl</span> <span class="nv">`touse&#39;</span> <span class="s">`&quot;</span><span class="nv">`if&#39;</span><span class="s">&quot;&#39;</span> <span class="s">`&quot;</span><span class="nv">`in&#39;</span><span class="s">&quot;&#39;</span> <span class="s">`&quot;</span><span class="nv">`cluster&#39;</span><span class="s">&quot;&#39;</span>
+<span class="k"> markout</span> <span class="nv">`touse&#39;</span> <span class="nv">`varlist&#39;</span>
+<span class="k"> if</span> _by() {
+<span class="k">  qui replace</span> <span class="nv">`touse&#39;</span>=<span class="m">0</span><span class="k"> if</span> <span class="nv">`_byindex&#39;</span><span class="o">!=</span>_byindex()
+ }
 
-<span class="k">	if</span> <span class="s">`&quot;</span><span class="nv">`wt&#39;</span><span class="s">&quot;&#39;</span><span class="o">==</span><span class="s">&quot;pweight&quot;</span> {
-<span class="k">		local</span> robust <span class="s">`&quot;robust&quot;&#39;</span>
-	}
-<span class="k">	if</span> <span class="s">`&quot;</span><span class="nv">`robust&#39;</span><span class="s">&quot;&#39;</span><span class="o">!=</span><span class="s">&quot;&quot;</span> <span class="o">&amp;</span> <span class="s">`&quot;</span><span class="nv">`cluster&#39;</span><span class="s">&quot;&#39;</span><span class="o">==</span><span class="s">&quot;&quot;</span> <span class="o">&amp;</span> <span class="s">`&quot;</span><span class="nv">`id&#39;</span><span class="s">&quot;&#39;</span><span class="o">!=</span><span class="s">&quot;&quot;</span> {
-<span class="k">		local cluster</span> <span class="s">`&quot;</span><span class="nv">`id&#39;</span><span class="s">&quot;&#39;</span>
-	}
-<span class="k">	if</span> <span class="s">`&quot;</span><span class="nv">`cluster&#39;</span><span class="s">&quot;&#39;</span><span class="o">!=</span><span class="s">&quot;&quot;</span> {
-<span class="k">		local cluster</span> <span class="s">`&quot;cluster(</span><span class="nv">`cluster&#39;</span><span class="s">)&quot;&#39;</span>
-	}
+<span class="k"> if</span> <span class="s">`&quot;</span><span class="nv">`wt&#39;</span><span class="s">&quot;&#39;</span><span class="o">==</span><span class="s">&quot;pweight&quot;</span> {
+<span class="k">  local</span> robust <span class="s">`&quot;robust&quot;&#39;</span>
+ }
+<span class="k"> if</span> <span class="s">`&quot;</span><span class="nv">`robust&#39;</span><span class="s">&quot;&#39;</span><span class="o">!=</span><span class="s">&quot;&quot;</span> <span class="o">&amp;</span> <span class="s">`&quot;</span><span class="nv">`cluster&#39;</span><span class="s">&quot;&#39;</span><span class="o">==</span><span class="s">&quot;&quot;</span> <span class="o">&amp;</span> <span class="s">`&quot;</span><span class="nv">`id&#39;</span><span class="s">&quot;&#39;</span><span class="o">!=</span><span class="s">&quot;&quot;</span> {
+<span class="k">  local cluster</span> <span class="s">`&quot;</span><span class="nv">`id&#39;</span><span class="s">&quot;&#39;</span>
+ }
+<span class="k"> if</span> <span class="s">`&quot;</span><span class="nv">`cluster&#39;</span><span class="s">&quot;&#39;</span><span class="o">!=</span><span class="s">&quot;&quot;</span> {
+<span class="k">  local cluster</span> <span class="s">`&quot;cluster(</span><span class="nv">`cluster&#39;</span><span class="s">)&quot;&#39;</span>
+ }
 
-<span class="k">	st_show</span> <span class="nv">`show&#39;</span>
+<span class="k"> st_show</span> <span class="nv">`show&#39;</span>
 
-<span class="k">	if</span> <span class="s">`&quot;</span><span class="nv">`texp&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> <span class="o">&amp;</span> <span class="s">&quot;</span><span class="nv">`tvc&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> {
-<span class="k">		di as err</span> <span class="s">&quot;option {bf:texp()} requires option {bf:tvc()}&quot;</span>
+<span class="k"> if</span> <span class="s">`&quot;</span><span class="nv">`texp&#39;</span><span class="s">&quot;&#39;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> <span class="o">&amp;</span> <span class="s">&quot;</span><span class="nv">`tvc&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> {
+<span class="k">  di as err</span> <span class="s">&quot;option {bf:texp()} requires option {bf:tvc()}&quot;</span>
 <span class="k">                exit</span> <span class="m">198</span>
         }
 
-<span class="k">	local</span> fvtvc <span class="m">0</span>
-<span class="k">	if</span> <span class="s">`&quot;</span><span class="nv">`tvc&#39;</span><span class="s">&quot;&#39;</span><span class="o">!=</span><span class="s">&quot;&quot;</span> <span class="o">&amp;</span> <span class="nf">_caller</span>() <span class="o">&lt;</span> <span class="m">14</span> {
-<span class="k">		tempvar</span> foft1
-<span class="k">		if</span> <span class="s">`&quot;</span><span class="nv">`texp&#39;</span><span class="s">&quot;&#39;</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> {
-<span class="k">			local</span> texp _t
-		}
-<span class="k">		local</span> texp: subinstr<span class="k"> local</span> texp <span class="s">&quot; &quot;</span> <span class="s">&quot;&quot;</span>, all
-<span class="k">		cap gen</span> double <span class="nv">`foft1&#39;</span> = <span class="nv">`texp&#39;</span><span class="k"> if</span> <span class="nv">`touse&#39;</span>
-<span class="k">		if</span> _rc {
-<span class="k">			di as err</span> <span class="s">&quot;{p 0 0 2}option {bf:texp()} invalid{p_end}&quot;</span>
-<span class="k">			exit</span> <span class="m">198</span>
-		}
-<span class="k">		qui count if</span> <span class="nv">`touse&#39;</span> <span class="o">&amp;</span> <span class="nf">missing</span>(<span class="nv">`foft1&#39;</span>)
-<span class="k">		if</span> <span class="nv">`r(N)&#39;</span> {
+<span class="k"> local</span> fvtvc <span class="m">0</span>
+<span class="k"> if</span> <span class="s">`&quot;</span><span class="nv">`tvc&#39;</span><span class="s">&quot;&#39;</span><span class="o">!=</span><span class="s">&quot;&quot;</span> <span class="o">&amp;</span> <span class="nf">_caller</span>() <span class="o">&lt;</span> <span class="m">14</span> {
+<span class="k">  tempvar</span> foft1
+<span class="k">  if</span> <span class="s">`&quot;</span><span class="nv">`texp&#39;</span><span class="s">&quot;&#39;</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> {
+<span class="k">   local</span> texp _t
+  }
+<span class="k">  local</span> texp: subinstr<span class="k"> local</span> texp <span class="s">&quot; &quot;</span> <span class="s">&quot;&quot;</span>, all
+<span class="k">  cap gen</span> double <span class="nv">`foft1&#39;</span> = <span class="nv">`texp&#39;</span><span class="k"> if</span> <span class="nv">`touse&#39;</span>
+<span class="k">  if</span> _rc {
+<span class="k">   di as err</span> <span class="s">&quot;{p 0 0 2}option {bf:texp()} invalid{p_end}&quot;</span>
+<span class="k">   exit</span> <span class="m">198</span>
+  }
+<span class="k">  qui count if</span> <span class="nv">`touse&#39;</span> <span class="o">&amp;</span> <span class="nf">missing</span>(<span class="nv">`foft1&#39;</span>)
+<span class="k">  if</span> <span class="nv">`r(N)&#39;</span> {
 <span class="k">                        di as err</span> <span class="s">&quot;{p 0 0 2}option {bf:texp()} evaluates to missing for &quot;</span>
 <span class="k">                        di as err</span> <span class="s">&quot;</span><span class="nv">`r(N)&#39;</span><span class="s"> observations{p_end}&quot;</span>
-<span class="k">			exit</span> <span class="m">459</span>
-		}
-		FunctionOfTime <span class="nv">`foft1&#39;</span><span class="k"> if</span> <span class="nv">`touse&#39;</span>
+<span class="k">   exit</span> <span class="m">459</span>
+  }
+  FunctionOfTime <span class="nv">`foft1&#39;</span><span class="k"> if</span> <span class="nv">`touse&#39;</span>
 
-		<span class="c1">// tvc() has a limit of 100 variables</span>
-<span class="k">		local</span> tvcvars : word<span class="k"> count</span> <span class="nv">`tvc&#39;</span>
-<span class="k">		if</span> <span class="nv">`tvcvars&#39;</span> <span class="o">&gt;</span> <span class="m">100</span> {
-<span class="k">			di as err</span> <span class="s">&quot;option {bf:tvc()} may not contain more than 100 variables&quot;</span>
-<span class="k">			exit</span> <span class="m">198</span> 
-		}
-<span class="k">		di</span>
-<span class="k">		version</span> <span class="m">11</span>: _rmcoll <span class="nv">`tvc&#39;</span>, forcedrop
-<span class="k">		local</span> tvcvars <span class="nv">`r(varlist)&#39;</span>
-<span class="k">		local</span> tvc <span class="s">`&quot;tvc(</span><span class="nv">`tvcvars&#39;</span><span class="s">)&quot;&#39;</span>
-<span class="k">		local</span> texp <span class="s">`&quot;texp(</span><span class="nv">`texp&#39;</span><span class="s">)&quot;&#39;</span>
-<span class="k">		local</span> noblank <span class="s">&quot;noblank&quot;</span>
-	}
-<span class="k">	else if</span> <span class="s">`&quot;</span><span class="nv">`tvc&#39;</span><span class="s">&quot;&#39;</span><span class="o">!=</span><span class="s">&quot;&quot;</span> {
-<span class="k">		tempvar</span> foft1
-<span class="k">		if</span> <span class="s">`&quot;</span><span class="nv">`texp&#39;</span><span class="s">&quot;&#39;</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> {
-<span class="k">			local</span> texp _t
-		}
-<span class="k">		local</span> texp: subinstr<span class="k"> local</span> texp <span class="s">&quot; &quot;</span> <span class="s">&quot;&quot;</span>, all
-<span class="k">		cap gen</span> double <span class="nv">`foft1&#39;</span> = <span class="nv">`texp&#39;</span><span class="k"> if</span> <span class="nv">`touse&#39;</span>
-<span class="k">		if</span> _rc {
-<span class="k">			di as err</span> <span class="s">&quot;{p 0 0 2}option {bf:texp()} invalid{p_end}&quot;</span>
-<span class="k">			exit</span> <span class="m">198</span>
-		}
-<span class="k">		qui count if</span> <span class="nv">`touse&#39;</span> <span class="o">&amp;</span> <span class="nf">missing</span>(<span class="nv">`foft1&#39;</span>)
-<span class="k">		if</span> <span class="nv">`r(N)&#39;</span> {
+  <span class="c1">// tvc() has a limit of 100 variables</span>
+<span class="k">  local</span> tvcvars : word<span class="k"> count</span> <span class="nv">`tvc&#39;</span>
+<span class="k">  if</span> <span class="nv">`tvcvars&#39;</span> <span class="o">&gt;</span> <span class="m">100</span> {
+<span class="k">   di as err</span> <span class="s">&quot;option {bf:tvc()} may not contain more than 100 variables&quot;</span>
+<span class="k">   exit</span> <span class="m">198</span> 
+  }
+<span class="k">  di</span>
+<span class="k">  version</span> <span class="m">11</span>: _rmcoll <span class="nv">`tvc&#39;</span>, forcedrop
+<span class="k">  local</span> tvcvars <span class="nv">`r(varlist)&#39;</span>
+<span class="k">  local</span> tvc <span class="s">`&quot;tvc(</span><span class="nv">`tvcvars&#39;</span><span class="s">)&quot;&#39;</span>
+<span class="k">  local</span> texp <span class="s">`&quot;texp(</span><span class="nv">`texp&#39;</span><span class="s">)&quot;&#39;</span>
+<span class="k">  local</span> noblank <span class="s">&quot;noblank&quot;</span>
+ }
+<span class="k"> else if</span> <span class="s">`&quot;</span><span class="nv">`tvc&#39;</span><span class="s">&quot;&#39;</span><span class="o">!=</span><span class="s">&quot;&quot;</span> {
+<span class="k">  tempvar</span> foft1
+<span class="k">  if</span> <span class="s">`&quot;</span><span class="nv">`texp&#39;</span><span class="s">&quot;&#39;</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> {
+<span class="k">   local</span> texp _t
+  }
+<span class="k">  local</span> texp: subinstr<span class="k"> local</span> texp <span class="s">&quot; &quot;</span> <span class="s">&quot;&quot;</span>, all
+<span class="k">  cap gen</span> double <span class="nv">`foft1&#39;</span> = <span class="nv">`texp&#39;</span><span class="k"> if</span> <span class="nv">`touse&#39;</span>
+<span class="k">  if</span> _rc {
+<span class="k">   di as err</span> <span class="s">&quot;{p 0 0 2}option {bf:texp()} invalid{p_end}&quot;</span>
+<span class="k">   exit</span> <span class="m">198</span>
+  }
+<span class="k">  qui count if</span> <span class="nv">`touse&#39;</span> <span class="o">&amp;</span> <span class="nf">missing</span>(<span class="nv">`foft1&#39;</span>)
+<span class="k">  if</span> <span class="nv">`r(N)&#39;</span> {
 <span class="k">                        di as err</span> <span class="s">&quot;{p 0 0 2}option {bf:texp()} evaluates to missing for &quot;</span>
 <span class="k">                        di as err</span> <span class="s">&quot;</span><span class="nv">`r(N)&#39;</span><span class="s"> observations{p_end}&quot;</span>
-<span class="k">			exit</span> <span class="m">459</span>
-		}
-		FunctionOfTime <span class="nv">`foft1&#39;</span><span class="k"> if</span> <span class="nv">`touse&#39;</span>
+<span class="k">   exit</span> <span class="m">459</span>
+  }
+  FunctionOfTime <span class="nv">`foft1&#39;</span><span class="k"> if</span> <span class="nv">`touse&#39;</span>
 
-		<span class="c1">// tvc() has a limit of 100 variables</span>
-		fvexpand <span class="nv">`tvc&#39;</span><span class="k"> if</span> <span class="nv">`touse&#39;</span>
-<span class="k">		local</span> tvc <span class="nv">`r(varlist)&#39;</span>
-<span class="k">		local</span> tvcvars : word<span class="k"> count</span> <span class="nv">`tvc&#39;</span>
-<span class="k">		if</span> <span class="nv">`tvcvars&#39;</span> <span class="o">&gt;</span> <span class="m">100</span> {
-<span class="k">			di as err</span> <span class="s">&quot;option {bf:tvc()} may not contain more than 100 variable&quot;</span>
-<span class="k">			exit</span> <span class="m">198</span> 
-		}
-<span class="k">		di</span>
-<span class="k">		version</span> <span class="m">14</span>: _rmcoll <span class="nv">`tvc&#39;</span>,<span class="k"> expand</span>
-<span class="k">		local</span> tvcvars <span class="nv">`r(varlist)&#39;</span>
-		fvrevar <span class="nv">`tvcvars&#39;</span>
-<span class="k">		local</span> ttvcvars <span class="nv">`r(varlist)&#39;</span>
-<span class="k">		if</span> <span class="o">!</span><span class="nv">`: list tvcvars == ttvcvars&#39;</span> {
-<span class="k">			local</span> fvtvc <span class="m">1</span>
-		}
-<span class="k">		local</span> tvc <span class="s">`&quot;tvc(</span><span class="nv">`ttvcvars&#39;</span><span class="s">)&quot;&#39;</span>
-<span class="k">		local</span> texp <span class="s">`&quot;texp(</span><span class="nv">`texp&#39;</span><span class="s">)&quot;&#39;</span>
-<span class="k">		local</span> noblank <span class="s">&quot;noblank&quot;</span>
-	}
-<span class="k">	if</span> <span class="s">`&quot;</span><span class="nv">`cmd&#39;</span><span class="s">&quot;&#39;</span><span class="o">!=</span><span class="s">&quot;&quot;</span> {
-<span class="k">		di</span> _n<span class="k"> as</span> txt <span class="s">`&quot;-&gt; cox _t </span><span class="nv">`varlist&#39;</span><span class="s"> </span><span class="nv">`w&#39;</span><span class="s"> </span><span class="nv">`if&#39;</span><span class="s"> </span><span class="nv">`in&#39;</span><span class="s">,&quot;&#39;</span> _c
-<span class="k">	 	di as</span> txt <span class="s">`&quot; </span><span class="nv">`robust&#39;</span><span class="s"> </span><span class="nv">`cluster&#39;</span><span class="s"> </span><span class="nv">`t0&#39;</span><span class="s"> </span><span class="nv">`hr&#39;</span><span class="s"> </span><span class="nv">`d&#39;</span><span class="s"> </span><span class="nv">`tvc&#39;</span><span class="s"> </span><span class="nv">`texp&#39;</span><span class="s">&quot;&#39;</span> _c
-<span class="k">		di as</span> txt <span class="s">`&quot; </span><span class="nv">`options&#39;</span><span class="s">&quot;&#39;</span> _c
-<span class="k">		di as</span> txt <span class="s">`&quot; </span><span class="nv">`breslow&#39;</span><span class="s"> </span><span class="nv">`efron&#39;</span><span class="s"> </span><span class="nv">`exactm&#39;</span><span class="s"> </span><span class="nv">`exactp&#39;</span><span class="s"> </span><span class="nv">`passthru&#39;</span><span class="s">&quot;&#39;</span>
-<span class="k">		exit</span>
-	}
+  <span class="c1">// tvc() has a limit of 100 variables</span>
+  fvexpand <span class="nv">`tvc&#39;</span><span class="k"> if</span> <span class="nv">`touse&#39;</span>
+<span class="k">  local</span> tvc <span class="nv">`r(varlist)&#39;</span>
+<span class="k">  local</span> tvcvars : word<span class="k"> count</span> <span class="nv">`tvc&#39;</span>
+<span class="k">  if</span> <span class="nv">`tvcvars&#39;</span> <span class="o">&gt;</span> <span class="m">100</span> {
+<span class="k">   di as err</span> <span class="s">&quot;option {bf:tvc()} may not contain more than 100 variable&quot;</span>
+<span class="k">   exit</span> <span class="m">198</span> 
+  }
+<span class="k">  di</span>
+<span class="k">  version</span> <span class="m">14</span>: _rmcoll <span class="nv">`tvc&#39;</span>,<span class="k"> expand</span>
+<span class="k">  local</span> tvcvars <span class="nv">`r(varlist)&#39;</span>
+  fvrevar <span class="nv">`tvcvars&#39;</span>
+<span class="k">  local</span> ttvcvars <span class="nv">`r(varlist)&#39;</span>
+<span class="k">  if</span> <span class="o">!</span><span class="nv">`: list tvcvars == ttvcvars&#39;</span> {
+<span class="k">   local</span> fvtvc <span class="m">1</span>
+  }
+<span class="k">  local</span> tvc <span class="s">`&quot;tvc(</span><span class="nv">`ttvcvars&#39;</span><span class="s">)&quot;&#39;</span>
+<span class="k">  local</span> texp <span class="s">`&quot;texp(</span><span class="nv">`texp&#39;</span><span class="s">)&quot;&#39;</span>
+<span class="k">  local</span> noblank <span class="s">&quot;noblank&quot;</span>
+ }
+<span class="k"> if</span> <span class="s">`&quot;</span><span class="nv">`cmd&#39;</span><span class="s">&quot;&#39;</span><span class="o">!=</span><span class="s">&quot;&quot;</span> {
+<span class="k">  di</span> _n<span class="k"> as</span> txt <span class="s">`&quot;-&gt; cox _t </span><span class="nv">`varlist&#39;</span><span class="s"> </span><span class="nv">`w&#39;</span><span class="s"> </span><span class="nv">`if&#39;</span><span class="s"> </span><span class="nv">`in&#39;</span><span class="s">,&quot;&#39;</span> _c
+<span class="k">   di as</span> txt <span class="s">`&quot; </span><span class="nv">`robust&#39;</span><span class="s"> </span><span class="nv">`cluster&#39;</span><span class="s"> </span><span class="nv">`t0&#39;</span><span class="s"> </span><span class="nv">`hr&#39;</span><span class="s"> </span><span class="nv">`d&#39;</span><span class="s"> </span><span class="nv">`tvc&#39;</span><span class="s"> </span><span class="nv">`texp&#39;</span><span class="s">&quot;&#39;</span> _c
+<span class="k">  di as</span> txt <span class="s">`&quot; </span><span class="nv">`options&#39;</span><span class="s">&quot;&#39;</span> _c
+<span class="k">  di as</span> txt <span class="s">`&quot; </span><span class="nv">`breslow&#39;</span><span class="s"> </span><span class="nv">`efron&#39;</span><span class="s"> </span><span class="nv">`exactm&#39;</span><span class="s"> </span><span class="nv">`exactp&#39;</span><span class="s"> </span><span class="nv">`passthru&#39;</span><span class="s">&quot;&#39;</span>
+<span class="k">  exit</span>
+ }
 
-	<span class="nv">`version&#39;</span> <span class="cs">///</span>
-<span class="k">	cox</span> _t <span class="nv">`varlist&#39;</span> <span class="nv">`w&#39;</span><span class="k"> if</span> <span class="nv">`touse&#39;</span>, <span class="nv">`robust&#39;</span> <span class="nv">`cluster&#39;</span> <span class="cm">/*</span>
-<span class="cm">	*/</span> <span class="nv">`t0&#39;</span> <span class="nv">`d&#39;</span> <span class="nv">`tvc&#39;</span> <span class="nv">`texp&#39;</span> <span class="cm">/*</span>
-<span class="cm">	*/</span> <span class="nv">`options&#39;</span> nocoef <span class="nv">`breslow&#39;</span> <span class="nv">`efron&#39;</span> <span class="nv">`exactm&#39;</span> <span class="nv">`exactp&#39;</span> <span class="cm">/*</span>
-<span class="cm">	*/</span> <span class="nv">`passthru&#39;</span> <span class="nv">`noblank&#39;</span> <span class="nv">`log&#39;</span>
+ <span class="nv">`version&#39;</span> <span class="cs">///</span>
+<span class="k"> cox</span> _t <span class="nv">`varlist&#39;</span> <span class="nv">`w&#39;</span><span class="k"> if</span> <span class="nv">`touse&#39;</span>, <span class="nv">`robust&#39;</span> <span class="nv">`cluster&#39;</span> <span class="cm">/*</span>
+<span class="cm"> */</span> <span class="nv">`t0&#39;</span> <span class="nv">`d&#39;</span> <span class="nv">`tvc&#39;</span> <span class="nv">`texp&#39;</span> <span class="cm">/*</span>
+<span class="cm"> */</span> <span class="nv">`options&#39;</span> nocoef <span class="nv">`breslow&#39;</span> <span class="nv">`efron&#39;</span> <span class="nv">`exactm&#39;</span> <span class="nv">`exactp&#39;</span> <span class="cm">/*</span>
+<span class="cm"> */</span> <span class="nv">`passthru&#39;</span> <span class="nv">`noblank&#39;</span> <span class="nv">`log&#39;</span>
 
-<span class="k">	if</span> <span class="nv">`fvtvc&#39;</span> {
-<span class="k">		tempname</span> b
-<span class="k">		matrix</span> <span class="nv">`b&#39;</span> =<span class="k"> e</span>(b)
-<span class="k">		local</span> stripe : colna <span class="nv">`b&#39;</span>
-<span class="k">		local</span> ntvc :<span class="k"> list</span> sizeof ttvcvars
-<span class="k">		local</span> TVCVARS :<span class="k"> copy local</span> tvcvars
-<span class="k">		forval</span> i = <span class="m">1</span><span class="o">/</span><span class="nv">`ntvc&#39;</span> {
-<span class="k">			gettoken</span> tvar ttvcvars : ttvcvars 
-<span class="k">			gettoken</span> xvar TVCVARS : TVCVARS 
-<span class="k">			if</span> <span class="s">&quot;</span><span class="nv">`tvar&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;</span><span class="nv">`xvar&#39;</span><span class="s">&quot;</span> {
-<span class="k">				local</span> stripe : subinstr<span class="k"> local</span> stripe	<span class="cs">///</span>
-					<span class="s">&quot;</span><span class="nv">`tvar&#39;</span><span class="s">&quot;</span> <span class="s">&quot;</span><span class="nv">`xvar&#39;</span><span class="s">&quot;</span>, word all
-			}
-		}
-<span class="k">		version</span> <span class="m">14</span>:<span class="k"> matrix</span> colna <span class="nv">`b&#39;</span> = <span class="nv">`stripe&#39;</span>
-<span class="k">		est</span> repost b=<span class="nv">`b&#39;</span>,<span class="k"> rename</span> buildfvinfo ADDCONS
-	}
-<span class="k">	else</span> {
-<span class="k">		est</span> repost, buildfvinfo ADDCONS
-	}
-<span class="k">	local</span> chi2type <span class="s">&quot;</span><span class="nv">`e(chi2type)&#39;</span><span class="s">&quot;</span>
+<span class="k"> if</span> <span class="nv">`fvtvc&#39;</span> {
+<span class="k">  tempname</span> b
+<span class="k">  matrix</span> <span class="nv">`b&#39;</span> =<span class="k"> e</span>(b)
+<span class="k">  local</span> stripe : colna <span class="nv">`b&#39;</span>
+<span class="k">  local</span> ntvc :<span class="k"> list</span> sizeof ttvcvars
+<span class="k">  local</span> TVCVARS :<span class="k"> copy local</span> tvcvars
+<span class="k">  forval</span> i = <span class="m">1</span><span class="o">/</span><span class="nv">`ntvc&#39;</span> {
+<span class="k">   gettoken</span> tvar ttvcvars : ttvcvars 
+<span class="k">   gettoken</span> xvar TVCVARS : TVCVARS 
+<span class="k">   if</span> <span class="s">&quot;</span><span class="nv">`tvar&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;</span><span class="nv">`xvar&#39;</span><span class="s">&quot;</span> {
+<span class="k">    local</span> stripe : subinstr<span class="k"> local</span> stripe <span class="cs">///</span>
+     <span class="s">&quot;</span><span class="nv">`tvar&#39;</span><span class="s">&quot;</span> <span class="s">&quot;</span><span class="nv">`xvar&#39;</span><span class="s">&quot;</span>, word all
+   }
+  }
+<span class="k">  version</span> <span class="m">14</span>:<span class="k"> matrix</span> colna <span class="nv">`b&#39;</span> = <span class="nv">`stripe&#39;</span>
+<span class="k">  est</span> repost b=<span class="nv">`b&#39;</span>,<span class="k"> rename</span> buildfvinfo ADDCONS
+ }
+<span class="k"> else</span> {
+<span class="k">  est</span> repost, buildfvinfo ADDCONS
+ }
+<span class="k"> local</span> chi2type <span class="s">&quot;</span><span class="nv">`e(chi2type)&#39;</span><span class="s">&quot;</span>
 
-<span class="k">	if e</span>(N)<span class="o">==</span><span class="m">0</span> |<span class="k"> e</span>(N)<span class="o">&gt;=</span>. {<span class="k"> exit</span> <span class="m">2001</span> }
-	<span class="cm">/* inherits e() stuff from -cox- */</span>
+<span class="k"> if e</span>(N)<span class="o">==</span><span class="m">0</span> |<span class="k"> e</span>(N)<span class="o">&gt;=</span>. {<span class="k"> exit</span> <span class="m">2001</span> }
+ <span class="cm">/* inherits e() stuff from -cox- */</span>
 
-	SaveOpt, <span class="nv">`passthru&#39;</span>
+ SaveOpt, <span class="nv">`passthru&#39;</span>
 
-	_post_vce_rank, checksize
-<span class="k">	if</span> <span class="s">&quot;</span><span class="nv">`chi2type&#39;</span><span class="s">&quot;</span><span class="o">==</span><span class="s">&quot;Wald&quot;</span> {
-		WaldTest
-	}
-<span class="k">	else</span> {
-<span class="k">		local</span> df_m = <span class="nf">cond</span>(<span class="s">&quot;</span><span class="nv">`e(rank)&#39;</span><span class="s">&quot;</span><span class="o">!=</span><span class="s">&quot;&quot;</span>,<span class="s">&quot;</span><span class="nv">`e(rank)&#39;</span><span class="s">&quot;</span>,<span class="s">&quot;0&quot;</span>)
-<span class="k">		est scalar</span> df_m = <span class="nv">`df_m&#39;</span>
-<span class="k">		est local</span> chi2type <span class="s">&quot;LR&quot;</span>
-	}
+ _post_vce_rank, checksize
+<span class="k"> if</span> <span class="s">&quot;</span><span class="nv">`chi2type&#39;</span><span class="s">&quot;</span><span class="o">==</span><span class="s">&quot;Wald&quot;</span> {
+  WaldTest
+ }
+<span class="k"> else</span> {
+<span class="k">  local</span> df_m = <span class="nf">cond</span>(<span class="s">&quot;</span><span class="nv">`e(rank)&#39;</span><span class="s">&quot;</span><span class="o">!=</span><span class="s">&quot;&quot;</span>,<span class="s">&quot;</span><span class="nv">`e(rank)&#39;</span><span class="s">&quot;</span>,<span class="s">&quot;0&quot;</span>)
+<span class="k">  est scalar</span> df_m = <span class="nv">`df_m&#39;</span>
+<span class="k">  est local</span> chi2type <span class="s">&quot;LR&quot;</span>
+ }
 
-<span class="k">	global</span> S_E_ll =<span class="k"> e</span>(ll)			<span class="cm">/* double save */</span>
-<span class="k">	global</span> S_E_chi2 =<span class="k"> e</span>(chi2)		<span class="cm">/* double save */</span>
-<span class="k">	global</span> S_E_mdf =<span class="k"> e</span>(df_m)		<span class="cm">/* double save */</span>
+<span class="k"> global</span> S_E_ll =<span class="k"> e</span>(ll)   <span class="cm">/* double save */</span>
+<span class="k"> global</span> S_E_chi2 =<span class="k"> e</span>(chi2)  <span class="cm">/* double save */</span>
+<span class="k"> global</span> S_E_mdf =<span class="k"> e</span>(df_m)  <span class="cm">/* double save */</span>
 
 
-<span class="k">	st_hc</span> <span class="nv">`touse&#39;</span>
+<span class="k"> st_hc</span> <span class="nv">`touse&#39;</span>
 
-<span class="k">	if</span> <span class="s">&quot;</span><span class="nv">`robust&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
-<span class="k">		est local vce</span> robust
-	}
-<span class="k">	est local vce</span> <span class="s">&quot;</span><span class="nv">`vce&#39;</span><span class="s">&quot;</span>
-<span class="k">	est local</span> estat_cmd<span class="k"> stcox_estat</span>
-<span class="k">	est local predict stcox_p</span>
-<span class="k">	est local</span> footnote stcox_footnote
-	_ms_eq_info
-<span class="k">	est</span> hidden<span class="k"> local</span> k_eform = <span class="nf">r</span>(k_eq)
-<span class="k">	est</span> hidden<span class="k"> local</span> marginsprop addcons allcons
-<span class="k">	est</span> hidden<span class="k"> local</span> marginsfootnote _multirecordcheck
-<span class="k">	est local</span> marginsnotok	CSNell		<span class="cs">///</span>
-				DEViance	<span class="cs">///</span>
-				DFBeta		<span class="cs">///</span>
-				ESR		<span class="cs">///</span>
-				LDisplace	<span class="cs">///</span>
-				LMax		<span class="cs">///</span>
-				MGale		<span class="cs">///</span>
-				SCAledsch	<span class="cs">///</span>
-				SCHoenfeld	<span class="cs">///</span>
-				SCores
-<span class="k">	est local</span> cmd2 <span class="s">&quot;stcox&quot;</span>
-<span class="k">	local</span> offset <span class="nv">`e(offset)&#39;</span>
-<span class="k">	est</span> hidden<span class="k"> local</span> offset1 <span class="nv">`offset&#39;</span>
-<span class="k">	est local</span> offset <span class="nv">`offset&#39;</span>
-<span class="k">	global</span> S_E_cmd2 <span class="s">&quot;stcox&quot;</span>		<span class="cm">/* double save */</span>
-<span class="k">	tempname</span> b
-<span class="k">	mat</span> <span class="nv">`b&#39;</span> =<span class="k"> e</span>(b)
-	_ms_omit_info <span class="nv">`b&#39;</span>
-<span class="k">	local</span> cols = <span class="nf">colsof</span>(<span class="nv">`b&#39;</span>)
-<span class="k">	if</span> <span class="nv">`r(k_omit)&#39;</span> {
-<span class="k">		if</span> <span class="nv">`r(k_omit)&#39;</span> <span class="o">==</span> <span class="nv">`cols&#39;</span> {
-<span class="k">		  local varlist</span> <span class="s">&quot;&quot;</span>
-		}
-<span class="k">		else</span> {
-<span class="k">		  mata</span> : <span class="cs">///</span>
-		  st_local(<span class="s">&quot;varlist&quot;</span>,invtokens(select(st_matrixcolstripe <span class="cs">///</span>
-		  (<span class="s">&quot;</span><span class="nv">`b&#39;</span><span class="s">&quot;</span>)[.,<span class="m">2</span>]&#39;,<span class="m">1</span>:<span class="o">-</span>st_matrix(<span class="s">&quot;r(omit)&quot;</span>))))	
-		}
-	}
-<span class="k">	else</span> {
-<span class="k">		local varlist</span> <span class="nv">`varlist&#39;</span> <span class="nv">`tvcvars&#39;</span>
-	}
-	unopvarlist <span class="nv">`varlist&#39;</span>
-<span class="k">	local varlist</span> <span class="nv">`r(varlist)&#39;</span>
-<span class="k">	signestimationsample</span> _t _t0 _d <span class="nv">`varlist&#39;</span> <span class="nv">`e(clustvar)&#39;</span> <span class="cs">///</span>
-				       <span class="nv">`e(offset)&#39;</span> <span class="nv">`e(strata)&#39;</span>
-	<span class="nv">`version&#39;</span> <span class="cs">///</span>
-<span class="k">	stcox</span>, <span class="nv">`hr&#39;</span> level(<span class="nv">`level&#39;</span>) <span class="nv">`diopts&#39;</span>
+<span class="k"> if</span> <span class="s">&quot;</span><span class="nv">`robust&#39;</span><span class="s">&quot;</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> {
+<span class="k">  est local vce</span> robust
+ }
+<span class="k"> est local vce</span> <span class="s">&quot;</span><span class="nv">`vce&#39;</span><span class="s">&quot;</span>
+<span class="k"> est local</span> estat_cmd<span class="k"> stcox_estat</span>
+<span class="k"> est local predict stcox_p</span>
+<span class="k"> est local</span> footnote stcox_footnote
+ _ms_eq_info
+<span class="k"> est</span> hidden<span class="k"> local</span> k_eform = <span class="nf">r</span>(k_eq)
+<span class="k"> est</span> hidden<span class="k"> local</span> marginsprop addcons allcons
+<span class="k"> est</span> hidden<span class="k"> local</span> marginsfootnote _multirecordcheck
+<span class="k"> est local</span> marginsnotok CSNell  <span class="cs">///</span>
+    DEViance <span class="cs">///</span>
+    DFBeta  <span class="cs">///</span>
+    ESR  <span class="cs">///</span>
+    LDisplace <span class="cs">///</span>
+    LMax  <span class="cs">///</span>
+    MGale  <span class="cs">///</span>
+    SCAledsch <span class="cs">///</span>
+    SCHoenfeld <span class="cs">///</span>
+    SCores
+<span class="k"> est local</span> cmd2 <span class="s">&quot;stcox&quot;</span>
+<span class="k"> local</span> offset <span class="nv">`e(offset)&#39;</span>
+<span class="k"> est</span> hidden<span class="k"> local</span> offset1 <span class="nv">`offset&#39;</span>
+<span class="k"> est local</span> offset <span class="nv">`offset&#39;</span>
+<span class="k"> global</span> S_E_cmd2 <span class="s">&quot;stcox&quot;</span>  <span class="cm">/* double save */</span>
+<span class="k"> tempname</span> b
+<span class="k"> mat</span> <span class="nv">`b&#39;</span> =<span class="k"> e</span>(b)
+ _ms_omit_info <span class="nv">`b&#39;</span>
+<span class="k"> local</span> cols = <span class="nf">colsof</span>(<span class="nv">`b&#39;</span>)
+<span class="k"> if</span> <span class="nv">`r(k_omit)&#39;</span> {
+<span class="k">  if</span> <span class="nv">`r(k_omit)&#39;</span> <span class="o">==</span> <span class="nv">`cols&#39;</span> {
+<span class="k">    local varlist</span> <span class="s">&quot;&quot;</span>
+  }
+<span class="k">  else</span> {
+<span class="k">    mata</span> : <span class="cs">///</span>
+    st_local(<span class="s">&quot;varlist&quot;</span>,invtokens(select(st_matrixcolstripe <span class="cs">///</span>
+    (<span class="s">&quot;</span><span class="nv">`b&#39;</span><span class="s">&quot;</span>)[.,<span class="m">2</span>]&#39;,<span class="m">1</span>:<span class="o">-</span>st_matrix(<span class="s">&quot;r(omit)&quot;</span>)))) 
+  }
+ }
+<span class="k"> else</span> {
+<span class="k">  local varlist</span> <span class="nv">`varlist&#39;</span> <span class="nv">`tvcvars&#39;</span>
+ }
+ unopvarlist <span class="nv">`varlist&#39;</span>
+<span class="k"> local varlist</span> <span class="nv">`r(varlist)&#39;</span>
+<span class="k"> signestimationsample</span> _t _t0 _d <span class="nv">`varlist&#39;</span> <span class="nv">`e(clustvar)&#39;</span> <span class="cs">///</span>
+           <span class="nv">`e(offset)&#39;</span> <span class="nv">`e(strata)&#39;</span>
+ <span class="nv">`version&#39;</span> <span class="cs">///</span>
+<span class="k"> stcox</span>, <span class="nv">`hr&#39;</span> level(<span class="nv">`level&#39;</span>) <span class="nv">`diopts&#39;</span>
 <span class="k">end</span>
 
 
 <span class="k">program</span> define SaveOpt, eclass
-<span class="k">	syntax</span> [, MGale(string) BASEHC(string) BASEChazard(string) <span class="cm">/*</span>
-<span class="cm">		*/</span> BASESurv(string) SCHoenfeld(string) <span class="cm">/*</span>
-<span class="cm">		*/</span> SCAledsch(string) ESR(string) <span class="o">*</span> ]
-<span class="k">	est local</span> mgale <span class="s">&quot;</span><span class="nv">`mgale&#39;</span><span class="s">&quot;</span>
-<span class="k">	est local</span> basehc <span class="s">&quot;</span><span class="nv">`basehc&#39;</span><span class="s">&quot;</span>
-<span class="k">	est local</span> baseh <span class="s">&quot;</span><span class="nv">`basedchazard&#39;</span><span class="s">&quot;</span>
-<span class="k">	est local</span> basech <span class="s">&quot;</span><span class="nv">`basechazard&#39;</span><span class="s">&quot;</span>
-<span class="k">	est local</span> bases <span class="s">&quot;</span><span class="nv">`basesurv&#39;</span><span class="s">&quot;</span>
+<span class="k"> syntax</span> [, MGale(string) BASEHC(string) BASEChazard(string) <span class="cm">/*</span>
+<span class="cm">  */</span> BASESurv(string) SCHoenfeld(string) <span class="cm">/*</span>
+<span class="cm">  */</span> SCAledsch(string) ESR(string) <span class="o">*</span> ]
+<span class="k"> est local</span> mgale <span class="s">&quot;</span><span class="nv">`mgale&#39;</span><span class="s">&quot;</span>
+<span class="k"> est local</span> basehc <span class="s">&quot;</span><span class="nv">`basehc&#39;</span><span class="s">&quot;</span>
+<span class="k"> est local</span> baseh <span class="s">&quot;</span><span class="nv">`basedchazard&#39;</span><span class="s">&quot;</span>
+<span class="k"> est local</span> basech <span class="s">&quot;</span><span class="nv">`basechazard&#39;</span><span class="s">&quot;</span>
+<span class="k"> est local</span> bases <span class="s">&quot;</span><span class="nv">`basesurv&#39;</span><span class="s">&quot;</span>
 
-	SaveNm vl_sch <span class="s">&quot;</span><span class="nv">`schoenfeld&#39;</span><span class="s">&quot;</span> <span class="s">&quot;Schoenfeld&quot;</span>
-	SaveNm vl_ssc <span class="s">&quot;</span><span class="nv">`scaledsch&#39;</span><span class="s">&quot;</span> <span class="s">&quot;scaled Schoenfeld&quot;</span>
-	SaveNm vl_esr <span class="s">&quot;</span><span class="nv">`esr&#39;</span><span class="s">&quot;</span>	  <span class="s">&quot;efficient score&quot;</span>
+ SaveNm vl_sch <span class="s">&quot;</span><span class="nv">`schoenfeld&#39;</span><span class="s">&quot;</span> <span class="s">&quot;Schoenfeld&quot;</span>
+ SaveNm vl_ssc <span class="s">&quot;</span><span class="nv">`scaledsch&#39;</span><span class="s">&quot;</span> <span class="s">&quot;scaled Schoenfeld&quot;</span>
+ SaveNm vl_esr <span class="s">&quot;</span><span class="nv">`esr&#39;</span><span class="s">&quot;</span>   <span class="s">&quot;efficient score&quot;</span>
 
-<span class="k">	if</span> <span class="s">&quot;</span><span class="nv">`mgale&#39;</span><span class="s">&quot;</span>      <span class="o">!=</span> <span class="s">&quot;&quot;</span> {<span class="k"> label var</span> <span class="nv">`mgale&#39;</span> <span class="s">&quot;martingale&quot;</span> }
-<span class="k">	if</span> <span class="s">&quot;</span><span class="nv">`basehc&#39;</span><span class="s">&quot;</span><span class="o">!=</span> <span class="s">&quot;&quot;</span> { 
-<span class="k">			label var</span> <span class="nv">`basehc&#39;</span> <span class="s">&quot;baseline hazard contribution&quot;</span>
-	}
-<span class="k">	if</span> <span class="s">&quot;</span><span class="nv">`basesurv&#39;</span><span class="s">&quot;</span>   <span class="o">!=</span> <span class="s">&quot;&quot;</span> {<span class="k"> label var</span> <span class="nv">`basesurv&#39;</span> <span class="s">&quot;baseline survivor function&quot;</span> }
-<span class="k">	if</span> <span class="s">&quot;</span><span class="nv">`basechazard&#39;</span><span class="s">&quot;</span><span class="o">!=</span> <span class="s">&quot;&quot;</span> { 
-<span class="k">		label var</span> <span class="nv">`basechazard&#39;</span> <span class="s">&quot;cumulative baseline hazard&quot;</span> 
-	}
+<span class="k"> if</span> <span class="s">&quot;</span><span class="nv">`mgale&#39;</span><span class="s">&quot;</span>      <span class="o">!=</span> <span class="s">&quot;&quot;</span> {<span class="k"> label var</span> <span class="nv">`mgale&#39;</span> <span class="s">&quot;martingale&quot;</span> }
+<span class="k"> if</span> <span class="s">&quot;</span><span class="nv">`basehc&#39;</span><span class="s">&quot;</span><span class="o">!=</span> <span class="s">&quot;&quot;</span> { 
+<span class="k">   label var</span> <span class="nv">`basehc&#39;</span> <span class="s">&quot;baseline hazard contribution&quot;</span>
+ }
+<span class="k"> if</span> <span class="s">&quot;</span><span class="nv">`basesurv&#39;</span><span class="s">&quot;</span>   <span class="o">!=</span> <span class="s">&quot;&quot;</span> {<span class="k"> label var</span> <span class="nv">`basesurv&#39;</span> <span class="s">&quot;baseline survivor function&quot;</span> }
+<span class="k"> if</span> <span class="s">&quot;</span><span class="nv">`basechazard&#39;</span><span class="s">&quot;</span><span class="o">!=</span> <span class="s">&quot;&quot;</span> { 
+<span class="k">  label var</span> <span class="nv">`basechazard&#39;</span> <span class="s">&quot;cumulative baseline hazard&quot;</span> 
+ }
 <span class="k">end</span>
 
 <span class="k">program</span> define SaveNm, eclass
-<span class="k">	args</span> name base lname 
+<span class="k"> args</span> name base lname 
 
-<span class="k">	if</span> <span class="s">&quot;</span><span class="nv">`base&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> {<span class="k"> exit</span> }
+<span class="k"> if</span> <span class="s">&quot;</span><span class="nv">`base&#39;</span><span class="s">&quot;</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> {<span class="k"> exit</span> }
 
-<span class="k">	tempname</span> b
-<span class="k">	mat</span> <span class="nv">`b&#39;</span> = <span class="nf">get</span>(_b)
-<span class="k">	local</span> p = <span class="nf">colsof</span>(<span class="nv">`b&#39;</span>)
-<span class="k">	local</span> names : colnames(<span class="nv">`b&#39;</span>)
+<span class="k"> tempname</span> b
+<span class="k"> mat</span> <span class="nv">`b&#39;</span> = <span class="nf">get</span>(_b)
+<span class="k"> local</span> p = <span class="nf">colsof</span>(<span class="nv">`b&#39;</span>)
+<span class="k"> local</span> names : colnames(<span class="nv">`b&#39;</span>)
 
-<span class="k">	local</span> j = index(<span class="s">&quot;</span><span class="nv">`base&#39;</span><span class="s">&quot;</span>,<span class="s">&quot;*&quot;</span>)
-<span class="k">	if</span> <span class="nv">`j&#39;</span> {
-<span class="k">		local</span> base = bsubstr(<span class="s">&quot;</span><span class="nv">`base&#39;</span><span class="s">&quot;</span>,<span class="m">1</span>,<span class="nv">`j&#39;</span><span class="o">-</span><span class="m">1</span>)
-<span class="k">		local</span> i <span class="m">1</span>
-<span class="k">		while</span> <span class="nv">`i&#39;</span> <span class="o">&lt;=</span> <span class="nv">`p&#39;</span> {
-<span class="k">			local</span> iname : word <span class="nv">`i&#39;</span> of <span class="nv">`names&#39;</span>
-<span class="k">			label var</span> <span class="nv">`base&#39;`i&#39;</span> <span class="s">&quot;</span><span class="nv">`lname&#39;</span><span class="s"> - </span><span class="nv">`iname&#39;</span><span class="s">&quot;</span>
-<span class="k">			local list</span> <span class="nv">`list&#39;</span> <span class="nv">`base&#39;`i&#39;</span>
-<span class="k">			local</span> i = <span class="nv">`i&#39;</span><span class="o">+</span><span class="m">1</span>
-		}
-	}
-<span class="k">	else</span> {
-<span class="k">		tokenize</span> <span class="nv">`base&#39;</span>
-<span class="k">		local</span> i <span class="m">1</span>
-<span class="k">		while</span> <span class="nv">`i&#39;</span> <span class="o">&lt;=</span> <span class="nv">`p&#39;</span> {
-<span class="k">			local</span> iname : word <span class="nv">`i&#39;</span> of <span class="nv">`names&#39;</span>
-<span class="k">			label var</span> <span class="nv">``i&#39;&#39;</span> <span class="s">&quot;</span><span class="nv">`lname&#39;</span><span class="s"> - </span><span class="nv">`iname&#39;</span><span class="s">&quot;</span>
-<span class="k">			local list</span> <span class="nv">`list&#39;</span> <span class="nv">``i&#39;&#39;</span>
-<span class="k">			local</span> i = <span class="nv">`i&#39;</span><span class="o">+</span><span class="m">1</span>
-		}
-	}
-<span class="k">	est local</span> <span class="nv">`name&#39;</span> <span class="nv">`list&#39;</span>
+<span class="k"> local</span> j = index(<span class="s">&quot;</span><span class="nv">`base&#39;</span><span class="s">&quot;</span>,<span class="s">&quot;*&quot;</span>)
+<span class="k"> if</span> <span class="nv">`j&#39;</span> {
+<span class="k">  local</span> base = bsubstr(<span class="s">&quot;</span><span class="nv">`base&#39;</span><span class="s">&quot;</span>,<span class="m">1</span>,<span class="nv">`j&#39;</span><span class="o">-</span><span class="m">1</span>)
+<span class="k">  local</span> i <span class="m">1</span>
+<span class="k">  while</span> <span class="nv">`i&#39;</span> <span class="o">&lt;=</span> <span class="nv">`p&#39;</span> {
+<span class="k">   local</span> iname : word <span class="nv">`i&#39;</span> of <span class="nv">`names&#39;</span>
+<span class="k">   label var</span> <span class="nv">`base&#39;`i&#39;</span> <span class="s">&quot;</span><span class="nv">`lname&#39;</span><span class="s"> - </span><span class="nv">`iname&#39;</span><span class="s">&quot;</span>
+<span class="k">   local list</span> <span class="nv">`list&#39;</span> <span class="nv">`base&#39;`i&#39;</span>
+<span class="k">   local</span> i = <span class="nv">`i&#39;</span><span class="o">+</span><span class="m">1</span>
+  }
+ }
+<span class="k"> else</span> {
+<span class="k">  tokenize</span> <span class="nv">`base&#39;</span>
+<span class="k">  local</span> i <span class="m">1</span>
+<span class="k">  while</span> <span class="nv">`i&#39;</span> <span class="o">&lt;=</span> <span class="nv">`p&#39;</span> {
+<span class="k">   local</span> iname : word <span class="nv">`i&#39;</span> of <span class="nv">`names&#39;</span>
+<span class="k">   label var</span> <span class="nv">``i&#39;&#39;</span> <span class="s">&quot;</span><span class="nv">`lname&#39;</span><span class="s"> - </span><span class="nv">`iname&#39;</span><span class="s">&quot;</span>
+<span class="k">   local list</span> <span class="nv">`list&#39;</span> <span class="nv">``i&#39;&#39;</span>
+<span class="k">   local</span> i = <span class="nv">`i&#39;</span><span class="o">+</span><span class="m">1</span>
+  }
+ }
+<span class="k"> est local</span> <span class="nv">`name&#39;</span> <span class="nv">`list&#39;</span>
 <span class="k">end</span>
 
 <span class="k">program</span> WaldTest, eclass
 
-<span class="k">	est local</span> chi2type Wald
+<span class="k"> est local</span> chi2type Wald
 
-<span class="k">	tempname</span> b
-<span class="k">	mat</span> <span class="nv">`b&#39;</span> =<span class="k"> e</span>(b)
-<span class="k">	local</span> names : colnames <span class="nv">`b&#39;</span>	
-<span class="k">	capture test</span> <span class="nv">`names&#39;</span>
+<span class="k"> tempname</span> b
+<span class="k"> mat</span> <span class="nv">`b&#39;</span> =<span class="k"> e</span>(b)
+<span class="k"> local</span> names : colnames <span class="nv">`b&#39;</span> 
+<span class="k"> capture test</span> <span class="nv">`names&#39;</span>
 
-<span class="k">	if</span> <span class="o">!</span>_rc {
-<span class="k">		est scalar</span> chi2 = <span class="nf">r</span>(chi2)
-<span class="k">		est scalar</span> df_m = <span class="nf">r</span>(df)
-	}
-<span class="k">	else</span> {
-<span class="k">		est scalar</span> chi2 = <span class="m">0</span>
-<span class="k">		est scalar</span> df_m = <span class="m">0</span>
-	}
+<span class="k"> if</span> <span class="o">!</span>_rc {
+<span class="k">  est scalar</span> chi2 = <span class="nf">r</span>(chi2)
+<span class="k">  est scalar</span> df_m = <span class="nf">r</span>(df)
+ }
+<span class="k"> else</span> {
+<span class="k">  est scalar</span> chi2 = <span class="m">0</span>
+<span class="k">  est scalar</span> df_m = <span class="m">0</span>
+ }
 <span class="k">end</span>
 
 <span class="k">program</span> FunctionOfTime, sortpreserve
-<span class="k">	syntax</span> varname [if]
+<span class="k"> syntax</span> varname [if]
 
-<span class="k">	marksample</span> touse
-<span class="k">	tempvar gr</span>
-<span class="k">	qui egen</span> long <span class="nv">`gr&#39;</span> = group(_t <span class="nv">`touse&#39;</span>)
-<span class="k">	sort</span> <span class="nv">`gr&#39;</span>
-<span class="k">	cap by</span> <span class="nv">`gr&#39;</span>:<span class="k"> assert</span> <span class="nv">`varlist&#39;</span> <span class="o">==</span> <span class="nv">`varlist&#39;</span>[<span class="m">1</span>]<span class="k"> if</span> <span class="nv">`touse&#39;</span>
-<span class="k">	if</span> _rc {
-<span class="k">		di as err</span> <span class="s">&quot;{p 0 0 2}option {bf:texp()} is not a proper function of time &quot;</span>
-<span class="k">		di as err</span> <span class="s">&quot;{p_end}&quot;</span>
-<span class="k">		exit</span> <span class="m">459</span>
-	}
+<span class="k"> marksample</span> touse
+<span class="k"> tempvar gr</span>
+<span class="k"> qui egen</span> long <span class="nv">`gr&#39;</span> = group(_t <span class="nv">`touse&#39;</span>)
+<span class="k"> sort</span> <span class="nv">`gr&#39;</span>
+<span class="k"> cap by</span> <span class="nv">`gr&#39;</span>:<span class="k"> assert</span> <span class="nv">`varlist&#39;</span> <span class="o">==</span> <span class="nv">`varlist&#39;</span>[<span class="m">1</span>]<span class="k"> if</span> <span class="nv">`touse&#39;</span>
+<span class="k"> if</span> _rc {
+<span class="k">  di as err</span> <span class="s">&quot;{p 0 0 2}option {bf:texp()} is not a proper function of time &quot;</span>
+<span class="k">  di as err</span> <span class="s">&quot;{p_end}&quot;</span>
+<span class="k">  exit</span> <span class="m">459</span>
+ }
 <span class="k">end</span>
 
 <span class="k">exit</span>
