@@ -587,6 +587,24 @@ document.write(`
 <p><strong>Bonus points:</strong> Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file. Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points</p>
 </div>
 <p>We now wish to link the dataset created above to mortality outcomes to perform survival analysis. See chapter 2: <code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> and specifically the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">6</span> <span class="pre">{</span></code> code-block, which was exclusively dedicated to <a class="reference external" href="https://jhustata.github.io/book/fff.html">survival analysis</a> and used the <code class="docutils literal notranslate"><span class="pre">stset</span></code>, <code class="docutils literal notranslate"><span class="pre">sts</span> <span class="pre">graph</span></code>, and <code class="docutils literal notranslate"><span class="pre">stcox</span></code> commands! How may we go about this using the online resources available to us<a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/nhanes_v0.do">?</a></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>nhanes_mortality
+nhanes_continuous_demo
+<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seq using nhanes_mortality,<span class="k"> keep</span>(matched)
+<span class="k">tab</span> survey
+<span class="k">lookfor</span> age
+<span class="k">lookfor</span> follow
+<span class="k">egen</span> surveytag=tag(survey)
+<span class="k">codebook</span> surveytag
+<span class="k">desc</span> survey 
+<span class="k">split</span> survey,<span class="k"> parse</span>(<span class="s">&quot;-&quot;</span>)
+<span class="k">destring</span> survey1,<span class="k"> replace</span> 
+<span class="k">g</span> years=permth_exm<span class="o">/</span><span class="m">12</span>
+<span class="k">lookfor</span> mort 
+<span class="k">g</span> age_at_death=ridageyr <span class="o">+</span> years<span class="k"> if</span> mortstat<span class="o">==</span><span class="m">1</span>
+<span class="k">bys</span> survey:<span class="k"> egen</span> av_age_at_death=mean(age_at_death)
+<span class="k">twoway scatter</span> av_age_at_Death survey1<span class="k"> if</span> surveytag
+</pre></div>
+</div>
 <p>Then, in the second-half of the class we’ll recap .dofile structure in context of the <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.do</span></code> solution we’ll share with you. Let’s first briefly study an .ado file that you can find on your computers here:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span> <span class="o">~/</span>applications<span class="o">/</span>stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>s<span class="o">/</span>stcox<span class="m">.</span>ado
 </pre></div>

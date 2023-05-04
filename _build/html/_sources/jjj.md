@@ -231,6 +231,28 @@ Let's [recall](https://jhustata.github.io/book/aaa.html) an extra credit challen
 
 We now wish to link the dataset created above to mortality outcomes to perform survival analysis. See chapter 2: `r(mean)` and specifically the `if 6 {` code-block, which was exclusively dedicated to [survival analysis](https://jhustata.github.io/book/fff.html) and used the `stset`, `sts graph`, and `stcox` commands! How may we go about this using the online resources available to us[?](https://raw.githubusercontent.com/jhustata/book/main/nhanes_v0.do)
 
+```stata
+
+nhanes_mortality
+nhanes_continuous_demo
+merge 1:1 seq using nhanes_mortality, keep(matched)
+tab survey
+lookfor age
+lookfor follow
+egen surveytag=tag(survey)
+codebook surveytag
+desc survey 
+split survey, parse("-")
+destring survey1, replace 
+g years=permth_exm/12
+lookfor mort 
+g age_at_death=ridageyr + years if mortstat==1
+bys survey: egen av_age_at_death=mean(age_at_death)
+twoway scatter av_age_at_Death survey1 if surveytag
+
+```
+
+
 Then, in the second-half of the class we'll recap .dofile structure in context of the `hw1.lastname.firstname.do` solution we'll share with you. Let's first briefly study an .ado file that you can find on your computers here:
 
 ```stata
