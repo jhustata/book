@@ -248,8 +248,22 @@ g years=permth_exm/12
 lookfor mort 
 g age_at_death=ridageyr + years if mortstat==1
 bys survey: egen av_age_at_death=mean(age_at_death)
-twoway scatter av_age_at_Death survey1 if surveytag
-
+#delimit ;
+twoway scatter av_age_at_death survey1 if surveytag,
+     ti("Age at Death in NHANES", pos(11))
+	 yti("")
+	 xti("Survey Year");
+stset years, fail(mortstat);
+sts graph,
+    by(survey1)
+    fail
+	per(100)
+	ti("")
+	yti("%")
+	xti("Years)
+stcox i.survey1
+stcox i.survey1 ridageyr i.ridreth1 riagendr 
+#delimit cr
 ```
 
 

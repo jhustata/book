@@ -602,7 +602,22 @@ nhanes_continuous_demo
 <span class="k">lookfor</span> mort 
 <span class="k">g</span> age_at_death=ridageyr <span class="o">+</span> years<span class="k"> if</span> mortstat<span class="o">==</span><span class="m">1</span>
 <span class="k">bys</span> survey:<span class="k"> egen</span> av_age_at_death=mean(age_at_death)
-<span class="k">twoway scatter</span> av_age_at_Death survey1<span class="k"> if</span> surveytag
+#delimit ;
+<span class="k">twoway scatter</span> av_age_at_death survey1<span class="k"> if</span> surveytag,
+     ti(<span class="s">&quot;Age at Death in NHANES&quot;</span>, pos(<span class="m">11</span>))
+	 yti(<span class="s">&quot;&quot;</span>)
+	 xti(<span class="s">&quot;Survey Year&quot;</span>);
+<span class="k">stset</span> years, fail(mortstat);
+<span class="k">sts graph</span>,
+<span class="k">    by</span>(survey1)
+    fail
+	per(<span class="m">100</span>)
+	ti(<span class="s">&quot;&quot;</span>)
+	yti(<span class="s">&quot;%&quot;</span>)
+	xti(<span class="s">&quot;Years)</span>
+<span class="k">stcox</span> i<span class="m">.</span>survey1
+<span class="k">stcox</span> i<span class="m">.</span>survey1 ridageyr i<span class="m">.</span>ridreth1 riagendr 
+#delimit cr
 </pre></div>
 </div>
 <p>Then, in the second-half of the class we’ll recap .dofile structure in context of the <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.do</span></code> solution we’ll share with you. Let’s first briefly study an .ado file that you can find on your computers here:</p>
