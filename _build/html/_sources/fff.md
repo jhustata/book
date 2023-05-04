@@ -163,7 +163,7 @@ program define nhanes
         		sts graph if inrange(hab1,1,5),
         		   by(hab1)
         		   fail
-        		   ti("Morality in NHANES III",pos(11))
+        		   ti("Mortality in NHANES III",pos(11))
         		   subti("by self report: ${subgroup}",pos(11))
         		   yti("%",orientation(horizontal))
         		   xti("Years")
@@ -203,8 +203,9 @@ program define nhanes
 	restore 
 	
 end 
-        
-               
+
+nhanes 
+       
 ```
 
 Code-block `if 6 {` can be reused in any future survival analysis, with a few edits. You may accumulate a catalog of such codeblocks for your personal use or for sharing with others. Here I catalog this codeblock as `task001` for future reference. Another generalizable codeblock may be labelled `task002`.
