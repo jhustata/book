@@ -277,6 +277,12 @@ Let's study this output and discuss a few issues:
 * `c(N)`, `c(k)` macros embedded in graph
 * improving the aesthetics
 
+Which of these is a twoway graph?
+
+![twoway_ageatdeath.png]
+
+![km_race.png]
+
 Then, in the second-half of the class we'll recap .dofile structure in context of the `hw1.lastname.firstname.do` solution we'll share with you. Let's first briefly study an .ado file that you can find on your computers here:
 
 ```stata
