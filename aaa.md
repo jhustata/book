@@ -137,6 +137,7 @@ What's new this week?
 1. We will discuss the `hw1` solution on 05/04/2023. Resubmissions for `hw1` due one same day as `hw2`
 2. Did you know that `lab5` has content that prepares you for `hw2`?
 3. Similarly, `lab6` (ie next week) has content that prepares you for `hw3`!
+4. The **weights** of each `hw1` question (initial submission) are going to be revised in response to consistent concerns raised by <u>both</u> TAs & students. But please do resubmit `hw1` if you wish to boost your grade. The original rubric weights will hold for any resubmission. 
 
 
 ```
