@@ -331,8 +331,8 @@ sts graph,
 
 But the `hw1` script of one of your classmates has serendipitously segued us to informative, functional conditional `if` statements:
 
-     * [de-identified](https://raw.githubusercontent.com/jhustata/book/main/placeholders1.do) `hw1` script
-     * [edited](https://raw.githubusercontent.com/jhustata/book/main/placeholders2.do) `hw` script
+[de-identified](https://raw.githubusercontent.com/jhustata/book/main/placeholders1.do) `hw1` script
+[edited](https://raw.githubusercontent.com/jhustata/book/main/placeholders2.do) `hw` script
 
 Copy & paste first the original and then the edited versions into your .do file editor and run. Of course you'll need to have `hw1.txt` in the appropriate `pwd`.
 
@@ -358,6 +358,7 @@ if c(os) == "MS Office" {
 else {
     filepath/filename.extension
 }
+```
 
 ```stata
 
