@@ -299,17 +299,65 @@ Then, in the second-half of the class we'll recap .dofile structure in context o
 
 ```
 
-This is the native Stata program for the `stcox` command used in Cox proportional hazards regression. We are **not** presently interested in the content of the .do file but merely wish to use it as an exemplar for our scripts and programs, including our `ideal` hw1 solution. We are presently interested in .do fiel or .ado file structure. Don't be intimidated by the length of the script. Just look out for salient features:
+This is the native Stata program for the `stcox` command used in Cox proportional hazards regression. We are **not** presently interested in the content of the .do file but merely wish to use it as an exemplar for our scripts and programs, including our `ideal` hw1 solution. We are presently interested in `.do` file or `.ado` file structure. Don't be intimidated by the length of the script. Just look out for salient features:
 
 1. lines of code rarely `cross the line` (Stata's suggested right margin)
-2. coder uses more than one method for line continuation (spot 'em)
-3. never uses #delimit ; (this is my personal fave, especially for a very long line of code)
+2. coder uses more than one method for line continuation including
+
+```stata
+
+//entirely new to me as of this week
+sts graph, /*
+    */ by(race)
+
+//by far the most popular approach
+sts graph, ///
+       by(race)
+
+//more efficient the longer the line of code
+#delimit ;
+sts graph, 
+       by(race)
+#delimit cr
+```
+3. never uses `#delimit ;` (this is my personal fave, especially for a very long line of code)
 4. otherwise, the entire script is a bunch of `if`, `elseif`, `else` code-blocks
 5. up to this point we've used integers like `if 1 {` to define a code-block
-6. hence-forth we'll get a litte fancier and replace the integers with system-define macros: `c()`, `e()`, `r()`
+6. hence-forth we'll get a litte fancier and replace the integers with system-define macros: `c()`, `e()`, `r()`; watch today's [video](https://jhjhm.zoom.us/rec/component-page?action=viewdetailpage&sharelevel=meeting&useWhichPasswd=meeting&clusterId=aw1&componentName=need-password&meetingId=Z3kGX04VGRn2KAUFbSOWgVe-o4n-GgGfDtzuyPU_oA3Hp3HZ2_vPkyyvt4n7Pzre.8L9JnGGqb6K8tsXK&originRequestUrl=https%3A%2F%2Fjhjhm.zoom.us%2Frec%2Fshare%2FLcwchujwTNi_2RJ2_LmwGxrjvUOVBaKRbS4ZKWGf1F5TWm-NO-IFIREzTCxVDpvN.xBe4l_9y6oHFKsam%3FstartTime%3D1683228995000) on `if c(os)=="MS Office" {`
 7. and maybe occassionally with programmer-defined macros: `N` in the above script
 8. the limit is your imagination
 9. but i hope you appreciate the flexibility conditional code-blocks bring to programming!
+10. we have been hard-coding the values of `if 0 {`, `if 1 {`, etc as we build .do file structure. code-blocks have thus far been placeholders, elements required by **syntactic** constraints imposed on you by your instructor but that carry little or no **semantic** information.
+
+But the `hw1` script of one of your classmates has serendipitously segued us to informative, functional conditional `if` statements:
+
+     * [de-identified](https://raw.githubusercontent.com/jhustata/book/main/placeholders1.do) `hw1` script
+     * [edited](https://raw.githubusercontent.com/jhustata/book/main/placeholders2.do) `hw` script
+
+Copy & paste first the original and then the edited versions into your .do file editor and run. Of course you'll need to have `hw1.txt` in the appropriate `pwd`.
+
+Remember:
+
+```stata
+
+//c() class system-defined macros
+h creturn
+di c(os)
+assert c(os)=="MacOSX"
+assert c(os)=="MS Office"
+assert c(os)=="Linux"
+```
+
+This brings us to our first substantive discussion of conditional statements about code-blocks:
+
+```stata
+
+if c(os) == "MS Office" {
+    filepath\filename.extension
+}
+else {
+    filepath/filename.extension
+}
 
 ```stata
 
