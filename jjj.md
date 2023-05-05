@@ -28,6 +28,10 @@ Science:
 * [classbook](https://jhustata.github.io/book/intro.html)
 * et tu?
 
+credo
+
+![](open.science.png)
+
 ```stata
 
 foreach command in noisily quietly { //this line can be replaced with program define
