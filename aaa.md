@@ -137,8 +137,9 @@ What's new this week?
 1. We will discuss the `hw1` solution on 05/04/2023. Resubmissions for `hw1` due one same day as `hw2`
 2. Did you know that `lab5` has content that prepares you for `hw2`?
 3. Similarly, `lab6` (ie next week) has content that prepares you for `hw3`!
-4. The **weights** of each `hw1` question (initial submission) are going to be revised in response to consistent concerns raised by <u>both</u> TAs & students. But please do resubmit `hw1` if you wish to boost your grade. The original rubric weights will hold for any resubmission. 
+4. Concession: The **weights** of each `hw1` question (initial submission) will be revised in response to consistent concerns raised by <u>both</u> TAs & students. But please do resubmit `hw1` if you wish to boost your grade. The original rubric weights will hold for any resubmission. 
 5. Video for chapter: `twoway` has gone live!
+6. A few of you have not yet received your `hw1` grades but will certainly have them by 12pm this Friday, Cinco de Mayo. For this delay, your due dates for `hw2` and `hw3` are open. The only caveat is that I must submit grades to the academic registrar by **Fri., May 19 (4pm ET)** for graduating students. 
 
 
 ```
