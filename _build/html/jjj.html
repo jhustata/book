@@ -386,123 +386,15 @@ document.write(`
 </ul>
 <p>Science:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.jhsph.edu/departments/w-harry-feinstone-department-of-molecular-microbiology-and-immunology/academics-and-degree-programs/R3-PhD-program/r3-curriculum-overview">open</a></p></li>
-<li><p><a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">public</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/GitHub">github</a></p></li>
-<li><p>reproducible</p></li>
-<li><p><a class="reference external" href="https://jhustata.github.io/book/intro.html">classbook</a></p></li>
-<li><p>et tu?</p></li>
+<li><p><a class="reference external" href="https://www.jhsph.edu/departments/w-harry-feinstone-department-of-molecular-microbiology-and-immunology/academics-and-degree-programs/R3-PhD-program/r3-curriculum-overview">open</a> the entire process is published</p></li>
+<li><p><a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">public</a> in the 21st century this means online</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/GitHub">github</a> gh-pages can freely host your cnntent</p></li>
+<li><p>reproducible the entire world has access to your .do files on github</p></li>
+<li><p><a class="reference external" href="https://jhustata.github.io/book/intro.html">classbook</a> you guys have access to all the stuff that this classbook is made of</p></li>
+<li><p>et tu? on a scale of 0-10 how do you score on openness? who has access to your dofiles?</p></li>
 </ul>
 <p>Credo:</p>
 <p><img alt="" src="_images/open.science.png" /></p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> command<span class="k"> in noisily quietly</span> { <span class="c1">//this line can be replaced with program define</span>
-
-    <span class="nv">`command&#39;</span> { <span class="c1">//and this line of code can be replaced with quietly</span>
-<span class="k">    </span>
-<span class="k">              if</span> <span class="m">0</span> { <span class="c1">//background</span>
-
-                  <span class="m">1</span>. originally a task<span class="k"> for</span> the advanced stata<span class="k"> class</span>
-                  <span class="m">2</span>. take it<span class="k"> on</span> and you may earn up to <span class="m">1.5</span> bonus points
-                  <span class="m">3</span>. we may discuss this<span class="k"> in class if</span> time allows
-
-              }
-<span class="k">     </span>
-<span class="k">              if</span> <span class="m">1</span> { <span class="c1">//macros,logfile,settings</span>
-<span class="k">        </span>
-<span class="k">                  timer on</span> <span class="m">1</span>
-<span class="k">      </span>
-<span class="k">                  global</span> url https:<span class="o">//</span>data<span class="m">.</span>nber<span class="m">.</span>org<span class="o">/</span>mortality<span class="o">/</span>
-<span class="k">                  global</span> filename mort1959<span class="m">.</span>dta
-<span class="k">      global</span> logfile wk1<span class="m">.</span>ph<span class="m">.340.700</span><span class="o">-</span><span class="nv">`command&#39;</span>
-                  
-      cls
-<span class="k">                  capture log close</span>
-<span class="k">                  log</span> using <span class="vg">${logfile}</span>.log,<span class="k"> replace</span> 
-<span class="k">                   </span>
-<span class="k">                  set more</span> off
-<span class="k">      version</span> <span class="m">15</span>
-<span class="k">      noi di</span> <span class="s">&quot;</span><span class="nv">`c(current_time)&#39;</span><span class="s"> </span><span class="nv">`c(current_date)&#39;</span><span class="s">&quot;</span> 
-<span class="k">        </span>
-<span class="k">                  timer</span> off <span class="m">1</span>
-        
-              }
-<span class="k">    </span>
-<span class="k">              if</span> <span class="m">2</span> { <span class="c1">//timer,loop,data</span>
-<span class="k">        </span>
-<span class="k">                  timer on</span> <span class="m">2</span>
-<span class="k">        </span>
-<span class="k">                  forvalues</span> i=<span class="m">1959</span><span class="o">/</span><span class="m">1961</span> {
-<span class="k">            </span>
-<span class="k">                      use</span> <span class="s">&quot;</span><span class="vg">${url}</span><span class="nv">`i&#39;</span><span class="s">/mort</span><span class="nv">`i&#39;</span><span class="s">&quot;</span>,<span class="k"> clear</span> 
-<span class="k">                      save</span> y<span class="nv">`i&#39;</span>,<span class="k"> replace</span> 
-<span class="k">            </span>
-<span class="k">                  timer</span> off <span class="m">2</span>
-
-                  }
-        
-        
-        
-              }
-<span class="k">    </span>
-<span class="k">              if</span> <span class="m">3</span> { <span class="c1">//clear,append,save</span>
-<span class="k">    </span>
-<span class="k">                  timer on</span> <span class="m">3</span>
-<span class="k">        </span>
-<span class="k">                  clear</span> 
-<span class="k">                  forvalues</span> i=<span class="m">1959</span><span class="o">/</span><span class="m">1961</span> {
-<span class="k">            </span>
-<span class="k">                      append</span> using y<span class="nv">`i&#39;</span>
-            
-                  }
-<span class="k">         </span>
-<span class="k">        </span>
-<span class="k">                  timer</span> off <span class="m">3</span>
-        
-              }
-<span class="k">    </span>
-<span class="k">              if</span> <span class="m">4</span> {
-<span class="k">        </span>
-<span class="k">                  timer on</span> <span class="m">4</span>
-<span class="k">        </span>
-<span class="k">                  noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
-<span class="k">                  noi lookfor</span> year
-<span class="k">                  g</span> deaths=<span class="m">1</span>
-<span class="k">                  </span>
-<span class="k">                  preserve</span> 
-<span class="k">                  collapse</span> (count) deaths,<span class="k"> by</span>(datayear)
-<span class="k">         save twoway</span><span class="m">.</span>mort<span class="m">.</span>dta,clear
-<span class="k">                     noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
-<span class="k">                     noi list</span> 
-                     #delimit ;
-<span class="k">                     line</span> deaths datayear, 
-<span class="k">                       sort</span> 
-                        ti(<span class="s">&quot;United States&quot;</span>)
-                        xti(<span class="s">&quot;Year&quot;</span>); 
-                     #delimit cr
-<span class="k">                  restore</span>
-<span class="k">        </span>
-<span class="k">                  noi di</span> <span class="s">&quot;# of deaths: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; # of variables: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
-<span class="k">                  timer</span> off <span class="m">4</span>
-        
-              }
-<span class="k">    </span>
-<span class="k">              if</span> <span class="m">5</span> {
-<span class="k">        </span>
-<span class="k">        </span>
-<span class="k">                  save</span> mort<span class="m">.</span>dta,<span class="k"> replace</span> 
-        
-                    
-              }
-<span class="k">    </span>
-<span class="k">    noi timer list</span> 
-<span class="k"> timer clear</span>  
-<span class="k">    log close</span> 
-    
-    }
-    
-}
-</pre></div>
-</div>
 <p>Which of these is <strong>not</strong> a <code class="docutils literal notranslate"><span class="pre">twoway</span></code> graph? Does the <code class="docutils literal notranslate"><span class="pre">area</span></code> under the curve represent anything meaningful?</p>
 <p>Crudely, the AUC might be viewed as rectangular: <code class="docutils literal notranslate"><span class="pre">height</span></code> is 100 individuals x <code class="docutils literal notranslate"><span class="pre">width</span></code> is 100 years (i.e., <code class="docutils literal notranslate"><span class="pre">ages</span></code>) = 10,000</p>
 <p>Does 10,000 correspond to any of the output? Perhaps to <code class="docutils literal notranslate"><span class="pre">c(N)</span></code>?</p>
@@ -590,42 +482,49 @@ document.write(`
 <p><strong>Bonus points:</strong> Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file. Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points</p>
 </div>
 <p>We now wish to link the dataset created above to mortality outcomes to perform survival analysis. See chapter 2: <code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> and specifically the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">6</span> <span class="pre">{</span></code> code-block, which was exclusively dedicated to <a class="reference external" href="https://jhustata.github.io/book/fff.html">survival analysis</a> and used the <code class="docutils literal notranslate"><span class="pre">stset</span></code>, <code class="docutils literal notranslate"><span class="pre">sts</span> <span class="pre">graph</span></code>, and <code class="docutils literal notranslate"><span class="pre">stcox</span></code> commands! How may we go about this using the online resources available to us<a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/nhanes_v0.do">?</a></p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>nhanes_mortality
-nhanes_continuous_demo
-<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seq using nhanes_mortality,<span class="k"> keep</span>(matched)
-<span class="k">tab</span> survey
-<span class="k">lookfor</span> age
-<span class="k">lookfor</span> follow
-<span class="k">egen</span> surveytag=tag(survey)
-<span class="k">codebook</span> surveytag
-<span class="k">desc</span> survey 
-<span class="k">split</span> survey,<span class="k"> parse</span>(<span class="s">&quot;-&quot;</span>)
-<span class="k">destring</span> survey1,<span class="k"> replace</span> 
-<span class="k">g</span> years=permth_exm<span class="o">/</span><span class="m">12</span>
-<span class="k">lookfor</span> mort 
-<span class="k">g</span> age_at_death=ridageyr <span class="o">+</span> years<span class="k"> if</span> mortstat<span class="o">==</span><span class="m">1</span>
-<span class="k">bys</span> survey:<span class="k"> egen</span> av_age_at_death=mean(age_at_death)
-#delimit ;
-<span class="k">twoway scatter</span> av_age_at_death survey1<span class="k"> if</span> surveytag,
-     ti(<span class="s">&quot;Age at Death by Survey Year&quot;</span>, pos(<span class="m">11</span>))
-  yti(<span class="s">&quot;&quot;</span>)
-  xti(<span class="s">&quot;Survey Year&quot;</span>)
-<span class="k">  note</span>(<span class="s">&quot;Source: https://wwwn.cdc.gov/nchs/nhanes/&quot;</span>)
-  caption(<span class="s">&quot;https://ftp.cdc.gov/pub/&quot;</span>)
-  text(<span class="m">76</span> <span class="m">2010</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>);
-<span class="k">graph</span> export twoway_ageatdeath<span class="m">.</span>png,<span class="k"> replace</span> ;
-<span class="k">stset</span> years, fail(mortstat);
-<span class="k">sts graph</span>, 
-<span class="k">    by</span>(ridreth1 )
-    fail
- per(<span class="m">100</span>)
- ti(<span class="s">&quot;&quot;</span>)
- yti(<span class="s">&quot;%&quot;</span>) 
- xti(<span class="s">&quot;Years&quot;</span>);
-<span class="k">graph</span> export km_race<span class="m">.</span>png,<span class="k"> replace</span> ;
-<span class="k">stcox</span> i<span class="m">.</span>ridreth1 ;
-<span class="k">stcox</span> i<span class="m">.</span>ridreth1  ridageyr riagendr ;
-#delimit cr
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="m">0</span>{
+    this is not a .do<span class="k"> file for</span> you to<span class="k"> copy</span> <span class="o">&amp;</span> paste
+    instead,<span class="k"> run</span> the commands sequentially
+<span class="k">    one</span><span class="o">-</span>by<span class="o">-</span>one, except, of course, the <span class="nv">`twoway` command</span>
+<span class="nv">    as well as the `sts graph` command. you&#39;ll need to </span>
+<span class="nv">    copy &amp; paste that long line of code into a dofile and do   </span>
+<span class="nv">}</span>
+<span class="nv">nhanes_mortality</span>
+<span class="nv">nhanes_continuous_demo</span>
+<span class="nv">merge 1:1 seq using nhanes_mortality, keep(matched)</span>
+<span class="nv">tab survey</span>
+<span class="nv">lookfor age</span>
+<span class="nv">lookfor follow</span>
+<span class="nv">egen surveytag=tag(survey)</span>
+<span class="nv">codebook surveytag</span>
+<span class="nv">desc survey </span>
+<span class="nv">split survey, parse(&quot;-&quot;)</span>
+<span class="nv">destring survey1, replace </span>
+<span class="nv">g years=permth_exm/12</span>
+<span class="nv">lookfor mort </span>
+<span class="nv">g age_at_death=ridageyr + years if mortstat==1</span>
+<span class="nv">bys survey: egen av_age_at_death=mean(age_at_death)</span>
+<span class="nv">#delimit ;</span>
+<span class="nv">twoway scatter av_age_at_death survey1 if surveytag,</span>
+<span class="nv">     ti(&quot;Age at Death by Survey Year&quot;, pos(11))</span>
+<span class="nv">  yti(&quot;&quot;)</span>
+<span class="nv">  xti(&quot;Survey Year&quot;)</span>
+<span class="nv">  note(&quot;Source: https://wwwn.cdc.gov/nchs/nhanes/&quot;)</span>
+<span class="nv">  caption(&quot;https://ftp.cdc.gov/pub/&quot;)</span>
+<span class="nv">  text(76 2010 &quot;obs: `c(N)&#39;, vars: `c(k)&#39;&quot;);</span>
+<span class="nv">graph export twoway_ageatdeath.png, replace ;</span>
+<span class="nv">stset years, fail(mortstat);</span>
+<span class="nv">sts graph, </span>
+<span class="nv">    by(ridreth1 )</span>
+<span class="nv">    fail</span>
+<span class="nv"> per(100)</span>
+<span class="nv"> ti(&quot;&quot;)</span>
+<span class="nv"> yti(&quot;%&quot;) </span>
+<span class="nv"> xti(&quot;Years&quot;);</span>
+<span class="nv">graph export km_race.png, replace ;</span>
+<span class="nv">stcox i.ridreth1 ;</span>
+<span class="nv">stcox i.ridreth1  ridageyr riagendr ;</span>
+<span class="nv">#delimit cr</span>
 </pre></div>
 </div>
 <p>Let’s study this output and discuss a few issues:</p>

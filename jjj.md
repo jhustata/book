@@ -21,127 +21,16 @@ Workflow:
 
 Science:
 
-* [open](https://www.jhsph.edu/departments/w-harry-feinstone-department-of-molecular-microbiology-and-immunology/academics-and-degree-programs/R3-PhD-program/r3-curriculum-overview)
-* [public](https://jupyterbook.org/en/stable/intro.html)
-* [github](https://en.wikipedia.org/wiki/GitHub)
-* reproducible
-* [classbook](https://jhustata.github.io/book/intro.html)
-* et tu?
+* [open](https://www.jhsph.edu/departments/w-harry-feinstone-department-of-molecular-microbiology-and-immunology/academics-and-degree-programs/R3-PhD-program/r3-curriculum-overview) the entire process is published 
+* [public](https://jupyterbook.org/en/stable/intro.html) in the 21st century this means online
+* [github](https://en.wikipedia.org/wiki/GitHub) gh-pages can freely host your cnntent
+* reproducible the entire world has access to your .do files on github 
+* [classbook](https://jhustata.github.io/book/intro.html) you guys have access to all the stuff that this classbook is made of
+* et tu? on a scale of 0-10 how do you score on openness? who has access to your dofiles?
 
 Credo:
 
 ![](open.science.png)
-
-```stata
-
-foreach command in noisily quietly { //this line can be replaced with program define
-
-    `command' { //and this line of code can be replaced with quietly
-    
-              if 0 { //background
-
-                  1. originally a task for the advanced stata class
-                  2. take it on and you may earn up to 1.5 bonus points
-                  3. we may discuss this in class if time allows
-
-              }
-     
-              if 1 { //macros,logfile,settings
-        
-                  timer on 1
-      
-                  global url https://data.nber.org/mortality/
-                  global filename mort1959.dta
-      global logfile wk1.ph.340.700-`command'
-                  
-      cls
-                  capture log close
-                  log using ${logfile}.log, replace 
-                   
-                  set more off
-      version 15
-      noi di "`c(current_time)' `c(current_date)'" 
-        
-                  timer off 1
-        
-              }
-    
-              if 2 { //timer,loop,data
-        
-                  timer on 2
-        
-                  forvalues i=1959/1961 {
-            
-                      use "${url}`i'/mort`i'", clear 
-                      save y`i', replace 
-            
-                  timer off 2
-
-                  }
-        
-        
-        
-              }
-    
-              if 3 { //clear,append,save
-    
-                  timer on 3
-        
-                  clear 
-                  forvalues i=1959/1961 {
-            
-                      append using y`i'
-            
-                  }
-         
-        
-                  timer off 3
-        
-              }
-    
-              if 4 {
-        
-                  timer on 4
-        
-                  noi di "# of deaths: `c(N)' & # of variables: `c(k)'"
-                  noi lookfor year
-                  g deaths=1
-                  
-                  preserve 
-                  collapse (count) deaths, by(datayear)
-         save twoway.mort.dta,clear
-                     noi di "# of deaths: `c(N)' & # of variables: `c(k)'"
-                     noi list 
-                     #delimit ;
-                     line deaths datayear, 
-                       sort 
-                        ti("United States")
-                        xti("Year"); 
-                     #delimit cr
-                  restore
-        
-                  noi di "# of deaths: `c(N)' & # of variables: `c(k)'"
-                  timer off 4
-        
-              }
-    
-              if 5 {
-        
-        
-                  save mort.dta, replace 
-        
-                    
-              }
-    
-    noi timer list 
- timer clear  
-    log close 
-    
-    }
-    
-}
-
-```
 
 Which of these is **not** a `twoway` graph? Does the `area` under the curve represent anything meaningful?
 
@@ -243,6 +132,13 @@ Let's [recall](https://jhustata.github.io/book/aaa.html) an extra credit challen
 We now wish to link the dataset created above to mortality outcomes to perform survival analysis. See chapter 2: `r(mean)` and specifically the `if 6 {` code-block, which was exclusively dedicated to [survival analysis](https://jhustata.github.io/book/fff.html) and used the `stset`, `sts graph`, and `stcox` commands! How may we go about this using the online resources available to us[?](https://raw.githubusercontent.com/jhustata/book/main/nhanes_v0.do)
 
 ```stata
+if 0{
+    this is not a .do file for you to copy & paste
+    instead, run the commands sequentially
+    one-by-one, except, of course, the `twoway` command
+    as well as the `sts graph` command. you'll need to 
+    copy & paste that long line of code into a dofile and do   
+}
 nhanes_mortality
 nhanes_continuous_demo
 merge 1:1 seq using nhanes_mortality, keep(matched)
