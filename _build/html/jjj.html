@@ -638,7 +638,7 @@ nhanes_continuous_demo
 <li><p>never uses <code class="docutils literal notranslate"><span class="pre">#delimit</span> <span class="pre">;</span></code> (this is my personal fave, especially for a very long line of code)</p></li>
 <li><p>otherwise, the entire script is a bunch of <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elseif</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code> code-blocks</p></li>
 <li><p>up to this point we’ve used integers like <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span> <span class="pre">{</span></code> to define a code-block</p></li>
-<li><p>hence-forth we’ll get a litte fancier and replace the integers with system-define macros: <code class="docutils literal notranslate"><span class="pre">c()</span></code>, <code class="docutils literal notranslate"><span class="pre">e()</span></code>, <code class="docutils literal notranslate"><span class="pre">r()</span></code>; watch today’s <a class="reference external" href="https://jhjhm.zoom.us/rec/component-page?action=viewdetailpage&amp;sharelevel=meeting&amp;useWhichPasswd=meeting&amp;clusterId=aw1&amp;componentName=need-password&amp;meetingId=Z3kGX04VGRn2KAUFbSOWgVe-o4n-GgGfDtzuyPU_oA3Hp3HZ2_vPkyyvt4n7Pzre.8L9JnGGqb6K8tsXK&amp;originRequestUrl=https%3A%2F%2Fjhjhm.zoom.us%2Frec%2Fshare%2FLcwchujwTNi_2RJ2_LmwGxrjvUOVBaKRbS4ZKWGf1F5TWm-NO-IFIREzTCxVDpvN.xBe4l_9y6oHFKsam%3FstartTime%3D1683228995000">video</a> on <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">c(os)==&quot;MS</span> <span class="pre">Office&quot;</span> <span class="pre">{</span></code></p></li>
+<li><p>hence-forth we’ll get a litte fancier and replace the integers with system-define macros: <code class="docutils literal notranslate"><span class="pre">c()</span></code>, <code class="docutils literal notranslate"><span class="pre">e()</span></code>, <code class="docutils literal notranslate"><span class="pre">r()</span></code>; watch today’s <a class="reference external" href="https://jhjhm.zoom.us/rec/component-page?action=viewdetailpage&amp;sharelevel=meeting&amp;useWhichPasswd=meeting&amp;clusterId=aw1&amp;componentName=need-password&amp;meetingId=Z3kGX04VGRn2KAUFbSOWgVe-o4n-GgGfDtzuyPU_oA3Hp3HZ2_vPkyyvt4n7Pzre.8L9JnGGqb6K8tsXK&amp;originRequestUrl=https%3A%2F%2Fjhjhm.zoom.us%2Frec%2Fshare%2FLcwchujwTNi_2RJ2_LmwGxrjvUOVBaKRbS4ZKWGf1F5TWm-NO-IFIREzTCxVDpvN.xBe4l_9y6oHFKsam%3FstartTime%3D1683228995000">video</a> on <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">c(os)==&quot;Windows&quot;</span> <span class="pre">{</span></code></p></li>
 <li><p>and maybe occassionally with programmer-defined macros: <code class="docutils literal notranslate"><span class="pre">N</span></code> in the above script</p></li>
 <li><p>the limit is your imagination</p></li>
 <li><p>but i hope you appreciate the flexibility conditional code-blocks bring to programming!</p></li>
@@ -653,12 +653,12 @@ nhanes_continuous_demo
 <span class="k">h creturn</span>
 <span class="k">di</span> <span class="nf">c</span>(os)
 <span class="k">assert</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;MacOSX&quot;</span>
-<span class="k">assert</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;MS Office&quot;</span>
+<span class="k">assert</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Windows&quot;</span>
 <span class="k">assert</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Unix&quot;</span>
 </pre></div>
 </div>
 <p>This brings us to our first substantive discussion of conditional statements about code-blocks:</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nf">c</span>(os) <span class="o">==</span> <span class="s">&quot;MS Office&quot;</span> {
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nf">c</span>(os) <span class="o">==</span> <span class="s">&quot;Windows&quot;</span> {
     filepath\filename<span class="m">.</span>extension
 }
 <span class="k">else</span> {
