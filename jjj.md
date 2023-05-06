@@ -28,7 +28,7 @@ Science:
 * [classbook](https://jhustata.github.io/book/intro.html)
 * et tu?
 
-credo
+Credo:
 
 ![](open.science.png)
 
