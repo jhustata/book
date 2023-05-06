@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>lab5 &#8212; Stata Programming</title>
+    <title>lab6 &#8212; Stata Programming</title>
   
   
   
@@ -61,7 +61,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'lab5';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab6';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -240,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flab5.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flab6.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -270,7 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/lab5.md" target="_blank"
+      <li><a href="_sources/lab6.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -350,7 +350,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>lab5</h1>
+    <h1>lab6</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -364,63 +364,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab5">
-<h1>lab5<a class="headerlink" href="#lab5" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab6">
+<h1>lab6<a class="headerlink" href="#lab6" title="Permalink to this heading">#</a></h1>
 <p>lab4: <a class="reference internal" href="lab4.html"><span class="doc std std-doc">solutions</span></a></p>
-<p>data: transplants.dta donors_recipients.dta donors.dta</p>
-<p>zoom: M T W Th F</p>
+<p>data: <a class="reference download internal" download="" href="_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta"><span class="xref download myst">transplants.dta</span></a> <a class="reference download internal" download="" href="_downloads/f246ffb8c3fc8aad08fcc8b4d75aa2fb/donors_recipients.dta"><span class="xref download myst">donors_recipients.dta</span></a> <a class="reference download internal" download="" href="_downloads/1dbcfe5183401a542fa4f336f624de75/donors.dta"><span class="xref download myst">donors.dta</span></a></p>
+<p>zoom: <a class="reference external" href="https://JHUBlueJays.zoom.us/j/96760923747">M</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/99476415268">T</a> <a class="reference external" href="https://jhubluejays.zoom.us/j/98628544091?pwd=ZGx5NTN1RHNzNDUrQ3c3Uys0RVYrUT09">W</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/3393703103">Th</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/8581993134">F</a></p>
 <p>This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be provided separately.</p>
 <ol class="arabic">
-<li><p>Start Stata, open your do-file editor, layout a template for the .dofile structure described over the last 5 weeks and load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code> in the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">2</span> <span class="pre">{</span></code> code-block or elsewhere if you deem it appropriate.</p></li>
-<li><p>Let’s merge this dataset with the donor dataset. First, merge with <code class="docutils literal notranslate"><span class="pre">donors_recipients.dta</span></code>, and then with <code class="docutils literal notranslate"><span class="pre">donors.dta</span></code>, without specifying any options.</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> fake_id using donors_recipients
-</pre></div>
-</div>
+<li><p>Start Stata, open your do-file editor, write the header, and load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>.</p></li>
+<li><p>Get a 10% random sample of the dataset. Specifically, follow these steps. (1) Set a seed number. (2) Generate a variable that includes a random number between 0 and 1 following a uniform distribution. (3) Sort by the random variable. (4) Keep the first 10% observations and drop the rest. (5) Drop the random variable.</p></li>
+<li><p>Clear and re- load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>.</p></li>
+<li><p>Generate a variable called <code class="docutils literal notranslate"><span class="pre">fake_age</span></code> which is a normally distributed random variable with mean and standard deviation equal to the mean and standard deviation of the actual age variable.</p></li>
+<li><p>Make a scatter plot of peak PRA by age in transplant recipients. Does it look like there’s a relationship between peak PRA and age, and if so, what is the relationship?</p></li>
+<li><p>The graph of proportion of ECD transplants by age from the lecture was a little messy. Remake the graph with the age rounded to the nearest ten years.</p>
+<ul>
+<li><p>(From the lecture)</p>
+<p><img alt="Picture1" src="_images/Picture1.png" /></p>
 </li>
-<li><p>What does Stata say? Interpret the output.</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>.<span class="k"> merge</span> <span class="m">1</span>:<span class="m">1</span> fake_id using donors_recipients
-
-    Result                           # of obs.
-    <span class="o">-----------------------------------------</span>
-    not matched                         <span class="m">4</span>,<span class="m">000</span>
-        from master                         <span class="m">0</span>  (_merge<span class="o">==</span><span class="m">1</span>)
-        from using                      <span class="m">4</span>,<span class="m">000</span>  (_merge<span class="o">==</span><span class="m">2</span>)
-
-    matched                             <span class="m">6</span>,<span class="m">000</span>  (_merge<span class="o">==</span><span class="m">3</span>)
-    <span class="o">-----------------------------------------</span>
-</pre></div>
-</div>
-<blockquote>
-<div><p>From the bottom: 6000 observations were successfully merged. 4000 observations from the using dataset (= donors_recipients.dta) were NOT matched with the master dataset (= transplants.dta) but brought in anyways. 0 observation from the master dataset were not matched (i.e., all observations from the master dataset were matched.)</p>
-</div></blockquote>
+<li><p>(After rounding)</p>
+<p><img alt="Picture2" src="_images/Picture2.png" /></p>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code> is our study population. We don’t want to bring in extra observations by merging. Use the option <code class="docutils literal notranslate"><span class="pre">keep</span></code> and make sure we don’t bring in extra observations from <code class="docutils literal notranslate"><span class="pre">donors_recipients.dta</span></code>.</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
-<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> fake_id using donors_recipients,<span class="k"> keep</span>(master match) nogen
-</pre></div>
-</div>
-</li>
-<li><p>Let’s move forward and merge with <code class="docutils literal notranslate"><span class="pre">donors.dta</span></code>.</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">merge m</span>:<span class="m">1</span> fake_don_id using donors,<span class="k"> keep</span>(master match)
-</pre></div>
-</div>
-</li>
-<li><p>Now we want to calculate the mean age and the number of patients at each center. Preserve the dataset and collapse it by <code class="docutils literal notranslate"><span class="pre">ctr_id</span></code>. Explore the collapsed dataset using <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">preserve</span>
-<span class="k">collapse</span> (mean) age (count)<span class="k"> n</span>=fake_id,<span class="k"> by</span>(ctr_id)
-</pre></div>
-</div>
-</li>
-<li><p>Restore the dataset. The plan has changed. We want to calculate these statistics in ECD cases and non-ECD cases separately (use the variable <code class="docutils literal notranslate"><span class="pre">don_ecd</span></code>). Calculate the mean age and the number of ECD patients and non-ECD patients at each center.</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">restore</span>
-<span class="k">collapse</span> (mean) age (count)<span class="k"> n</span>=fake_id,<span class="k"> by</span>(ctr_id don_ecd)
-</pre></div>
-</div>
-</li>
-<li><p>After the collapse, each center has two observations. One for ECD cases and another for non-ECD cases. Reshape the dataset into a wide format (i.e., each center has only one observation).</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">reshape</span> wide age<span class="k"> n</span>, i(ctr_id) j(don_ecd)
-</pre></div>
-</div>
+</ul>
 </li>
 <li><p>You have all your commands in your do file, right? Run your do file from the beginning and make sure your do file does exactly the same thing.</p></li>
 </ol>

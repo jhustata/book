@@ -32,11 +32,11 @@ Teaching assistants
 
 Optional labs
 
-1. [M 9:30-10:30 am](lab5.md)
-2. [T 10:00-11:00 am](lab5.md) Wolfe W2207
-3. [W 3:00-4:00 pm](lab5.md)
-4. [Th 6:00-7:00 pm](lab5.md)
-5. [F 1:00-2:00 pm](lab5.md)
+1. [M 9:30-10:30 am](lab6.md)
+2. [T 10:00-11:00 am](lab6.md) Wolfe W2207
+3. [W 3:00-4:00 pm](lab6.md)
+4. [Th 6:00-7:00 pm](lab6.md)
+5. [F 1:00-2:00 pm](lab6.md)
 
 Homeworks due  
 
@@ -134,13 +134,11 @@ Academic integrity
 
 What's new this week?
 
-1. We will discuss the `hw1` solution on 05/04/2023. Resubmissions for `hw1` due one same day as `hw2`
-2. Did you know that `lab5` has content that prepares you for `hw2`?
-3. Similarly, `lab6` (ie next week) has content that prepares you for `hw3`!
-4. Concession: The **weights** of each `hw1` question (initial submission) will be revised in response to consistent concerns raised by <u>both</u> TAs & students. But please do resubmit `hw1` if you wish to boost your grade. The original rubric weights will hold for any resubmission. 
-5. Video for chapter: `twoway` has gone live!
-6. A few of you have not yet received your `hw1` grades but will certainly have them by 12pm this Friday, Cinco de Mayo. For this delay, your due dates for `hw2` and `hw3` are open. The only caveat is that I must submit grades to the academic registrar by **Fri., May 19 (4pm ET)** for graduating students. 
-
+1. Did you know that `lab5` has content that prepares you for `hw2`? `lab5` solutions are now available.
+2. Similarly, `lab6` has content that prepares you for `hw3` & it has gone live!
+3. Concession: The **weights** of each `hw1` question (initial submission) will be revised in response to consistent concerns raised by <u>both</u> TAs & students. But please do resubmit `hw1` if you wish to boost your grade. The original rubric weights will hold for any resubmission. 
+4. Video for chapter: `twoway` has gone live!
+5. A few of you have not yet received your `hw1` grades but will certainly have them by 12pm this Friday, Cinco de Mayo. For this delay, your due dates for `hw2` and `hw3` are open. The only caveat is that I must submit grades to the academic registrar by **Fri., May 19 (4pm ET)** for graduating students. 
 
 ```
 
