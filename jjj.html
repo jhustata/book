@@ -395,6 +395,78 @@ document.write(`
 </ul>
 <p>Credo:</p>
 <p><img alt="" src="_images/open.science.png" /></p>
+<p>Lets explore some syntax for twoway plots. Run one line of code at a time. Alternatively, you may type <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">twoway</span></code> to explore the options outlined below</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">gen</span> int yr = <span class="nf">year</span>(transplant_date)<span class="k"> gen</span> byte<span class="k"> n</span>=<span class="m">1</span>
+<span class="k">rename</span> gender female
+<span class="k">rename</span> don_ecd ecd
+<span class="k">collapse</span> (sum)<span class="k"> n</span> ecd female,<span class="k"> by</span>(yr)<span class="k"> gen</span> int scd =<span class="k"> n</span><span class="o">-</span>ecd
+<span class="k">gen</span> int male=n<span class="o">-</span>female
+<span class="k">save</span> tx_yr,<span class="k"> replace</span>
+<span class="k">graph twoway line n</span> yr
+<span class="k">graph twoway</span> connected<span class="k"> n</span> yr
+<span class="k">graph twoway</span> area<span class="k"> n</span> yr
+<span class="k">graph twoway</span> bar<span class="k"> n</span> yr
+<span class="k">graph twoway scatter</span> ecd scd
+<span class="k">graph twoway</span> function y=x<span class="o">^</span><span class="m">2+2</span>
+<span class="k">twoway</span> function y=x<span class="o">^</span><span class="m">2+2</span>,<span class="k"> range</span>(<span class="m">1</span> <span class="m">10</span>)
+<span class="k">twoway</span> function y=x<span class="o">^</span><span class="m">2+2</span>,<span class="k"> range</span>(yr)
+<span class="k">graph twoway line</span> ecd scd yr
+<span class="k">graph twoway line n</span> ecd scd yr
+<span class="k">graph twoway</span> area ecd scd yr
+<span class="k">graph twoway</span> area ecd scd yr <span class="c1">//where is the ecd area?</span>
+<span class="k">graph twoway</span> area scd ecd yr <span class="c1">//order matters!</span>
+<span class="k">graph twoway</span> bar scd ecd yr
+<span class="k">graph twoway</span> bar scd ecd yr
+<span class="k">twoway line n</span> yr || connected male female yr
+<span class="k">twoway line n</span> yr <span class="cs">///</span>
+    || connected male female yr
+<span class="k">regress n</span> yr
+<span class="k">twoway line n</span> yr <span class="cs">///</span>
+    || function y=_b[_cons]<span class="o">+</span>_b[yr]<span class="o">*</span>x,<span class="k"> range</span>(yr)
+<span class="k">twoway line</span> female yr <span class="cs">/// </span>
+    ||<span class="k"> line</span> male yr <span class="cs">///</span>
+    ||<span class="k"> line</span> scd yr <span class="cs">///</span>
+    ||<span class="k"> line</span> ecd yr <span class="cs">///</span>
+    ||<span class="k"> line n</span> yr
+<span class="k">twoway line n</span> yr, yscale(range(<span class="m">0</span>))
+<span class="k">tw li n</span> yr, yscale(range(<span class="m">0</span> <span class="m">700</span>))
+<span class="k">tw li n</span> yr, xscale(range(<span class="m">2050</span>))
+<span class="k">tw li</span> female yr, yscale(log)
+<span class="k">tw li</span> female yr, xscale(reverse) <span class="c1">//rarely a good idea</span>
+<span class="k">tw li</span> ecd yr, xscale(off) yscale(off)
+<span class="k">tw li</span> ecd yr, xscale(off) yscale(off)
+<span class="k">tw li</span> ecd yr, xscale(off) <span class="cs">///</span>
+    yscale(log<span class="k"> range</span>(<span class="m">1</span>) reverse)
+<span class="k">tw li n</span> yr, yscale(range(<span class="m">0</span>)) ylabel(#<span class="m">4</span>)
+<span class="k">tw li n</span> yr, <span class="cs">///</span>
+    yscale(range(<span class="m">0</span>)) ylabel(minmax)
+<span class="k">tw li n</span> yr, ylabel(<span class="m">0</span>(<span class="m">100</span>)<span class="m">600</span>) <span class="cs">///</span>
+    xlabel(<span class="m">2005</span> <span class="m">2007</span> <span class="s">&quot;policy change&quot;</span> <span class="m">2010</span>(<span class="m">5</span>)<span class="m">2020</span>)
+<span class="k">tw li n</span> yr, xtick(<span class="m">2005</span>(<span class="m">1</span>)<span class="m">2020</span>) <span class="cs">///</span>
+    yscale(range(<span class="m">0</span>)) ylabel(<span class="m">0</span>(<span class="m">100</span>)<span class="m">600</span>)
+<span class="k">tw li n</span> yr, xtitle(<span class="s">&quot;Calendar year&quot;</span>) <span class="cs">///</span>
+    ytitle(<span class="s">&quot;DDKT&quot;</span>) ylabel(<span class="m">0</span>(<span class="m">100</span>)<span class="m">600</span>)
+<span class="k">tw li n</span> yr, <span class="cs">///</span>
+    yscale(range(<span class="m">0</span>)) ylabel(<span class="m">0</span>(<span class="m">100</span>)<span class="m">600</span>)
+<span class="k">tw li n</span> yr, <span class="cs">///</span>
+    title(<span class="s">&quot;Transplants per year&quot;</span>) <span class="cs">///</span>
+    subtitle(<span class="s">&quot;2006-2018&quot;</span>)
+<span class="k">twoway line n</span> yr, xline(<span class="m">2007</span>) <span class="cs">///</span>
+    text(<span class="m">450</span> <span class="m">2007</span> <span class="s">&quot;Policy change&quot;</span>)
+<span class="k">twoway line n</span> yr, yline(<span class="m">350</span>)
+<span class="k">twoway line n</span> yr, ylabel(<span class="m">0</span>(<span class="m">100</span>)<span class="m">600</span>) <span class="cs">///</span>
+    text(<span class="m">600</span> <span class="m">2017</span> <span class="s">&quot;Local peak in 2017&quot;</span>)
+<span class="k">graph twoway scatter</span> peak_pra age
+<span class="k">tw sc</span> peak_pra age, jitter(<span class="m">2</span>)
+<span class="k">tw sc</span> bmi age<span class="k"> if</span> gend<span class="o">==</span><span class="m">0</span>, mcolor(orange) <span class="cs">/// </span>
+    ||<span class="k"> sc</span> bmi age<span class="k"> if</span> gend<span class="o">==</span><span class="m">1</span>, mcolor(black) <span class="c1">//orioles colors</span>
+<span class="k">tw sc</span> bmi age<span class="k"> if</span> gender<span class="o">==</span><span class="m">0</span>, msymbol(D) <span class="cs">///</span>
+    ||<span class="k"> sc</span> bmi age<span class="k"> if</span> gender<span class="o">==</span><span class="m">1</span>, msymbol(<span class="o">+</span>)
+<span class="k">tw sc</span> bmi age<span class="k"> if</span> gender<span class="o">==</span><span class="m">0</span>, msize(small) <span class="cs">///</span>
+    ||<span class="k"> sc</span> bmi age<span class="k"> if</span> gender<span class="o">==</span><span class="m">1</span>, msize(large)
+</pre></div>
+</div>
 <p>Which of these is <strong>not</strong> a <code class="docutils literal notranslate"><span class="pre">twoway</span></code> graph? Does the <code class="docutils literal notranslate"><span class="pre">area</span></code> under the curve represent anything meaningful?</p>
 <p>Crudely, the AUC might be viewed as rectangular: <code class="docutils literal notranslate"><span class="pre">height</span></code> is 100 individuals x <code class="docutils literal notranslate"><span class="pre">width</span></code> is 100 years (i.e., <code class="docutils literal notranslate"><span class="pre">ages</span></code>) = 10,000</p>
 <p>Does 10,000 correspond to any of the output? Perhaps to <code class="docutils literal notranslate"><span class="pre">c(N)</span></code>?</p>
@@ -582,7 +654,7 @@ nhanes_continuous_demo
 <span class="k">di</span> <span class="nf">c</span>(os)
 <span class="k">assert</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;MacOSX&quot;</span>
 <span class="k">assert</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;MS Office&quot;</span>
-<span class="k">assert</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Linux&quot;</span>
+<span class="k">assert</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Unix&quot;</span>
 </pre></div>
 </div>
 <p>This brings us to our first substantive discussion of conditional statements about code-blocks:</p>

@@ -32,6 +32,80 @@ Credo:
 
 ![](open.science.png)
 
+Lets explore some syntax for twoway plots. Run one line of code at a time. Alternatively, you may type `help twoway` to explore the options outlined below 
+
+```stata
+use transplants, clear
+gen int yr = year(transplant_date) gen byte n=1
+rename gender female
+rename don_ecd ecd
+collapse (sum) n ecd female, by(yr) gen int scd = n-ecd
+gen int male=n-female
+save tx_yr, replace
+graph twoway line n yr
+graph twoway connected n yr
+graph twoway area n yr
+graph twoway bar n yr
+graph twoway scatter ecd scd
+graph twoway function y=x^2+2
+twoway function y=x^2+2, range(1 10)
+twoway function y=x^2+2, range(yr)
+graph twoway line ecd scd yr
+graph twoway line n ecd scd yr
+graph twoway area ecd scd yr
+graph twoway area ecd scd yr //where is the ecd area?
+graph twoway area scd ecd yr //order matters!
+graph twoway bar scd ecd yr
+graph twoway bar scd ecd yr
+twoway line n yr || connected male female yr
+twoway line n yr ///
+    || connected male female yr
+regress n yr
+twoway line n yr ///
+    || function y=_b[_cons]+_b[yr]*x, range(yr)
+twoway line female yr /// 
+    || line male yr ///
+    || line scd yr ///
+    || line ecd yr ///
+    || line n yr
+twoway line n yr, yscale(range(0))
+tw li n yr, yscale(range(0 700))
+tw li n yr, xscale(range(2050))
+tw li female yr, yscale(log)
+tw li female yr, xscale(reverse) //rarely a good idea
+tw li ecd yr, xscale(off) yscale(off)
+tw li ecd yr, xscale(off) yscale(off)
+tw li ecd yr, xscale(off) ///
+    yscale(log range(1) reverse)
+tw li n yr, yscale(range(0)) ylabel(#4)
+tw li n yr, ///
+    yscale(range(0)) ylabel(minmax)
+tw li n yr, ylabel(0(100)600) ///
+    xlabel(2005 2007 "policy change" 2010(5)2020)
+tw li n yr, xtick(2005(1)2020) ///
+    yscale(range(0)) ylabel(0(100)600)
+tw li n yr, xtitle("Calendar year") ///
+    ytitle("DDKT") ylabel(0(100)600)
+tw li n yr, ///
+    yscale(range(0)) ylabel(0(100)600)
+tw li n yr, ///
+    title("Transplants per year") ///
+    subtitle("2006-2018")
+twoway line n yr, xline(2007) ///
+    text(450 2007 "Policy change")
+twoway line n yr, yline(350)
+twoway line n yr, ylabel(0(100)600) ///
+    text(600 2017 "Local peak in 2017")
+graph twoway scatter peak_pra age
+tw sc peak_pra age, jitter(2)
+tw sc bmi age if gend==0, mcolor(orange) /// 
+    || sc bmi age if gend==1, mcolor(black) //orioles colors
+tw sc bmi age if gender==0, msymbol(D) ///
+    || sc bmi age if gender==1, msymbol(+)
+tw sc bmi age if gender==0, msize(small) ///
+    || sc bmi age if gender==1, msize(large)
+```
+
 Which of these is **not** a `twoway` graph? Does the `area` under the curve represent anything meaningful?
 
 Crudely, the AUC might be viewed as rectangular: `height` is 100 individuals x `width` is 100 years (i.e., `ages`) = 10,000
@@ -112,6 +186,7 @@ qui {
 
 
 ```
+
 
 * Sampling large datasets
 * Approach to workflow
@@ -247,7 +322,7 @@ h creturn
 di c(os)
 assert c(os)=="MacOSX"
 assert c(os)=="MS Office"
-assert c(os)=="Linux"
+assert c(os)=="Unix"
 ```
 
 This brings us to our first substantive discussion of conditional statements about code-blocks:
