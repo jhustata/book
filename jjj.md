@@ -247,7 +247,7 @@ h creturn
 di c(os)
 assert c(os)=="MacOSX"
 assert c(os)=="MS Office"
-assert c(os)=="Linux"
+assert c(os)=="Unix"
 ```
 
 This brings us to our first substantive discussion of conditional statements about code-blocks:
