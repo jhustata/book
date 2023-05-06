@@ -388,7 +388,7 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.jhsph.edu/departments/w-harry-feinstone-department-of-molecular-microbiology-and-immunology/academics-and-degree-programs/R3-PhD-program/r3-curriculum-overview">open</a> the entire process is published</p></li>
 <li><p><a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">public</a> in the 21st century this means online</p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/GitHub">github</a> gh-pages can freely host your cnntent</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/GitHub">github</a> gh-pages can freely host your content</p></li>
 <li><p>reproducible the entire world has access to your .do files on github</p></li>
 <li><p><a class="reference external" href="https://jhustata.github.io/book/intro.html">classbook</a> you guys have access to all the stuff that this classbook is made of</p></li>
 <li><p>et tu? on a scale of 0-10 how do you score on openness? who has access to your dofiles?</p></li>
@@ -399,7 +399,7 @@ document.write(`
 <p>Crudely, the AUC might be viewed as rectangular: <code class="docutils literal notranslate"><span class="pre">height</span></code> is 100 individuals x <code class="docutils literal notranslate"><span class="pre">width</span></code> is 100 years (i.e., <code class="docutils literal notranslate"><span class="pre">ages</span></code>) = 10,000</p>
 <p>Does 10,000 correspond to any of the output? Perhaps to <code class="docutils literal notranslate"><span class="pre">c(N)</span></code>?</p>
 <p><img alt="" src="_images/agedist.png" /></p>
-<p>Here’s the script that produced them but you have to do some debugging before it works. There’s no free lunch today!</p>
+<p>Below’s the script that produced them but you have to do some debugging before it works. There’s no free lunch today!</p>
 <p>I’d like to invoke the <a class="reference external" href="https://jhustata.github.io/book/_downloads/785b3e7ec96641cdff07100d6b7131b3/metaphor.png">metaphor</a> of gene activation, which is analogous to <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">macro</span> <span class="pre">{</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span> <span class="pre">macro</span> <span class="pre">{</span></code>, and <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">{</span></code>. Although below we have Stata code-blocks rather than genetic code, the metaphor is apt. What happens <code class="docutils literal notranslate"><span class="pre">upstream</span></code> in one code-block may affect the expression of another <code class="docutils literal notranslate"><span class="pre">downstream</span></code> code-block for a given process, but in a dofile as compared to a given biological process.</p>
 <p>You <u><strong>ought to</strong></u> emerge from this class thinking of Stata programming as a series of <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">macro</span> <span class="pre">{</span></code> conditional statements. And your teaching team will lookout for these in your .do files!</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
@@ -482,49 +482,50 @@ document.write(`
 <p><strong>Bonus points:</strong> Use the tokenize command to append the DEMO.XPT files for all continuous NHANES: 1999-2018 into one file. Your .do file should include only one import sasxport5 statement. Search this book for the import sasxport5 command. Up to 1.5 bonus points</p>
 </div>
 <p>We now wish to link the dataset created above to mortality outcomes to perform survival analysis. See chapter 2: <code class="docutils literal notranslate"><span class="pre">r(mean)</span></code> and specifically the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">6</span> <span class="pre">{</span></code> code-block, which was exclusively dedicated to <a class="reference external" href="https://jhustata.github.io/book/fff.html">survival analysis</a> and used the <code class="docutils literal notranslate"><span class="pre">stset</span></code>, <code class="docutils literal notranslate"><span class="pre">sts</span> <span class="pre">graph</span></code>, and <code class="docutils literal notranslate"><span class="pre">stcox</span></code> commands! How may we go about this using the online resources available to us<a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/nhanes_v0.do">?</a></p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="m">0</span>{
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="m">0</span> {
     this is not a .do<span class="k"> file for</span> you to<span class="k"> copy</span> <span class="o">&amp;</span> paste
     instead,<span class="k"> run</span> the commands sequentially
-<span class="k">    one</span><span class="o">-</span>by<span class="o">-</span>one, except, of course, the <span class="nv">`twoway` command</span>
-<span class="nv">    as well as the `sts graph` command. you&#39;ll need to </span>
-<span class="nv">    copy &amp; paste that long line of code into a dofile and do   </span>
-<span class="nv">}</span>
-<span class="nv">nhanes_mortality</span>
-<span class="nv">nhanes_continuous_demo</span>
-<span class="nv">merge 1:1 seq using nhanes_mortality, keep(matched)</span>
-<span class="nv">tab survey</span>
-<span class="nv">lookfor age</span>
-<span class="nv">lookfor follow</span>
-<span class="nv">egen surveytag=tag(survey)</span>
-<span class="nv">codebook surveytag</span>
-<span class="nv">desc survey </span>
-<span class="nv">split survey, parse(&quot;-&quot;)</span>
-<span class="nv">destring survey1, replace </span>
-<span class="nv">g years=permth_exm/12</span>
-<span class="nv">lookfor mort </span>
-<span class="nv">g age_at_death=ridageyr + years if mortstat==1</span>
-<span class="nv">bys survey: egen av_age_at_death=mean(age_at_death)</span>
-<span class="nv">#delimit ;</span>
-<span class="nv">twoway scatter av_age_at_death survey1 if surveytag,</span>
-<span class="nv">     ti(&quot;Age at Death by Survey Year&quot;, pos(11))</span>
-<span class="nv">  yti(&quot;&quot;)</span>
-<span class="nv">  xti(&quot;Survey Year&quot;)</span>
-<span class="nv">  note(&quot;Source: https://wwwn.cdc.gov/nchs/nhanes/&quot;)</span>
-<span class="nv">  caption(&quot;https://ftp.cdc.gov/pub/&quot;)</span>
-<span class="nv">  text(76 2010 &quot;obs: `c(N)&#39;, vars: `c(k)&#39;&quot;);</span>
-<span class="nv">graph export twoway_ageatdeath.png, replace ;</span>
-<span class="nv">stset years, fail(mortstat);</span>
-<span class="nv">sts graph, </span>
-<span class="nv">    by(ridreth1 )</span>
-<span class="nv">    fail</span>
-<span class="nv"> per(100)</span>
-<span class="nv"> ti(&quot;&quot;)</span>
-<span class="nv"> yti(&quot;%&quot;) </span>
-<span class="nv"> xti(&quot;Years&quot;);</span>
-<span class="nv">graph export km_race.png, replace ;</span>
-<span class="nv">stcox i.ridreth1 ;</span>
-<span class="nv">stcox i.ridreth1  ridageyr riagendr ;</span>
-<span class="nv">#delimit cr</span>
+<span class="k">    one</span><span class="o">-</span>by<span class="o">-</span>one, except, of course, the<span class="k"> twoway</span> command
+<span class="k">    as</span> well<span class="k"> as</span> the<span class="k"> sts graph</span> command. you&#39;ll need to 
+<span class="k">    copy</span> <span class="o">&amp;</span> paste that long<span class="k"> line</span> of code into a dofile and<span class="k"> do</span>   
+}
+
+nhanes_mortality <span class="c1">//install programs: click on &quot;?&quot; that ends the last paragraph</span>
+nhanes_continuous_demo 
+<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seq using nhanes_mortality,<span class="k"> keep</span>(matched)
+<span class="k">tab</span> survey
+<span class="k">lookfor</span> age
+<span class="k">lookfor</span> follow
+<span class="k">egen</span> surveytag=tag(survey)
+<span class="k">codebook</span> surveytag
+<span class="k">desc</span> survey 
+<span class="k">split</span> survey,<span class="k"> parse</span>(<span class="s">&quot;-&quot;</span>)
+<span class="k">destring</span> survey1,<span class="k"> replace</span> 
+<span class="k">g</span> years=permth_exm<span class="o">/</span><span class="m">12</span>
+<span class="k">lookfor</span> mort 
+<span class="k">g</span> age_at_death=ridageyr <span class="o">+</span> years<span class="k"> if</span> mortstat<span class="o">==</span><span class="m">1</span>
+<span class="k">bys</span> survey:<span class="k"> egen</span> av_age_at_death=mean(age_at_death)
+#delimit ;
+<span class="k">twoway scatter</span> av_age_at_death survey1<span class="k"> if</span> surveytag,
+     ti(<span class="s">&quot;Age at Death by Survey Year&quot;</span>, pos(<span class="m">11</span>))
+  yti(<span class="s">&quot;&quot;</span>)
+  xti(<span class="s">&quot;Survey Year&quot;</span>)
+<span class="k">  note</span>(<span class="s">&quot;Source: https://wwwn.cdc.gov/nchs/nhanes/&quot;</span>)
+  caption(<span class="s">&quot;https://ftp.cdc.gov/pub/&quot;</span>)
+  text(<span class="m">76</span> <span class="m">2010</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>);
+<span class="k">graph</span> export twoway_ageatdeath<span class="m">.</span>png,<span class="k"> replace</span> ;
+<span class="k">stset</span> years, fail(mortstat);
+<span class="k">sts graph</span>, 
+<span class="k">    by</span>(ridreth1 )
+    fail
+ per(<span class="m">100</span>)
+ ti(<span class="s">&quot;&quot;</span>)
+ yti(<span class="s">&quot;%&quot;</span>) 
+ xti(<span class="s">&quot;Years&quot;</span>);
+<span class="k">graph</span> export km_race<span class="m">.</span>png,<span class="k"> replace</span> ;
+<span class="k">stcox</span> i<span class="m">.</span>ridreth1 ;
+<span class="k">stcox</span> i<span class="m">.</span>ridreth1  ridageyr riagendr ;
+#delimit cr
 </pre></div>
 </div>
 <p>Let’s study this output and discuss a few issues:</p>

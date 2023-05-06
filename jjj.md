@@ -23,7 +23,7 @@ Science:
 
 * [open](https://www.jhsph.edu/departments/w-harry-feinstone-department-of-molecular-microbiology-and-immunology/academics-and-degree-programs/R3-PhD-program/r3-curriculum-overview) the entire process is published 
 * [public](https://jupyterbook.org/en/stable/intro.html) in the 21st century this means online
-* [github](https://en.wikipedia.org/wiki/GitHub) gh-pages can freely host your cnntent
+* [github](https://en.wikipedia.org/wiki/GitHub) gh-pages can freely host your content
 * reproducible the entire world has access to your .do files on github 
 * [classbook](https://jhustata.github.io/book/intro.html) you guys have access to all the stuff that this classbook is made of
 * et tu? on a scale of 0-10 how do you score on openness? who has access to your dofiles?
@@ -40,7 +40,7 @@ Does 10,000 correspond to any of the output? Perhaps to `c(N)`?
 
 ![](agedist.png)
 
-Here's the script that produced them but you have to do some debugging before it works. There's no free lunch today!
+Below's the script that produced them but you have to do some debugging before it works. There's no free lunch today!
 
 I'd like to invoke the [metaphor](https://jhustata.github.io/book/_downloads/785b3e7ec96641cdff07100d6b7131b3/metaphor.png) of gene activation, which is analogous to `if macro {`, `else if macro {`, and `else {`. Although below we have Stata code-blocks rather than genetic code, the metaphor is apt. What happens `upstream` in one code-block may affect the expression of another `downstream` code-block for a given process, but in a dofile as compared to a given biological process.
 
@@ -132,15 +132,16 @@ Let's [recall](https://jhustata.github.io/book/aaa.html) an extra credit challen
 We now wish to link the dataset created above to mortality outcomes to perform survival analysis. See chapter 2: `r(mean)` and specifically the `if 6 {` code-block, which was exclusively dedicated to [survival analysis](https://jhustata.github.io/book/fff.html) and used the `stset`, `sts graph`, and `stcox` commands! How may we go about this using the online resources available to us[?](https://raw.githubusercontent.com/jhustata/book/main/nhanes_v0.do)
 
 ```stata
-if 0{
+if 0 {
     this is not a .do file for you to copy & paste
     instead, run the commands sequentially
-    one-by-one, except, of course, the `twoway` command
-    as well as the `sts graph` command. you'll need to 
+    one-by-one, except, of course, the twoway command
+    as well as the sts graph command. you'll need to 
     copy & paste that long line of code into a dofile and do   
 }
-nhanes_mortality
-nhanes_continuous_demo
+
+nhanes_mortality //install programs: click on "?" that ends the last paragraph
+nhanes_continuous_demo 
 merge 1:1 seq using nhanes_mortality, keep(matched)
 tab survey
 lookfor age
