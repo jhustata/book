@@ -420,9 +420,14 @@ document.write(`
 <span class="k">   tw sc</span> peak_pra age                 <span class="c1">//abbreviated syntax</span>
    
 <span class="c1">//explore other twoway options!!  </span>
+<span class="k">   use</span> transplants,<span class="k"> clear</span> 
+<span class="k">   graph twoway scatter</span> peak_pra age    <span class="c1">//full syntax</span>
+<span class="k">   tw sc</span> peak_pra age                 <span class="c1">//abbreviated syntax</span>
+   
+<span class="c1">//explore other twoway options!!  </span>
 #delimit ;
 <span class="k">forval</span> f=<span class="m">0</span><span class="o">/</span><span class="m">1</span> { ;
-<span class="k">	sum</span> peak_pra,<span class="k"> d</span> ;
+<span class="k">	sum</span> peak_pra<span class="k"> if</span> gender<span class="o">==</span><span class="nv">`f&#39;</span>,<span class="k"> d</span> ;
 <span class="k">	local</span> m_iqr_<span class="nv">`f&#39;</span>:<span class="k"> di</span> 
        <span class="s">&quot;Median&quot;</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p50)
        <span class="s">&quot; (IQR,&quot;</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p25)
