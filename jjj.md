@@ -2,6 +2,8 @@
 
 [video](https://jhjhm.zoom.us/rec/share/LcwchujwTNi_2RJ2_LmwGxrjvUOVBaKRbS4ZKWGf1F5TWm-NO-IFIREzTCxVDpvN.xBe4l_9y6oHFKsam?startTime=1683228995000)
 
+You'll find that the content of this chapter & `lab 6` [complement](https://jhustata.github.io/book/lab6.html) each other.
+
 This is a `twoway` plot:
 
 ![](mortality.png)

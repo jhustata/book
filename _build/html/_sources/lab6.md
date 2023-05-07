@@ -8,7 +8,9 @@ zoom: [M](https://JHUBlueJays.zoom.us/j/96760923747) [T](https://JHUBlueJays.zoo
 
 stata18: updated [color](https://www.stata.com/new-in-stata/graph-colors-by-variable/) [palatte](https://repec.sowi.unibe.ch/stata/palettes/getting-started.html#r-returns)
 
-This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions are provided below.
+You'll find that the content of [chapter: twoway](https://jhustata.github.io/book/jjj.html) and `lab6` complement each other!
+
+Please use this lab as an opportunity to review the course material and prepare yourself for `hw3`. Sample responses to the lab questions are provided below.
 
 1. Start Stata, open your do-file editor, write the header, and load `transplants.dta`.
 
