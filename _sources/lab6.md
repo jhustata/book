@@ -99,7 +99,7 @@ tw (sc peak_pra age if gender==0)
 
    + From the chapter: `twoway`
      
-     ```stata
+```stata
      use transplants, clear
      collapse (mean) don_ecd, by(age)
      graph twoway line don_ecd age, text(.5 40 "obs: `c(N)', vars: `c(k)'")
@@ -124,15 +124,16 @@ count
 graph export lab6q6.png,replace 
 
 }
-     ```
-     ![Picture1](collpasebyage.png)
-     ![lab6q5.png](lab6q6.png)
+```
+
+![Picture1](collpasebyage.png)
+![lab6q5.png](lab6q6.png)
 
    + After rounding
 
-     ![Picture2](collpasebyage10.png)
+![Picture2](collpasebyage10.png)
      
-     ```stata
+```stata
      use transplants, clear
      gen age10 = round(age, 10)
      //one way to restore data after messing it up
@@ -143,7 +144,7 @@ graph export lab6q6.png,replace
      restore 
      count 
  
-     ```
+```
 
 7. You have all your commands in your do file, right? Run your do file from the beginning and make sure your do file does exactly the same thing. Also, in the spirit of `hw1`, and the spirit of the last 7  weeks, your .do file should look like this if you've adhered to the guidelines:
 
@@ -194,7 +195,7 @@ qui {
 	if c(N)>4 { //r(normal),kdensity
 	if c(N)>5 { //embed macro in text then graph
 	if c(N)>6 { //collpase & egen equivalence!!!!!!
-	if c(N)==r(N) | c(N)==6000 { { //aesthetical .do file structure :)
+	if c(N)==r(N) | c(N)==6000 { //aesthetical .do file structure 
        timer list  
        log close 
 }
