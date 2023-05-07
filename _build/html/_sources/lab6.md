@@ -1,6 +1,6 @@
 # lab6
 
-lab4: [solutions](lab4.md)
+lab5: [solutions](lab5.md)
 
 data: [transplants.dta](transplants.dta) [donors_recipients.dta](donors_recipients.dta) [donors.dta](donors.dta)
 
