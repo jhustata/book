@@ -12,7 +12,7 @@ This lab is optional; you are NOT required to complete these questions. Please u
 
 2. Get a 10% random sample of the dataset. Specifically, follow these steps. (1) Set a seed number. (2) Generate a variable that includes a random number between 0 and 1 following a uniform distribution. (3) Sort by the random variable. (4) Keep the first 10% observations and drop the rest. (5) Drop the random variable.
 
-3. Clear and re- load `transplants.dta`.
+3. Clear and reload `transplants.dta`.
 
 4. Generate a variable called `fake_age` which is a normally distributed random variable with mean and standard deviation equal to the mean and standard deviation of the actual age variable.
 
@@ -20,7 +20,7 @@ This lab is optional; you are NOT required to complete these questions. Please u
 
 6. The graph of proportion of ECD transplants by age from the lecture was a little messy. Remake the graph with the age rounded to the nearest ten years.
 
-   + (From the lecture)
+   + (From the chapter: `twoway`)
 
      ![Picture1](Picture1.png)
 
