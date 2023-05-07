@@ -21,11 +21,11 @@ Workflow:
 
 Science:
 
-* [open](https://www.jhsph.edu/departments/w-harry-feinstone-department-of-molecular-microbiology-and-immunology/academics-and-degree-programs/R3-PhD-program/r3-curriculum-overview) the entire process is published 
-* [public](https://jupyterbook.org/en/stable/intro.html) in the 21st century this means online
-* [github](https://en.wikipedia.org/wiki/GitHub) gh-pages can freely host your content
-* reproducible the entire world has access to your .do files on github 
-* [classbook](https://jhustata.github.io/book/intro.html) you guys have access to all the stuff that this classbook is made of
+* [open](https://www.jhsph.edu/departments/w-harry-feinstone-department-of-molecular-microbiology-and-immunology/academics-and-degree-programs/R3-PhD-program/r3-curriculum-overview) - the entire process, not merely the <u>**finessed product**</u>, is published 
+* [public](https://jupyterbook.org/en/stable/intro.html) - in the 21st century this means online
+* [github](https://en.wikipedia.org/wiki/GitHub) - gh-pages can freely host your content
+* reproducible - the entire world has access to your .do files on github 
+* [classbook](https://jhustata.github.io/book/intro.html) - you guys have access to all the stuff that this classbook is made of
 * et tu? on a scale of 0-10 how do you score on openness? who has access to your dofiles?
 
 Credo:
