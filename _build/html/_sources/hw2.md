@@ -1,7 +1,7 @@
 # hw2
 
 Write a .do file that performs the tasks described below. Your .do file must be called
-`hw2.lastname.firstname.do`. Your .do file should follow
+`hw2_yourname.do`. Your .do file should follow
 conventions for .do file structure described in [class: session pwd](eee.md). Make sure your script will run on our machines. Do **not** submit your log files as part of the assignment.
 
 Evaluation will be based on the log file produced when we run your script on our machines. Please follow the coding guidelines from class including structure, indentation, and annotation.
