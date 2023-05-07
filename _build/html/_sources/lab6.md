@@ -174,7 +174,7 @@ qui {
 //or even to c(N), e(N), and r(N)
 //suppose you have a rule of thumb:
 //never to run a regression when c(N)<30?
-//maybe never to run, but not to report output when (df) <30?
+//maybe ok to run, but not to report output when e(df)<30?
 
 //collapse [-] at if X {
 qui {
