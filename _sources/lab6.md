@@ -184,7 +184,7 @@ qui {
 //well, maybe ok to do all above, but with a proviso in reported output?
 //you are in position to incorporate any of the above into your .do files!!!
 
-//collapse [-] at if X {
+//collapse [-] at if `condition' {
 qui {
     clear 
     cls
