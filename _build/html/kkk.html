@@ -272,7 +272,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/kkk.md" target="_blank"
+      <li><a href="_sources/kkk.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -282,7 +282,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -368,28 +368,174 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="local-v-di">
 <h1>local v: di<a class="headerlink" href="#local-v-di" title="Permalink to this heading">#</a></h1>
+<p>Lets recap the last 7 weeks:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">local</span></code> maco</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> name</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">di</span></code> display</p></li>
-<li><p>content</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">help</span></code></p>
 <ul>
-<li><p>strings -&gt; <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">c()</span></code> -&gt; constants</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">e()</span></code> -&gt; estimates</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">r()</span></code> -&gt; return values</p></li>
-<li><p>formats -&gt; %3.2f</p></li>
-<li><p>limit is necessity, or your imagination…</p></li>
+<li><p>the help command followed by any command you wish to further explore</p></li>
+<li><p>e.g., <code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">twoway</span></code></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://jhustata.github.io/book/ddd.html">ex1</a> local macro example</p></li>
-<li><p><a class="reference external" href="https://jhustata.github.io/book/eee.html">ex2</a> hw1.q5 solutions available to you since day!!!</p></li>
-<li><p><a class="reference external" href="https://jhustata.github.io/book/fff.html">ex3</a> global macro example</p></li>
-<li><p><a class="reference external" href="https://jhustata.github.io/book/ggg.html">ex4</a> spot `em</p></li>
-<li><p><a class="reference external" href="https://jhustata.github.io/book/hhh.html">ex5</a> pvalue</p></li>
-<li><p><a class="reference external" href="https://jhustata.github.io/book/iii.html">ex6</a> in programs</p></li>
-<li><p><a class="reference external" href="https://jhustata.github.io/book/jjj.html">ex7</a> &amp; in <code class="docutils literal notranslate"><span class="pre">stcox.ado</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tokenize</span></code></p>
+<ul>
+<li><p>represent a numerical sequence (e.g. 1,2,3,…,6)</p></li>
+<li><p>as a sequence of letters (e.g. a,b,c,…,z or A,B,C,…,Z)</p></li>
 </ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quietly</span></code></p>
+<ul>
+<li><p>how to control what is displayed in the Stata terminal</p></li>
+<li><p>Stata uses this e.g. with the neat regression output, and with <a class="reference external" href="http://profile.do">profile.do</a></p></li>
+<li><p>may very easily be changed to <code class="docutils literal notranslate"><span class="pre">noisily</span></code> if that suits your needs</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delimit</span></code></p>
+<ul>
+<li><p>neat way to mimic <code class="docutils literal notranslate"><span class="pre">SAS</span></code> in defining the end of <strong>one “line” of code</strong></p></li>
+<li><p>especially useful when dealing with graphical output and numerous graphing options</p></li>
+<li><p>absolutely necessary if ever you wish to translate <code class="docutils literal notranslate"><span class="pre">.SAS</span></code> code into <code class="docutils literal notranslate"><span class="pre">.do</span></code></p></li>
+<li><p>may make accessible what otherwise were inaccessible datasets (e.g. <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/?term=nhanes">NHANES</a>)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rnormal()</span></code></p>
+<ul>
+<li><p>simulating parametric distributions</p></li>
+<li><p>you may develop this idea on your own in the future</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runiform()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">rnormal()</span></code> are the only examples demonstrated in this class</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code></p>
+<ul>
+<li><p>pwd</p></li>
+<li><p>di c(pwd)</p></li>
+<li><p>di “text with embedded `c(pwd)’ for whatever reason”</p></li>
+<li><p>global filepath c(pwd)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r(mean)</span></code></p>
+<ul>
+<li><p>creturn list</p></li>
+<li><p>return list</p></li>
+<li><p>ereturn list</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">by</span></code></p>
+<ul>
+<li><p>collapse (<code class="docutils literal notranslate"><span class="pre">statistic</span></code>) varname1 by(varname2)</p></li>
+<li><p>egen varname1=<code class="docutils literal notranslate"><span class="pre">statistic</span></code>(varname2)</p></li>
+<li><p>above commands are <strong>equivalent</strong> in many regards</p></li>
+<li><p>one distorts the data; the other doesn’t do so at all</p></li>
+<li><p>useful created twoway plots or other graphical output</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span></code></p>
+<ul>
+<li><p>rigid, specific programs (without <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">varlist</span></code> or <code class="docutils literal notranslate"><span class="pre">syntax,</span> <span class="pre">options</span></code>)</p></li>
+<li><p>flexible, generalizable programs (with <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">[varlist]</span></code>, <code class="docutils literal notranslate"><span class="pre">[options]</span></code>)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">capture</span></code></p>
+<ul>
+<li><p>preventing error results and an arrested script</p></li>
+<li><p>Stata is finicky, <em>pernickety</em> and this little preface to a command may spare you untold misery</p></li>
+<li><p>we’ve used it most frequently before <code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">log</span> <span class="pre">using</span></code></p></li>
+<li><p>but, notably, we’ve used it as a parsimonous variant in <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">varlist</span> <span class="pre">if</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">twoway</span></code></p>
+<ul>
+<li><p>last weeks class, which we didn’t cover because of <code class="docutils literal notranslate"><span class="pre">hw1</span></code>-related issues</p></li>
+<li><p>notes have been updated to give you the best bang for your buck</p></li>
+<li><p>lookout for the following <strong>very</strong> important issues:</p>
+<ul>
+<li><p>workflow;</p></li>
+<li><p>open science; and,</p></li>
+<li><p>chatGPTs take on these.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>on your own, please go walk step-by-step, command-by-command, through the <code class="docutils literal notranslate"><span class="pre">twoway</span></code> examples offered</p></li>
+<li><p>think about <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">macro</span> <span class="pre">{</span></code> conditional code-blocks and your deployment of this artifice in future, very powerful Stata scripts!</p></li>
+</ul>
+<p><strong>SO, TODAY,</strong> we’ll circle back to the method emplyed throughout this class:</p>
+<ul class="simple">
+<li><p>defining macros</p></li>
+<li><p>formatting them</p></li>
+<li><p>embedding them in strings, text, figures, and excel</p></li>
+<li><p>producing aesthically pleasing, richly informative output</p></li>
+</ul>
+<p>But to what end?</p>
+<ul class="simple">
+<li><p>the advanced Stata Programming class answers that question thus:</p>
+<ul>
+<li><p>open science</p></li>
+<li><p>self-publication</p></li>
+<li><p>collaboration</p></li>
+<li><p>etc…</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1">#import numpy as np</span>
+<span class="c1">#import sklearn as skl</span>
+<span class="c1"># </span>
+
+<span class="c1">#plt.figure(figsize=[2, 2])</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span>  <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">700</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;jupyter&quot;</span><span class="p">,</span>  <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">960</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;dofile&quot;</span><span class="p">,</span>  <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">950</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;python &quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">550</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;stata&quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">550</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1900</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;dyndoc&quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1900</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;push&quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">475</span><span class="p">))</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;ghp&quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">950</span><span class="p">))</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([</span> <span class="p">(</span><span class="s2">&quot;jupyter&quot;</span><span class="p">,</span><span class="s2">&quot;python &quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;dofile&quot;</span><span class="p">,</span> <span class="s2">&quot;stata&quot;</span><span class="p">)])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;python &quot;</span><span class="p">,</span> <span class="s2">&quot;build&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;stata&quot;</span><span class="p">,</span> <span class="s2">&quot;dyndoc&quot;</span><span class="p">)</span> <span class="p">])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;dyndoc&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">)])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;html&quot;</span><span class="p">,</span><span class="s2">&quot;push&quot;</span><span class="p">)])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;push&quot;</span><span class="p">,</span><span class="s2">&quot;ghp&quot;</span><span class="p">)])</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> 
+        <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;pos&#39;</span><span class="p">),</span> 
+        <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+        <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> 
+        <span class="n">node_size</span> <span class="o">=</span> <span class="mi">4500</span><span class="p">,</span>
+        <span class="n">node_color</span> <span class="o">=</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span>
+        <span class="n">linewidths</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/61075a31b9ff580b0791fa93a1455e548b63b7703c909a89e822cce7c3358dd4.png" src="_images/61075a31b9ff580b0791fa93a1455e548b63b7703c909a89e822cce7c3358dd4.png" />
+</div>
+</div>
+<p>If at all you’ve enjoyed the conveniences brought forth by this classbook, then it would be remiss of me not to let you know from whence this book comes:</p>
+<ul class="simple">
+<li><p>a data science <a class="reference external" href="https://www.jhsph.edu/courses/course/36630/2022/140.628.41/data-science-for-public-health-i">class</a></p></li>
+<li><p>python environment</p></li>
+<li><p>jupyter notebooks</p></li>
+<li><p>vscode by miscrosoft</p></li>
+<li><p>dofiles</p></li>
+<li><p>stata</p></li>
+</ul>
+<p>In the <a class="reference external" href="https://jhustata.github.io/class700/intro.html">advanced</a> <a class="reference external" href="https://www.jhsph.edu/courses/course/37447/2022/340.700.71/advanced-stata-programming">class</a> we merge these ideas and publish our analyses and documentation (roll over<a class="reference external" href="https://www.youtube.com/watch?v=kKlzUKLOm_U">,</a> annotation) online via <a class="reference external" href="https://pages.github.com">gh-pages</a>!!!</p>
 </section>
 
     <script type="text/x-thebe-config">
