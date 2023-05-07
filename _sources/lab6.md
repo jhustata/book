@@ -8,7 +8,7 @@ zoom: [M](https://JHUBlueJays.zoom.us/j/96760923747) [T](https://JHUBlueJays.zoo
 
 stata18: updated [color](https://www.stata.com/new-in-stata/graph-colors-by-variable/) [palatte](https://repec.sowi.unibe.ch/stata/palettes/getting-started.html#r-returns)
 
-This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be provided separately.
+This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions are provided below.
 
 1. Start Stata, open your do-file editor, write the header, and load `transplants.dta`.
 
@@ -16,7 +16,7 @@ This lab is optional; you are NOT required to complete these questions. Please u
 use transplants, clear
 ```
 
-2. Get a 10% random sample of the dataset. Specifically, follow these steps. (1) Set a seed number. (2) Generate a variable that includes a random number between 0 and 1 following a uniform distribution (example included in first-ever [.do file](https://jhustata.github.io/book/aaa.html.) script you saw in this class from chapter: `tokenize`.  (3) Sort by the random variable. (4) Keep the first 10% observations and drop the rest. (5) Drop the random variable.
+2. Get a 10% random sample of the dataset. Specifically, follow these steps. (1) Set a seed number. (2) Generate a variable that includes a random number between 0 and 1 following a uniform distribution. An example was included in the first-ever [.do file](https://jhustata.github.io/book/aaa.html.) script you saw in this class from chapter: `tokenize`.  (3) Sort by the random variable. (4) Keep the first 10% observations and drop the rest. (5) Drop the random variable.
 
    ```stata
    count
@@ -143,6 +143,11 @@ tw (sc peak_pra age if gender==0)
 7. You have all your commands in your do file, right? Run your do file from the beginning and make sure your do file does exactly the same thing. Also, in the spirit of `hw1`, and the spirit of the last 7  weeks, your .do file should look like this if you've adhered to the guidelines:
 
 ```stata
+//you're welcome to flout
+//   these guidelines after May 19
+//but please don't flaunt your disregard 
+//   for the didactic value before then
+
 //collapse [-] at qui
 qui {
 
@@ -156,6 +161,35 @@ qui {
 	if 5 { //embed macro in text then graph
 	if 6 { //collpase & egen equivalence!!!!!!
 	if 7 { //aesthetical .do file structure :)
+       timer list  
+       log close 
+}
+
+//alternative
+//`if c(N) xxx {` merely placebolder
+//but may become functional condition as 
+//do file grows in complexity
+//and accommodates more general stance
+//e.g., due regard to c(os), c(version)
+//or even to c(N), e(N), and r(N)
+//suppose you have a rule of thumb:
+//never to run a regression when c(N)<30?
+//maybe never to run, but not to report output when (df) <30?
+
+//collapse [-] at if X {
+qui {
+    clear 
+    cls
+	if c(N) { //lab6 dofile
+	if c(N)<1 { //transplants.dta
+	if c(N)<2 { //runiform(),two methods
+	if c(N)>3 { //transplants reload
+	if c(N)>4 { //r(normal),kdensity
+	if c(N)>5 { //embed macro in text then graph
+	if c(N)>6 { //collpase & egen equivalence!!!!!!
+	if c(N)>7 { //aesthetical .do file structure :)
+       timer list  
+       log close 
 }
 ```
 
