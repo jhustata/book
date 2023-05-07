@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>lab6 &#8212; Stata Programming</title>
+    <title>lab6 (including solutions) &#8212; Stata Programming</title>
   
   
   
@@ -350,7 +350,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>lab6</h1>
+    <h1>lab6 (including solutions)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -364,30 +364,150 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab6">
-<h1>lab6<a class="headerlink" href="#lab6" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab6-including-solutions">
+<h1>lab6 (including solutions)<a class="headerlink" href="#lab6-including-solutions" title="Permalink to this heading">#</a></h1>
 <p>lab5: <a class="reference internal" href="lab5.html"><span class="doc std std-doc">solutions</span></a></p>
 <p>data: <a class="reference download internal" download="" href="_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta"><span class="xref download myst">transplants.dta</span></a> <a class="reference download internal" download="" href="_downloads/f246ffb8c3fc8aad08fcc8b4d75aa2fb/donors_recipients.dta"><span class="xref download myst">donors_recipients.dta</span></a> <a class="reference download internal" download="" href="_downloads/1dbcfe5183401a542fa4f336f624de75/donors.dta"><span class="xref download myst">donors.dta</span></a></p>
 <p>zoom: <a class="reference external" href="https://JHUBlueJays.zoom.us/j/96760923747">M</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/99476415268">T</a> <a class="reference external" href="https://jhubluejays.zoom.us/j/98628544091?pwd=ZGx5NTN1RHNzNDUrQ3c3Uys0RVYrUT09">W</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/3393703103">Th</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/8581993134">F</a></p>
 <p>This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be provided separately.</p>
-<ol class="arabic">
+<ol class="arabic simple">
 <li><p>Start Stata, open your do-file editor, write the header, and load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>.</p></li>
-<li><p>Get a 10% random sample of the dataset. Specifically, follow these steps. (1) Set a seed number. (2) Generate a variable that includes a random number between 0 and 1 following a uniform distribution. (3) Sort by the random variable. (4) Keep the first 10% observations and drop the rest. (5) Drop the random variable.</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Get a 10% random sample of the dataset. Specifically, follow these steps. (1) Set a seed number. (2) Generate a variable that includes a random number between 0 and 1 following a uniform distribution (example included in first-ever <a class="reference external" href="https://jhustata.github.io/book/aaa.html.">.do file</a> script you saw in this class from chapter: <code class="docutils literal notranslate"><span class="pre">tokenize</span></code>.  (3) Sort by the random variable. (4) Keep the first 10% observations and drop the rest. (5) Drop the random variable.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">count</span>
+<span class="k">set</span> seed <span class="m">2021</span>
+<span class="k">gen</span> rdm=<span class="nf">runiform</span>()
+<span class="k">sort</span> rdm
+<span class="k">keep if</span> _n<span class="o">&lt;=</span>_N<span class="o">/</span><span class="m">10</span>
+<span class="k">drop</span> rdm
+<span class="k">count</span>
+
+<span class="c1">//alternative</span>
+<span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">count</span>
+<span class="k">sample</span> <span class="m">10</span>
+<span class="k">count</span>
+</pre></div>
+</div>
+</li>
 <li><p>Clear and reload <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>.</p></li>
-<li><p>Generate a variable called <code class="docutils literal notranslate"><span class="pre">fake_age</span></code> which is a normally distributed random variable with mean and standard deviation equal to the mean and standard deviation of the actual age variable.</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Generate a variable called <code class="docutils literal notranslate"><span class="pre">fake_age</span></code> which is a normally distributed random variable with mean and standard deviation equal to the mean and standard deviation of the actual age variable.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sum</span> age
+<span class="k">gen</span> fake_age=<span class="nf">rnormal</span>(<span class="nf">r</span>(mean), <span class="nf">r</span>(sd))
+<span class="k">sum</span> age fake_age
+<span class="k">compare</span> age fake_age
+<span class="k">kdensity</span> age, addplot(kdensity fake_age)
+<span class="k">list</span> fake_id age fake_age<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+<span class="k">graph</span> export<span class="k"> kdensity</span><span class="m">.</span>png,<span class="k"> replace</span> 
+</pre></div>
+</div>
+<p><img alt="kdensity.png" src="_images/kdensity.png" /></p>
+</li>
 <li><p>Make a scatter plot of peak PRA by age in transplant recipients. Does it look like there’s a relationship between peak PRA and age, and if so, what is the relationship?</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   use</span> transplants,<span class="k"> clear</span> 
+<span class="k">   graph twoway scatter</span> peak_pra age    <span class="c1">//full syntax</span>
+<span class="k">   tw sc</span> peak_pra age                 <span class="c1">//abbreviated syntax</span>
+   
+<span class="c1">//explore other twoway options!!  </span>
+<span class="k">sum</span> peak_pra,<span class="k"> d</span>
+#delimit ;
+<span class="k">local</span> m_iqr:<span class="k"> di</span> 
+       <span class="s">&quot;Median&quot;</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p50)
+       <span class="s">&quot; (IQR,&quot;</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p25)
+            <span class="s">&quot;-&quot;</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p75)
+            <span class="s">&quot;)&quot;</span>
+            ;
+<span class="k">tw</span> (sc peak_pra age<span class="k"> if</span> prev<span class="o">==</span><span class="m">0</span>)
+   (sc peak_pra age<span class="k"> if</span> prev<span class="o">==</span><span class="m">1</span>,
+       legend(
+<span class="k">           on</span>
+           ring(<span class="m">0</span>)
+           pos(<span class="m">11</span>)
+<span class="k">           lab</span>(<span class="m">1</span> <span class="s">&quot;No Previous Tx&quot;</span>)
+<span class="k">           lab</span>(<span class="m">2</span> <span class="s">&quot;Previous Tx&quot;</span>)
+       )
+       ti(<span class="s">&quot;Most Recent Serum PRA&quot;</span>,pos(<span class="m">11</span>))
+       yti(<span class="s">&quot;%&quot;</span>, orientation(horizontal))
+   text(<span class="m">50</span> <span class="m">10</span> <span class="s">&quot;</span><span class="nv">`m_iqr&#39;</span><span class="s">&quot;</span>)
+   )
+   ;
+   #delimit cr
+<span class="k">   graph</span> export lab6q5<span class="m">.</span>png,<span class="k"> replace</span> 
+</pre></div>
+</div>
+<p><img alt="lab6q5.png" src="lab6q5.png" /></p>
+<ol class="arabic" start="6">
 <li><p>The graph of proportion of ECD transplants by age from the lecture was a little messy. Remake the graph with the age rounded to the nearest ten years.</p>
 <ul>
-<li><p>(From the chapter: <code class="docutils literal notranslate"><span class="pre">twoway</span></code>)</p>
-<p><img alt="Picture1" src="_images/Picture1.png" /></p>
+<li><p>From the chapter: <code class="docutils literal notranslate"><span class="pre">twoway</span></code></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">collapse</span> (mean) don_ecd,<span class="k"> by</span>(age)
+<span class="k">graph twoway line</span> don_ecd age, text(.<span class="m">5</span> <span class="m">40</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>)
+<span class="k">graph</span> export collpasebyage<span class="m">.</span>png,replace
+<span class="k">count</span> 
+
+<span class="c1">//alternative, without messing up the data</span>
+<span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">egen</span> m_don_ecd=mean(don_ecd),<span class="k"> by</span>(age)
+<span class="k">egen</span> agetag=tag(age)
+#delimit ;
+<span class="k">line</span> m_don_ecd age<span class="k"> if</span> agetag, 
+    text(
+    .<span class="m">5</span> <span class="m">40</span> 
+    <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>) 
+<span class="k">    sort</span> ;
+#delimi cr
+<span class="k">count</span>
+<span class="k">graph</span> export lab6q6<span class="m">.</span>png,replace 
+</pre></div>
+</div>
+<p><img alt="Picture1" src="_images/collpasebyage.png" />
+<img alt="lab6q5.png" src="lab6q6.png" /></p>
 </li>
-<li><p>(After rounding)</p>
-<p><img alt="Picture2" src="_images/Picture2.png" /></p>
+<li><p>After rounding</p>
+<p><img alt="Picture2" src="_images/collpasebyage10.png" /></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">gen</span> age10 = <span class="nf">round</span>(age, <span class="m">10</span>)
+<span class="c1">//one way to restore data after messing it up</span>
+<span class="k">preserve</span> 
+<span class="k">    collapse</span> (mean) don_ecd,<span class="k"> by</span>(age10)
+<span class="k">    graph twoway line</span> don_ecd age10
+<span class="k">    graph</span> export collpasebyage10<span class="m">.</span>png,replace
+<span class="k">restore</span> 
+<span class="k">count</span> 
+</pre></div>
+</div>
 </li>
 </ul>
 </li>
-<li><p>You have all your commands in your do file, right? Run your do file from the beginning and make sure your do file does exactly the same thing.</p></li>
+<li><p>You have all your commands in your do file, right? Run your do file from the beginning and make sure your do file does exactly the same thing. Also, in the spirit of <code class="docutils literal notranslate"><span class="pre">hw1</span></code>, and the spirit of the last 7  weeks, your .do file should look like this if you’ve adhered to the guidelines:</p></li>
 </ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//collapse [-] at qui</span>
+<span class="k">qui</span> {
+
+<span class="c1">//collapse [-] at if X {</span>
+<span class="k">qui</span> {
+<span class="k">	if</span> <span class="m">0</span> { <span class="c1">//lab6 dofile</span>
+<span class="k">	if</span> <span class="m">1</span> { <span class="c1">//transplants.dta</span>
+<span class="k">	if</span> <span class="m">2</span> { <span class="c1">//runiform(),two methods</span>
+<span class="k">	if</span> <span class="m">3</span> { <span class="c1">//transplants reload</span>
+<span class="k">	if</span> <span class="m">4</span> { <span class="c1">//r(normal),kdensity</span>
+<span class="k">	if</span> <span class="m">5</span> { <span class="c1">//embed macro in text then graph</span>
+<span class="k">	if</span> <span class="m">6</span> { <span class="c1">//collpase &amp; egen equivalence!!!!!!</span>
+<span class="k">	if</span> <span class="m">7</span> { <span class="c1">//aesthetical .do file structure :)</span>
+}
+</pre></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

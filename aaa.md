@@ -135,11 +135,12 @@ Academic integrity
 What's new this week?
 
 1. Did you know that `lab5` has content that prepares you for `hw2`? `lab5` solutions are now available.
-2. Similarly, `lab6` has content that prepares you for `hw3` & it has gone live!
+2. Similarly, `lab6` has content that prepares you for `hw3` & it has gone live! This time round we are offering the solutions to  `lab6` in the interests of time!! **<u>Please</u>** review this lab!
 3. Concession: The **weights** of each `hw1` question (initial submission) will be revised in response to consistent concerns raised by <u>both</u> TAs & students. But please do resubmit `hw1` if you wish to boost your grade. The original rubric weights will hold for any resubmission. 
-4. Video for chapter: `twoway` has gone live!
+4. Video for chapter: `twoway` has gone live! (mostly discussion of `hw1)
 5. A few of you have not yet received your `hw1` grades but will certainly have them by 12pm this Friday, Cinco de Mayo. For this delay, your due dates for `hw2` and `hw3` are open. The only caveat is that I must submit grades to the academic registrar by **Fri., May 19 (4pm ET)** for graduating students. 
-6. Please review ch 
+6. Please review chapter: `twoway` notes for what we did not have time to cover 
+
 
 ```
 
