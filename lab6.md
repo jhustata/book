@@ -6,6 +6,8 @@ data: [transplants.dta](transplants.dta) [donors_recipients.dta](donors_recipien
 
 zoom: [M](https://JHUBlueJays.zoom.us/j/96760923747) [T](https://JHUBlueJays.zoom.us/j/99476415268) [W](https://jhubluejays.zoom.us/j/98628544091?pwd=ZGx5NTN1RHNzNDUrQ3c3Uys0RVYrUT09) [Th](https://JHUBlueJays.zoom.us/j/3393703103) [F](https://JHUBlueJays.zoom.us/j/8581993134)
 
+stata18: updated [color](https://www.stata.com/new-in-stata/graph-colors-by-variable/) [palatte](https://repec.sowi.unibe.ch/stata/palettes/getting-started.html#r-returns)
+
 This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be provided separately.
 
 1. Start Stata, open your do-file editor, write the header, and load `transplants.dta`.
@@ -62,26 +64,29 @@ use transplants, clear
    tw sc peak_pra age                 //abbreviated syntax
    
 //explore other twoway options!!  
-sum peak_pra, d
 #delimit ;
-local m_iqr: di 
+forval f=0/1 { ;
+	sum peak_pra, d ;
+	local m_iqr_`f': di 
        "Median" %2.0f r(p50)
        " (IQR," %2.0f r(p25)
             "-" %2.0f r(p75)
             ")"
-            ;
-tw (sc peak_pra age if prev==0)
-   (sc peak_pra age if prev==1,
+			;
+} ;
+tw (sc peak_pra age if gender==0)
+   (sc peak_pra age if gender==1,
        legend(
            on
            ring(0)
            pos(11)
-           lab(1 "No Previous Tx")
-           lab(2 "Previous Tx")
+           lab(1 "Male")
+           lab(2 "Female")
        )
        ti("Most Recent Serum PRA",pos(11))
        yti("%", orientation(horizontal))
-   text(50 10 "`m_iqr'")
+   text(50 10 "`m_iqr_0'",col(midblue))
+   text(45 10 "`m_iqr_1'",col(cranberry))
    )
    ;
    #delimit cr

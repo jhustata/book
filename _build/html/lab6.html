@@ -369,6 +369,7 @@ document.write(`
 <p>lab5: <a class="reference internal" href="lab5.html"><span class="doc std std-doc">solutions</span></a></p>
 <p>data: <a class="reference download internal" download="" href="_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta"><span class="xref download myst">transplants.dta</span></a> <a class="reference download internal" download="" href="_downloads/f246ffb8c3fc8aad08fcc8b4d75aa2fb/donors_recipients.dta"><span class="xref download myst">donors_recipients.dta</span></a> <a class="reference download internal" download="" href="_downloads/1dbcfe5183401a542fa4f336f624de75/donors.dta"><span class="xref download myst">donors.dta</span></a></p>
 <p>zoom: <a class="reference external" href="https://JHUBlueJays.zoom.us/j/96760923747">M</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/99476415268">T</a> <a class="reference external" href="https://jhubluejays.zoom.us/j/98628544091?pwd=ZGx5NTN1RHNzNDUrQ3c3Uys0RVYrUT09">W</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/3393703103">Th</a> <a class="reference external" href="https://JHUBlueJays.zoom.us/j/8581993134">F</a></p>
+<p>stata18: updated <a class="reference external" href="https://www.stata.com/new-in-stata/graph-colors-by-variable/">color</a> <a class="reference external" href="https://repec.sowi.unibe.ch/stata/palettes/getting-started.html#r-returns">palatte</a></p>
 <p>This lab is optional; you are NOT required to complete these questions. Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. Sample responses to the lab questions will be provided separately.</p>
 <ol class="arabic simple">
 <li><p>Start Stata, open your do-file editor, write the header, and load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>.</p></li>
@@ -419,33 +420,36 @@ document.write(`
 <span class="k">   tw sc</span> peak_pra age                 <span class="c1">//abbreviated syntax</span>
    
 <span class="c1">//explore other twoway options!!  </span>
-<span class="k">sum</span> peak_pra,<span class="k"> d</span>
 #delimit ;
-<span class="k">local</span> m_iqr:<span class="k"> di</span> 
+<span class="k">forval</span> f=<span class="m">0</span><span class="o">/</span><span class="m">1</span> { ;
+<span class="k">	sum</span> peak_pra,<span class="k"> d</span> ;
+<span class="k">	local</span> m_iqr_<span class="nv">`f&#39;</span>:<span class="k"> di</span> 
        <span class="s">&quot;Median&quot;</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p50)
        <span class="s">&quot; (IQR,&quot;</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p25)
             <span class="s">&quot;-&quot;</span> <span class="nx">%2.0f</span> <span class="nf">r</span>(p75)
             <span class="s">&quot;)&quot;</span>
-            ;
-<span class="k">tw</span> (sc peak_pra age<span class="k"> if</span> prev<span class="o">==</span><span class="m">0</span>)
-   (sc peak_pra age<span class="k"> if</span> prev<span class="o">==</span><span class="m">1</span>,
+			;
+} ;
+<span class="k">tw</span> (sc peak_pra age<span class="k"> if</span> gender<span class="o">==</span><span class="m">0</span>)
+   (sc peak_pra age<span class="k"> if</span> gender<span class="o">==</span><span class="m">1</span>,
        legend(
 <span class="k">           on</span>
            ring(<span class="m">0</span>)
            pos(<span class="m">11</span>)
-<span class="k">           lab</span>(<span class="m">1</span> <span class="s">&quot;No Previous Tx&quot;</span>)
-<span class="k">           lab</span>(<span class="m">2</span> <span class="s">&quot;Previous Tx&quot;</span>)
+<span class="k">           lab</span>(<span class="m">1</span> <span class="s">&quot;Male&quot;</span>)
+<span class="k">           lab</span>(<span class="m">2</span> <span class="s">&quot;Female&quot;</span>)
        )
        ti(<span class="s">&quot;Most Recent Serum PRA&quot;</span>,pos(<span class="m">11</span>))
        yti(<span class="s">&quot;%&quot;</span>, orientation(horizontal))
-   text(<span class="m">50</span> <span class="m">10</span> <span class="s">&quot;</span><span class="nv">`m_iqr&#39;</span><span class="s">&quot;</span>)
+   text(<span class="m">50</span> <span class="m">10</span> <span class="s">&quot;</span><span class="nv">`m_iqr_0&#39;</span><span class="s">&quot;</span>,col(midblue))
+   text(<span class="m">45</span> <span class="m">10</span> <span class="s">&quot;</span><span class="nv">`m_iqr_1&#39;</span><span class="s">&quot;</span>,col(cranberry))
    )
    ;
    #delimit cr
 <span class="k">   graph</span> export lab6q5<span class="m">.</span>png,<span class="k"> replace</span> 
 </pre></div>
 </div>
-<p><img alt="lab6q5.png" src="lab6q5.png" /></p>
+<p><img alt="lab6q5.png" src="_images/lab6q5.png" /></p>
 <ol class="arabic" start="6">
 <li><p>The graph of proportion of ECD transplants by age from the lecture was a little messy. Remake the graph with the age rounded to the nearest ten years.</p>
 <ul>
