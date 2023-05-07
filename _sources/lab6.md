@@ -114,7 +114,8 @@ tw (sc peak_pra age if gender==0)
      line m_don_ecd age if agetag, 
          text(
          .5 40 
-         "obs: `c(N)', vars: `c(k)'") 
+         "obs: `c(N)', vars: `c(k)'"
+         ) 
          sort ;
      #delimi cr
      count
