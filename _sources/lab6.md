@@ -106,20 +106,24 @@ tw (sc peak_pra age if gender==0)
      graph export collpasebyage.png,replace
      count 
      
-     //alternative, without messing up the data
-     use transplants, clear
-     egen m_don_ecd=mean(don_ecd), by(age)
-     egen agetag=tag(age)
-     #delimit ;
-     line m_don_ecd age if agetag, 
-         text(
-         .5 40 
-         "obs: `c(N)', vars: `c(k)'"
-         ) 
-         sort ;
-     #delimi cr
-     count
-     graph export lab6q6.png,replace 
+//alternative, without messing up the data
+if c(N) == r(N) | c(N) == 6000 {
+	
+use transplants, clear
+egen m_don_ecd=mean(don_ecd), by(age)
+egen agetag=tag(age)
+#delimit ;
+line m_don_ecd age if agetag, 
+    text(
+    .5 40 
+    "obs: `c(N)', vars: `c(k)'"
+    ) 
+    sort ;
+#delimi cr
+count
+graph export lab6q6.png,replace 
+
+}
      ```
      ![Picture1](collpasebyage.png)
      ![lab6q5.png](lab6q6.png)
@@ -190,7 +194,7 @@ qui {
 	if c(N)>4 { //r(normal),kdensity
 	if c(N)>5 { //embed macro in text then graph
 	if c(N)>6 { //collpase & egen equivalence!!!!!!
-	if c(N)>7 { //aesthetical .do file structure :)
+	if c(N)==r(N) | c(N)==6000 { { //aesthetical .do file structure :)
        timer list  
        log close 
 }
