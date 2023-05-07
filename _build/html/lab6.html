@@ -450,56 +450,57 @@ document.write(`
 </pre></div>
 </div>
 <p><img alt="lab6q5.png" src="_images/lab6q5.png" /></p>
-<ol class="arabic" start="6">
+<ol class="arabic simple" start="6">
 <li><p>The graph of proportion of ECD transplants by age from the lecture was a little messy. Remake the graph with the age rounded to the nearest ten years.</p>
-<ul>
-<li><p>From the chapter: <code class="docutils literal notranslate"><span class="pre">twoway</span></code></p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
-<span class="k">collapse</span> (mean) don_ecd,<span class="k"> by</span>(age)
-<span class="k">graph twoway line</span> don_ecd age, text(.<span class="m">5</span> <span class="m">40</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>)
-<span class="k">graph</span> export collpasebyage<span class="m">.</span>png,replace
-<span class="k">count</span> 
-</pre></div>
-</div>
-</li>
+<ul class="simple">
+<li><p>From the chapter: <code class="docutils literal notranslate"><span class="pre">twoway</span></code></p></li>
 </ul>
 </li>
 </ol>
-<p>//alternative, without messing up the data
-if c(N) == r(N) | c(N) == 6000 {</p>
-<p>use transplants, clear
-egen m_don_ecd=mean(don_ecd), by(age)
-egen agetag=tag(age)
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">     use</span> transplants,<span class="k"> clear</span>
+<span class="k">     collapse</span> (mean) don_ecd,<span class="k"> by</span>(age)
+<span class="k">     graph twoway line</span> don_ecd age, text(.<span class="m">5</span> <span class="m">40</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>)
+<span class="k">     graph</span> export collpasebyage<span class="m">.</span>png,replace
+<span class="k">     count</span> 
+     
+<span class="c1">//alternative, without messing up the data</span>
+<span class="k">if</span> <span class="nf">c</span>(N) <span class="o">==</span> <span class="nf">r</span>(N) | <span class="nf">c</span>(N) <span class="o">==</span> <span class="m">6000</span> {
+<span class="k">	</span>
+<span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">egen</span> m_don_ecd=mean(don_ecd),<span class="k"> by</span>(age)
+<span class="k">egen</span> agetag=tag(age)
 #delimit ;
-line m_don_ecd age if agetag,
-text(
-.5 40
-“obs: <code class="docutils literal notranslate"><span class="pre">c(N)',</span> <span class="pre">vars:</span> </code>c(k)’”
-)
-sort ;
+<span class="k">line</span> m_don_ecd age<span class="k"> if</span> agetag, 
+    text(
+    .<span class="m">5</span> <span class="m">40</span> 
+    <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
+    ) 
+<span class="k">    sort</span> ;
 #delimi cr
-count
-graph export lab6q6.png,replace</p>
-<p>}
-```
-<img alt="Picture1" src="_images/collpasebyage.png" />
-<img alt="lab6q5.png" src="lab6q6.png" /></p>
-<ul>
-<li><p>After rounding</p>
-<p><img alt="Picture2" src="_images/collpasebyage10.png" /></p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
-<span class="k">gen</span> age10 = <span class="nf">round</span>(age, <span class="m">10</span>)
-<span class="c1">//one way to restore data after messing it up</span>
-<span class="k">preserve</span> 
-<span class="k">    collapse</span> (mean) don_ecd,<span class="k"> by</span>(age10)
-<span class="k">    graph twoway line</span> don_ecd age10
-<span class="k">    graph</span> export collpasebyage10<span class="m">.</span>png,replace
-<span class="k">restore</span> 
-<span class="k">count</span> 
+<span class="k">count</span>
+<span class="k">graph</span> export lab6q6<span class="m">.</span>png,replace 
+
+}
 </pre></div>
 </div>
-</li>
+<p><img alt="Picture1" src="_images/collpasebyage.png" />
+<img alt="lab6q5.png" src="lab6q6.png" /></p>
+<ul class="simple">
+<li><p>After rounding</p></li>
 </ul>
+<p><img alt="Picture2" src="_images/collpasebyage10.png" /></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">     use</span> transplants,<span class="k"> clear</span>
+<span class="k">     gen</span> age10 = <span class="nf">round</span>(age, <span class="m">10</span>)
+     <span class="c1">//one way to restore data after messing it up</span>
+<span class="k">     preserve</span> 
+<span class="k">         collapse</span> (mean) don_ecd,<span class="k"> by</span>(age10)
+<span class="k">         graph twoway line</span> don_ecd age10
+<span class="k">         graph</span> export collpasebyage10<span class="m">.</span>png,replace
+<span class="k">     restore</span> 
+<span class="k">     count</span> 
+ 
+</pre></div>
+</div>
 <ol class="arabic simple" start="7">
 <li><p>You have all your commands in your do file, right? Run your do file from the beginning and make sure your do file does exactly the same thing. Also, in the spirit of <code class="docutils literal notranslate"><span class="pre">hw1</span></code>, and the spirit of the last 7  weeks, your .do file should look like this if you’ve adhered to the guidelines:</p></li>
 </ol>
@@ -549,7 +550,7 @@ graph export lab6q6.png,replace</p>
 <span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">&gt;</span><span class="m">4</span> { <span class="c1">//r(normal),kdensity</span>
 <span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">&gt;</span><span class="m">5</span> { <span class="c1">//embed macro in text then graph</span>
 <span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">&gt;</span><span class="m">6</span> { <span class="c1">//collpase &amp; egen equivalence!!!!!!</span>
-<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="nf">r</span>(N) | <span class="nf">c</span>(N)<span class="o">==</span><span class="m">6000</span> { { <span class="c1">//aesthetical .do file structure :)</span>
+<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="nf">r</span>(N) | <span class="nf">c</span>(N)<span class="o">==</span><span class="m">6000</span> { <span class="c1">//aesthetical .do file structure </span>
 <span class="k">       timer list</span>  
 <span class="k">       log close</span> 
 }
