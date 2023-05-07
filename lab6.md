@@ -64,11 +64,6 @@ use transplants, clear
    tw sc peak_pra age                 //abbreviated syntax
    
 //explore other twoway options!!  
-   use transplants, clear 
-   graph twoway scatter peak_pra age    //full syntax
-   tw sc peak_pra age                 //abbreviated syntax
-   
-//explore other twoway options!!  
 #delimit ;
 forval f=0/1 { ;
 	sum peak_pra if gender==`f', d ;
