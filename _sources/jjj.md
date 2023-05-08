@@ -38,10 +38,12 @@ Lets explore some syntax for twoway plots. Run one line of code at a time. Alter
 
 ```stata
 use transplants, clear
-gen int yr = year(transplant_date) gen byte n=1
+gen int yr = year(transplant_date) 
+gen byte n=1
 rename gender female
 rename don_ecd ecd
-collapse (sum) n ecd female, by(yr) gen int scd = n-ecd
+collapse (sum) n ecd female, by(yr) 
+gen int scd = n-ecd
 gen int male=n-female
 save tx_yr, replace
 graph twoway line n yr
