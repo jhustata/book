@@ -398,10 +398,12 @@ document.write(`
 <p><img alt="" src="_images/open.science.png" /></p>
 <p>Lets explore some syntax for twoway plots. Run one line of code at a time. Alternatively, you may type <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">twoway</span></code> to explore the options outlined below</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
-<span class="k">gen</span> int yr = <span class="nf">year</span>(transplant_date)<span class="k"> gen</span> byte<span class="k"> n</span>=<span class="m">1</span>
+<span class="k">gen</span> int yr = <span class="nf">year</span>(transplant_date) 
+<span class="k">gen</span> byte<span class="k"> n</span>=<span class="m">1</span>
 <span class="k">rename</span> gender female
 <span class="k">rename</span> don_ecd ecd
-<span class="k">collapse</span> (sum)<span class="k"> n</span> ecd female,<span class="k"> by</span>(yr)<span class="k"> gen</span> int scd =<span class="k"> n</span><span class="o">-</span>ecd
+<span class="k">collapse</span> (sum)<span class="k"> n</span> ecd female,<span class="k"> by</span>(yr) 
+<span class="k">gen</span> int scd =<span class="k"> n</span><span class="o">-</span>ecd
 <span class="k">gen</span> int male=n<span class="o">-</span>female
 <span class="k">save</span> tx_yr,<span class="k"> replace</span>
 <span class="k">graph twoway line n</span> yr
