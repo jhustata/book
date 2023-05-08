@@ -401,7 +401,9 @@ document.write(`
 <ul>
 <li><p>simulating parametric distributions</p></li>
 <li><p>you may develop this idea on your own in the future</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">runiform()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">rnormal()</span></code> are the only examples demonstrated in this class</p></li>
+<li><p>but we lay the foundation for this developement somewhere below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runiform()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">rnormal()</span></code> are the only distributions demonstrated thus far</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rbinomial()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">rweibull()</span></code> are introduced below in the context of time-to-event data</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code></p>
@@ -704,6 +706,626 @@ document.write(`
 	}
 <span class="k">  log close</span> 
 }		
+</pre></div>
+</div>
+<p>Handling <strong>strings</strong> such as drug names:</p>
+<ul class="simple">
+<li><p>We’ll review a script I wrote 4 years ago</p></li>
+<li><p>Then compare it with an update I wrote yesterday</p></li>
+<li><p>In brief, there is a fundamental transformation in:</p>
+<ul>
+<li><p>aesthetics, legibility, &amp; brevity</p></li>
+<li><p>one is 440 lines, repetitious</p></li>
+<li><p>the other is 164 lines, utilizes macros &amp; loops</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import excel <span class="s">&quot;1-first gen antihisitamines.xlsx&quot;</span>, sheet(<span class="s">&quot;de-duplicated list&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antihist&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">gen</span> group=<span class="m">1</span>
+<span class="k">save</span> 01_antihistamines,<span class="k"> replace</span>
+
+import excel <span class="s">&quot;2-antiparkinsonian agents.xlsx&quot;</span>, sheet(<span class="s">&quot;De-duplicated list&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antipark&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">gen</span> group=<span class="m">2</span>
+<span class="k">save</span> 02_antiparkinsons,replace
+
+import excel <span class="s">&quot;3-Antispasmodics.xlsx&quot;</span>, sheet(<span class="s">&quot;De-duplicated_list&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antispasm&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">3</span>
+<span class="k">save</span> 03_antispasmodics,replace 
+
+import excel <span class="s">&quot;4-Antithrombotics&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antithromb&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">4</span>
+<span class="k">save</span> 04_antithrombotics,replace
+
+import excel <span class="s">&quot;5-antiinfective agents&quot;</span>, sheet(<span class="s">&quot;Sheet2&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">8</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antiinfect&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">5</span>
+<span class="k">save</span> 05_antiinfective,replace
+
+import excel <span class="s">&quot;6-Peripheral alpha-1 blockers&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;pera1block&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">6</span>
+<span class="k">save</span> 06_peripheralalpha1blockers,replace
+
+import excel <span class="s">&quot;7-Central alpha-agonists&quot;</span>, sheet(<span class="s">&quot;de-duplicated_list&quot;</span>)<span class="k"> clear</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;cena1ag&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">7</span>
+<span class="k">save</span> 07_centralalpha1agonists,replace 
+
+import excel <span class="s">&quot;8-Other CNS alpha-agonists&quot;</span>, sheet(<span class="s">&quot;De-duplicated_list&quot;</span>)<span class="k"> clear</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;otha1ag&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">8</span>
+<span class="k">save</span> 08_otheralpha1agonists,replace 
+
+import excel <span class="s">&quot;9-Antidepressants&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">8</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antidep&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">9</span>
+<span class="k">save</span> 09_antidepressants,replace 
+
+import excel <span class="s">&quot;10-Antipsychotic agents&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">8</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antipsy&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">10</span>
+<span class="k">save</span> 10_antipsychotics,replace 
+
+import excel <span class="s">&quot;11-Barbituates&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;barb&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">11</span>
+<span class="k">save</span> 11_barbiturates,replace 
+
+import excel <span class="s">&quot;12-Benzodiazepine lists&quot;</span>, sheet(<span class="s">&quot;Short-acting&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;benzoshort&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">tempfile</span> benzoshort
+<span class="k">save</span> <span class="nv">`benzoshort&#39;</span>,replace
+
+import excel <span class="s">&quot;12-Benzodiazepine lists&quot;</span>, sheet(<span class="s">&quot;Long-acting&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">8</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;benzolong&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">tempfile</span> benzolong
+<span class="k">save</span> <span class="nv">`benzolong&#39;</span>,replace
+
+import excel <span class="s">&quot;12-Benzodiazepine lists&quot;</span>, sheet(<span class="s">&quot;Unknown&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;benzounk&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">tempfile</span> benzounk
+<span class="k">save</span> <span class="nv">`benzounk&#39;</span>,replace
+<span class="k">         use</span> <span class="nv">`benzoshort&#39;</span>,clear
+<span class="k">append</span> using <span class="nv">`benzolong&#39;</span>
+<span class="k">append</span> using <span class="nv">`benzounk&#39;</span>
+<span class="k">gen</span> group=<span class="m">12</span>
+<span class="k">save</span> 12_benzodiazepines,replace 
+
+import excel <span class="s">&quot;13-Nonbenzodiazepines - Z-drugs&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;nonbenzo&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">13</span>
+<span class="k">save</span> 13_nonbenzodiazepines,replace 
+
+import excel <span class="s">&quot;14-Ergoloid Mesylates&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;ergot&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">14</span>
+<span class="k">save</span> 14_ergoloids,replace 
+
+import excel <span class="s">&quot;15-Androgens&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;andro&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">15</span>
+<span class="k">save</span> 15_androgens,replace 
+
+import excel <span class="s">&quot;16-Estrogens&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;estro&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">16</span>
+<span class="k">save</span> 16_estrogens,replace 
+
+import excel <span class="s">&quot;17-Growth hormone&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;growth&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">17</span>
+<span class="k">save</span> 17_growthhormones,replace 
+
+import excel <span class="s">&quot;18-Insulin&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">8</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;insulin&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">18</span>
+<span class="k">save</span> 18_insulin,replace 
+
+import excel <span class="s">&quot;19-Sulfonylureas&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">5</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;urea&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">19</span>
+<span class="k">save</span> 19_sulfonylureas,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;20.Proton_Pump_Inhibitors&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;ppi&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">20</span>
+<span class="k">save</span> 20_protonpumpinh,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;21.non-selective NSAIDS&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;nsnsaids&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">21</span>
+<span class="k">save</span> 21_nonselectnsaids,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;22.Skeletal muscle relaxants&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">2</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;muscle&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">22</span>
+<span class="k">save</span> 22_musclerelaxants,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;23.non-DHP CCB&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;ccb&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">23</span>
+<span class="k">save</span> 23_nondhpccb,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;24.Thiazolidinediones&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;thiazo&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">24</span>
+<span class="k">save</span> 24_thiazolidinediones,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;25.Acetyl cholinesterase inhib&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;achblock&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">25</span>
+<span class="k">save</span> 25_acetylcholinesteraseinh,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;26.alpha-1 blockers&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;a1block&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">26</span>
+<span class="k">save</span> 26_alpha1blockers,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;27.ti-cyclic antidepressants&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;tca&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">27</span>
+<span class="k">save</span> 27_tca,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;28.corticosteroids&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;steroids&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">28</span>
+<span class="k">save</span> 28_corticosteroids,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;29.H2 receptor antagonists&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;h2ant&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">29</span>
+<span class="k">save</span> 29_h2rblockers,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;30.antiepileptics&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antiepi&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">30</span>
+<span class="k">save</span> 30_antiepileptics,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;31.antiemetics&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antieme&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">31</span>
+<span class="k">save</span> 31_antiemetics,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;32.NSAIDS&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn 
+<span class="k">gen</span> class_gnn=<span class="s">&quot;nsaid&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">32</span>
+<span class="k">save</span> 32_nsaids,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;33.Diuretics&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;diuretics&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">33</span>
+<span class="k">save</span> 33_diuretics,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;34.SNRIs&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;snri&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">34</span>
+<span class="k">save</span> 34_snri,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;35.SSRIs&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;ssri&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">35</span>
+<span class="k">save</span> 35_ssri,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;36.RAS Inhibitor&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">2</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;ras&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">36</span>
+<span class="k">save</span> 36_rasinhibitors,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;37.Opioids&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;opioids&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">37</span>
+<span class="k">save</span> 37_opioids,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;38.Anticholinergic&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antich&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">38</span>
+<span class="k">save</span> 38_anticholinergics,replace 
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">	qui</span> {
+<span class="k">		clear</span>
+		cls
+<span class="k">		if</span> <span class="nf">c</span>(N) { <span class="c1">//background</span>
+			we compiled a comprehensive<span class="k"> list</span> of medications within 
+			each of the potentially inapporpriate medication (pim) 
+			classes<span class="k"> in</span> a systematic manner.
+			
+			first, informaticists used micromedex, the control vocabularies of            medline and embase, and medication websites to<span class="k"> generate</span> 
+			a trade and generic medication name<span class="k"> list</span>. 
+			
+			second, this<span class="k"> list</span> was curated to allow medications with multiple
+            mechanisms of action to be represented<span class="k"> in more</span> than<span class="k"> one</span> pim<span class="k"> class</span>.
+			we removed pims with topical or ocular routes of administration. 
+			
+			the final<span class="k"> list</span> was <span class="o">**</span>imported into stata<span class="o">**</span> to<span class="k"> query</span> 
+			medicare part<span class="k"> d</span> claims<span class="k"> for</span> pims...
+		} 
+<span class="k">		if</span> <span class="nf">c</span>(N)<span class="o">&lt;</span><span class="m">1</span> { <span class="c1">//methods</span>
+<span class="k">		    global</span> path1 <span class="o">/</span>users<span class="o">/</span>d<span class="o">/</span>dropbox (personal)  
+<span class="k">		    global</span> path2 <span class="o">/</span>2e<span class="m">.</span>πρᾶξις,σ<span class="o">/</span><span class="m">3.</span>acetyl<span class="m">.</span>neurotrans  
+<span class="k">			global</span> path3 <span class="o">/</span>big<span class="m">.</span>data<span class="o">/</span>big<span class="m">.</span>data<span class="m">.</span>usrds<span class="o">/</span>beerscriteria  
+<span class="k">			if</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Windows&quot;</span> {
+<span class="k">				global</span> workdir <span class="s">&quot;</span><span class="vg">$path1$path2$path3</span><span class="se">\&quot;</span>
+			}
+<span class="k">			else</span> {
+<span class="k">				global</span> workdir <span class="s">&quot;</span><span class="vg">$path1$path2$path3</span><span class="s">/&quot;</span>
+			}
+			#delimit ;
+<span class="k">			global</span> catalog1
+			    <span class="s">&quot;1-first gen antihisitamines&quot;</span>
+				<span class="s">&quot;2-antiparkinsonian agents&quot;</span>
+				<span class="s">&quot;3-Antispasmodics&quot;</span>
+				<span class="s">&quot;4-Antithrombotics&quot;</span>
+				<span class="s">&quot;5-antiinfective agents&quot;</span>
+				<span class="s">&quot;6-Peripheral alpha-1 blockers&quot;</span>
+				<span class="s">&quot;7-Central alpha-agonists&quot;</span>
+				<span class="s">&quot;8-Other CNS alpha-agonists&quot;</span>
+				<span class="s">&quot;9-Antidepressants&quot;</span>
+				<span class="s">&quot;10-Antipsychotic agents&quot;</span>
+				<span class="s">&quot;11-Barbituates&quot;</span>
+				<span class="s">&quot;12-Benzodiazepine lists&quot;</span>
+				<span class="s">&quot;12-Benzodiazepine lists&quot;</span>
+				<span class="s">&quot;12-Benzodiazepine lists&quot;</span>
+				<span class="s">&quot;13-Nonbenzodiazepines - Z-drugs&quot;</span>
+				<span class="s">&quot;14-Ergoloid Mesylates&quot;</span>
+				<span class="s">&quot;15-Androgens&quot;</span>
+				<span class="s">&quot;16-Estrogens&quot;</span>
+				<span class="s">&quot;17-Growth hormone&quot;</span>
+				<span class="s">&quot;18-Insulin&quot;</span>
+				<span class="s">&quot;19-Sulfonylureas&quot;</span>
+				; <span class="c1">// &quot;20-38&quot;</span>
+<span class="k">			global</span> catalog2
+			    <span class="s">&quot;20.Proton_Pump_Inhibitors&quot;</span>
+				<span class="s">&quot;21.non-selective NSAIDS&quot;</span>
+				<span class="s">&quot;22.Skeletal muscle relaxants&quot;</span>
+				<span class="s">&quot;23.non-DHP CCB&quot;</span>
+				<span class="s">&quot;24.Thiazolidinediones&quot;</span>
+				<span class="s">&quot;25.Acetyl cholinesterase inhib&quot;</span>
+				<span class="s">&quot;26.alpha-1 blockers&quot;</span>
+				<span class="s">&quot;27.ti-cyclic antidepressants&quot;</span>
+				<span class="s">&quot;28.corticosteroids&quot;</span>
+				<span class="s">&quot;29.H2 receptor antagonists&quot;</span>
+				<span class="s">&quot;30.antiepileptics&quot;</span>
+				<span class="s">&quot;31.antiemetics&quot;</span>
+				<span class="s">&quot;32.NSAIDS&quot;</span>
+				<span class="s">&quot;33.Diuretics&quot;</span>
+				<span class="s">&quot;34.SNRIs&quot;</span>
+				<span class="s">&quot;35.SSRIs&quot;</span>
+				<span class="s">&quot;36.RAS Inhibitor&quot;</span>
+				<span class="s">&quot;37.Opioids&quot;</span>
+				<span class="s">&quot;38.Anticholinergic&quot;</span>;
+<span class="k">			global</span> namelist1
+			    01_antihistamines
+				02_antiparkinsons
+				03_antispasmodics
+				04_antithrombotics
+				05_antiinfective
+				06_peripheralalpha1blockers
+				07_centralalpha1agonists
+				08_otheralpha1agonists
+				09_antidepressants
+				10_antipsychotics
+				11_barbiturates
+			    benzoshort 
+				benzolong
+				benzounk 
+				13_nonbenzodiazepines
+				14_ergoloids
+				15_androgens
+				16_estrogens
+				17_growthhormones
+				18_insulin
+				19_sulfonylureas;
+<span class="k">			global</span> namelist2
+				20_protonpumpinh
+				21_nonselectnsaids
+				22_musclerelaxants
+				23_nondhpccb
+				24_thiazolidinediones
+				25_acetylcholinesteraseinh
+				26_alpha1blockers
+				27_tca
+				28_corticosteroids
+				29_h2rblockers
+				30_antiepileptics
+				31_antiemetics
+				32_nsaids
+				33_diuretics
+				34_snri
+				35_ssri
+				36_rasinhibitors
+				37_opioids
+				38_anticholinergics;
+			#delimit cr 
+<span class="k">			capture log close</span> 
+<span class="k">			log</span> using <span class="s">&quot;</span><span class="vg">${workdir}</span><span class="s">01_bc050523.log&quot;</span>,replace 
+<span class="k">			set</span> max_memory .
+		}
+<span class="k">		if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="m">0</span> { <span class="c1">//results</span>
+<span class="k">		    local</span> group=<span class="m">1</span>
+<span class="k">			foreach class in</span> <span class="s">&quot;</span><span class="vg">$catalog1</span><span class="s">&quot;</span> {  
+			    import excel <span class="s">&quot;</span><span class="vg">${workdir}</span><span class="nv">`class&#39;</span><span class="s">.xlsx&quot;</span>,<span class="k"> clear</span>
+<span class="k">				drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">				replace</span> A=<span class="nf">strtrim</span>(A)
+<span class="k">				replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">				rename</span> A drug_gnn
+<span class="k">				g</span> class_gnn=<span class="s">&quot;</span><span class="nv">`class&#39;</span><span class="s">&quot;</span>
+<span class="k">				keep</span> <span class="o">*</span>_gnn
+<span class="k">				g</span> group=<span class="nv">`group&#39;</span>
+<span class="k">				local</span> filename:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$namelist1</span><span class="s">&quot;</span>,<span class="nv">`group&#39;</span>)
+<span class="k">				capture save</span> <span class="s">&quot;</span><span class="nv">`filename&#39;</span><span class="s">&quot;</span>,replace  
+<span class="k">				local</span> group=<span class="nv">`group&#39;</span><span class="o">+</span><span class="m">1</span> 
+			}
+<span class="k">			use</span> benzoshort,clear
+<span class="k">			append</span> using benzolong
+<span class="k">			append</span> using benzounk <span class="c1">//debug</span>
+<span class="k">			save</span> 12_benzodiazepines,replace 
+		}
+<span class="k">		clear</span> 
+<span class="k">		if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="m">0</span> {
+<span class="k">			local</span> group=<span class="m">1</span>
+<span class="k">			foreach class in</span> <span class="s">&quot;</span><span class="vg">$catalog2</span><span class="s">&quot;</span> {
+				import excel <span class="s">&quot;</span><span class="vg">${workdir}</span><span class="s">20-38.xlsx&quot;</span>, <span class="cm">/*</span>
+<span class="cm">				    */</span> sheet(<span class="s">&quot;</span><span class="nv">`class&#39;</span><span class="s">&quot;</span>)<span class="k"> clear</span> 
+<span class="k">				drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">				replace</span> A=<span class="nf">strtrim</span>(A)
+<span class="k">				replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">				rename</span> A drug_gnn
+<span class="k">				g</span> class_gnn=<span class="s">&quot;</span><span class="nv">`class&#39;</span><span class="s">&quot;</span>
+<span class="k">				keep</span> <span class="o">*</span>_gnn 
+<span class="k">				keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">				local</span> filename:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$namelist2</span><span class="s">&quot;</span>,<span class="nv">`group&#39;</span>)
+<span class="k">				capture save</span> <span class="s">&quot;</span><span class="nv">`filename&#39;</span><span class="s">&quot;</span>,replace 
+<span class="k">				noi di</span> <span class="s">&quot;</span><span class="nv">`filename&#39;</span><span class="s">&quot;</span>
+<span class="k">				local</span> group=<span class="nv">`group&#39;</span><span class="o">+</span><span class="m">1</span>
+				
+			}
+		}
+<span class="k">	  timer list</span> 
+<span class="k">	  log close</span> 
+	}
+}
 </pre></div>
 </div>
 </section>
