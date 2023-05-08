@@ -458,7 +458,7 @@ document.write(`
 <li><p>on your own, please go walk step-by-step, command-by-command, through the <code class="docutils literal notranslate"><span class="pre">twoway</span></code> examples offered</p></li>
 <li><p>think about <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">macro</span> <span class="pre">{</span></code> conditional code-blocks and your deployment of this artifice in future, very powerful Stata scripts!</p></li>
 </ul>
-<p><strong>SO, TODAY,</strong> we’ll circle back to the method emplyed throughout this class:</p>
+<p>Today we’ll circle back to the method emplyed throughout this class:</p>
 <ul class="simple">
 <li><p>defining macros</p></li>
 <li><p>formatting them</p></li>
@@ -536,6 +536,177 @@ document.write(`
 <li><p>stata</p></li>
 </ul>
 <p>In the <a class="reference external" href="https://jhustata.github.io/class700/intro.html">advanced</a> <a class="reference external" href="https://www.jhsph.edu/courses/course/37447/2022/340.700.71/advanced-stata-programming">class</a> we merge these ideas and publish our analyses and documentation (roll over<a class="reference external" href="https://www.youtube.com/watch?v=kKlzUKLOm_U">,</a> annotation) online via <a class="reference external" href="https://pages.github.com">gh-pages</a>!!!</p>
+<p>A word on <strong>simulation</strong>:</p>
+<ul class="simple">
+<li><p>worth developing skills</p></li>
+<li><p>making up data</p></li>
+<li><p>imaginary scenarios</p></li>
+<li><p>and why would one do that?</p>
+<ul>
+<li><p>missing data</p></li>
+<li><p>bootstrap</p></li>
+<li><p>cryptography/disclosure risk</p></li>
+<li><p>sample-size calculation (variant on missing data)</p></li>
+<li><p>etc.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">	clear</span> 
+	cls
+<span class="k">	if</span> <span class="nf">c</span>(N) { <span class="c1">//background</span>
+		inspired<span class="k"> by</span> polack et al. nejm <span class="m">2020</span>
+		NEJM2020;<span class="m">383</span>:<span class="m">2603-15</span>
+		lets<span class="k"> do</span> some reverse engineering
+		aka<span class="k"> simulate</span>,<span class="k"> generate</span> data 
+		from results: reversed process<span class="o">!!</span>
+	}
+<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">&lt;</span><span class="m">1</span> { <span class="c1">//methods</span>
+<span class="k">		if</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Windows&quot;</span> {
+<span class="k">			global</span> workdir <span class="s">&quot;</span><span class="nv">`c(pwd)&#39;</span><span class="se">\&quot;</span>
+		}
+<span class="k">		else</span> {
+<span class="k">			global</span> workdir <span class="s">&quot;</span><span class="nv">`c(pwd)&#39;</span><span class="s">/&quot;</span>
+		}
+<span class="k">		capture log close</span>
+<span class="k">		log</span> using <span class="vg">${workdir}</span>simulation<span class="m">.</span>log,<span class="k"> replace</span> 
+<span class="k">		set</span> seed <span class="m">340600</span>
+<span class="k">		set</span> obs <span class="m">37706</span>
+	}
+<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="m">37706</span> { <span class="c1">//simulation </span>
+	    #delimit ; 
+		<span class="c1">//row1</span>
+<span class="k">		g</span> bnt=<span class="nf">rbinomial</span>(<span class="m">1</span>,.<span class="m">5</span>);
+<span class="k">		lab</span> define Bnt 
+		    <span class="m">0</span> <span class="s">&quot;Placebo&quot;</span>  
+	        <span class="m">1</span> <span class="s">&quot;BNT162b2&quot;</span> ;
+<span class="k">		label</span> values bnt Bnt ;
+<span class="k">		tab</span> bnt ; 
+		<span class="c1">//row2</span>
+<span class="k">		gen</span> female=<span class="nf">rbinomial</span>(<span class="m">1</span>, .<span class="m">494</span>); 
+<span class="k">		label</span> define Female  
+		    <span class="m">0</span> <span class="s">&quot;Male&quot;</span>  
+			<span class="m">1</span> <span class="s">&quot;Female&quot;</span>; 
+<span class="k">		label</span> values female Female; 
+<span class="k">		tab</span> female;
+		<span class="c1">//row3 </span>
+<span class="k">		tempvar</span> dem ;
+<span class="k">		gen</span> <span class="nv">`dem&#39;</span>=<span class="nf">round</span>(<span class="nf">runiform</span>(<span class="m">0</span>,<span class="m">100</span>),.<span class="m">1</span>); 
+<span class="k">		recode</span> <span class="nv">`dem&#39;</span>  
+		    (<span class="m">0</span><span class="o">/</span><span class="m">82.9</span>=<span class="m">0</span>)  
+		    (<span class="m">83.0</span><span class="o">/</span><span class="m">92.1</span>=<span class="m">1</span>)  
+		    (<span class="m">92.2</span><span class="o">/</span><span class="m">96.51</span>=<span class="m">2</span>)   
+		    (<span class="m">96.52</span><span class="o">/</span><span class="m">97.0</span>=<span class="m">3</span>)  
+		    (<span class="m">97.1</span><span class="o">/</span><span class="m">97.2</span>=<span class="m">4</span>)  
+		    (<span class="m">97.3</span><span class="o">/</span><span class="m">99.41</span>=<span class="m">5</span>)  
+		    (<span class="m">99.42</span><span class="o">/</span><span class="m">100</span>=<span class="m">6</span>)  
+		         ,<span class="k"> gen</span>(race);
+<span class="k">		lab</span> define Race  
+			<span class="m">0</span> <span class="s">&quot;White&quot;</span>    
+		    <span class="m">1</span> <span class="s">&quot;Black or African American&quot;</span> 
+			<span class="m">2</span> <span class="s">&quot;Asian&quot;</span> 
+			<span class="m">3</span> <span class="s">&quot;Native American or Alsak Native&quot;</span>  
+			<span class="m">4</span> <span class="s">&quot;Native Hawaiian or other Pacific Islander&quot;</span>  
+			<span class="m">5</span> <span class="s">&quot;Multiracial&quot;</span>  
+			<span class="m">6</span> <span class="s">&quot;Not reported&quot;</span>; 
+<span class="k">		label</span> values race Race; 
+<span class="k">		tab</span> race;
+		<span class="c1">//row4 </span>
+<span class="k">		gen</span> ethnicity=<span class="nf">rbinomial</span>(<span class="m">1</span>,<span class="m">0.28</span>);
+<span class="k">		tostring</span> ethnicity,<span class="k"> replace</span>;
+<span class="k">		replace</span> ethnicity=<span class="s">&quot;Latinx&quot;</span><span class="k"> if</span> ethnicity<span class="o">==</span><span class="s">&quot;1&quot;</span>;
+<span class="k">		replace</span> ethnicity=<span class="s">&quot;Other&quot;</span><span class="k"> if</span> ethnicity<span class="o">==</span><span class="s">&quot;0&quot;</span>;
+		<span class="c1">//row5 </span>
+<span class="k">		tempvar</span> country;
+<span class="k">		gen</span> <span class="nv">`country&#39;</span>=<span class="nf">round</span>(<span class="nf">runiform</span>(<span class="m">0</span>,<span class="m">100</span>), .<span class="m">1</span>);
+<span class="k">		recode</span> <span class="nv">`country&#39;</span>   
+		    (<span class="m">0</span><span class="o">/</span><span class="m">15.3</span>=<span class="m">0</span>)  
+			(<span class="m">15.4</span><span class="o">/</span><span class="m">21.5</span>=<span class="m">1</span>)  
+			(<span class="m">21.6</span><span class="o">/</span><span class="m">23.6</span>=<span class="m">2</span>)  
+			(<span class="m">23.7</span><span class="o">/</span><span class="m">100</span>=<span class="m">3</span>) 
+			    ,<span class="k"> gen</span>(country) ;
+<span class="k">		label</span> define Country 
+			<span class="m">0</span> <span class="s">&quot;Argentina&quot;</span>  
+		    <span class="m">1</span> <span class="s">&quot;Brazil&quot;</span>  
+			<span class="m">2</span> <span class="s">&quot;South Africa&quot;</span>  
+			<span class="m">3</span> <span class="s">&quot;United States&quot;</span>; 
+<span class="k">		label</span> values country Country; 
+<span class="k">		tab</span> country;
+		<span class="c1">//row7 </span>
+<span class="k">		gen</span> age=(<span class="nf">rt</span>(_N)<span class="o">*</span><span class="m">9.25</span>)<span class="o">+</span><span class="m">52</span> ; 
+<span class="k">		replace</span> age=<span class="nf">runiform</span>(<span class="m">16</span>,<span class="m">91</span>)  
+<span class="k">		    if</span> <span class="o">!</span><span class="nf">inrange</span>(age,<span class="m">16</span>,<span class="m">91</span>); 
+<span class="k">		summ</span> age,<span class="k"> d</span> ;
+<span class="k">		local</span> age_med=<span class="nf">r</span>(p50);<span class="k"> local</span> age_lb=<span class="nf">r</span>(min);<span class="k"> local</span> age_ub=<span class="nf">r</span>(max);
+<span class="k">		gen</span> dob =<span class="k"> d</span>(27jul2020) <span class="o">-</span>  
+		          (age<span class="o">*</span><span class="m">365.25</span>) ; 
+<span class="k">		gen</span> dor = dob <span class="o">+</span> age<span class="o">*</span><span class="m">365.25</span> <span class="o">+</span> <span class="nf">runiform</span>(<span class="m">0</span>,<span class="m">4</span><span class="o">*</span><span class="m">30.25</span>); 
+		<span class="c1">//row6 </span>
+<span class="k">		gen</span> over55=age<span class="o">&gt;</span><span class="m">55</span> ;<span class="k"> tab</span> over55;
+		<span class="c1">//row8 </span>
+<span class="k">		gen</span> bmi=<span class="nf">rbinomial</span>(<span class="m">1</span>, .<span class="m">351</span>);<span class="k"> tab</span> bmi; 
+		<span class="c1">//figure 3 </span>
+<span class="k">		g</span> days=rweibull(.<span class="m">7</span>,<span class="m">17</span>,<span class="m">0</span>)<span class="k"> if</span> bnt<span class="o">==</span><span class="m">0</span> ;
+<span class="k">		g</span> covid=<span class="nf">rbinomial</span>(<span class="m">1</span>, <span class="m">162</span><span class="o">/</span><span class="m">21728</span>)<span class="k"> if</span> bnt<span class="o">==</span><span class="m">0</span> ; 
+<span class="k">		replace</span> days=rweibull(.<span class="m">4</span>,.<span class="m">8</span>,<span class="m">0</span>)<span class="k"> if</span> bnt<span class="o">==</span><span class="m">1</span> ;
+<span class="k">		replace</span> covid=<span class="nf">rbinomial</span>(<span class="m">1</span>, <span class="m">14</span><span class="o">/</span><span class="m">21772</span>)<span class="k"> if</span> bnt<span class="o">==</span><span class="m">1</span>; 
+		<span class="c1">//key dates </span>
+<span class="k">		gen</span> eft = dor <span class="o">+</span> days;
+		<span class="c1">//date formats</span>
+<span class="k">		format</span> dob <span class="nx">%td;</span><span class="k"> format</span> dor <span class="nx">%td;</span><span class="k"> format</span> eft <span class="nx">%td;</span>
+		 <span class="c1">//kaplan-meier curve</span>
+<span class="k">		 stset</span> days, fail(covid) ;
+<span class="k">		 sts graph</span>,  
+<span class="k">		    by</span>(bnt)  
+		    fail per(<span class="m">100</span>)  
+		    tmax(<span class="m">119</span>)  
+		    xlab(<span class="m">0</span>(<span class="m">7</span>)<span class="m">119</span>) 
+		    ylab(<span class="m">0</span>(.<span class="m">4</span>)<span class="m">2.4</span>, 
+		        angle(<span class="m">360</span>)    
+<span class="k">			    format</span>(<span class="s">&quot;%3.1f&quot;</span>)
+				)  
+		    xti(<span class="s">&quot;Days after Dose 1&quot;</span>)  
+		    legend(off) 
+		    text(
+			    <span class="m">2.3</span> <span class="m">100</span> 
+			    <span class="s">&quot;Placebo&quot;</span>,  
+			     col(navy)
+				 )  
+		    text(
+			    .<span class="m">5</span> <span class="m">100</span> 
+				<span class="s">&quot;BNT162b2&quot;</span>,  
+			    col(maroon)
+				) ;
+<span class="k">		graph</span> export BNT162b2<span class="m">.</span>png,<span class="k"> replace</span> ;
+<span class="k">		stcox</span> bnt ;
+<span class="k">		drop</span> _<span class="o">*</span> age over55 days ;
+<span class="k">		g</span> bnt_id=<span class="nf">round</span>(<span class="nf">runiform</span>(<span class="m">37</span>,<span class="m">37</span><span class="o">+</span>_N)) ;
+<span class="k">		compress</span>  ;
+		#delimit cr
+		<span class="c1">//label variables</span>
+<span class="k">		lab var</span> bnt_id <span class="s">&quot;Participant Identifier&quot;</span>
+<span class="k">		lab var</span> bnt <span class="s">&quot;Random treatment assignment&quot;</span>
+<span class="k">		lab var</span> female <span class="s">&quot;Gender at birth&quot;</span>
+<span class="k">		lab var</span> race <span class="s">&quot;Self-identified race&quot;</span>
+<span class="k">		lab var</span> ethnicity <span class="s">&quot;Hispanic ethnicity&quot;</span>
+<span class="k">		lab var</span> country <span class="s">&quot;Country where trial was conducted&quot;</span>
+<span class="k">		lab var</span> dob <span class="s">&quot;Date of birth&quot;</span>
+<span class="k">		lab var</span> dor <span class="s">&quot;Date of recruitment into BNT162b2 trial&quot;</span>
+<span class="k">		lab var</span> eft <span class="s">&quot;Date of exit from BNT162b2 trial&quot;</span>
+<span class="k">		lab var</span> bmi <span class="s">&quot;Obese&quot;</span>
+<span class="k">		lab var</span> covid  <span class="s">&quot;Covid-19 status on eft date&quot;</span>
+		<span class="c1">//label data</span>
+<span class="k">		lab</span> data <span class="s">&quot;Safety and Efficacy of the BNT162b2 mRNA Covid-19 Vaccine&quot;</span>
+<span class="k">		describe</span>
+<span class="k">		order</span> bnt_id dob female race ethnicity country bmi bnt eft covid 
+<span class="c1">		*replace eft=. if eft&gt;d(15dec2020) //some folks lost to followup</span>
+<span class="k">		save</span> BNT162b2,<span class="k"> replace</span> 
+
+	}
+<span class="k">  log close</span> 
+}		
+</pre></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
