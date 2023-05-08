@@ -1182,14 +1182,12 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 			medicare part<span class="k"> d</span> claims<span class="k"> for</span> pims...
 		} 
 <span class="k">		if</span> <span class="nf">c</span>(N)<span class="o">&lt;</span><span class="m">1</span> { <span class="c1">//methods</span>
-<span class="k">		    global</span> path1 <span class="o">/</span>users<span class="o">/</span>d<span class="o">/</span>dropbox (personal)  
-<span class="k">		    global</span> path2 <span class="o">/</span>2e<span class="m">.</span>πρᾶξις,σ<span class="o">/</span><span class="m">3.</span>acetyl<span class="m">.</span>neurotrans  
-<span class="k">			global</span> path3 <span class="o">/</span>big<span class="m">.</span>data<span class="o">/</span>big<span class="m">.</span>data<span class="m">.</span>usrds<span class="o">/</span>beerscriteria  
+<span class="k">		    global</span> workdir <span class="nv">`c(pwd)&#39;</span> 
 <span class="k">			if</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Windows&quot;</span> {
-<span class="k">				global</span> workdir <span class="s">&quot;</span><span class="vg">$path1$path2$path3</span><span class="se">\&quot;</span>
+<span class="k">				global</span> workdir <span class="s">&quot;</span><span class="vg">$workdir</span><span class="se">\&quot;</span>
 			}
 <span class="k">			else</span> {
-<span class="k">				global</span> workdir <span class="s">&quot;</span><span class="vg">$path1$path2$path3</span><span class="s">/&quot;</span>
+<span class="k">				global</span> workdir <span class="s">&quot;</span><span class="vg">$workdir</span><span class="s">/&quot;</span>
 			}
 			#delimit ;
 <span class="k">			global</span> catalog1
@@ -1295,6 +1293,7 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 <span class="k">				g</span> group=<span class="nv">`group&#39;</span>
 <span class="k">				local</span> filename:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$namelist1</span><span class="s">&quot;</span>,<span class="nv">`group&#39;</span>)
 <span class="k">				capture save</span> <span class="s">&quot;</span><span class="nv">`filename&#39;</span><span class="s">&quot;</span>,replace  
+<span class="k">				noi di</span> <span class="s">&quot;</span><span class="nv">`filename&#39;</span><span class="s">&quot;</span>
 <span class="k">				local</span> group=<span class="nv">`group&#39;</span><span class="o">+</span><span class="m">1</span> 
 			}
 <span class="k">			use</span> benzoshort,clear
