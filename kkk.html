@@ -561,17 +561,16 @@ document.write(`
 		aka<span class="k"> simulate</span>,<span class="k"> generate</span> data 
 		from results: reversed process<span class="o">!!</span>
 	}
-<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">&lt;</span><span class="m">1</span> { <span class="c1">//methods</span>
-<span class="k">		if</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Windows&quot;</span> {
-<span class="k">			global</span> workdir <span class="s">&quot;</span><span class="nv">`c(pwd)&#39;</span><span class="se">\&quot;</span>
-		}
-<span class="k">		else</span> {
-<span class="k">			global</span> workdir <span class="s">&quot;</span><span class="nv">`c(pwd)&#39;</span><span class="s">/&quot;</span>
-		}
-<span class="k">		capture log close</span>
-<span class="k">		log</span> using <span class="vg">${workdir}</span>simulation<span class="m">.</span>log,<span class="k"> replace</span> 
-<span class="k">		set</span> seed <span class="m">340600</span>
-<span class="k">		set</span> obs <span class="m">37706</span>
+<span class="k">	if</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Windows&quot;</span> { <span class="c1">//methods</span>
+	    lobal workdir <span class="s">&quot;</span><span class="nv">`c(pwd)&#39;</span><span class="se">\&quot;</span>
+	}
+<span class="k">	else</span> {
+<span class="k">	    global</span> workdir <span class="s">&quot;</span><span class="nv">`c(pwd)&#39;</span><span class="s">/&quot;</span>
+	}
+<span class="k">	capture log close</span>
+<span class="k">	log</span> using <span class="vg">${workdir}</span>simulation<span class="m">.</span>log,<span class="k"> replace</span> 
+<span class="k">	set</span> seed <span class="m">340600</span>
+<span class="k">	set</span> obs <span class="m">37706</span>
 	}
 <span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="m">37706</span> { <span class="c1">//simulation </span>
 	    #delimit ; 
