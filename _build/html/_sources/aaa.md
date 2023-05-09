@@ -140,6 +140,7 @@ What's new this week?
 4. Video for chapter: `twoway` has gone live! (mostly discussion of `hw1)
 5. A few of you have not yet received your `hw1` grades but will certainly have them by 12pm this Friday, Cinco de Mayo. For this delay, your due dates for `hw2` and `hw3` are open. The only caveat is that I must submit grades to the academic registrar by **Fri., May 19 (4pm ET)** for graduating students. 
 6. Please review chapter: `twoway` notes for what we did not have time to cover 
+7. Wish to TA Stata Programming in the [Summer Institute](https://www.jhsph.edu/courses/course/36927/2023/340.600.49/stata-programming)? Let me know! 
 
 
 ```
