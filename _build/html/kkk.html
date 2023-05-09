@@ -1288,9 +1288,17 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 <span class="k">				replace</span> A=<span class="nf">strtrim</span>(A)
 <span class="k">				replace</span> A=<span class="nf">ustrupper</span>(A)
 <span class="k">				rename</span> A drug_gnn
-<span class="k">				g</span> class_gnn=<span class="s">&quot;</span><span class="nv">`class&#39;</span><span class="s">&quot;</span>
-<span class="k">				keep</span> <span class="o">*</span>_gnn
-<span class="k">				g</span> group=<span class="nv">`group&#39;</span>
+<span class="k">				local</span> class_tidy:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$namelist1</span><span class="s">&quot;</span>,<span class="nv">`group&#39;</span>)
+<span class="k">				g</span> class_gnn=<span class="s">&quot;</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>
+<span class="k">				capture split</span> class_gnn,p(<span class="s">&quot;_&quot;</span>)
+<span class="k">				capture keep</span> drug_gnn class_gnn2
+<span class="k">				if</span> <span class="nf">inrange</span>(<span class="nv">`group&#39;</span>,<span class="m">1</span>,<span class="m">11</span>) {
+<span class="k">					g</span> group=<span class="nv">`group&#39;</span>
+				}
+<span class="k">				else</span> {
+<span class="k">					g</span> group=<span class="nv">`group&#39;</span><span class="o">-</span><span class="m">2</span>
+				}
+<span class="k">				keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
 <span class="k">				local</span> filename:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$namelist1</span><span class="s">&quot;</span>,<span class="nv">`group&#39;</span>)
 <span class="k">				capture save</span> <span class="s">&quot;</span><span class="nv">`filename&#39;</span><span class="s">&quot;</span>,replace  
 <span class="k">				noi di</span> <span class="s">&quot;</span><span class="nv">`filename&#39;</span><span class="s">&quot;</span>
@@ -1299,6 +1307,9 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 <span class="k">			use</span> benzoshort,clear
 <span class="k">			append</span> using benzolong
 <span class="k">			append</span> using benzounk <span class="c1">//debug</span>
+<span class="k">			replace</span> group=<span class="m">12</span>
+<span class="k">			drop</span> class_gnn
+<span class="k">			rename</span> class_gnn1 class_gnn2
 <span class="k">			save</span> 12_benzodiazepines,replace 
 		}
 <span class="k">		clear</span> 
@@ -1311,8 +1322,11 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 <span class="k">				replace</span> A=<span class="nf">strtrim</span>(A)
 <span class="k">				replace</span> A=<span class="nf">ustrupper</span>(A)
 <span class="k">				rename</span> A drug_gnn
-<span class="k">				g</span> class_gnn=<span class="s">&quot;</span><span class="nv">`class&#39;</span><span class="s">&quot;</span>
-<span class="k">				keep</span> <span class="o">*</span>_gnn 
+<span class="k">				local</span> class_tidy:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$namelist2</span><span class="s">&quot;</span>,<span class="nv">`group&#39;</span>)
+<span class="k">				g</span> class_gnn=<span class="s">&quot;</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>
+<span class="k">				capture split</span> class_gnn,p(<span class="s">&quot;_&quot;</span>)
+<span class="k">				capture keep</span> drug_gnn class_gnn2
+<span class="k">				g</span> group=<span class="nv">`group&#39;</span><span class="o">+</span><span class="m">19</span>
 <span class="k">				keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
 <span class="k">				local</span> filename:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$namelist2</span><span class="s">&quot;</span>,<span class="nv">`group&#39;</span>)
 <span class="k">				capture save</span> <span class="s">&quot;</span><span class="nv">`filename&#39;</span><span class="s">&quot;</span>,replace 
@@ -1321,10 +1335,18 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 				
 			}
 		}
+	  cls
+<span class="k">	  rm</span> benzoshort<span class="m">.</span>dta 
+<span class="k">	  rm</span> benzolong<span class="m">.</span>dta
+<span class="k">	  rm</span> benzounk<span class="m">.</span>dta 
+<span class="k">      noi ls</span> <span class="o">*</span>.dta
 <span class="k">	  timer list</span> 
 <span class="k">	  log close</span> 
 	}
 }
+
+
+	  
 </pre></div>
 </div>
 <p>Download these .xlsx files into the <code class="docutils literal notranslate"><span class="pre">pwd</span></code> for the above scripts to work:</p>
