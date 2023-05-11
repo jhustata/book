@@ -538,6 +538,92 @@ document.write(`
 <li><p>stata</p></li>
 </ul>
 <p>In the <a class="reference external" href="https://jhustata.github.io/class700/intro.html">advanced</a> <a class="reference external" href="https://www.jhsph.edu/courses/course/37447/2022/340.700.71/advanced-stata-programming">class</a> we merge these ideas and publish our analyses and documentation (roll over<a class="reference external" href="https://www.youtube.com/watch?v=kKlzUKLOm_U">,</a> annotation) online via <a class="reference external" href="https://pages.github.com">gh-pages</a>!!!</p>
+<p>Output</p>
+<p>local macro: di %3.1f r(mean)*100</p>
+<ul class="simple">
+<li><p>Text</p>
+<ul>
+<li><p>“You may embed a <code class="docutils literal notranslate"><span class="pre">macro</span></code> in text”</p></li>
+</ul>
+</li>
+<li><p>Figures</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">line</span></code> y x, text(50 18 “<code class="docutils literal notranslate"><span class="pre">macro</span></code>”)</p></li>
+</ul>
+</li>
+<li><p>Excel</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">putexcel</span></code> set filename, replace</p></li>
+<li><p>putexcel B2=”<code class="docutils literal notranslate"><span class="pre">macro</span></code>”</p></li>
+</ul>
+</li>
+<li><p>Dataset</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">postfile</span></code> regcoeffs b1 b2 b3 using regoutput, replace</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">postfile</span></code> regcoeffs () () ()</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">postfile</span></code> regcoeffs () () ()</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">postclose</span></code> regcoeffs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">*.dta</span></code> //look for regoutput.dta in your pwd</p></li>
+</ul>
+</li>
+<li><p>HTML</p></li>
+</ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">sum</span> peak_pra,d
+<span class="k">g</span> highpra=peak_pra<span class="o">&gt;</span><span class="nf">r</span>(p90)
+<span class="k">sum</span> wait_yrs,d
+<span class="k">g</span> longwait=wait_yrs<span class="o">&gt;</span><span class="nf">r</span>(p50)
+<span class="k">postutil clear</span> 
+<span class="k">postfile</span> pp xaxis str80 coeff double(result lb ub pvalue) using betas<span class="m">.</span>dta,<span class="k"> replace</span> 
+<span class="k">logistic</span> highpra gender prev_ki bmi age wait_yrs don_ecd
+<span class="k">local</span> xaxis=<span class="m">1</span>
+<span class="k">qui foreach</span> v of<span class="k"> varlist</span> gender prev_ki bmi age wait_yrs don_ecd {  
+<span class="k">	lincom</span> <span class="nv">`v&#39;</span>
+<span class="k">	return list</span> 
+<span class="k">	local est</span>:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(estimate)
+<span class="k">	local</span> lb:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(lb)
+<span class="k">	local</span> ub:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(ub)
+<span class="k">	local</span> pval:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(p)
+<span class="k">    post</span> pp (<span class="nv">`xaxis&#39;</span>) (<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>) (<span class="nv">`est&#39;</span>) (<span class="nv">`lb&#39;</span>) (<span class="nv">`ub&#39;</span>) (<span class="nv">`pval&#39;</span>)
+<span class="k">	local</span> xaxis=<span class="nv">`xaxis&#39;</span> <span class="o">+</span> <span class="m">1</span>
+}
+
+<span class="k">postclose</span> pp
+
+<span class="k">ls</span> <span class="o">-</span>l
+<span class="k">use</span> betas,clear
+<span class="k">list</span> 
+#delimit ;
+<span class="k">twoway</span> (scatter result xaxis)
+       (rcap lb ub xaxis, 
+	       scale(log)
+	       yline(<span class="m">1</span>, 
+	            lc(lime) 
+			    lp(dash)
+	            )
+	       legend(off)
+	       xlab(
+	           <span class="m">1</span> <span class="s">&quot;Gender&quot;</span> 
+	           <span class="m">2</span> <span class="s">&quot;Previous Tx&quot;</span>
+	           <span class="m">3</span> <span class="s">&quot;BMI&quot;</span>
+		       <span class="m">4</span> <span class="s">&quot;Age&quot;</span>
+		       <span class="m">5</span> <span class="s">&quot;Wait y&quot;</span>
+	           <span class="m">6</span> <span class="s">&quot;ECD&quot;</span>
+	           )
+	       ti(<span class="s">&quot;Association between High PRA and select risk factors&quot;</span>, pos(<span class="m">11</span>))
+	       yti(<span class="s">&quot;OR&quot;</span>, 
+	           orientation(horizontal)
+		      )
+	       xti(<span class="s">&quot;&quot;</span>)
+	      )
+        ;
+#delimit cr
+<span class="k">graph</span> export<span class="k"> logistic</span><span class="m">.</span>png,replace 
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 <p>A word on <strong>simulation</strong>:</p>
 <ul class="simple">
 <li><p>worth developing skills</p></li>
