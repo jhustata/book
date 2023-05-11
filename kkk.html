@@ -341,7 +341,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -357,6 +359,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postfile">postfile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-coefplot">alternative: coefplot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strpos">strpos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">others</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">Dates</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -557,6 +571,15 @@ document.write(`
 <li><p>putexcel B2=”<code class="docutils literal notranslate"><span class="pre">macro</span></code>”</p></li>
 </ul>
 </li>
+<li><p>Word</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span> <span class="pre">clear</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span> <span class="pre">begin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span></code> paragraph</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span></code> text</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span> <span class="pre">save</span></code> doc1.docx, replace</p></li>
+</ul>
+</li>
 <li><p>Dataset</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">postfile</span></code> regcoeffs b1 b2 b3 using regoutput, replace</p></li>
@@ -566,15 +589,22 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">*.dta</span></code> //look for regoutput.dta in your pwd</p></li>
 </ul>
 </li>
-<li><p>HTML</p></li>
+<li><p>Markdown</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dyndoc</span></code></p></li>
+<li><p>html</p></li>
 </ul>
+</li>
+</ul>
+<section id="postfile">
+<h2>postfile<a class="headerlink" href="#postfile" title="Permalink to this heading">#</a></h2>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 <span class="k">sum</span> peak_pra,d
 <span class="k">g</span> highpra=peak_pra<span class="o">&gt;</span><span class="nf">r</span>(p90)
 <span class="k">sum</span> wait_yrs,d
 <span class="k">g</span> longwait=wait_yrs<span class="o">&gt;</span><span class="nf">r</span>(p50)
 <span class="k">postutil clear</span> 
-<span class="k">postfile</span> pp xaxis str80 coeff double(result lb ub pvalue) using betas<span class="m">.</span>dta,<span class="k"> replace</span> 
+<span class="k">postfile</span> pp xaxis str80 coef double(result lb ub pvalue) using betas<span class="m">.</span>dta,<span class="k"> replace</span> 
 <span class="k">logistic</span> highpra gender prev_ki bmi age wait_yrs don_ecd
 <span class="k">local</span> xaxis=<span class="m">1</span>
 <span class="k">qui foreach</span> v of<span class="k"> varlist</span> gender prev_ki bmi age wait_yrs don_ecd {  
@@ -621,9 +651,31 @@ document.write(`
 <span class="k">graph</span> export<span class="k"> logistic</span><span class="m">.</span>png,replace 
 </pre></div>
 </div>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>
+<p><img alt="" src="_images/logistic.png" /></p>
+</section>
+<section id="alternative-coefplot">
+<h2>alternative: coefplot<a class="headerlink" href="#alternative-coefplot" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">sum</span> peak_pra,d
+<span class="k">g</span> highpra=peak_pra<span class="o">&gt;</span><span class="nf">r</span>(p90)
+<span class="k">sum</span> wait_yrs,d
+<span class="k">g</span> longwait=wait_yrs<span class="o">&gt;</span><span class="nf">r</span>(p50)
+<span class="k">logistic</span> highpra prev_ki bmi age wait_yrs don_ecd<span class="k"> if</span> gender<span class="o">==</span><span class="m">0</span>
+<span class="k">est</span> store male
+<span class="k">logistic</span> highpra prev_ki bmi age wait_yrs don_ecd<span class="k"> if</span> gender<span class="o">==</span><span class="m">1</span>
+<span class="k">est</span> store female
+<span class="k">if</span> <span class="m">0</span> {
+<span class="k">	lab var</span> highpra <span class="s">&quot;PRA&gt;90th %&quot;</span>
+<span class="k">	lab var</span> longwait <span class="s">&quot;Wait&gt;50th %&quot;</span>
+<span class="k">	lab var</span> prev_ki <span class="s">&quot;Previous Tx&quot;</span>
+<span class="k">	lab var</span> bmi <span class="s">&quot;BMI, kg/m2&quot;</span>
+<span class="k">	lab var</span> age <span class="s">&quot;Age, y&quot;</span>
+<span class="k">	lab var</span> don_ecd <span class="s">&quot;ECD&quot;</span>
+}
+coefplot male female,<span class="k"> drop</span>(_cons) xline(<span class="m">0</span>) 
 </pre></div>
 </div>
+<p><img alt="" src="_images/coefplot.png" /></p>
 <p>A word on <strong>simulation</strong>:</p>
 <ul class="simple">
 <li><p>worth developing skills</p></li>
@@ -1458,6 +1510,118 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 <p><a class="reference external" href="https://www.dropbox.com/s/cxjwtyho9w07zbw/18-Insulin.xlsx?dl=0">18-Insulin</a></p>
 <p><a class="reference external" href="https://www.dropbox.com/s/9dttou8zopdefkv/19-Sulfonylureas.xlsx?dl=0">19-Sulfonylureas</a></p>
 <p><a class="reference external" href="https://www.dropbox.com/s/la3708gryt3jxiy/20-38.xlsx?dl=0">20-38</a></p>
+<p>commands:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">strpos</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">word</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strlen</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">regexm</span></code></p></li>
+</ul>
+</section>
+<section id="strpos">
+<h2>strpos<a class="headerlink" href="#strpos" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="s">&quot;</span><span class="vg">$S_TIME</span><span class="s">&quot;</span>
+<span class="k">clear</span>
+<span class="k">set more</span> off
+<span class="k">tempfile</span> pde_2013 pde_2014 pde2013bc pde2014bc 
+<span class="k">use</span> usrds_id srvc_dt gnn using <span class="s">&quot;/dcs01/igm/segevlab/data/usrds2015/claims/pd/pde2013&quot;</span>,clear
+<span class="k">save</span> <span class="nv">`pde_2013&#39;</span>,replace
+<span class="k">use</span> usrds_id srvc_dt gnn using <span class="s">&quot;/dcs01/igm/segevlab/data/usrds2016/claims/pd/pde2014&quot;</span>,clear
+<span class="k">save</span> <span class="nv">`pde_2014&#39;</span>,replace
+<span class="k">local</span> year <span class="s">&quot;y=2013/2014&quot;</span>
+<span class="k">forvalues</span> <span class="nv">`year&#39;</span> {
+<span class="k">  capture use</span> <span class="nv">`pde_`y&#39;&#39;</span>,clear
+<span class="k">	if</span> _rc<span class="o">==</span><span class="m">0</span> {
+<span class="k">		di</span> <span class="s">&quot;processing pde_</span><span class="nv">`y&#39;</span><span class="s">.dta ...&quot;</span>
+<span class="k">        gen</span>	antihist16=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;BROMPHENIRAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist19=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;CARBINOXAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist26=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;CHLORPHENIRAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist31=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;CLEMASTINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist36=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;CYPROHEPTADINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist39=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;DEXBROMPHENIRAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist40=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;DEXCHLORPHENIRAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist43=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;DIMENHYDRINATE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist47=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;DIPHENHYDRAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist51=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;DOXYLAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist65=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;HYDROXYZINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist77=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;MECLIZINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist101=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;PROMETHAZINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist105=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;PYRILAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist127=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;TRIPROLIDINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)      
+<span class="k">		gen</span>  antihist_rx=( <span class="cs">///	</span>
+        antihist16<span class="o">+</span>	<span class="cs">///</span>
+        antihist19<span class="o">+</span>	<span class="cs">///</span>
+        antihist26<span class="o">+</span>	<span class="cs">///</span>
+        antihist31<span class="o">+</span>	<span class="cs">///</span>
+        antihist36<span class="o">+</span>	<span class="cs">///</span>
+        antihist39<span class="o">+</span>	<span class="cs">///</span>
+        antihist40<span class="o">+</span>	<span class="cs">///</span>
+        antihist43<span class="o">+</span>	<span class="cs">///</span>
+        antihist47<span class="o">+</span>	<span class="cs">///</span>
+        antihist51<span class="o">+</span>	<span class="cs">///</span>
+        antihist65<span class="o">+</span>	<span class="cs">///</span>
+        antihist77<span class="o">+</span>	<span class="cs">///</span>
+        antihist101<span class="o">+</span>	<span class="cs">///</span>
+        antihist105<span class="o">+</span>	<span class="cs">///</span>
+        antihist127	<span class="cs">///</span>
+        <span class="o">&gt;</span><span class="m">0</span>)
+<span class="k">        keep</span> usrds_id srvc_dt antihist_rx 
+<span class="k">        duplicates drop</span>
+<span class="k">        quietly compress</span>
+<span class="k">        save</span> <span class="nv">`pde`y&#39;bc&#39;</span>,<span class="k"> replace</span>  
+	}
+}
+
+<span class="k">forvalues</span> <span class="nv">`year&#39;</span> {
+<span class="k">		 capture append</span> using <span class="nv">`pde`y&#39;bc&#39;</span>
+}
+<span class="k">save</span> 01_antihistamines_expR<span class="m">.</span>dta,replace
+<span class="k">di</span> <span class="s">&quot;</span><span class="vg">$S_TIME</span><span class="s">&quot;</span>        
+</pre></div>
+</div>
+</section>
+<section id="others">
+<h2>others<a class="headerlink" href="#others" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>
+//explore these commands sequentially, on your own
+use transplants, clear
+list extended_dgn in 1/5, clean
+disp word(&quot;Hello, is there anybody in there?&quot;,4)
+list extended_dgn if word(ext, 5) != &quot;&quot;, clean noobs
+disp strlen(&quot;Same as it ever was&quot;)
+list extended_dgn if strlen(ext)&lt; 6, clean
+assert regexm(&quot;Earth&quot;, &quot;art&quot;)
+assert !regexm(&quot;team&quot;, &quot;I&quot;)
+tab ext if regexm(ext, &quot;HTN&quot;)
+list ext if regexm(ext, &quot;^A&quot;)
+//starts with A
+list ext if regexm(ext, &quot;X$&quot;)
+//ends with X
+tab ext if regexm(ext, &quot;HIV.*Y&quot;)
+//contains &quot;HIV&quot;, then some otherstuff, then Y
+</pre></div>
+</div>
+</section>
+<section id="dates">
+<h2>Dates<a class="headerlink" href="#dates" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">disp</span> <span class="nx">%td</span> <span class="m">19400</span> 11feb2013
+<span class="k">disp</span> <span class="nx">%td</span> <span class="m">366</span> 01jan1961
+<span class="k">disp</span> <span class="nx">%td</span> <span class="o">-</span><span class="m">5</span> 27dec1959
+<span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">gen</span> oneweek = transplant_date<span class="m">+7</span>
+<span class="k">list</span> transplant_date oneweek<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">3</span>
+<span class="k">format</span> <span class="nx">%td</span> oneweek
+<span class="k">list</span> transplant_date oneweek<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">3</span>
+<span class="k">disp</span> <span class="nf">td</span>(04jul1976)
+<span class="k">disp</span> <span class="nf">td</span>(5may2021)
+<span class="k">disp</span> <span class="nf">mdy</span>(<span class="m">7</span>,<span class="m">4</span>,<span class="m">1976</span>)
+<span class="k">disp</span> <span class="nf">mdy</span>(<span class="m">5</span>,<span class="m">5</span>,<span class="m">2021</span>)
+<span class="k">disp</span> <span class="nf">date</span>(<span class="s">&quot;August 15, 1969&quot;</span>, <span class="s">&quot;MDY&quot;</span>)
+<span class="k">disp</span> <span class="s">&quot;</span><span class="vg">$S_DATE</span><span class="s">&quot;</span>
+<span class="k">di</span> <span class="nf">c</span>(current_date)
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1518,6 +1682,24 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postfile">postfile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-coefplot">alternative: coefplot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strpos">strpos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">others</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">Dates</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
