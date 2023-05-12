@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>help &#8212; Stata Programming</title>
+    <title>net search &#8212; Stata Programming</title>
   
   
   
@@ -61,10 +61,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'references';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="tokenize" href="admin.html" />
+    <link rel="prev" title="if c(version)&gt;16 {" href="chapter8.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -130,7 +130,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -149,13 +149,13 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     help
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="admin.html">tokenize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter0.html">quietly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sas2stata.html">delimit</a></li>
@@ -169,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chapter6.html">twoway</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter7.html">local v: di</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter8.html">if c(version)&gt;16 {</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">net search</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">net search</a></li>
 </ul>
 
     </div>
@@ -241,7 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Freferences.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -271,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/references.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +351,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>help</h1>
+    <h1>net search</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -365,29 +365,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="help">
-<h1>help<a class="headerlink" href="#help" title="Permalink to this heading">#</a></h1>
-<p>Welcome to <a class="reference external" href="https://www.jhsph.edu/courses/course/36389/2022/340.600.01/stata-programming">PH.340.600.01</a><a class="reference external" href="https://www.jhsph.edu/courses/course/37447/2022/340.700.71/advanced-stata-programming">.</a></p>
-<p>Th 3:30 PM Wolfe E2014 (Sommer Hall)</p>
-<p>Table of Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="admin.html">tokenize</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter0.html">quietly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sas2stata.html">delimit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="anxiety.html">rnormal()</a></li>
-<li class="toctree-l1"><a class="reference internal" href="anxiety.html#id1"></a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter1.html">pwd</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter2.html">r(mean)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter3.html">by</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter4.html">program define</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter5.html">capture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter6.html">twoway</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter7.html">local v: di</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter8.html">if c(version)&gt;16 {</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">net search</a></li>
-</ul>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="net-search">
+<h1>net search<a class="headerlink" href="#net-search" title="Permalink to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://www.maartenbuis.nl">Buis, ML</a>. Creating a counter with alphabets.<a class="reference external" href="https://www.statalist.org/forums/forum/general-stata-discussion/general/1380433-creating-a-counter-with-alphabets">The Stata forum</a>. 2017 March; 06:38</p></li>
+<li><p>Muzaale, AD. <a class="reference external" href="https://jhustata.github.io/book/_downloads/714b85fa7f70d4699bc412fe724a6aa0/nhanes.muzaale.pdf">Databases for surgical health services research: National Health and Nutrition Examination Survey</a>. Surgery 2019 May;165(5):873-875.  doi: 10.1016/j.surg.2018.02.006. Epub 2018 Apr 27.</p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
@@ -421,14 +404,14 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="right-next"
-       href="admin.html"
-       title="next page">
+    <a class="left-prev"
+       href="chapter8.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">tokenize</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">if c(version)&gt;16 {</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   

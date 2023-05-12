@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>help &#8212; Stata Programming</title>
+    <title>rnormal() &#8212; Stata Programming</title>
   
   
   
@@ -61,10 +61,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'anxiety';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="tokenize" href="admin.html" />
+    <link rel="next" title="pwd" href="chapter1.html" />
+    <link rel="prev" title="delimit" href="sas2stata.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -130,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -149,17 +150,17 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     help
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="admin.html">tokenize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter0.html">quietly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sas2stata.html">delimit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="anxiety.html">rnormal()</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">rnormal()</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="chapter1.html">pwd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter2.html">r(mean)</a></li>
@@ -241,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fanxiety.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -271,7 +272,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/anxiety.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -281,7 +282,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -340,7 +341,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -351,11 +354,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>help</h1>
+    <h1>rnormal()</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">rnormal()</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -365,28 +378,99 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="help">
-<h1>help<a class="headerlink" href="#help" title="Permalink to this heading">#</a></h1>
-<p>Welcome to <a class="reference external" href="https://www.jhsph.edu/courses/course/36389/2022/340.600.01/stata-programming">PH.340.600.01</a><a class="reference external" href="https://www.jhsph.edu/courses/course/37447/2022/340.700.71/advanced-stata-programming">.</a></p>
-<p>Th 3:30 PM Wolfe E2014 (Sommer Hall)</p>
-<p>Table of Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="admin.html">tokenize</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter0.html">quietly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sas2stata.html">delimit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="anxiety.html">rnormal()</a></li>
-<li class="toctree-l1"><a class="reference internal" href="anxiety.html#id1"></a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter1.html">pwd</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter2.html">r(mean)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter3.html">by</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter4.html">program define</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter5.html">capture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter6.html">twoway</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter7.html">local v: di</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter8.html">if c(version)&gt;16 {</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">net search</a></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="rnormal">
+<h1>rnormal()<a class="headerlink" href="#rnormal" title="Permalink to this heading">#</a></h1>
+<p>Twoway plot of grades from 2021/2022</p>
+<p><img alt="" src="_images/grade_34060071_general.png" /></p>
+<p>You can reproduce this plot</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>#delimit ;
+<span class="k">twoway</span> 
+<span class="k">    scatter</span>  
+	     final degree , 
+	         col(blue) 
+			 mcolor(%<span class="m">20</span>) 
+			 jitter(<span class="m">3</span>) || 
+	rcap 
+	     y1lb y1ub degree, 
+		     col(blue) ||   
+	dot  
+	     y1m degree, 
+		 col(blue) 
+		 msize(<span class="m">2</span>)  
+			legend(off ) 
+			xlab(<span class="m">1</span> <span class="s">&quot;MHS&quot;</span> 
+			     <span class="m">2</span> <span class="s">&quot;MSPH&quot;</span> 
+				 <span class="m">3</span> <span class="s">&quot;MPH&quot;</span> 
+				 <span class="m">4</span> <span class="s">&quot;PhD&quot;</span> 
+				 <span class="m">5</span> <span class="s">&quot;SCM&quot;</span>) 
+		yline(<span class="m">90</span>, lcol(red) lp(dash)) 
+		xti(<span class="s">&quot; &quot;</span>) ;
+#delimit cr
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Earn up to 1.5 bonus points for rendering this in <code class="docutils literal notranslate"><span class="pre">Python</span></code>, with interactive graphics!</p>
+</div>
+<p>De-identified grades</p>
+<p><img alt="" src="_images/grades.2022.jpg" /></p>
+<p>Conclusion?</p>
+<p>The odds of an A is 1/4. Basically, an A in this class is nothing to write home about. You’d likely lose money with these odds because the market place expects an A from you. Our teaching team will do its best to keep the odds this way or even make them shorter :)</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The following code introduces a random disturbance to the data in the screenshot above: <code class="docutils literal notranslate"><span class="pre">grade_34060071_general.dta</span></code>.
+Use the outputed <a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/grade_34060071_general.txt">data file</a> to reproduce the plot of 2021/2022 grades. Up to 1.5 bonus points</p>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>#delimit cr
+<span class="k">quietly</span> {
+<span class="k">	</span>
+<span class="k">	if</span> <span class="m">1</span> {
+		
+		<span class="c1">//reverse engineering?</span>
+		<span class="c1">//set seed 340600</span>
+<span class="k">		</span>
+<span class="k">		global</span> filename grade_34060071_general
+<span class="k">		global</span> vars final y1m y1lb y1ub
+			
+	}
+<span class="k">	</span>
+<span class="k">	if</span> <span class="m">2</span> {
+<span class="k">		</span>
+<span class="k">		use</span> <span class="vg">${filename}</span>.dta,<span class="k"> clear</span> 		
+		
+	}
+<span class="k">	</span>
+<span class="k">	if</span> <span class="m">3</span> {
+<span class="k">		</span>
+<span class="k">        g</span> disturbance=<span class="nf">rnormal</span>(<span class="m">0</span>,<span class="m">3</span>)	
+<span class="k">		sort</span> disturbance <span class="c1">//further de-identifying..</span>
+		 
+	}
+<span class="k">	</span>
+<span class="k">	if</span> <span class="m">4</span> { 
+<span class="k">		</span>
+<span class="k">		forvalues</span> i=<span class="m">1</span><span class="o">/</span><span class="m">4</span> {
+<span class="k">			</span>
+<span class="k">			local</span> vars:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$vars</span><span class="s">&quot;</span>,<span class="nv">`i&#39;</span>)
+<span class="k">			replace</span> <span class="nv">`vars&#39;</span> = <span class="nv">`vars&#39;</span> <span class="o">+</span> disturbance 
+			
+		}
+		
+		
+	}
+<span class="k">	</span>
+<span class="k">	if</span> <span class="m">5</span> {
+<span class="k">		</span>
+<span class="k">		drop</span> disturbance 
+		export delimited using <span class="s">&quot;</span><span class="vg">${filename}</span><span class="s">.txt&quot;</span>,<span class="k"> replace</span>
+		
+	}
+
+}
+</pre></div>
 </div>
 </section>
 
@@ -421,12 +505,21 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="sas2stata.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">delimit</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="admin.html"
+       href="chapter1.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">tokenize</p>
+        <p class="prev-next-title">pwd</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -439,6 +532,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">rnormal()</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

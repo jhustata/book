@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>help &#8212; Stata Programming</title>
+    <title>tokenize &#8212; Stata Programming</title>
   
   
   
@@ -61,10 +61,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'admin';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="tokenize" href="admin.html" />
+    <link rel="next" title="quietly" href="chapter0.html" />
+    <link rel="prev" title="help" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -130,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -149,14 +150,14 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     help
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="admin.html">tokenize</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">tokenize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter0.html">quietly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sas2stata.html">delimit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="anxiety.html">rnormal()</a></li>
@@ -241,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fadmin.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -271,7 +272,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/admin.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +352,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>help</h1>
+    <h1>tokenize</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -365,29 +366,134 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="help">
-<h1>help<a class="headerlink" href="#help" title="Permalink to this heading">#</a></h1>
-<p>Welcome to <a class="reference external" href="https://www.jhsph.edu/courses/course/36389/2022/340.600.01/stata-programming">PH.340.600.01</a><a class="reference external" href="https://www.jhsph.edu/courses/course/37447/2022/340.700.71/advanced-stata-programming">.</a></p>
-<p>Th 3:30 PM Wolfe E2014 (Sommer Hall)</p>
-<p>Table of Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="admin.html">tokenize</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter0.html">quietly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sas2stata.html">delimit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="anxiety.html">rnormal()</a></li>
-<li class="toctree-l1"><a class="reference internal" href="anxiety.html#id1"></a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter1.html">pwd</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter2.html">r(mean)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter3.html">by</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter4.html">program define</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter5.html">capture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter6.html">twoway</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter7.html">local v: di</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter8.html">if c(version)&gt;16 {</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">net search</a></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="tokenize">
+<h1>tokenize<a class="headerlink" href="#tokenize" title="Permalink to this heading">#</a></h1>
+<p>Our teaching team is here to help!</p>
+<p>Your instructor</p>
+<ol class="arabic simple">
+<li><p>Abimereki Muzaale <a class="reference external" href="mailto:muzaale&#37;&#52;&#48;jhmi&#46;edu">muzaale<span>&#64;</span>jhmi<span>&#46;</span>edu</a></p></li>
+</ol>
+<p>Teaching assistants</p>
+<ol class="arabic simple">
+<li><p>Vincent Jin <a class="reference external" href="mailto:zjin26&#37;&#52;&#48;jhmi&#46;edu">zjin26<span>&#64;</span>jhmi<span>&#46;</span>edu</a> (Lead TA)</p></li>
+<li><p>Johnathan He <a class="reference external" href="mailto:zhe33&#37;&#52;&#48;jhu&#46;edu">zhe33<span>&#64;</span>jhu<span>&#46;</span>edu</a></p></li>
+<li><p>Darien Colson-Fearo <a class="reference external" href="mailto:dcolson3&#37;&#52;&#48;jhmi&#46;edu">dcolson3<span>&#64;</span>jhmi<span>&#46;</span>edu</a></p></li>
+<li><p>Sophia Magalona <a class="reference external" href="mailto:cmagalo1&#37;&#52;&#48;jhmi&#46;edu">cmagalo1<span>&#64;</span>jhmi<span>&#46;</span>edu</a></p></li>
+<li><p>Jinqiao Ma <a class="reference external" href="mailto:jma75&#37;&#52;&#48;jh&#46;edu">jma75<span>&#64;</span>jh<span>&#46;</span>edu</a></p></li>
+<li><p>Jianan Lu <a class="reference external" href="mailto:jlu84&#37;&#52;&#48;jhmi&#46;edu">jlu84<span>&#64;</span>jhmi<span>&#46;</span>edu</a></p></li>
+<li><p>Rediet Tekalign <a class="reference external" href="mailto:rtekali1&#37;&#52;&#48;jhu&#46;edu">rtekali1<span>&#64;</span>jhu<span>&#46;</span>edu</a></p></li>
+</ol>
+<p>Optional labs</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="lab6.html"><span class="doc std std-doc">M 9:30-10:30 am</span></a></p></li>
+<li><p><a class="reference internal" href="lab6.html"><span class="doc std std-doc">T 10:00-11:00 am</span></a> Wolfe W2207</p></li>
+<li><p><a class="reference internal" href="lab6.html"><span class="doc std std-doc">W 3:00-4:00 pm</span></a></p></li>
+<li><p><a class="reference internal" href="lab6.html"><span class="doc std std-doc">Th 6:00-7:00 pm</span></a></p></li>
+<li><p><a class="reference internal" href="lab6.html"><span class="doc std std-doc">F 1:00-2:00 pm</span></a></p></li>
+</ol>
+<p>Homeworks due</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="hw1.html"><span class="doc std std-doc">Fri,Apr 21,11:59 PM</span></a></p></li>
+<li><p><a class="reference internal" href="hw2.html"><span class="doc std std-doc">Mon,May 8,11:59 PM</span></a></p></li>
+<li><p><a class="reference internal" href="hw3.html"><span class="doc std std-doc">Mon,May 15,11:59 PM</span></a></p></li>
+</ol>
+<p>Courseplus perks</p>
+<ol class="arabic simple">
+<li><p>Q&amp;A on discussion forum</p></li>
+<li><p><strike>Announcements</strike></p></li>
+<li><p>Dropbox</p></li>
+<li><p>Gradebook</p></li>
+<li><p>Passcodes</p></li>
+</ol>
+<p>Who to email? <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">    </span>
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">1</span> { <span class="c1">//N=26</span>
+        
+        cls
+<span class="k">        clear</span>
+<span class="k">        set</span> obs <span class="m">26</span>
+<span class="k">        </span>
+<span class="k">        capture log close</span> 
+<span class="k">        log</span> using<span class="k"> tokenize</span><span class="m">.</span>log,<span class="k"> replace</span>  
+        
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">2</span> { <span class="c1">//Int 1-26</span>
+<span class="k">        </span>
+<span class="k">        egen</span> lastname = seq(), f(<span class="m">1</span>) <span class="nf">t</span>(<span class="m">26</span>)
+<span class="k">        tostring</span> lastname,<span class="k"> replace</span> 
+<span class="k">        tokenize</span> <span class="s">&quot;</span><span class="nv">`c(ALPHA)&#39;</span><span class="s">&quot;</span> 
+        
+    }
+
+<span class="k">    if</span> <span class="m">3</span> { <span class="c1">//Tokenize</span>
+<span class="k">        </span>
+<span class="k">        forval</span> i = <span class="m">1</span><span class="o">/</span><span class="m">26</span> {
+<span class="k">            </span>
+<span class="k">            replace</span> lastname = <span class="s">&quot;</span><span class="nv">``i&#39;&#39;</span><span class="s">&quot;</span><span class="k"> if</span> lastname <span class="o">==</span> <span class="s">&quot;</span><span class="nv">`i&#39;</span><span class="s">&quot;</span> 
+            
+        }
+        
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">4</span> { <span class="c1">//Randomly</span>
+<span class="k">        </span>
+<span class="k">        set</span> seed <span class="m">340600</span>
+<span class="k">        g</span> randomorder=<span class="nf">runiform</span>()
+<span class="k">        sort</span> random  
+<span class="k">        drop</span> random    
+        
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">5</span> { <span class="c1">//Output</span>
+<span class="k">        </span>
+<span class="k">        noi list</span> 
+<span class="k">        log close</span> 
+        
+    }
+
+}
+</pre></div>
 </div>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/tokenize.log">tokenize.log</a></p>
+<ol class="arabic simple">
+<li><p>SLBTM -&gt; Darien Colson-Fearo</p></li>
+<li><p>YZRVU -&gt; Sophia Magalona</p></li>
+<li><p>KGHJW -&gt; Jinqiao Ma</p></li>
+<li><p>FIDXC -&gt; Jianan Lu</p></li>
+<li><p>APEON -&gt; Rediet Tekalign</p></li>
+</ol>
+<p><strong>Bonus points:</strong> Use the <code class="docutils literal notranslate"><span class="pre">tokenize</span></code> command to append the <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT">DEMO.XPT</a> files for <a class="reference external" href="https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics">all continuous NHANES: 1999-2018</a> into one file.<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>
+Your .do file should include only one <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sasxport5</span></code> statement.
+<code class="docutils literal notranslate"><span class="pre">Search</span></code> this book for the <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sasxport5</span></code> command. Up to 1.5 bonus points</p>
+<p>Hint: <a class="reference download internal" download="" href="_downloads/b12f819175fa409a1f54d531439de5f7/tokenize.hint.do"><span class="xref download myst">tokenize.hint.do</span></a> <a class="reference download internal" download="" href="_downloads/729854e2c9e575f660d940b3734077a7/tokenize.hint.log"><span class="xref download myst">tokenize.hint.log</span></a></p>
+<p>Academic integrity</p>
+<ol class="arabic simple">
+<li><p>Collaboration is <strong>strongly</strong> encouraged</p></li>
+<li><p>You should have a Github account (optional)</p></li>
+<li><p>Submit your own work, acknowledging any other contributors</p></li>
+<li><p>Please do cite sources of code snippets</p></li>
+</ol>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>What’s new this week?</p>
+<ol class="arabic simple">
+<li><p>Wish to TA Stata Programming in the <a class="reference external" href="https://www.jhsph.edu/courses/course/36927/2023/340.600.49/stata-programming">Summer Institute</a>? Let me know!</p></li>
+<li><p>Video for chapter: <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">v:</span> <span class="pre">di</span></code> has gone live!</p></li>
+<li><p>Graduating students cannot submit <code class="docutils literal notranslate"><span class="pre">hw3</span></code> beyond May 18 since your grades are due in the Academic registrars office by 4pm May 19.</p></li>
+</ol>
+</div>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>see chapter: <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">net</span> <span class="pre">search</span></code></span> for source code</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>see chapter: <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">net</span> <span class="pre">search</span></code></span> for more on NHANES</p>
+</aside>
 </section>
 
     <script type="text/x-thebe-config">
@@ -421,12 +527,21 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">help</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="admin.html"
+       href="chapter0.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">tokenize</p>
+        <p class="prev-next-title">quietly</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
