@@ -341,7 +341,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -357,6 +359,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codetta">8.1 codetta</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stunning">8.2 stunning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punchline">8.3 punchline</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -368,7 +380,49 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="if-c-version-16">
 <h1>if c(version)&gt;16 {<a class="headerlink" href="#if-c-version-16" title="Permalink to this heading">#</a></h1>
-<p>Coming soon..</p>
+<section id="codetta">
+<h2>8.1 codetta<a class="headerlink" href="#codetta" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="_images/codetta.PNG" /></p>
+</section>
+<section id="stunning">
+<h2>8.2 stunning<a class="headerlink" href="#stunning" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span> 
+<span class="k">histogram</span> varname, normal
+<span class="k">graph</span> export histnormal<span class="m">.</span>png,<span class="k"> replace</span> 
+</pre></div>
+</div>
+<p><img alt="" src="_images/histnormal.png" /></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>.<span class="k"> sum</span>	age,d
+
+		Age at	TX
+					
+	Percentiles	Smallest
+<span class="m">1</span>%	<span class="m">6</span>	<span class="m">0</span>
+<span class="m">5</span>%	<span class="m">20</span>	<span class="m">0</span>
+<span class="m">10</span>%	<span class="m">29</span>	<span class="m">0</span>		Obs	<span class="m">6</span>,<span class="m">000</span>
+<span class="m">25</span>%	<span class="m">41</span>	<span class="m">0</span>		Sum of wgt.	<span class="m">6</span>,<span class="m">000</span>
+
+<span class="m">50</span>%	<span class="m">53</span>			Mean	<span class="m">50.56117</span>
+		Largest		Std. dev.	<span class="m">15.58661</span>
+<span class="m">75</span>%	<span class="m">62</span>	<span class="m">83</span>
+<span class="m">90</span>%	<span class="m">68</span>	<span class="m">83</span>		Variance	<span class="m">242.9424</span>
+<span class="m">95</span>%	<span class="m">71</span>	<span class="m">83</span>		Skewness	<span class="o">-</span>.<span class="m">7483359</span>
+<span class="m">99</span>%	<span class="m">77</span>	<span class="m">87</span>		Kurtosis	<span class="m">3.268634</span>
+</pre></div>
+</div>
+<p><img alt="" src="_images/skewness.PNG" /></p>
+</section>
+<section id="punchline">
+<h2>8.3 punchline<a class="headerlink" href="#punchline" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nf">c</span>(version)<span class="o">==</span><span class="m">18</span> { <span class="c1">//tip 4 hw3</span>
+<span class="k">    set</span> scheme s2color
+}
+<span class="k">else</span> { stcolor is default<span class="k"> in</span> v18
+<span class="k">    di</span> <span class="s">&quot;you&#39;re good to go!&quot;</span>
+}
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -429,6 +483,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codetta">8.1 codetta</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stunning">8.2 stunning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punchline">8.3 punchline</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
