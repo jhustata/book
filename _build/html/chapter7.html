@@ -1,0 +1,1817 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>local v: di &#8212; Stata Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter7';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="if c(version)&gt;16 {" href="chapter8.html" />
+    <link rel="prev" title="twoway" href="chapter6.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://brand.jhu.edu/assets/uploads/sites/5/2014/06/university.logo_.small_.horizontal.blue_.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="https://brand.jhu.edu/assets/uploads/sites/5/2014/06/university.logo_.small_.horizontal.blue_.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    help
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="admin.html">tokenize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter0.html">quietly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sas2stata.html">delimit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anxiety.html">rnormal()</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">pwd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">r(mean)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">by</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">program define</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6.html">twoway</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">local v: di</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter8.html">if c(version)&gt;16 {</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">net search</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter7.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/chapter7.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>local v: di</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.1 summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macros">7.2 macros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#science">7.3 science</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embed">7.4 embed</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#postfile">7.4.5 postfile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-coefplot">7.4.6 alternative: coefplot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counterfeiting">7.6 counterfeiting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rigor-vs-fraud">7.6.1 rigor vs. fraud</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">7.8 strings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">7.8.1 lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel">7.8.2 excel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">7.8.3 commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strpos">7.8.2.1 strpos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">7.9 others</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">7.10 dates</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="local-v-di">
+<h1>local v: di<a class="headerlink" href="#local-v-di" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/cu1-vaEksQgP1VJx11PoXhwrszVUDiv7sAJoaP3WxS03NhwU3a8QgsuU5eXSeabY.SwDOxQq5FGHIWRIK?startTime=1683833451000">video</a></p>
+<section id="summary">
+<h2>7.1 summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>Lets recap the last 7 weeks in the spirit of a <a class="reference external" href="https://en.wikipedia.org/wiki/Coda_(music)">coda</a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">help</span></code></p>
+<ul>
+<li><p>the help command followed by any command you wish to further explore</p></li>
+<li><p>e.g., <code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">twoway</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tokenize</span></code></p>
+<ul>
+<li><p>represent a numerical sequence (e.g. 1,2,3,…,6)</p></li>
+<li><p>as a sequence of letters (e.g. a,b,c,…,z or A,B,C,…,Z)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quietly</span></code></p>
+<ul>
+<li><p>how to control what is displayed in the Stata terminal</p></li>
+<li><p>Stata uses this e.g. with the neat regression output, and with <a class="reference external" href="https://jhjhm.zoom.us/rec/component-page?action=viewdetailpage&amp;sharelevel=meeting&amp;useWhichPasswd=meeting&amp;clusterId=aw1&amp;componentName=need-password&amp;meetingId=zclVfdW-eVW6hViavFyTDUrAeKiCDhHRJTNrjw31k3iFVWqtoBYZIddnG-K9rtM4.2MNRKClhp-MptRGu&amp;originRequestUrl=https%3A%2F%2Fjhjhm.zoom.us%2Frec%2Fshare%2F5HbRh5ALkXawkMaSsITWGJnPN3vZZJWVp9EjxgFXZiGkduS2S55VgmBTl1Bf88PD.D2VIFqpidjNeh7A8%3FstartTime%3D1680959893000">profile.do</a></p></li>
+<li><p>may very easily be changed to <code class="docutils literal notranslate"><span class="pre">noisily</span></code> if that suits your needs</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delimit</span></code></p>
+<ul>
+<li><p>neat way to mimic <code class="docutils literal notranslate"><span class="pre">SAS</span></code> in defining the end of <strong>one “line” of code</strong></p></li>
+<li><p>especially useful when dealing with graphical output and numerous graphing options</p></li>
+<li><p>absolutely necessary if ever you wish to translate <code class="docutils literal notranslate"><span class="pre">.SAS</span></code> code into <code class="docutils literal notranslate"><span class="pre">.do</span></code></p></li>
+<li><p>may make accessible what otherwise were inaccessible datasets (e.g. <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/?term=nhanes">NHANES</a>)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rnormal()</span></code></p>
+<ul>
+<li><p>simulating parametric distributions</p></li>
+<li><p>you may develop this idea on your own in the future</p></li>
+<li><p>but we lay the foundation for this developement somewhere below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runiform()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">rnormal()</span></code> are the only distributions demonstrated thus far</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rbinomial()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">rweibull()</span></code> are introduced below in the context of time-to-event data</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code></p>
+<ul>
+<li><p>pwd</p></li>
+<li><p>di c(pwd)</p></li>
+<li><p>di “text with embedded `c(pwd)’ for whatever reason”</p></li>
+<li><p>global filepath c(pwd)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r(mean)</span></code></p>
+<ul>
+<li><p>creturn list</p></li>
+<li><p>return list</p></li>
+<li><p>ereturn list</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">by</span></code></p>
+<ul>
+<li><p>collapse (<code class="docutils literal notranslate"><span class="pre">statistic</span></code>) varname1, by(varname2)</p></li>
+<li><p>egen varname1=<code class="docutils literal notranslate"><span class="pre">statistic</span></code>(varname2)</p></li>
+<li><p>above commands are <strong>equivalent</strong> in many regards</p></li>
+<li><p>one distorts the data; the other doesn’t do so at all</p></li>
+<li><p>useful created twoway plots or other graphical output</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span></code></p>
+<ul>
+<li><p>rigid, specific programs (without <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">varlist</span></code> or <code class="docutils literal notranslate"><span class="pre">syntax,</span> <span class="pre">options</span></code>)</p></li>
+<li><p>flexible, generalizable programs (with <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">[varlist]</span></code>, <code class="docutils literal notranslate"><span class="pre">[options]</span></code>)</p>
+<ul>
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/table1_options.ado">table1_options.ado</a></p></li>
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/ind_translator.ado">ind_translator.ado</a></p></li>
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/table1_transplant.do">table_transplant.do</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">capture</span></code></p>
+<ul>
+<li><p>preventing error results and an arrested script</p></li>
+<li><p>Stata is finicky, <em>pernickety</em> and this little preface to a command may spare you untold misery</p></li>
+<li><p>we’ve used it most frequently before <code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">define</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">log</span> <span class="pre">using</span></code></p></li>
+<li><p>but, notably, we’ve used it as a parsimonous variant in <code class="docutils literal notranslate"><span class="pre">syntax</span> <span class="pre">varlist</span> <span class="pre">if</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">twoway</span></code></p>
+<ul>
+<li><p>last weeks class, which we didn’t cover because of <code class="docutils literal notranslate"><span class="pre">hw1</span></code>-related issues</p></li>
+<li><p>notes have been updated to give you the best bang for your buck</p></li>
+<li><p>lookout for the following <strong>very</strong> important issues:</p>
+<ul>
+<li><p>workflow;</p></li>
+<li><p>open science; and,</p></li>
+<li><p>chatGPTs take on these.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>on your own, please go walk step-by-step, command-by-command, through the <code class="docutils literal notranslate"><span class="pre">twoway</span></code> examples offered</p></li>
+<li><p>think about <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">macro</span> <span class="pre">{</span></code> conditional code-blocks and your deployment of this artifice in future, very powerful Stata scripts!</p></li>
+</ul>
+</section>
+<section id="macros">
+<h2>7.2 macros<a class="headerlink" href="#macros" title="Permalink to this heading">#</a></h2>
+<p>Today we’ll circle back to the method emplyed throughout this class:</p>
+<ul class="simple">
+<li><p>defining macros</p></li>
+<li><p>formatting them</p></li>
+<li><p><a class="reference external" href="https://jhustata.github.io/book/ggg.html">embedding</a> them in strings, text, figures, and excel</p></li>
+<li><p>producing aesthically pleasing, richly informative output</p></li>
+</ul>
+</section>
+<section id="science">
+<h2>7.3 science<a class="headerlink" href="#science" title="Permalink to this heading">#</a></h2>
+<p>But to what end?</p>
+<ul class="simple">
+<li><p>the advanced Stata Programming class answers that question thus:</p>
+<ul>
+<li><p>open science</p></li>
+<li><p>self-publication</p></li>
+<li><p>collaboration</p></li>
+<li><p>etc…</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1">#import numpy as np</span>
+<span class="c1">#import sklearn as skl</span>
+<span class="c1"># </span>
+
+<span class="c1">#plt.figure(figsize=[2, 2])</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span>  <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">700</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;jupyter&quot;</span><span class="p">,</span>  <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">960</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;dofile&quot;</span><span class="p">,</span>  <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">950</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;python &quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">550</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;stata&quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">550</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1900</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;dyndoc&quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1900</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;push&quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">475</span><span class="p">))</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;ghp&quot;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">950</span><span class="p">))</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([</span> <span class="p">(</span><span class="s2">&quot;jupyter&quot;</span><span class="p">,</span><span class="s2">&quot;python &quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;dofile&quot;</span><span class="p">,</span> <span class="s2">&quot;stata&quot;</span><span class="p">)])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;python &quot;</span><span class="p">,</span> <span class="s2">&quot;build&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;stata&quot;</span><span class="p">,</span> <span class="s2">&quot;dyndoc&quot;</span><span class="p">)</span> <span class="p">])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;dyndoc&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">)])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;html&quot;</span><span class="p">,</span><span class="s2">&quot;push&quot;</span><span class="p">)])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;push&quot;</span><span class="p">,</span><span class="s2">&quot;ghp&quot;</span><span class="p">)])</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> 
+        <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;pos&#39;</span><span class="p">),</span> 
+        <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+        <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> 
+        <span class="n">node_size</span> <span class="o">=</span> <span class="mi">4500</span><span class="p">,</span>
+        <span class="n">node_color</span> <span class="o">=</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span>
+        <span class="n">linewidths</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/61075a31b9ff580b0791fa93a1455e548b63b7703c909a89e822cce7c3358dd4.png" src="_images/61075a31b9ff580b0791fa93a1455e548b63b7703c909a89e822cce7c3358dd4.png" />
+</div>
+</div>
+<p>If at all you’ve enjoyed the conveniences brought forth by this classbook, then it would be remiss of me not to let you know from whence this book comes:</p>
+<ul class="simple">
+<li><p>a data science <a class="reference external" href="https://www.jhsph.edu/courses/course/36630/2022/140.628.41/data-science-for-public-health-i">class</a></p></li>
+<li><p>python environment</p></li>
+<li><p>jupyter notebooks</p></li>
+<li><p>vscode by miscrosoft</p></li>
+<li><p>dofiles</p></li>
+<li><p>stata</p></li>
+</ul>
+<p>In the <a class="reference external" href="https://jhustata.github.io/class700/intro.html">advanced</a> <a class="reference external" href="https://www.jhsph.edu/courses/course/37447/2022/340.700.71/advanced-stata-programming">class</a> we merge these ideas and publish our analyses and documentation (roll over<a class="reference external" href="https://www.youtube.com/watch?v=kKlzUKLOm_U">,</a> annotation) online via <a class="reference external" href="https://pages.github.com">gh-pages</a>!!!</p>
+</section>
+<section id="embed">
+<h2>7.4 embed<a class="headerlink" href="#embed" title="Permalink to this heading">#</a></h2>
+<p>Output</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local macro</span>:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(mean)<span class="o">*</span><span class="m">100</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Text</p>
+<ul>
+<li><p>“You may embed a <code class="docutils literal notranslate"><span class="pre">macro</span></code> in text”</p></li>
+</ul>
+</li>
+<li><p>Figures</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">line</span></code> y x, text(50 18 “<code class="docutils literal notranslate"><span class="pre">macro</span></code>”)</p></li>
+</ul>
+</li>
+<li><p>Excel</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">putexcel</span></code> set filename, replace</p></li>
+<li><p>putexcel B2=”<code class="docutils literal notranslate"><span class="pre">macro</span></code>”</p></li>
+</ul>
+</li>
+<li><p>Word</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span> <span class="pre">clear</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span> <span class="pre">begin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span></code> paragraph</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span></code> text</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span> <span class="pre">save</span></code> doc1.docx, replace</p></li>
+</ul>
+</li>
+<li><p>Dataset</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">postfile</span></code> regcoeffs b1 b2 b3 using regoutput, replace</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">postfile</span></code> regcoeffs () () ()</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">postfile</span></code> regcoeffs () () ()</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">postclose</span></code> regcoeffs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">*.dta</span></code> //look for regoutput.dta in your pwd</p></li>
+</ul>
+</li>
+<li><p>Markdown</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dyndoc</span></code></p></li>
+<li><p>html</p></li>
+</ul>
+</li>
+</ul>
+<section id="postfile">
+<h3>7.4.5 postfile<a class="headerlink" href="#postfile" title="Permalink to this heading">#</a></h3>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">sum</span> peak_pra,d
+<span class="k">g</span> highpra=peak_pra<span class="o">&gt;</span><span class="nf">r</span>(p90)
+<span class="k">sum</span> wait_yrs,d
+<span class="k">g</span> longwait=wait_yrs<span class="o">&gt;</span><span class="nf">r</span>(p50)
+<span class="k">postutil clear</span> 
+<span class="k">postfile</span> pp xaxis str80 coef double(result lb ub pvalue) using betas<span class="m">.</span>dta,<span class="k"> replace</span> 
+<span class="k">logistic</span> highpra gender prev_ki bmi age wait_yrs don_ecd
+<span class="k">local</span> xaxis=<span class="m">1</span>
+<span class="k">qui foreach</span> v of<span class="k"> varlist</span> gender prev_ki bmi age wait_yrs don_ecd {  
+<span class="k">	lincom</span> <span class="nv">`v&#39;</span>
+<span class="k">	return list</span> 
+<span class="k">	local est</span>:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(estimate)
+<span class="k">	local</span> lb:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(lb)
+<span class="k">	local</span> ub:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(ub)
+<span class="k">	local</span> pval:<span class="k"> di</span> <span class="nx">%3.2f</span> <span class="nf">r</span>(p)
+<span class="k">    post</span> pp (<span class="nv">`xaxis&#39;</span>) (<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>) (<span class="nv">`est&#39;</span>) (<span class="nv">`lb&#39;</span>) (<span class="nv">`ub&#39;</span>) (<span class="nv">`pval&#39;</span>)
+<span class="k">	local</span> xaxis=<span class="nv">`xaxis&#39;</span> <span class="o">+</span> <span class="m">1</span>
+}
+
+<span class="k">postclose</span> pp
+
+<span class="k">ls</span> <span class="o">-</span>l
+<span class="k">use</span> betas,clear
+<span class="k">list</span> 
+#delimit ;
+<span class="k">twoway</span> (scatter result xaxis)
+       (rcap lb ub xaxis, 
+	       scale(log)
+	       yline(<span class="m">1</span>, 
+	            lc(lime) 
+			    lp(dash)
+	            )
+	       legend(off)
+	       xlab(
+	           <span class="m">1</span> <span class="s">&quot;Gender&quot;</span> 
+	           <span class="m">2</span> <span class="s">&quot;Previous Tx&quot;</span>
+	           <span class="m">3</span> <span class="s">&quot;BMI&quot;</span>
+		       <span class="m">4</span> <span class="s">&quot;Age&quot;</span>
+		       <span class="m">5</span> <span class="s">&quot;Wait y&quot;</span>
+	           <span class="m">6</span> <span class="s">&quot;ECD&quot;</span>
+	           )
+	       ti(<span class="s">&quot;Association between High PRA and select risk factors&quot;</span>, pos(<span class="m">11</span>))
+	       yti(<span class="s">&quot;OR&quot;</span>, 
+	           orientation(horizontal)
+		      )
+	       xti(<span class="s">&quot;&quot;</span>)
+	      )
+        ;
+#delimit cr
+<span class="k">graph</span> export<span class="k"> logistic</span><span class="m">.</span>png,replace 
+</pre></div>
+</div>
+<p><img alt="" src="_images/logistic.png" /></p>
+</section>
+<section id="alternative-coefplot">
+<h3>7.4.6 alternative: coefplot<a class="headerlink" href="#alternative-coefplot" title="Permalink to this heading">#</a></h3>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">sum</span> peak_pra,d
+<span class="k">g</span> highpra=peak_pra<span class="o">&gt;</span><span class="nf">r</span>(p90)
+<span class="k">sum</span> wait_yrs,d
+<span class="k">g</span> longwait=wait_yrs<span class="o">&gt;</span><span class="nf">r</span>(p50)
+<span class="k">logistic</span> highpra prev_ki bmi age wait_yrs don_ecd<span class="k"> if</span> gender<span class="o">==</span><span class="m">0</span>
+<span class="k">est</span> store male
+<span class="k">logistic</span> highpra prev_ki bmi age wait_yrs don_ecd<span class="k"> if</span> gender<span class="o">==</span><span class="m">1</span>
+<span class="k">est</span> store female
+<span class="k">if</span> <span class="m">0</span> {
+<span class="k">	lab var</span> highpra <span class="s">&quot;PRA&gt;90th %&quot;</span>
+<span class="k">	lab var</span> longwait <span class="s">&quot;Wait&gt;50th %&quot;</span>
+<span class="k">	lab var</span> prev_ki <span class="s">&quot;Previous Tx&quot;</span>
+<span class="k">	lab var</span> bmi <span class="s">&quot;BMI, kg/m2&quot;</span>
+<span class="k">	lab var</span> age <span class="s">&quot;Age, y&quot;</span>
+<span class="k">	lab var</span> don_ecd <span class="s">&quot;ECD&quot;</span>
+}
+coefplot male female,<span class="k"> drop</span>(_cons) xline(<span class="m">0</span>) 
+</pre></div>
+</div>
+<p><img alt="" src="_images/coefplot.png" /></p>
+</section>
+</section>
+<section id="counterfeiting">
+<h2>7.6 counterfeiting<a class="headerlink" href="#counterfeiting" title="Permalink to this heading">#</a></h2>
+<p>A word on <strong>simulation</strong>:</p>
+<section id="rigor-vs-fraud">
+<h3>7.6.1 rigor vs. fraud<a class="headerlink" href="#rigor-vs-fraud" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>worth developing skills</p></li>
+<li><p>making up data</p></li>
+<li><p>imaginary scenarios</p></li>
+<li><p>and why would one do that?</p>
+<ul>
+<li><p>missing data</p></li>
+<li><p>bootstrap</p></li>
+<li><p>cryptography/disclosure risk</p></li>
+<li><p>sample-size calculation (variant on missing data)</p></li>
+<li><p>etc.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">	clear</span> 
+	cls
+<span class="k">	if</span> <span class="nf">c</span>(N) { <span class="c1">//background</span>
+		inspired<span class="k"> by</span> polack et al. nejm <span class="m">2020</span>
+		NEJM2020;<span class="m">383</span>:<span class="m">2603-15</span>
+		lets<span class="k"> do</span> some reverse engineering
+		aka<span class="k"> simulate</span>,<span class="k"> generate</span> data 
+		from results: reversed process<span class="o">!!</span>
+	}
+<span class="k">	if</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Windows&quot;</span> { <span class="c1">//methods</span>
+	    lobal workdir <span class="s">&quot;</span><span class="nv">`c(pwd)&#39;</span><span class="se">\&quot;</span>
+	}
+<span class="k">	else</span> {
+<span class="k">	    global</span> workdir <span class="s">&quot;</span><span class="nv">`c(pwd)&#39;</span><span class="s">/&quot;</span>
+	}
+<span class="k">	capture log close</span>
+<span class="k">	log</span> using <span class="vg">${workdir}</span>simulation<span class="m">.</span>log,<span class="k"> replace</span> 
+<span class="k">	set</span> seed <span class="m">340600</span>
+<span class="k">	set</span> obs <span class="m">37706</span>
+	}
+<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="m">37706</span> { <span class="c1">//simulation </span>
+	    #delimit ; 
+		<span class="c1">//row1</span>
+<span class="k">		g</span> bnt=<span class="nf">rbinomial</span>(<span class="m">1</span>,.<span class="m">5</span>);
+<span class="k">		lab</span> define Bnt 
+		    <span class="m">0</span> <span class="s">&quot;Placebo&quot;</span>  
+	        <span class="m">1</span> <span class="s">&quot;BNT162b2&quot;</span> ;
+<span class="k">		label</span> values bnt Bnt ;
+<span class="k">		tab</span> bnt ; 
+		<span class="c1">//row2</span>
+<span class="k">		gen</span> female=<span class="nf">rbinomial</span>(<span class="m">1</span>, .<span class="m">494</span>); 
+<span class="k">		label</span> define Female  
+		    <span class="m">0</span> <span class="s">&quot;Male&quot;</span>  
+			<span class="m">1</span> <span class="s">&quot;Female&quot;</span>; 
+<span class="k">		label</span> values female Female; 
+<span class="k">		tab</span> female;
+		<span class="c1">//row3 </span>
+<span class="k">		tempvar</span> dem ;
+<span class="k">		gen</span> <span class="nv">`dem&#39;</span>=<span class="nf">round</span>(<span class="nf">runiform</span>(<span class="m">0</span>,<span class="m">100</span>),.<span class="m">1</span>); 
+<span class="k">		recode</span> <span class="nv">`dem&#39;</span>  
+		    (<span class="m">0</span><span class="o">/</span><span class="m">82.9</span>=<span class="m">0</span>)  
+		    (<span class="m">83.0</span><span class="o">/</span><span class="m">92.1</span>=<span class="m">1</span>)  
+		    (<span class="m">92.2</span><span class="o">/</span><span class="m">96.51</span>=<span class="m">2</span>)   
+		    (<span class="m">96.52</span><span class="o">/</span><span class="m">97.0</span>=<span class="m">3</span>)  
+		    (<span class="m">97.1</span><span class="o">/</span><span class="m">97.2</span>=<span class="m">4</span>)  
+		    (<span class="m">97.3</span><span class="o">/</span><span class="m">99.41</span>=<span class="m">5</span>)  
+		    (<span class="m">99.42</span><span class="o">/</span><span class="m">100</span>=<span class="m">6</span>)  
+		         ,<span class="k"> gen</span>(race);
+<span class="k">		lab</span> define Race  
+			<span class="m">0</span> <span class="s">&quot;White&quot;</span>    
+		    <span class="m">1</span> <span class="s">&quot;Black or African American&quot;</span> 
+			<span class="m">2</span> <span class="s">&quot;Asian&quot;</span> 
+			<span class="m">3</span> <span class="s">&quot;Native American or Alsak Native&quot;</span>  
+			<span class="m">4</span> <span class="s">&quot;Native Hawaiian or other Pacific Islander&quot;</span>  
+			<span class="m">5</span> <span class="s">&quot;Multiracial&quot;</span>  
+			<span class="m">6</span> <span class="s">&quot;Not reported&quot;</span>; 
+<span class="k">		label</span> values race Race; 
+<span class="k">		tab</span> race;
+		<span class="c1">//row4 </span>
+<span class="k">		gen</span> ethnicity=<span class="nf">rbinomial</span>(<span class="m">1</span>,<span class="m">0.28</span>);
+<span class="k">		tostring</span> ethnicity,<span class="k"> replace</span>;
+<span class="k">		replace</span> ethnicity=<span class="s">&quot;Latinx&quot;</span><span class="k"> if</span> ethnicity<span class="o">==</span><span class="s">&quot;1&quot;</span>;
+<span class="k">		replace</span> ethnicity=<span class="s">&quot;Other&quot;</span><span class="k"> if</span> ethnicity<span class="o">==</span><span class="s">&quot;0&quot;</span>;
+		<span class="c1">//row5 </span>
+<span class="k">		tempvar</span> country;
+<span class="k">		gen</span> <span class="nv">`country&#39;</span>=<span class="nf">round</span>(<span class="nf">runiform</span>(<span class="m">0</span>,<span class="m">100</span>), .<span class="m">1</span>);
+<span class="k">		recode</span> <span class="nv">`country&#39;</span>   
+		    (<span class="m">0</span><span class="o">/</span><span class="m">15.3</span>=<span class="m">0</span>)  
+			(<span class="m">15.4</span><span class="o">/</span><span class="m">21.5</span>=<span class="m">1</span>)  
+			(<span class="m">21.6</span><span class="o">/</span><span class="m">23.6</span>=<span class="m">2</span>)  
+			(<span class="m">23.7</span><span class="o">/</span><span class="m">100</span>=<span class="m">3</span>) 
+			    ,<span class="k"> gen</span>(country) ;
+<span class="k">		label</span> define Country 
+			<span class="m">0</span> <span class="s">&quot;Argentina&quot;</span>  
+		    <span class="m">1</span> <span class="s">&quot;Brazil&quot;</span>  
+			<span class="m">2</span> <span class="s">&quot;South Africa&quot;</span>  
+			<span class="m">3</span> <span class="s">&quot;United States&quot;</span>; 
+<span class="k">		label</span> values country Country; 
+<span class="k">		tab</span> country;
+		<span class="c1">//row7 </span>
+<span class="k">		gen</span> age=(<span class="nf">rt</span>(_N)<span class="o">*</span><span class="m">9.25</span>)<span class="o">+</span><span class="m">52</span> ; 
+<span class="k">		replace</span> age=<span class="nf">runiform</span>(<span class="m">16</span>,<span class="m">91</span>)  
+<span class="k">		    if</span> <span class="o">!</span><span class="nf">inrange</span>(age,<span class="m">16</span>,<span class="m">91</span>); 
+<span class="k">		summ</span> age,<span class="k"> d</span> ;
+<span class="k">		local</span> age_med=<span class="nf">r</span>(p50);<span class="k"> local</span> age_lb=<span class="nf">r</span>(min);<span class="k"> local</span> age_ub=<span class="nf">r</span>(max);
+<span class="k">		gen</span> dob =<span class="k"> d</span>(27jul2020) <span class="o">-</span>  
+		          (age<span class="o">*</span><span class="m">365.25</span>) ; 
+<span class="k">		gen</span> dor = dob <span class="o">+</span> age<span class="o">*</span><span class="m">365.25</span> <span class="o">+</span> <span class="nf">runiform</span>(<span class="m">0</span>,<span class="m">4</span><span class="o">*</span><span class="m">30.25</span>); 
+		<span class="c1">//row6 </span>
+<span class="k">		gen</span> over55=age<span class="o">&gt;</span><span class="m">55</span> ;<span class="k"> tab</span> over55;
+		<span class="c1">//row8 </span>
+<span class="k">		gen</span> bmi=<span class="nf">rbinomial</span>(<span class="m">1</span>, .<span class="m">351</span>);<span class="k"> tab</span> bmi; 
+		<span class="c1">//figure 3 </span>
+<span class="k">		g</span> days=rweibull(.<span class="m">7</span>,<span class="m">17</span>,<span class="m">0</span>)<span class="k"> if</span> bnt<span class="o">==</span><span class="m">0</span> ;
+<span class="k">		g</span> covid=<span class="nf">rbinomial</span>(<span class="m">1</span>, <span class="m">162</span><span class="o">/</span><span class="m">21728</span>)<span class="k"> if</span> bnt<span class="o">==</span><span class="m">0</span> ; 
+<span class="k">		replace</span> days=rweibull(.<span class="m">4</span>,.<span class="m">8</span>,<span class="m">0</span>)<span class="k"> if</span> bnt<span class="o">==</span><span class="m">1</span> ;
+<span class="k">		replace</span> covid=<span class="nf">rbinomial</span>(<span class="m">1</span>, <span class="m">14</span><span class="o">/</span><span class="m">21772</span>)<span class="k"> if</span> bnt<span class="o">==</span><span class="m">1</span>; 
+		<span class="c1">//key dates </span>
+<span class="k">		gen</span> eft = dor <span class="o">+</span> days;
+		<span class="c1">//date formats</span>
+<span class="k">		format</span> dob <span class="nx">%td;</span><span class="k"> format</span> dor <span class="nx">%td;</span><span class="k"> format</span> eft <span class="nx">%td;</span>
+		 <span class="c1">//kaplan-meier curve</span>
+<span class="k">		 stset</span> days, fail(covid) ;
+<span class="k">		 sts graph</span>,  
+<span class="k">		    by</span>(bnt)  
+		    fail per(<span class="m">100</span>)  
+		    tmax(<span class="m">119</span>)  
+		    xlab(<span class="m">0</span>(<span class="m">7</span>)<span class="m">119</span>) 
+		    ylab(<span class="m">0</span>(.<span class="m">4</span>)<span class="m">2.4</span>, 
+		        angle(<span class="m">360</span>)    
+<span class="k">			    format</span>(<span class="s">&quot;%3.1f&quot;</span>)
+				)  
+		    xti(<span class="s">&quot;Days after Dose 1&quot;</span>)  
+		    legend(off) 
+		    text(
+			    <span class="m">2.3</span> <span class="m">100</span> 
+			    <span class="s">&quot;Placebo&quot;</span>,  
+			     col(navy)
+				 )  
+		    text(
+			    .<span class="m">5</span> <span class="m">100</span> 
+				<span class="s">&quot;BNT162b2&quot;</span>,  
+			    col(maroon)
+				) ;
+<span class="k">		graph</span> export BNT162b2<span class="m">.</span>png,<span class="k"> replace</span> ;
+<span class="k">		stcox</span> bnt ;
+<span class="k">		drop</span> _<span class="o">*</span> age over55 days ;
+<span class="k">		g</span> bnt_id=<span class="nf">round</span>(<span class="nf">runiform</span>(<span class="m">37</span>,<span class="m">37</span><span class="o">+</span>_N)) ;
+<span class="k">		compress</span>  ;
+		#delimit cr
+		<span class="c1">//label variables</span>
+<span class="k">		lab var</span> bnt_id <span class="s">&quot;Participant Identifier&quot;</span>
+<span class="k">		lab var</span> bnt <span class="s">&quot;Random treatment assignment&quot;</span>
+<span class="k">		lab var</span> female <span class="s">&quot;Gender at birth&quot;</span>
+<span class="k">		lab var</span> race <span class="s">&quot;Self-identified race&quot;</span>
+<span class="k">		lab var</span> ethnicity <span class="s">&quot;Hispanic ethnicity&quot;</span>
+<span class="k">		lab var</span> country <span class="s">&quot;Country where trial was conducted&quot;</span>
+<span class="k">		lab var</span> dob <span class="s">&quot;Date of birth&quot;</span>
+<span class="k">		lab var</span> dor <span class="s">&quot;Date of recruitment into BNT162b2 trial&quot;</span>
+<span class="k">		lab var</span> eft <span class="s">&quot;Date of exit from BNT162b2 trial&quot;</span>
+<span class="k">		lab var</span> bmi <span class="s">&quot;Obese&quot;</span>
+<span class="k">		lab var</span> covid  <span class="s">&quot;Covid-19 status on eft date&quot;</span>
+		<span class="c1">//label data</span>
+<span class="k">		lab</span> data <span class="s">&quot;Safety and Efficacy of the BNT162b2 mRNA Covid-19 Vaccine&quot;</span>
+<span class="k">		describe</span>
+<span class="k">		order</span> bnt_id dob female race ethnicity country bmi bnt eft covid 
+<span class="c1">		*replace eft=. if eft&gt;d(15dec2020) //some folks lost to followup</span>
+<span class="k">		save</span> BNT162b2,<span class="k"> replace</span> 
+
+	}
+<span class="k">  log close</span> 
+}		
+</pre></div>
+</div>
+</section>
+</section>
+<section id="strings">
+<h2>7.8 strings<a class="headerlink" href="#strings" title="Permalink to this heading">#</a></h2>
+<p>Handling <strong>strings</strong> such as drug names:</p>
+<ul class="simple">
+<li><p>We’ll review a script I wrote 4 years ago</p></li>
+<li><p>Then compare it with an update I wrote yesterday</p></li>
+<li><p>In brief, there is a fundamental transformation in:</p>
+<ul>
+<li><p>aesthetics, legibility, &amp; brevity</p></li>
+<li><p>one is 440 lines, repetitious</p></li>
+<li><p>the other is 164 lines, utilizes macros &amp; loops</p></li>
+</ul>
+</li>
+</ul>
+<section id="lists">
+<h3>7.8.1 lists<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h3>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import excel <span class="s">&quot;1-first gen antihisitamines.xlsx&quot;</span>, sheet(<span class="s">&quot;de-duplicated list&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antihist&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">gen</span> group=<span class="m">1</span>
+<span class="k">save</span> 01_antihistamines,<span class="k"> replace</span>
+
+import excel <span class="s">&quot;2-antiparkinsonian agents.xlsx&quot;</span>, sheet(<span class="s">&quot;De-duplicated list&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antipark&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">gen</span> group=<span class="m">2</span>
+<span class="k">save</span> 02_antiparkinsons,replace
+
+import excel <span class="s">&quot;3-Antispasmodics.xlsx&quot;</span>, sheet(<span class="s">&quot;De-duplicated_list&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antispasm&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">3</span>
+<span class="k">save</span> 03_antispasmodics,replace 
+
+import excel <span class="s">&quot;4-Antithrombotics&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antithromb&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">4</span>
+<span class="k">save</span> 04_antithrombotics,replace
+
+import excel <span class="s">&quot;5-antiinfective agents&quot;</span>, sheet(<span class="s">&quot;Sheet2&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">8</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antiinfect&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">5</span>
+<span class="k">save</span> 05_antiinfective,replace
+
+import excel <span class="s">&quot;6-Peripheral alpha-1 blockers&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;pera1block&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">6</span>
+<span class="k">save</span> 06_peripheralalpha1blockers,replace
+
+import excel <span class="s">&quot;7-Central alpha-agonists&quot;</span>, sheet(<span class="s">&quot;de-duplicated_list&quot;</span>)<span class="k"> clear</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;cena1ag&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">7</span>
+<span class="k">save</span> 07_centralalpha1agonists,replace 
+
+import excel <span class="s">&quot;8-Other CNS alpha-agonists&quot;</span>, sheet(<span class="s">&quot;De-duplicated_list&quot;</span>)<span class="k"> clear</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;otha1ag&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">8</span>
+<span class="k">save</span> 08_otheralpha1agonists,replace 
+
+import excel <span class="s">&quot;9-Antidepressants&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">8</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antidep&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">9</span>
+<span class="k">save</span> 09_antidepressants,replace 
+
+import excel <span class="s">&quot;10-Antipsychotic agents&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">8</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antipsy&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">10</span>
+<span class="k">save</span> 10_antipsychotics,replace 
+
+import excel <span class="s">&quot;11-Barbituates&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;barb&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">11</span>
+<span class="k">save</span> 11_barbiturates,replace 
+
+import excel <span class="s">&quot;12-Benzodiazepine lists&quot;</span>, sheet(<span class="s">&quot;Short-acting&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;benzoshort&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">tempfile</span> benzoshort
+<span class="k">save</span> <span class="nv">`benzoshort&#39;</span>,replace
+
+import excel <span class="s">&quot;12-Benzodiazepine lists&quot;</span>, sheet(<span class="s">&quot;Long-acting&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">8</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;benzolong&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">tempfile</span> benzolong
+<span class="k">save</span> <span class="nv">`benzolong&#39;</span>,replace
+
+import excel <span class="s">&quot;12-Benzodiazepine lists&quot;</span>, sheet(<span class="s">&quot;Unknown&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;benzounk&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">tempfile</span> benzounk
+<span class="k">save</span> <span class="nv">`benzounk&#39;</span>,replace
+<span class="k">         use</span> <span class="nv">`benzoshort&#39;</span>,clear
+<span class="k">append</span> using <span class="nv">`benzolong&#39;</span>
+<span class="k">append</span> using <span class="nv">`benzounk&#39;</span>
+<span class="k">gen</span> group=<span class="m">12</span>
+<span class="k">save</span> 12_benzodiazepines,replace 
+
+import excel <span class="s">&quot;13-Nonbenzodiazepines - Z-drugs&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;nonbenzo&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">13</span>
+<span class="k">save</span> 13_nonbenzodiazepines,replace 
+
+import excel <span class="s">&quot;14-Ergoloid Mesylates&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;ergot&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">14</span>
+<span class="k">save</span> 14_ergoloids,replace 
+
+import excel <span class="s">&quot;15-Androgens&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;andro&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">15</span>
+<span class="k">save</span> 15_androgens,replace 
+
+import excel <span class="s">&quot;16-Estrogens&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;estro&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">16</span>
+<span class="k">save</span> 16_estrogens,replace 
+
+import excel <span class="s">&quot;17-Growth hormone&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;growth&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">17</span>
+<span class="k">save</span> 17_growthhormones,replace 
+
+import excel <span class="s">&quot;18-Insulin&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">8</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;insulin&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">18</span>
+<span class="k">save</span> 18_insulin,replace 
+
+import excel <span class="s">&quot;19-Sulfonylureas&quot;</span>, sheet(<span class="s">&quot;De-duplicated_results&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">5</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;urea&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">19</span>
+<span class="k">save</span> 19_sulfonylureas,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;20.Proton_Pump_Inhibitors&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;ppi&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">20</span>
+<span class="k">save</span> 20_protonpumpinh,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;21.non-selective NSAIDS&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;nsnsaids&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">21</span>
+<span class="k">save</span> 21_nonselectnsaids,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;22.Skeletal muscle relaxants&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">2</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;muscle&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">22</span>
+<span class="k">save</span> 22_musclerelaxants,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;23.non-DHP CCB&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;ccb&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">23</span>
+<span class="k">save</span> 23_nondhpccb,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;24.Thiazolidinediones&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;thiazo&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">24</span>
+<span class="k">save</span> 24_thiazolidinediones,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;25.Acetyl cholinesterase inhib&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;achblock&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">25</span>
+<span class="k">save</span> 25_acetylcholinesteraseinh,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;26.alpha-1 blockers&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;a1block&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">26</span>
+<span class="k">save</span> 26_alpha1blockers,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;27.ti-cyclic antidepressants&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;tca&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">27</span>
+<span class="k">save</span> 27_tca,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;28.corticosteroids&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;steroids&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">28</span>
+<span class="k">save</span> 28_corticosteroids,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;29.H2 receptor antagonists&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;h2ant&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">29</span>
+<span class="k">save</span> 29_h2rblockers,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;30.antiepileptics&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antiepi&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">30</span>
+<span class="k">save</span> 30_antiepileptics,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;31.antiemetics&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antieme&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">31</span>
+<span class="k">save</span> 31_antiemetics,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;32.NSAIDS&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn 
+<span class="k">gen</span> class_gnn=<span class="s">&quot;nsaid&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">32</span>
+<span class="k">save</span> 32_nsaids,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;33.Diuretics&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;diuretics&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">33</span>
+<span class="k">save</span> 33_diuretics,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;34.SNRIs&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;snri&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">34</span>
+<span class="k">save</span> 34_snri,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;35.SSRIs&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;ssri&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">35</span>
+<span class="k">save</span> 35_ssri,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;36.RAS Inhibitor&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">2</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;ras&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">36</span>
+<span class="k">save</span> 36_rasinhibitors,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;37.Opioids&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;opioids&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">37</span>
+<span class="k">save</span> 37_opioids,replace 
+
+import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&quot;38.Anticholinergic&quot;</span>)<span class="k"> clear</span>
+<span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
+<span class="k">replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">rename</span> A drug_gnn
+<span class="k">gen</span> class_gnn=<span class="s">&quot;antich&quot;</span>
+<span class="k">keep</span> <span class="o">*</span>_gnn
+<span class="k">keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">gen</span> group=<span class="m">38</span>
+<span class="k">save</span> 38_anticholinergics,replace 
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">	qui</span> {
+<span class="k">		clear</span>
+		cls
+<span class="k">		if</span> <span class="nf">c</span>(N) { <span class="c1">//background</span>
+			we compiled a comprehensive<span class="k"> list</span> of medications within 
+			each of the potentially inapporpriate medication (pim) 
+			classes<span class="k"> in</span> a systematic manner.
+			
+			first, informaticists used micromedex, the control vocabularies of            medline and embase, and medication websites to<span class="k"> generate</span> 
+			a trade and generic medication name<span class="k"> list</span>. 
+			
+			second, this<span class="k"> list</span> was curated to allow medications with multiple
+            mechanisms of action to be represented<span class="k"> in more</span> than<span class="k"> one</span> pim<span class="k"> class</span>.
+			we removed pims with topical or ocular routes of administration. 
+			
+			the final<span class="k"> list</span> was <span class="o">**</span>imported into stata<span class="o">**</span> to<span class="k"> query</span> 
+			medicare part<span class="k"> d</span> claims<span class="k"> for</span> pims...
+		} 
+<span class="k">		if</span> <span class="nf">c</span>(N)<span class="o">&lt;</span><span class="m">1</span> { <span class="c1">//methods</span>
+<span class="k">		    global</span> workdir <span class="nv">`c(pwd)&#39;</span> 
+<span class="k">			if</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Windows&quot;</span> {
+<span class="k">				global</span> workdir <span class="s">&quot;</span><span class="vg">$workdir</span><span class="se">\&quot;</span>
+			}
+<span class="k">			else</span> {
+<span class="k">				global</span> workdir <span class="s">&quot;</span><span class="vg">$workdir</span><span class="s">/&quot;</span>
+			}
+			#delimit ;
+<span class="k">			global</span> catalog1
+			    <span class="s">&quot;1-first gen antihisitamines&quot;</span>
+				<span class="s">&quot;2-antiparkinsonian agents&quot;</span>
+				<span class="s">&quot;3-Antispasmodics&quot;</span>
+				<span class="s">&quot;4-Antithrombotics&quot;</span>
+				<span class="s">&quot;5-antiinfective agents&quot;</span>
+				<span class="s">&quot;6-Peripheral alpha-1 blockers&quot;</span>
+				<span class="s">&quot;7-Central alpha-agonists&quot;</span>
+				<span class="s">&quot;8-Other CNS alpha-agonists&quot;</span>
+				<span class="s">&quot;9-Antidepressants&quot;</span>
+				<span class="s">&quot;10-Antipsychotic agents&quot;</span>
+				<span class="s">&quot;11-Barbituates&quot;</span>
+				<span class="s">&quot;12-Benzodiazepine lists&quot;</span>
+				<span class="s">&quot;12-Benzodiazepine lists&quot;</span>
+				<span class="s">&quot;12-Benzodiazepine lists&quot;</span>
+				<span class="s">&quot;13-Nonbenzodiazepines - Z-drugs&quot;</span>
+				<span class="s">&quot;14-Ergoloid Mesylates&quot;</span>
+				<span class="s">&quot;15-Androgens&quot;</span>
+				<span class="s">&quot;16-Estrogens&quot;</span>
+				<span class="s">&quot;17-Growth hormone&quot;</span>
+				<span class="s">&quot;18-Insulin&quot;</span>
+				<span class="s">&quot;19-Sulfonylureas&quot;</span>
+				;  
+<span class="k">			global</span> catalog2
+			    <span class="s">&quot;20.Proton_Pump_Inhibitors&quot;</span>
+				<span class="s">&quot;21.non-selective NSAIDS&quot;</span>
+				<span class="s">&quot;22.Skeletal muscle relaxants&quot;</span>
+				<span class="s">&quot;23.non-DHP CCB&quot;</span>
+				<span class="s">&quot;24.Thiazolidinediones&quot;</span>
+				<span class="s">&quot;25.Acetyl cholinesterase inhib&quot;</span>
+				<span class="s">&quot;26.alpha-1 blockers&quot;</span>
+				<span class="s">&quot;27.ti-cyclic antidepressants&quot;</span>
+				<span class="s">&quot;28.corticosteroids&quot;</span>
+				<span class="s">&quot;29.H2 receptor antagonists&quot;</span>
+				<span class="s">&quot;30.antiepileptics&quot;</span>
+				<span class="s">&quot;31.antiemetics&quot;</span>
+				<span class="s">&quot;32.NSAIDS&quot;</span>
+				<span class="s">&quot;33.Diuretics&quot;</span>
+				<span class="s">&quot;34.SNRIs&quot;</span>
+				<span class="s">&quot;35.SSRIs&quot;</span>
+				<span class="s">&quot;36.RAS Inhibitor&quot;</span>
+				<span class="s">&quot;37.Opioids&quot;</span>
+				<span class="s">&quot;38.Anticholinergic&quot;</span>;
+<span class="k">			global</span> namelist1
+			    01_antihistamines
+				02_antiparkinsons
+				03_antispasmodics
+				04_antithrombotics
+				05_antiinfective
+				06_peripheralalpha1blockers
+				07_centralalpha1agonists
+				08_otheralpha1agonists
+				09_antidepressants
+				10_antipsychotics
+				11_barbiturates
+			    benzoshort 
+				benzolong
+				benzounk 
+				13_nonbenzodiazepines
+				14_ergoloids
+				15_androgens
+				16_estrogens
+				17_growthhormones
+				18_insulin
+				19_sulfonylureas;
+<span class="k">			global</span> namelist2
+				20_protonpumpinh
+				21_nonselectnsaids
+				22_musclerelaxants
+				23_nondhpccb
+				24_thiazolidinediones
+				25_acetylcholinesteraseinh
+				26_alpha1blockers
+				27_tca
+				28_corticosteroids
+				29_h2rblockers
+				30_antiepileptics
+				31_antiemetics
+				32_nsaids
+				33_diuretics
+				34_snri
+				35_ssri
+				36_rasinhibitors
+				37_opioids
+				38_anticholinergics;
+			#delimit cr 
+<span class="k">			capture log close</span> 
+<span class="k">			log</span> using <span class="s">&quot;</span><span class="vg">${workdir}</span><span class="s">01_bc050523.log&quot;</span>,replace 
+<span class="k">			set</span> max_memory .
+		}
+<span class="k">		if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="m">0</span> { <span class="c1">//results</span>
+<span class="k">		    local</span> group=<span class="m">1</span>
+<span class="k">			foreach class in</span> <span class="s">&quot;</span><span class="vg">$catalog1</span><span class="s">&quot;</span> {  
+			    import excel <span class="s">&quot;</span><span class="vg">${workdir}</span><span class="nv">`class&#39;</span><span class="s">.xlsx&quot;</span>,<span class="k"> clear</span>
+<span class="k">				drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
+<span class="k">				replace</span> A=<span class="nf">strtrim</span>(A)
+<span class="k">				replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">				rename</span> A drug_gnn
+<span class="k">				local</span> class_tidy:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$namelist1</span><span class="s">&quot;</span>,<span class="nv">`group&#39;</span>)
+<span class="k">				g</span> class_gnn=<span class="s">&quot;</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>
+<span class="k">				capture split</span> class_gnn,p(<span class="s">&quot;_&quot;</span>)
+<span class="k">				capture keep</span> drug_gnn class_gnn2
+<span class="k">				if</span> <span class="nf">inrange</span>(<span class="nv">`group&#39;</span>,<span class="m">1</span>,<span class="m">11</span>) {
+<span class="k">					g</span> group=<span class="nv">`group&#39;</span>
+				}
+<span class="k">				else</span> {
+<span class="k">					g</span> group=<span class="nv">`group&#39;</span><span class="o">-</span><span class="m">2</span>
+				}
+<span class="k">				keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">				local</span> filename:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$namelist1</span><span class="s">&quot;</span>,<span class="nv">`group&#39;</span>)
+<span class="k">				capture save</span> <span class="s">&quot;</span><span class="nv">`filename&#39;</span><span class="s">&quot;</span>,replace  
+<span class="k">				noi di</span> <span class="s">&quot;</span><span class="nv">`filename&#39;</span><span class="s">&quot;</span>
+<span class="k">				local</span> group=<span class="nv">`group&#39;</span><span class="o">+</span><span class="m">1</span> 
+			}
+<span class="k">			use</span> benzoshort,clear
+<span class="k">			append</span> using benzolong
+<span class="k">			append</span> using benzounk <span class="c1">//debug</span>
+<span class="k">			replace</span> group=<span class="m">12</span>
+<span class="k">			drop</span> class_gnn
+<span class="k">			rename</span> class_gnn1 class_gnn2
+<span class="k">			save</span> 12_benzodiazepines,replace 
+		}
+<span class="k">		clear</span> 
+<span class="k">		if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="m">0</span> {
+<span class="k">			local</span> group=<span class="m">1</span>
+<span class="k">			foreach class in</span> <span class="s">&quot;</span><span class="vg">$catalog2</span><span class="s">&quot;</span> {
+				import excel <span class="s">&quot;</span><span class="vg">${workdir}</span><span class="s">20-38.xlsx&quot;</span>, <span class="cm">/*</span>
+<span class="cm">				    */</span> sheet(<span class="s">&quot;</span><span class="nv">`class&#39;</span><span class="s">&quot;</span>)<span class="k"> clear</span> 
+<span class="k">				drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">1</span>
+<span class="k">				replace</span> A=<span class="nf">strtrim</span>(A)
+<span class="k">				replace</span> A=<span class="nf">ustrupper</span>(A)
+<span class="k">				rename</span> A drug_gnn
+<span class="k">				local</span> class_tidy:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$namelist2</span><span class="s">&quot;</span>,<span class="nv">`group&#39;</span>)
+<span class="k">				g</span> class_gnn=<span class="s">&quot;</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>
+<span class="k">				capture split</span> class_gnn,p(<span class="s">&quot;_&quot;</span>)
+<span class="k">				capture keep</span> drug_gnn class_gnn2
+<span class="k">				g</span> group=<span class="nv">`group&#39;</span><span class="o">+</span><span class="m">19</span>
+<span class="k">				keep if</span> <span class="o">!</span><span class="nf">missing</span>(drug)
+<span class="k">				local</span> filename:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$namelist2</span><span class="s">&quot;</span>,<span class="nv">`group&#39;</span>)
+<span class="k">				capture save</span> <span class="s">&quot;</span><span class="nv">`filename&#39;</span><span class="s">&quot;</span>,replace 
+<span class="k">				noi di</span> <span class="s">&quot;</span><span class="nv">`filename&#39;</span><span class="s">&quot;</span>
+<span class="k">				local</span> group=<span class="nv">`group&#39;</span><span class="o">+</span><span class="m">1</span>
+				
+			}
+		}
+	  cls
+<span class="k">	  rm</span> benzoshort<span class="m">.</span>dta 
+<span class="k">	  rm</span> benzolong<span class="m">.</span>dta
+<span class="k">	  rm</span> benzounk<span class="m">.</span>dta 
+<span class="k">      noi ls</span> <span class="o">*</span>.dta
+<span class="k">	  timer list</span> 
+<span class="k">	  log close</span> 
+	}
+}
+</pre></div>
+</div>
+</section>
+<section id="excel">
+<h3>7.8.2 excel<a class="headerlink" href="#excel" title="Permalink to this heading">#</a></h3>
+<p>Download these .xlsx files into the <code class="docutils literal notranslate"><span class="pre">pwd</span></code> for the above scripts to work:</p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/1-first%20gen%20antihisitamines.xlsx">1-first gen antihisitamines</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/2-antiparkinsonian%20agents.xlsx">2-antiparkinsonian agents</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/3-Antispasmodics.xlsx">3-Antispasmodics</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/4-Antithrombotics.xlsx">4-Antithrombotics</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/5-antiinfective%20agents.xlsx">5-antiinfective agents</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/6-Peripheral%20alpha-1%20blockers.xlsx">6-Peripheral alpha-1 blockers</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/7-Central%20alpha-agonists.xlsx">7-Central alpha-agonists</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/8-Other%20CNS%20alpha-agonists.xlsx">8-Other CNS alpha-agonists</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/9-Antidepressants.xlsx">9-Antidepressants</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/10-Antipsychotic%20agents.xlsx">10-Antipsychotic agents</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/11-Barbituates.xlsx">11-Barbituates</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/12-Benzodiazepine%20lists.xlsx">12-Benzodiazepine lists</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/13-Nonbenzodiazepines%20-%20Z-drugs.xlsx">13-Nonbenzodiazepines - Z-drugs</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/14-Ergoloid%20Mesylates.xlsx">14-Ergoloid Mesylates</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/15-Androgens.xlsx">15-Androgens</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/16-Estrogens.xlsx">16-Estrogens</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/17-Growth%20hormone.xlsx">17-Growth hormone</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/18-Insulin.xlsx">18-Insulin</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/19-Sulfonylureas.xlsx">19-Sulfonylureas</a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/20-38.xlsx">20-38</a></p>
+</section>
+<section id="commands">
+<h3>7.8.3 commands<a class="headerlink" href="#commands" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">strpos</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">word</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strlen</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">regexm</span></code></p></li>
+</ul>
+</section>
+<section id="strpos">
+<h3>7.8.2.1 strpos<a class="headerlink" href="#strpos" title="Permalink to this heading">#</a></h3>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="s">&quot;</span><span class="vg">$S_TIME</span><span class="s">&quot;</span>
+<span class="k">clear</span>
+<span class="k">set more</span> off
+<span class="k">tempfile</span> pde_2013 pde_2014 pde2013bc pde2014bc 
+<span class="k">use</span> usrds_id srvc_dt gnn using <span class="s">&quot;/dcs01/igm/segevlab/data/usrds2015/claims/pd/pde2013&quot;</span>,clear
+<span class="k">save</span> <span class="nv">`pde_2013&#39;</span>,replace
+<span class="k">use</span> usrds_id srvc_dt gnn using <span class="s">&quot;/dcs01/igm/segevlab/data/usrds2016/claims/pd/pde2014&quot;</span>,clear
+<span class="k">save</span> <span class="nv">`pde_2014&#39;</span>,replace
+<span class="k">local</span> year <span class="s">&quot;y=2013/2014&quot;</span>
+<span class="k">forvalues</span> <span class="nv">`year&#39;</span> {
+<span class="k">  capture use</span> <span class="nv">`pde_`y&#39;&#39;</span>,clear
+<span class="k">	if</span> _rc<span class="o">==</span><span class="m">0</span> {
+<span class="k">		di</span> <span class="s">&quot;processing pde_</span><span class="nv">`y&#39;</span><span class="s">.dta ...&quot;</span>
+<span class="k">        gen</span>	antihist16=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;BROMPHENIRAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist19=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;CARBINOXAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist26=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;CHLORPHENIRAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist31=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;CLEMASTINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist36=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;CYPROHEPTADINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist39=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;DEXBROMPHENIRAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist40=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;DEXCHLORPHENIRAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist43=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;DIMENHYDRINATE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist47=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;DIPHENHYDRAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist51=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;DOXYLAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist65=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;HYDROXYZINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist77=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;MECLIZINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist101=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;PROMETHAZINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist105=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;PYRILAMINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)
+<span class="k">        gen</span>	antihist127=(<span class="nf">strpos</span>(gnn,<span class="s">&quot;TRIPROLIDINE&quot;</span>)<span class="o">!=</span><span class="m">0</span>)      
+<span class="k">		gen</span>  antihist_rx=( <span class="cs">///	</span>
+        antihist16<span class="o">+</span>	<span class="cs">///</span>
+        antihist19<span class="o">+</span>	<span class="cs">///</span>
+        antihist26<span class="o">+</span>	<span class="cs">///</span>
+        antihist31<span class="o">+</span>	<span class="cs">///</span>
+        antihist36<span class="o">+</span>	<span class="cs">///</span>
+        antihist39<span class="o">+</span>	<span class="cs">///</span>
+        antihist40<span class="o">+</span>	<span class="cs">///</span>
+        antihist43<span class="o">+</span>	<span class="cs">///</span>
+        antihist47<span class="o">+</span>	<span class="cs">///</span>
+        antihist51<span class="o">+</span>	<span class="cs">///</span>
+        antihist65<span class="o">+</span>	<span class="cs">///</span>
+        antihist77<span class="o">+</span>	<span class="cs">///</span>
+        antihist101<span class="o">+</span>	<span class="cs">///</span>
+        antihist105<span class="o">+</span>	<span class="cs">///</span>
+        antihist127	<span class="cs">///</span>
+        <span class="o">&gt;</span><span class="m">0</span>)
+<span class="k">        keep</span> usrds_id srvc_dt antihist_rx 
+<span class="k">        duplicates drop</span>
+<span class="k">        quietly compress</span>
+<span class="k">        save</span> <span class="nv">`pde`y&#39;bc&#39;</span>,<span class="k"> replace</span>  
+	}
+}
+
+<span class="k">forvalues</span> <span class="nv">`year&#39;</span> {
+<span class="k">		 capture append</span> using <span class="nv">`pde`y&#39;bc&#39;</span>
+}
+<span class="k">save</span> 01_antihistamines_expR<span class="m">.</span>dta,replace
+<span class="k">di</span> <span class="s">&quot;</span><span class="vg">$S_TIME</span><span class="s">&quot;</span>        
+</pre></div>
+</div>
+</section>
+</section>
+<section id="others">
+<h2>7.9 others<a class="headerlink" href="#others" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>
+//explore these commands sequentially, on your own
+use transplants, clear
+list extended_dgn in 1/5, clean
+disp word(&quot;Hello, is there anybody in there?&quot;,4)
+list extended_dgn if word(ext, 5) != &quot;&quot;, clean noobs
+disp strlen(&quot;Same as it ever was&quot;)
+list extended_dgn if strlen(ext)&lt; 6, clean
+assert regexm(&quot;Earth&quot;, &quot;art&quot;)
+assert !regexm(&quot;team&quot;, &quot;I&quot;)
+tab ext if regexm(ext, &quot;HTN&quot;)
+list ext if regexm(ext, &quot;^A&quot;)
+//starts with A
+list ext if regexm(ext, &quot;X$&quot;)
+//ends with X
+tab ext if regexm(ext, &quot;HIV.*Y&quot;)
+//contains &quot;HIV&quot;, then some otherstuff, then Y
+</pre></div>
+</div>
+</section>
+<section id="dates">
+<h2>7.10 dates<a class="headerlink" href="#dates" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">disp</span> <span class="nx">%td</span> <span class="m">19400</span> 11feb2013
+<span class="k">disp</span> <span class="nx">%td</span> <span class="m">366</span> 01jan1961
+<span class="k">disp</span> <span class="nx">%td</span> <span class="o">-</span><span class="m">5</span> 27dec1959
+<span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">gen</span> oneweek = transplant_date<span class="m">+7</span>
+<span class="k">list</span> transplant_date oneweek<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">3</span>
+<span class="k">format</span> <span class="nx">%td</span> oneweek
+<span class="k">list</span> transplant_date oneweek<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">3</span>
+<span class="k">disp</span> <span class="nf">td</span>(04jul1976)
+<span class="k">disp</span> <span class="nf">td</span>(5may2021)
+<span class="k">disp</span> <span class="nf">mdy</span>(<span class="m">7</span>,<span class="m">4</span>,<span class="m">1976</span>)
+<span class="k">disp</span> <span class="nf">mdy</span>(<span class="m">5</span>,<span class="m">5</span>,<span class="m">2021</span>)
+<span class="k">disp</span> <span class="nf">date</span>(<span class="s">&quot;August 15, 1969&quot;</span>, <span class="s">&quot;MDY&quot;</span>)
+<span class="k">disp</span> <span class="s">&quot;</span><span class="vg">$S_DATE</span><span class="s">&quot;</span>
+<span class="k">di</span> <span class="nf">c</span>(current_date)
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">twoway</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter8.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">if c(version)&gt;16 {</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.1 summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macros">7.2 macros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#science">7.3 science</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embed">7.4 embed</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#postfile">7.4.5 postfile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-coefplot">7.4.6 alternative: coefplot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counterfeiting">7.6 counterfeiting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rigor-vs-fraud">7.6.1 rigor vs. fraud</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">7.8 strings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">7.8.1 lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel">7.8.2 excel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">7.8.3 commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strpos">7.8.2.1 strpos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">7.9 others</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">7.10 dates</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abimereki Muzaale
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

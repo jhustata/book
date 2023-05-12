@@ -1,0 +1,727 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>pwd &#8212; Stata Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter1';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="r(mean)" href="chapter2.html" />
+    <link rel="prev" title="rnormal()" href="anxiety.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://brand.jhu.edu/assets/uploads/sites/5/2014/06/university.logo_.small_.horizontal.blue_.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="https://brand.jhu.edu/assets/uploads/sites/5/2014/06/university.logo_.small_.horizontal.blue_.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    help
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="admin.html">tokenize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter0.html">quietly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sas2stata.html">delimit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anxiety.html">rnormal()</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">pwd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">r(mean)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">by</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">program define</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6.html">twoway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7.html">local v: di</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter8.html">if c(version)&gt;16 {</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">net search</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/chapter1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>pwd</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pwd">
+<h1>pwd<a class="headerlink" href="#pwd" title="Permalink to this heading">#</a></h1>
+<p>Session 1 videos:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.dropbox.com/s/lvbn9c2xle8qpln/pwd1.mp4?dl=0?raw=1">video1</a> 03/30/2023</p></li>
+<li><p><a class="reference external" href="https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1">video2</a> 03/30/2023</p></li>
+<li><p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/5HbRh5ALkXawkMaSsITWGJnPN3vZZJWVp9EjxgFXZiGkduS2S55VgmBTl1Bf88PD.D2VIFqpidjNeh7A8?startTime=1680959893000">profile.do</a> Optional</p></li>
+<li><p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/NBtdk4SUC-ra9q7_tuGZEjuwS6o8cjB8U2dBnc_hSV7jM8joxdhlQ2ebQc8cILE2.GlIilOilIbw2w9tQ?startTime=1682019152000">video</a> 04/20/2023 Includes exercise in debugging &amp; use of `c(pwd)’</p></li>
+</ol>
+<p>Some <a class="reference external" href="https://www.stata.com/manuals13/u27.pdf">basic commands</a> that the folks at Stata think you ought to know, by the end of this term. So keep checking on these every week to assess your progress.</p>
+<p>Our goal in this session is to establish rules for all .do file scripts for the next 8 weeks:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Structure</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Indentation</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Annotation</span></code></p></li>
+</ol>
+<p>Every .do file will have these items (note: follow debugging guidelines <strong>when</strong> you get an error at <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span> <span class="pre">{</span></code>; watch 04/20/2023 video):</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">quietly</span> <span class="pre">{</span></code></p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+
+}
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">0</span> <span class="pre">{</span></code></p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+
+<span class="k">   if</span> <span class="m">0</span> { <span class="c1">//background: documentation, not code</span>
+
+       <span class="m">1</span>. a few remarks
+       <span class="m">2</span>.<span class="k"> on</span> what motivates
+       <span class="m">3</span>. this .do<span class="k"> file</span> script
+       <span class="m">4</span>. using ordinary text
+       <span class="m">5</span>. stata will not<span class="k"> read</span> this block
+
+   }
+
+}
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span> <span class="pre">{</span></code></p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+
+<span class="k">   if</span> <span class="m">0</span> { <span class="c1">//background: context, not code</span>
+
+       <span class="m">1</span>. a few remarks
+       <span class="m">2</span>.<span class="k"> on</span> what motivates
+       <span class="m">3</span>. this .do<span class="k"> file</span> script
+       <span class="m">4</span>. using ordinary text
+       <span class="m">5</span>. stata will not<span class="k"> read</span> this block
+
+   }
+
+<span class="k">   if</span>  <span class="m">1</span> { <span class="c1">//methods: macros, logfile, settings</span>
+<span class="k">       </span>
+<span class="k">       global</span> workdir <span class="nv">`c(pwd)&#39;</span> <span class="c1">//change if different</span>
+
+<span class="k">       capture log close</span>
+<span class="k">       log</span> using <span class="vg">${workdir}</span><span class="o">/</span>pwd<span class="o">-</span>demo<span class="m">.</span>log,replace
+
+<span class="k">       set</span> mem off
+<span class="k">       version</span> <span class="m">15</span>
+
+   }
+
+<span class="k">   log close</span> 
+
+}
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">2</span> <span class="pre">{</span></code></p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+
+<span class="k">   if</span> <span class="m">0</span> { <span class="c1">//background: context, not code</span>
+
+       <span class="m">1</span>. a few remarks
+       <span class="m">2</span>.<span class="k"> on</span> what motivates
+       <span class="m">3</span>. this .do<span class="k"> file</span> script
+       <span class="m">4</span>. using ordinary text
+       <span class="m">5</span>. stata will not<span class="k"> read</span> this block
+
+   }
+
+<span class="k">   if</span>  <span class="m">1</span> { <span class="c1">//methods: macros, logfile, settings</span>
+<span class="k">       </span>
+<span class="k">       global</span> workdir <span class="nv">`c(pwd)&#39;</span> <span class="c1">//change if different</span>
+
+<span class="k">       capture log close</span>
+<span class="k">       log</span> using <span class="vg">${workdir}</span><span class="o">/</span>pwd<span class="o">-</span>demo<span class="m">.</span>log,replace
+
+<span class="k">       set</span> mem off
+<span class="k">       version</span> <span class="m">15</span>
+
+   }
+
+<span class="k">   if</span> <span class="m">2</span> { <span class="c1">//results: data, shape, etc.</span>
+<span class="k">       </span>
+<span class="k">       use</span> <span class="vg">${workdir}</span><span class="o">/</span>transplants<span class="m">.</span>dta,<span class="k"> replace</span>
+
+<span class="k">       di</span> <span class="s">&quot;shape: </span><span class="nv">`c(N)&#39;</span><span class="s"> rows x </span><span class="nv">`c(k)&#39;</span><span class="s"> columns&quot;</span>
+
+   }
+
+<span class="k">   log close</span> 
+
+}
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span> <span class="pre">{</span></code> block is where you’ll typically define <code class="docutils literal notranslate"><span class="pre">global</span> <span class="pre">macros</span></code>, open a <code class="docutils literal notranslate"><span class="pre">logfile</span></code>, and determine either your <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">filepaths</span></code>, or <code class="docutils literal notranslate"><span class="pre">urls</span></code></p>
+<p>It will lay out the method or strategy by which you approach the task outlined in <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">0</span> <span class="pre">{</span></code></p>
+<p>Each numerically sequenced <code class="docutils literal notranslate"><span class="pre">if</span></code> statement followed by a <code class="docutils literal notranslate"><span class="pre">{</span></code> will serve as your lodestar as you build a <strong>vertically</strong> growing script as contrasted with a <strong>horizontally</strong> sprawling one. Within each <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">int</span> <span class="pre">{</span></code> you’ll have a block of code that serves a rather specific function and can be copied and pasted to another .do file when such a task is needed in the future or by someone else.</p>
+<p>As you put your .do file together you’ll indent (typically 4 spaces) at each level: from <code class="docutils literal notranslate"><span class="pre">qui</span> <span class="pre">{</span></code> to <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">0</span> <span class="pre">{</span></code>, and then from each <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">int</span> <span class="pre">{</span></code> to the block of code within.</p>
+<p>Within any block of code you’ll also indent as lower-level options and suboptions emerge in your script.</p>
+<p>Look to the scripts throughout this book as exemplars. Notice that each block of code must be lightly annotated to describe what it does. Use the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">0</span> <span class="pre">{</span></code> for more detailed annotation.</p>
+<p>Because this is an academic course, we will nudge you towards these practices by removing points in your <a class="reference internal" href="hw1.html"><span class="doc std std-doc">homework</span></a> if you neglect these <a class="reference download internal" download="" href="_downloads/6efbc93ca79a21fd3b4d4c0369d9f9fe/dofilestructure.pdf"><span class="xref download myst">three things</span></a>: structure, indentation, and annotation.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">0</span> { <span class="c1">//background: documentation, not code</span>
+
+       <span class="m">1</span>.<span class="k"> set</span> the context of the entire .dofile
+       <span class="m">2</span>. not the traditional way its done is Stata
+       <span class="m">3</span>. this is mere mimicry of fancier notebooks
+       <span class="m">4</span>. particularly Jupyter notebooks used<span class="k"> for</span> Python
+       <span class="m">5</span>.<span class="k"> as</span> well<span class="k"> as</span> RStudio used<span class="k"> for</span> R
+       <span class="m">6</span>. our dear Stata has<span class="k"> no</span> equivalent notebook
+       <span class="m">7</span>.<span class="k"> in</span> such notebooks text<span class="o">-</span>blocks <span class="o">&amp;</span> code<span class="o">-</span>blocks
+       <span class="m">8</span>. might be interspersed: a much richer way to
+       <span class="m">9</span>. comment<span class="o">/</span>annotate than you might be used to
+
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">1</span> { <span class="c1">//methods: macros, logfile, settings</span>
+<span class="k">    </span>
+<span class="k">       global</span> workdir <span class="nv">`c(pwd)&#39;</span> <span class="c1">//change if different</span>
+
+<span class="k">       capture log close</span>
+<span class="k">       log</span> using <span class="vg">${workdir}</span><span class="o">/</span>pwd<span class="m">.</span>log,replace
+
+<span class="k">       set</span> mem off
+<span class="k">       version</span> <span class="m">15</span>
+<span class="k">    </span>
+<span class="k">       pwd</span> <span class="c1">//informative, not usable</span>
+<span class="k">       di</span> <span class="nf">c</span>(pwd) <span class="c1">//usable as macro, see above</span>
+<span class="k">       ls</span> <span class="o">-</span>l
+<span class="k">       clear</span>
+<span class="k">       cat</span> adult<span class="m">.</span>do <span class="c1">//derived from program in chapter: delimit</span>
+<span class="k">       do</span> adult<span class="m">.</span>do 
+<span class="k">       di</span> <span class="nf">c</span>(N) <span class="s">&quot; rows &amp; &quot;</span> <span class="nf">c</span>(k) <span class="s">&quot; columns&quot;</span>
+<span class="k">       local</span> shape:<span class="k"> di</span> <span class="nf">c</span>(N) <span class="s">&quot; rows &amp; &quot;</span> <span class="nf">c</span>(k) <span class="s">&quot; columns&quot;</span>
+<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`shape&#39;</span><span class="s">&quot;</span>
+                
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">2</span> { <span class="c1">//continuous vars</span>
+<span class="k">    </span>
+<span class="k">       lookfor</span> age
+<span class="k">       local</span> v:<span class="k"> var lab</span> HSAGEIR 
+<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+<span class="k">       sum</span> HSAGEIR, detail
+<span class="k">       return list</span>
+<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`r(p25)&#39;</span><span class="s">&quot;</span>
+       putexcel<span class="k"> set</span> table1,<span class="k"> replace</span> 
+       putexcel A1=<span class="s">&quot;Characteristics&quot;</span>
+       putexcel A2=<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+       putexcel B1=<span class="s">&quot;(N=</span><span class="nv">`c(N)&#39;</span><span class="s">)&quot;</span>
+       putexcel B2=<span class="s">&quot;</span><span class="nv">`r(p50)&#39;</span><span class="s"> (</span><span class="nv">`r(p25)&#39;</span><span class="s">-</span><span class="nv">`r(p50)&#39;</span><span class="s">)&quot;</span>
+<span class="k">       ls</span> <span class="o">-</span>ahl
+        
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">3</span> { <span class="c1">//binary vars</span>
+<span class="k">    </span>
+<span class="k">       lookfor</span> sex
+<span class="k">       codebook</span> HSSEX 
+<span class="k">       replace</span> HSSEX=<span class="m">2</span><span class="o">-</span>HSSEX 
+<span class="k">       sum</span> HSSEX
+<span class="k">       return list</span> 
+<span class="k">       local</span> v:<span class="k"> var lab</span> HSSEX
+<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+<span class="k">       local</span> per:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(mean)<span class="o">*</span><span class="m">100</span>
+<span class="k">       di</span> <span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
+       putexcel A3=<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+       putexcel B3=<span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
+        
+        
+    }
+
+<span class="k">    if</span> <span class="m">4</span> { <span class="c1">//multicat vars</span>
+<span class="k">        </span>
+<span class="k">        lookfor</span> race 
+<span class="k">        desc</span> DMARETHN
+<span class="k">        capture label drop</span> race 
+        
+        #delimit ;
+<span class="k">        lab</span> def race 
+           <span class="m">1</span> <span class="s">&quot;White&quot;</span> 
+           <span class="m">2</span> <span class="s">&quot;Black&quot;</span>
+           <span class="m">3</span> <span class="s">&quot;Hispanic&quot;</span>
+           <span class="m">4</span> <span class="s">&quot;Asian&quot;</span>;
+<span class="k">        lab</span> values DMARETHN race; 
+        #delimit cr
+<span class="k">        </span>
+<span class="k">        local</span> v:<span class="k"> var lab</span> DMARETHN
+        putexcel A4=<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">, %&quot;</span>
+<span class="k">        local</span> vl: value<span class="k"> label</span> DMARETHN
+<span class="k">        </span>
+<span class="k">        levelsof</span> DMARETHN,<span class="k"> local</span>(race)  
+<span class="k">        return list</span> 
+<span class="k">        </span>
+<span class="k">        count if</span> <span class="o">!</span><span class="nf">missing</span>(DMARETHN)
+<span class="k">        global</span> N=<span class="nf">r</span>(N)
+<span class="k">        </span>
+<span class="k">        local</span> row=<span class="m">5</span>
+<span class="k">        </span>
+<span class="k">        foreach l</span> of<span class="k"> numlist</span> <span class="nv">`race&#39;</span> {
+<span class="k">    </span>
+<span class="k">            local</span> per:<span class="k"> lab</span> <span class="nv">`vl&#39;</span> <span class="nv">`l&#39;</span>
+<span class="k">            qui sum</span> DMARETHN<span class="k"> if</span> DMARETHN<span class="o">==</span><span class="nv">`l&#39;</span>
+<span class="k">            local</span> percent:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(N)<span class="o">*</span><span class="m">100</span><span class="o">/</span><span class="vg">$N</span>
+<span class="k">            di</span> <span class="s">&quot;</span><span class="nv">`per&#39;</span><span class="s">, % : </span><span class="nv">`percent&#39;</span><span class="s">&quot;</span>
+            putexcel A<span class="nv">`row&#39;</span> = <span class="s">&quot;   </span><span class="nv">`per&#39;</span><span class="s">&quot;</span>
+            putexcel B<span class="nv">`row&#39;</span> = <span class="s">&quot;</span><span class="nv">`percent&#39;</span><span class="s">&quot;</span>
+<span class="k">            local</span> row=<span class="nv">`row&#39;</span> <span class="o">+</span> <span class="m">1</span>
+            
+        }    
+        
+}
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">0</span> { <span class="c1">//blocks 2-4</span>
+
+       <span class="m">1</span>. all the code snippets you need
+       <span class="m">2</span>. to confidently answer hw1<span class="m">.</span>q5
+       <span class="m">3</span>. revisit these now that you
+       <span class="m">4</span>. know a little<span class="k"> more</span> Stata than
+       <span class="m">5</span>. you did<span class="k"> in</span> wk1 when we<span class="k"> run</span> this script
+
+    }
+<span class="k">    </span>
+<span class="k">    log close</span>
+}
+</pre></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="anxiety.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">rnormal()</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">r(mean)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abimereki Muzaale
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

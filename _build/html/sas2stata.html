@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>help &#8212; Stata Programming</title>
+    <title>delimit &#8212; Stata Programming</title>
   
   
   
@@ -61,10 +61,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sas2stata';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="tokenize" href="admin.html" />
+    <link rel="next" title="rnormal()" href="anxiety.html" />
+    <link rel="prev" title="quietly" href="chapter0.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -130,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -149,16 +150,16 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     help
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="admin.html">tokenize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter0.html">quietly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sas2stata.html">delimit</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">delimit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="anxiety.html">rnormal()</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="chapter1.html">pwd</a></li>
@@ -241,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsas2stata.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -271,7 +272,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/sas2stata.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +352,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>help</h1>
+    <h1>delimit</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -365,28 +366,88 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="help">
-<h1>help<a class="headerlink" href="#help" title="Permalink to this heading">#</a></h1>
-<p>Welcome to <a class="reference external" href="https://www.jhsph.edu/courses/course/36389/2022/340.600.01/stata-programming">PH.340.600.01</a><a class="reference external" href="https://www.jhsph.edu/courses/course/37447/2022/340.700.71/advanced-stata-programming">.</a></p>
-<p>Th 3:30 PM Wolfe E2014 (Sommer Hall)</p>
-<p>Table of Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="admin.html">tokenize</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter0.html">quietly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sas2stata.html">delimit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="anxiety.html">rnormal()</a></li>
-<li class="toctree-l1"><a class="reference internal" href="anxiety.html#id1"></a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter1.html">pwd</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter2.html">r(mean)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter3.html">by</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter4.html">program define</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter5.html">capture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter6.html">twoway</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter7.html">local v: di</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter8.html">if c(version)&gt;16 {</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">net search</a></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="delimit">
+<h1>delimit<a class="headerlink" href="#delimit" title="Permalink to this heading">#</a></h1>
+<p>Please do copy &amp; paste the code below into a Stata .do file editor &amp; do!</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">1</span> { <span class="c1">//settings,logfile,macros</span>
+        
+        cls
+<span class="k">        clear</span> 
+<span class="k">        </span>
+<span class="k">        capture log close</span> 
+<span class="k">        log</span> using adultlab<span class="m">.</span>log,<span class="k"> replace</span> 
+<span class="k">        </span>
+<span class="k">        </span>
+<span class="k">        global</span> url https:<span class="o">//</span>wwwn<span class="m">.</span>cdc<span class="m">.</span>gov<span class="o">/</span>nchs<span class="o">/</span>data<span class="o">/</span>nhanes3<span class="o">/</span>1a<span class="o">/</span> 
+<span class="k">        global</span> sasprogram adult<span class="m">.</span>sas
+<span class="k">        global</span> datafile adult<span class="m">.</span>dat
+        
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">2</span> { <span class="c1">//import adult.sas read-in commands</span>
+        
+        import delimited <span class="vg">${url}$sasprogram</span>
+
+    }
+<span class="k">    </span>
+<span class="k">    if</span> <span class="m">3</span> { <span class="c1">//output adult.do file read-in commands  </span>
+<span class="k">            </span>
+<span class="k">        preserve</span> 
+<span class="k">           keep in</span> <span class="m">1387</span><span class="o">/</span><span class="m">2624</span>
+<span class="k">           g</span> id=_n<span class="m">+2</span>
+           insobs <span class="m">1</span>
+<span class="k">           replace</span> v1=<span class="s">&quot;#delimit ;&quot;</span><span class="k"> in</span> <span class="nv">`c(N)&#39;</span>
+           insobs <span class="m">1</span>
+<span class="k">           replace</span> v1=<span class="s">&quot;infix&quot;</span><span class="k"> in</span> <span class="nv">`c(N)&#39;</span>
+           insobs <span class="m">1</span>
+<span class="k">           replace</span> v1=<span class="s">&quot;using </span><span class="vg">${url}$datafile</span><span class="s"> ;&quot;</span><span class="k"> in</span> <span class="nv">`c(N)&#39;</span>
+           insobs <span class="m">1</span>
+<span class="k">           replace</span> v1=<span class="s">&quot;#delimit cr&quot;</span><span class="k"> in</span> <span class="nv">`c(N)&#39;</span>
+<span class="k">           replace</span> id=<span class="m">1</span><span class="k"> if</span> v1<span class="o">==</span><span class="s">&quot;#delimit ;&quot;</span>
+<span class="k">           replace</span> id=<span class="m">2</span><span class="k"> if</span> v1<span class="o">==</span><span class="s">&quot;infix&quot;</span>
+<span class="k">           replace</span> id=<span class="nv">`c(N)&#39;</span><span class="k"> if</span> v1<span class="o">==</span><span class="s">&quot;using </span><span class="vg">${url}$datafile</span><span class="s"> ;&quot;</span>
+<span class="k">           replace</span> id=id<span class="m">-1</span><span class="k"> if</span> v1<span class="o">==</span><span class="s">&quot;using </span><span class="vg">${url}$datafile</span><span class="s"> ;&quot;</span>
+<span class="k">           replace</span> id=<span class="nv">`c(N)&#39;</span><span class="k"> if</span> v1<span class="o">==</span><span class="s">&quot;#delimit cr&quot;</span>
+<span class="k">           sort</span> id
+<span class="k">           drop</span> id
+<span class="k">           tempfile</span> vars
+<span class="k">           rename</span> v1 concat 
+<span class="k">           format</span> concat <span class="nx">%-20s</span>
+<span class="k">           keep</span> concat 
+<span class="k">           save</span> <span class="nv">`vars&#39;</span>
+<span class="k">        restore</span> 
+<span class="k">        </span>
+<span class="k">        keep in</span> <span class="m">2627</span><span class="o">/</span><span class="m">3865</span>
+<span class="k">        split</span> v1, p(<span class="s">&quot; = &quot;</span>)
+<span class="k">        gen</span> concat=<span class="s">&quot;lab var &quot;</span><span class="o">+</span>v11<span class="o">+</span><span class="s">&quot; &quot;</span><span class="o">+</span>v12
+<span class="k">        keep</span> concat 
+<span class="k">        format</span> concat <span class="nx">%-20s</span>
+<span class="k">        drop in</span> <span class="nv">`c(N)&#39;</span>
+<span class="k">        tempfile</span> labs
+<span class="k">        save</span> <span class="nv">`labs&#39;</span>
+<span class="k">        </span>
+<span class="k">        use</span> <span class="nv">`vars&#39;</span>,<span class="k"> clear</span>
+<span class="k">        append</span> using <span class="nv">`labs&#39;</span>
+<span class="k">        outfile</span> using <span class="s">&quot;adult.do&quot;</span>, noquote<span class="k"> replace</span>
+<span class="k">        </span>
+<span class="k">        log close</span> 
+        
+    }
+    
+}
+</pre></div>
+</div>
+<p>Where is the output from above saved?</p>
+<p>Type <code class="docutils literal notranslate"><span class="pre">pwd</span></code> into your stata command window</p>
+<p>Visit the <a class="reference external" href="https://wwwn.cdc.gov/nchs/data/nhanes3/1a/adult.sas">url</a></p>
+<p>Compare with your <a class="reference external" href="https://raw.githubusercontent.com/jhustata/jhustata.github.io/main/adult.do">output</a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Stata’s <code class="docutils literal notranslate"><span class="pre">help</span></code> command</p>
+<p>ChatGPT, when available</p>
+<p>Type <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">split</span></code>, for instance</p>
 </div>
 </section>
 
@@ -421,12 +482,21 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter0.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">quietly</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="admin.html"
+       href="anxiety.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">tokenize</p>
+        <p class="prev-next-title">rnormal()</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

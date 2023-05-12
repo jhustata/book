@@ -1,0 +1,789 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>r(mean) &#8212; Stata Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter2';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="by" href="chapter3.html" />
+    <link rel="prev" title="pwd" href="chapter1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://brand.jhu.edu/assets/uploads/sites/5/2014/06/university.logo_.small_.horizontal.blue_.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="https://brand.jhu.edu/assets/uploads/sites/5/2014/06/university.logo_.small_.horizontal.blue_.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    help
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="admin.html">tokenize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter0.html">quietly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sas2stata.html">delimit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anxiety.html">rnormal()</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">pwd</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">r(mean)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">by</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">program define</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6.html">twoway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7.html">local v: di</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter8.html">if c(version)&gt;16 {</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">net search</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/chapter2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>r(mean)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="r-mean">
+<h1>r(mean)<a class="headerlink" href="#r-mean" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/Vn4RJsBpvRlACl1o7_6gr-ZrRvQ-PcU4oX8npjY-irdHjg3YLWo8qtSfFx989s6Y.riv8GVEsjWE_uV9y?startTime=1680809414000">video</a></p>
+<ol class="arabic simple" start="0">
+<li><p>Today we are going to talk about <code class="docutils literal notranslate"><span class="pre">macros</span></code>:</p></li>
+</ol>
+<p>Local system macros</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>name
+content
+
+ c() -&gt; constants (`help creturn`)
+ r() -&gt; return values
+ e() -&gt; estimated values 
+</pre></div>
+</div>
+<p>User-defined macros</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> local e.g., `m_iqr&#39;
+ global e.g., $workdir
+</pre></div>
+</div>
+<p>But we need data to demonstrate these macros. So lets curate a dataset: <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code>
+Copy &amp; paste the script below into a .do file and do!
+You may save it as <code class="docutils literal notranslate"><span class="pre">nh3andmort.do</span></code>. If you encounter any trouble in this preliminary step please do post it on CoursePlus. Maybe a fellow student or a member of the teaching team may be able to help.</p>
+<p>Import data for todays class:</p>
+<ol class="arabic simple">
+<li><p>Your Stata <a class="reference external" href="https://www.stata.com/products/which-stata-is-right-for-me/">edition</a> will determine how much data is imported. Can you tell which line of code in the script determines this? (Hint: it is an <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">xxx</span> <span class="pre">{</span></code> statement but at a lower structural level than the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">int</span> <span class="pre">{</span></code> building blocks of our .do file). This line of code was motivated by Stata/BE editions that the majority of students have, which proved incapable of handling the full <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code> datafile.</p></li>
+<li><p>Here is a screenshot from a <a class="reference external" href="https://jhustata.github.io/book/_downloads/f716980c69e9c20b4b4bb8431c700717/unix-b-mode3.jpg">Stata/MP</a> session on the biostatistics cluster.</p></li>
+<li><p>And here is a screenshot from a <a class="reference external" href="https://jhustata.github.io/book/_downloads/7a8ebb8d1a62f98b6e5b939e69fb21e1/stata.version.png">Stata/IC</a> session that crashed when attempting to import the <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code> datafile. (Stata/IC was rebranded Stata/BE in 2022)</p></li>
+<li><p>Watch this <a class="reference external" href="https://jhjhm.zoom.us/rec/share/Qsbf0KvG_5Y3GYHIU_bKwTN9qT5K0aurlJrvNp3i07y_G9DFzBMFhHYibq78StxH.VUCQQSkNOtRtGWmA?startTime=1681134087000">video supplement</a> to learn more about what motivated this discussion of Stata editions.</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> nhanes
+<span class="k">program</span> define nhanes 
+<span class="k">    </span>
+<span class="k">	preserve</span> 
+<span class="k">	    </span>
+<span class="k">		qui</span> {
+<span class="k">			</span>
+<span class="k">			if</span> <span class="m">0</span> { <span class="c1">//background:r(mean) </span>
+				
+				<span class="m">1</span>. Stata<span class="o">/</span>BE or IC
+				<span class="m">2</span>. <span class="nf">c</span>(k) <span class="o">&lt;</span> <span class="m">2048</span>
+				<span class="m">3</span>. exam<span class="m">.</span>DAT: <span class="nf">c</span>(k) <span class="o">==</span> <span class="m">2368</span>
+				<span class="m">4</span>. inaccessible to jhustata
+				<span class="m">5</span>.<span class="k"> program</span> to grant access
+				
+			}
+<span class="k">			</span>
+<span class="k">			if</span> <span class="m">1</span> { <span class="c1">//methods:$keepvars</span>
+<span class="k">				</span>
+<span class="k">				timer on</span> <span class="m">1</span>
+<span class="k">				</span>
+<span class="k">				global</span> github https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>
+<span class="k">				global</span> jhustata jhustata<span class="o">/</span>book<span class="o">/</span>main<span class="o">/</span>
+<span class="k">				global</span> keepvars HSAGEIR BMPHT BMPWT HAZA8AK1 CEP GHP HAB1
+<span class="k">				</span>
+<span class="k">				timer</span> off <span class="m">1</span>
+											
+			}
+<span class="k">			</span>
+<span class="k">			if</span> <span class="m">2</span> { <span class="c1">//results:.dofiles</span>
+<span class="k">			</span>
+<span class="k">			    timer on</span> <span class="m">2</span>
+<span class="k">				</span>
+<span class="k">				clear</span>
+<span class="k">				</span>
+<span class="k">				do</span> <span class="vg">${github}${$jhustata}</span>nh3mort<span class="m">.</span>do 
+<span class="k">				</span>
+<span class="k">				if</span> <span class="nf">c</span>(edition_real) <span class="o">==</span> <span class="s">&quot;BE&quot;</span>  | <span class="nf">c</span>(edition_real) <span class="o">==</span> <span class="s">&quot;IC&quot;</span> {
+<span class="k">					</span>
+<span class="k">					clear</span> 
+<span class="k">					</span>
+<span class="k">					do</span> <span class="vg">${github}${$jhustata}</span>nhanes<span class="o">-</span>alpha<span class="o">-</span>if2<span class="m">.</span>do 
+					
+				}
+<span class="k">				</span>
+<span class="k">				else</span> { 
+<span class="k">					</span>
+<span class="k">					clear</span> 
+<span class="k">					</span>
+<span class="k">					do</span> <span class="vg">${github}${$jhustata}</span>nhanes<span class="o">-</span>alpha<span class="o">-</span>if0<span class="m">.</span>do
+					
+				}
+<span class="k">				</span>
+<span class="k">				</span>
+<span class="k">				timer</span> off <span class="m">2</span>
+				
+			}
+<span class="k">			</span>
+<span class="k">			if</span> <span class="m">3</span> { <span class="c1">//conclusions:queueing</span>
+<span class="k">			</span>
+<span class="k">			    timer on</span> <span class="m">3</span>
+<span class="k">			</span>
+<span class="k">			    timer on</span> <span class="m">31</span>
+<span class="k">				clear</span>
+<span class="k">				do</span> adult<span class="m">.</span>do
+<span class="k">				rename</span> <span class="o">*</span>,lower
+<span class="k">				save</span> adult<span class="m">.</span>dta,replace 
+<span class="k">				timer</span> off <span class="m">31</span>
+<span class="k">				</span>
+<span class="k">				timer on</span> <span class="m">32</span>
+<span class="k">				clear</span> 
+<span class="k">				do</span> exam<span class="m">.</span>do
+<span class="k">				rename</span> <span class="o">*</span>,lower
+<span class="k">				save</span> exam<span class="m">.</span>dta,replace 
+<span class="k">				timer</span> off <span class="m">32</span>
+<span class="k">				</span>
+<span class="k">				timer on</span> <span class="m">33</span>
+<span class="k">				clear</span>
+<span class="k">				do lab</span><span class="m">.</span>do
+<span class="k">				rename</span> <span class="o">*</span>,lower
+<span class="k">				save lab</span><span class="m">.</span>dta,replace 
+<span class="k">				timer</span> off <span class="m">33</span>
+<span class="k">				</span>
+<span class="k">				timer</span> off <span class="m">3</span>
+				
+			}
+
+<span class="k">			if</span> <span class="m">4</span> { <span class="c1">//acknowledge:linkage</span>
+<span class="k">				</span>
+<span class="k">				timer on</span> <span class="m">4</span>
+<span class="k">				</span>
+<span class="k">				use</span> adult,<span class="k"> clear</span>
+<span class="k">				merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using exam,nogen
+<span class="k">				merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using<span class="k"> lab</span>,nogen
+<span class="k">				merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using nh3mort,nogen<span class="k"> keep</span>(matched)
+<span class="k">				</span>
+<span class="k">				timer</span> off <span class="m">4</span>
+				
+			}
+<span class="k">			</span>
+<span class="k">			if</span> <span class="m">5</span> { <span class="c1">//reference:dataset4class</span>
+<span class="k">				</span>
+<span class="k">				timer on</span> <span class="m">5</span>
+<span class="k">				</span>
+<span class="k">				compress</span>
+<span class="k">				lab</span> dat <span class="s">&quot;NHANES 1988-1994, survey &amp; mortality&quot;</span>
+<span class="k">				save</span> <span class="s">&quot;nh3andmort.dta&quot;</span>,<span class="k"> replace</span> 
+<span class="k">				</span>
+<span class="k">				timer</span> off <span class="m">5</span>
+				
+			}
+<span class="k">			</span>
+<span class="k">			if</span> <span class="m">6</span> { <span class="c1">//task001:survivalanalysis</span>
+<span class="k">				</span>
+<span class="k">				timer on</span> <span class="m">6</span>
+<span class="k">				</span>
+<span class="k">        		lookfor</span> mort
+<span class="k">        		codebook</span> mortstat
+<span class="k">        		lookfor</span> follow
+<span class="k">        		g</span> years=permth_exm<span class="o">/</span><span class="m">12</span>
+
+<span class="k">        		lookfor</span> health
+<span class="k">        		codebook</span> hab1
+<span class="k">        		global</span> subgroup:<span class="k"> var lab</span> hab1
+<span class="k">    </span>
+<span class="k">        		stset</span> years, fail(mortstat)
+
+        		#delimit ;
+<span class="k">        		sts graph if</span> <span class="nf">inrange</span>(hab1,<span class="m">1</span>,<span class="m">5</span>),
+<span class="k">        		   by</span>(hab1)
+        		   fail
+        		   ti(<span class="s">&quot;Mortality in NHANES III&quot;</span>,pos(<span class="m">11</span>))
+        		   subti(<span class="s">&quot;by self report: </span><span class="vg">${subgroup}</span><span class="s">&quot;</span>,pos(<span class="m">11</span>))
+        		   yti(<span class="s">&quot;%&quot;</span>,orientation(horizontal))
+        		   xti(<span class="s">&quot;Years&quot;</span>)
+        		   per(<span class="m">100</span>)
+        		   ylab(<span class="m">0</span>(<span class="m">20</span>)<span class="m">80</span>,
+<span class="k">        		       format</span>(<span class="nx">%3.0f</span>)
+        		       angle(<span class="m">360</span>)
+        		   )
+        		   legend(on
+<span class="k">        		       lab</span>(<span class="m">1</span> <span class="s">&quot;Excellent&quot;</span>)
+<span class="k">        		       lab</span>(<span class="m">2</span> <span class="s">&quot;Good&quot;</span>)
+<span class="k">        		       lab</span>(<span class="m">3</span> <span class="s">&quot;Fair&quot;</span>)
+<span class="k">        		       lab</span>(<span class="m">4</span> <span class="s">&quot;Bad&quot;</span>)
+<span class="k">        		       lab</span>(<span class="m">5</span> <span class="s">&quot;Poor&quot;</span>)
+        		       ring(<span class="m">0</span>)
+        		       pos(<span class="m">11</span>)
+        		       col(<span class="m">1</span>)
+<span class="k">        		       order</span>(<span class="m">5</span> <span class="m">4</span> <span class="m">3</span> <span class="m">2</span> <span class="m">1</span>)
+        		   )
+<span class="k">        		   note</span>(<span class="s">&quot;Source: RDC/NCHS/CDC/DHHS&quot;</span>)  
+        		;
+        		#delimit cr
+<span class="k">        		</span>
+<span class="k">        		graph</span> export nh3andmort<span class="m">.</span>png,replace 
+<span class="k">        		</span>
+<span class="k">        		stcox</span> i<span class="m">.</span>hab1<span class="k"> if</span> <span class="nf">inrange</span>(hab1,<span class="m">1</span>,<span class="m">5</span>)
+<span class="k">		</span>
+<span class="k">		</span>
+<span class="k">				timer</span> off <span class="m">6</span>
+				
+			}
+<span class="k">			</span>
+<span class="k">			noi timer list</span> 
+			
+		}
+<span class="k">			</span>
+<span class="k">	restore</span> 
+<span class="k">	</span>
+<span class="k">end</span> 
+
+nhanes 
+       
+</pre></div>
+</div>
+<p>Code-block <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">6</span> <span class="pre">{</span></code> can be reused in any future survival analysis, with a few edits. You may accumulate a catalog of such codeblocks for your personal use or for sharing with others. Here I catalog this codeblock as <code class="docutils literal notranslate"><span class="pre">task001</span></code> for future reference. Another generalizable codeblock may be labelled <code class="docutils literal notranslate"><span class="pre">task002</span></code>.</p>
+<ol class="arabic simple" start="2">
+<li><p>Explore the versatility of macros:</p></li>
+</ol>
+<p>Now let’s explore return values, macros, and our first programs with <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code>:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">    sum</span> hsageir 
+<span class="k">    return list</span>
+</pre></div>
+</div>
+<p>Let’s add a slight variation to this theme:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">    sum</span> hsageir, detail
+<span class="k">    return list</span>
+</pre></div>
+</div>
+<p>Display some of these summary statistics within a sentence</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="s">&quot;In this population of </span><span class="nv">`r(N)&#39;</span><span class="s"> adult participants identified from NHANES III, the median age was </span><span class="nv">`r(p50)&#39;</span><span class="s"> years (IQR, </span><span class="nv">`r(p25)&#39;</span><span class="s">-</span><span class="nv">`r(p75)&#39;</span><span class="s">)&quot;</span>
+</pre></div>
+</div>
+<p>Whatever is held within a backquote (just below the esc key) and a forward quote is a <code class="docutils literal notranslate"><span class="pre">local</span></code> macro.
+And what is punctuated with a dollar sign is a <code class="docutils literal notranslate"><span class="pre">global</span></code> macro.
+Please scroll down this <a class="reference external" href="https://www.stata.com/manuals/pmacro.pdf">Stata document</a> for a formal definition of these two types of macros.
+Some local macros will be defined by the user with a <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">name</span></code> command syntax.
+But in other scenarios local macros will automatically be generated by Stata.
+Think of the commands <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">foreach</span></code>, <code class="docutils literal notranslate"><span class="pre">forvalues</span></code>, etc.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> v of<span class="k"> varlist</span> hsageir bmpht bmpwt haza8ak1 cep ghp  {
+
+<span class="k">    qui summ</span> <span class="nv">`v&#39;</span>, detail
+<span class="k">    di</span> <span class="s">&quot;The median </span><span class="nv">`v&#39;</span><span class="s"> is </span><span class="nv">`r(p50)&#39;</span><span class="s"> (IQR, </span><span class="nv">`r(p25)&#39;</span><span class="s">-</span><span class="nv">`r(p75)&#39;</span><span class="s">)&quot;</span>
+
+}
+</pre></div>
+</div>
+<p>In the above example “v” fits the Stata definition of a local macro.
+And we gave it its name in the <code class="docutils literal notranslate"><span class="pre">foreach</span> <span class="pre">v</span></code> statement.
+Let’s make the above output more appealing by naming a few macros (syntax: <code class="docutils literal notranslate"><span class="pre">local</span></code> name) and defining their content (syntax: <code class="docutils literal notranslate"><span class="pre">local</span></code> name: di “something” or <code class="docutils literal notranslate"><span class="pre">local</span></code> name = 3)</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> v of<span class="k"> varlist</span> hsageir bmpht bmpwt haza8ak1 cep ghp  {
+
+<span class="k">    qui summ</span> <span class="nv">`v&#39;</span>, detail
+<span class="k">    local</span> p25:<span class="k"> di</span> <span class="nx">%5.1f</span> <span class="nf">r</span>(p25)
+<span class="k">    local</span> p50:<span class="k"> di</span> <span class="nx">%5.1f</span> <span class="nf">r</span>(p50)
+<span class="k">    local</span> p75:<span class="k"> di</span> <span class="nx">%5.1f</span> <span class="nf">r</span>(p75) 
+<span class="k">    di</span> <span class="s">&quot;The median </span><span class="nv">`v&#39;</span><span class="s"> is </span><span class="nv">`p50&#39;</span><span class="s"> (IQR, </span><span class="nv">`p25&#39;</span><span class="s">-</span><span class="nv">`p75&#39;</span><span class="s">)&quot;</span>
+
+}
+</pre></div>
+</div>
+<p>In the above example we have replaced the return values, <code class="docutils literal notranslate"><span class="pre">r()</span></code>, with three new macros: <code class="docutils literal notranslate"><span class="pre">p50</span></code>, <code class="docutils literal notranslate"><span class="pre">p25</span></code>, and <code class="docutils literal notranslate"><span class="pre">p75</span></code>. The content of these macros is essentially a format of display (<code class="docutils literal notranslate"><span class="pre">%5.1f</span></code>). We immediately witness the effect of these macros on the output. Let’s delve a little more into the aesthetics of the output:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> v of<span class="k"> varlist</span> hsageir bmpht bmpwt haza8ak1 cep ghp  {
+
+<span class="k">    qui summ</span> <span class="nv">`v&#39;</span>, detail
+<span class="k">    local</span> m_iqr:<span class="k"> di</span>  <span class="nx">%5.1f</span> _col(<span class="m">30</span>) <span class="nf">r</span>(p50) <span class="s">&quot; (IQR, &quot;</span> <span class="nx">%5.1f</span> <span class="nf">r</span>(p25) <span class="s">&quot;-&quot;</span> <span class="nx">%5.1f</span> <span class="nf">r</span>(p75) <span class="s">&quot;)&quot;</span>
+<span class="k">    di</span> <span class="s">&quot;The median </span><span class="nv">`v&#39;</span><span class="s"> is </span><span class="nv">`m_iqr&#39;</span><span class="s">&quot;</span>
+
+}
+</pre></div>
+</div>
+<p>Much better. But one more thing…</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">rename</span> (hsageir bmpht bmpwt haza8ak1 cep ghp)(Age Height Weight SBP SCreat HbA1c)
+
+<span class="k">foreach</span> v of<span class="k"> varlist</span> Age Height Weight SBP SCreat HbA1c  {
+
+<span class="k">    qui summ</span> <span class="nv">`v&#39;</span>, detail
+<span class="k">    local</span> m_iqr:<span class="k"> di</span>  <span class="nx">%5.1f</span> _col(<span class="m">30</span>) <span class="nf">r</span>(p50) <span class="s">&quot; (IQR, &quot;</span> <span class="nx">%5.1f</span> <span class="nf">r</span>(p25) <span class="s">&quot;-&quot;</span> <span class="nx">%5.1f</span> <span class="nf">r</span>(p75) <span class="s">&quot;)&quot;</span>
+<span class="k">    di</span> <span class="s">&quot;The median </span><span class="nv">`v&#39;</span><span class="s"> is </span><span class="nv">`m_iqr&#39;</span><span class="s">&quot;</span>
+
+}
+</pre></div>
+</div>
+<p>Finally something of publication quality!</p>
+<p>We have used a loop command to perform the same task over and over on different variables.
+These variables have all been <code class="docutils literal notranslate"><span class="pre">Continuous</span></code>. Do you want to perform a similar <code class="docutils literal notranslate"><span class="pre">loop</span></code> function on
+binary and multicategory variables? <code class="docutils literal notranslate"><span class="pre">Binary</span></code>: sex, history of hypertension, history of diabetes, history of smoking;
+<code class="docutils literal notranslate"><span class="pre">Multicategory</span></code>: race and education. This will be a nice way to look through the script from last weeks chapter: <code class="docutils literal notranslate"><span class="pre">pwd</span></code>.</p>
+<p>Meanwhile, amongst your several outputs from running the script that produced <code class="docutils literal notranslate"><span class="pre">nh3andmort.dta</span></code> is the figure below:</p>
+<p><img alt="" src="_images/nh3andmort.png" /></p>
+<p>Can you tell what content of this graph is specified by a macro?</p>
+<p>Let’s now move on to regression output. Lets set up the data for Cox regression:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   desc</span> permth_exm
+<span class="k">   g</span> years=permth_exm<span class="o">/</span><span class="m">12</span>
+</pre></div>
+</div>
+<p>We’ll use <code class="docutils literal notranslate"><span class="pre">years</span></code> as the time variable and <code class="docutils literal notranslate"><span class="pre">mortstat</span></code> as the event.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   stset</span> years, fail(mortstat)
+</pre></div>
+</div>
+<p>Now we are all set for Cox regression</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   stcox</span> i<span class="m">.</span>hab1<span class="k"> if</span> <span class="nf">inrange</span>(hab1,<span class="m">1</span>,<span class="m">5</span>)
+</pre></div>
+</div>
+<p>How may we extract return values following a regression model? Because of the potential for so many coefficients in regression, we have to specify which specific coefficient we are interested in, thus:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   lincom</span> _b[<span class="m">2.</span>hab1]
+<span class="k">   return list</span>
+<span class="k">   di</span> <span class="nf">exp</span>(<span class="nf">r</span>(estimate))
+</pre></div>
+</div>
+<p>This should look familiar: a command, return list, and the display of a select group of return values.</p>
+<p>Now lets do something a few of you may find parsimonious and delicious:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">stcox</span> i<span class="m">.</span>hab1<span class="k"> if</span> <span class="nf">inrange</span>(hab1,<span class="m">1</span>,<span class="m">5</span>)
+<span class="k">return list</span>
+<span class="k">matrix</span> define<span class="k"> m</span>=<span class="nf">r</span>(table)
+<span class="k">matrix list m</span>
+<span class="k">di m</span>[<span class="m">1</span>,<span class="m">2</span>]
+</pre></div>
+</div>
+<p>Hope you like that!</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">pwd</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">by</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abimereki Muzaale
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
