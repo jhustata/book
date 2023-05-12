@@ -486,7 +486,7 @@ Your .do file should include only one <code class="docutils literal notranslate"
 <li><p>See tip for <code class="docutils literal notranslate"><span class="pre">hw3</span></code> below</p></li>
 </ol>
 </div>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nf">c</span>(version)<span class="o">==</span><span class="m">18</span> { <span class="c1">//tip 4 hw3</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nf">c</span>(version)<span class="o">&gt;</span><span class="m">17</span> { <span class="c1">//tip 4 hw3</span>
 <span class="k">    set</span> scheme s2color
 }
 <span class="k">else</span> { <span class="c1">//stcolor is default in v18</span>

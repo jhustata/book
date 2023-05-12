@@ -143,7 +143,7 @@ What's new this week?
 ```
 
 ```stata
-if c(version)==18 { //tip 4 hw3
+if c(version)>17 { //tip 4 hw3
     set scheme s2color
 }
 else { //stcolor is default in v18
