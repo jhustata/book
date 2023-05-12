@@ -364,11 +364,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postfile">postfile</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-coefplot">alternative: coefplot</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strpos">strpos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">others</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.1 summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macros">7.2 macros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#science">7.3 science</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embed">7.4 embed</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#postfile">7.4.5 postfile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-coefplot">7.4.6 alternative: coefplot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counterfeiting">7.6 counterfeiting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rigor-vs-fraud">7.6.1 rigor vs. fraud</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">7.8 strings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">7.8.1 lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel">7.8.2 excel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">7.8.3 commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strpos">7.8.2.1 strpos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">7.9 others</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">7.10 dates</a></li>
 </ul>
             </nav>
         </div>
@@ -383,6 +399,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="local-v-di">
 <h1>local v: di<a class="headerlink" href="#local-v-di" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://jhjhm.zoom.us/rec/share/cu1-vaEksQgP1VJx11PoXhwrszVUDiv7sAJoaP3WxS03NhwU3a8QgsuU5eXSeabY.SwDOxQq5FGHIWRIK?startTime=1683833451000">video</a></p>
+<section id="summary">
+<h2>7.1 summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>Lets recap the last 7 weeks in the spirit of a <a class="reference external" href="https://en.wikipedia.org/wiki/Coda_(music)">coda</a>:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">help</span></code></p>
@@ -481,6 +499,9 @@ document.write(`
 <li><p>on your own, please go walk step-by-step, command-by-command, through the <code class="docutils literal notranslate"><span class="pre">twoway</span></code> examples offered</p></li>
 <li><p>think about <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">macro</span> <span class="pre">{</span></code> conditional code-blocks and your deployment of this artifice in future, very powerful Stata scripts!</p></li>
 </ul>
+</section>
+<section id="macros">
+<h2>7.2 macros<a class="headerlink" href="#macros" title="Permalink to this heading">#</a></h2>
 <p>Today we’ll circle back to the method emplyed throughout this class:</p>
 <ul class="simple">
 <li><p>defining macros</p></li>
@@ -488,6 +509,9 @@ document.write(`
 <li><p><a class="reference external" href="https://jhustata.github.io/book/ggg.html">embedding</a> them in strings, text, figures, and excel</p></li>
 <li><p>producing aesthically pleasing, richly informative output</p></li>
 </ul>
+</section>
+<section id="science">
+<h2>7.3 science<a class="headerlink" href="#science" title="Permalink to this heading">#</a></h2>
 <p>But to what end?</p>
 <ul class="simple">
 <li><p>the advanced Stata Programming class answers that question thus:</p>
@@ -559,6 +583,9 @@ document.write(`
 <li><p>stata</p></li>
 </ul>
 <p>In the <a class="reference external" href="https://jhustata.github.io/class700/intro.html">advanced</a> <a class="reference external" href="https://www.jhsph.edu/courses/course/37447/2022/340.700.71/advanced-stata-programming">class</a> we merge these ideas and publish our analyses and documentation (roll over<a class="reference external" href="https://www.youtube.com/watch?v=kKlzUKLOm_U">,</a> annotation) online via <a class="reference external" href="https://pages.github.com">gh-pages</a>!!!</p>
+</section>
+<section id="embed">
+<h2>7.4 embed<a class="headerlink" href="#embed" title="Permalink to this heading">#</a></h2>
 <p>Output</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local macro</span>:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(mean)<span class="o">*</span><span class="m">100</span>
 </pre></div>
@@ -606,7 +633,7 @@ document.write(`
 </li>
 </ul>
 <section id="postfile">
-<h2>postfile<a class="headerlink" href="#postfile" title="Permalink to this heading">#</a></h2>
+<h3>7.4.5 postfile<a class="headerlink" href="#postfile" title="Permalink to this heading">#</a></h3>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 <span class="k">sum</span> peak_pra,d
 <span class="k">g</span> highpra=peak_pra<span class="o">&gt;</span><span class="nf">r</span>(p90)
@@ -663,7 +690,7 @@ document.write(`
 <p><img alt="" src="_images/logistic.png" /></p>
 </section>
 <section id="alternative-coefplot">
-<h2>alternative: coefplot<a class="headerlink" href="#alternative-coefplot" title="Permalink to this heading">#</a></h2>
+<h3>7.4.6 alternative: coefplot<a class="headerlink" href="#alternative-coefplot" title="Permalink to this heading">#</a></h3>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
 <span class="k">sum</span> peak_pra,d
 <span class="k">g</span> highpra=peak_pra<span class="o">&gt;</span><span class="nf">r</span>(p90)
@@ -685,7 +712,13 @@ coefplot male female,<span class="k"> drop</span>(_cons) xline(<span class="m">0
 </pre></div>
 </div>
 <p><img alt="" src="_images/coefplot.png" /></p>
+</section>
+</section>
+<section id="counterfeiting">
+<h2>7.6 counterfeiting<a class="headerlink" href="#counterfeiting" title="Permalink to this heading">#</a></h2>
 <p>A word on <strong>simulation</strong>:</p>
+<section id="rigor-vs-fraud">
+<h3>7.6.1 rigor vs. fraud<a class="headerlink" href="#rigor-vs-fraud" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>worth developing skills</p></li>
 <li><p>making up data</p></li>
@@ -855,6 +888,10 @@ coefplot male female,<span class="k"> drop</span>(_cons) xline(<span class="m">0
 }		
 </pre></div>
 </div>
+</section>
+</section>
+<section id="strings">
+<h2>7.8 strings<a class="headerlink" href="#strings" title="Permalink to this heading">#</a></h2>
 <p>Handling <strong>strings</strong> such as drug names:</p>
 <ul class="simple">
 <li><p>We’ll review a script I wrote 4 years ago</p></li>
@@ -867,6 +904,8 @@ coefplot male female,<span class="k"> drop</span>(_cons) xline(<span class="m">0
 </ul>
 </li>
 </ul>
+<section id="lists">
+<h3>7.8.1 lists<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h3>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import excel <span class="s">&quot;1-first gen antihisitamines.xlsx&quot;</span>, sheet(<span class="s">&quot;de-duplicated list&quot;</span>)<span class="k"> clear</span>
 <span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
 <span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
@@ -1493,6 +1532,9 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 }
 </pre></div>
 </div>
+</section>
+<section id="excel">
+<h3>7.8.2 excel<a class="headerlink" href="#excel" title="Permalink to this heading">#</a></h3>
 <p>Download these .xlsx files into the <code class="docutils literal notranslate"><span class="pre">pwd</span></code> for the above scripts to work:</p>
 <p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/1-first%20gen%20antihisitamines.xlsx">1-first gen antihisitamines</a></p>
 <p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/2-antiparkinsonian%20agents.xlsx">2-antiparkinsonian agents</a></p>
@@ -1514,7 +1556,9 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 <p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/18-Insulin.xlsx">18-Insulin</a></p>
 <p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/19-Sulfonylureas.xlsx">19-Sulfonylureas</a></p>
 <p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/20-38.xlsx">20-38</a></p>
-<p>commands:</p>
+</section>
+<section id="commands">
+<h3>7.8.3 commands<a class="headerlink" href="#commands" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">strpos</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">word</span></code></p></li>
@@ -1523,7 +1567,7 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 </ul>
 </section>
 <section id="strpos">
-<h2>strpos<a class="headerlink" href="#strpos" title="Permalink to this heading">#</a></h2>
+<h3>7.8.2.1 strpos<a class="headerlink" href="#strpos" title="Permalink to this heading">#</a></h3>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="s">&quot;</span><span class="vg">$S_TIME</span><span class="s">&quot;</span>
 <span class="k">clear</span>
 <span class="k">set more</span> off
@@ -1584,8 +1628,9 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 </pre></div>
 </div>
 </section>
+</section>
 <section id="others">
-<h2>others<a class="headerlink" href="#others" title="Permalink to this heading">#</a></h2>
+<h2>7.9 others<a class="headerlink" href="#others" title="Permalink to this heading">#</a></h2>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>
 //explore these commands sequentially, on your own
 use transplants, clear
@@ -1607,7 +1652,7 @@ tab ext if regexm(ext, &quot;HIV.*Y&quot;)
 </div>
 </section>
 <section id="dates">
-<h2>dates<a class="headerlink" href="#dates" title="Permalink to this heading">#</a></h2>
+<h2>7.10 dates<a class="headerlink" href="#dates" title="Permalink to this heading">#</a></h2>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">disp</span> <span class="nx">%td</span> <span class="m">19400</span> 11feb2013
 <span class="k">disp</span> <span class="nx">%td</span> <span class="m">366</span> 01jan1961
 <span class="k">disp</span> <span class="nx">%td</span> <span class="o">-</span><span class="m">5</span> 27dec1959
@@ -1695,11 +1740,27 @@ tab ext if regexm(ext, &quot;HIV.*Y&quot;)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postfile">postfile</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-coefplot">alternative: coefplot</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strpos">strpos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">others</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.1 summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macros">7.2 macros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#science">7.3 science</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embed">7.4 embed</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#postfile">7.4.5 postfile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-coefplot">7.4.6 alternative: coefplot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counterfeiting">7.6 counterfeiting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rigor-vs-fraud">7.6.1 rigor vs. fraud</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">7.8 strings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">7.8.1 lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel">7.8.2 excel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">7.8.3 commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strpos">7.8.2.1 strpos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">7.9 others</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">7.10 dates</a></li>
 </ul>
   </nav></div>
 
