@@ -38,10 +38,10 @@ graph export histnormal.png, replace
 
 ## 8.3 punchline
 ```stata
-if c(version)==18 { //tip 4 hw3
+if c(version)>17 { //tip 4 hw3
     set scheme s2color
 }
-else { stcolor is default in v18
+else { //stcolor is default in v18
     di "you're good to go!"
 }
 ```
