@@ -483,7 +483,16 @@ Your .do file should include only one <code class="docutils literal notranslate"
 <li><p>Wish to TA Stata Programming in the <a class="reference external" href="https://www.jhsph.edu/courses/course/36927/2023/340.600.49/stata-programming">Summer Institute</a>? Let me know!</p></li>
 <li><p>Video for chapter: <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">v:</span> <span class="pre">di</span></code> has gone live!</p></li>
 <li><p>Graduating students cannot submit <code class="docutils literal notranslate"><span class="pre">hw3</span></code> beyond May 18 since your grades are due in the Academic registrars office by 4pm May 19.</p></li>
+<li><p>See tip for <code class="docutils literal notranslate"><span class="pre">hw3</span></code> below</p></li>
 </ol>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nf">c</span>(version)<span class="o">==</span><span class="m">18</span> { <span class="c1">//tip 4 hw3</span>
+<span class="k">    set</span> scheme s2color
+}
+<span class="k">else</span> { <span class="c1">//stcolor is default in v18</span>
+<span class="k">    di</span> <span class="s">&quot;you&#39;re good to go!&quot;</span>
+}
+</pre></div>
 </div>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id3" role="note">

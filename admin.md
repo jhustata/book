@@ -137,10 +137,19 @@ What's new this week?
 1. Wish to TA Stata Programming in the [Summer Institute](https://www.jhsph.edu/courses/course/36927/2023/340.600.49/stata-programming)? Let me know! 
 2. Video for chapter: `local v: di` has gone live! 
 3. Graduating students cannot submit `hw3` beyond May 18 since your grades are due in the Academic registrars office by 4pm May 19. 
+4. See tip for `hw3` below
 
 
 ```
 
+```stata
+if c(version)==18 { //tip 4 hw3
+    set scheme s2color
+}
+else { //stcolor is default in v18
+    di "you're good to go!"
+}
+```
 
 [^1]: see chapter: [`net search`](zzz.md) for source code
 [^2]: see chapter: [`net search`](zzz.md) for more on NHANES

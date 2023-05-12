@@ -374,6 +374,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counterfeiting">7.6 counterfeiting</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rigor-vs-fraud">7.6.1 rigor vs. fraud</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#didactic">7.6.2 didactic</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">7.8 strings</a><ul class="nav section-nav flex-column">
@@ -590,25 +591,25 @@ document.write(`
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local macro</span>:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(mean)<span class="o">*</span><span class="m">100</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Text</p>
 <ul>
-<li><p>“You may embed a <code class="docutils literal notranslate"><span class="pre">macro</span></code> in text”</p></li>
+<li><p>Text</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">di</span></code> “You may embed a <code class="docutils literal notranslate"><span class="pre">macro</span></code> in text”</p></li>
 </ul>
 </li>
 <li><p>Figures</p>
-<ul>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">line</span></code> y x, text(50 18 “<code class="docutils literal notranslate"><span class="pre">macro</span></code>”)</p></li>
 </ul>
 </li>
 <li><p>Excel</p>
-<ul>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">putexcel</span></code> set filename, replace</p></li>
-<li><p>putexcel B2=”<code class="docutils literal notranslate"><span class="pre">macro</span></code>”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">putexcel</span></code> B2=(”<code class="docutils literal notranslate"><span class="pre">macro</span></code>”)</p></li>
 </ul>
 </li>
 <li><p>Word</p>
-<ul>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span> <span class="pre">clear</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span> <span class="pre">begin</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">putdocx</span></code> paragraph</p></li>
@@ -617,7 +618,7 @@ document.write(`
 </ul>
 </li>
 <li><p>Dataset</p>
-<ul>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">postfile</span></code> regcoeffs b1 b2 b3 using regoutput, replace</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">postfile</span></code> regcoeffs () () ()</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">postfile</span></code> regcoeffs () () ()</p></li>
@@ -626,9 +627,15 @@ document.write(`
 </ul>
 </li>
 <li><p>Markdown</p>
-<ul>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">dyndoc</span></code></p></li>
-<li><p>html</p></li>
+</ul>
+<ul class="simple">
+<li><p>.md</p></li>
+<li><p>.html</p></li>
+<li><p>LaTeX</p></li>
+<li><p>.css</p></li>
+<li><p>JavaScript</p></li>
 </ul>
 </li>
 </ul>
@@ -725,14 +732,21 @@ coefplot male female,<span class="k"> drop</span>(_cons) xline(<span class="m">0
 <li><p>imaginary scenarios</p></li>
 <li><p>and why would one do that?</p>
 <ul>
-<li><p>missing data</p></li>
-<li><p>bootstrap</p></li>
+<li><p>randomization (e.g. student -&gt; TA in this class; study pop -&gt; Rx group in clinical trial)</p></li>
+<li><p>missing data (imputation)</p></li>
+<li><p>bootstrap (the most robust way to estimate error for <u><strong>any</strong></u> statistic)</p></li>
 <li><p>cryptography/disclosure risk</p></li>
 <li><p>sample-size calculation (variant on missing data)</p></li>
-<li><p>etc.</p></li>
+<li><p>engineering, reverse engineering</p></li>
+<li><p>counterfeiting reality for fraudulent purposes</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Adversarial_machine_learning">adversarial training</a> against sophisticated counterfeits</p></li>
+<li><p>didactic purposes for <em>any</em> of the above :)</p></li>
 </ul>
 </li>
 </ul>
+</section>
+<section id="didactic">
+<h3>7.6.2 didactic<a class="headerlink" href="#didactic" title="Permalink to this heading">#</a></h3>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">	clear</span> 
 	cls
@@ -1750,6 +1764,7 @@ tab ext if regexm(ext, &quot;HIV.*Y&quot;)
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counterfeiting">7.6 counterfeiting</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rigor-vs-fraud">7.6.1 rigor vs. fraud</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#didactic">7.6.2 didactic</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">7.8 strings</a><ul class="nav section-nav flex-column">
