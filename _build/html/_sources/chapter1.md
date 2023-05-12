@@ -3,8 +3,8 @@
 
 Session 1 videos: 
 
-1. [video1](https://www.dropbox.com/s/lvbn9c2xle8qpln/pwd1.mp4?dl=0?raw=1) 03/30/2023
-2. [video2](https://www.dropbox.com/s/swq5a16dvyd2wz5/pwd2.mp4?dl=0?raw=1) 03/30/2023
+1. video1 03/30/2023 (on courseplus)
+2. video2 03/30/2023 (on courseplus)
 3. [profile.do](https://jhjhm.zoom.us/rec/share/5HbRh5ALkXawkMaSsITWGJnPN3vZZJWVp9EjxgFXZiGkduS2S55VgmBTl1Bf88PD.D2VIFqpidjNeh7A8?startTime=1680959893000) Optional
 4. [video](https://jhjhm.zoom.us/rec/share/NBtdk4SUC-ra9q7_tuGZEjuwS6o8cjB8U2dBnc_hSV7jM8joxdhlQ2ebQc8cILE2.GlIilOilIbw2w9tQ?startTime=1682019152000) 04/20/2023 Includes exercise in debugging & use of `c(pwd)'
 
