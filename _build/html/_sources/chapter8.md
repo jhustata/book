@@ -78,11 +78,11 @@ qui {
 			)
 		    freq 
 			normal 
-			fcolor(midblue%40) 
+			fcolor(orange%40) 
 			addplot(hist flair_20, 
 			    freq 
 				lpattern(solid) 
-				fcolor(orange%50)
+				fcolor(midblue%50)
 			)
 		;
 		graph export transparency.png, replace ;
@@ -134,11 +134,11 @@ qui {
 			)
 		    freq 
 			normal 
-			fcolor(midblue%40) 
+			fcolor(orange%40) 
 			addplot(hist flair_20, 
 			    freq 
 				lpattern(solid) 
-				fcolor(orange%50)
+				fcolor(midblue%50)
 			)
 		;
 		graph export transparency.png, replace ;
@@ -159,7 +159,7 @@ else { //stcolor is default in v18
 }
 ```
 
-## 8.6
+## 8.6 chatGPT
 
 **Yours truly:** share 20 unique conditional if code-blocks in Stata. Use a publicly available dataset to demonstrate these
 
@@ -172,7 +172,8 @@ Example selected by chatGPT: auto
 global url https://www.stata-press.com/data/r8/
 ```
 
-<u>ChatGPT May12 Version<u>: 
+**ChatGPT May12 Version**: 
+
 Sure! Here are 20 unique conditional code-blocks in Stata using the publicly available "auto" dataset:
 
 1. Code-block with if statement and else statement:
