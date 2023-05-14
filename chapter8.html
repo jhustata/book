@@ -367,7 +367,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codetta">8.1 codetta</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stunning">8.2 stunning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transparency">8.3 transparency</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punchline">8.4 punchline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheme">8.4 scheme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punchline">8.5 punchline</a></li>
 </ul>
             </nav>
         </div>
@@ -415,42 +416,116 @@ document.write(`
 </section>
 <section id="transparency">
 <h2>8.3 transparency<a class="headerlink" href="#transparency" title="Permalink to this heading">#</a></h2>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>#delimit ;
-<span class="k">global</span> url1 https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>bcaffo<span class="o">/</span> ;
-<span class="k">global</span> url2 ds4bme_intro<span class="o">/</span>master<span class="o">/</span>data<span class="o">/</span> ;
-import delimited <span class="s">&quot;</span><span class="vg">${url1}${url2}</span><span class="s">oasis.csv&quot;</span>,<span class="k"> clear</span> ;
-<span class="k">hist</span> flair_10, 
-    legend(on
-	    ti(<span class="s">&quot;Gold Lesions&quot;</span>)
-	    ring(<span class="m">0</span>)
-		pos(<span class="m">3</span>)
-		col(<span class="m">2</span>)
-<span class="k">		</span>
-<span class="k">		lab</span>(<span class="m">1</span> <span class="s">&quot;Yes&quot;</span>)
-<span class="k">		lab</span>(<span class="m">2</span> <span class="s">&quot;Simulation&quot;</span>)
-<span class="k">		lab</span>(<span class="m">3</span> <span class="s">&quot;No&quot;</span>)
-	)
-	xti(<span class="s">&quot;Flair&quot;</span>)
-	yti(<span class="s">&quot;N&quot;</span>,
-	    orientation(horizontal)
-	)
-    freq 
-	normal 
-	fcolor(midblue%<span class="m">40</span>) 
-	addplot(hist flair_20, 
-	    freq 
-		lpattern(solid) 
-		fcolor(orange%<span class="m">50</span>)
-	)
-;
-<span class="k">graph</span> export transparency<span class="m">.</span>png,<span class="k"> replace</span> 
-#delimit cr
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">	clear</span>
+<span class="k">	if</span> _N {
+		fcolor option is really neat
+		when overlaying histograms
+<span class="k">		one</span> doesn&#39;t coverup the other
+	}
+<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="m">0</span> {
+<span class="k">		global</span> url1 https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>bcaffo<span class="o">/</span>
+<span class="k">		global</span> url2 ds4bme_intro<span class="o">/</span>master<span class="o">/</span>data<span class="o">/</span>
+<span class="k">		if</span> <span class="nf">c</span>(version)<span class="o">&gt;</span><span class="m">17</span> {
+<span class="k">			di</span> <span class="s">&quot;you&#39;re good to go&quot;</span>
+	    }
+<span class="k">	    else</span> {
+<span class="k">		    set</span> scheme stcolor
+	    }
+	}
+<span class="k">	if</span> _N<span class="o">&lt;</span><span class="m">1</span> {
+		import delimited <span class="s">&quot;</span><span class="vg">${url1}${url2}</span><span class="s">oasis.csv&quot;</span>,<span class="k"> clear</span>
+	}
+<span class="k">	if</span> _N {
+		#delimit ;
+<span class="k">		hist</span> flair_10, 
+		    legend(on
+			    ti(<span class="s">&quot;Gold Lesions&quot;</span>)
+			    ring(<span class="m">0</span>)
+				pos(<span class="m">3</span>)
+				col(<span class="m">2</span>)
+<span class="k">				lab</span>(<span class="m">1</span> <span class="s">&quot;Yes&quot;</span>)
+<span class="k">				lab</span>(<span class="m">2</span> <span class="s">&quot;Simulation&quot;</span>)
+<span class="k">				lab</span>(<span class="m">3</span> <span class="s">&quot;No&quot;</span>)
+			)
+			xti(<span class="s">&quot;Flair&quot;</span>)
+			yti(<span class="s">&quot;N&quot;</span>,
+			    orientation(horizontal)
+			)
+		    freq 
+			normal 
+			fcolor(midblue%<span class="m">40</span>) 
+			addplot(hist flair_20, 
+			    freq 
+				lpattern(solid) 
+				fcolor(orange%<span class="m">50</span>)
+			)
+		;
+<span class="k">		graph</span> export transparency<span class="m">.</span>png,<span class="k"> replace</span> ;
+		#delimit cr
+	}
+}
 </pre></div>
 </div>
 <p><img alt="" src="_images/transparency.png" /></p>
 </section>
+<section id="scheme">
+<h2>8.4 scheme<a class="headerlink" href="#scheme" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">	clear</span>
+<span class="k">	if</span> _N {
+		fcolor option is really neat
+		when overlaying histograms
+<span class="k">		one</span> doesn&#39;t coverup the other
+	}
+<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="m">0</span> {
+<span class="k">		global</span> url1 https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>bcaffo<span class="o">/</span>
+<span class="k">		global</span> url2 ds4bme_intro<span class="o">/</span>master<span class="o">/</span>data<span class="o">/</span>
+<span class="k">		if</span> <span class="nf">c</span>(version)<span class="o">&gt;</span><span class="m">17</span> {
+<span class="k">			set</span> scheme s2color
+	    }
+<span class="k">	    else</span> {
+<span class="k">		    noi di</span> <span class="s">&quot;you&#39;re good to go!&quot;</span>
+	    }
+	}
+<span class="k">	if</span> _N<span class="o">&lt;</span><span class="m">1</span> {
+		import delimited <span class="s">&quot;</span><span class="vg">${url1}${url2}</span><span class="s">oasis.csv&quot;</span>,<span class="k"> clear</span>
+	}
+<span class="k">	if</span> _N {
+		#delimit ;
+<span class="k">		hist</span> flair_10, 
+		    legend(on
+			    ti(<span class="s">&quot;Gold Lesions&quot;</span>)
+			    ring(<span class="m">0</span>)
+				pos(<span class="m">3</span>)
+				col(<span class="m">2</span>)
+<span class="k">				lab</span>(<span class="m">1</span> <span class="s">&quot;Yes&quot;</span>)
+<span class="k">				lab</span>(<span class="m">2</span> <span class="s">&quot;Simulation&quot;</span>)
+<span class="k">				lab</span>(<span class="m">3</span> <span class="s">&quot;No&quot;</span>)
+			)
+			xti(<span class="s">&quot;Flair&quot;</span>)
+			yti(<span class="s">&quot;N&quot;</span>,
+			    orientation(horizontal)
+			)
+		    freq 
+			normal 
+			fcolor(midblue%<span class="m">40</span>) 
+			addplot(hist flair_20, 
+			    freq 
+				lpattern(solid) 
+				fcolor(orange%<span class="m">50</span>)
+			)
+		;
+<span class="k">		graph</span> export transparency<span class="m">.</span>png,<span class="k"> replace</span> ;
+		#delimit cr
+	}
+}
+</pre></div>
+</div>
+<p><img alt="" src="_images/transparency_s2col.png" /></p>
+</section>
 <section id="punchline">
-<h2>8.4 punchline<a class="headerlink" href="#punchline" title="Permalink to this heading">#</a></h2>
+<h2>8.5 punchline<a class="headerlink" href="#punchline" title="Permalink to this heading">#</a></h2>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nf">c</span>(version)<span class="o">&gt;</span><span class="m">17</span> { <span class="c1">//tip 4 hw3</span>
 <span class="k">    set</span> scheme s2color
 }
@@ -532,7 +607,8 @@ import delimited <span class="s">&quot;</span><span class="vg">${url1}${url2}</s
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codetta">8.1 codetta</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stunning">8.2 stunning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transparency">8.3 transparency</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punchline">8.4 punchline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheme">8.4 scheme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punchline">8.5 punchline</a></li>
 </ul>
   </nav></div>
 
