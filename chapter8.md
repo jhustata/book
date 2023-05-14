@@ -40,41 +40,116 @@ graph export histnormal.png, replace
 
 ```stata
 
-#delimit ;
-global url1 https://raw.githubusercontent.com/bcaffo/ ;
-global url2 ds4bme_intro/master/data/ ;
-import delimited "${url1}${url2}oasis.csv", clear ;
-hist flair_10, 
-    legend(on
-	    ti("Gold Lesions")
-	    ring(0)
-		pos(3)
-		col(2)
-		
-		lab(1 "Yes")
-		lab(2 "Simulation")
-		lab(3 "No")
-	)
-	xti("Flair")
-	yti("N",
-	    orientation(horizontal)
-	)
-    freq 
-	normal 
-	fcolor(midblue%40) 
-	addplot(hist flair_20, 
-	    freq 
-		lpattern(solid) 
-		fcolor(orange%50)
-	)
-;
-graph export transparency.png, replace 
-#delimit cr
+qui {
+	clear
+	if _N {
+		fcolor option is really neat
+		when overlaying histograms
+		one doesn't coverup the other
+	}
+	if c(N)==0 {
+		global url1 https://raw.githubusercontent.com/bcaffo/
+		global url2 ds4bme_intro/master/data/
+		if c(version)>17 {
+			di "you're good to go"
+	    }
+	    else {
+		    set scheme stcolor
+	    }
+	}
+	if _N<1 {
+		import delimited "${url1}${url2}oasis.csv", clear
+	}
+	if _N {
+		#delimit ;
+		hist flair_10, 
+		    legend(on
+			    ti("Gold Lesions")
+			    ring(0)
+				pos(3)
+				col(2)
+				lab(1 "Yes")
+				lab(2 "Simulation")
+				lab(3 "No")
+			)
+			xti("Flair")
+			yti("N",
+			    orientation(horizontal)
+			)
+		    freq 
+			normal 
+			fcolor(midblue%40) 
+			addplot(hist flair_20, 
+			    freq 
+				lpattern(solid) 
+				fcolor(orange%50)
+			)
+		;
+		graph export transparency.png, replace ;
+		#delimit cr
+	}
+}
 ```
 
 ![](transparency.png)
 
-## 8.4 punchline
+## 8.4 scheme
+
+```stata
+qui {
+	clear
+	if _N {
+		fcolor option is really neat
+		when overlaying histograms
+		one doesn't coverup the other
+	}
+	if c(N)==0 {
+		global url1 https://raw.githubusercontent.com/bcaffo/
+		global url2 ds4bme_intro/master/data/
+		if c(version)>17 {
+			set scheme s2color
+	    }
+	    else {
+		    noi di "you're good to go!"
+	    }
+	}
+	if _N<1 {
+		import delimited "${url1}${url2}oasis.csv", clear
+	}
+	if _N {
+		#delimit ;
+		hist flair_10, 
+		    legend(on
+			    ti("Gold Lesions")
+			    ring(0)
+				pos(3)
+				col(2)
+				lab(1 "Yes")
+				lab(2 "Simulation")
+				lab(3 "No")
+			)
+			xti("Flair")
+			yti("N",
+			    orientation(horizontal)
+			)
+		    freq 
+			normal 
+			fcolor(midblue%40) 
+			addplot(hist flair_20, 
+			    freq 
+				lpattern(solid) 
+				fcolor(orange%50)
+			)
+		;
+		graph export transparency.png, replace ;
+		#delimit cr
+	}
+}
+```
+
+![](transparency_s2col.png)
+
+## 8.5 punchline
 ```stata
 if c(version)>17 { //tip 4 hw3
     set scheme s2color
