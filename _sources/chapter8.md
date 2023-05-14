@@ -159,6 +159,90 @@ else { //stcolor is default in v18
 }
 ```
 
+## 8.6
 
+**Yours truly:** share 20 unique conditional if code-blocks in Stata. Use a publicly available dataset to demonstrate these
 
+Refs:
 
+Publically available Stata [datasets](https://www.stata-press.com/data/r8/u.html)   
+Example selected by chatGPT: auto
+
+```Stata
+global url https://www.stata-press.com/data/r8/
+```
+
+<u>ChatGPT May12 Version<u>: 
+Sure! Here are 20 unique conditional code-blocks in Stata using the publicly available "auto" dataset:
+
+1. Code-block with if statement and else statement:
+
+```arduino
+use ${url}auto.dta //edited to include url
+if foreign == 1 {
+  list make
+}
+else {
+  list mpg
+}
+
+```
+
+This will list the make variable if the foreign variable is equal to 1, and the mpg variable otherwise.
+
+2. Code-block with if statement and else-if statement:
+
+```arduino
+if price < 15000 {
+  display "Budget car"
+}
+else if price < 25000 {
+  display "Mid-range car"
+}
+else {
+  display "Luxury car"
+}
+
+```
+
+This will display a message based on the price variable, indicating whether the car is a budget car, a mid-range car, or a luxury car.
+
+3. Code-block with nested if statements:
+
+```arduino
+if foreign == 1 {
+  if mpg < 25 {
+    display "High-performance foreign car"
+  }
+  else {
+    display "Foreign car"
+  }
+}
+else {
+  if mpg < 20 {
+    display "Gas-guzzling domestic car"
+  }
+  else {
+    display "Domestic car"
+  }
+}
+
+```
+
+This will display a message based on the foreign and mpg variables, indicating whether the car is a high-performance foreign car, a foreign car, a gas-guzzling domestic car, or a domestic car.
+
+$\vdots$
+
+8. Code-block with if statement and local macro:
+
+```bash
+local myvar "foreign"
+if "`myvar'" == "foreign" {
+  list make
+}
+else {
+  list mpg
+}
+```
+
+This will define a local macro called "myvar", and then use it in an if statement to determine whether to list the make or mpg variable.

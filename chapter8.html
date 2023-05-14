@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter8';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -369,6 +371,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transparency">8.3 transparency</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheme">8.4 scheme</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punchline">8.5 punchline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.6</a></li>
 </ul>
             </nav>
         </div>
@@ -535,6 +538,82 @@ document.write(`
 </pre></div>
 </div>
 </section>
+<section id="id1">
+<h2>8.6<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p><strong>Yours truly:</strong> share 20 unique conditional if code-blocks in Stata. Use a publicly available dataset to demonstrate these</p>
+<p>Refs:</p>
+<p>Publically available Stata <a class="reference external" href="https://www.stata-press.com/data/r8/u.html">datasets</a><br />
+Example selected by chatGPT: auto</p>
+<div class="highlight-Stata notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> url https:<span class="o">//</span>www<span class="m">.</span>stata<span class="o">-</span>press<span class="m">.</span>com<span class="o">/</span>data<span class="o">/</span>r8<span class="o">/</span>
+</pre></div>
+</div>
+<p><u>ChatGPT May12 Version<u>:
+Sure! Here are 20 unique conditional code-blocks in Stata using the publicly available “auto” dataset:</p>
+<ol class="arabic simple">
+<li><p>Code-block with if statement and else statement:</p></li>
+</ol>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="n">use</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">url</span><span class="p">}</span><span class="kr">auto</span><span class="p">.</span><span class="n">dta</span><span class="w"> </span><span class="c1">//edited to include url</span>
+<span class="k">if</span><span class="w"> </span><span class="n">foreign</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">list</span><span class="w"> </span><span class="n">make</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">list</span><span class="w"> </span><span class="n">mpg</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will list the make variable if the foreign variable is equal to 1, and the mpg variable otherwise.</p>
+<ol class="arabic simple" start="2">
+<li><p>Code-block with if statement and else-if statement:</p></li>
+</ol>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">15000</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">display</span><span class="w"> </span><span class="s">&quot;Budget car&quot;</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">25000</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">display</span><span class="w"> </span><span class="s">&quot;Mid-range car&quot;</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">display</span><span class="w"> </span><span class="s">&quot;Luxury car&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will display a message based on the price variable, indicating whether the car is a budget car, a mid-range car, or a luxury car.</p>
+<ol class="arabic simple" start="3">
+<li><p>Code-block with nested if statements:</p></li>
+</ol>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="n">foreign</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">mpg</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">display</span><span class="w"> </span><span class="s">&quot;High-performance foreign car&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">display</span><span class="w"> </span><span class="s">&quot;Foreign car&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">mpg</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">display</span><span class="w"> </span><span class="s">&quot;Gas-guzzling domestic car&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">display</span><span class="w"> </span><span class="s">&quot;Domestic car&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will display a message based on the foreign and mpg variables, indicating whether the car is a high-performance foreign car, a foreign car, a gas-guzzling domestic car, or a domestic car.</p>
+<p><span class="math notranslate nohighlight">\(\vdots\)</span></p>
+<ol class="arabic simple" start="8">
+<li><p>Code-block with if statement and local macro:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">local</span><span class="w"> </span>myvar<span class="w"> </span><span class="s2">&quot;foreign&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="s2">&quot;`myvar&#39;&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;foreign&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>list<span class="w"> </span>make
+<span class="o">}</span>
+<span class="k">else</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>list<span class="w"> </span>mpg
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>This will define a local macro called “myvar”, and then use it in an if statement to determine whether to list the make or mpg variable.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -609,6 +688,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transparency">8.3 transparency</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheme">8.4 scheme</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punchline">8.5 punchline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.6</a></li>
 </ul>
   </nav></div>
 
