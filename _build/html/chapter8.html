@@ -372,6 +372,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheme">8.4 scheme</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punchline">8.5 punchline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chatgpt">8.6 chatGPT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape">8.7 reshape</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wide">8.7.1 wide</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long">8.7.2 long</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isid">8.7.3 isid</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -620,6 +626,42 @@ Example selected by chatGPT: auto</p>
 </div>
 <p>This will define a local macro called “myvar”, and then use it in an if statement to determine whether to list the make or mpg variable.</p>
 </section>
+<section id="reshape">
+<h2>8.7 reshape<a class="headerlink" href="#reshape" title="Permalink to this heading">#</a></h2>
+<section id="wide">
+<h3>8.7.1 wide<a class="headerlink" href="#wide" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Baseline</p></li>
+<li><p>End</p></li>
+<li><p>Survival</p></li>
+<li><p>‘Twixt’: blackbox</p></li>
+</ul>
+</section>
+<section id="long">
+<h3>8.7.2 long<a class="headerlink" href="#long" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Time-varying covariates</p>
+<ul>
+<li><p>confounders</p></li>
+<li><p>mediators</p></li>
+<li><p>surrogate outcomes</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="isid">
+<h3>8.7.3 isid<a class="headerlink" href="#isid" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Quick way to determine whether a dataset is wide or long</p></li>
+</ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> hw2_pra_hist<span class="m">.</span>dta,<span class="k"> clear</span>
+<span class="k">ds</span> 
+<span class="k">codebook</span> px_id 
+<span class="k">isid</span> px_id
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -695,6 +737,12 @@ Example selected by chatGPT: auto</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheme">8.4 scheme</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punchline">8.5 punchline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chatgpt">8.6 chatGPT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape">8.7 reshape</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wide">8.7.1 wide</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long">8.7.2 long</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isid">8.7.3 isid</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
