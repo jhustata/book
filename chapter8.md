@@ -178,7 +178,8 @@ Sure! Here are 20 unique conditional code-blocks in Stata using the publicly ava
 
 1. Code-block with if statement and else statement:
 
-```arduino
+```stata
+
 use ${url}auto.dta //edited to include url
 local nobs=c(N)
 local nvars=c(k)
