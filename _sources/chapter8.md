@@ -180,6 +180,12 @@ Sure! Here are 20 unique conditional code-blocks in Stata using the publicly ava
 
 ```arduino
 use ${url}auto.dta //edited to include url
+local nobs=c(N)
+local nvars=c(k)
+webuse auto, clear
+if `nobs'==c(N) & `nvars'==c(k) {
+	di "'webuse' is an alternative to ${url}use"
+}
 if foreign == 1 {
   list make
 }
