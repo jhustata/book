@@ -552,20 +552,19 @@ Example selected by chatGPT: auto</p>
 <ol class="arabic simple">
 <li><p>Code-block with if statement and else statement:</p></li>
 </ol>
-<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span>use ${url}auto.dta //edited to include url
-local nobs=c(N)
-local nvars=c(k)
-webuse auto, clear
-if `nobs&#39;==c(N) &amp; `nvars&#39;==c(k) {
-	di &quot;&#39;webuse&#39; is an alternative to ${url}use&quot;
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="vg">${url}</span>auto<span class="m">.</span>dta <span class="c1">//edited to include url</span>
+<span class="k">local</span> nobs=<span class="nf">c</span>(N)
+<span class="k">local</span> nvars=<span class="nf">c</span>(k)
+<span class="k">webuse</span> auto,<span class="k"> clear</span>
+<span class="k">if</span> <span class="nv">`nobs&#39;</span><span class="o">==</span><span class="nf">c</span>(N) <span class="o">&amp;</span> <span class="nv">`nvars&#39;</span><span class="o">==</span><span class="nf">c</span>(k) {
+<span class="k">	di</span> <span class="s">&quot;&#39;webuse&#39; is an alternative to </span><span class="vg">${url}</span><span class="s">use&quot;</span>
 }
-if foreign == 1 {
-  list make
+<span class="k">if</span> foreign <span class="o">==</span> <span class="m">1</span> {
+<span class="k">  list</span> make
 }
-else {
-  list mpg
+<span class="k">else</span> {
+<span class="k">  list</span> mpg
 }
-
 </pre></div>
 </div>
 <p>This will list the make variable if the foreign variable is equal to 1, and the mpg variable otherwise.</p>
