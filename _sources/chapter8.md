@@ -254,3 +254,30 @@ else {
 ```
 
 This will define a local macro called "myvar", and then use it in an if statement to determine whether to list the make or mpg variable.
+
+## 8.7 reshape
+
+### 8.7.1 wide
+
++ Baseline
++ End
++ Survival
++ 'Twixt': blackbox
+
+### 8.7.2 long
+
++ Time-varying covariates
+     + confounders
+	 + mediators
+	 + surrogate outcomes
+
+### 8.7.3 isid
+
++ Quick way to determine whether a dataset is wide or long
+
+```stata
+use hw2_pra_hist.dta, clear
+ds 
+codebook px_id 
+isid px_id
+```
