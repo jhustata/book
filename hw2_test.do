@@ -26,20 +26,30 @@ qui {
 	if 2 { ; //results:data,programs,output
 	
 	    //q1
-		do hw2_yourname.do ;
+		do Assignment2-solutions.do ;
 		
 		
 		//q2
 	    use transplants,clear ;
 		
 		//this programs should work on any dataset and any variable
-		unilogit age gender wait_yrs, 
+		noi unilogit age gender wait_yrs, 
 		    outcome(died);
 			
-		unilogit age gender wait_yrs if age>60, 
+		noi unilogit age gender wait_yrs if age>60, 
 		    outcome(died);
 		#delimit cr
 		
+	}
+	
+	noi { // prime test
+	
+		prime, n(-1) //Invalid input: enter a natural number greater than 1.
+		prime, n(0) //Invalid input: enter a natural number greater than 1.
+		prime, n(1) //Invalid input: enter a natural number greater than 1.
+		prime, n(2) // prime
+		prime, n(100) // not prime
+		prime, n(1033) // prime
 	}
 	
 	log close test
