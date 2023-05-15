@@ -2,6 +2,25 @@
 
 ## 8.1 codetta
 
++ How would you display double-quotes `" "` within a string?
+
+```stata
+. di `"  "' 
+. 
+
+. di `"  "quote"   "'
+  "quote"  
+
+. di `"  " "   "'
+  " "   
+
+. di `""Strings!""'
+"Strings!"
+
+```
+
++ comes in handy when your command or output includes a double-quote within a string
+
 ```stata
 
 qui {
