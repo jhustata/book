@@ -52,7 +52,7 @@ qui {
 }
 
 ```
-[hw1q5.log](hw1q5.log)
+[hw1q5.log](https://raw.githubusercontent.com/jhustata/book/main/hw1q5.log)
 
 ## 8.2 stunning
 
