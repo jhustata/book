@@ -393,7 +393,55 @@ document.write(`
 <h1>if c(version)&gt;16 {<a class="headerlink" href="#if-c-version-16" title="Permalink to this heading">#</a></h1>
 <section id="codetta">
 <h2>8.1 codetta<a class="headerlink" href="#codetta" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="_images/codetta.PNG" /></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">	clear</span>
+	cls
+<span class="k">	if</span> _N { <span class="c1">//background</span>
+		 helpful to<span class="k"> label</span> all variables but especially
+		 multicategory variables<span class="k"> as</span> seen<span class="k"> in</span> q5hw1.
+		 not only<span class="k"> do</span> you<span class="k"> label</span> the variable, you also 
+<span class="k">		 label</span> values of the variable<span class="k"> levels</span> (alliteration).
+		 they should be labelled<span class="k"> if</span> at all you wish to 
+	 	 efficiently produce a tidy publication<span class="o">-</span>ready table1.
+	 	 here we have a very condensed script to<span class="k"> do</span> all the above<span class="o">!</span>
+	}
+<span class="k">	if</span> <span class="nf">strpos</span>(<span class="s">&quot;</span><span class="nv">`c(current_date)&#39;</span><span class="s">&quot;</span>,<span class="s">&quot;May&quot;</span>)<span class="o">&gt;</span><span class="m">0</span> { <span class="c1">//methods</span>
+<span class="k">		 macro drop</span> all
+<span class="k">		 global</span> github https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>
+<span class="k">		 global</span> downloads jhustata<span class="o">/</span>book<span class="o">/</span>main<span class="o">/</span>
+<span class="k">		 global</span> workdir <span class="nv">`c(pwd)&#39;</span>
+<span class="k">		 capture log close</span>
+<span class="k">		 log</span> using hw1q5<span class="m">.</span>log,<span class="k"> replace</span> 
+	}
+<span class="k">	if</span> _N<span class="o">==</span><span class="m">0</span> { <span class="c1">//results</span>
+		 import delimited <span class="s">&quot;</span><span class="vg">${github}${downloads}</span><span class="s">hw1.txt&quot;</span>
+<span class="k">         noi di</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s"> &amp; vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
+	}
+<span class="k">	if</span> _N { <span class="c1">//conclusion</span>
+<span class="k">		 levelsof</span> dx,<span class="k"> local</span>(dx_helper)
+<span class="k">		 foreach</span> i<span class="k"> in</span> <span class="nv">`dx_helper&#39;</span> {
+<span class="k">			tokenize</span> <span class="nv">`i&#39;</span>, p(<span class="s">&quot;=&quot;</span>)
+<span class="k">			local</span> label_string:<span class="k"> di</span> <span class="s">`&quot;</span><span class="nv">`label_string&#39;</span><span class="s"> </span><span class="nv">`1&#39;</span><span class="s"> &quot;</span><span class="nv">`3&#39;</span><span class="s">&quot;&quot;&#39;</span>
+	    }
+	}
+<span class="k">	if</span> _N<span class="o">&gt;</span><span class="m">0</span> { <span class="c1">//acknowledgements</span>
+<span class="k">		 macro list</span> <span class="c1">//do this noisily!</span>
+<span class="k">         capture label drop</span> dx
+<span class="k">         label</span> define dx <span class="nv">`label_string&#39;</span>
+<span class="k">         split</span> dx, p(<span class="s">&quot;=&quot;</span>)<span class="k"> generate</span>(dx)
+<span class="k">         destring</span> dx1,<span class="k"> replace</span>
+<span class="k">         label</span> values dx1 dx <span class="c1">//alliteration</span>
+<span class="k">		 noi tab</span> dx1
+	}
+<span class="k">	if</span> <span class="m">0</span> { <span class="c1">//references</span>
+		 <span class="m">1</span>. vincent jin, your lead<span class="k"> ta</span>, <span class="m">05</span><span class="o">/</span><span class="m">2023</span>
+		 <span class="m">2</span>. hw1q5 ph340<span class="m">.600</span>
+	}
+<span class="k">    log close</span> 
+}
+</pre></div>
+</div>
+<p><a class="reference download internal" download="" href="_downloads/2b75bdbb10f38afdc1795d274dc961ce/hw1q5.log"><span class="xref download myst">hw1q5.log</span></a></p>
 </section>
 <section id="stunning">
 <h2>8.2 stunning<a class="headerlink" href="#stunning" title="Permalink to this heading">#</a></h2>
@@ -421,7 +469,6 @@ document.write(`
 <span class="m">99</span>%	<span class="m">77</span>	<span class="m">87</span>		Kurtosis	<span class="m">3.268634</span>
 </pre></div>
 </div>
-<p><img alt="" src="_images/skewness.PNG" /></p>
 </section>
 <section id="transparency">
 <h2>8.3 transparency<a class="headerlink" href="#transparency" title="Permalink to this heading">#</a></h2>
@@ -625,6 +672,7 @@ Example selected by chatGPT: auto</p>
 </pre></div>
 </div>
 <p>This will define a local macro called “myvar”, and then use it in an if statement to determine whether to list the make or mpg variable.</p>
+<p><span class="math notranslate nohighlight">\(\vdots\)</span></p>
 </section>
 <section id="reshape">
 <h2>8.7 reshape<a class="headerlink" href="#reshape" title="Permalink to this heading">#</a></h2>
