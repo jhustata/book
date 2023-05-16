@@ -76,7 +76,7 @@
 #
 #
 
-> **hw2** Rubric:
+> **hw2** 
 
 1.  Qui {} -- 5pt
 2.  If 0 block with description about purpose of dofile -- 2pt
@@ -132,7 +132,7 @@
 #
 #
 
-> **hw3** Rubric:
+> **hw3** 
 
 1.  Qui {} -- 5pt
 2.  If 0 block with description about purpose of dofile -- 2pt
