@@ -38,7 +38,7 @@ Optional labs
 4. [Th 6:00-7:00 pm](lab6.md)
 5. [F 1:00-2:00 pm](lab6.md)
 
-Homeworks due  
+[Homeworks due](hw.rubrics.md)  
 
 1. [Fri,Apr 21,11:59 PM](hw1.md)
 2. [Mon,May 8,11:59 PM](hw2.md)
