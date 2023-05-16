@@ -397,16 +397,20 @@ document.write(`
 <li><p>How would you display double-quotes <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span></code> within a string?</p></li>
 </ul>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>.<span class="k"> di</span> <span class="s">`&quot;  &quot;&#39;</span> 
+
 . 
 
 .<span class="k"> di</span> <span class="s">`&quot;  &quot;quote&quot;   &quot;&#39;</span>
-  <span class="s">&quot;quote&quot;</span>  
+<span class="s">&quot;quote&quot;</span>  
 
 .<span class="k"> di</span> <span class="s">`&quot;  &quot; &quot;   &quot;&#39;</span>
-  <span class="s">&quot; &quot;</span>   
+<span class="s">&quot; &quot;</span>   
 
 .<span class="k"> di</span> <span class="s">`&quot;&quot;Strings!&quot;&quot;&#39;</span>
 <span class="s">&quot;Strings!&quot;</span>
+
+.<span class="k"> di</span> <span class="s">`&quot;Every heard of the &quot;Love the Game&quot; clause in Michael Jordans contract? &quot;&#39;</span>
+Every heard of the <span class="s">&quot;Love the Game&quot;</span> clause<span class="k"> in</span> Michael Jordans<span class="k"> contract</span>? 
 </pre></div>
 </div>
 <ul class="simple">

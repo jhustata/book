@@ -6,16 +6,21 @@
 
 ```stata
 . di `"  "' 
+
 . 
 
 . di `"  "quote"   "'
-  "quote"  
+"quote"  
 
 . di `"  " "   "'
-  " "   
+" "   
 
 . di `""Strings!""'
 "Strings!"
+
+. di `"Every heard of the "Love the Game" clause in Michael Jordans contract? "'
+Every heard of the "Love the Game" clause in Michael Jordans contract? 
+
 
 ```
 
