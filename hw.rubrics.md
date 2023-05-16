@@ -71,7 +71,9 @@
 2.  With time estimation 5 pts
 
 > 10 pts
->
+
+#
+
 > **hw2** Rubric:
 
 1.  Qui {} -- 5pt
@@ -123,7 +125,9 @@
 3.  Time 3pt
 
 > 10 pts
->
+
+#
+
 > **hw3** Rubric:
 
 1.  Qui {} -- 5pt
