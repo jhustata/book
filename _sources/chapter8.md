@@ -18,8 +18,8 @@
 . di `""Strings!""'
 "Strings!"
 
-. di `"Ever heard of the "Love the Game" clause in Michael Jordans contract? "'
-Ever heard of the "Love the Game" clause in Michael Jordans contract? 
+. di `"Ever heard of "for the love of the game" clause in Michael Jordans contract? "'
+Ever heard of "for the love of the game" clause in Michael Jordans contract? 
 
 
 ```
