@@ -1,5 +1,7 @@
 # if c(version)>16 {
 
+[video](https://jhjhm.zoom.us/rec/share/jCsUVcLItDweTRg_DQT5yXhDFxXkwvzImR4RgXPlW5wkJMu1BbSNWwo7Rw6Nu6Wq.Tix4e3rO4wMjVzeX?startTime=1684438391000)
+
 ## 8.1 codetta
 
 + How would you display double-quotes `" "` within a string?
