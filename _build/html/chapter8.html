@@ -731,6 +731,53 @@ Example selected by chatGPT: auto</p>
 <span class="k">isid</span> px_id
 </pre></div>
 </div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">	clear</span> 
+	cls
+<span class="k">	if</span> _N {
+<span class="k">		reshape</span>
+		long <span class="o">-&gt;</span> wide
+		then reverse
+	}
+<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="m">0</span> { <span class="c1">//change content of macros to match location  ... </span>
+<span class="k">		global</span> path1 <span class="o">~/</span>dropbox<span class="o">/</span>2e<span class="m">.</span>πρᾶξις,σ<span class="o">/</span><span class="m">3.</span>acetyl<span class="m">.</span>neurotrans<span class="o">/</span>
+<span class="k">		global</span> path2 big<span class="m">.</span>data<span class="o">/</span>big<span class="m">.</span>data<span class="m">.</span>usrds
+<span class="k">		global file</span> 00_exposureR<span class="m">.</span>dta
+	}
+<span class="k">	if</span> _N <span class="o">&lt;</span> <span class="m">1</span> {
+<span class="k">		use</span> <span class="s">&quot;</span><span class="vg">${path1}${path2}</span><span class="s">/</span><span class="vg">$file</span><span class="s">&quot;</span>
+	}
+<span class="k">	if</span> <span class="nf">c</span>(N) <span class="o">!=</span><span class="m">0</span> { <span class="c1">//using simulation to eliminate disclosure risk</span>
+<span class="k">		noi di</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
+<span class="k">		g</span> nodisclosurerisk=usrds_id<span class="o">+</span><span class="nf">round</span>(<span class="nf">runiform</span>(<span class="m">1</span>,<span class="nf">c</span>(N)))
+<span class="k">		g</span> ndr=<span class="nf">round</span>(<span class="nf">runiform</span>(<span class="m">300</span>,<span class="m">365</span><span class="o">*</span><span class="m">2</span>))
+<span class="k">		sort</span> usrds srvc_dt
+<span class="k">		by</span> usrds_id:<span class="k"> egen</span> dt=<span class="nf">min</span>(ndr)
+<span class="k">		replace</span> srvc_dt=srvc_dt<span class="o">+</span>dt
+<span class="k">		by</span> usrds_id:<span class="k"> egen</span> id=<span class="nf">min</span>(nodisclosurerisk)
+<span class="k">		keep</span> id srvc_dt insulin diur antipsy
+<span class="k">		keep</span> id srvc_dt insulin diur antipsy
+<span class="k">		noi l</span> id srvc_dt insulin diur antipsy <span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">30</span>
+<span class="k">		keep in</span> <span class="m">19</span><span class="o">/</span><span class="m">26</span>
+<span class="k">		save reshape</span><span class="m">.</span>dta,<span class="k"> replace</span> 
+<span class="k">		noi di</span> <span class="s">&quot;obs: </span><span class="nv">`c(N)&#39;</span><span class="s">, vars: </span><span class="nv">`c(k)&#39;</span><span class="s">&quot;</span>
+	}
+<span class="k">	if</span> _N {
+		<span class="c1">//isid id</span>
+<span class="k">		g</span> visit=_n
+<span class="k">		keep</span> antips<span class="o">*</span> insulin diur<span class="o">*</span> id visit 
+<span class="k">		reshape</span> wide antips<span class="o">*</span> diur<span class="o">*</span> insulin, i(id) j(visit)
+	}
+<span class="k">	if</span> <span class="nf">r</span>(N) <span class="o">==</span> <span class="m">1</span> {
+<span class="k">		noi list</span>
+	}
+<span class="k">	else</span> {
+<span class="k">		noi di</span> <span class="s">&quot;There&#39;s more than one observation&quot;</span>
+	}
+}
+</pre></div>
+</div>
+<p><a class="reference download internal" download="" href="_downloads/97f1526f7fc0832156b7b05b54532196/reshape.dta"><span class="xref download myst">reshape.dta</span></a></p>
 </section>
 </section>
 </section>
