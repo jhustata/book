@@ -355,3 +355,54 @@ ds
 codebook px_id 
 isid px_id
 ```
+
+```stata
+
+qui {
+	clear 
+	cls
+	if _N {
+		reshape
+		long -> wide
+		then reverse
+	}
+	if c(N)==0 { //change content of macros to match location  ... 
+		global path1 ~/dropbox/2e.πρᾶξις,σ/3.acetyl.neurotrans/
+		global path2 big.data/big.data.usrds
+		global file 00_exposureR.dta
+	}
+	if _N < 1 {
+		use "${path1}${path2}/$file"
+	}
+	if c(N) !=0 { //using simulation to eliminate disclosure risk
+		noi di "obs: `c(N)', vars: `c(k)'"
+		g nodisclosurerisk=usrds_id+round(runiform(1,c(N)))
+		g ndr=round(runiform(300,365*2))
+		sort usrds srvc_dt
+		by usrds_id: egen dt=min(ndr)
+		replace srvc_dt=srvc_dt+dt
+		by usrds_id: egen id=min(nodisclosurerisk)
+		keep id srvc_dt insulin diur antipsy
+		keep id srvc_dt insulin diur antipsy
+		noi l id srvc_dt insulin diur antipsy  in 1/30
+		keep in 19/26
+		save reshape.dta, replace 
+		noi di "obs: `c(N)', vars: `c(k)'"
+	}
+	if _N {
+		//isid id
+		g visit=_n
+		keep antips* insulin diur* id visit 
+		reshape wide antips* diur* insulin, i(id) j(visit)
+	}
+	if r(N) == 1 {
+		noi list
+	}
+	else {
+		noi di "There's more than one observation"
+	}
+}
+
+```
+
+[reshape.dta](reshape.dta)
