@@ -408,3 +408,11 @@ qui {
 ```
 
 [reshape.dta](reshape.dta)
+
+## 8.8 matcell
+
+```stata
+use transplants, clear
+tab dx gender, matcell(table)
+di table[4,1] //Hypertensive Male
+```

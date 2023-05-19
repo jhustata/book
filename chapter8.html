@@ -378,6 +378,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isid">8.7.3 isid</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matcell">8.8 matcell</a></li>
 </ul>
             </nav>
         </div>
@@ -781,6 +782,14 @@ Example selected by chatGPT: auto</p>
 <p><a class="reference download internal" download="" href="_downloads/97f1526f7fc0832156b7b05b54532196/reshape.dta"><span class="xref download myst">reshape.dta</span></a></p>
 </section>
 </section>
+<section id="matcell">
+<h2>8.8 matcell<a class="headerlink" href="#matcell" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> transplants,<span class="k"> clear</span>
+<span class="k">tab</span> dx gender, matcell(table)
+<span class="k">di table</span>[<span class="m">4</span>,<span class="m">1</span>] <span class="c1">//Hypertensive Male</span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -862,6 +871,7 @@ Example selected by chatGPT: auto</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isid">8.7.3 isid</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matcell">8.8 matcell</a></li>
 </ul>
   </nav></div>
 
