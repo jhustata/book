@@ -351,19 +351,17 @@ $\vdots$
 		 + magnet 
 		 
 ### 8.7.2 wide
-  long -> wide: some loss of information
-  increase in number of variables
-  
+  long -> wide: some loss of information + <u>drastic</u> increase in number of variables
+
 + Individual
-     + confounder1 confounder2 $\cdot$ confounderN
-	 + mediator1 mediator2 $\cdot$ mediatorN
-	 + outcome1 outcome2 $\cdot$ outcomeN
+     + confounder1 confounder2 $\cdots$ confounderN
+	 + mediator1 mediator2 $\cdots$ mediatorN
+	 + outcome1 outcome2 $\cdots$ outcomeN
 
 + County
-    + publicSch1 publicSch2 $\cdot$ publicSchN
-	+ privateSch1 privateSch2 $\cdot$ privateSchN
-	+ $\ddot$
-	     + $\cdot$ magnetSchN
+    + publicSch1 publicSch2 $\cdots$ publicSchN
+	+ privateSch1 privateSch2 $\cdots$ privateSchN
+	+ etc.
 
 ### 8.7.3 isid
 
