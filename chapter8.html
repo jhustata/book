@@ -433,7 +433,10 @@ Ever heard of <span class="s">&quot;for the love of the game&quot;</span> clause
 <li><p>The program below will not not run after May</p></li>
 <li><p>By now you should be able to edit it to allow it to work beyond May</p></li>
 </ul>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>.<span class="k"> di</span> <span class="nf">strpos</span>(<span class="s">&quot;</span><span class="nv">`c(current_date)&#39;</span><span class="s">&quot;</span>,<span class="s">&quot;May&quot;</span>)
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>.<span class="k"> di</span> <span class="nf">c</span>(current_date) <span class="c1">//spaces count in strings</span>
+<span class="m">19</span> May <span class="m">2023</span>
+
+.<span class="k"> di</span> <span class="nf">strpos</span>(<span class="s">&quot;</span><span class="nv">`c(current_date)&#39;</span><span class="s">&quot;</span>,<span class="s">&quot;May&quot;</span>) 
 <span class="m">4</span>
 
 .<span class="k"> di</span> <span class="nf">strpos</span>(<span class="s">&quot;</span><span class="nv">`c(current_date)&#39;</span><span class="s">&quot;</span>,<span class="s">&quot;May&quot;</span>)<span class="o">&gt;</span><span class="m">0</span>

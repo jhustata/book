@@ -40,7 +40,11 @@ di `"    "`3'"    "' //token
 + By now you should be able to edit it to allow it to work beyond May
 
 ```stata
-. di strpos("`c(current_date)'","May")
+
+. di c(current_date) //spaces count in strings
+19 May 2023
+
+. di strpos("`c(current_date)'","May") 
 4
 
 . di strpos("`c(current_date)'","May")>0
