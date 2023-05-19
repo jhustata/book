@@ -379,6 +379,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matcell">8.8 matcell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-do">8.9 test.do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">9.0 feedback</a></li>
 </ul>
             </nav>
         </div>
@@ -413,10 +415,35 @@ document.write(`
 
 .<span class="k"> di</span> <span class="s">`&quot;Ever heard of &quot;for the love of the game&quot; clause in Michael Jordans contract? &quot;&#39;</span>
 Ever heard of <span class="s">&quot;for the love of the game&quot;</span> clause<span class="k"> in</span> Michael Jordans<span class="k"> contract</span>? 
+
+<span class="nv">```stata</span>
+
+<span class="nv">di `&quot;`label_string&#39; `1&#39; &quot;`3&#39;&quot;&quot;&#39;</span>
+
+<span class="nv">di `&quot;    `label_string&#39; `1&#39; &quot;`3&#39;&quot;     &quot;&#39;</span>
+
+<span class="nv">di &quot;`label_string&#39;&quot;</span>
+<span class="nv">di &quot;`1&#39;&quot;</span>
+<span class="nv">di `&quot;    &quot;`3&#39;&quot;    &quot;&#39; //token</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
++ The program below will not not run after May
++ By now you should be able to edit it to allow it to work beyond May
+
+```stata
+. di strpos(&quot;`c(current_date)&#39;&quot;,&quot;May&quot;)
+4
+
+. di strpos(&quot;`c(current_date)&#39;&quot;,&quot;May&quot;)&gt;0
+1
+
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>comes in handy when your command or output includes a double-quote within a string</p></li>
+<li><p>In the code-block below the first <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">_N</span> <span class="pre">{</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">0</span> <span class="pre">{</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">strpos(&quot;</span></code>c(current_date)’”,”May”)&gt;0 is equal to <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">1</span> <span class="pre">{</span></code></p></li>
+<li><p>Just whetting your mind…</p></li>
 </ul>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">	clear</span>
@@ -819,6 +846,34 @@ Example selected by chatGPT: auto</p>
 </pre></div>
 </div>
 </section>
+<section id="test-do">
+<h2>8.9 <a class="reference external" href="http://test.do">test.do</a><a class="headerlink" href="#test-do" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>takeaways from regrading hw1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">presubmit</span></code> homeworks in future</p></li>
+<li><p>our team to check for only two things:</p>
+<ol class="arabic simple">
+<li><p>overarching <code class="docutils literal notranslate"><span class="pre">qui</span> <span class="pre">{</span></code></p></li>
+<li><p>controlled logfile output with <strong>no</strong> error</p></li>
+<li><p>shouldn’t be time-consuming for student or grader</p></li>
+<li><p>maybe do all the above via github commits? collaboratively?</p></li>
+<li><p>i think thats where we are headed based on the perks…</p></li>
+</ol>
+</li>
+<li><p>not allowed to submit any hw until <code class="docutils literal notranslate"><span class="pre">presubmit</span></code> clearance</p></li>
+<li><p>encourage students to test their .do file at each step as it grows (share <code class="docutils literal notranslate"><span class="pre">repo</span></code> link)</p></li>
+<li><p>as contrasted with checking a final product, which by then may have monstrously grown beyond anyones debugging skills</p></li>
+<li><p>much more emphasis on the process, collaborative, open, decentralized repo, than a <code class="docutils literal notranslate"><span class="pre">final</span> <span class="pre">judgment</span></code></p></li>
+</ul>
+</section>
+<section id="feedback">
+<h2>9.0 feedback<a class="headerlink" href="#feedback" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>feedback welcome</p></li>
+<li><p>any system without a feedback loop is like a cancer</p></li>
+<li><p>so please send us an email <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">&amp;</span> <span class="pre">when</span> <span class="pre">...</span> </code></p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -901,6 +956,8 @@ Example selected by chatGPT: auto</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matcell">8.8 matcell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-do">8.9 test.do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">9.0 feedback</a></li>
 </ul>
   </nav></div>
 

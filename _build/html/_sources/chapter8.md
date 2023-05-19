@@ -23,10 +23,35 @@
 . di `"Ever heard of "for the love of the game" clause in Michael Jordans contract? "'
 Ever heard of "for the love of the game" clause in Michael Jordans contract? 
 
+```stata
+
+di `"`label_string' `1' "`3'""'
+
+di `"    `label_string' `1' "`3'"     "'
+
+di "`label_string'"
+di "`1'"
+di `"    "`3'"    "' //token
+```
+
 
 ```
 
-+ comes in handy when your command or output includes a double-quote within a string
++ The program below will not not run after May
++ By now you should be able to edit it to allow it to work beyond May
+
+```stata
+. di strpos("`c(current_date)'","May")
+4
+
+. di strpos("`c(current_date)'","May")>0
+1
+
+```
+
++ In the code-block below the first `if _N {` is equal to `if 0 {`
++ `if strpos("`c(current_date)'","May")>0 is equal to `if 1 {`
++ Just whetting your mind... 
 
 ```stata
 
@@ -432,3 +457,27 @@ use transplants, clear
 tab dx gender, matcell(table)
 di table[4,1] //Hypertensive Male
 ```
+
+## 8.9 test.do
+
++ takeaways from regrading hw1
++ `presubmit` homeworks in future
++ our team to check for only two things:
+
+     1. overarching `qui {`
+	 2. controlled logfile output with **no** error
+	 3. shouldn't be time-consuming for student or grader 
+	 4. maybe do all the above via github commits? collaboratively?
+	 5. i think thats where we are headed based on the perks...
+
++ not allowed to submit any hw until `presubmit` clearance
++ encourage students to test their .do file at each step as it grows (share `repo` link)
++ as contrasted with checking a final product, which by then may have monstrously grown beyond anyones debugging skills
++ much more emphasis on the process, collaborative, open, decentralized repo, than a `final judgment` 
+
+## 9.0 feedback
+
++ feedback welcome
++ any system without a feedback loop is like a cancer
++ so please send us an email `if & when ... ` 
+
