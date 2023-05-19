@@ -22,6 +22,8 @@
 
 . di `"Ever heard of "for the love of the game" clause in Michael Jordans contract? "'
 Ever heard of "for the love of the game" clause in Michael Jordans contract? 
+```
++ You are now primed for this mind twister:
 
 ```stata
 
@@ -32,9 +34,6 @@ di `"    `label_string' `1' "`3'"     "'
 di "`label_string'"
 di "`1'"
 di `"    "`3'"    "' //token
-```
-
-
 ```
 
 + The program below will not not run after May
@@ -475,7 +474,7 @@ di table[4,1] //Hypertensive Male
 + as contrasted with checking a final product, which by then may have monstrously grown beyond anyones debugging skills
 + much more emphasis on the process, collaborative, open, decentralized repo, than a `final judgment` 
 
-## 9.0 feedback
+## 9.10 feedback
 
 + feedback welcome
 + any system without a feedback loop is like a cancer

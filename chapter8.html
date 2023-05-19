@@ -380,7 +380,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matcell">8.8 matcell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-do">8.9 test.do</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">9.0 feedback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">9.10 feedback</a></li>
 </ul>
             </nav>
         </div>
@@ -415,29 +415,29 @@ document.write(`
 
 .<span class="k"> di</span> <span class="s">`&quot;Ever heard of &quot;for the love of the game&quot; clause in Michael Jordans contract? &quot;&#39;</span>
 Ever heard of <span class="s">&quot;for the love of the game&quot;</span> clause<span class="k"> in</span> Michael Jordans<span class="k"> contract</span>? 
-
-<span class="nv">```stata</span>
-
-<span class="nv">di `&quot;`label_string&#39; `1&#39; &quot;`3&#39;&quot;&quot;&#39;</span>
-
-<span class="nv">di `&quot;    `label_string&#39; `1&#39; &quot;`3&#39;&quot;     &quot;&#39;</span>
-
-<span class="nv">di &quot;`label_string&#39;&quot;</span>
-<span class="nv">di &quot;`1&#39;&quot;</span>
-<span class="nv">di `&quot;    &quot;`3&#39;&quot;    &quot;&#39; //token</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-+ The program below will not not run after May
-+ By now you should be able to edit it to allow it to work beyond May
+<ul class="simple">
+<li><p>You are now primed for this mind twister:</p></li>
+</ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="s">`&quot;</span><span class="nv">`label_string&#39;</span><span class="s"> </span><span class="nv">`1&#39;</span><span class="s"> &quot;</span><span class="nv">`3&#39;</span><span class="s">&quot;&quot;&#39;</span>
 
-```stata
-. di strpos(&quot;`c(current_date)&#39;&quot;,&quot;May&quot;)
-4
+<span class="k">di</span> <span class="s">`&quot;    </span><span class="nv">`label_string&#39;</span><span class="s"> </span><span class="nv">`1&#39;</span><span class="s"> &quot;</span><span class="nv">`3&#39;</span><span class="s">&quot;     &quot;&#39;</span>
 
-. di strpos(&quot;`c(current_date)&#39;&quot;,&quot;May&quot;)&gt;0
-1
+<span class="k">di</span> <span class="s">&quot;</span><span class="nv">`label_string&#39;</span><span class="s">&quot;</span>
+<span class="k">di</span> <span class="s">&quot;</span><span class="nv">`1&#39;</span><span class="s">&quot;</span>
+<span class="k">di</span> <span class="s">`&quot;    &quot;</span><span class="nv">`3&#39;</span><span class="s">&quot;    &quot;&#39;</span> <span class="c1">//token</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The program below will not not run after May</p></li>
+<li><p>By now you should be able to edit it to allow it to work beyond May</p></li>
+</ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>.<span class="k"> di</span> <span class="nf">strpos</span>(<span class="s">&quot;</span><span class="nv">`c(current_date)&#39;</span><span class="s">&quot;</span>,<span class="s">&quot;May&quot;</span>)
+<span class="m">4</span>
 
+.<span class="k"> di</span> <span class="nf">strpos</span>(<span class="s">&quot;</span><span class="nv">`c(current_date)&#39;</span><span class="s">&quot;</span>,<span class="s">&quot;May&quot;</span>)<span class="o">&gt;</span><span class="m">0</span>
+<span class="m">1</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -867,7 +867,7 @@ Example selected by chatGPT: auto</p>
 </ul>
 </section>
 <section id="feedback">
-<h2>9.0 feedback<a class="headerlink" href="#feedback" title="Permalink to this heading">#</a></h2>
+<h2>9.10 feedback<a class="headerlink" href="#feedback" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>feedback welcome</p></li>
 <li><p>any system without a feedback loop is like a cancer</p></li>
@@ -957,7 +957,7 @@ Example selected by chatGPT: auto</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matcell">8.8 matcell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-do">8.9 test.do</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">9.0 feedback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">9.10 feedback</a></li>
 </ul>
   </nav></div>
 
