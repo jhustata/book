@@ -333,19 +333,37 @@ $\vdots$
 
 ## 8.7 reshape
 
-### 8.7.1 wide
+### 8.7.1 long
 
-+ Baseline
-+ End
-+ Survival
-+ 'Twixt': blackbox
++ Longitudinal data (time-varying covariates)
+     + individual
+	 + time
+         + confounders
+	     + mediators
+	     + surrogate outcomes
 
-### 8.7.2 long
++ Hierarchical data
+     + county
+	 + schools
+	     + public
+		 + private
+		 + charter
+		 + magnet 
+		 
+### 8.7.2 wide
+  long -> wide: some loss of information
+  increase in number of variables
+  
++ Individual
+     + confounder1 confounder2 $\cdot$ confounderN
+	 + mediator1 mediator2 $\cdot$ mediatorN
+	 + outcome1 outcome2 $\cdot$ outcomeN
 
-+ Time-varying covariates
-     + confounders
-	 + mediators
-	 + surrogate outcomes
++ County
+    + publicSch1 publicSch2 $\cdot$ publicSchN
+	+ privateSch1 privateSch2 $\cdot$ privateSchN
+	+ $\ddot$
+	     + $\cdot$ magnetSchN
 
 ### 8.7.3 isid
 

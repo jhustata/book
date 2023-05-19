@@ -373,8 +373,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punchline">8.5 punchline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chatgpt">8.6 chatGPT</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape">8.7 reshape</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wide">8.7.1 wide</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long">8.7.2 long</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long">8.7.1 long</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wide">8.7.2 wide</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isid">8.7.3 isid</a></li>
 </ul>
 </li>
@@ -701,23 +701,57 @@ Example selected by chatGPT: auto</p>
 </section>
 <section id="reshape">
 <h2>8.7 reshape<a class="headerlink" href="#reshape" title="Permalink to this heading">#</a></h2>
-<section id="wide">
-<h3>8.7.1 wide<a class="headerlink" href="#wide" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Baseline</p></li>
-<li><p>End</p></li>
-<li><p>Survival</p></li>
-<li><p>‘Twixt’: blackbox</p></li>
-</ul>
-</section>
 <section id="long">
-<h3>8.7.2 long<a class="headerlink" href="#long" title="Permalink to this heading">#</a></h3>
+<h3>8.7.1 long<a class="headerlink" href="#long" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Time-varying covariates</p>
+<li><p>Longitudinal data (time-varying covariates)</p>
+<ul>
+<li><p>individual</p></li>
+<li><p>time</p>
 <ul>
 <li><p>confounders</p></li>
 <li><p>mediators</p></li>
 <li><p>surrogate outcomes</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Hierarchical data</p>
+<ul>
+<li><p>county</p></li>
+<li><p>schools</p>
+<ul>
+<li><p>public</p></li>
+<li><p>private</p></li>
+<li><p>charter</p></li>
+<li><p>magnet</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="wide">
+<h3>8.7.2 wide<a class="headerlink" href="#wide" title="Permalink to this heading">#</a></h3>
+<p>long -&gt; wide: some loss of information
+increase in number of variables</p>
+<ul class="simple">
+<li><p>Individual</p>
+<ul>
+<li><p>confounder1 confounder2 <span class="math notranslate nohighlight">\(\cdot\)</span> confounderN</p></li>
+<li><p>mediator1 mediator2 <span class="math notranslate nohighlight">\(\cdot\)</span> mediatorN</p></li>
+<li><p>outcome1 outcome2 <span class="math notranslate nohighlight">\(\cdot\)</span> outcomeN</p></li>
+</ul>
+</li>
+<li><p>County</p>
+<ul>
+<li><p>publicSch1 publicSch2 <span class="math notranslate nohighlight">\(\cdot\)</span> publicSchN</p></li>
+<li><p>privateSch1 privateSch2 <span class="math notranslate nohighlight">\(\cdot\)</span> privateSchN</p></li>
+<li><p><span class="math notranslate nohighlight">\(\ddot\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\cdot\)</span> magnetSchN</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -866,8 +900,8 @@ Example selected by chatGPT: auto</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punchline">8.5 punchline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chatgpt">8.6 chatGPT</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape">8.7 reshape</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wide">8.7.1 wide</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long">8.7.2 long</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long">8.7.1 long</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wide">8.7.2 wide</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isid">8.7.3 isid</a></li>
 </ul>
 </li>
