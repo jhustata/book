@@ -382,7 +382,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-do">8.9 test.do</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">9.10 feedback</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suigeneris">9.11 suigeneris</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myfirst">9.12 myfirst</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myfirst">9.12 myfirst</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unconditional">9.12.1 unconditional</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subcondition">9.12.2 subcondition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variant">9.12.3 variant</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knockout">9.12.4 knockout</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -899,6 +905,14 @@ Example selected by chatGPT: auto</p>
 </section>
 <section id="myfirst">
 <h2>9.12 myfirst<a class="headerlink" href="#myfirst" title="Permalink to this heading">#</a></h2>
+<section id="unconditional">
+<h3>9.12.1 unconditional<a class="headerlink" href="#unconditional" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The time it takes to write the program below</p></li>
+<li><p>Is it dependent on, of independent of, <code class="docutils literal notranslate"><span class="pre">c(N)</span></code>?</p></li>
+<li><p>How about manually estimating median (IQR) for each varname?</p></li>
+<li><p>May this motivate you to <u>incorporate programming</u> into your workflow!</p></li>
+</ul>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> myfirst 
 <span class="k">quietly program</span> define myfirst
     cls 
@@ -906,11 +920,16 @@ Example selected by chatGPT: auto</p>
 <span class="k">	foreach</span> v of<span class="k"> varlist</span> <span class="nv">`r(varlist)&#39;</span> {
 <span class="k">		qui sum</span> <span class="nv">`v&#39;</span>,<span class="k"> d</span>
 <span class="k">		qui local</span> m_iqr:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p50) <span class="s">&quot;(&quot;</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p25) <span class="s">&quot;-&quot;</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p75) <span class="s">&quot;)&quot;</span>
-<span class="k">		noi di</span> <span class="s">`&quot;The median (IQR) of &quot;</span><span class="nv">`v&#39;</span><span class="s">&quot; is </span><span class="nv">`m_iqr&#39;</span><span class="s"> &quot;&#39;</span>
+<span class="k">		if</span> <span class="nf">c</span>(N) <span class="o">&lt;</span> <span class="m">10</span> {
+<span class="k">            noi di</span> <span class="s">`&quot;The median (IQR) of &quot;</span><span class="nv">`v&#39;</span><span class="s">&quot; is </span><span class="nv">`m_iqr&#39;</span><span class="s"> &quot;&#39;</span>
+		}
+<span class="k">		else</span> {
+<span class="k">			noi di</span> <span class="s">&quot;Too many values, select no more than 10 varnames&quot;</span>
+		}
 	}
 <span class="k">end</span> 
 <span class="k">use</span> transplants,<span class="k"> clear</span> 
-myfirst<span class="k"> program</span>
+myfirst  
 
 The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;fake_id&quot;</span> is <span class="m">3000.5</span>(<span class="m">1500.5-4500.5</span>) 
 The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;ctr_id&quot;</span> is <span class="m">41.0</span>(<span class="m">30.0-49.0</span>) 
@@ -940,6 +959,148 @@ The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;rec_education&q
 The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;extended_dgn&quot;</span> is   .(  .<span class="o">-</span>  .) 
 </pre></div>
 </div>
+</section>
+<section id="subcondition">
+<h3>9.12.2 subcondition<a class="headerlink" href="#subcondition" title="Permalink to this heading">#</a></h3>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> myfirst 
+<span class="k">quietly program</span> define myfirst
+    cls 
+<span class="k">    qui ds</span> 
+<span class="k">	foreach</span> v of<span class="k"> varlist</span> <span class="nv">`r(varlist)&#39;</span> {
+<span class="k">		qui sum</span> <span class="nv">`v&#39;</span>,<span class="k"> d</span>
+<span class="k">		qui local</span> m_iqr:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p50) <span class="s">&quot;(&quot;</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p25) <span class="s">&quot;-&quot;</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p75) <span class="s">&quot;)&quot;</span>
+<span class="k">		if</span> <span class="nf">c</span>(k) <span class="o">&lt;</span> <span class="m">30</span> {
+<span class="k">            noi di</span> <span class="s">`&quot;The median (IQR) of &quot;</span><span class="nv">`v&#39;</span><span class="s">&quot; is </span><span class="nv">`m_iqr&#39;</span><span class="s"> &quot;&#39;</span>
+		}
+<span class="k">		else</span> {
+<span class="k">			noi di</span> <span class="s">&quot;Too many values, select no more than 30 varnames&quot;</span>
+		}
+	}
+<span class="k">end</span> 
+<span class="k">use</span> transplants,<span class="k"> clear</span> 
+myfirst  
+<span class="k">di</span> <span class="nf">c</span>(k)
+
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;fake_id&quot;</span> is <span class="m">3000.5</span>(<span class="m">1500.5-4500.5</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;ctr_id&quot;</span> is <span class="m">41.0</span>(<span class="m">30.0-49.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;transplant_date&quot;</span> is <span class="m">19757.0</span>(<span class="m">18492.0-20902.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;don_hgt_cm&quot;</span> is <span class="m">172.0</span>(<span class="m">163.0-180.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;don_wgt_kg&quot;</span> is <span class="m">79.0</span>(<span class="m">66.0-93.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;don_cod&quot;</span> is <span class="m">2.0</span>(<span class="m">1.0-3.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;don_ecd&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-0.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;dx&quot;</span> is <span class="m">4.0</span>(<span class="m">2.0-9.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;race&quot;</span> is <span class="m">2.0</span>(<span class="m">1.0-4.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;rec_hgt_cm&quot;</span> is <span class="m">170.0</span>(<span class="m">162.0-177.8</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;rec_wgt_kg&quot;</span> is <span class="m">79.0</span>(<span class="m">66.2-93.4</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;bmi&quot;</span> is <span class="m">28.0</span>(<span class="m">24.0-32.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;prev_ki&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-0.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;age&quot;</span> is <span class="m">53.0</span>(<span class="m">41.0-62.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;peak_pra&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-14.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;end_date&quot;</span> is <span class="m">21868.0</span>(<span class="m">21802.0-21901.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;died&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-0.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;tx_failed&quot;</span> is <span class="m">1.0</span>(<span class="m">0.0-1.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;wait_yrs&quot;</span> is <span class="m">1.8</span>(<span class="m">0.6-3.5</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;abo&quot;</span> is <span class="m">3.0</span>(<span class="m">1.0-4.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;gender&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-1.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;rec_hcv_antibody&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-0.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;rec_work&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-1.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;pretx_cmv&quot;</span> is <span class="m">1.0</span>(<span class="m">0.0-1.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;rec_education&quot;</span> is <span class="m">2.0</span>(<span class="m">2.0-3.0</span>) 
+The<span class="k"> median</span> (IQR)	of	<span class="s">&quot;extended_dgn&quot;</span> is   .(  .<span class="o">-</span>  .) 
+
+.<span class="k"> di</span> <span class="nf">c</span>(k)
+<span class="m">26</span>
+
+. 
+<span class="k">end</span> of<span class="k"> do</span><span class="o">-</span>file
+
+. 
+</pre></div>
+</div>
+</section>
+<section id="variant">
+<h3>9.12.3 variant<a class="headerlink" href="#variant" title="Permalink to this heading">#</a></h3>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> myfirst 
+<span class="k">quietly program</span> define myfirst
+    cls 
+<span class="k">    qui ds</span> 
+<span class="k">	foreach</span> v of<span class="k"> varlist</span> <span class="nv">`r(varlist)&#39;</span> {
+<span class="k">		qui sum</span> <span class="nv">`v&#39;</span>,<span class="k"> d</span>
+<span class="k">		qui local</span> m_iqr:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p50) <span class="s">&quot;(&quot;</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p25) <span class="s">&quot;-&quot;</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p75) <span class="s">&quot;)&quot;</span>
+<span class="k">		if</span> <span class="nf">c</span>(k) <span class="o">&gt;</span> <span class="m">30</span> {
+<span class="k">            noi di</span> <span class="s">`&quot;The median (IQR) of &quot;</span><span class="nv">`v&#39;</span><span class="s">&quot; is </span><span class="nv">`m_iqr&#39;</span><span class="s"> &quot;&#39;</span>
+		}
+<span class="k">		else</span> {
+<span class="k">			noi di</span> <span class="s">&quot;Too few varnames, you can do this manually!&quot;</span>
+<span class="k">			exit</span> <span class="m">459</span>
+		}
+	}
+<span class="k">end</span> 
+<span class="k">use</span> transplants,<span class="k"> clear</span> 
+myfirst  
+<span class="k">di</span> <span class="nf">c</span>(k)
+</pre></div>
+</div>
+</section>
+<section id="knockout">
+<h3>9.12.4 knockout<a class="headerlink" href="#knockout" title="Permalink to this heading">#</a></h3>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> myfirst 
+<span class="k">quietly program</span> define myfirst
+    cls 
+<span class="k">    qui ds</span> 
+<span class="k">	foreach</span> v of<span class="k"> varlist</span> <span class="nv">`r(varlist)&#39;</span> {
+<span class="k">		qui sum</span> <span class="nv">`v&#39;</span>,<span class="k"> d</span>
+<span class="k">		qui local</span> m_iqr:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p50) <span class="s">&quot;(&quot;</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p25) <span class="s">&quot;-&quot;</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p75) <span class="s">&quot;)&quot;</span>
+<span class="k">		if</span> <span class="nf">c</span>(k) <span class="o">&gt;</span> <span class="m">30</span> {
+<span class="k">            noi di</span> <span class="s">`&quot;The median (IQR) of &quot;</span><span class="nv">`v&#39;</span><span class="s">&quot; is </span><span class="nv">`m_iqr&#39;</span><span class="s"> &quot;&#39;</span>
+		}
+<span class="k">		else</span> {
+<span class="k">			noi di</span> <span class="s">&quot;Too few varnames, you can do this manually!&quot;</span>
+			<span class="c1">//exit 459</span>
+		}
+	}
+<span class="k">end</span> 
+<span class="k">use</span> transplants,<span class="k"> clear</span> 
+myfirst  
+<span class="k">di</span> <span class="nf">c</span>(k)
+
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+Too few varnames, you can<span class="k"> do</span> this manually<span class="o">!</span>
+
+.<span class="k"> di</span> <span class="nf">c</span>(k)
+<span class="m">26</span>
+
+. 
+<span class="k">end</span> of<span class="k"> do</span><span class="o">-</span>file
+
+. 
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -1026,7 +1187,13 @@ The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;extended_dgn&qu
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-do">8.9 test.do</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">9.10 feedback</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suigeneris">9.11 suigeneris</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myfirst">9.12 myfirst</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myfirst">9.12 myfirst</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unconditional">9.12.1 unconditional</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subcondition">9.12.2 subcondition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variant">9.12.3 variant</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knockout">9.12.4 knockout</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
