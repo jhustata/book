@@ -381,6 +381,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matcell">8.8 matcell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-do">8.9 test.do</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">9.10 feedback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suigeneris">9.11 suigeneris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myfirst">9.12 myfirst</a></li>
 </ul>
             </nav>
         </div>
@@ -877,6 +879,68 @@ Example selected by chatGPT: auto</p>
 <li><p>so please send us an email <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">&amp;</span> <span class="pre">when</span> <span class="pre">...</span> </code></p></li>
 </ul>
 </section>
+<section id="suigeneris">
+<h2>9.11 suigeneris<a class="headerlink" href="#suigeneris" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>#delimit ; <span class="c1">//hw1q6</span>
+<span class="k">    table</span> () (command result), 
+	    command(_r_b _r_ci:logistic received_kt init_age female) 
+		nformat(<span class="nx">%5.2f</span> _r_b _r_ci) 
+		sformat(<span class="s">&quot;(%s)&quot;</span>  _r_ci ) 
+		cidelimiter(<span class="o">-</span>) ;
+	collect<span class="k"> label levels</span> result _r_b <span class="s">&quot;OR&quot;</span>, modify ;
+	collect<span class="k"> label levels</span> result _r_ci <span class="s">&quot;(95% CI)&quot;</span>, modify ;
+	collect<span class="k"> label levels</span> 
+	    command <span class="m">1</span> <span class="s">&quot;Logistic Regression Model for Age and Sex&quot;</span>, modify;
+<span class="k">	noi di</span> <span class="s">&quot;Question 6:&quot;</span> ;
+<span class="k">	noi</span> collect preview ;
+#delimit cr
+</pre></div>
+</div>
+</section>
+<section id="myfirst">
+<h2>9.12 myfirst<a class="headerlink" href="#myfirst" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> myfirst 
+<span class="k">quietly program</span> define myfirst
+    cls 
+<span class="k">    qui ds</span> 
+<span class="k">	foreach</span> v of<span class="k"> varlist</span> <span class="nv">`r(varlist)&#39;</span> {
+<span class="k">		qui sum</span> <span class="nv">`v&#39;</span>,<span class="k"> d</span>
+<span class="k">		qui local</span> m_iqr:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p50) <span class="s">&quot;(&quot;</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p25) <span class="s">&quot;-&quot;</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(p75) <span class="s">&quot;)&quot;</span>
+<span class="k">		noi di</span> <span class="s">`&quot;The median (IQR) of &quot;</span><span class="nv">`v&#39;</span><span class="s">&quot; is </span><span class="nv">`m_iqr&#39;</span><span class="s"> &quot;&#39;</span>
+	}
+<span class="k">end</span> 
+<span class="k">use</span> transplants,<span class="k"> clear</span> 
+myfirst<span class="k"> program</span>
+
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;fake_id&quot;</span> is <span class="m">3000.5</span>(<span class="m">1500.5-4500.5</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;ctr_id&quot;</span> is <span class="m">41.0</span>(<span class="m">30.0-49.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;transplant_date&quot;</span> is <span class="m">19757.0</span>(<span class="m">18492.0-20902.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;don_hgt_cm&quot;</span> is <span class="m">172.0</span>(<span class="m">163.0-180.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;don_wgt_kg&quot;</span> is <span class="m">79.0</span>(<span class="m">66.0-93.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;don_cod&quot;</span> is <span class="m">2.0</span>(<span class="m">1.0-3.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;don_ecd&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-0.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;dx&quot;</span> is <span class="m">4.0</span>(<span class="m">2.0-9.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;race&quot;</span> is <span class="m">2.0</span>(<span class="m">1.0-4.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;rec_hgt_cm&quot;</span> is <span class="m">170.0</span>(<span class="m">162.0-177.8</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;rec_wgt_kg&quot;</span> is <span class="m">79.0</span>(<span class="m">66.2-93.4</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;bmi&quot;</span> is <span class="m">28.0</span>(<span class="m">24.0-32.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;prev_ki&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-0.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;age&quot;</span> is <span class="m">53.0</span>(<span class="m">41.0-62.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;peak_pra&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-14.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;end_date&quot;</span> is <span class="m">21868.0</span>(<span class="m">21802.0-21901.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;died&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-0.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;tx_failed&quot;</span> is <span class="m">1.0</span>(<span class="m">0.0-1.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;wait_yrs&quot;</span> is <span class="m">1.8</span>(<span class="m">0.6-3.5</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;abo&quot;</span> is <span class="m">3.0</span>(<span class="m">1.0-4.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;gender&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-1.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;rec_hcv_antibody&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-0.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;rec_work&quot;</span> is <span class="m">0.0</span>(<span class="m">0.0-1.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;pretx_cmv&quot;</span> is <span class="m">1.0</span>(<span class="m">0.0-1.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;rec_education&quot;</span> is <span class="m">2.0</span>(<span class="m">2.0-3.0</span>) 
+The<span class="k">	median</span>	(IQR)	of	<span class="s">&quot;extended_dgn&quot;</span> is   .(  .<span class="o">-</span>  .) 
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -961,6 +1025,8 @@ Example selected by chatGPT: auto</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matcell">8.8 matcell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-do">8.9 test.do</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">9.10 feedback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suigeneris">9.11 suigeneris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myfirst">9.12 myfirst</a></li>
 </ul>
   </nav></div>
 

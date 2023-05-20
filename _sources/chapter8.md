@@ -484,3 +484,65 @@ di table[4,1] //Hypertensive Male
 + any system without a feedback loop is like a cancer
 + so please send us an email `if & when ... ` 
 
+## 9.11 suigeneris
+
+```stata
+#delimit ; //hw1q6
+    table () (command result), 
+	    command(_r_b _r_ci:logistic received_kt init_age female) 
+		nformat(%5.2f _r_b _r_ci) 
+		sformat("(%s)"  _r_ci ) 
+		cidelimiter(-) ;
+	collect label levels result _r_b "OR", modify ;
+	collect label levels result _r_ci "(95% CI)", modify ;
+	collect label levels 
+	    command 1 "Logistic Regression Model for Age and Sex", modify;
+	noi di "Question 6:" ;
+	noi collect preview ;
+#delimit cr
+```
+
+## 9.12 myfirst
+
+```stata
+capture program drop myfirst 
+quietly program define myfirst
+    cls 
+    qui ds 
+	foreach v of varlist `r(varlist)' {
+		qui sum `v', d
+		qui local m_iqr: di %3.1f r(p50) "(" %3.1f r(p25) "-" %3.1f r(p75) ")"
+		noi di `"The median (IQR) of "`v'" is `m_iqr' "'
+	}
+end 
+use transplants, clear 
+myfirst program
+
+The	median	(IQR)	of	"fake_id" is 3000.5(1500.5-4500.5) 
+The	median	(IQR)	of	"ctr_id" is 41.0(30.0-49.0) 
+The	median	(IQR)	of	"transplant_date" is 19757.0(18492.0-20902.0) 
+The	median	(IQR)	of	"don_hgt_cm" is 172.0(163.0-180.0) 
+The	median	(IQR)	of	"don_wgt_kg" is 79.0(66.0-93.0) 
+The	median	(IQR)	of	"don_cod" is 2.0(1.0-3.0) 
+The	median	(IQR)	of	"don_ecd" is 0.0(0.0-0.0) 
+The	median	(IQR)	of	"dx" is 4.0(2.0-9.0) 
+The	median	(IQR)	of	"race" is 2.0(1.0-4.0) 
+The	median	(IQR)	of	"rec_hgt_cm" is 170.0(162.0-177.8) 
+The	median	(IQR)	of	"rec_wgt_kg" is 79.0(66.2-93.4) 
+The	median	(IQR)	of	"bmi" is 28.0(24.0-32.0) 
+The	median	(IQR)	of	"prev_ki" is 0.0(0.0-0.0) 
+The	median	(IQR)	of	"age" is 53.0(41.0-62.0) 
+The	median	(IQR)	of	"peak_pra" is 0.0(0.0-14.0) 
+The	median	(IQR)	of	"end_date" is 21868.0(21802.0-21901.0) 
+The	median	(IQR)	of	"died" is 0.0(0.0-0.0) 
+The	median	(IQR)	of	"tx_failed" is 1.0(0.0-1.0) 
+The	median	(IQR)	of	"wait_yrs" is 1.8(0.6-3.5) 
+The	median	(IQR)	of	"abo" is 3.0(1.0-4.0) 
+The	median	(IQR)	of	"gender" is 0.0(0.0-1.0) 
+The	median	(IQR)	of	"rec_hcv_antibody" is 0.0(0.0-0.0) 
+The	median	(IQR)	of	"rec_work" is 0.0(0.0-1.0) 
+The	median	(IQR)	of	"pretx_cmv" is 1.0(0.0-1.0) 
+The	median	(IQR)	of	"rec_education" is 2.0(2.0-3.0) 
+The	median	(IQR)	of	"extended_dgn" is   .(  .-  .) 
+
+```
