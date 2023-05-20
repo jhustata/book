@@ -641,6 +641,16 @@ use transplants, clear
 myfirst  
 di c(k)
 
+Too few varnames,	you	can	do	this	manually!
+r(459);
+
+end of do-file
+
+r(459);
+
+. 
+
+
 ```
 
 ### 9.12.4 knockout
