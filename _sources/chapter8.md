@@ -528,8 +528,10 @@ quietly program define myfirst
 	}
 end 
 use transplants, clear 
-myfirst  
+myfirst 
+``` 
 
+```s
 The	median	(IQR)	of	"fake_id" is 3000.5(1500.5-4500.5) 
 The	median	(IQR)	of	"ctr_id" is 41.0(30.0-49.0) 
 The	median	(IQR)	of	"transplant_date" is 19757.0(18492.0-20902.0) 
@@ -580,7 +582,9 @@ end
 use transplants, clear 
 myfirst  
 di c(k)
+```
 
+```s
 The median (IQR)	of	"fake_id" is 3000.5(1500.5-4500.5) 
 The median (IQR)	of	"ctr_id" is 41.0(30.0-49.0) 
 The median (IQR)	of	"transplant_date" is 19757.0(18492.0-20902.0) 
@@ -640,7 +644,9 @@ end
 use transplants, clear 
 myfirst  
 di c(k)
+```
 
+```s
 Too few varnames,	you	can	do	this	manually!
 r(459);
 
@@ -676,7 +682,9 @@ end
 use transplants, clear 
 myfirst  
 di c(k)
+```
 
+```s 
 Too few varnames, you can do this manually!
 Too few varnames, you can do this manually!
 Too few varnames, you can do this manually!
@@ -714,3 +722,34 @@ end of do-file
 
 ```
 
+## 9.13 theline
+
++ toe the line
++ cross the line
++ line continuation
+
+```
+// all these examples are programmatically equivalent
+// but, aesthetically, very distinct!
+// copy & paste into .do file; but don't `do`!!
+
+super-long line of code that totally sprawls out horizontally and quite literally crosses the line if line continuation techniques aren't utilized
+
+super-long line of code that  ///
+   totally sprawls out horizontally  ///
+   and quite literally crosses the line  ///
+   if line continuation techniques aren't utilized
+
+super-long line of code that /*
+  */ totally sprawls out horizontally /*
+  */ and quite literally crosses the line /*
+  */ if line continuation techniques aren't utilized
+
+#delimit ;
+   super-long line of code that 
+   totally sprawls out horizontally
+   and quite literally crosses the line
+   if line continuation techniques aren't utilized
+	;
+#delimit cr 
+```
