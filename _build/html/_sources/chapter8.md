@@ -653,7 +653,7 @@ r(459);
 
 ```
 
-### 9.12.4 knockout
+### 9.12.4 [knockout](https://www.genome.gov/about-genomics/fact-sheets/Knockout-Mice-Fact-Sheet)
 
 ```stata
 
