@@ -504,6 +504,13 @@ di table[4,1] //Hypertensive Male
 
 ## 9.12 myfirst
 
+### 9.12.1 unconditional
+
++ The time it takes to write the program below 
++ Is it dependent on, of independent of, `c(N)`?
++ How about manually estimating median (IQR) for each varname?
++ May this motivate you to <u>incorporate programming</u> into your workflow!
+
 ```stata
 capture program drop myfirst 
 quietly program define myfirst
@@ -512,11 +519,16 @@ quietly program define myfirst
 	foreach v of varlist `r(varlist)' {
 		qui sum `v', d
 		qui local m_iqr: di %3.1f r(p50) "(" %3.1f r(p25) "-" %3.1f r(p75) ")"
-		noi di `"The median (IQR) of "`v'" is `m_iqr' "'
+		if c(N) < 10 {
+            noi di `"The median (IQR) of "`v'" is `m_iqr' "'
+		}
+		else {
+			noi di "Too many values, select no more than 10 varnames"
+		}
 	}
 end 
 use transplants, clear 
-myfirst program
+myfirst  
 
 The	median	(IQR)	of	"fake_id" is 3000.5(1500.5-4500.5) 
 The	median	(IQR)	of	"ctr_id" is 41.0(30.0-49.0) 
@@ -546,3 +558,149 @@ The	median	(IQR)	of	"rec_education" is 2.0(2.0-3.0)
 The	median	(IQR)	of	"extended_dgn" is   .(  .-  .) 
 
 ```
+
+### 9.12.2 subcondition
+
+```stata
+capture program drop myfirst 
+quietly program define myfirst
+    cls 
+    qui ds 
+	foreach v of varlist `r(varlist)' {
+		qui sum `v', d
+		qui local m_iqr: di %3.1f r(p50) "(" %3.1f r(p25) "-" %3.1f r(p75) ")"
+		if c(k) < 30 {
+            noi di `"The median (IQR) of "`v'" is `m_iqr' "'
+		}
+		else {
+			noi di "Too many values, select no more than 30 varnames"
+		}
+	}
+end 
+use transplants, clear 
+myfirst  
+di c(k)
+
+The median (IQR)	of	"fake_id" is 3000.5(1500.5-4500.5) 
+The median (IQR)	of	"ctr_id" is 41.0(30.0-49.0) 
+The median (IQR)	of	"transplant_date" is 19757.0(18492.0-20902.0) 
+The median (IQR)	of	"don_hgt_cm" is 172.0(163.0-180.0) 
+The median (IQR)	of	"don_wgt_kg" is 79.0(66.0-93.0) 
+The median (IQR)	of	"don_cod" is 2.0(1.0-3.0) 
+The median (IQR)	of	"don_ecd" is 0.0(0.0-0.0) 
+The median (IQR)	of	"dx" is 4.0(2.0-9.0) 
+The median (IQR)	of	"race" is 2.0(1.0-4.0) 
+The median (IQR)	of	"rec_hgt_cm" is 170.0(162.0-177.8) 
+The median (IQR)	of	"rec_wgt_kg" is 79.0(66.2-93.4) 
+The median (IQR)	of	"bmi" is 28.0(24.0-32.0) 
+The median (IQR)	of	"prev_ki" is 0.0(0.0-0.0) 
+The median (IQR)	of	"age" is 53.0(41.0-62.0) 
+The median (IQR)	of	"peak_pra" is 0.0(0.0-14.0) 
+The median (IQR)	of	"end_date" is 21868.0(21802.0-21901.0) 
+The median (IQR)	of	"died" is 0.0(0.0-0.0) 
+The median (IQR)	of	"tx_failed" is 1.0(0.0-1.0) 
+The median (IQR)	of	"wait_yrs" is 1.8(0.6-3.5) 
+The median (IQR)	of	"abo" is 3.0(1.0-4.0) 
+The median (IQR)	of	"gender" is 0.0(0.0-1.0) 
+The median (IQR)	of	"rec_hcv_antibody" is 0.0(0.0-0.0) 
+The median (IQR)	of	"rec_work" is 0.0(0.0-1.0) 
+The median (IQR)	of	"pretx_cmv" is 1.0(0.0-1.0) 
+The median (IQR)	of	"rec_education" is 2.0(2.0-3.0) 
+The median (IQR)	of	"extended_dgn" is   .(  .-  .) 
+
+. di c(k)
+26
+
+. 
+end of do-file
+
+. 
+
+```
+
+### 9.12.3 variant
+
+```stata
+capture program drop myfirst 
+quietly program define myfirst
+    cls 
+    qui ds 
+	foreach v of varlist `r(varlist)' {
+		qui sum `v', d
+		qui local m_iqr: di %3.1f r(p50) "(" %3.1f r(p25) "-" %3.1f r(p75) ")"
+		if c(k) > 30 {
+            noi di `"The median (IQR) of "`v'" is `m_iqr' "'
+		}
+		else {
+			noi di "Too few varnames, you can do this manually!"
+			exit 459
+		}
+	}
+end 
+use transplants, clear 
+myfirst  
+di c(k)
+
+```
+
+### 9.12.4 knockout
+
+```stata
+
+capture program drop myfirst 
+quietly program define myfirst
+    cls 
+    qui ds 
+	foreach v of varlist `r(varlist)' {
+		qui sum `v', d
+		qui local m_iqr: di %3.1f r(p50) "(" %3.1f r(p25) "-" %3.1f r(p75) ")"
+		if c(k) > 30 {
+            noi di `"The median (IQR) of "`v'" is `m_iqr' "'
+		}
+		else {
+			noi di "Too few varnames, you can do this manually!"
+			//exit 459
+		}
+	}
+end 
+use transplants, clear 
+myfirst  
+di c(k)
+
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+Too few varnames, you can do this manually!
+
+. di c(k)
+26
+
+. 
+end of do-file
+
+. 
+
+```
+
