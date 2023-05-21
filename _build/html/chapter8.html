@@ -391,9 +391,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theline">9.13 theline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssc">9.14 ssc</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1">9.15 table1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v1">9.15 table1_v1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v2">9.16 table1_v2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v3">9.17 table1_v3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v4">9.18 table1_v4</a></li>
 </ul>
             </nav>
         </div>
@@ -1191,8 +1192,8 @@ super-long line of code that /*
 <li><p>dead shepherd, now i find thy saw of might: whoever loved that loved not python or r?</p></li>
 </ul>
 </section>
-<section id="table1">
-<h2>9.15 table1<a class="headerlink" href="#table1" title="Permalink to this heading">#</a></h2>
+<section id="table1-v1">
+<h2>9.15 table1_v1<a class="headerlink" href="#table1-v1" title="Permalink to this heading">#</a></h2>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">do</span> https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>book<span class="o">/</span>main<span class="o">/</span>table1_options<span class="m">.</span>ado
 <span class="k">do</span> https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>book<span class="o">/</span>main<span class="o">/</span>ind_translator<span class="m">.</span>ado
 
@@ -1605,6 +1606,138 @@ super-long line of code that /*
 </pre></div>
 </div>
 </section>
+<section id="table1-v4">
+<h2>9.18 table1_v4<a class="headerlink" href="#table1-v4" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">do</span> https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>book<span class="o">/</span>main<span class="o">/</span>table1_options<span class="m">.</span>ado
+<span class="k">do</span> https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>book<span class="o">/</span>main<span class="o">/</span>ind_translator<span class="m">.</span>ado
+
+<span class="k">qui</span> {
+<span class="k">	if</span> <span class="m">0</span> {
+		
+	}
+<span class="k">	if</span> <span class="m">1</span> {
+		cls
+<span class="k">		use</span> 18_nhtable102feb2023<span class="m">.</span>dta,<span class="k"> clear</span> 
+		<span class="c1">//g string=&quot;string&quot;</span>
+	}
+<span class="k">	if</span> <span class="m">2</span> {
+		<span class="c1">//noi ds, has(type string)</span>
+		<span class="c1">//global string: di &quot;`r(varlist)&#39;&quot;</span>
+<span class="k">		foreach</span> v of<span class="k"> varlist</span> <span class="o">*</span> {
+<span class="k">			replace</span> <span class="nv">`v&#39;</span>=<span class="nf">round</span>(<span class="nv">`v&#39;</span>)
+<span class="k">			levelsof</span> <span class="nv">`v&#39;</span>
+<span class="k">			if</span> <span class="nf">r</span>(r) <span class="o">==</span> <span class="m">2</span> {
+<span class="k">				rename</span> <span class="nv">`v&#39;</span> b_<span class="nv">`v&#39;</span>
+			}
+<span class="k">			else if</span> <span class="nf">inrange</span>(<span class="nf">r</span>(r),<span class="m">3</span>,<span class="m">30</span>) {
+<span class="k">				rename</span> <span class="nv">`v&#39;</span> m_<span class="nv">`v&#39;</span>
+			} 
+<span class="k">			else</span> {
+<span class="k">				rename</span> <span class="nv">`v&#39;</span> c_<span class="nv">`v&#39;</span>
+			}
+		}
+<span class="k">		order</span> c_<span class="o">*</span> b_<span class="o">*</span> m_<span class="o">*</span>
+		<span class="c1">//noi list c_* in 1/10</span>
+		<span class="c1">//noi list b_* in 1/10</span>
+		<span class="c1">//noi list m_* in 1/10</span>
+<span class="k">		foreach</span> v of<span class="k"> varlist</span> <span class="o">*</span> {
+	        <span class="c1">//di &quot;`v&#39;&quot;</span>
+<span class="k">	        global</span> v:<span class="k"> di</span> <span class="nf">substr</span>(<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>,<span class="m">3</span>,.)
+<span class="k">	        rename</span> <span class="nv">`v&#39;</span> <span class="vg">$v</span>
+        }
+	}
+<span class="k">	if</span> <span class="m">1</span> {  
+		#delimit ;
+<span class="k">		noi</span> table1_options, 
+		    excel(<span class="s">&quot;Table1_NHANES&quot;</span>
+		    )
+		    title(
+		    <span class="s">&quot;Table 1. Demographic &amp; health characteristics of NHANES, 1988-2018&quot;</span>
+		    )
+		    <span class="cm">/*by(race2</span>
+<span class="cm">		    )*/</span>
+		    cont(
+		    acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose 
+		    )
+		    binary(
+			female
+			smk
+			dm
+			htn
+		    )
+		    multi(
+			educ
+		    )
+		    foot(
+			acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose
+			female
+			smk
+			dm
+			htn
+			educ
+		    )
+		 ;
+		#delimit cr
+	}
+}            
+</pre></div>
+</div>
+<div class="highlight-s notranslate"><div class="highlight"><pre><span></span><span class="n">Table</span><span class="w"> </span><span class="m">1</span><span class="n">.</span><span class="w"> </span><span class="n">Demographic</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">health</span><span class="w"> </span><span class="n">characteristics</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">NHANES</span><span class="p">,</span><span class="w"> </span><span class="m">1988-2018</span>
+<span class="n">uACR</span><span class="p">,</span><span class="w"> </span><span class="n">mg</span><span class="o">/</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">median</span><span class="w"> </span><span class="p">[</span><span class="n">IQR</span><span class="p">]</span><span class="w">                </span><span class="m">7</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="m">14</span><span class="p">]</span>
+<span class="n">Serum</span><span class="w"> </span><span class="n">Creatinine</span><span class="p">,</span><span class="w"> </span><span class="n">mg</span><span class="o">/</span><span class="n">dL</span><span class="p">,</span><span class="w"> </span><span class="n">median</span><span class="w"> </span><span class="p">[</span><span class="n">IAR</span><span class="p">]</span><span class="w">   </span><span class="m">1</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">]</span>
+<span class="n">Income</span><span class="p">,</span><span class="w"> </span><span class="o">$</span><span class="p">,</span><span class="w"> </span><span class="n">median</span><span class="w"> </span><span class="p">[</span><span class="n">IQR</span><span class="p">]</span><span class="w">                </span><span class="m">22846</span><span class="w"> </span><span class="p">[</span><span class="m">8193</span><span class="p">,</span><span class="m">44091</span><span class="p">]</span>
+<span class="n">BMI</span><span class="p">,</span><span class="w"> </span><span class="n">kg</span><span class="o">/</span><span class="n">m2</span><span class="p">,</span><span class="w"> </span><span class="n">median</span><span class="w"> </span><span class="p">[</span><span class="n">IQR</span><span class="p">]</span><span class="w">               </span><span class="m">27</span><span class="w"> </span><span class="p">[</span><span class="m">24</span><span class="p">,</span><span class="m">32</span><span class="p">]</span>
+<span class="n">Log</span><span class="w"> </span><span class="n">uACR</span><span class="p">,</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="n">mg</span><span class="o">/</span><span class="n">g</span><span class="p">),</span><span class="w"> </span><span class="n">median</span><span class="w"> </span><span class="p">[</span><span class="n">IQR</span><span class="p">]</span><span class="w">       </span><span class="m">2</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">]</span>
+<span class="n">eGFR</span><span class="p">,</span><span class="w"> </span><span class="n">ml</span><span class="o">/</span><span class="n">min</span><span class="o">/</span><span class="m">1.73</span><span class="n">m2</span><span class="p">,</span><span class="w"> </span><span class="n">median</span><span class="w"> </span><span class="p">[</span><span class="n">IAR</span><span class="p">]</span><span class="w">      </span><span class="m">107</span><span class="w"> </span><span class="p">[</span><span class="m">88</span><span class="p">,</span><span class="m">125</span><span class="p">]</span>
+<span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">median</span><span class="w"> </span><span class="p">[</span><span class="n">IQR</span><span class="p">]</span><span class="w">                   </span><span class="m">46</span><span class="w"> </span><span class="p">[</span><span class="m">30</span><span class="p">,</span><span class="m">63</span><span class="p">]</span>
+<span class="n">SBP</span><span class="p">,</span><span class="w"> </span><span class="n">mmHg</span><span class="p">,</span><span class="w"> </span><span class="n">median</span><span class="w"> </span><span class="p">[</span><span class="n">IQR</span><span class="p">]</span><span class="w">                </span><span class="m">121</span><span class="w"> </span><span class="p">[</span><span class="m">111</span><span class="p">,</span><span class="m">134</span><span class="p">]</span>
+<span class="n">HBA1c</span><span class="p">,</span><span class="w"> </span><span class="o">%, median [IQR]                  5 [ 5, 6]</span>
+<span class="o">Glucose, mg/L, median [IQR]             9 [ 9,10]</span>
+<span class="o">Female, %</span><span class="w">                              </span><span class="m">52</span>
+<span class="n">Smoke</span><span class="p">,</span><span class="w"> </span><span class="o">%                               46</span>
+<span class="o">Diabetes, %</span><span class="w">                            </span><span class="m">12</span>
+<span class="n">Hypertension</span><span class="p">,</span><span class="w"> </span><span class="o">%                        31</span>
+<span class="o">Education, %</span>
+<span class="n">K</span><span class="m">-8</span><span class="w">                               </span><span class="m">15</span>
+<span class="n">High</span><span class="w"> </span><span class="n">school</span><span class="p">,</span><span class="w"> </span><span class="n">Diploma</span><span class="o">/</span><span class="n">equivalent</span><span class="w">   </span><span class="m">42</span>
+<span class="n">Some</span><span class="w"> </span><span class="n">college</span><span class="o">/</span><span class="n">associate</span><span class="w">            </span><span class="m">24</span>
+<span class="n">College</span><span class="w"> </span><span class="n">graduate</span><span class="o">/</span><span class="n">above</span><span class="w">            </span><span class="m">19</span>
+<span class="n">acr</span><span class="o">:</span><span class="w">                    </span><span class="m">2.0</span><span class="o">% missing</span>
+<span class="o">creat:                  5.1%</span><span class="w"> </span><span class="n">missing</span>
+<span class="n">income</span><span class="o">:</span><span class="w">                 </span><span class="m">5.4</span><span class="o">% missing</span>
+<span class="o">bmi:                    1.6%</span><span class="w"> </span><span class="n">missing</span>
+<span class="n">logacr</span><span class="o">:</span><span class="w">                 </span><span class="m">2.0</span><span class="o">% missing</span>
+<span class="o">egfr:                   5.1%</span><span class="w"> </span><span class="n">missing</span>
+<span class="n">age</span><span class="o">:</span><span class="w">                    </span><span class="m">0.0</span><span class="o">% missing</span>
+<span class="o">sbp:                    6.0%</span><span class="w"> </span><span class="n">missing</span>
+<span class="n">hba1c</span><span class="o">:</span><span class="w">                  </span><span class="m">4.0</span><span class="o">% missing</span>
+<span class="o">glucose:                5.1%</span><span class="w"> </span><span class="n">missing</span>
+<span class="n">female</span><span class="o">:</span><span class="w">                 </span><span class="m">0.0</span><span class="o">% missing</span>
+<span class="o">smk:                    4.3%</span><span class="w"> </span><span class="n">missing</span>
+<span class="n">dm</span><span class="o">:</span><span class="w">                     </span><span class="m">0.1</span><span class="o">% missing</span>
+<span class="o">htn:                    0.6%</span><span class="w"> </span><span class="n">missing</span>
+<span class="n">educ</span><span class="o">:</span><span class="w">                   </span><span class="m">5.7</span>%<span class="w"> </span><span class="n">missing</span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1699,9 +1832,10 @@ super-long line of code that /*
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theline">9.13 theline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssc">9.14 ssc</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1">9.15 table1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v1">9.15 table1_v1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v2">9.16 table1_v2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v3">9.17 table1_v3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v4">9.18 table1_v4</a></li>
 </ul>
   </nav></div>
 

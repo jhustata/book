@@ -792,7 +792,7 @@ r(199);
 + both r & python unambiguous about libraries in each script
 + dead shepherd, now i find thy saw of might: whoever loved that loved not python or r?
 
-## 9.15 table1
+## 9.15 table1_v1
 
 ```stata
 do https://raw.githubusercontent.com/jhustata/book/main/table1_options.ado
@@ -1211,5 +1211,140 @@ qui {
 end of	do-file
 
 . 
+
+```
+
+## 9.18 table1_v4
+
+```stata
+do https://raw.githubusercontent.com/jhustata/book/main/table1_options.ado
+do https://raw.githubusercontent.com/jhustata/book/main/ind_translator.ado
+
+qui {
+	if 0 {
+		
+	}
+	if 1 {
+		cls
+		use 18_nhtable102feb2023.dta, clear 
+		//g string="string"
+	}
+	if 2 {
+		//noi ds, has(type string)
+		//global string: di "`r(varlist)'"
+		foreach v of varlist * {
+			replace `v'=round(`v')
+			levelsof `v'
+			if r(r) == 2 {
+				rename `v' b_`v'
+			}
+			else if inrange(r(r),3,30) {
+				rename `v' m_`v'
+			} 
+			else {
+				rename `v' c_`v'
+			}
+		}
+		order c_* b_* m_*
+		//noi list c_* in 1/10
+		//noi list b_* in 1/10
+		//noi list m_* in 1/10
+		foreach v of varlist * {
+	        //di "`v'"
+	        global v: di substr("`v'",3,.)
+	        rename `v' $v
+        }
+	}
+	if 1 {  
+		#delimit ;
+		noi table1_options, 
+		    excel("Table1_NHANES"
+		    )
+		    title(
+		    "Table 1. Demographic & health characteristics of NHANES, 1988-2018"
+		    )
+		    /*by(race2
+		    )*/
+		    cont(
+		    acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose 
+		    )
+		    binary(
+			female
+			smk
+			dm
+			htn
+		    )
+		    multi(
+			educ
+		    )
+		    foot(
+			acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose
+			female
+			smk
+			dm
+			htn
+			educ
+		    )
+		 ;
+		#delimit cr
+	}
+}            
+```
+
+```s
+Table 1. Demographic & health characteristics of NHANES, 1988-2018
+uACR, mg/g, median [IQR]                7 [ 4,14]
+Serum Creatinine, mg/dL, median [IAR]   1 [ 1, 1]
+Income, $, median [IQR]                22846 [8193,44091]
+BMI, kg/m2, median [IQR]               27 [24,32]
+Log uACR, log(mg/g), median [IQR]       2 [ 1, 3]
+eGFR, ml/min/1.73m2, median [IAR]      107 [88,125]
+Age, y, median [IQR]                   46 [30,63]
+SBP, mmHg, median [IQR]                121 [111,134]
+HBA1c, %, median [IQR]                  5 [ 5, 6]
+Glucose, mg/L, median [IQR]             9 [ 9,10]
+Female, %                              52
+Smoke, %                               46
+Diabetes, %                            12
+Hypertension, %                        31
+Education, %
+K-8                               15
+High school, Diploma/equivalent   42
+Some college/associate            24
+College graduate/above            19
+acr:                    2.0% missing
+creat:                  5.1% missing
+income:                 5.4% missing
+bmi:                    1.6% missing
+logacr:                 2.0% missing
+egfr:                   5.1% missing
+age:                    0.0% missing
+sbp:                    6.0% missing
+hba1c:                  4.0% missing
+glucose:                5.1% missing
+female:                 0.0% missing
+smk:                    4.3% missing
+dm:                     0.1% missing
+htn:                    0.6% missing
+educ:                   5.7% missing
+
 
 ```
