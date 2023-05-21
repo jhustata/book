@@ -390,7 +390,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theline">9.13 theline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#css">9.14 css</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssc">9.14 ssc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1">9.15 table1</a></li>
 </ul>
             </nav>
         </div>
@@ -1150,8 +1151,8 @@ super-long line of code that /*
 </pre></div>
 </div>
 </section>
-<section id="css">
-<h2>9.14 css<a class="headerlink" href="#css" title="Permalink to this heading">#</a></h2>
+<section id="ssc">
+<h2>9.14 ssc<a class="headerlink" href="#ssc" title="Permalink to this heading">#</a></h2>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">	if</span> <span class="m">3</span> {<span class="o">//</span>Question <span class="m">3</span>
 		
 		estpost<span class="k"> tab</span> prev female
@@ -1187,6 +1188,92 @@ super-long line of code that /*
 <li><p>both r &amp; python unambiguous about libraries in each script</p></li>
 <li><p>dead shepherd, now i find thy saw of might: whoever loved that loved not python or r?</p></li>
 </ul>
+</section>
+<section id="table1">
+<h2>9.15 table1<a class="headerlink" href="#table1" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">do</span> https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>book<span class="o">/</span>main<span class="o">/</span>table1_options<span class="m">.</span>ado
+<span class="k">do</span> https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>book<span class="o">/</span>main<span class="o">/</span>ind_translator<span class="m">.</span>ado
+
+<span class="k">qui</span> {
+<span class="k">	if</span> <span class="m">0</span> {
+		
+	}
+<span class="k">	if</span> <span class="m">1</span> {
+		cls
+<span class="k">		use</span> 18_nhtable102feb2023<span class="m">.</span>dta,<span class="k"> clear</span> 
+		<span class="c1">//g string=&quot;string&quot;</span>
+	}
+<span class="k">	if</span> <span class="m">2</span> {
+		<span class="c1">//noi ds, has(type string)</span>
+		<span class="c1">//global string: di &quot;`r(varlist)&#39;&quot;</span>
+<span class="k">		foreach</span> v of<span class="k"> varlist</span> <span class="o">*</span> {
+<span class="k">			replace</span> <span class="nv">`v&#39;</span>=<span class="nf">round</span>(<span class="nv">`v&#39;</span>)
+<span class="k">			levelsof</span> <span class="nv">`v&#39;</span>
+<span class="k">			if</span> <span class="nf">r</span>(r) <span class="o">==</span> <span class="m">2</span> {
+<span class="k">				noi di</span> <span class="s">&quot;binary vars: </span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+			}
+<span class="k">			else if</span> <span class="nf">inrange</span>(<span class="nf">r</span>(r),<span class="m">3</span>,<span class="m">30</span>) {
+<span class="k">				noi di</span> <span class="s">&quot;categorical vars: </span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+			} 
+<span class="k">			else</span> {
+<span class="k">				noi di</span> <span class="s">&quot;continuous vars: </span><span class="nv">`v&#39;</span><span class="s">&quot;</span>
+			}
+		}
+	}
+<span class="k">	if</span> <span class="m">3</span> {
+		#delimit ;
+<span class="k">		noi</span> table1_options, 
+		    excel(<span class="s">&quot;Table1_NHANES&quot;</span>
+		    )
+		    title(
+		    <span class="s">&quot;Table 1. Demographic &amp; health characteristics of NHANES, 1988-2018&quot;</span>
+		    )
+<span class="k">		    by</span>(race2
+		    )
+		    cont(
+		    acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose 
+		    )
+		    binary(
+			female
+			smk
+			dm
+			htn
+		    )
+		    multi(
+			educ
+		    )
+		    foot(
+			acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose
+			female
+			smk
+			dm
+			htn
+			educ
+		    )
+		 ;
+		#delimit cr
+	}
+}            
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -1281,7 +1368,8 @@ super-long line of code that /*
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theline">9.13 theline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#css">9.14 css</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssc">9.14 ssc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1">9.15 table1</a></li>
 </ul>
   </nav></div>
 

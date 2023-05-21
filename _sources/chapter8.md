@@ -754,7 +754,7 @@ super-long line of code that /*
 #delimit cr 
 ```
 
-## 9.14 css 
+## 9.14 ssc 
 
 ```stata
 	if 3 {//Question 3
@@ -791,3 +791,90 @@ r(199);
 + stata very poor with such documentation
 + both r & python unambiguous about libraries in each script
 + dead shepherd, now i find thy saw of might: whoever loved that loved not python or r?
+
+## 9.15 table1
+
+```stata
+do https://raw.githubusercontent.com/jhustata/book/main/table1_options.ado
+do https://raw.githubusercontent.com/jhustata/book/main/ind_translator.ado
+
+qui {
+	if 0 {
+		
+	}
+	if 1 {
+		cls
+		use 18_nhtable102feb2023.dta, clear 
+		//g string="string"
+	}
+	if 2 {
+		//noi ds, has(type string)
+		//global string: di "`r(varlist)'"
+		foreach v of varlist * {
+			replace `v'=round(`v')
+			levelsof `v'
+			if r(r) == 2 {
+				noi di "binary vars: `v'"
+			}
+			else if inrange(r(r),3,30) {
+				noi di "categorical vars: `v'"
+			} 
+			else {
+				noi di "continuous vars: `v'"
+			}
+		}
+	}
+	if 3 {
+		#delimit ;
+		noi table1_options, 
+		    excel("Table1_NHANES"
+		    )
+		    title(
+		    "Table 1. Demographic & health characteristics of NHANES, 1988-2018"
+		    )
+		    by(race2
+		    )
+		    cont(
+		    acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose 
+		    )
+		    binary(
+			female
+			smk
+			dm
+			htn
+		    )
+		    multi(
+			educ
+		    )
+		    foot(
+			acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose
+			female
+			smk
+			dm
+			htn
+			educ
+		    )
+		 ;
+		#delimit cr
+	}
+}            
+
+```
