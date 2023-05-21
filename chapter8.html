@@ -390,6 +390,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theline">9.13 theline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#css">9.14 css</a></li>
 </ul>
             </nav>
         </div>
@@ -1149,6 +1150,44 @@ super-long line of code that /*
 </pre></div>
 </div>
 </section>
+<section id="css">
+<h2>9.14 css<a class="headerlink" href="#css" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">	if</span> <span class="m">3</span> {<span class="o">//</span>Question <span class="m">3</span>
+		
+		estpost<span class="k"> tab</span> prev female
+<span class="k">		mat list e</span>(colpct)
+<span class="k">		matrix</span> define p=<span class="nf">e</span>(colpct)
+<span class="k">		local</span> m_p:<span class="k"> di</span> <span class="nx">%3.1f</span> p[<span class="m">1</span>,<span class="m">2</span>]
+<span class="k">		local</span> f_p:<span class="k"> di</span> <span class="nx">%3.1f</span> p[<span class="m">1</span>,<span class="m">5</span>]
+<span class="k">		</span>
+<span class="k">		noi di</span> <span class="s">&quot;Question 3: </span><span class="nv">`m_p&#39;</span><span class="s">% among males and </span><span class="nv">`f_p&#39;</span><span class="s">% among females have history of previous transplant.&quot;</span>
+<span class="k">		</span>
+<span class="k">		noi di</span> <span class="s">&quot;&quot;</span>
+
+	}
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Question</span> <span class="mi">2</span><span class="p">:</span> <span class="n">The</span> <span class="n">median</span> <span class="p">[</span><span class="n">IQR</span><span class="p">]</span> <span class="n">age</span> <span class="ow">is</span> <span class="mi">54</span> <span class="p">[</span><span class="mi">42</span><span class="o">-</span><span class="mi">62</span><span class="p">]</span> <span class="n">among</span> <span class="n">males</span> <span class="ow">and</span> <span class="mi">51</span> <span class="p">[</span><span class="mi">39</span><span class="o">-</span><span class="mi">61</span><span class="p">]</span> <span class="n">among</span> <span class="n">females</span><span class="o">.</span>
+
+<span class="n">command</span> <span class="n">estpost</span> <span class="ow">is</span> <span class="n">unrecognized</span>
+<span class="n">r</span><span class="p">(</span><span class="mi">199</span><span class="p">);</span>
+
+<span class="n">end</span> <span class="n">of</span> <span class="n">do</span><span class="o">-</span><span class="n">file</span>
+
+<span class="n">r</span><span class="p">(</span><span class="mi">199</span><span class="p">);</span>
+
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>presubmit hw</p></li>
+<li><p>we’ll detect 3rd party programs</p></li>
+<li><p>stata very poor with such documentation</p></li>
+<li><p>both r &amp; python unambiguous about libraries in each script</p></li>
+<li><p>dead shepherd, now i find thy saw of might: whoever loved that loved not python or r?</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1242,6 +1281,7 @@ super-long line of code that /*
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theline">9.13 theline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#css">9.14 css</a></li>
 </ul>
   </nav></div>
 
