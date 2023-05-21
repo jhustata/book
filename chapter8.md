@@ -1348,3 +1348,9 @@ educ:                   5.7% missing
 
 
 ```
+
+## 9.19 table1_v5
+
++ autoencodes varnames
++ binary, categorical, continuous
++ then impliments table1_afecdvi.ado
