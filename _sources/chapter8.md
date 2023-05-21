@@ -878,3 +878,192 @@ qui {
 }            
 
 ```
+
+```s
+continuous vars: seqn
+binary vars: mortstat
+continuous vars: permth_int
+continuous vars: permth_exm
+categorical vars: year
+categorical vars: race
+categorical vars: race2
+binary vars: female
+continuous vars: age
+categorical vars: educ
+continuous vars: income
+binary vars: dm
+binary vars: htn
+binary vars: smk
+continuous vars: sbp
+continuous vars: dbp
+continuous vars: bmi
+categorical vars: hba1c
+continuous vars: acr
+categorical vars: logacr
+continuous vars: glucose
+categorical vars: creat
+continuous vars: egfr
+Table 1. Demographic & health characteristics of NHANES,	1988-2018
+White	Black	Hispanic	Asian	Other
+N=8234	N=5211	N=5524	N=2913	N=852
+uACR, mg/g, median [IQR]               8 [5,14]	7 [4,15]	8 [5,14]	7 [5,13]	7 [4,13] 
+Serum Creatinine, mg/dL, median [IAR]  1 [1,1]	1 [1,1]	1 [1,1]	1 [1,1]	1 [1,1] 
+Income, $, median [IQR]                16579 [15,36790]	16834 [15,37404]	19012 [77,38200]	77 [15,38560]	18187 [15,37022] 
+BMI, kg/m2, median [IQR]               28 [24,33]	29 [25,35]	29 [26,33]	24 [22,28]	29 [24,34] 
+Log uACR, log(mg/g), median [IQR]      2 [2,3]	2 [1,3]	2 [2,3]	2 [2,3]	2 [1,3] 
+eGFR, ml/min/1.73m2, median [IAR]      98 [82,115]	113 [89,133]	110 [94,126]	109 [95,124]	105 [89,123] 
+Age, y, median [IQR]                   51 [34,69]	49 [32,62]	46 [31,61]	44 [31,59]	40 [27,57] 
+SBP, mmHg, median [IQR]                120 [112,134]	126 [114,138]	120 [110,134]	118 [108,130]	120 [110,132] 
+HBA1c, %, median [IQR]                 6 [5,6]	6 [5,6]	6 [5,6]	6 [5,6]	6 [5,6] 
+Glucose, mg/L, median [IQR]            9 [9,10]	9 [9,10]	10 [9,11]	9 [9,11]	9 [9,10] 
+Female, %                              50	52	53	52	47 
+Smoke, %                               51	41	35	23	51 
+Diabetes, %                            14	19	17	14	15 
+Hypertension, %                        38	44	30	24	34 
+Education, %
+K-8                                3	4	26	8	4 
+High school, Diploma/equivalent    34	42	39	21	31 
+Some college/associate             35	36	24	19	43 
+College graduate/above             28	19	11	52	23 
+
+acr                                    2.4% missing	3.2% missing	1.6% missing	1.8% missing	2.3% missing 
+creat                                  4.6% missing	10.1% missing	5.0% missing	8.1% missing	6.1% missing 
+income                                 1.6% missing	3.0% missing	3.3% missing	3.6% missing	2.0% missing 
+bmi                                    1.5% missing	1.6% missing	1.5% missing	1.0% missing	1.6% missing 
+logacr                                 2.4% missing	3.2% missing	1.6% missing	1.8% missing	2.3% missing 
+egfr                                   4.6% missing	10.1% missing	5.0% missing	8.1% missing	6.1% missing 
+age                                    0.0% missing	0.0% missing	0.0% missing	0.0% missing	0.0% missing 
+sbp                                    7.9% missing	9.0% missing	8.4% missing	9.6% missing	8.3% missing 
+hba1c                                  3.3% missing	7.5% missing	3.8% missing	6.2% missing	5.3% missing 
+glucose                                4.6% missing	10.1% missing	5.0% missing	8.1% missing	6.1% missing 
+female                                 0.0% missing	0.0% missing	0.0% missing	0.0% missing	0.0% missing 
+smk                                    0.8% missing	2.0% missing	1.6% missing	1.1% missing	1.9% missing 
+dm                                     0.0% missing	0.0% missing	0.1% missing	0.0% missing	0.1% missing 
+htn                                    0.2% missing	0.1% missing	0.2% missing	0.1% missing	0.1% missing 
+educ                                   3.6% missing	5.6% missing	6.8% missing	4.7% missing	8.8% missing 
+
+. 
+end of do-file
+
+. 
+
+```
+
+## 9.16 table1_v2
+
+```stata
+do https://raw.githubusercontent.com/jhustata/book/main/table1_options.ado
+do https://raw.githubusercontent.com/jhustata/book/main/ind_translator.ado
+
+qui {
+	if 0 {
+		
+	}
+	if 1 {
+		cls
+		use 18_nhtable102feb2023.dta, clear 
+		//g string="string"
+	}
+	if 2 {
+		//noi ds, has(type string)
+		//global string: di "`r(varlist)'"
+		foreach v of varlist * {
+			replace `v'=round(`v')
+			levelsof `v'
+			if r(r) == 2 {
+				noi di "binary vars: `v'"
+			}
+			else if inrange(r(r),3,30) {
+				noi di "categorical vars: `v'"
+			} 
+			else {
+				noi di "continuous vars: `v'"
+			}
+		}
+	}
+	if 0 { //"knockout" codeblock
+		#delimit ;
+		noi table1_options, 
+		    excel("Table1_NHANES"
+		    )
+		    title(
+		    "Table 1. Demographic & health characteristics of NHANES, 1988-2018"
+		    )
+		    by(race2
+		    )
+		    cont(
+		    acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose 
+		    )
+		    binary(
+			female
+			smk
+			dm
+			htn
+		    )
+		    multi(
+			educ
+		    )
+		    foot(
+			acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose
+			female
+			smk
+			dm
+			htn
+			educ
+		    )
+		 ;
+		#delimit cr
+	}
+}            
+
+```
+
+```s
+continuous vars: seqn
+binary vars: mortstat
+continuous vars: permth_int
+continuous vars: permth_exm
+categorical vars: year
+categorical vars: race
+categorical vars: race2
+binary vars: female
+continuous vars: age
+categorical vars: educ
+continuous vars: income
+binary vars: dm
+binary vars: htn
+binary vars: smk
+continuous vars: sbp
+continuous vars: dbp
+continuous vars: bmi
+categorical vars: hba1c
+continuous vars: acr
+categorical vars: logacr
+continuous vars: glucose
+categorical vars: creat
+continuous vars: egfr
+
+. 
+end of do-file
+
+. 
+
+```
