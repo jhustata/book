@@ -753,3 +753,41 @@ super-long line of code that /*
 	;
 #delimit cr 
 ```
+
+## 9.14 css 
+
+```stata
+	if 3 {//Question 3
+		
+		estpost tab prev female
+		mat list e(colpct)
+		matrix define p=e(colpct)
+		local m_p: di %3.1f p[1,2]
+		local f_p: di %3.1f p[1,5]
+		
+		noi di "Question 3: `m_p'% among males and `f_p'% among females have history of previous transplant."
+		
+		noi di ""
+
+	}
+```
+
+```
+
+Question 2: The median [IQR] age is 54 [42-62] among males and 51 [39-61] among females.
+
+command estpost is unrecognized
+r(199);
+
+end of do-file
+
+r(199);
+
+
+```
+
++ presubmit hw
++ we'll detect 3rd party programs
++ stata very poor with such documentation
++ both r & python unambiguous about libraries in each script
++ dead shepherd, now i find thy saw of might: whoever loved that loved not python or r?
