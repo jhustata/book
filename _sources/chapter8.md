@@ -1067,3 +1067,149 @@ end of do-file
 . 
 
 ```
+
+## 9.17 table1_v3
+
+```stata
+do https://raw.githubusercontent.com/jhustata/book/main/table1_options.ado
+do https://raw.githubusercontent.com/jhustata/book/main/ind_translator.ado
+
+qui {
+	if 0 {
+		
+	}
+	if 1 {
+		cls
+		use 18_nhtable102feb2023.dta, clear 
+		//g string="string"
+	}
+	if 2 {
+		//noi ds, has(type string)
+		//global string: di "`r(varlist)'"
+		foreach v of varlist * {
+			replace `v'=round(`v')
+			levelsof `v'
+			if r(r) == 2 {
+				rename `v' b_`v'
+			}
+			else if inrange(r(r),3,30) {
+				rename `v' m_`v'
+			} 
+			else {
+				rename `v' c_`v'
+			}
+		}
+		order c_* b_* m_*
+		noi list c_* in 1/10
+		noi list b_* in 1/10
+		noi list m_* in 1/10
+	}
+	if 0 { //"knockout" codeblock
+		#delimit ;
+		noi table1_options, 
+		    excel("Table1_NHANES"
+		    )
+		    title(
+		    "Table 1. Demographic & health characteristics of NHANES, 1988-2018"
+		    )
+		    by(race2
+		    )
+		    cont(
+		    acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose 
+		    )
+		    binary(
+			female
+			smk
+			dm
+			htn
+		    )
+		    multi(
+			educ
+		    )
+		    foot(
+			acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose
+			female
+			smk
+			dm
+			htn
+			educ
+		    )
+		 ;
+		#delimit cr
+	}
+}            
+```
+
+```s
+			
+	c_seqn   c_perm~t   c_perm~m   c_age   c_income   c_sbp   c_dbp	c_bmi   c_acr   c_gluc~e   c_egfr	
+			
+1.	-53616        109        108      85      12625     157      94	29      44         11       52	
+2.	-53594        315        314      26      29691     124      83	37       3          9      134	
+3.	-53593        327        326      23      25221     123      83	21       2         10      110	
+4.	-53592        310        310      19      92696      96      67	19      31          8      141	
+5.	-53589          6          5      81      21443     129      72	35      26         14       86	
+			
+6.	-53586        318        317      45      49876     130      83	53       2         10      111	
+7.	-53585        178        177      58          .     135      65	18       2         26      110	
+8.	-53583        337        336      51      22527     113      70	22      20          9      120	
+9.	-53582        156        155      63      15174     116      70	21       5          9       83	
+10.	-53581        116        114      35      56148     129      90	25       9         10      117	
+			
+
+	
+	b_mortstat   b_female   b_dm   b_htn   b_smk 
+	-
+1.	Assumed deceased          0      0       1       0 
+2.	Assumed alive          1      0       1       0 
+3.	Assumed alive          0      0       0       0 
+4.	Assumed alive          1      0       0       0 
+5.	Assumed deceased          1      0       1       1 
+	-
+6.	Assumed alive          1      0       0       0 
+7.	Assumed deceased          0      1       1       1 
+8.	Assumed alive          1      0       0       1 
+9.	Assumed deceased          0      0       0       1 
+10.	Assumed deceased          0      0       0       1 
+	
+
+		
+	m_year     m_race   m_race2                            m_educ	m_hba1c   m_logacr   m_creat 
+		-
+1.	1988-1998      White         .   High school, Diploma/equivalent	6          4         1 
+2.	1988-1998      White         .   High school, Diploma/equivalent	5          1         1 
+3.	1988-1998      White         .            College graduate/above	5          1         1 
+4.	1988-1998   Hispanic         .   High school, Diploma/equivalent	4          3         1 
+5.	1988-1998      White         .   High school, Diploma/equivalent	5          3         1 
+		-
+6.	1988-1998      White         .            Some college/associate	6          1         1 
+7.	1988-1998      Black         .   High school, Diploma/equivalent	8          0         1 
+8.	1988-1998      White         .   High school, Diploma/equivalent	5          3         1 
+9.	1988-1998   Hispanic         .                               K-8	6          2         1 
+10.	1988-1998      Black         .   High school, Diploma/equivalent	5          2         1 
+		
+
+. 
+end of	do-file
+
+. 
+
+```

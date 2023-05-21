@@ -393,6 +393,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssc">9.14 ssc</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1">9.15 table1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v2">9.16 table1_v2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v3">9.17 table1_v3</a></li>
 </ul>
             </nav>
         </div>
@@ -1460,6 +1461,150 @@ super-long line of code that /*
 </pre></div>
 </div>
 </section>
+<section id="table1-v3">
+<h2>9.17 table1_v3<a class="headerlink" href="#table1-v3" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">do</span> https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>book<span class="o">/</span>main<span class="o">/</span>table1_options<span class="m">.</span>ado
+<span class="k">do</span> https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>book<span class="o">/</span>main<span class="o">/</span>ind_translator<span class="m">.</span>ado
+
+<span class="k">qui</span> {
+<span class="k">	if</span> <span class="m">0</span> {
+		
+	}
+<span class="k">	if</span> <span class="m">1</span> {
+		cls
+<span class="k">		use</span> 18_nhtable102feb2023<span class="m">.</span>dta,<span class="k"> clear</span> 
+		<span class="c1">//g string=&quot;string&quot;</span>
+	}
+<span class="k">	if</span> <span class="m">2</span> {
+		<span class="c1">//noi ds, has(type string)</span>
+		<span class="c1">//global string: di &quot;`r(varlist)&#39;&quot;</span>
+<span class="k">		foreach</span> v of<span class="k"> varlist</span> <span class="o">*</span> {
+<span class="k">			replace</span> <span class="nv">`v&#39;</span>=<span class="nf">round</span>(<span class="nv">`v&#39;</span>)
+<span class="k">			levelsof</span> <span class="nv">`v&#39;</span>
+<span class="k">			if</span> <span class="nf">r</span>(r) <span class="o">==</span> <span class="m">2</span> {
+<span class="k">				rename</span> <span class="nv">`v&#39;</span> b_<span class="nv">`v&#39;</span>
+			}
+<span class="k">			else if</span> <span class="nf">inrange</span>(<span class="nf">r</span>(r),<span class="m">3</span>,<span class="m">30</span>) {
+<span class="k">				rename</span> <span class="nv">`v&#39;</span> m_<span class="nv">`v&#39;</span>
+			} 
+<span class="k">			else</span> {
+<span class="k">				rename</span> <span class="nv">`v&#39;</span> c_<span class="nv">`v&#39;</span>
+			}
+		}
+<span class="k">		order</span> c_<span class="o">*</span> b_<span class="o">*</span> m_<span class="o">*</span>
+<span class="k">		noi list</span> c_<span class="o">*</span><span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+<span class="k">		noi list</span> b_<span class="o">*</span><span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+<span class="k">		noi list</span> m_<span class="o">*</span><span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">10</span>
+	}
+<span class="k">	if</span> <span class="m">0</span> { <span class="c1">//&quot;knockout&quot; codeblock</span>
+		#delimit ;
+<span class="k">		noi</span> table1_options, 
+		    excel(<span class="s">&quot;Table1_NHANES&quot;</span>
+		    )
+		    title(
+		    <span class="s">&quot;Table 1. Demographic &amp; health characteristics of NHANES, 1988-2018&quot;</span>
+		    )
+<span class="k">		    by</span>(race2
+		    )
+		    cont(
+		    acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose 
+		    )
+		    binary(
+			female
+			smk
+			dm
+			htn
+		    )
+		    multi(
+			educ
+		    )
+		    foot(
+			acr
+		    creat
+		    income 
+		    bmi
+		    logacr 
+		    egfr 
+		    age
+		    sbp
+		    hba1c
+		    glucose
+			female
+			smk
+			dm
+			htn
+			educ
+		    )
+		 ;
+		#delimit cr
+	}
+}            
+</pre></div>
+</div>
+<div class="highlight-s notranslate"><div class="highlight"><pre><span></span><span class="w">			</span>
+<span class="w">	</span><span class="n">c_seqn</span><span class="w">   </span><span class="n">c_perm</span><span class="o">~</span><span class="n">t</span><span class="w">   </span><span class="n">c_perm</span><span class="o">~</span><span class="n">m</span><span class="w">   </span><span class="n">c_age</span><span class="w">   </span><span class="n">c_income</span><span class="w">   </span><span class="n">c_sbp</span><span class="w">   </span><span class="n">c_dbp</span><span class="w">	</span><span class="n">c_bmi</span><span class="w">   </span><span class="n">c_acr</span><span class="w">   </span><span class="n">c_gluc</span><span class="o">~</span><span class="n">e</span><span class="w">   </span><span class="n">c_egfr</span><span class="w">	</span>
+<span class="w">			</span>
+<span class="m">1</span><span class="n">.</span><span class="w">	</span><span class="m">-53616</span><span class="w">        </span><span class="m">109</span><span class="w">        </span><span class="m">108</span><span class="w">      </span><span class="m">85</span><span class="w">      </span><span class="m">12625</span><span class="w">     </span><span class="m">157</span><span class="w">      </span><span class="m">94</span><span class="w">	</span><span class="m">29</span><span class="w">      </span><span class="m">44</span><span class="w">         </span><span class="m">11</span><span class="w">       </span><span class="m">52</span><span class="w">	</span>
+<span class="m">2</span><span class="n">.</span><span class="w">	</span><span class="m">-53594</span><span class="w">        </span><span class="m">315</span><span class="w">        </span><span class="m">314</span><span class="w">      </span><span class="m">26</span><span class="w">      </span><span class="m">29691</span><span class="w">     </span><span class="m">124</span><span class="w">      </span><span class="m">83</span><span class="w">	</span><span class="m">37</span><span class="w">       </span><span class="m">3</span><span class="w">          </span><span class="m">9</span><span class="w">      </span><span class="m">134</span><span class="w">	</span>
+<span class="m">3</span><span class="n">.</span><span class="w">	</span><span class="m">-53593</span><span class="w">        </span><span class="m">327</span><span class="w">        </span><span class="m">326</span><span class="w">      </span><span class="m">23</span><span class="w">      </span><span class="m">25221</span><span class="w">     </span><span class="m">123</span><span class="w">      </span><span class="m">83</span><span class="w">	</span><span class="m">21</span><span class="w">       </span><span class="m">2</span><span class="w">         </span><span class="m">10</span><span class="w">      </span><span class="m">110</span><span class="w">	</span>
+<span class="m">4</span><span class="n">.</span><span class="w">	</span><span class="m">-53592</span><span class="w">        </span><span class="m">310</span><span class="w">        </span><span class="m">310</span><span class="w">      </span><span class="m">19</span><span class="w">      </span><span class="m">92696</span><span class="w">      </span><span class="m">96</span><span class="w">      </span><span class="m">67</span><span class="w">	</span><span class="m">19</span><span class="w">      </span><span class="m">31</span><span class="w">          </span><span class="m">8</span><span class="w">      </span><span class="m">141</span><span class="w">	</span>
+<span class="m">5</span><span class="n">.</span><span class="w">	</span><span class="m">-53589</span><span class="w">          </span><span class="m">6</span><span class="w">          </span><span class="m">5</span><span class="w">      </span><span class="m">81</span><span class="w">      </span><span class="m">21443</span><span class="w">     </span><span class="m">129</span><span class="w">      </span><span class="m">72</span><span class="w">	</span><span class="m">35</span><span class="w">      </span><span class="m">26</span><span class="w">         </span><span class="m">14</span><span class="w">       </span><span class="m">86</span><span class="w">	</span>
+<span class="w">			</span>
+<span class="m">6</span><span class="n">.</span><span class="w">	</span><span class="m">-53586</span><span class="w">        </span><span class="m">318</span><span class="w">        </span><span class="m">317</span><span class="w">      </span><span class="m">45</span><span class="w">      </span><span class="m">49876</span><span class="w">     </span><span class="m">130</span><span class="w">      </span><span class="m">83</span><span class="w">	</span><span class="m">53</span><span class="w">       </span><span class="m">2</span><span class="w">         </span><span class="m">10</span><span class="w">      </span><span class="m">111</span><span class="w">	</span>
+<span class="m">7</span><span class="n">.</span><span class="w">	</span><span class="m">-53585</span><span class="w">        </span><span class="m">178</span><span class="w">        </span><span class="m">177</span><span class="w">      </span><span class="m">58</span><span class="w">          </span><span class="n">.</span><span class="w">     </span><span class="m">135</span><span class="w">      </span><span class="m">65</span><span class="w">	</span><span class="m">18</span><span class="w">       </span><span class="m">2</span><span class="w">         </span><span class="m">26</span><span class="w">      </span><span class="m">110</span><span class="w">	</span>
+<span class="m">8</span><span class="n">.</span><span class="w">	</span><span class="m">-53583</span><span class="w">        </span><span class="m">337</span><span class="w">        </span><span class="m">336</span><span class="w">      </span><span class="m">51</span><span class="w">      </span><span class="m">22527</span><span class="w">     </span><span class="m">113</span><span class="w">      </span><span class="m">70</span><span class="w">	</span><span class="m">22</span><span class="w">      </span><span class="m">20</span><span class="w">          </span><span class="m">9</span><span class="w">      </span><span class="m">120</span><span class="w">	</span>
+<span class="m">9</span><span class="n">.</span><span class="w">	</span><span class="m">-53582</span><span class="w">        </span><span class="m">156</span><span class="w">        </span><span class="m">155</span><span class="w">      </span><span class="m">63</span><span class="w">      </span><span class="m">15174</span><span class="w">     </span><span class="m">116</span><span class="w">      </span><span class="m">70</span><span class="w">	</span><span class="m">21</span><span class="w">       </span><span class="m">5</span><span class="w">          </span><span class="m">9</span><span class="w">       </span><span class="m">83</span><span class="w">	</span>
+<span class="m">10</span><span class="n">.</span><span class="w">	</span><span class="m">-53581</span><span class="w">        </span><span class="m">116</span><span class="w">        </span><span class="m">114</span><span class="w">      </span><span class="m">35</span><span class="w">      </span><span class="m">56148</span><span class="w">     </span><span class="m">129</span><span class="w">      </span><span class="m">90</span><span class="w">	</span><span class="m">25</span><span class="w">       </span><span class="m">9</span><span class="w">         </span><span class="m">10</span><span class="w">      </span><span class="m">117</span><span class="w">	</span>
+<span class="w">			</span>
+
+<span class="w">	</span>
+<span class="w">	</span><span class="n">b_mortstat</span><span class="w">   </span><span class="n">b_female</span><span class="w">   </span><span class="n">b_dm</span><span class="w">   </span><span class="n">b_htn</span><span class="w">   </span><span class="n">b_smk</span><span class="w"> </span>
+<span class="w">	</span><span class="o">-</span>
+<span class="m">1</span><span class="n">.</span><span class="w">	</span><span class="n">Assumed</span><span class="w"> </span><span class="n">deceased</span><span class="w">          </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">0</span><span class="w"> </span>
+<span class="m">2</span><span class="n">.</span><span class="w">	</span><span class="n">Assumed</span><span class="w"> </span><span class="n">alive</span><span class="w">          </span><span class="m">1</span><span class="w">      </span><span class="m">0</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">0</span><span class="w"> </span>
+<span class="m">3</span><span class="n">.</span><span class="w">	</span><span class="n">Assumed</span><span class="w"> </span><span class="n">alive</span><span class="w">          </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w">       </span><span class="m">0</span><span class="w">       </span><span class="m">0</span><span class="w"> </span>
+<span class="m">4</span><span class="n">.</span><span class="w">	</span><span class="n">Assumed</span><span class="w"> </span><span class="n">alive</span><span class="w">          </span><span class="m">1</span><span class="w">      </span><span class="m">0</span><span class="w">       </span><span class="m">0</span><span class="w">       </span><span class="m">0</span><span class="w"> </span>
+<span class="m">5</span><span class="n">.</span><span class="w">	</span><span class="n">Assumed</span><span class="w"> </span><span class="n">deceased</span><span class="w">          </span><span class="m">1</span><span class="w">      </span><span class="m">0</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w"> </span>
+<span class="w">	</span><span class="o">-</span>
+<span class="m">6</span><span class="n">.</span><span class="w">	</span><span class="n">Assumed</span><span class="w"> </span><span class="n">alive</span><span class="w">          </span><span class="m">1</span><span class="w">      </span><span class="m">0</span><span class="w">       </span><span class="m">0</span><span class="w">       </span><span class="m">0</span><span class="w"> </span>
+<span class="m">7</span><span class="n">.</span><span class="w">	</span><span class="n">Assumed</span><span class="w"> </span><span class="n">deceased</span><span class="w">          </span><span class="m">0</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w"> </span>
+<span class="m">8</span><span class="n">.</span><span class="w">	</span><span class="n">Assumed</span><span class="w"> </span><span class="n">alive</span><span class="w">          </span><span class="m">1</span><span class="w">      </span><span class="m">0</span><span class="w">       </span><span class="m">0</span><span class="w">       </span><span class="m">1</span><span class="w"> </span>
+<span class="m">9</span><span class="n">.</span><span class="w">	</span><span class="n">Assumed</span><span class="w"> </span><span class="n">deceased</span><span class="w">          </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w">       </span><span class="m">0</span><span class="w">       </span><span class="m">1</span><span class="w"> </span>
+<span class="m">10</span><span class="n">.</span><span class="w">	</span><span class="n">Assumed</span><span class="w"> </span><span class="n">deceased</span><span class="w">          </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w">       </span><span class="m">0</span><span class="w">       </span><span class="m">1</span><span class="w"> </span>
+<span class="w">	</span>
+
+<span class="w">		</span>
+<span class="w">	</span><span class="n">m_year</span><span class="w">     </span><span class="n">m_race</span><span class="w">   </span><span class="n">m_race2</span><span class="w">                            </span><span class="n">m_educ</span><span class="w">	</span><span class="n">m_hba1c</span><span class="w">   </span><span class="n">m_logacr</span><span class="w">   </span><span class="n">m_creat</span><span class="w"> </span>
+<span class="w">		</span><span class="o">-</span>
+<span class="m">1</span><span class="n">.</span><span class="w">	</span><span class="m">1988-1998</span><span class="w">      </span><span class="n">White</span><span class="w">         </span><span class="n">.</span><span class="w">   </span><span class="n">High</span><span class="w"> </span><span class="n">school</span><span class="p">,</span><span class="w"> </span><span class="n">Diploma</span><span class="o">/</span><span class="n">equivalent</span><span class="w">	</span><span class="m">6</span><span class="w">          </span><span class="m">4</span><span class="w">         </span><span class="m">1</span><span class="w"> </span>
+<span class="m">2</span><span class="n">.</span><span class="w">	</span><span class="m">1988-1998</span><span class="w">      </span><span class="n">White</span><span class="w">         </span><span class="n">.</span><span class="w">   </span><span class="n">High</span><span class="w"> </span><span class="n">school</span><span class="p">,</span><span class="w"> </span><span class="n">Diploma</span><span class="o">/</span><span class="n">equivalent</span><span class="w">	</span><span class="m">5</span><span class="w">          </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w"> </span>
+<span class="m">3</span><span class="n">.</span><span class="w">	</span><span class="m">1988-1998</span><span class="w">      </span><span class="n">White</span><span class="w">         </span><span class="n">.</span><span class="w">            </span><span class="n">College</span><span class="w"> </span><span class="n">graduate</span><span class="o">/</span><span class="n">above</span><span class="w">	</span><span class="m">5</span><span class="w">          </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w"> </span>
+<span class="m">4</span><span class="n">.</span><span class="w">	</span><span class="m">1988-1998</span><span class="w">   </span><span class="n">Hispanic</span><span class="w">         </span><span class="n">.</span><span class="w">   </span><span class="n">High</span><span class="w"> </span><span class="n">school</span><span class="p">,</span><span class="w"> </span><span class="n">Diploma</span><span class="o">/</span><span class="n">equivalent</span><span class="w">	</span><span class="m">4</span><span class="w">          </span><span class="m">3</span><span class="w">         </span><span class="m">1</span><span class="w"> </span>
+<span class="m">5</span><span class="n">.</span><span class="w">	</span><span class="m">1988-1998</span><span class="w">      </span><span class="n">White</span><span class="w">         </span><span class="n">.</span><span class="w">   </span><span class="n">High</span><span class="w"> </span><span class="n">school</span><span class="p">,</span><span class="w"> </span><span class="n">Diploma</span><span class="o">/</span><span class="n">equivalent</span><span class="w">	</span><span class="m">5</span><span class="w">          </span><span class="m">3</span><span class="w">         </span><span class="m">1</span><span class="w"> </span>
+<span class="w">		</span><span class="o">-</span>
+<span class="m">6</span><span class="n">.</span><span class="w">	</span><span class="m">1988-1998</span><span class="w">      </span><span class="n">White</span><span class="w">         </span><span class="n">.</span><span class="w">            </span><span class="n">Some</span><span class="w"> </span><span class="n">college</span><span class="o">/</span><span class="n">associate</span><span class="w">	</span><span class="m">6</span><span class="w">          </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w"> </span>
+<span class="m">7</span><span class="n">.</span><span class="w">	</span><span class="m">1988-1998</span><span class="w">      </span><span class="n">Black</span><span class="w">         </span><span class="n">.</span><span class="w">   </span><span class="n">High</span><span class="w"> </span><span class="n">school</span><span class="p">,</span><span class="w"> </span><span class="n">Diploma</span><span class="o">/</span><span class="n">equivalent</span><span class="w">	</span><span class="m">8</span><span class="w">          </span><span class="m">0</span><span class="w">         </span><span class="m">1</span><span class="w"> </span>
+<span class="m">8</span><span class="n">.</span><span class="w">	</span><span class="m">1988-1998</span><span class="w">      </span><span class="n">White</span><span class="w">         </span><span class="n">.</span><span class="w">   </span><span class="n">High</span><span class="w"> </span><span class="n">school</span><span class="p">,</span><span class="w"> </span><span class="n">Diploma</span><span class="o">/</span><span class="n">equivalent</span><span class="w">	</span><span class="m">5</span><span class="w">          </span><span class="m">3</span><span class="w">         </span><span class="m">1</span><span class="w"> </span>
+<span class="m">9</span><span class="n">.</span><span class="w">	</span><span class="m">1988-1998</span><span class="w">   </span><span class="n">Hispanic</span><span class="w">         </span><span class="n">.</span><span class="w">                               </span><span class="n">K</span><span class="m">-8</span><span class="w">	</span><span class="m">6</span><span class="w">          </span><span class="m">2</span><span class="w">         </span><span class="m">1</span><span class="w"> </span>
+<span class="m">10</span><span class="n">.</span><span class="w">	</span><span class="m">1988-1998</span><span class="w">      </span><span class="n">Black</span><span class="w">         </span><span class="n">.</span><span class="w">   </span><span class="n">High</span><span class="w"> </span><span class="n">school</span><span class="p">,</span><span class="w"> </span><span class="n">Diploma</span><span class="o">/</span><span class="n">equivalent</span><span class="w">	</span><span class="m">5</span><span class="w">          </span><span class="m">2</span><span class="w">         </span><span class="m">1</span><span class="w"> </span>
+<span class="w">		</span>
+
+<span class="n">.</span><span class="w"> </span>
+<span class="n">end</span><span class="w"> </span><span class="n">of</span><span class="w">	</span><span class="n">do</span><span class="o">-</span><span class="n">file</span>
+
+<span class="n">.</span><span class="w"> </span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1556,6 +1701,7 @@ super-long line of code that /*
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssc">9.14 ssc</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1">9.15 table1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v2">9.16 table1_v2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v3">9.17 table1_v3</a></li>
 </ul>
   </nav></div>
 
