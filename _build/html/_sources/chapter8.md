@@ -478,13 +478,13 @@ di table[4,1] //Hypertensive Male
 + as contrasted with checking a final product, which by then may have monstrously grown beyond anyones debugging skills
 + much more emphasis on the process, collaborative, open, decentralized repo, than a `final judgment` 
 
-## 9.10 feedback
+## 8.10 feedback
 
 + feedback welcome
 + any system without a feedback loop is like a cancer
 + so please send us an email `if & when ... ` 
 
-## 9.11 suigeneris
+## 8.11 suigeneris
 
 ```stata
 #delimit ; //hw1q6
@@ -502,9 +502,9 @@ di table[4,1] //Hypertensive Male
 #delimit cr
 ```
 
-## 9.12 myfirst
+## 8.12 myfirst
 
-### 9.12.1 unconditional
+### 8.12.1 unconditional
 
 + The time it takes to write the program below 
 + Is it dependent on, of independent of, `c(N)`?
@@ -561,7 +561,7 @@ The	median	(IQR)	of	"extended_dgn" is   .(  .-  .)
 
 ```
 
-### 9.12.2 subcondition
+### 8.12.2 subcondition
 
 ```stata
 capture program drop myfirst 
@@ -622,7 +622,7 @@ end of do-file
 
 ```
 
-### 9.12.3 variant
+### 8.12.3 variant
 
 ```stata
 capture program drop myfirst 
@@ -659,7 +659,7 @@ r(459);
 
 ```
 
-### 9.12.4 [knockout](https://www.genome.gov/about-genomics/fact-sheets/Knockout-Mice-Fact-Sheet)
+### 8.12.4 [knockout](https://www.genome.gov/about-genomics/fact-sheets/Knockout-Mice-Fact-Sheet)
 
 ```stata
 
@@ -722,7 +722,7 @@ end of do-file
 
 ```
 
-## 9.13 theline
+## 8.13 theline
 
 + toe the line
 + cross the line
@@ -792,7 +792,7 @@ r(199);
 + both r & python unambiguous about libraries in each script
 + dead shepherd, now i find thy saw of might: whoever loved that loved not python or r?
 
-## 9.15 table1_v1
+## 8.15 table1_v1
 
 ```stata
 do https://raw.githubusercontent.com/jhustata/book/main/table1_options.ado
@@ -949,7 +949,7 @@ end of do-file
 
 ```
 
-## 9.16 table1_v2
+## 8.16 table1_v2
 
 ```stata
 do https://raw.githubusercontent.com/jhustata/book/main/table1_options.ado
@@ -1068,7 +1068,7 @@ end of do-file
 
 ```
 
-## 9.17 table1_v3
+## 8.17 table1_v3
 
 ```stata
 do https://raw.githubusercontent.com/jhustata/book/main/table1_options.ado
@@ -1214,7 +1214,7 @@ end of	do-file
 
 ```
 
-## 9.18 table1_v4
+## 8.18 table1_v4
 
 ```stata
 do https://raw.githubusercontent.com/jhustata/book/main/table1_options.ado
@@ -1349,13 +1349,13 @@ educ:                   5.7% missing
 
 ```
 
-## 9.19 table1_v5
+## 8.19 table1_v5
 
 + autoencodes varnames
 + binary, categorical, continuous
 + then impliments table1_afecdvi.ado
 
-## 9.20  parameters
+## 8.20  parameters
 
 + grades
 + $\mu,   \sigma$
@@ -1375,3 +1375,250 @@ educ:                   5.7% missing
 		+ output isn't controlled using `qui {` & `noi di "..."`
 		+ fundamentally wrong Stata syntax
 		+ any error when script runs on our machines
+
+## 8.21 ado
+
+```stata
+update all
+```
+
+```stata
+
+. update all
+(contacting https://www.stata.com)
+
+Update status
+Last check for updates:  23 May	2023
+New update available:    none		(as of 23 May	2023)
+Current update level:    15 May	2023	(what's new)
+
+Possible actions
+
+Do nothing; all files are up to	date.
+
+. 
+
+
+```
+
+```stata
+sysdir
+```
+
+```stata
+
+. sysdir
+STATA:	/Applications/Stata/
+BASE:	/Applications/Stata/ado/base/
+SITE:	/Applications/Stata/ado/site/
+PLUS:	/Users/d/Library/Application Support/Stata/ado/plus/
+PERSONAL:	/Users/d/Documents/Stata/ado/personal/
+OLDPLACE:	~/ado/
+
+. 
+
+```
+
+```stata
+
+ls /Applications/Stata/
+
+```
+
+```stata
+
+. ls /Applications/Stata/
+
+total 56
+drwxrwxr-x@  3 d     admin	96	May	23	10:26	StataSE.app/
+drwxrwxr-x   4 root  admin	128	Apr	30	12:22	ado/
+-rw-rw-r--   1 root  admin	12766	Apr	24	11:28	auto.dta
+drwxrwxr-x  39 root  admin	1248	Apr	24	11:28	docs/
+-rw-rw-r--   1 root  admin	24	Apr	24	11:28	isstata.180
+-rw-rw-r--   1 d     admin	92	Apr	26	16:13	stata.lic
+-rw-r--r--   1 d     admin	3485	May	23	10:30	update.log
+drwxrwxr-x   7 root  admin	224	Apr	24	11:28	utilities/
+
+. 
+
+
+```
+
+```stata
+ls /Applications/Stata/ado/base/
+```
+
+```stata
+
+
+. ls /Applications/Stata/ado/base/
+
+total 8
+drwxrwxr-x     2 d     admin     64	May	23	10:26	0/
+drwxrwxr-x     2 d     admin     64	May	23	10:26	1/
+drwxrwxr-x     3 root  admin     96	May	23	10:26	2/
+drwxrwxr-x     2 d     admin     64	May	23	10:26	3/
+drwxrwxr-x     2 d     admin     64	May	23	10:26	4/
+drwxrwxr-x     2 d     admin     64	May	23	10:26	5/
+drwxrwxr-x     4 root  admin    128	May	23	10:26	6/
+drwxrwxr-x     2 d     admin     64	May	23	10:26	7/
+drwxrwxr-x     2 d     admin     64	May	23	10:26	8/
+drwxrwxr-x     2 d     admin     64	May	23	10:26	9/
+drwxrwxr-x  1644 root  admin  52608	May	23	10:26	_/
+drwxrwxr-x   213 root  admin   6816	May	23	10:26	a/
+drwxrwxr-x   512 root  admin  16384	May	23	10:26	b/
+drwxrwxr-x   795 root  admin  25440	May	23	10:26	c/
+drwxrwxr-x   331 root  admin  10592	May	23	10:26	d/
+drwxrwxr-x   381 root  admin  12192	May	23	10:26	e/
+drwxrwxr-x  1155 root  admin  36960	May	23	10:26	f/
+drwxrwxr-x   684 root  admin  21888	May	23	10:26	g/
+drwxrwxr-x   167 root  admin   5344	May	23	10:26	h/
+drwxrwxr-x   350 root  admin  11200	May	23	10:26	i/
+drwxrwxr-x   104 root  admin   3328	May	23	10:26	j/
+drwxrwxr-x     5 root  admin    160	May	23	10:26	jar/
+drwxrwxr-x    32 root  admin   1024	May	23	10:26	k/
+drwxrwxr-x   294 root  admin   9408	May	23	10:26	l/
+drwxrwxr-x  1349 root  admin  43168	May	23	10:26	m/
+drwxrwxr-x   169 root  admin   5408	May	23	10:26	n/
+drwxrwxr-x    85 root  admin   2720	May	23	10:26	o/
+drwxrwxr-x   554 root  admin  17728	May	23	10:26	p/
+drwxrwxr-x     4 root  admin    128	May	23	10:26	py/
+drwxrwxr-x    72 root  admin   2304	May	23	10:26	q/
+drwxrwxr-x   200 root  admin   6400	May	23	10:26	r/
+drwxrwxr-x    38 root  admin   1216	Apr	24	11:28	resource/
+drwxrwxr-x  1068 root  admin  34176	May	23	10:26	s/
+drwxrwxr-x   905 root  admin  28960	May	23	10:26	style/
+drwxrwxr-x   410 root  admin  13120	May	23	10:26	t/
+drwxrwxr-x   148 root  admin   4736	May	23	10:26	u/
+-rw-rw-r--     1 d     admin     12	May	23	10:26	update
+drwxrwxr-x   154 root  admin   4928	May	23	10:26	v/
+drwxrwxr-x   113 root  admin   3616	May	23	10:26	w/
+drwxrwxr-x   371 root  admin  11872	May	23	10:26	x/
+drwxrwxr-x    44 root  admin   1408	May	23	10:26	y/
+drwxrwxr-x    81 root  admin   2592	May	23	10:26	z/
+
+
+```
+
+```stata
+ls /Users/d/Documents/Stata/ado/personal/
+```
+
+```stata
+
+ls:	/Users/d/Documents/Stata/ado/personal/:	No	such	file	or	directory
+
+. 
+
+```
+
++ Probably a folder Stata expects you to create and utilize for 3rd-party .ado files
++ Every student should be aware of their location
++ Install libraries via `ssc` command in .do file script to avoid crashing on collaborators machine
++ This, of course, also applies to hw since it simulates a collaboration
+
+```stata
+which coefplot
+```
+
+```stata
+. which coefplot
+/Users/d/Library/Application	Support/Stata/ado/plus/c/coefplot.ado
+*! version 1.8.6  22feb2023	Ben Jann
+
+. 
+
+```
+
++ Above `coefplot` command is, clearly, from a third-party
++ Maybe write a "screener" script which tests every command?
+
+```stata
+
+global commandlist if g sum coefplot tokenize //built-in commands appear blue
+local n: di wordcount("$commandlist")
+forval i=1/`n' {
+	local command: di word("$commandlist",`i')
+	which "`command'"
+}
+```
+
+```stata
+. global commandlist if g sum coefplot tokenize //built-in commands	appear	blue
+
+. local n: di wordcount("$commandlist")
+
+. forval i=1/`n' {
+2.         local command: di word("$commandlist",`i')
+3.         which "`command'"
+4. }
+built-in command:  if
+built-in command:  generate
+built-in command:  summarize
+/Users/d/Library/Application Support/Stata/ado/plus/c/coefplot.ado
+*! version 1.8.6  22feb2023  Ben Jann
+built-in command:  tokenize
+
+. 
+end of do-file
+
+. 
+
+```
+
+In the above example we can already see that coefplot appears white 
+
+
+```stata
+global commandlist if g sum coefplot tokenize estpost //built-in commands appear blue
+local n: di wordcount("$commandlist")
+forval i=1/`n' {
+	local command: di word("$commandlist",`i')
+	which "`command'"
+}
+```
+
+```stata
+. global commandlist if g sum coefplot tokenize estpost //built-in	commands	appear	blue
+
+. local n: di wordcount("$commandlist")
+
+. forval i=1/`n' {
+2.         local command: di word("$commandlist",`i')
+3.         which "`command'"
+4. }
+built-in command:  if
+built-in command:  generate
+built-in command:  summarize
+/Users/d/Library/Application Support/Stata/ado/plus/c/coefplot.ado
+*! version 1.8.6  22feb2023  Ben Jann
+built-in command:  tokenize
+command estpost not found as either built-in or ado-file
+r(111);
+
+end of do-file
+
+r(111);
+
+
+```
+
+```stata
+ssc install estpost
+ssc install coefplot
+```
+
+```stata
+
+. ssc install estpost
+ssc install: "estpost" not found at SSC, type search estpost
+(To find all packages at SSC that start with e, type ssc describe e)
+r(601);
+
+. ssc install coefplot
+checking coefplot consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. 
+
+```
