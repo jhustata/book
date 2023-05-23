@@ -1354,3 +1354,24 @@ educ:                   5.7% missing
 + autoencodes varnames
 + binary, categorical, continuous
 + then impliments table1_afecdvi.ado
+
+## 9.20  parameters
+
++ grades
++ $\mu,   \sigma$
++ inferences
+    + $\mu   =$ A
+	    + program define name
+		+ flexible 
+		+ user-defined input
+		+ default if user distracted
+		+ with caveats & subconditions
+		+ mindful of c(os), c(version_real)
+		+ also of 3-party libraries
+		+ still yet to figure out the latter 
+	+ $\sigma   =$ B
+	    + doesn't illustrate knowledge of above
+		+ hasn't presubmitted hw to test for 3-party libraries
+		+ output isn't controlled using `qui {` & `noi di "..."`
+		+ fundamentally wrong Stata syntax
+		+ any error when script runs on our machines
