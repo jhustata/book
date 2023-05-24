@@ -1622,3 +1622,82 @@ all files already exist and are up to date.
 . 
 
 ```
+
+## 8.22 dofile
+
+```stata
+qui {
+	cls
+	clear 
+	if _N { //background
+		1. done in the spirit of a workflow that incorporates collaboration
+		2. you, the student, programmer, and collaborator must be mindful
+		3. mindful of the library of third-party programs you've installed
+		4. these may not necessarily be installed on your collaborators' machine
+		5. as we grade your hws we'll act like frustrated collaborators if... 
+		6. we run your .do file and get errors on our machine
+		7. so we are not permanently incorporating a codeblock to address this
+		8. edit ${workdir} before you share your code with collaborators!!!!!!!!
+	}
+	if c(N)==_N { //method
+		#delimit ; 
+		global commandlist 
+		    qui  
+		    cls 
+		    clear 
+			if
+			coefplot 
+			help
+			tokenize 
+			pwd
+			program
+			capture 
+			twoway 
+			local 
+		    ; 
+		#delimit cr
+		local n: di wordcount("$commandlist")
+		forval i=1/`n' {
+			local command: di word("$commandlist",`i')
+			noi which "`command'"
+		}
+		if c(os) == "Windows" { //paths with back "\" slashes
+			global workdir `c(pwd)'  
+		}
+		else { //paths with forward "/" slashes
+			global workdir `c(pwd)' 
+		}
+		capture log close
+		log using statalibrary.log, replace 
+		set more off
+	}
+	if _N < 1 { //results
+		//etc.
+	}
+}
+```
+
+```stata
+built-in command:  quietly
+built-in command:  cls
+/Applications/Stata/ado/base/c/clear.ado
+*! version 4.4.0  26feb2021
+built-in command:  if
+/Users/d/Library/Application Support/Stata/ado/plus/c/coefplot.ado
+*! version 1.8.6  22feb2023  Ben Jann
+/Applications/Stata/ado/base/h/help.ado
+*! version 1.0.1  18sep2019
+built-in command:  tokenize
+built-in command:  pwd
+built-in command:  program
+built-in command:  capture
+/Applications/Stata/ado/base/t/twoway.ado
+*! version 1.2.1  22jun2012
+built-in command:  local
+
+. 
+end of do-file
+
+. 
+
+```

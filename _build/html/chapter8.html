@@ -398,6 +398,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v5">8.19 table1_v5</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">8.20  parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ado">8.21 ado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dofile">8.22 dofile</a></li>
 </ul>
             </nav>
         </div>
@@ -1988,6 +1989,83 @@ all files already exist and are up to date.
 </pre></div>
 </div>
 </section>
+<section id="dofile">
+<h2>8.22 dofile<a class="headerlink" href="#dofile" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+	cls
+<span class="k">	clear</span> 
+<span class="k">	if</span> _N { <span class="c1">//background</span>
+		<span class="m">1</span>. done<span class="k"> in</span> the spirit of a workflow that incorporates collaboration
+		<span class="m">2</span>. you, the student, programmer, and collaborator must be mindful
+		<span class="m">3</span>. mindful of the library of third<span class="o">-</span>party programs you&#39;ve installed
+		<span class="m">4</span>. these may not necessarily be installed<span class="k"> on</span> your collaborators&#39; machine
+		<span class="m">5</span>.<span class="k"> as</span> we grade your hws we&#39;ll act like frustrated collaborators<span class="k"> if</span>... 
+		<span class="m">6</span>. we<span class="k"> run</span> your .do<span class="k"> file</span> and get errors<span class="k"> on</span> our machine
+		<span class="m">7</span>.<span class="k"> so</span> we are not permanently incorporating a codeblock to address this
+		<span class="m">8</span>.<span class="k"> edit</span> <span class="vg">${workdir}</span> before you share your code with collaborators<span class="o">!!!!!!!!</span>
+	}
+<span class="k">	if</span> <span class="nf">c</span>(N)<span class="o">==</span>_N { <span class="c1">//method</span>
+		#delimit ; 
+<span class="k">		global</span> commandlist 
+<span class="k">		    qui</span>  
+		    cls 
+<span class="k">		    clear</span> 
+<span class="k">			if</span>
+			coefplot 
+<span class="k">			help</span>
+<span class="k">			tokenize</span> 
+<span class="k">			pwd</span>
+<span class="k">			program</span>
+<span class="k">			capture</span> 
+<span class="k">			twoway</span> 
+<span class="k">			local</span> 
+		    ; 
+		#delimit cr
+<span class="k">		local n</span>:<span class="k"> di</span> <span class="nf">wordcount</span>(<span class="s">&quot;</span><span class="vg">$commandlist</span><span class="s">&quot;</span>)
+<span class="k">		forval</span> i=<span class="m">1</span><span class="o">/</span><span class="nv">`n&#39;</span> {
+<span class="k">			local</span> command:<span class="k"> di</span> <span class="nf">word</span>(<span class="s">&quot;</span><span class="vg">$commandlist</span><span class="s">&quot;</span>,<span class="nv">`i&#39;</span>)
+<span class="k">			noi which</span> <span class="s">&quot;</span><span class="nv">`command&#39;</span><span class="s">&quot;</span>
+		}
+<span class="k">		if</span> <span class="nf">c</span>(os) <span class="o">==</span> <span class="s">&quot;Windows&quot;</span> { <span class="c1">//paths with back &quot;\&quot; slashes</span>
+<span class="k">			global</span> workdir <span class="nv">`c(pwd)&#39;</span>  
+		}
+<span class="k">		else</span> { <span class="c1">//paths with forward &quot;/&quot; slashes</span>
+<span class="k">			global</span> workdir <span class="nv">`c(pwd)&#39;</span> 
+		}
+<span class="k">		capture log close</span>
+<span class="k">		log</span> using statalibrary<span class="m">.</span>log,<span class="k"> replace</span> 
+<span class="k">		set more</span> off
+	}
+<span class="k">	if</span> _N <span class="o">&lt;</span> <span class="m">1</span> { <span class="c1">//results</span>
+		<span class="c1">//etc.</span>
+	}
+}
+</pre></div>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>built<span class="o">-</span>in command: <span class="k"> quietly</span>
+built<span class="o">-</span>in command:  cls
+<span class="o">/</span>Applications<span class="o">/</span>Stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>c<span class="o">/</span>clear<span class="m">.</span>ado
+<span class="c1">*! version 4.4.0  26feb2021</span>
+built<span class="o">-</span>in command: <span class="k"> if</span>
+<span class="o">/</span>Users<span class="o">/</span>d<span class="o">/</span>Library<span class="o">/</span>Application Support<span class="o">/</span>Stata<span class="o">/</span>ado<span class="o">/</span>plus<span class="o">/</span>c<span class="o">/</span>coefplot<span class="m">.</span>ado
+<span class="c1">*! version 1.8.6  22feb2023  Ben Jann</span>
+<span class="o">/</span>Applications<span class="o">/</span>Stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>h<span class="o">/</span>help<span class="m">.</span>ado
+<span class="c1">*! version 1.0.1  18sep2019</span>
+built<span class="o">-</span>in command: <span class="k"> tokenize</span>
+built<span class="o">-</span>in command: <span class="k"> pwd</span>
+built<span class="o">-</span>in command: <span class="k"> program</span>
+built<span class="o">-</span>in command: <span class="k"> capture</span>
+<span class="o">/</span>Applications<span class="o">/</span>Stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>t<span class="o">/</span>twoway<span class="m">.</span>ado
+<span class="c1">*! version 1.2.1  22jun2012</span>
+built<span class="o">-</span>in command: <span class="k"> local</span>
+
+. 
+<span class="k">end</span> of<span class="k"> do</span><span class="o">-</span>file
+
+. 
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2089,6 +2167,7 @@ all files already exist and are up to date.
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table1-v5">8.19 table1_v5</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">8.20  parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ado">8.21 ado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dofile">8.22 dofile</a></li>
 </ul>
   </nav></div>
 
