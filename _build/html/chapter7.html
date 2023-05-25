@@ -378,14 +378,18 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">7.8 strings</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">7.8.1 lists</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel">7.8.2 excel</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">7.8.3 commands</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strpos">7.8.2.1 strpos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wild-type">7.8.1 wild-type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-variant">7.8.2 alpha-variant</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beta-variant">7.8.3. beta-variant</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel">7.8.4 excel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">7.8.5 commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#strpos">7.8.5.1 strpos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#others">7.8.5.2 others</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">7.9 others</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">7.10 dates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">7.9 dates</a></li>
 </ul>
             </nav>
         </div>
@@ -906,20 +910,39 @@ coefplot male female,<span class="k"> drop</span>(_cons) xline(<span class="m">0
 </section>
 <section id="strings">
 <h2>7.8 strings<a class="headerlink" href="#strings" title="Permalink to this heading">#</a></h2>
-<p>Handling <strong>strings</strong> such as drug names:</p>
 <ul class="simple">
-<li><p>We’ll review a script I wrote 4 years ago</p></li>
-<li><p>Then compare it with an update I wrote yesterday</p></li>
+<li><p>Handling <strong>strings</strong> such as:</p>
+<ul>
+<li><p>data file names</p></li>
+<li><p>generic drug names</p></li>
+<li><p>all sorts of lists</p></li>
+</ul>
+</li>
+<li><p>We’ll review a script I wrote 4 years ago:</p>
+<ul>
+<li><p>440 lines of code</p></li>
+</ul>
+</li>
+<li><p>Then compare it with an update this spring:</p>
+<ul>
+<li><p>182 lines of code</p></li>
+</ul>
+</li>
+<li><p>Finally compare it with a variant i wrote in the summer:</p>
+<ul>
+<li><p>139 lines of code</p></li>
+</ul>
+</li>
 <li><p>In brief, there is a fundamental transformation in:</p>
 <ul>
 <li><p>aesthetics, legibility, &amp; brevity</p></li>
-<li><p>one is 440 lines, repetitious</p></li>
-<li><p>the other is 164 lines, utilizes macros &amp; loops</p></li>
+<li><p>what is repetitive is codified in a loop</p></li>
+<li><p>loops always utilizes macros and conditional statements</p></li>
 </ul>
 </li>
 </ul>
-<section id="lists">
-<h3>7.8.1 lists<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h3>
+<section id="wild-type">
+<h3>7.8.1 wild-type<a class="headerlink" href="#wild-type" title="Permalink to this heading">#</a></h3>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import excel <span class="s">&quot;1-first gen antihisitamines.xlsx&quot;</span>, sheet(<span class="s">&quot;de-duplicated list&quot;</span>)<span class="k"> clear</span>
 <span class="k">drop in</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span>
 <span class="k">replace</span> A = <span class="nf">strtrim</span>(A)
@@ -1362,6 +1385,9 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 <span class="k">save</span> 38_anticholinergics,replace 
 </pre></div>
 </div>
+</section>
+<section id="alpha-variant">
+<h3>7.8.2 alpha-variant<a class="headerlink" href="#alpha-variant" title="Permalink to this heading">#</a></h3>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">	qui</span> {
 <span class="k">		clear</span>
@@ -1547,8 +1573,152 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 </pre></div>
 </div>
 </section>
+<section id="beta-variant">
+<h3>7.8.3. beta-variant<a class="headerlink" href="#beta-variant" title="Permalink to this heading">#</a></h3>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">	qui</span> {
+<span class="k">		clear</span>
+		cls
+<span class="k">		if</span> <span class="nf">c</span>(N) { <span class="c1">//background</span>
+			we compiled a comprehensive<span class="k"> list</span> of medications within     
+			each of the potentially inapporpriate medication (pim)     
+			classes<span class="k"> in</span> a systematic manner.    
+			
+			first, informaticists used micromedex, the control vocabularies of                
+			medline and embase, and medication websites to<span class="k"> generate</span>     
+			a trade and generic medication name<span class="k"> list</span>.     
+			
+			second, this<span class="k"> list</span> was curated to allow medications with multiple        
+            mechanisms of action to be represented<span class="k"> in more</span> than<span class="k"> one</span> pim<span class="k"> class</span>.     
+			we removed pims with topical or ocular routes of administration.     
+			
+			the final<span class="k"> list</span> was <span class="o">**</span>imported into stata<span class="o">**</span> to<span class="k"> query</span>     
+			medicare part<span class="k"> d</span> claims<span class="k"> for</span> pims...    
+		} 
+<span class="k">		if</span> <span class="nf">c</span>(N)<span class="o">&lt;</span><span class="m">1</span> { <span class="c1">//methods</span>
+<span class="k">		    global</span> workdir <span class="nv">`c(pwd)&#39;</span> 
+<span class="k">			if</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Windows&quot;</span> {
+<span class="k">				global</span> workdir <span class="s">&quot;</span><span class="vg">$workdir</span><span class="se">\&quot;</span>
+			}
+<span class="k">			else</span> {
+<span class="k">				global</span> workdir <span class="s">&quot;</span><span class="vg">$workdir</span><span class="s">/&quot;</span>
+			}
+			#delimit ;   
+<span class="k">			global</span> catalog        
+			    <span class="s">&quot;1-first gen antihisitamines&quot;</span>     
+				<span class="s">&quot;2-antiparkinsonian agents&quot;</span>    
+				<span class="s">&quot;3-Antispasmodics&quot;</span>     
+				<span class="s">&quot;4-Antithrombotics&quot;</span>     
+				<span class="s">&quot;5-antiinfective agents&quot;</span>     
+				<span class="s">&quot;6-Peripheral alpha-1 blockers&quot;</span>    
+				<span class="s">&quot;7-Central alpha-agonists&quot;</span>    
+				<span class="s">&quot;8-Other CNS alpha-agonists&quot;</span>    
+				<span class="s">&quot;9-Antidepressants&quot;</span>    
+				<span class="s">&quot;10-Antipsychotic agents&quot;</span>    
+				<span class="s">&quot;11-Barbituates&quot;</span>    
+				<span class="s">&quot;12-Benzodiazepine lists&quot;</span>    
+				<span class="s">&quot;12-Benzodiazepine lists&quot;</span>    
+				<span class="s">&quot;12-Benzodiazepine lists&quot;</span>    
+				<span class="s">&quot;13-Nonbenzodiazepines - Z-drugs&quot;</span>    
+				<span class="s">&quot;14-Ergoloid Mesylates&quot;</span>    
+				<span class="s">&quot;15-Androgens&quot;</span>    
+				<span class="s">&quot;16-Estrogens&quot;</span>    
+				<span class="s">&quot;17-Growth hormone&quot;</span>    
+				<span class="s">&quot;18-Insulin&quot;</span>    
+				<span class="s">&quot;19-Sulfonylureas&quot;</span>    
+			    <span class="s">&quot;20.Proton_Pump_Inhibitors&quot;</span>    
+				<span class="s">&quot;21.non-selective NSAIDS&quot;</span>    
+				<span class="s">&quot;22.Skeletal muscle relaxants&quot;</span>    
+				<span class="s">&quot;23.non-DHP CCB&quot;</span>    
+				<span class="s">&quot;24.Thiazolidinediones&quot;</span>    
+				<span class="s">&quot;25.Acetyl cholinesterase inhib&quot;</span>    
+				<span class="s">&quot;26.alpha-1 blockers&quot;</span>    
+				<span class="s">&quot;27.ti-cyclic antidepressants&quot;</span>    
+				<span class="s">&quot;28.corticosteroids&quot;</span>    
+				<span class="s">&quot;29.H2 receptor antagonists&quot;</span>    
+				<span class="s">&quot;30.antiepileptics&quot;</span>    
+				<span class="s">&quot;31.antiemetics&quot;</span>    
+				<span class="s">&quot;32.NSAIDS&quot;</span>    
+				<span class="s">&quot;33.Diuretics&quot;</span>    
+				<span class="s">&quot;34.SNRIs&quot;</span>    
+				<span class="s">&quot;35.SSRIs&quot;</span>    
+				<span class="s">&quot;36.RAS Inhibitor&quot;</span>    
+				<span class="s">&quot;37.Opioids&quot;</span>    
+				<span class="s">&quot;38.Anticholinergic&quot;</span>;    
+			#delimit cr     
+<span class="k">			capture log close</span>     
+<span class="k">			log</span> using <span class="s">&quot;</span><span class="vg">${workdir}</span><span class="s">01_bc050523.log&quot;</span>,replace     
+<span class="k">			set</span> max_memory .    
+		}
+<span class="k">		if</span> <span class="nf">c</span>(N)<span class="o">==</span><span class="m">0</span> { <span class="c1">//results</span>
+<span class="k">		    local</span> group=<span class="m">1</span>
+<span class="k">		    foreach class in</span> <span class="s">&quot;</span><span class="vg">$catalog</span><span class="s">&quot;</span> {
+<span class="k">				if</span> <span class="nf">inrange</span>(<span class="nv">`group&#39;</span>,<span class="m">1</span>,<span class="m">9</span>) {
+					import excel <span class="s">&quot;</span><span class="vg">${workdir}</span><span class="nv">`class&#39;</span><span class="s">.xlsx&quot;</span>,<span class="k"> clear</span>
+<span class="k">					local</span> class_tidy:<span class="k"> di</span> lower(<span class="nf">substr</span>(<span class="s">&quot;</span><span class="nv">`class&#39;</span><span class="s">&quot;</span>,<span class="m">3</span>,.))
+<span class="k">					 g</span> class_gnn=<span class="s">&quot;0</span><span class="nv">`group&#39;</span><span class="s">_</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>
+<span class="k">					 capture keep</span> class_gnn
+<span class="k">					 g</span> group=<span class="nv">`group&#39;</span>
+<span class="k">					 keep if</span> <span class="o">!</span><span class="nf">missing</span>(class_gnn)
+<span class="k">					 capture save</span> <span class="s">&quot;0</span><span class="nv">`group&#39;</span><span class="s">_</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>,replace  
+<span class="k">					 noi di</span> <span class="s">&quot;0</span><span class="nv">`group&#39;</span><span class="s">_</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>
+<span class="k">					local</span> group=<span class="nv">`group&#39;</span><span class="o">+</span><span class="m">1</span>
+				}
+<span class="k">				else if</span> <span class="nf">inrange</span>(<span class="nv">`group&#39;</span>,<span class="m">10</span>,<span class="m">11</span>) {
+					import excel <span class="s">&quot;</span><span class="vg">${workdir}</span><span class="nv">`class&#39;</span><span class="s">.xlsx&quot;</span>,<span class="k"> clear</span>
+<span class="k">					local</span> class_tidy:<span class="k"> di</span> lower(<span class="nf">substr</span>(<span class="s">&quot;</span><span class="nv">`class&#39;</span><span class="s">&quot;</span>,<span class="m">4</span>,.))
+<span class="k">					 g</span> class_gnn=<span class="s">&quot;</span><span class="nv">`group&#39;</span><span class="s">_</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>
+<span class="k">					 capture keep</span> class_gnn
+<span class="k">					 g</span> group=<span class="nv">`group&#39;</span>
+<span class="k">					 keep if</span> <span class="o">!</span><span class="nf">missing</span>(class_gnn)
+<span class="k">					 capture save</span> <span class="s">&quot;</span><span class="nv">`group&#39;</span><span class="s">_</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>,replace  
+<span class="k">					 noi di</span> <span class="s">&quot;</span><span class="nv">`group&#39;</span><span class="s">_</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>
+<span class="k">					local</span> group=<span class="nv">`group&#39;</span><span class="o">+</span><span class="m">1</span>
+				}	
+<span class="k">				else if</span> <span class="nf">inrange</span>(<span class="nv">`group&#39;</span>,<span class="m">12</span>,<span class="m">21</span>) {
+					import excel <span class="s">&quot;</span><span class="vg">${workdir}</span><span class="nv">`class&#39;</span><span class="s">.xlsx&quot;</span>,<span class="k"> clear</span>
+<span class="k">					local</span> class_tidy:<span class="k"> di</span> lower(<span class="nf">substr</span>(<span class="s">&quot;</span><span class="nv">`class&#39;</span><span class="s">&quot;</span>,<span class="m">4</span>,.))
+<span class="k">					local</span> group2=<span class="nv">`group&#39;</span><span class="o">-</span><span class="m">2</span>
+<span class="k">					 g</span> class_gnn=<span class="s">&quot;</span><span class="nv">`group2&#39;</span><span class="s">_</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>
+<span class="k">					 capture keep</span> class_gnn
+<span class="k">					 g</span> group=<span class="nv">`group2&#39;</span>
+<span class="k">					 keep if</span> <span class="o">!</span><span class="nf">missing</span>(class_gnn)
+<span class="k">					 capture save</span> <span class="s">&quot;</span><span class="nv">`group2&#39;</span><span class="s">_</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>,replace  
+<span class="k">					 noi di</span> <span class="s">&quot;</span><span class="nv">`group2&#39;</span><span class="s">_</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>
+<span class="k">					local</span> group=<span class="nv">`group&#39;</span><span class="o">+</span><span class="m">1</span>
+				}				
+<span class="k">				else</span> {
+			   	    import excel <span class="s">&quot;</span><span class="vg">${workdir}</span><span class="s">20-38.xlsx&quot;</span>, <span class="cm">/*</span>
+<span class="cm">				        */</span> sheet(<span class="s">&quot;</span><span class="nv">`class&#39;</span><span class="s">&quot;</span>)<span class="k"> clear</span> 
+<span class="k">					local</span> class_tidy:<span class="k"> di</span> lower(<span class="nf">substr</span>(<span class="s">&quot;</span><span class="nv">`class&#39;</span><span class="s">&quot;</span>,<span class="m">4</span>,.))
+<span class="k">					local</span> group2=<span class="nv">`group&#39;</span><span class="o">-</span><span class="m">2</span>
+<span class="k">					 g</span> class_gnn=<span class="s">&quot;</span><span class="nv">`group2&#39;</span><span class="s">_</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>
+<span class="k">					 capture keep</span> class_gnn
+<span class="k">					 g</span> group=<span class="nv">`group2&#39;</span>
+<span class="k">					 keep if</span> <span class="o">!</span><span class="nf">missing</span>(class_gnn)
+<span class="k">					 capture save</span> <span class="s">&quot;</span><span class="nv">`group2&#39;</span><span class="s">_</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>,replace  
+<span class="k">					 noi di</span> <span class="s">&quot;</span><span class="nv">`group2&#39;</span><span class="s">_</span><span class="nv">`class_tidy&#39;</span><span class="s">&quot;</span>
+<span class="k">					local</span> group=<span class="nv">`group&#39;</span><span class="o">+</span><span class="m">1</span>
+				}
+			}
+		}
+<span class="k">	   clear</span> 
+<span class="k">	   forva</span> i=<span class="m">10</span><span class="o">/</span><span class="m">12</span> {
+<span class="k">	   	   append</span> using <span class="s">&quot;</span><span class="nv">`i&#39;</span><span class="s">_benzodiazepine lists&quot;</span>
+<span class="k">		   rm</span> <span class="s">&quot;</span><span class="nv">`i&#39;</span><span class="s">_benzodiazepine lists.dta&quot;</span>
+	   }
+<span class="k">		   replace</span> class_gnn=<span class="s">&quot;12_benzodiazepine&quot;</span>
+<span class="k">		   replace</span> group=<span class="m">12</span>
+<span class="k">           save</span> 12_benzodiazepines,replace 
+<span class="k">		   noi ls</span> <span class="o">*</span>.dta
+<span class="k">		   log close</span> 
+	}
+}			  	  
+</pre></div>
+</div>
+</section>
 <section id="excel">
-<h3>7.8.2 excel<a class="headerlink" href="#excel" title="Permalink to this heading">#</a></h3>
+<h3>7.8.4 excel<a class="headerlink" href="#excel" title="Permalink to this heading">#</a></h3>
 <p>Download these .xlsx files into the <code class="docutils literal notranslate"><span class="pre">pwd</span></code> for the above scripts to work:</p>
 <p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/1-first%20gen%20antihisitamines.xlsx">1-first gen antihisitamines</a></p>
 <p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/2-antiparkinsonian%20agents.xlsx">2-antiparkinsonian agents</a></p>
@@ -1572,16 +1742,15 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 <p><a class="reference external" href="https://raw.githubusercontent.com/jhustata/book/main/20-38.xlsx">20-38</a></p>
 </section>
 <section id="commands">
-<h3>7.8.3 commands<a class="headerlink" href="#commands" title="Permalink to this heading">#</a></h3>
+<h3>7.8.5 commands<a class="headerlink" href="#commands" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">strpos</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">word</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">strlen</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">regexm</span></code></p></li>
 </ul>
-</section>
 <section id="strpos">
-<h3>7.8.2.1 strpos<a class="headerlink" href="#strpos" title="Permalink to this heading">#</a></h3>
+<h4>7.8.5.1 strpos<a class="headerlink" href="#strpos" title="Permalink to this heading">#</a></h4>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="s">&quot;</span><span class="vg">$S_TIME</span><span class="s">&quot;</span>
 <span class="k">clear</span>
 <span class="k">set more</span> off
@@ -1642,9 +1811,8 @@ import excel <span class="s">&quot;20-38&quot;</span>, sheet(<span class="s">&qu
 </pre></div>
 </div>
 </section>
-</section>
 <section id="others">
-<h2>7.9 others<a class="headerlink" href="#others" title="Permalink to this heading">#</a></h2>
+<h4>7.8.5.2 others<a class="headerlink" href="#others" title="Permalink to this heading">#</a></h4>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>
 //explore these commands sequentially, on your own
 use transplants, clear
@@ -1665,8 +1833,10 @@ tab ext if regexm(ext, &quot;HIV.*Y&quot;)
 </pre></div>
 </div>
 </section>
+</section>
+</section>
 <section id="dates">
-<h2>7.10 dates<a class="headerlink" href="#dates" title="Permalink to this heading">#</a></h2>
+<h2>7.9 dates<a class="headerlink" href="#dates" title="Permalink to this heading">#</a></h2>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">disp</span> <span class="nx">%td</span> <span class="m">19400</span> 11feb2013
 <span class="k">disp</span> <span class="nx">%td</span> <span class="m">366</span> 01jan1961
 <span class="k">disp</span> <span class="nx">%td</span> <span class="o">-</span><span class="m">5</span> 27dec1959
@@ -1768,14 +1938,18 @@ tab ext if regexm(ext, &quot;HIV.*Y&quot;)
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">7.8 strings</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">7.8.1 lists</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel">7.8.2 excel</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">7.8.3 commands</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strpos">7.8.2.1 strpos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wild-type">7.8.1 wild-type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-variant">7.8.2 alpha-variant</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beta-variant">7.8.3. beta-variant</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel">7.8.4 excel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">7.8.5 commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#strpos">7.8.5.1 strpos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#others">7.8.5.2 others</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">7.9 others</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">7.10 dates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">7.9 dates</a></li>
 </ul>
   </nav></div>
 
