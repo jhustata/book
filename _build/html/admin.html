@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>tokenize &#8212; Stata Programming</title>
   
@@ -405,7 +405,7 @@ document.write(`
 <li><p>Gradebook</p></li>
 <li><p>Passcodes</p></li>
 </ol>
-<p>Who to email? <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>Who to email? <a class="footnote-reference brackets" href="#id3" id="id1">1</a></p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">    </span>
 <span class="k">    </span>
@@ -465,7 +465,7 @@ document.write(`
 <li><p>FIDXC -&gt; Jianan Lu</p></li>
 <li><p>APEON -&gt; Rediet Tekalign</p></li>
 </ol>
-<p><strong>Bonus points:</strong> Use the <code class="docutils literal notranslate"><span class="pre">tokenize</span></code> command to append the <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT">DEMO.XPT</a> files for <a class="reference external" href="https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics">all continuous NHANES: 1999-2018</a> into one file.<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>
+<p><strong>Bonus points:</strong> Use the <code class="docutils literal notranslate"><span class="pre">tokenize</span></code> command to append the <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DEMO_D.XPT">DEMO.XPT</a> files for <a class="reference external" href="https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics">all continuous NHANES: 1999-2018</a> into one file.<a class="footnote-reference brackets" href="#id4" id="id2">2</a>
 Your .do file should include only one <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sasxport5</span></code> statement.
 <code class="docutils literal notranslate"><span class="pre">Search</span></code> this book for the <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sasxport5</span></code> command. Up to 1.5 bonus points</p>
 <p>Hint: <a class="reference download internal" download="" href="_downloads/b12f819175fa409a1f54d531439de5f7/tokenize.hint.do"><span class="xref download myst">tokenize.hint.do</span></a> <a class="reference download internal" download="" href="_downloads/729854e2c9e575f660d940b3734077a7/tokenize.hint.log"><span class="xref download myst">tokenize.hint.log</span></a></p>
@@ -495,14 +495,14 @@ Your .do file should include only one <code class="docutils literal notranslate"
 </pre></div>
 </div>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id3" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>see chapter: <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">net</span> <span class="pre">search</span></code></span> for source code</p>
-</aside>
-<aside class="footnote brackets" id="id4" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>see chapter: <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">net</span> <span class="pre">search</span></code></span> for more on NHANES</p>
-</aside>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>see chapter: <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">net</span> <span class="pre">search</span></code></span> for source code</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>see chapter: <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">net</span> <span class="pre">search</span></code></span> for more on NHANES</p>
+</dd>
+</dl>
 </section>
 
     <script type="text/x-thebe-config">

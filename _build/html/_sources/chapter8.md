@@ -36,7 +36,8 @@ di "`1'"
 di `"    "`3'"    "' //token
 ```
 
-+ The program below will not not run after May
++ The program below will not run after May
++ So you should give it a trial run in June!
 + By now you should be able to edit it to allow it to work beyond May
 
 ```stata
